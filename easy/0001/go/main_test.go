@@ -13,14 +13,18 @@ import (
 func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
-	reader *strings.Reader
+	getInputReader *strings.Reader
+	buildOutputReader *strings.Reader
 }
 
-const readerInput string = "test\n"
+const getInputInput string = "test\n"
 const getInputOutput string = "test"
+const buildResultInput string = "qqq\n"
+const buildResultOutput string = "your name is qqq, you are  years old, and your username is "
 
 var _ = Suite(&MainSuite{
-	reader: strings.NewReader(readerInput),
+	getInputReader: strings.NewReader(getInputInput),
+	buildOutputReader: strings.NewReader(buildResultInput),
 })
 
 func (s *MainSuite) TestMain(c *C) {
@@ -28,6 +32,11 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestGetInput(c *C) {
-	input := getInput("", s.reader)
+	input := getInput("", s.getInputReader)
 	c.Assert(input, Equals, getInputOutput)
+}
+
+func (s *MainSuite) TestBuildPrompt(c *C) {
+	result := buildResult(s.buildOutputReader)
+	c.Assert(result, Equals, buildResultOutput)
 }
