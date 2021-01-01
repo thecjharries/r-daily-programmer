@@ -1,4 +1,4 @@
-// Copyright 2020 CJ Harries
+// Copyright 2021 CJ Harries
 // Licensed under http://www.apache.org/licenses/LICENSE-2.0
 
 package main
