@@ -35,6 +35,9 @@ var translateCharacterFixtures = []stringInputResultFixture{
 	{"-", ""},
 }
 
+const translateStringInput string = "test"
+const translateStringResult string = "test"
+
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
@@ -53,4 +56,8 @@ func (s *MainSuite) TestTranslateCharacter(c *C) {
 		result := translateCharacter(fixture.input, alphabet)
 		c.Assert(result, Equals, fixture.result)
 	}
+}
+
+func (s *MainSuite) TestTranslateString(c *C) {
+	c.Assert(translateStringResult, Equals, translateString(translateStringInput, alphabet))
 }

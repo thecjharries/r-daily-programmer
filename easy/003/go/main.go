@@ -9,7 +9,7 @@ var alphabet string = "abcdefghijklmnopqrstuvwxyz"
 
 func main() {
 	fmt.Println("hello world")
-	fmt.Println(rotateAlphabet(27))
+	translateString("test", "alphabet")
 }
 
 func rotateAlphabet(places int) string {
@@ -23,4 +23,12 @@ func translateCharacter(character, newAlphabet string) string {
 		return string(newAlphabet[characterIndex])
 	}
 	return ""
+}
+
+func translateString(input, newAlphabet string) string {
+	result := ""
+	for _, character := range input {
+		result += translateCharacter(string(character), newAlphabet)
+	}
+	return result
 }
