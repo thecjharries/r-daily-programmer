@@ -25,6 +25,16 @@ var rotateAlphabetFixtures = []rotateAlphabetFixture{
 	{27, "bcdefghijklmnopqrstuvwxyza"},
 }
 
+type stringInputResultFixture struct {
+	input string
+	result string
+}
+
+var translateCharacterFixtures = []stringInputResultFixture{
+	{"a", "a"},
+	{"-", ""},
+}
+
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
@@ -34,6 +44,13 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestRotateAlphabet(c *C) {
 	for _, fixture := range rotateAlphabetFixtures {
 		result := rotateAlphabet(fixture.places)
+		c.Assert(result, Equals, fixture.result)
+	}
+}
+
+func (s *MainSuite) TestTranslateCharacter(c *C) {
+	for _, fixture := range translateCharacterFixtures {
+		result := translateCharacter(fixture.input, alphabet)
 		c.Assert(result, Equals, fixture.result)
 	}
 }

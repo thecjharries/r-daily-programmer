@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var alphabet string = "abcdefghijklmnopqrstuvwxyz"
 
@@ -12,4 +15,12 @@ func main() {
 func rotateAlphabet(places int) string {
 	shift := places % len(alphabet)
 	return alphabet[shift:] + alphabet[:shift]
+}
+
+func translateCharacter(character, newAlphabet string) string {
+	characterIndex := strings.Index(alphabet, character)
+	if -1 < characterIndex {
+		return string(newAlphabet[characterIndex])
+	}
+	return ""
 }
