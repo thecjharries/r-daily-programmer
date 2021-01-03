@@ -3,3 +3,6 @@ test:
 
 coverage: test
 	go tool cover -func=.coverage.out
+
+run:
+	go run main.go
