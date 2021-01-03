@@ -7,13 +7,18 @@ import (
 
 var alphabet string = "abcdefghijklmnopqrstuvwxyz"
 
+type CaesarCipher interface {
+	Encrypt(input string, places int) string
+	Decrypt(input string, places int) string
+}
+
 func main() {
 	fmt.Println("hello world")
 	translateString("test", "alphabet")
 }
 
 func rotateAlphabet(places int) string {
-	shift := places % len(alphabet)
+	shift := ((places % len(alphabet)) + len(alphabet)) % len(alphabet)
 	return alphabet[shift:] + alphabet[:shift]
 }
 

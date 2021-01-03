@@ -23,6 +23,8 @@ var rotateAlphabetFixtures = []rotateAlphabetFixture{
 	{26, "abcdefghijklmnopqrstuvwxyz"},
 	{1, "bcdefghijklmnopqrstuvwxyza"},
 	{27, "bcdefghijklmnopqrstuvwxyza"},
+	{-1, "zabcdefghijklmnopqrstuvwxy"},
+	{-27, "zabcdefghijklmnopqrstuvwxy"},
 }
 
 type stringInputResultFixture struct {
