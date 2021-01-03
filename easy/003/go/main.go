@@ -7,14 +7,42 @@ import (
 
 var alphabet string = "abcdefghijklmnopqrstuvwxyz"
 
-type CaesarCipher interface {
-	Encrypt(input string, places int) string
-	Decrypt(input string, places int) string
+type GenericCipher interface {
+	Encrypt(input string) string
+	Decrypt(input string) string
+}
+
+type CaesarCipher struct {
+	places int
+	encryptAlphabet string
+	decryptAlphabet string
+}
+
+func (c CaesarCipher) Encrypt(input string) string {
+	return translateString(input, c.encryptAlphabet)
+}
+
+func (c CaesarCipher) Decrypt(input string) string {
+	return translateString(input, c.decryptAlphabet)
+}
+
+func NewCaesarCipher(places int) *CaesarCipher {
+	cipher := CaesarCipher{places: places}
+	cipher.encryptAlphabet = rotateAlphabet(places)
+	cipher.decryptAlphabet = rotateAlphabet(-places)
+	return &cipher
 }
 
 func main() {
-	fmt.Println("hello world")
-	translateString("test", "alphabet")
+	input := "uftu"
+	places := 1
+	cipher := NewCaesarCipher(places)
+	encrypted := cipher.Encrypt(input)
+	decrypted := cipher.Decrypt(input)
+	fmt.Printf("New alphabet: %s\n", cipher.encryptAlphabet)
+	fmt.Printf("Input: %s\n", input)
+	fmt.Printf("Encrypted input: %s\n", encrypted)
+	fmt.Printf("Decrypted input: %s\n", decrypted)
 }
 
 func rotateAlphabet(places int) string {

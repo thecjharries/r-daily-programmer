@@ -63,3 +63,20 @@ func (s *MainSuite) TestTranslateCharacter(c *C) {
 func (s *MainSuite) TestTranslateString(c *C) {
 	c.Assert(translateStringResult, Equals, translateString(translateStringInput, alphabet))
 }
+
+func (s *MainSuite) TestNewCaesarCipher(c *C) {
+	cipher := NewCaesarCipher(0)
+	c.Assert(cipher.places, Equals, 0)
+	c.Assert(cipher.encryptAlphabet, Equals, alphabet)
+	c.Assert(cipher.decryptAlphabet, Equals, alphabet)
+}
+
+func (s *MainSuite) TestEncrypt(c *C) {
+	cipher := NewCaesarCipher(0)
+	c.Assert(translateStringResult, Equals, cipher.Encrypt(translateStringInput))
+}
+
+func (s *MainSuite) TestDecrypt(c *C) {
+	cipher := NewCaesarCipher(0)
+	c.Assert(translateStringResult, Equals, cipher.Decrypt(translateStringInput))
+}
