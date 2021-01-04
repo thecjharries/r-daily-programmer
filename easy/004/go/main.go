@@ -20,7 +20,15 @@ const (
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	fmt.Println("THIS IS NOT CRYPTOGRAPHICALLY SECURE")
-	fmt.Println(randomAsciiCharacterInRange(characterLowerBound, characterUpperBound))
+	stringLength := 24
+	stringCount := 5
+	for index := 0; index <= stringCount; index++ {
+		fmt.Println(generateRandomCharactersInBoundsOfLength(
+			characterLowerBound,
+			characterUpperBound,
+			stringLength,
+		))
+	}
 }
 
 func min(numbers ...int) int {
