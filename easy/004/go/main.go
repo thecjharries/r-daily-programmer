@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 const (
@@ -17,8 +18,9 @@ const (
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
 	fmt.Println("THIS IS NOT CRYPTOGRAPHICALLY SECURE")
-	fmt.Println(rand.Intn(1))
+	fmt.Println(randomAsciiCharacterInRange(characterLowerBound, characterUpperBound))
 }
 
 func min(numbers ...int) int {
@@ -41,6 +43,15 @@ func max(numbers ...int) int {
 	return largest
 }
 
-func randomIntInRange(min, max int) int {
-	return rand.Intn(max - min + 1) + min
+func randomIntInRange(minInt, maxInt int) int {
+	return rand.Intn(maxInt - minInt + 1) + minInt
+}
+
+func randomAsciiCharacterInRange(minInt, maxInt int) string {
+	return string(
+		rune(randomIntInRange(
+			max(minInt, asciiLowerBound),
+			min(maxInt, asciiUpperBound),
+		)),
+	)
 }

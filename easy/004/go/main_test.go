@@ -39,3 +39,9 @@ func (s *MainSuite) TestMax(c *C) {
 func (s *MainSuite) TestRandomIntInRange(c *C) {
 	c.Assert(randomIntInRange(1, 1), Equals, 1)
 }
+
+func (s *MainSuite) TestRandomAsciiCharacterInRange(c *C) {
+	randomCharacter := randomAsciiCharacterInRange(characterLowerBound, characterUpperBound)
+	c.Assert(int(randomCharacter[0]) >= characterLowerBound, Equals, true)
+	c.Assert(int(randomCharacter[0]) <= characterUpperBound, Equals, true)
+}
