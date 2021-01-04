@@ -55,3 +55,11 @@ func randomAsciiCharacterInRange(minInt, maxInt int) string {
 		)),
 	)
 }
+
+func generateRandomCharactersInBoundsOfLength(lowerBound, upperBound, length int) string {
+	result := ""
+	for index := 0; index < length; index++ {
+		result += randomAsciiCharacterInRange(lowerBound, upperBound)
+	}
+	return result
+}

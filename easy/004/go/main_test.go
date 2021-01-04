@@ -18,6 +18,7 @@ var _ = Suite(&MainSuite{})
 const (
 	minFromIntRange int = 0
 	maxFromIntRage int = 10
+	randomStringLength int = 20
 )
 
 var intRange = []int{1, 0, 10}
@@ -44,4 +45,13 @@ func (s *MainSuite) TestRandomAsciiCharacterInRange(c *C) {
 	randomCharacter := randomAsciiCharacterInRange(characterLowerBound, characterUpperBound)
 	c.Assert(int(randomCharacter[0]) >= characterLowerBound, Equals, true)
 	c.Assert(int(randomCharacter[0]) <= characterUpperBound, Equals, true)
+}
+
+func (s *MainSuite) TestGenerateRandomCharactersInBoundsOfLength(c *C) {
+	randomString := generateRandomCharactersInBoundsOfLength(
+		characterLowerBound,
+		characterUpperBound,
+		randomStringLength,
+	)
+	c.Assert(len(randomString), Equals, randomStringLength)
 }
