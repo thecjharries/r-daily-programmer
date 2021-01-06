@@ -20,6 +20,18 @@ var validCredsPath = path.Join(".", "valid-creds.json")
 
 func main() {
 	fmt.Println("THIS IS NOT A SECURE PROGRAM")
+	fmt.Println("ALSO THIS IS A BAD AUTH PATTERN")
+	var creds Credentials
+	creds.Username = getStringInput("Username?", os.Stdin)
+	// better way without exposing password
+	// https://stackoverflow.com/a/32768479
+	creds.Password = getStringInput("Password?", os.Stdin)
+	validCreds := loadValidCredentials(validCredsPath)
+	if areTheseCredentialsValid(creds, validCreds) {
+		fmt.Println("rad")
+	} else {
+		fmt.Println("no soup for you")
+	}
 }
 
 func getStringInput(prompt string, source io.Reader) string {
