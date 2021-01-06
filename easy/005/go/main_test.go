@@ -14,6 +14,7 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
 	getStringInputReader *strings.Reader
+	validCredentials []Credentials
 }
 
 const getStringInputInput string = "test\n"
@@ -22,6 +23,7 @@ const lenValidCreds int = 1
 
 var _ = Suite(&MainSuite{
 	getStringInputReader: strings.NewReader(getStringInputInput),
+	validCredentials: []Credentials{{"sage", "sage"}},
 })
 
 func (s *MainSuite) TestMain(c *C) {
@@ -36,4 +38,9 @@ func (s *MainSuite) TestGetStringInput(c *C) {
 func (s *MainSuite) TestLoadValidCredentials(c *C) {
 	creds := loadValidCredentials(validCredsPath)
 	c.Assert(len(creds), Equals, lenValidCreds)
+}
+
+func (s *MainSuite) TestAreTheseCredentialsValid(c *C) {
+	c.Assert(areTheseCredentialsValid(Credentials{"bad", "creds"}, s.validCredentials), Equals, false)
+	c.Assert(areTheseCredentialsValid(s.validCredentials[0], s.validCredentials), Equals, true)
 }

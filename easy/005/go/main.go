@@ -37,3 +37,12 @@ func loadValidCredentials(credsPath string) []Credentials {
 	_ = json.Unmarshal(byteArray, &credentials)
 	return credentials
 }
+
+func areTheseCredentialsValid(creds Credentials, validCredentials []Credentials) bool {
+	for _, validCreds := range validCredentials {
+		if validCreds.Username == creds.Username && validCreds.Password == creds.Password {
+			return true
+		}
+	}
+	return false
+}
