@@ -7,8 +7,13 @@ import (
 	"strings"
 )
 
+type Credentials struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
 func main() {
-	fmt.Println("hello world")
+	fmt.Println("THIS IS NOT A SECURE PROGRAM")
 }
 
 func getStringInput(prompt string, source io.Reader) string {
