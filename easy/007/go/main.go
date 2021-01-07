@@ -49,6 +49,7 @@ var romanToMorse = map[string]string {
 	"@": ".--.-.",
 	"(": "-.--.",
 	")": "-.--.-",
+	" ": "/",
 }
 
 var morseToRoman = map[string]string {
@@ -97,6 +98,7 @@ var morseToRoman = map[string]string {
 	".--.-.": "@",
 	"-.--.": "(",
 	"-.--.-": ")",
+	"/": " ",
 }
 
 const (
@@ -126,3 +128,5 @@ func morseCharacterToRomanCharacter(morseCharacter string) string {
 	}
 	return value
 }
+
+func translateRomanToMore
