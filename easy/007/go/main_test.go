@@ -56,3 +56,13 @@ func (s *MainSuite) TestMorseCharacterToRomanCharacterHasKnownCharacter(c *C) {
 func (s *MainSuite) TestMorseCharacterToRomanCharacterReturnsProperOutput(c *C) {
 	c.Assert(morseCharacterToRomanCharacter(".-"), Equals, "a")
 }
+
+func (s *MainSuite) TestTranslateRomanToMorse(c *C) {
+	translated := translateRomanToMorse("aa aa")
+	c.Assert(translated, Equals, ".- .- / .- .-")
+}
+
+func (s *MainSuite) TestTranslateMorseToRoman(c *C) {
+	translated := translateMorseToRoman(".... . .-.. .-.. --- / -.. .- .. .-.. -.-- / .--. .-. --- --. .-. .- -- -- . .-. / --. --- --- -.. / .-.. ..- -.-. -.- / --- -. / - .... . / -.-. .... .- .-.. .-.. . -. --. . ... / - --- -.. .- -.--")
+	c.Assert(translated, Equals, "hello daily programmer good luck on the challenges today")
+}

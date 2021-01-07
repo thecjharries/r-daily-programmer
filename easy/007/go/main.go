@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // https://gist.github.com/mohayonao/094c71af14fe4791c5dd
 var romanToMorse = map[string]string {
@@ -129,4 +132,19 @@ func morseCharacterToRomanCharacter(morseCharacter string) string {
 	return value
 }
 
-func translateRomanToMore
+func translateRomanToMorse(romanWords string) string {
+	var output []string
+	for _, character := range romanWords {
+		output = append(output, romanCharacterToMorseCharacter(string(character)))
+	}
+	return strings.Join(output[:], " ")
+}
+
+func translateMorseToRoman(morseWords string) string {
+	input := strings.Split(morseWords, " ")
+	output := ""
+	for _, character := range input {
+		output += morseCharacterToRomanCharacter(character)
+	}
+	return output
+}
