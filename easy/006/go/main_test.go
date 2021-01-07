@@ -30,3 +30,8 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestRoundDecimalToPrecision(c *C) {
 	c.Assert(roundDecimalToPrecision(s.number, s.roundPrecision).StringFixed(s.roundPrecision), Equals, "0.67")
 }
+
+func (s *MainSuite) TestLeibnizConvergenceFormulaToNPlaces(c *C) {
+	c.Assert(leibnizConvergenceFormulaToNPlaces(0), DeepEquals, twoDecimal.Div(threeDecimal))
+	c.Assert(leibnizConvergenceFormulaToNPlaces(1), DeepEquals, decimal.New(76, 0).Div(decimal.New(105, 0)))
+}
