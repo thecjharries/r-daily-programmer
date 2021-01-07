@@ -42,3 +42,17 @@ func (s *MainSuite) TestRomanCharacterToMorseCharacterHasKnownCharacter(c *C) {
 func (s *MainSuite) TestRomanCharacterToMorseCharacterReturnsProperOutput(c *C) {
 	c.Assert(romanCharacterToMorseCharacter("a"), Equals, ".-")
 }
+
+func (s *MainSuite) TestMorseCharacterToRomanCharacterHasKnownCharacter(c *C) {
+	c.Assert(
+		func() {
+			morseCharacterToRomanCharacter("|")
+		},
+		Panics,
+		errorUnknownCharacter,
+	)
+}
+
+func (s *MainSuite) TestMorseCharacterToRomanCharacterReturnsProperOutput(c *C) {
+	c.Assert(morseCharacterToRomanCharacter(".-"), Equals, "a")
+}
