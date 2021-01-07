@@ -32,6 +32,6 @@ func (s *MainSuite) TestRoundDecimalToPrecision(c *C) {
 }
 
 func (s *MainSuite) TestLeibnizConvergenceFormulaToNPlaces(c *C) {
-	c.Assert(leibnizConvergenceFormulaToNPlaces(0), DeepEquals, twoDecimal.Div(threeDecimal))
-	c.Assert(leibnizConvergenceFormulaToNPlaces(1), DeepEquals, decimal.New(76, 0).Div(decimal.New(105, 0)))
+	c.Assert(leibnizConvergenceFormulaNthTerm(0), DeepEquals, twoDecimal.Div(threeDecimal))
+	c.Assert(leibnizConvergenceFormulaNthTerm(1), DeepEquals, twoDecimal.Div(decimal.New(35, 0)))
 }
