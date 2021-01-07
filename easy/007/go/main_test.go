@@ -18,3 +18,27 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestRomanCharacterToMorseCharacterHasSingleCharacterInput(c *C) {
+	c.Assert(
+		func() {
+			romanCharacterToMorseCharacter("aa")
+		},
+		Panics,
+		errorNotSingleCharacter,
+	)
+}
+
+func (s *MainSuite) TestRomanCharacterToMorseCharacterHasKnownCharacter(c *C) {
+	c.Assert(
+		func() {
+			romanCharacterToMorseCharacter("|")
+		},
+		Panics,
+		errorUnknownCharacter,
+	)
+}
+
+func (s *MainSuite) TestRomanCharacterToMorseCharacterReturnsProperOutput(c *C) {
+	c.Assert(romanCharacterToMorseCharacter("a"), Equals, ".-")
+}
