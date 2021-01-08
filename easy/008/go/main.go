@@ -14,7 +14,7 @@ We've taken them down and passed them around; now we're drunk and passed out!
 )
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Print(generateSong(100))
 }
 
 func generateLyrics(bottleCount int) string {
@@ -30,7 +30,6 @@ func generateLyrics(bottleCount int) string {
 func generateSong(bottleCount int) string {
 	song := ""
 	for currentCount := bottleCount; currentCount > -1; currentCount-- {
-		fmt.Print(generateLyrics(currentCount))
 		song += generateLyrics(currentCount)
 	}
 	return song
