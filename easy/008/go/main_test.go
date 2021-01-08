@@ -30,11 +30,11 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestGenerateLyrics(c *C) {
 	c.Assert(
 		func() {
-			generateLyrics(0)
+			generateLyrics(-1)
 		},
 		Panics,
 		errorBadBottleCount,
 	)
-	c.Assert(generateLyrics(1), Equals, lastLyric)
+	c.Assert(generateLyrics(0), Equals, lastLyric)
 	c.Assert(generateLyrics(s.givenBottleCount), Equals, s.givenGeneratedLyric)
 }

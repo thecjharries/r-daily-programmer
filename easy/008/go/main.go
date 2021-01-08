@@ -18,10 +18,10 @@ func main() {
 }
 
 func generateLyrics(bottleCount int) string {
-	if 1 < bottleCount {
+	if 0 < bottleCount {
 		return fmt.Sprintf(nthLyric, bottleCount, bottleCount, bottleCount - 1)
 	}
-	if 1 > bottleCount {
+	if 0 > bottleCount {
 		panic(errorBadBottleCount)
 	}
 	return lastLyric
