@@ -16,3 +16,13 @@ We've taken them down and passed them around; now we're drunk and passed out!
 func main() {
 	fmt.Println("hello world")
 }
+
+func generateLyrics(bottleCount int) string {
+	if 1 < bottleCount {
+		return fmt.Sprintf(nthLyric, bottleCount, bottleCount, bottleCount - 1)
+	}
+	if 1 > bottleCount {
+		panic(errorBadBottleCount)
+	}
+	return lastLyric
+}
