@@ -26,3 +26,12 @@ func generateLyrics(bottleCount int) string {
 	}
 	return lastLyric
 }
+
+func generateSong(bottleCount int) string {
+	song := ""
+	for currentCount := bottleCount; currentCount > -1; currentCount-- {
+		fmt.Print(generateLyrics(currentCount))
+		song += generateLyrics(currentCount)
+	}
+	return song
+}
