@@ -12,7 +12,7 @@ import (
 func main() {
 	fmt.Println("hello world")
 	input := getStringInput("Enter digits or letters to sort", os.Stdin)
-	fmt.Println(input)
+	fmt.Println(sortInput(input))
 }
 
 func getStringInput(prompt string, source io.Reader) string {
