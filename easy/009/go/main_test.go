@@ -31,3 +31,12 @@ func (s *MainSuite) TestGetStringInput(c *C) {
 	input := getStringInput("", s.getInputReader)
 	c.Assert(input, Equals, getStringInputOutput)
 }
+
+func (s *MainSuite) TestSortInput(c *C) {
+	c.Assert(sortInput("9876543210"), DeepEquals, strings.Split("0123456789", ""))
+	c.Assert(
+		sortInput("zyxwvutsrqponmlkjihgfedcba"),
+		DeepEquals,
+		strings.Split("abcdefghijklmnopqrstuvwxyz", ""),
+	)
+}
