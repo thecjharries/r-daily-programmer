@@ -4,6 +4,7 @@
 package main
 
 import (
+	"strings"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -11,10 +12,22 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct {
+	getInputReader *strings.Reader
+}
 
-var _ = Suite(&MainSuite{})
+const getStringInputInput string = "test\n"
+const getStringInputOutput string = "test"
+
+var _ = Suite(&MainSuite{
+	getInputReader: strings.NewReader(getStringInputInput),
+})
 
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestGetStringInput(c *C) {
+	input := getStringInput("", s.getInputReader)
+	c.Assert(input, Equals, getStringInputOutput)
 }
