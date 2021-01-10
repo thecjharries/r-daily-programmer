@@ -27,3 +27,12 @@ func compilePatterns(patterns []string) []*regexp.Regexp {
 	}
 	return allowedFormRegexp
 }
+
+func validateNumber(phoneNumber string, allowedFormRegexp []*regexp.Regexp) bool {
+	for _, formRegexp := range allowedFormRegexp {
+		if formRegexp.MatchString(phoneNumber) {
+			return true
+		}
+	}
+	return false
+}
