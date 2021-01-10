@@ -8,11 +8,11 @@ import (
 // These patterns come directly from the prompt
 // They're much too prescriptive and I don't like them.
 var allowedFormPatterns = []string{
-	`\d{10}`,
-	`\d{3}-\d{3}-\d{4}`,
-	`\d{3}\.\d{3}\.\d{4}`,
-	`\(\d{3}\)\s{0,1}\d{3}-\d{4}`,
-	`\d{3}\-\d{4}`,
+	`^\s*\d{10}\s*$`,
+	`^\s*\d{3}-\d{3}-\d{4}\s*$`,
+	`^\s*\d{3}\.\d{3}\.\d{4}\s*$`,
+	`^\s*\(\d{3}\)\s{0,1}\d{3}-\d{4}\s*$`,
+	`^\s*\d{3}\-\d{4}\s*$`,
 }
 
 func main() {
@@ -30,6 +30,7 @@ func compilePatterns(patterns []string) []regexp.Regexp {
 func validateNumber(phoneNumber string, allowedFormRegexp []regexp.Regexp) bool {
 	for _, formRegexp := range allowedFormRegexp {
 		if formRegexp.MatchString(phoneNumber) {
+			fmt.Print(formRegexp.String())
 			return true
 		}
 	}
