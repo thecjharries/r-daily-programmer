@@ -6,3 +6,9 @@ coverage: test
 
 run:
 	go run main.go
+
+bootstrap-feature-branch:
+	git add ../README.md
+	git commit -m 'Copy prompt'
+	git add .
+	git commit -m 'Copy Go boilerplate'
