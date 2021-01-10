@@ -21,7 +21,7 @@ func main() {
 
 func compilePatterns(patterns []string) []*regexp.Regexp {
 	var allowedFormRegexp []*regexp.Regexp
-	for _, pattern := range allowedFormPatterns {
+	for _, pattern := range patterns {
 		newRegexp, _ := regexp.CompilePOSIX(pattern)
 		allowedFormRegexp = append(allowedFormRegexp, newRegexp)
 	}
