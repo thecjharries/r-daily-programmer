@@ -16,7 +16,7 @@ var allowedFormPatterns = []string{
 }
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println("See tests for number validation")
 }
 
 func compilePatterns(patterns []string) []regexp.Regexp {
