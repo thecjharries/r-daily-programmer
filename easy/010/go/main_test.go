@@ -18,3 +18,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestCompilePatterns(c *C) {
+	result := compilePatterns(allowedFormPatterns)
+	c.Assert(len(result), Equals, len(allowedFormPatterns))
+}

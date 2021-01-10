@@ -18,3 +18,12 @@ var allowedFormPatterns = []string{
 func main() {
 	fmt.Println("hello world")
 }
+
+func compilePatterns(patterns []string) []*regexp.Regexp {
+	var allowedFormRegexp []*regexp.Regexp
+	for _, pattern := range allowedFormPatterns {
+		newRegexp, _ := regexp.CompilePOSIX(pattern)
+		allowedFormRegexp = append(allowedFormRegexp, newRegexp)
+	}
+	return allowedFormRegexp
+}
