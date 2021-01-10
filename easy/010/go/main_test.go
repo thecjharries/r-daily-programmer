@@ -13,7 +13,7 @@ import (
 func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
-	allowedFormRegexp []*regexp.Regexp
+	allowedFormRegexp []regexp.Regexp
 }
 
 var _ = Suite(&MainSuite{
