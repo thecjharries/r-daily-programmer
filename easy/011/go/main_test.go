@@ -33,3 +33,18 @@ func (s *MainSuite) TestGetMonthTerm(c *C) {
 	c.Assert(getMonthTerm(11), Equals, 9)
 	c.Assert(getMonthTerm(12), Equals, 10)
 }
+
+func (s *MainSuite) TestGetYearTerm(c *C) {
+	c.Assert(getYearTerm(1, 2000), Equals, 1999)
+	c.Assert(getYearTerm(2, 2000), Equals, 1999)
+	c.Assert(getYearTerm(3, 2000), Equals, 2000)
+	c.Assert(getYearTerm(4, 2000), Equals, 2000)
+	c.Assert(getYearTerm(5, 2000), Equals, 2000)
+	c.Assert(getYearTerm(6, 2000), Equals, 2000)
+	c.Assert(getYearTerm(7, 2000), Equals, 2000)
+	c.Assert(getYearTerm(8, 2000), Equals, 2000)
+	c.Assert(getYearTerm(9, 2000), Equals, 2000)
+	c.Assert(getYearTerm(10, 2000), Equals, 2000)
+	c.Assert(getYearTerm(11, 2000), Equals, 2000)
+	c.Assert(getYearTerm(12, 2000), Equals, 2000)
+}
