@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -22,4 +25,9 @@ func getYearTerm(month, year int) int {
 		return year - 1
 	}
 	return year
+}
+
+// c is the first 2 digits of Y
+func getFirstTwoDigitsOfYear(year int) int {
+	return int(math.Floor(float64(year) / 100))
 }

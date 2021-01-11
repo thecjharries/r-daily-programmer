@@ -48,3 +48,8 @@ func (s *MainSuite) TestGetYearTerm(c *C) {
 	c.Assert(getYearTerm(11, 2000), Equals, 2000)
 	c.Assert(getYearTerm(12, 2000), Equals, 2000)
 }
+
+func (s *MainSuite) TestGetFirstTwoDigitsOfYear(c *C) {
+	c.Assert(getFirstTwoDigitsOfYear(1999), Equals, 19)
+	c.Assert(getFirstTwoDigitsOfYear(2000), Equals, 20)
+}
