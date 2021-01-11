@@ -32,3 +32,7 @@ func getFirstTwoDigitsOfYear(year int) int {
 	return int(math.Floor(float64(year) / 100))
 }
 
+// y is the last 2 digits of Y
+func getLastTwoDigitsOfYear(year int) int {
+	return year - int(math.Floor(float64(year) / 100) * 100)
+}
