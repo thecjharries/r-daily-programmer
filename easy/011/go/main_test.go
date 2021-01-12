@@ -75,3 +75,7 @@ func (s *MainSuite) TestGetDayOfWeek(c *C) {
 	c.Assert(getDayOfWeek(6), Equals, "Friday")
 	c.Assert(getDayOfWeek(0), Equals, "Saturday")
 }
+
+func (s *MainSuite) TestZellersAlgorithm(c *C) {
+	c.Assert(zellersAlgorithm(1, 1, 2000), Equals, 0)
+}
