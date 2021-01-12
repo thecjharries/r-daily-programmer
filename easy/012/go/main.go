@@ -21,10 +21,11 @@ func getStringInput(prompt string, source io.Reader) string {
 }
 
 func permuteAndPrint(stringToPermute []rune, startingIndex int) {
-	if len(stringToPermute) == startingIndex + 1 {
+	if len(stringToPermute) <= startingIndex {
 		_, _ = zPrintFunction(stringToPermute)
+		return
 	}
-	for movingIndex := startingIndex + 1; movingIndex < len(stringToPermute); movingIndex++ {
+	for movingIndex := startingIndex; movingIndex < len(stringToPermute); movingIndex++ {
 		stringToPermute[startingIndex], stringToPermute[movingIndex] = stringToPermute[movingIndex], stringToPermute[startingIndex]
 		permuteAndPrint(stringToPermute, startingIndex + 1)
 		stringToPermute[startingIndex], stringToPermute[movingIndex] = stringToPermute[movingIndex], stringToPermute[startingIndex]
