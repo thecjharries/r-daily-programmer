@@ -17,12 +17,12 @@ func zellersAlgorithm(day, month, year int) int {
 	convertedYear := getYearTerm(month, year)
 	c := getFirstTwoDigitsOfYear(convertedYear)
 	y := getLastTwoDigitsOfYear(convertedYear)
-	return (int(math.Floor(13 * float64(m + 1) / 5)) +
+	return ((int(math.Floor(13 * float64(m + 1) / 5)) +
 				int(math.Floor(float64(y) / 4)) +
 				int(math.Floor(float64(c) / 4)) +
 				day +
 				y -
-				(2 * c)) % 7
+				(2 * c)) % 7 + 7) % 7
 }
 
 // m is the shifted month (March=3,...January = 13, February=14)
