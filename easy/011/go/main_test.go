@@ -78,4 +78,5 @@ func (s *MainSuite) TestGetDayOfWeek(c *C) {
 
 func (s *MainSuite) TestZellersAlgorithm(c *C) {
 	c.Assert(zellersAlgorithm(1, 1, 2000), Equals, 0)
+	c.Assert(zellersAlgorithm(11, 1, 2021), Equals, 2)
 }
