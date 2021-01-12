@@ -58,3 +58,20 @@ func (s *MainSuite) TestGetLastTwoDigitsOfYear(c *C) {
 	c.Assert(getLastTwoDigitsOfYear(1999), Equals, 99)
 	c.Assert(getLastTwoDigitsOfYear(2000), Equals, 0)
 }
+
+func (s *MainSuite) TestGetDayOfWeek(c *C) {
+	c.Assert(
+		func() {
+			getDayOfWeek(-1)
+		},
+		Panics,
+		errorUnknownDayOfWeek,
+	)
+	c.Assert(getDayOfWeek(1), Equals, "Sunday")
+	c.Assert(getDayOfWeek(2), Equals, "Monday")
+	c.Assert(getDayOfWeek(3), Equals, "Tuesday")
+	c.Assert(getDayOfWeek(4), Equals, "Wednesday")
+	c.Assert(getDayOfWeek(5), Equals, "Thursday")
+	c.Assert(getDayOfWeek(6), Equals, "Friday")
+	c.Assert(getDayOfWeek(0), Equals, "Saturday")
+}

@@ -5,6 +5,8 @@ import (
 	"math"
 )
 
+const errorUnknownDayOfWeek string = "Unknown day integer!"
+
 func main() {
 	fmt.Println("hello world")
 }
@@ -35,4 +37,25 @@ func getFirstTwoDigitsOfYear(year int) int {
 // y is the last 2 digits of Y
 func getLastTwoDigitsOfYear(year int) int {
 	return year - int(math.Floor(float64(year) / 100) * 100)
+}
+
+func getDayOfWeek(day int) string {
+	switch day {
+	case 1:
+		return "Sunday"
+	case 2:
+		return "Monday"
+	case 3:
+		return "Tuesday"
+	case 4:
+		return "Wednesday"
+	case 5:
+		return "Thursday"
+	case 6:
+		return "Friday"
+	case 0:
+		return "Saturday"
+	default:
+		panic(errorUnknownDayOfWeek)
+	}
 }
