@@ -4,7 +4,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 
@@ -38,7 +37,6 @@ func (s *MainSuite) TestPermuteAndPrintStringBaseCase(c *C) {
 	callCount := 0
 	zPrintFunction = func(a ...interface{}) (int, error){
 		callCount++
-		fmt.Println(a...)
 		return 0, nil
 	}
 	permuteAndPrint([]rune("a"), 0)
@@ -49,7 +47,6 @@ func (s *MainSuite) TestPermuteAndPrintStringRecursiveCase(c *C) {
 	callCount := 0
 	zPrintFunction = func(a ...interface{}) (int, error){
 		callCount++
-		fmt.Println(a...)
 		return 0, nil
 	}
 	permuteAndPrint([]rune("abc"), 0)
