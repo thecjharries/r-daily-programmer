@@ -4,11 +4,13 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 	"strings"
 )
 
 func main() {
-	fmt.Println("hello world")
+	input := getStringInput("String to permute?", os.Stdin)
+	permuteAndPrint([]rune(input), 0)
 }
 
 var zPrintFunction = fmt.Println
