@@ -10,6 +10,7 @@ import (
 
 func main() {
 	input := getStringInput("String to permute?", os.Stdin)
+	fmt.Println("\nPermutations:")
 	permuteAndPrint([]rune(input), 0)
 }
 
