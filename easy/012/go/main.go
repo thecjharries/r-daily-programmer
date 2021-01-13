@@ -24,7 +24,7 @@ func getStringInput(prompt string, source io.Reader) string {
 
 func permuteAndPrint(stringToPermute []rune, startingIndex int) {
 	if len(stringToPermute) <= startingIndex {
-		_, _ = zPrintFunction(stringToPermute)
+		_, _ = zPrintFunction(string(stringToPermute))
 		return
 	}
 	for movingIndex := startingIndex; movingIndex < len(stringToPermute); movingIndex++ {
