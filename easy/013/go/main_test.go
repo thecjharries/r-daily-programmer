@@ -18,3 +18,13 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGetDaysInMonthNormally(c *C) {
+	monthSlice := getDaysInMonthSlice(false)
+	c.Assert(monthSlice[1], Equals, 28)
+}
+
+func (s *MainSuite) TestGetDaysInMonthLeap(c *C) {
+	monthSlice := getDaysInMonthSlice(true)
+	c.Assert(monthSlice[1], Equals, 29)
+}
