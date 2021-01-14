@@ -6,7 +6,10 @@ var normalDayCount = [12]int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 var leapDayCount = [12]int{31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(getDayNumber(1,1, true))
+	fmt.Println(getDayNumber(1,12, true))
+	fmt.Println(getDayNumber(1,1, false))
+	fmt.Println(getDayNumber(1,12, false))
 }
 
 func getDaysInMonthSlice(isLeapYear bool) [12]int {
