@@ -18,3 +18,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestReverseSort(c *C) {
+	c.Assert(reverseSort([]int{1, 2, 3}), DeepEquals, []int{3, 2, 1})
+}
