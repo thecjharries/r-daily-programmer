@@ -24,3 +24,8 @@ func getSumOfDaysBefore(month int, isLeapYear bool) int {
 	}
 	return result
 }
+
+// Note this can do weird stuff because day is not bounded
+func getDayNumber(day, month int, isLeapYear bool) int {
+	return day + getSumOfDaysBefore(month, isLeapYear)
+}

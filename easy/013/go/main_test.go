@@ -45,3 +45,13 @@ func (s *MainSuite) TestGetSumOfDaysBefore(c *C) {
 	c.Assert(getSumOfDaysBefore(12, true), Equals, 335)
 	c.Assert(getSumOfDaysBefore(22, true), Equals, 366)
 }
+
+func (s *MainSuite) TestGetDayNumber(c *C) {
+	c.Assert(getDayNumber(1, 3, true), Equals, 61)
+	c.Assert(getDayNumber(1, 3, false), Equals, 60)
+}
+
+func (s *MainSuite) TestBrokennessOfGetDayNumber(c *C) {
+	c.Assert(getDayNumber(-1, 1, true), Equals, -1)
+	c.Assert(getDayNumber(40, 1, true), Equals, 40)
+}
