@@ -15,3 +15,12 @@ func getDaysInMonthSlice(isLeapYear bool) [12]int {
 	}
 	return normalDayCount
 }
+
+func getSumOfDaysBefore(month int, isLeapYear bool) int {
+	monthSlice := getDaysInMonthSlice(isLeapYear)
+	result := 0
+	for monthIndex := 0; monthIndex < month - 1 && monthIndex < len(monthSlice); monthIndex++ {
+		result += monthSlice[monthIndex]
+	}
+	return result
+}
