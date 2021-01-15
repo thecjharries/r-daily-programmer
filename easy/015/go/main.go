@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 )
 
 func main() {
@@ -45,6 +46,13 @@ func leftJustifyStringSlice(stringSlice []string) []string {
 
 func rightJustifyStringSlice(stringSlice []string) []string {
 	var result []string
-
+	maxLength := findLengthOfLongestLine(stringSlice)
+	for _, line := range stringSlice {
+		result = append(
+			result,
+			strings.Repeat(" ", maxLength - len(line)) +
+				removeWrappingSpaceRegexp.ReplaceAllString(line, "$1"),
+		)
+	}
 	return result
 }

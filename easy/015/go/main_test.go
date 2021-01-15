@@ -52,3 +52,21 @@ func (s *MainSuite) TestLeftJustifyStringSlice(c *C) {
 		justifiedLines,
 	)
 }
+
+func (s *MainSuite) TestRightJustifyStringSlice(c *C) {
+	justifiedLines := []string{
+		"  one",
+		"  two",
+		"three",
+	}
+	unjustifiedLines := []string{
+		"one",
+		"two",
+		"three",
+	}
+	c.Assert(
+		rightJustifyStringSlice(unjustifiedLines),
+		DeepEquals,
+		justifiedLines,
+	)
+}
