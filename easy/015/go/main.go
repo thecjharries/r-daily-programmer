@@ -31,3 +31,15 @@ func findLengthOfLongestLine(stringSlice []string) int{
 	}
 	return maxLength
 }
+
+func leftJustifyStringSlice(stringSlice []string) []string {
+	var result []string
+
+	return result
+}
+
+func rightJustifyStringSlice(stringSlice []string) []string {
+	var result []string
+
+	return result
+}
