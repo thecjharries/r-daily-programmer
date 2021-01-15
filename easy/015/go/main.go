@@ -4,11 +4,14 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"regexp"
 )
 
 func main() {
 	fmt.Println("hello world")
 }
+
+var removeWrappingSpaceRegexp *regexp.Regexp = regexp.MustCompile(`^\s*(.*)\s*$`)
 
 // https://stackoverflow.com/a/16615559
 func readFileIntoStringSlice(filename string) []string {
@@ -34,7 +37,9 @@ func findLengthOfLongestLine(stringSlice []string) int{
 
 func leftJustifyStringSlice(stringSlice []string) []string {
 	var result []string
-
+	for _, line := range stringSlice {
+		result = append(result, removeWrappingSpaceRegexp.ReplaceAllString(line, "$1"))
+	}
 	return result
 }
 

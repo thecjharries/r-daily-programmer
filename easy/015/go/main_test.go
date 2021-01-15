@@ -34,3 +34,21 @@ func (s *MainSuite) TestFindLengthOfLongestLine(c *C) {
 	}
 	c.Assert(findLengthOfLongestLine(lines), Equals, 5)
 }
+
+func (s *MainSuite) TestLeftJustifyStringSlice(c *C) {
+	unjustifiedLines := []string{
+		"  one",
+		"  two",
+		"three",
+	}
+	justifiedLines := []string{
+		"one",
+		"two",
+		"three",
+	}
+	c.Assert(
+		leftJustifyStringSlice(unjustifiedLines),
+		DeepEquals,
+		justifiedLines,
+	)
+}
