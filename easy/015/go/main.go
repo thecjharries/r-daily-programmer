@@ -21,3 +21,13 @@ func readFileIntoStringSlice(filename string) []string {
 	}
 	return result
 }
+
+func findLengthOfLongestLine(stringSlice []string) int{
+	maxLength := 0
+	for _, line := range stringSlice {
+		if len(line) > maxLength {
+			maxLength = len(line)
+		}
+	}
+	return maxLength
+}

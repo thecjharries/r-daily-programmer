@@ -25,3 +25,12 @@ func (s *MainSuite) TestReadFileIntoStringSlice(c *C) {
 	c.Assert(106 == len(stringSlice), Equals, true)
 	c.Assert(stringSlice[0], Equals, "https://www.w3.org/TR/PNG/iso_8859-1.txt")
 }
+
+func (s *MainSuite) TestFindLengthOfLongestLine(c *C) {
+	lines := []string{
+		"one",
+		"two",
+		"three",
+	}
+	c.Assert(findLengthOfLongestLine(lines), Equals, 5)
+}
