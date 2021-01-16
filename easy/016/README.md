@@ -1,6 +1,6 @@
 # [2/27/2012] Challenge #16 [easy]
 
-Did not originally appear in reddit search; had to use Pushshift
+Did not originally appear in reddit search; had to use redditsearch.io
 
 ## Source
 
