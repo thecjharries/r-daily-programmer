@@ -4,7 +4,7 @@ Did not originally appear in reddit search; had to use Pushshift
 
 ## Source
 
-[Original post](https://old.reddit.com/r/dailyprogrammer/comments/q8aom/2272012_challenge_16_easy/) by [u/](https://old.reddit.com/user/rya11111)
+[Original post](https://old.reddit.com/r/dailyprogrammer/comments/q8aom/2272012_challenge_16_easy/) by [u/rya11111](https://old.reddit.com/user/rya11111)
 
 ## Prompt
 
