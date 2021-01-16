@@ -18,3 +18,12 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestRemoveCharactersFromString(c *C) {
+	c.Assert(removeCharactersFromString("a", "aaa"), Equals, "")
+	c.Assert(removeCharactersFromString("]", "a]a"), Equals, "aa")
+	c.Assert(removeCharactersFromString("-", "a-a"), Equals, "aa")
+	c.Assert(removeCharactersFromString("^", "a^a"), Equals, "aa")
+	c.Assert(removeCharactersFromString("aeiou ", "Daily Programmer"), Equals, "DlyPrgrmmr")
+
+}
