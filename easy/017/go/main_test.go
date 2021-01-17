@@ -51,3 +51,23 @@ func (s *MainSuite) TestRightJustifyStringSlice(c *C) {
 		justifiedLines,
 	)
 }
+
+func (s *MainSuite) TestReverseStringSlice(c *C) {
+	input := []string{
+		"  one",
+		"  two",
+		"three",
+		"one",
+		"two",
+		"three",
+	}
+	output := []string{
+		"three",
+		"two",
+		"one",
+		"three",
+		"  two",
+		"  one",
+	}
+	c.Assert(reverseStringSlice(input), DeepEquals, output)
+}
