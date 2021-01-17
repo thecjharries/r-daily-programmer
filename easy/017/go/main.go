@@ -10,7 +10,11 @@ import (
 var removeWrappingSpaceRegexp *regexp.Regexp = regexp.MustCompile(`^\s*(.*)\s*$`)
 
 func main() {
-	fmt.Println("hello world")
+	count := 5
+	lines := generateLines(count)
+	fmt.Printf("%s\n", strings.Join(lines, "\n"))
+	fmt.Printf("%s\n", strings.Join(reverseStringSlice(lines), "\n"))
+	fmt.Printf("%s\n", strings.Join(rightJustifyStringSlice(lines), "\n"))
 }
 
 func getStarsForLine(lineNumber int) string {
