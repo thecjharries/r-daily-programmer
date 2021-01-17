@@ -18,3 +18,9 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGetStarsForLine(c *C) {
+	c.Assert(getStarsForLine(-1), Equals, "@")
+	c.Assert(getStarsForLine(1), Equals, "@")
+	c.Assert(getStarsForLine(2), Equals, "@@")
+}
