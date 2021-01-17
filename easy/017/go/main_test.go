@@ -24,3 +24,30 @@ func (s *MainSuite) TestGetStarsForLine(c *C) {
 	c.Assert(getStarsForLine(1), Equals, "@")
 	c.Assert(getStarsForLine(2), Equals, "@@")
 }
+
+func (s *MainSuite) TestFindLengthOfLongestLine(c *C) {
+	lines := []string{
+		"one",
+		"two",
+		"three",
+	}
+	c.Assert(findLengthOfLongestLine(lines), Equals, 5)
+}
+
+func (s *MainSuite) TestRightJustifyStringSlice(c *C) {
+	justifiedLines := []string{
+		"  one",
+		"  two",
+		"three",
+	}
+	unjustifiedLines := []string{
+		"one",
+		"two",
+		"three",
+	}
+	c.Assert(
+		rightJustifyStringSlice(unjustifiedLines),
+		DeepEquals,
+		justifiedLines,
+	)
+}
