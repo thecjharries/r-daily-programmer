@@ -49,3 +49,11 @@ func reverseStringSlice(stringSlice []string) []string {
 	}
 	return result
 }
+
+func generateLines(maxLine int) []string {
+	var result []string
+	for lineNumber := 1; lineNumber <= maxLine; lineNumber++ {
+		result = append(result, getStarsForLine(lineNumber))
+	}
+	return result
+}

@@ -71,3 +71,14 @@ func (s *MainSuite) TestReverseStringSlice(c *C) {
 	}
 	c.Assert(reverseStringSlice(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestGenerateLines(c *C) {
+	output := []string{
+		"@",
+		"@@",
+		"@@@@",
+	}
+	c.Assert(generateLines(1), DeepEquals, output[:1])
+	c.Assert(generateLines(2), DeepEquals, output[:2])
+	c.Assert(generateLines(3), DeepEquals, output[:3])
+}
