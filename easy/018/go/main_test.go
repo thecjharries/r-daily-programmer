@@ -18,3 +18,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestFormatPhoneNumber(c *C) {
+	c.Assert(formatPhoneNumber("18002662278"), Equals, "1-800-266-2278")
+	c.Assert(formatPhoneNumber("128002662278"), Equals, "12-800-266-2278")
+}
