@@ -45,7 +45,10 @@ var phoneNumberToPureNumber = map[string]string{
 }
 
 func main() {
-	fmt.Println("hello world")
+	phoneNumber := "1-800-COMCAST"
+	converted := convertPhoneNumberToPureNumber(phoneNumber)
+	pureNumber := formatPhoneNumber(converted)
+	fmt.Printf("Original number:  %s\nConverted number: %s\n", phoneNumber, pureNumber)
 }
 
 func formatPhoneNumber(phoneNumber string) string {
