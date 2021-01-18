@@ -23,3 +23,7 @@ func (s *MainSuite) TestFormatPhoneNumber(c *C) {
 	c.Assert(formatPhoneNumber("18002662278"), Equals, "1-800-266-2278")
 	c.Assert(formatPhoneNumber("128002662278"), Equals, "12-800-266-2278")
 }
+
+func (s *MainSuite) TestConvertPhoneNumberToPureNumber(c *C) {
+	c.Assert(convertPhoneNumberToPureNumber("1-800-COMCAST"), Equals, "18002662278")
+}

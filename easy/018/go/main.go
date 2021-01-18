@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var phoneNumberToPureNumber = map[string]string{
 	"a": "2",
@@ -38,6 +41,7 @@ var phoneNumberToPureNumber = map[string]string{
 	"7": "7",
 	"8": "8",
 	"9": "9",
+	"0": "0",
 }
 
 func main() {
@@ -50,4 +54,15 @@ func formatPhoneNumber(phoneNumber string) string {
 	almostLastThree := phoneNumber[len(phoneNumber) - 7:len(phoneNumber) - 4]
 	lastFour := phoneNumber[len(phoneNumber) - 4:]
 	return fmt.Sprintf("%s-%s-%s-%s", countryCode, areaCode, almostLastThree, lastFour)
+}
+
+func convertPhoneNumberToPureNumber(phoneNumber string) string {
+	result := ""
+	for _, character := range strings.ToLower(phoneNumber) {
+		converted, exists := phoneNumberToPureNumber[string(character)]
+		if exists {
+			result += converted
+		}
+	}
+	return result
 }
