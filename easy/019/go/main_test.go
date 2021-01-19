@@ -18,3 +18,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestLoadFileIntoString(c *C) {
+	c.Assert(len(loadFileIntoString(pathToText)) > 0, Equals, true)
+}
