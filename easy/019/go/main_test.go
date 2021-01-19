@@ -28,3 +28,8 @@ func (s *MainSuite) TestStripPatternFromString(c *C) {
 	patternToRemove := regexp.MustCompile(`qqq`)
 	c.Assert(stripPatternFromString(patternToRemove, "qqqaaa"), Equals, "aaa")
 }
+
+func (s *MainSuite) TestCountAllowedCharacters(c *C) {
+	patterForAllowedCharacters := regexp.MustCompile(`(?im)[a]`)
+	c.Assert(countAllowedCharacters(patterForAllowedCharacters, "Aab"), Equals, 2)
+}
