@@ -4,6 +4,7 @@
 package main
 
 import (
+	"regexp"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -21,4 +22,9 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestLoadFileIntoString(c *C) {
 	c.Assert(len(loadFileIntoString(pathToText)) > 0, Equals, true)
+}
+
+func (s *MainSuite) TestStripPatternFromString(c *C) {
+	patternToRemove := regexp.MustCompile(`qqq`)
+	c.Assert(stripPatternFromString(patternToRemove, "qqqaaa"), Equals, "aaa")
 }
