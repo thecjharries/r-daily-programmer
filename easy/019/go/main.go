@@ -8,8 +8,8 @@ import (
 )
 
 var pathToText string = path.Join(".", "project-gutenberg_the-adventures-of-sherlock-holmes.txt")
-var headerPattern *regexp.Regexp = regexp.MustCompile(`(?ms).+?^\*\*\* START.+?$`)
-var footerPattern *regexp.Regexp = regexp.MustCompile(`(?ms)^\*\*\* END.+$.+`)
+var headerPattern *regexp.Regexp = regexp.MustCompile(`(?ms).+?^\*\*\* START OF.+?$`)
+var footerPattern *regexp.Regexp = regexp.MustCompile(`(?ms)\*\*\* END OF.+`)
 var allowedCharactersPattern = regexp.MustCompile(`(?ims)[a-z0-9]`)
 
 func main() {
@@ -26,8 +26,7 @@ func loadFileIntoString(pathToFile string) string {
 }
 
 func stripPatternFromString(patternToRemove *regexp.Regexp, haystack string) string {
-	patternToRemove.ReplaceAllString(haystack, "")
-	return haystack
+	return patternToRemove.ReplaceAllString(haystack, "")
 }
 
 func countAllowedCharacters(patternForAllowedCharacters *regexp.Regexp, haystack string) int {
