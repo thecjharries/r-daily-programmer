@@ -8,7 +8,7 @@ import (
 var knownPrimesSeed = []int{2}
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(findPrimesBelow(2000))
 }
 
 func isPrime(input int, knownPrimes []int) bool {
