@@ -23,3 +23,13 @@ func isPrime(input int, knownPrimes []int) bool {
 	}
 	return true
 }
+
+func findPrimesBelow(maxInt int) []int {
+	primes := knownPrimesSeed
+	for checkInt := primes[0] + 1; checkInt < maxInt; checkInt++ {
+		if isPrime(checkInt, primes) {
+			primes = append(primes, checkInt)
+		}
+	}
+	return primes
+}

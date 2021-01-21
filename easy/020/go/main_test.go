@@ -28,3 +28,8 @@ func (s *MainSuite) TestIsPrime(c *C) {
 	c.Assert(isPrime(8, knownPrimesSeed), Equals, false)
 	c.Assert(isPrime(9, append(knownPrimesSeed, 3, 5, 7)), Equals, false)
 }
+
+func (s *MainSuite) TestFindPrimesBelow(c *C) {
+	primesUnderTen := []int{2, 3, 5, 7}
+	c.Assert(findPrimesBelow(10), DeepEquals, primesUnderTen)
+}
