@@ -18,3 +18,13 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestIsPrime(c *C) {
+	c.Assert(isPrime(3, knownPrimesSeed), Equals, true)
+	c.Assert(isPrime(4, knownPrimesSeed), Equals, false)
+	c.Assert(isPrime(5, append(knownPrimesSeed, 3)), Equals, true)
+	c.Assert(isPrime(6, knownPrimesSeed), Equals, false)
+	c.Assert(isPrime(7, append(knownPrimesSeed, 3, 5)), Equals, true)
+	c.Assert(isPrime(8, knownPrimesSeed), Equals, false)
+	c.Assert(isPrime(9, append(knownPrimesSeed, 3, 5, 7)), Equals, false)
+}
