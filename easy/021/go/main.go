@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 )
 
@@ -46,10 +47,22 @@ func permuteString(stringToPermute string) []string {
 	return permuteStringRecursion(asRune[1:], []string{string(asRune[0])})
 }
 
-func convertPermutationsToInts(permutations []string) (results []int64) {
+func convertPermutationsToInts(permutations []string) (results []int) {
 	for _, permutation := range permutations {
-		newInt, _ := strconv.ParseInt(permutation, 10, 64)
-		results = append(results, newInt)
+		newInt, _ := strconv.ParseInt(permutation, 10, 0)
+		results = append(results, int(newInt))
+	}
+	return
+}
+
+func findNextLargestPermutation(original int, permutations []int) (nextLargest int) {
+	nextLargest = original
+	sort.Ints(permutations)
+	for _, permutation := range permutations {
+		if nextLargest < permutation {
+			nextLargest = permutation
+			break
+		}
 	}
 	return
 }

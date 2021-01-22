@@ -58,6 +58,12 @@ func (s *MainSuite) TestPermuteString(c *C) {
 
 func (s *MainSuite) TestConvertPermutationsToInts(c *C) {
 	inputPermutations := []string{"1", "2", "3"}
-	result := []int64{1, 2, 3}
+	result := []int{1, 2, 3}
 	c.Assert(convertPermutationsToInts(inputPermutations), DeepEquals, result)
+}
+
+func (s *MainSuite) TestFindNextLargestPermutation(c *C) {
+	input := 123
+	permutations := []int{321, 312, 231, 213, 123, 132}
+	c.Assert(findNextLargestPermutation(input, permutations), DeepEquals, 132)
 }
