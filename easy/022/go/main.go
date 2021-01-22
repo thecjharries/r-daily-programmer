@@ -22,8 +22,8 @@ func (s *MixedSlice) AddMissingElements(mixedSlice MixedSlice) {
 }
 
 func main() {
-	test := MixedSlice{"1"}
-	fmt.Println(test)
-	fmt.Println(test.Contains(1))
-	fmt.Println(test.Contains("1"))
+	first := MixedSlice{"a", "b", "c", 1, 4}
+	second := MixedSlice{"a", "x", 34, "4"}
+	first.AddMissingElements(second)
+	fmt.Println(first)
 }

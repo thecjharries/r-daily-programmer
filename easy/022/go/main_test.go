@@ -31,6 +31,13 @@ func (s *MainSuite) TestMixedSliceAddMissingElements(c *C) {
 	first := MixedSlice{1, 2}
 	second := MixedSlice{2, 3, 3}
 	result := MixedSlice{1, 2, 3}
+	c.Assert(first, Not(DeepEquals), result)
 	first.AddMissingElements(second)
 	c.Assert(first, DeepEquals, result)
+	third := MixedSlice{"a", "b", "c", 1, 4}
+	fourth := MixedSlice{"a", "x", 34, "4"}
+	result = MixedSlice{"a", "b", "c", 1, 4, "x", 34, "4"}
+	c.Assert(third, Not(DeepEquals), result)
+	third.AddMissingElements(fourth)
+	c.Assert(third, DeepEquals, result)
 }
