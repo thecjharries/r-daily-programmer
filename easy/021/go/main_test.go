@@ -30,7 +30,7 @@ func (s *MainSuite) TestInsertCharacterIntoEveryPositionOfString(c *C) {
 	c.Assert(insertCharacterIntoEveryPositionOfString(inputString, inputCharacter), DeepEquals, results)
 }
 
-func (s *MainSuite) TestPermuteString(c *C) {
+func (s *MainSuite) TestPermuteStringRecursion(c *C) {
 	inputString := []rune("aab")
 	results := []string{
 		"baa",
@@ -40,5 +40,18 @@ func (s *MainSuite) TestPermuteString(c *C) {
 		"aba",
 		"aab",
 	}
-	c.Assert(permuteString(inputString[1:], []string{string(inputString[0])}), DeepEquals, results)
+	c.Assert(permuteStringRecursion(inputString[1:], []string{string(inputString[0])}), DeepEquals, results)
+}
+
+func (s *MainSuite) TestPermuteString(c *C) {
+	inputString := "aab"
+	results := []string{
+		"baa",
+		"aba",
+		"aab",
+		"baa",
+		"aba",
+		"aab",
+	}
+	c.Assert(permuteString(inputString), DeepEquals, results)
 }

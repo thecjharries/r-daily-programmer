@@ -20,7 +20,7 @@ func insertCharacterIntoEveryPositionOfString(existingString []rune, newCharacte
 
 // Mostly from
 // https://www.golangprograms.com/golang-program-to-print-all-permutations-of-a-given-string.html
-func permuteString(remaining []rune, permutations []string) []string {
+func permuteStringRecursion(remaining []rune, permutations []string) []string {
 	fmt.Println(string(remaining))
 	if 0 == len(remaining) {
 		return permutations
@@ -33,5 +33,12 @@ func permuteString(remaining []rune, permutations []string) []string {
 			insertCharacterIntoEveryPositionOfString([]rune(permutation), remaining[0])...,
 		)
 	}
-	return permuteString(remaining[1:], newPermutations)
+	return permuteStringRecursion(remaining[1:], newPermutations)
+}
+
+// Mostly from
+// https://www.golangprograms.com/golang-program-to-print-all-permutations-of-a-given-string.html
+func permuteString(stringToPermute string) []string {
+	asRune := []rune(stringToPermute)
+	return permuteStringRecursion(asRune[1:], []string{string(asRune[0])})
 }
