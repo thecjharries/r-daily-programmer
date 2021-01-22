@@ -18,3 +18,11 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestMixedSliceContains(c *C) {
+	mixedSlice := MixedSlice{"1", 2}
+	c.Assert(mixedSlice.Contains(1), Equals, false)
+	c.Assert(mixedSlice.Contains("1"), Equals, true)
+	c.Assert(mixedSlice.Contains(2), Equals, true)
+	c.Assert(mixedSlice.Contains("2"), Equals, false)
+}
