@@ -55,3 +55,9 @@ func (s *MainSuite) TestPermuteString(c *C) {
 	}
 	c.Assert(permuteString(inputString), DeepEquals, results)
 }
+
+func (s *MainSuite) TestConvertPermutationsToInts(c *C) {
+	inputPermutations := []string{"1", "2", "3"}
+	result := []int64{1, 2, 3}
+	c.Assert(convertPermutationsToInts(inputPermutations), DeepEquals, result)
+}

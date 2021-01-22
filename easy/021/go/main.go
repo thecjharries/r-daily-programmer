@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -41,4 +44,12 @@ func permuteStringRecursion(remaining []rune, permutations []string) []string {
 func permuteString(stringToPermute string) []string {
 	asRune := []rune(stringToPermute)
 	return permuteStringRecursion(asRune[1:], []string{string(asRune[0])})
+}
+
+func convertPermutationsToInts(permutations []string) (results []int64) {
+	for _, permutation := range permutations {
+		newInt, _ := strconv.ParseInt(permutation, 10, 64)
+		results = append(results, newInt)
+	}
+	return
 }
