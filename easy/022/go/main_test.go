@@ -26,3 +26,11 @@ func (s *MainSuite) TestMixedSliceContains(c *C) {
 	c.Assert(mixedSlice.Contains(2), Equals, true)
 	c.Assert(mixedSlice.Contains("2"), Equals, false)
 }
+
+func (s *MainSuite) TestMixedSliceAddMissingElements(c *C) {
+	first := MixedSlice{1, 2}
+	second := MixedSlice{2, 3, 3}
+	result := MixedSlice{1, 2, 3}
+	first.AddMissingElements(second)
+	c.Assert(first, DeepEquals, result)
+}

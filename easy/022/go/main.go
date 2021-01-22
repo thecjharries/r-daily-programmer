@@ -13,6 +13,14 @@ func (s *MixedSlice) Contains(possibleElement interface{}) bool {
 	return false
 }
 
+func (s *MixedSlice) AddMissingElements(mixedSlice MixedSlice) {
+	for _, element := range mixedSlice {
+		if !s.Contains(element) {
+			*s = append(*s, element)
+		}
+	}
+}
+
 func main() {
 	test := MixedSlice{"1"}
 	fmt.Println(test)
