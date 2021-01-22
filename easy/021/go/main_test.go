@@ -18,3 +18,27 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestInsertCharacterIntoEveryPositionOfString(c *C) {
+	inputString := []rune("aa")
+	inputCharacter := 'b'
+	results := []string{
+		"baa",
+		"aba",
+		"aab",
+	}
+	c.Assert(insertCharacterIntoEveryPositionOfString(inputString, inputCharacter), DeepEquals, results)
+}
+
+func (s *MainSuite) TestPermuteString(c *C) {
+	inputString := []rune("aab")
+	results := []string{
+		"baa",
+		"aba",
+		"aab",
+		"baa",
+		"aba",
+		"aab",
+	}
+	c.Assert(permuteString(inputString[1:], []string{string(inputString[0])}), DeepEquals, results)
+}

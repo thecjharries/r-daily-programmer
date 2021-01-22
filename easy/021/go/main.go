@@ -21,11 +21,13 @@ func insertCharacterIntoEveryPositionOfString(existingString []rune, newCharacte
 // Mostly from
 // https://www.golangprograms.com/golang-program-to-print-all-permutations-of-a-given-string.html
 func permuteString(remaining []rune, permutations []string) []string {
+	fmt.Println(string(remaining))
 	if 0 == len(remaining) {
 		return permutations
 	}
 	var newPermutations []string
 	for _, permutation := range permutations {
+		fmt.Println(permutation)
 		newPermutations = append(
 			newPermutations,
 			insertCharacterIntoEveryPositionOfString([]rune(permutation), remaining[0])...,
