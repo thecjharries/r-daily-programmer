@@ -7,7 +7,7 @@ import (
 
 type MixedSlice []interface{}
 
-func (s *MixedSlice) SplitInHalf() ([]interface{}, []interface{}) {
+func (s *MixedSlice) SplitInHalf() (MixedSlice, MixedSlice) {
 	halfLen := int(math.Ceil(float64(len(*s)) / 2))
 	return (*s)[:halfLen], (*s)[halfLen:]
 }
