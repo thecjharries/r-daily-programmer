@@ -20,7 +20,10 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	for precision := int64(1); precision < 15; precision++ {
+		numerator, denominator := pi(precision)
+		fmt.Printf("%d/%d\n", numerator, denominator)
+	}
 }
 
 // https://old.reddit.com/r/dailyprogrammer/comments/qx025/3142012_challenge_24_intermediate/c41505x/
