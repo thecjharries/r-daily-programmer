@@ -35,6 +35,8 @@ var continuedFractionFixtures = []continuedFractionFixture{
 	{1, 1, 1, 1},
 	{10, 1, 1, 1},
 	{1, 2, 2, 1},
+	{1, 3, 8, 7},
+	{1, 4, 60, 46},
 }
 
 var _ = Suite(&MainSuite{})

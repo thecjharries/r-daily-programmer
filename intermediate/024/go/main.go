@@ -23,11 +23,12 @@ func main() {
 	fmt.Println("hello world")
 }
 
+// https://old.reddit.com/r/dailyprogrammer/comments/qx025/3142012_challenge_24_intermediate/c41505x/
 func continuedFraction(n, m int64) (numerator, denominator int64) {
 	if n < m {
 		nextNumerator, nextDenominator := continuedFraction(n + 1, m)
-		numerator = (2 * n - 1) * nextDenominator + int64(math.Pow(float64(n), 2)) * nextNumerator
-		return numerator, nextDenominator
+		numerator = (2 * n - 1) * nextNumerator + int64(math.Pow(float64(n), 2)) * nextDenominator
+		return numerator, nextNumerator
 	}
 	return 1, 1
 }
