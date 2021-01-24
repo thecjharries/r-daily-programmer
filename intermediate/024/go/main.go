@@ -14,8 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func continuedFraction(n, m int64) (numerator, denominator int64) {
+	if n < m {
+		nextNumerator, nextDenominator := continuedFraction(n + 1, m)
+		numerator = (2 * n - 1) * nextDenominator + int64(math.Pow(float64(n), 2)) * nextNumerator
+		return numerator, nextDenominator
+	}
+	return 1, 1
 }

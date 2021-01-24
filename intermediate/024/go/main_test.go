@@ -24,8 +24,31 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {}
 
+type continuedFractionFixture struct {
+	n int64
+	m int64
+	numerator int64
+	denominator int64
+}
+
+var continuedFractionFixtures = []continuedFractionFixture{
+	{1, 1, 1, 1},
+	{10, 1, 1, 1},
+	{1, 2, 2, 1},
+}
+
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+
+
+func (s *MainSuite) TestContinuedFraction(c *C) {
+	for _, fixture := range continuedFractionFixtures {
+		numerator, denominator := continuedFraction(fixture.n, fixture.m)
+		c.Assert(numerator, Equals, fixture.numerator)
+		c.Assert(denominator, Equals, fixture.denominator)
+	}
 }
