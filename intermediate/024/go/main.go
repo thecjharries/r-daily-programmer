@@ -32,3 +32,9 @@ func continuedFraction(n, m int64) (numerator, denominator int64) {
 	}
 	return 1, 1
 }
+
+// https://old.reddit.com/r/dailyprogrammer/comments/qx025/3142012_challenge_24_intermediate/c41505x/
+func pi(precision int64) (int64, int64) {
+	numerator, denominator := continuedFraction(1, precision)
+	return 4 * denominator, numerator
+}

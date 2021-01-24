@@ -39,17 +39,36 @@ var continuedFractionFixtures = []continuedFractionFixture{
 	{1, 4, 60, 46},
 }
 
+type piFixture struct {
+	precision int64
+	numerator int64
+	denominator int64
+}
+
+var piFixtures = []piFixture{
+	{1, 4, 1},
+	{2, 4, 2},
+	{3,  28, 8},
+	{4, 184, 60},
+}
+
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
 }
 
-
-
 func (s *MainSuite) TestContinuedFraction(c *C) {
 	for _, fixture := range continuedFractionFixtures {
 		numerator, denominator := continuedFraction(fixture.n, fixture.m)
+		c.Assert(numerator, Equals, fixture.numerator)
+		c.Assert(denominator, Equals, fixture.denominator)
+	}
+}
+
+func (s *MainSuite) TestPi(c *C) {
+	for _, fixture := range piFixtures {
+		numerator, denominator := pi(fixture.precision)
 		c.Assert(numerator, Equals, fixture.numerator)
 		c.Assert(denominator, Equals, fixture.denominator)
 	}
