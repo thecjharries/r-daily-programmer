@@ -45,7 +45,8 @@ func (s *MainSuite) TestVoteCountCandidateWithMostVotes(c *C) {
 		"two": 2,
 		"three": 3,
 	}
-	winner, totalVotes := sample.CandidateWithMostVotes()
-	c.Assert(winner, Equals, "three")
+	candidateWithMostVotes, candidateVotes, totalVotes := sample.CandidateWithMostVotes()
+	c.Assert(candidateWithMostVotes, Equals, "three")
+	c.Assert(candidateVotes, Equals, 3)
 	c.Assert(totalVotes, Equals, 6)
 }

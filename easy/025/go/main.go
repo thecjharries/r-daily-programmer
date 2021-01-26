@@ -27,15 +27,23 @@ func (v *VoteCount) TotalVotes() (totalVotes int) {
 }
 
 // Find candidate with most votes
-func (v *VoteCount) CandidateWithMostVotes() (winner string, totalVotes int) {
-	winningCount := -1
+func (v *VoteCount) CandidateWithMostVotes() (candidateWithMostVotes string, candidateVotes, totalVotes int) {
+	candidateVotes = -1
 	for candidate, voteCount := range *v {
 		totalVotes += voteCount
-		if winningCount < voteCount {
-			winner = candidate
-			winningCount = voteCount
+		if candidateVotes < voteCount {
+			candidateWithMostVotes = candidate
+			candidateVotes = voteCount
 		}
 	}
+	return
+}
+
+// Determine whether or not there is a majority winner
+// Majority is defined as more than half, ie 'winnerCount > total / 2'
+// If empty, no winner
+func (v *VoteCount) MajorityWinner() (winner string) {
+	candidateWithMostVotes, candidateVotes, totalVotes := v.CandidateWithMostVotes()
 	return
 }
 
