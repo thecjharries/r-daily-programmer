@@ -29,3 +29,12 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestVoteCountTotalVotes(c *C) {
+	sample := VoteCount{
+		"one": 1,
+		"two": 2,
+		"three": 3,
+	}
+	c.Assert(sample.TotalVotes(), Equals, 6)
+}

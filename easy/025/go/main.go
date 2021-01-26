@@ -16,7 +16,19 @@ package main
 
 import "fmt"
 
-type VoteCount map[string] int
+type VoteCount map[string]int
+
+// Sum all the votes in an election
+func (v *VoteCount) TotalVotes() (totalVotes int) {
+	for _, vote := range *v {
+		totalVotes += vote
+	}
+	return
+}
+
+func (v *VoteCount) Winner() string {
+	return ""
+}
 
 func main() {
 	fmt.Println("hello world")
