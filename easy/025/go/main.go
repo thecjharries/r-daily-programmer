@@ -18,7 +18,7 @@ import "fmt"
 
 type VoteCount map[string]int
 
-// Sum all the votes in an election
+// Sum all the votes in an vote
 func (v *VoteCount) TotalVotes() (totalVotes int) {
 	for _, vote := range *v {
 		totalVotes += vote
@@ -26,8 +26,17 @@ func (v *VoteCount) TotalVotes() (totalVotes int) {
 	return
 }
 
-func (v *VoteCount) Winner() string {
-	return ""
+// Find candidate with most votes
+func (v *VoteCount) CandidateWithMostVotes() (winner string, totalVotes int) {
+	winningCount := -1
+	for candidate, voteCount := range *v {
+		totalVotes += voteCount
+		if winningCount < voteCount {
+			winner = candidate
+			winningCount = voteCount
+		}
+	}
+	return
 }
 
 func main() {

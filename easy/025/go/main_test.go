@@ -38,3 +38,14 @@ func (s *MainSuite) TestVoteCountTotalVotes(c *C) {
 	}
 	c.Assert(sample.TotalVotes(), Equals, 6)
 }
+
+func (s *MainSuite) TestVoteCountCandidateWithMostVotes(c *C) {
+	sample := VoteCount{
+		"one": 1,
+		"two": 2,
+		"three": 3,
+	}
+	winner, totalVotes := sample.CandidateWithMostVotes()
+	c.Assert(winner, Equals, "three")
+	c.Assert(totalVotes, Equals, 6)
+}
