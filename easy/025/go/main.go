@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type VoteCount map[string] int
+
 func main() {
 	fmt.Println("hello world")
 }
