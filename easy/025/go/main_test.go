@@ -50,3 +50,22 @@ func (s *MainSuite) TestVoteCountCandidateWithMostVotes(c *C) {
 	c.Assert(candidateVotes, Equals, 3)
 	c.Assert(totalVotes, Equals, 6)
 }
+
+
+func (s *MainSuite) TestVoteCountMajorityWinnerWithNoWinner(c *C) {
+	sample := VoteCount{
+		"one": 1,
+		"two": 2,
+		"three": 3,
+	}
+	c.Assert(sample.MajorityWinner(), Equals, "")
+}
+
+func (s *MainSuite) TestVoteCountMajorityWinnerWithWinner(c *C) {
+	sample := VoteCount{
+		"one": 1,
+		"two": 2,
+		"four": 4,
+	}
+	c.Assert(sample.MajorityWinner(), Equals, "four")
+}
