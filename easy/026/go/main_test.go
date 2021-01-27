@@ -24,8 +24,28 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {}
 
+type removeConsecutiveDuplicateRunesFixture struct{
+	input []rune
+	stripped []rune
+	duplicates []rune
+}
+
+var removeConsecutiveDuplicateRunesFixtures = []removeConsecutiveDuplicateRunesFixture{
+	{[]rune("ddaaiillyypprrooggrraammeerr"), []rune("dailyprogramer"), []rune("dailyprogramer")},
+	{[]rune("aabbccddeded"), []rune("abcdeded"), []rune("abcd")},
+	{[]rune("flabby aapples"), []rune("flaby aples"), []rune("bap")},
+}
+
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestRemoveConsecutiveDuplicateRunes(c *C) {
+	for _, fixture := range removeConsecutiveDuplicateRunesFixtures {
+		stripped, duplicates := removeConsecutiveDuplicateRunes(fixture.input)
+		c.Assert(stripped, DeepEquals, fixture.stripped)
+		c.Assert(duplicates, DeepEquals, fixture.duplicates)
+	}
 }
