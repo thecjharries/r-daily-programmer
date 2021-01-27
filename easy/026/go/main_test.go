@@ -34,6 +34,7 @@ var removeConsecutiveDuplicateRunesFixtures = []removeConsecutiveDuplicateRunesF
 	{[]rune("ddaaiillyypprrooggrraammeerr"), []rune("dailyprogramer"), []rune("dailyprogramer")},
 	{[]rune("aabbccddeded"), []rune("abcdeded"), []rune("abcd")},
 	{[]rune("flabby aapples"), []rune("flaby aples"), []rune("bap")},
+	{[]rune("aaaa"), []rune("a"), []rune("aaa")},
 }
 
 var _ = Suite(&MainSuite{})
