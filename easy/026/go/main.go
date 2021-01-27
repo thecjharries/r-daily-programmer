@@ -19,3 +19,18 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+// Given a rune slice, return a slice containing only runes that were not
+// consecutively duplicated and slice containing all the removed runes
+func removeConsecutiveDuplicateRunes(input []rune) (stripped, duplicates []rune) {
+	var currentRune rune
+	for _, nextRune := range input {
+		if currentRune != nextRune {
+			stripped = append(stripped, nextRune)
+			currentRune = nextRune
+		} else {
+			duplicates = append(duplicates, nextRune)
+		}
+	}
+	return
+}
