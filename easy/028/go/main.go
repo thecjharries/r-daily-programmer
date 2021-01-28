@@ -19,3 +19,17 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+// Walk the input to find duplicates; return all duplicates found
+func walkForDuplicates(integers []int) (duplicates []int) {
+	walkedInts := make(map[int]int, len(integers))
+	for index, integer := range integers {
+		_, found := walkedInts[integer]
+		if found {
+			duplicates = append(duplicates, integer)
+		} else {
+			walkedInts[integer] = index
+		}
+	}
+	return
+}
