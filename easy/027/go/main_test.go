@@ -24,8 +24,26 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {}
 
+type isLeapYearFixture struct {
+	year int
+	isLeapYear bool
+}
+
+var isLeapYearFixtures = []isLeapYearFixture{
+	{1, false},
+	{4, true},
+	{100, false},
+	{400, true},
+}
+
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestIsLeapYear(c *C) {
+	for _, fixture := range isLeapYearFixtures {
+		c.Assert(fixture.isLeapYear, Equals, isLeapYear(fixture.year))
+	}
 }
