@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	fmt.Println("hello world")
+	var integers []int
+	for i := 1; i < 1000000; i++ {
+		integers = append(integers, i)
+	}
+	integers = append(integers, 1)
+	start := time.Now()
+	duplicates := walkForDuplicates(integers)
+	end := time.Now()
+	fmt.Println(duplicates)
+	fmt.Println(end.Sub(start))
+
 }
 
 // Walk the input to find duplicates; return all duplicates found
