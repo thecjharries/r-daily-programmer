@@ -20,7 +20,16 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	for _, year := range []int{1996, 1900} {
+		fmt.Printf("\nEnter Year: %d\n", year)
+		fmt.Printf("Century: %d\n", getCentury(year))
+		fmt.Printf("Leap Year: ")
+		if isLeapYear(year) {
+			fmt.Printf("Yes\n")
+		} else {
+			fmt.Printf("No\n")
+		}
+	}
 }
 
 // Determines whether or not the given year is a leap year
