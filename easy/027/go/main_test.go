@@ -47,3 +47,9 @@ func (s *MainSuite) TestIsLeapYear(c *C) {
 		c.Assert(fixture.isLeapYear, Equals, isLeapYear(fixture.year))
 	}
 }
+
+func (s *MainSuite) TestGetCentury(c *C) {
+	c.Assert(getCentury(1899), Equals, 19)
+	c.Assert(getCentury(1900), Equals, 19)
+	c.Assert(getCentury(1901), Equals, 20)
+}

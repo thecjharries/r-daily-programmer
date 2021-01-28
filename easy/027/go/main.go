@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -31,4 +34,10 @@ func isLeapYear(year int) bool {
 		return false
 	}
 	return true
+}
+
+// Gets the century for the given year
+// Centuries begin at 1, not 0
+func getCentury(year int) int {
+	return int(math.Floor(float64(year - 1) / 100)) + 1
 }
