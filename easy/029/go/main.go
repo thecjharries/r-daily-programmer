@@ -28,3 +28,13 @@ func splitStringInTwoEqualPieces(input string) (string, string) {
 	secondBeginning := int(math.Ceil(float64(len(input)) / 2))
 	return input[:firstEnd], input[secondBeginning:]
 }
+
+func isPalindrome(input string) bool {
+	first, second := splitStringInTwoEqualPieces(input)
+	for index := 0; index < len(first); index++ {
+		if first[index] != second[len(second) - index - 1] {
+			return false
+		}
+	}
+	return true
+}

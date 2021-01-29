@@ -41,3 +41,8 @@ func (s *MainSuite) TestSplitStringInTwoEqualPieces(c *C) {
 	c.Assert(first, Equals, "han")
 	c.Assert(second, Equals, "nah")
 }
+
+func (s *MainSuite) TestIsPalindrome(c *C) {
+	c.Assert(isPalindrome("hannah"), Equals, true)
+	c.Assert(isPalindrome("test"), Equals, false)
+}
