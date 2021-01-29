@@ -14,8 +14,17 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func splitStringInTwoEqualPieces(input string) (string, string) {
+	firstEnd := int(math.Floor(float64(len(input)) / 2))
+	secondBeginning := int(math.Ceil(float64(len(input)) / 2))
+	return input[:firstEnd], input[secondBeginning:]
 }

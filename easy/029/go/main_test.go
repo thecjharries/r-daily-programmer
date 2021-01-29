@@ -29,3 +29,15 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestSplitStringInTwoEqualPieces(c *C) {
+	var input, first, second string
+	input = "hannah"
+	first, second = splitStringInTwoEqualPieces(input)
+	c.Assert(first, Equals, "han")
+	c.Assert(second, Equals, "nah")
+	input = "hannnah"
+	first, second = splitStringInTwoEqualPieces(input)
+	c.Assert(first, Equals, "han")
+	c.Assert(second, Equals, "nah")
+}
