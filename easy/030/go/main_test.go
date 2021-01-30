@@ -29,3 +29,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestDoesInputSumToTarget(c *C) {
+	c.Assert(doesInputSumToTarget(1, 2, 3), Equals, true)
+	c.Assert(doesInputSumToTarget(1,2, 4), Equals, false)
+}

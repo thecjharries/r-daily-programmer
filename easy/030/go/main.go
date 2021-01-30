@@ -19,3 +19,7 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func doesInputSumToTarget(a, b, target int) bool {
+	return target == a + b
+}
