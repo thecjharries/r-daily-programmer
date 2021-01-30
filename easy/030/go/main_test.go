@@ -35,6 +35,3 @@ func (s *MainSuite) TestDoesInputSumToTarget(c *C) {
 	c.Assert(doesInputSumToTarget(1,2, 4), Equals, false)
 }
 
-func (s *MainSuite) TestRemoveElement(c *C) {
-	c.Assert(removeElement(0, []int{1,2,3}), DeepEquals, []int{2,3})
-}

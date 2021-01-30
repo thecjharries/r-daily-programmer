@@ -17,7 +17,7 @@ package main
 import "fmt"
 
 func main() {
-	getFirstTwoElementsThatSumToTarget([]int{1,2,3}, 4)
+	getFirstTwoElementsThatSumToTarget([]int{1,2,3,4}, 4)
 }
 
 // Returns true if a and b sum to the target
@@ -25,15 +25,9 @@ func doesInputSumToTarget(a, b, target int) bool {
 	return target == a + b
 }
 
-// Removes the target index from the input
-func removeElement(indexOfElement int, input []int) []int {
-	return append(input[:indexOfElement], input[indexOfElement + 1:]...)
-}
-
 func getFirstTwoElementsThatSumToTarget(input []int, target int) (found [2]int) {
 	for firstIndex, first := range input {
-		fmt.Println(input)
-		for _, second := range append(input[:firstIndex], input[firstIndex + 1:]...) {
+		for _, second := range input[firstIndex + 1:] {
 			fmt.Println(first, second)
 		}
 	}
