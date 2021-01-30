@@ -14,8 +14,6 @@
 
 package main
 
-import "fmt"
-
 func main() {
 	getFirstTwoElementsThatSumToTarget([]int{1,2,3,4}, 4)
 }
@@ -28,7 +26,9 @@ func doesInputSumToTarget(a, b, target int) bool {
 func getFirstTwoElementsThatSumToTarget(input []int, target int) (found [2]int) {
 	for firstIndex, first := range input {
 		for _, second := range input[firstIndex + 1:] {
-			fmt.Println(first, second)
+			if doesInputSumToTarget(first, second, target) {
+				return [2]int{first, second}
+			}
 		}
 	}
 	return
