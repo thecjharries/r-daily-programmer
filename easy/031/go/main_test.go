@@ -51,3 +51,7 @@ func (s *MainSuite) TestBase26ToBase10(c *C) {
 		c.Assert(base26ToBase10(fixture.base26), Equals, fixture.base10)
 	}
 }
+
+func (s *MainSuite) TestMultiplyBase26(c *C) {
+	c.Assert(multiplyBase26("CSGHJ", "CBA"), Equals, "FNEUZJA")
+}

@@ -48,3 +48,9 @@ func base26ToBase10(input string) (base10 int) {
 	}
 	return base10
 }
+
+func multiplyBase26(a, b string) string {
+	return base10ToBase26(
+		base26ToBase10(a) * base26ToBase10(b),
+	)
+}
