@@ -16,6 +16,22 @@ package main
 
 import "fmt"
 
+const base26Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 func main() {
 	fmt.Println("hello world")
+}
+
+func base10ToBase26(input int) (base26 string) {
+	if len(base26Alphabet) > input {
+		return string(base26Alphabet[input])
+	}
+	var quotient, remainder int
+	quotient = input
+	for 0 != quotient {
+		remainder = quotient % 26
+		quotient /= 26
+		base26 = string(base26Alphabet[remainder]) + base26
+	}
+	return
 }
