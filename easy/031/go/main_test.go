@@ -45,3 +45,9 @@ func (s *MainSuite) TestBase10ToBase26(c *C) {
 		c.Assert(base10ToBase26(fixture.base10), Equals, fixture.base26)
 	}
 }
+
+func (s *MainSuite) TestBase26ToBase10(c *C) {
+	for _, fixture := range base10ToBase26Fixtures{
+		c.Assert(base26ToBase10(fixture.base26), Equals, fixture.base10)
+	}
+}
