@@ -23,9 +23,10 @@ import (
 const base26Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Printf("%s * %s = %s\n", "CSGHJ", "CBA", multiplyBase26("CSGHJ", "CBA"))
 }
 
+// Converts an int to the provided base26 interpretation
 func base10ToBase26(input int) (base26 string) {
 	if len(base26Alphabet) > input {
 		return string(base26Alphabet[input])
@@ -40,6 +41,7 @@ func base10ToBase26(input int) (base26 string) {
 	return
 }
 
+// Converts a string using the provided base26 interpretation into an int
 func base26ToBase10(input string) (base10 int) {
 	base10 = 0
 	for index, base26 := range input {
@@ -49,6 +51,7 @@ func base26ToBase10(input string) (base10 int) {
 	return base10
 }
 
+// Multiplies two strings of the provided base26 interpretation
 func multiplyBase26(a, b string) string {
 	return base10ToBase26(
 		base26ToBase10(a) * base26ToBase10(b),
