@@ -153,6 +153,26 @@ func NewRoll() Roll {
 	return rollSpace[rand.Intn(R36 - R00) + R00]
 }
 
+type ValueModifier int
+
+const (
+	ValueModifierAny = iota
+	ValueModifierAll
+)
+
+type Bet struct {
+	name string
+	values []Roll
+	valueModifier ValueModifier
+	payout string
+}
+
+var bets = []Bet{
+	{"00", []Roll{R00}, ValueModifierAll, "35 to 1"},
+	{"0", []Roll{R0}, ValueModifierAll, "35 to 1"},
+	{"1st Column", []Roll{R1,R4,R7,R10,R13,R16,R19,R22,R25,R28,R31,R34}, ValueModifierAny, "2 to 1"},
+}
+
 var zSeed int64 = time.Now().UnixNano()
 
 func main() {
