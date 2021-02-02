@@ -1,5 +1,9 @@
 # [3/28/2012] Challenge #32 [easy]
 
+## Note
+
+The basics are here; I don't feel like fully implementing all the bets and possibilities. I've completed the spirit.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/rhrmx/3282012_challenge_32_easy/) by [u/SleepyTurtle](https://old.reddit.com/user/SleepyTurtle)
