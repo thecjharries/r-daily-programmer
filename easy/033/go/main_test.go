@@ -49,5 +49,10 @@ func (s *MainSuite) TestQuestionAnswerEvaluate(c *C) {
 	c.Assert(qa.Evaluate(), Equals, "correct")
 	zInput = strings.NewReader("qqq")
 	c.Assert(qa.Evaluate(), Equals, qa.Answer)
+}
 
+func (s *MainSuite) TestQuizRandom(c *C) {
+	qa := QuestionAnswer{"one", "two"}
+	quiz := Quiz{[]QuestionAnswer{qa}}
+	c.Assert(quiz.Random(), DeepEquals, qa)
 }

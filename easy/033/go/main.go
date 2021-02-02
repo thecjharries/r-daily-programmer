@@ -18,15 +18,26 @@ import (
 	"fmt"
 	. "github.com/thecjharries/dprgstd/clinput"
 	"io"
+	"math/rand"
 	"os"
+	"time"
 )
 
-type QuestionAnswer struct{
+type QuestionAnswer struct {
 	Question string
 	Answer string
 }
 
+type Quiz struct {
+	Questions []QuestionAnswer
+}
+
+func (q *Quiz) Random() QuestionAnswer {
+	return q.Questions[rand.Intn(len(q.Questions))]
+}
+
 var zInput = io.Reader(os.Stdin)
+var zSeed = int64(time.Now().UnixNano())
 
 func (q *QuestionAnswer) Evaluate() string {
 	result := GetStringInput(q.Question, zInput)
@@ -40,5 +51,6 @@ func (q *QuestionAnswer) Evaluate() string {
 
 
 func main() {
+	rand.Seed(zSeed)
 	fmt.Println("hello world")
 }
