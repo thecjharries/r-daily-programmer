@@ -15,6 +15,8 @@
 package main
 
 import (
+	"io"
+	"strings"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -25,7 +27,27 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 type MainSuite struct {}
 
 var _ = Suite(&MainSuite{})
+var oldInput io.Reader
+
+func (s *MainSuite) SetUpTest(c *C) {
+	oldInput = zInput
+}
+
+func (s *MainSuite) TearDownTest(c *C) {
+	zInput = oldInput
+}
 
 func (s *MainSuite) TestMain(c *C) {
+
+}
+
+func (s *MainSuite) TestQuestionAnswerEvaluate(c *C) {
+	qa := QuestionAnswer{"one", "two"}
+	zInput = strings.NewReader("exit")
+	c.Assert(qa.Evaluate(), Equals, "exiting")
+	zInput = strings.NewReader(qa.Answer)
+	c.Assert(qa.Evaluate(), Equals, "correct")
+	zInput = strings.NewReader("qqq")
+	c.Assert(qa.Evaluate(), Equals, qa.Answer)
 
 }

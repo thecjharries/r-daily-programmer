@@ -16,11 +16,26 @@ package main
 
 import (
 	"fmt"
+	. "github.com/thecjharries/dprgstd/clinput"
+	"io"
+	"os"
 )
 
 type QuestionAnswer struct{
 	Question string
 	Answer string
+}
+
+var zInput = io.Reader(os.Stdin)
+
+func (q *QuestionAnswer) Evaluate() string {
+	result := GetStringInput(q.Question, zInput)
+	if "exit" == result {
+		return "exiting"
+	} else if q.Answer == result {
+		return "correct"
+	}
+	return q.Answer
 }
 
 
