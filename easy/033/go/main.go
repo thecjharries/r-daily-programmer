@@ -58,8 +58,16 @@ func (q *QuestionAnswer) Evaluate() string {
 	return q.Answer
 }
 
+var sampleQuiz = Quiz{
+	[]QuestionAnswer{
+		{"12 * 12?", "144"},
+		{"What is reddit?", "website with cats"},
+		{"Translate: hola","hello"},
+	},
+}
+
 
 func main() {
 	rand.Seed(zSeed)
-	fmt.Println("hello world")
+	sampleQuiz.Run()
 }
