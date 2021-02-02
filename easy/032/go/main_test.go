@@ -48,6 +48,6 @@ func (s *MainSuite) TestRollString(c *C) {
 
 func (s *MainSuite) TestNewRoll(c *C) {
 	// chick or egg?
-	var roll Roll = R4
+	var roll Roll = R26
 	c.Assert(NewRoll(), DeepEquals, roll)
 }

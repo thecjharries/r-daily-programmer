@@ -60,9 +60,10 @@ const (
 	R33
 	R34
 	R35
+	R36
 )
 
-var possibleRolls = [37]string{
+var possibleRolls = [38]string{
 	"00",
 	"0",
 	"1",
@@ -100,9 +101,10 @@ var possibleRolls = [37]string{
 	"33",
 	"34",
 	"35",
+	"36",
 }
 
-var rollSpace = [37]Roll{
+var rollSpace = [38]Roll{
 	R00,
 	R0,
 	R1,
@@ -140,6 +142,7 @@ var rollSpace = [37]Roll{
 	R33,
 	R34,
 	R35,
+	R36,
 }
 
 func (r *Roll) String() string {
@@ -147,12 +150,13 @@ func (r *Roll) String() string {
 }
 
 func NewRoll() Roll {
-	return rollSpace[rand.Intn(R35 - R00) + R00]
+	return rollSpace[rand.Intn(R36 - R00) + R00]
 }
 
 var zSeed int64 = time.Now().UnixNano()
 
 func main() {
 	rand.Seed(zSeed)
+	fmt.Println("test")
 	fmt.Println("hello world")
 }
