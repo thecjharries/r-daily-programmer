@@ -26,6 +26,28 @@ type MainSuite struct {}
 
 var _ = Suite(&MainSuite{})
 
+var oldSeed int64
+
+func (s *MainSuite) SetUpTest(c *C) {
+	oldSeed = zSeed
+	zSeed = 0
+}
+
+func (s *MainSuite) TearDownTest(c *C) {
+	zSeed = oldSeed
+}
+
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestRollString(c *C) {
+	var roll Roll = R00
+	c.Assert(roll.String(), Equals, "00")
+}
+
+func (s *MainSuite) TestNewRoll(c *C) {
+	// chick or egg?
+	var roll Roll = R4
+	c.Assert(NewRoll(), DeepEquals, roll)
 }
