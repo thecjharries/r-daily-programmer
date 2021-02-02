@@ -14,7 +14,15 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+type QuestionAnswer struct{
+	Question string
+	Answer string
+}
+
 
 func main() {
 	fmt.Println("hello world")
