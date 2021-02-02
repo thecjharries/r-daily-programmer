@@ -36,6 +36,15 @@ func (q *Quiz) Random() QuestionAnswer {
 	return q.Questions[rand.Intn(len(q.Questions))]
 }
 
+func (q *Quiz) Run() {
+	var output string
+	for "exiting" != output {
+		question := q.Random()
+		output = question.Evaluate()
+		fmt.Println(output)
+	}
+}
+
 var zInput = io.Reader(os.Stdin)
 var zSeed = int64(time.Now().UnixNano())
 
