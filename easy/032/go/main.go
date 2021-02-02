@@ -170,13 +170,43 @@ type Bet struct {
 var bets = []Bet{
 	{"00", []Roll{R00}, ValueModifierAll, "35 to 1"},
 	{"0", []Roll{R0}, ValueModifierAll, "35 to 1"},
+	{"21", []Roll{R21}, ValueModifierAll, "35 to 1"},
+	{"22", []Roll{R22}, ValueModifierAll, "35 to 1"},
+	{"23", []Roll{R23}, ValueModifierAll, "35 to 1"},
+	{"24", []Roll{R24}, ValueModifierAll, "35 to 1"},
+	{"25", []Roll{R25}, ValueModifierAll, "35 to 1"},
+	{"26", []Roll{R26}, ValueModifierAll, "35 to 1"},
 	{"1st Column", []Roll{R1,R4,R7,R10,R13,R16,R19,R22,R25,R28,R31,R34}, ValueModifierAny, "2 to 1"},
 }
 
 var zSeed int64 = time.Now().UnixNano()
 
 func main() {
-	rand.Seed(zSeed)
-	fmt.Println("test")
-	fmt.Println("hello world")
+	rand.Seed(0)
+	bet := bets[5]
+	fmt.Println(spin(bet))
+}
+
+func spin(bet Bet) string {
+	payout := "none"
+	roll := NewRoll()
+	wonBet := false
+	for _, possibleRoll := range bet.values {
+		if ValueModifierAll == bet.valueModifier {
+			if roll == possibleRoll {
+				wonBet = true
+			} else {
+				wonBet = false
+				break
+			}
+		}
+		if roll == possibleRoll && ValueModifierAny == bet.valueModifier {
+			wonBet = true
+			break
+		}
+	}
+	if wonBet {
+		payout = bet.payout
+	}
+	return fmt.Sprintf("rolled %d: %s\n", roll, payout)
 }
