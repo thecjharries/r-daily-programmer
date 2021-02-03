@@ -21,7 +21,9 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	input := []float64{1,2,3}
+	fmt.Println(input)
+	fmt.Println(sumSquaresOfTwoLargest(input...))
 }
 
 func findTwoLargest(inputs... float64) (float64, float64) {
