@@ -14,8 +14,16 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func findTwoLargest(inputs... float64) (float64, float64) {
+	sort.Float64s(inputs)
+	return inputs[len(inputs) - 1], inputs[len(inputs) - 2]
 }

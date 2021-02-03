@@ -29,3 +29,9 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestFindTwoLargest(c *C) {
+	first, second := findTwoLargest(1, 2, 3, 4, 5)
+	c.Assert(first, Equals, float64(5))
+	c.Assert(second, Equals, float64(4))
+}
