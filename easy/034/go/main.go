@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 )
 
@@ -26,4 +27,9 @@ func main() {
 func findTwoLargest(inputs... float64) (float64, float64) {
 	sort.Float64s(inputs)
 	return inputs[len(inputs) - 1], inputs[len(inputs) - 2]
+}
+
+func sumSquaresOfTwoLargest(inputs... float64) float64 {
+	first, second := findTwoLargest(inputs...)
+	return math.Pow(first, 2) + math.Pow(second, 2)
 }

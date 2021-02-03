@@ -35,3 +35,8 @@ func (s *MainSuite) TestFindTwoLargest(c *C) {
 	c.Assert(first, Equals, float64(5))
 	c.Assert(second, Equals, float64(4))
 }
+
+func (s *MainSuite) TestSumSquaresOfTwoLargest(c *C) {
+	result := sumSquaresOfTwoLargest(1, 2, 3)
+	c.Assert(result, Equals, float64(13))
+}
