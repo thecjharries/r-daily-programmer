@@ -29,3 +29,9 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestIntToRightTriangle(c *C) {
+	output := []string{"2 3", "1"}
+	c.Assert(intToRightTriangle(3), DeepEquals, output)
+	c.Assert(intToRightTriangle(4), DeepEquals, output)
+}
