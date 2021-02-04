@@ -21,7 +21,8 @@ import (
 )
 
 func main() {
-	triangle := intToRightTriangle(11)
+	input := 50
+	triangle := intToRightTriangle(input)
 	for _, line := range triangle {
 		fmt.Println(line)
 	}
