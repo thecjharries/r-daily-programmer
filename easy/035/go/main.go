@@ -14,8 +14,29 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 func main() {
-	fmt.Println("hello world")
+	triangle := intToRightTriangle(11)
+	for _, line := range triangle {
+		fmt.Println(line)
+	}
+}
+
+func intToRightTriangle(input int) (triangle []string) {
+	var currentRow []string
+	lineNumber := 1
+	for index := 1; index <= input; index++ {
+		currentRow = append(currentRow, strconv.Itoa(index))
+		if lineNumber == len(currentRow) {
+			triangle = append([]string{strings.Join(currentRow, " ")}, triangle...)
+			currentRow = nil
+			lineNumber++
+		}
+	}
+	return
 }
