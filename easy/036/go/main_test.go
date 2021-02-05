@@ -29,3 +29,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestOpenLockers(c *C) {
+	openedLockers := []bool{true, false, false, true, false, false, false, false, true}
+	c.Assert(openLockers(len(openedLockers)), DeepEquals, openedLockers)
+}
