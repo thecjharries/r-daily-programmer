@@ -26,6 +26,7 @@ func main() {
 	}
 }
 
+// Runs the open locker problem for given number of lockers
 func openLockers(lockerCount int) (lockers []bool) {
 	lockers = make([]bool, lockerCount)
 	for studentNumber := 1; studentNumber <= lockerCount; studentNumber++ {
