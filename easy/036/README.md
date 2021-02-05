@@ -1,5 +1,9 @@
 # [4/5/2012] Challenge #36 [easy]
 
+## Note
+
+Can be solved by proof but my proof skills are _super_ rusty and proofs aren't code (that I know how to write, anyway)
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/ruiob/452012_challenge_36_easy/) by [u/ladaghini](https://old.reddit.com/user/ladaghini)
