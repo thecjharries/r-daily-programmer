@@ -14,6 +14,24 @@
 
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	lockerCount := 1000
+	lockers := openLockers(lockerCount)
+	for lockerNumber, isOpen := range lockers {
+		if isOpen {
+			fmt.Println(lockerNumber + 1)
+		}
+	}
+}
+
+func openLockers(lockerCount int) (lockers []bool) {
+	lockers = make([]bool, lockerCount)
+	for studentNumber := 1; studentNumber <= lockerCount; studentNumber++ {
+		for lockerNumber := studentNumber; lockerNumber <= lockerCount; lockerNumber += studentNumber {
+			lockers[lockerNumber - 1] = !lockers[lockerNumber - 1]
+		}
+	}
+	return
 }
