@@ -15,6 +15,7 @@
 package main
 
 import (
+	"path"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -28,4 +29,9 @@ var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestCountLines(c *C) {
+	filename := path.Join("..", "README.md")
+	c.Assert(countLinesInFile(filename), Equals, 14)
 }
