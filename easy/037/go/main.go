@@ -14,8 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func countLinesInFile(filename string) (lines int) {
+	file, _ := os.Open(filename)
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+	for scanner.Scan() {
+		lines++
+	}
+	_ = file.Close()
+	return
 }
