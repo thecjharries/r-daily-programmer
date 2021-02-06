@@ -1,5 +1,9 @@
 # [4/8/2012] Challenge #37 [easy]
 
+## Note
+
+Skipped bonus; it's just adding a word pattern regex on each line. Easy idea; can be tedious to implement.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/rzdwq/482012_challenge_37_easy/) by [u/rya11111](https://old.reddit.com/user/rya11111)
