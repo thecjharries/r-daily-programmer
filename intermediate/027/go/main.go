@@ -14,8 +14,16 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func getDayOfWeekOfSaintPatricksFromYear(year int) string {
+	date, _ := time.Parse("2006-01-02", fmt.Sprintf("%d-03-17", year))
+	return fmt.Sprint(date.Weekday())
 }
