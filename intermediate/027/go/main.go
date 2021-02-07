@@ -20,7 +20,8 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	year := 2021
+	fmt.Println(getDayOfWeekOfSaintPatricksFromYear(year))
 }
 
 func getDayOfWeekOfSaintPatricksFromYear(year int) string {
