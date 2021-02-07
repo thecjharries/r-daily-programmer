@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGetDayOfWeekOfSaintPatricksFromYear(c *C) {
+	c.Assert(getDayOfWeekOfSaintPatricksFromYear(2021), Equals, "Wednesday")
+	c.Assert(getDayOfWeekOfSaintPatricksFromYear(2020), Equals, "Tuesday")
+	c.Assert(getDayOfWeekOfSaintPatricksFromYear(2000), Equals, "Friday")
+	c.Assert(getDayOfWeekOfSaintPatricksFromYear(1900), Equals, "Saturday")
+}
