@@ -20,7 +20,11 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	max := 15
+	output := fizzBuzz(max)
+	for _, line := range output {
+		fmt.Println(line)
+	}
 }
 
 // Performs (slightly abnormal) fizzbuzz
