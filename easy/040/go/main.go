@@ -16,10 +16,10 @@ package main
 
 import "fmt"
 
-const maxNumber int = 3
+const maxNumber int = 1000
 
 func main() {
-	fmt.Println("hello world")
+	printNumber(1)
 }
 
 func printNumber(number int) {
