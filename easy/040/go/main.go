@@ -16,6 +16,14 @@ package main
 
 import "fmt"
 
+const maxNumber int = 3
+
 func main() {
 	fmt.Println("hello world")
+}
+
+func printNumber(number int) {
+	fmt.Println(number)
+	_ = 1 / (maxNumber - number)
+	printNumber(number + 1)
 }
