@@ -29,3 +29,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestPrintNumber(c *C) {
+	c.Assert(func(){ printNumber(1)}, PanicMatches, "runtime error: integer divide by zero")
+}
