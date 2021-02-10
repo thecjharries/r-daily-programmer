@@ -14,8 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("hello world")
 }
+
+func edge(input string) string {
+	return fmt.Sprintf("* %s *", input)
+}
+
+//func bannerize(input string) (output [5]string) {
+//	output[0] = strings.Repeat("*", len(input) + 4)
+//	output[1] = fmt.Sprintf("* %s *")
+//	return
+//}

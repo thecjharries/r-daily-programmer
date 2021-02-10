@@ -29,3 +29,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestEdge(c *C) {
+	c.Assert(edge("qqq"), Equals, "* qqq *")
+}
