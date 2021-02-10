@@ -20,7 +20,10 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	input := "So long and thanks for all the fish"
+	for _, line := range bannerize(input) {
+		fmt.Println(line)
+	}
 }
 
 func edge(input string) string {
