@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -26,8 +27,11 @@ func edge(input string) string {
 	return fmt.Sprintf("* %s *", input)
 }
 
-//func bannerize(input string) (output [5]string) {
-//	output[0] = strings.Repeat("*", len(input) + 4)
-//	output[1] = fmt.Sprintf("* %s *")
-//	return
-//}
+func bannerize(input string) (output [5]string) {
+	output[0] = strings.Repeat("*", len(input) + 4)
+	output[1] = edge(strings.Repeat(" ", len(input)))
+	output[2] = edge(input)
+	output[3] = output[1]
+	output[4] = output[0]
+	return
+}

@@ -33,3 +33,14 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestEdge(c *C) {
 	c.Assert(edge("qqq"), Equals, "* qqq *")
 }
+
+func (s *MainSuite) TestBannerize(c *C) {
+	output := [5]string{
+		"*******",
+		"*     *",
+		"* qqq *",
+		"*     *",
+		"*******",
+	}
+	c.Assert(bannerize("qqq"), DeepEquals, output)
+}
