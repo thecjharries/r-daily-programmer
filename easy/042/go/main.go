@@ -39,8 +39,10 @@ E-I-E-I-O
 
 `
 
+var zPrint = fmt.Printf
+
 func main() {
 	for animal, sound := range farmOccupants {
-		fmt.Printf(stanza, animal, sound)
+		zPrint(stanza, animal, sound)
 	}
 }

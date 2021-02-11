@@ -15,6 +15,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -26,6 +27,25 @@ type MainSuite struct {}
 
 var _ = Suite(&MainSuite{})
 
+var printCallCount int
+
+func printSpy(format string, a ...interface{}) (n int, err error) {
+	printCallCount++
+	return
+}
+
+func (s *MainSuite) SetUpTest(c *C) {
+	printCallCount = 0
+	zPrint = printSpy
+}
+
+func (s *MainSuite) TearDownTest(c *C) {
+	zPrint = fmt.Printf
+}
+
 func (s *MainSuite) TestMain(c *C) {
+	c.Assert(printCallCount, Equals, 0)
+	main()
+	c.Assert(printCallCount, Equals, len(farmOccupants))
 
 }
