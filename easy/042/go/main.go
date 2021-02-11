@@ -36,8 +36,11 @@ Here a %[2]s, there a %[2]s
 Everywhere a %[2]s %[2]s
 Old MacDonald had a farm
 E-I-E-I-O
+
 `
 
 func main() {
-	fmt.Println("hello world")
+	for animal, sound := range farmOccupants {
+		fmt.Printf(stanza, animal, sound)
+	}
 }
