@@ -25,6 +25,19 @@ var farmOccupants = map[string]string {
 	"dog": "bark",
 }
 
+// https://www.kidsongs.com/lyrics/old-macdonald-had-a-farm.html
+var stanza = `Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a %[1]s
+E-I-E-I-O
+With a %[2]s %[2]s here
+And a %[2]s %[2]s there
+Here a %[2]s, there a %[2]s
+Everywhere a %[2]s %[2]s
+Old MacDonald had a farm
+E-I-E-I-O
+`
+
 func main() {
 	fmt.Println("hello world")
 }
