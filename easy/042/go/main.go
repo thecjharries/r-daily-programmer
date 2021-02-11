@@ -16,6 +16,15 @@ package main
 
 import "fmt"
 
+var farmOccupants = map[string]string {
+	"cow": "moo",
+	"chicken": "cluck",
+	"turkey": "gobble",
+	"kangaroo": "g'day mate",
+	"T-Rex": "GAAAAARGH",
+	"dog": "bark",
+}
+
 func main() {
 	fmt.Println("hello world")
 }
