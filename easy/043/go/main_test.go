@@ -45,3 +45,12 @@ func (s *MainSuite) TestBinaryTreeLowestCommonAncestorLowerFirst(c *C) {
 	tree := &BinaryTree{Root: root}
 	c.Assert(tree.LowestCommonAncestor(root.Left.Left, root.Right), Equals, root)
 }
+
+func (s *MainSuite) TestBinaryTreeLowestCommonAncestorLowerSecond(c *C) {
+	root := &BinaryNode{Depth: 0, Value: 0}
+	root.Left = root.NewChild(1)
+	root.Left.Left = root.Left.NewChild(2)
+	root.Right = root.NewChild(1)
+	tree := &BinaryTree{Root: root}
+	c.Assert(tree.LowestCommonAncestor(root.Right, root.Left.Left), Equals, root)
+}
