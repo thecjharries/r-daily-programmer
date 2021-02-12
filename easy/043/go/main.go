@@ -16,6 +16,18 @@ package main
 
 import "fmt"
 
+struct BinaryNode {
+	Parent *BinaryNode
+	Left *BinaryNode
+	Right *BinaryNode
+	Depth int
+	Value interface{}
+}
+
+struct BinaryTree {
+	Root *BinaryNode
+}
+
 func main() {
 	fmt.Println("hello world")
 }
