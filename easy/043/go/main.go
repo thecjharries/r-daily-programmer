@@ -36,6 +36,18 @@ type BinaryTree struct {
 	Root *BinaryNode
 }
 
+func (t *BinaryTree) LowestCommonAncestor(first, second *BinaryNode) *BinaryNode {
+	if first.Depth < second.Depth {
+		return t.LowestCommonAncestor(first.Parent, second)
+	} else if first.Depth > second.Depth {
+		return t.LowestCommonAncestor(first, second.Parent)
+	}
+	if first.Parent == second.Parent {
+		return first.Parent
+	}
+	return t.LowestCommonAncestor(first.Parent, second.Parent)
+}
+
 func main() {
 	fmt.Println("hello world")
 }
