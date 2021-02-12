@@ -38,9 +38,9 @@ type BinaryTree struct {
 
 func (t *BinaryTree) LowestCommonAncestor(first, second *BinaryNode) *BinaryNode {
 	if first.Depth < second.Depth {
-		return t.LowestCommonAncestor(first.Parent, second)
-	} else if first.Depth > second.Depth {
 		return t.LowestCommonAncestor(first, second.Parent)
+	} else if first.Depth > second.Depth {
+		return t.LowestCommonAncestor(first.Parent, second)
 	}
 	if first.Parent == second.Parent {
 		return first.Parent
