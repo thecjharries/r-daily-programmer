@@ -16,7 +16,7 @@ package main
 
 import "fmt"
 
-struct BinaryNode {
+type BinaryNode struct {
 	Parent *BinaryNode
 	Left *BinaryNode
 	Right *BinaryNode
@@ -24,7 +24,15 @@ struct BinaryNode {
 	Value interface{}
 }
 
-struct BinaryTree {
+func (n* BinaryNode) NewChild(value interface{}) *BinaryNode {
+	return &BinaryNode{
+		Parent: n,
+		Depth: n.Depth + 1,
+		Value: value,
+	}
+}
+
+type BinaryTree struct {
 	Root *BinaryNode
 }
 

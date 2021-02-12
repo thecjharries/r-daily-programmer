@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestBinaryNodeNewChild(c *C) {
+	parent := &BinaryNode{Depth: 0, Value: 0}
+	parent.Left = parent.NewChild("left")
+	c.Assert(parent.Left.Depth, Equals, 1)
+	c.Assert(parent.Left.Parent, Equals, parent)
+}
