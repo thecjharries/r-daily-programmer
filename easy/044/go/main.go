@@ -31,3 +31,7 @@ func main() {
 func sanitizeNewLines(input string) string {
 	return strings.ReplaceAll(input, "\n", " ")
 }
+
+func explodeStringOnSentenceStopPattern(input string) []string {
+	return sentenceStopPattern.Split(input, -1)
+}

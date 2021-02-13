@@ -35,3 +35,9 @@ func (s *MainSuite) TestSanitizeNewLines(c *C) {
 	output := "qqq qqq"
 	c.Assert(sanitizeNewLines(input), Equals, output)
 }
+
+func (s *MainSuite) TestExplodeStringOnSentenceStopPattern(c *C) {
+	input := "qqq.qqq"
+	output := []string{"qqq", "qqq"}
+	c.Assert(explodeStringOnSentenceStopPattern(input), DeepEquals, output)
+}
