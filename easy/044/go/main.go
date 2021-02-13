@@ -27,3 +27,7 @@ var promptInput = "If it will feed nothing else, it will\nfeed my revenge. He ha
 func main() {
 	fmt.Println("hello world")
 }
+
+func sanitizeNewLines(input string) string {
+	return strings.ReplaceAll(input, "\n", " ")
+}

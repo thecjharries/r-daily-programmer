@@ -29,3 +29,9 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestSanitizeNewLines(c *C) {
+	input := "qqq\nqqq"
+	output := "qqq qqq"
+	c.Assert(sanitizeNewLines(input), Equals, output)
+}
