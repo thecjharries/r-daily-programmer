@@ -45,3 +45,9 @@ func findLargestSentence(input []string) string {
 	}
 	return longestSentence
 }
+
+func completePrompt(input string) (string, int) {
+	exploded := explodeStringOnSentenceStopPattern(sanitizeNewLines(input))
+	longestSentence := findLargestSentence(exploded)
+	return longestSentence, len(longestSentence)
+}

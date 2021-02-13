@@ -47,3 +47,11 @@ func (s *MainSuite) TestFindLargestSentence(c *C) {
 	output := "qqqq"
 	c.Assert(findLargestSentence(input), Equals, output)
 }
+
+func (s *MainSuite) TestCompletePrompt(c *C) {
+	input := "qqq\nqqq. qqq"
+	outputSentence, outputLength := "qqq qqq", 7
+	foundSentence, foundLength := completePrompt(input)
+	c.Assert(foundSentence, Equals, outputSentence)
+	c.Assert(foundLength, Equals, outputLength)
+}
