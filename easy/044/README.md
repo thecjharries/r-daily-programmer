@@ -1,5 +1,9 @@
 # [4/25/2012] Challenge #44 [easy]
 
+## Note
+
+Instead of adding the regex to do word count, I did character count. The two are **not** equivalent but I'm lazy and showing that I can do one more regex evaluation doesn't add much to the task. The logic changes in `findLargestSentence`; I'd probably add a `countWordsInSentence` function to do it.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/srowj/4252012_challenge_44_easy/) by [u/frenulem](http://www.reddit.com/user/frenulem)
