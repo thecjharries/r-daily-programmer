@@ -41,3 +41,9 @@ func (s *MainSuite) TestExplodeStringOnSentenceStopPattern(c *C) {
 	output := []string{"qqq", "qqq"}
 	c.Assert(explodeStringOnSentenceStopPattern(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestFindLargestSentence(c *C) {
+	input := []string{"qqq", "qqqq"}
+	output := "qqqq"
+	c.Assert(findLargestSentence(input), Equals, output)
+}

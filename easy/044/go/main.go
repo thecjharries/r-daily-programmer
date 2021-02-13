@@ -35,3 +35,13 @@ func sanitizeNewLines(input string) string {
 func explodeStringOnSentenceStopPattern(input string) []string {
 	return sentenceStopPattern.Split(input, -1)
 }
+
+func findLargestSentence(input []string) string {
+	longestSentence := ""
+	for _, newSentence := range input {
+		if len(longestSentence) < len(newSentence) {
+			longestSentence = newSentence
+		}
+	}
+	return longestSentence
+}
