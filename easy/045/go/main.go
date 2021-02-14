@@ -33,7 +33,7 @@ func createRow(squareCount int, whiteFirst bool) (row []string) {
 	for lineIndex := 0; lineIndex < squareSize; lineIndex++ {
 		currentlyWhite := whiteFirst
 		currentLine := ""
-		for squareIndex := 0; squareIndex < squareSize; squareIndex++ {
+		for squareIndex := 0; squareIndex < squareCount; squareIndex++ {
 			if currentlyWhite {
 				currentLine += strings.Repeat(whiteCharacter, squareSize)
 			} else {
