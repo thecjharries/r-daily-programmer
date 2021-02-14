@@ -47,3 +47,15 @@ func (s *MainSuite) TestCreateRowBlackFirst(c *C) {
 	}
 	c.Assert(createRow(2, false), DeepEquals, output)
 }
+
+func (s *MainSuite) TestCreateBoard(c *C) {
+	output := []string{
+		"   ###   ",
+		"   ###   ",
+		"   ###   ",
+		"###   ###",
+		"###   ###",
+		"###   ###",
+	}
+	c.Assert(createBoard(2, 3), DeepEquals, output)
+}
