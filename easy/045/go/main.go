@@ -45,3 +45,12 @@ func createRow(squareCount int, whiteFirst bool) (row []string) {
 	}
 	return
 }
+
+func createBoard(rows, columns int) (board []string) {
+	whiteFirst := true
+	for rowIndex := 0; rowIndex < rows; rowIndex++ {
+		board = append(board, createRow(columns, whiteFirst)...)
+		whiteFirst = !whiteFirst
+	}
+	return
+}
