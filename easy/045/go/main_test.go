@@ -29,3 +29,21 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestCreateRowWhiteFirst(c *C) {
+	output := []string{
+		"   ###",
+		"   ###",
+		"   ###",
+	}
+	c.Assert(createRow(2, true), DeepEquals, output)
+}
+
+func (s *MainSuite) TestCreateRowBlackFirst(c *C) {
+	output := []string{
+		"###   ",
+		"###   ",
+		"###   ",
+	}
+	c.Assert(createRow(2, false), DeepEquals, output)
+}
