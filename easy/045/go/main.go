@@ -26,7 +26,10 @@ const (
 )
 
 func main() {
-	fmt.Println("hello world")
+	board := createBoard(2, 5)
+	for _, line := range board {
+		fmt.Println(line)
+	}
 }
 
 func createRow(squareCount int, whiteFirst bool) (row []string) {
