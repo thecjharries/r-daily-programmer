@@ -14,8 +14,34 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+const (
+	squareSize int = 3
+	whiteCharacter string = " "
+	blackCharacter string = "#"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func createRow(squareCount int, whiteFirst bool) (row []string) {
+	for lineIndex := 0; lineIndex < squareSize; lineIndex++ {
+		currentlyWhite := whiteFirst
+		currentLine := ""
+		for squareIndex := 0; squareIndex < squareSize; squareIndex++ {
+			if currentlyWhite {
+				currentLine += strings.Repeat(whiteCharacter, squareSize)
+			} else {
+				currentLine += strings.Repeat(blackCharacter, squareSize)
+			}
+			currentlyWhite = !currentlyWhite
+		}
+		row = append(row, currentLine)
+	}
+	return
 }
