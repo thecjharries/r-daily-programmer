@@ -14,8 +14,15 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func convertToBinary(input int64) string {
+	return strconv.FormatInt(input, 2)
 }

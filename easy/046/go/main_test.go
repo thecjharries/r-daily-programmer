@@ -29,3 +29,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestConvertToBinary(c *C) {
+	c.Assert(convertToBinary(1), Equals, "1")
+	c.Assert(convertToBinary(2), Equals, "10")
+}
