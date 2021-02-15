@@ -34,3 +34,7 @@ func (s *MainSuite) TestConvertToBinary(c *C) {
 	c.Assert(convertToBinary(1), Equals, "1")
 	c.Assert(convertToBinary(2), Equals, "10")
 }
+
+func (s *MainSuite) TestCountBinaryPopulationCount(c *C) {
+	c.Assert(countBinaryPopulationCount("10111"), Equals, 4)
+}

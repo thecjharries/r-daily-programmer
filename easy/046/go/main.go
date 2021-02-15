@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -25,4 +26,14 @@ func main() {
 
 func convertToBinary(input int64) string {
 	return strconv.FormatInt(input, 2)
+}
+
+func countBinaryPopulationCount(binary string) int {
+	count := 0
+	exploded := strings.Split(binary, "")
+	for _, character := range exploded {
+		positionCount, _ := strconv.Atoi(character)
+		count += positionCount
+	}
+	return count
 }
