@@ -21,7 +21,10 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	input := int64(23)
+	inputBinary := convertToBinary(input)
+	populationCount := countBinaryPopulationCount(inputBinary)
+	fmt.Printf("%d has a population count of %d\n", input, populationCount)
 }
 
 func convertToBinary(input int64) string {
