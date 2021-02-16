@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+
 func main() {
 	fmt.Println("hello world")
+}
+
+func sanitizeShift(shift int) int {
+	return ((shift % 26) + 26) % 26
 }

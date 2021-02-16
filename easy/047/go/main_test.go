@@ -29,3 +29,11 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestSanitizeShift(c *C) {
+	c.Assert(sanitizeShift(-51), Equals, 1)
+	c.Assert(sanitizeShift(-25), Equals, 1)
+	c.Assert(sanitizeShift(1), Equals, 1)
+	c.Assert(sanitizeShift(27), Equals, 1)
+	c.Assert(sanitizeShift(53), Equals, 1)
+}
