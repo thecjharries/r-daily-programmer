@@ -55,3 +55,9 @@ func (s *MainSuite) TestEncryptString(c *C) {
 	c.Assert(encryptString("ABC", 1), Equals, "bcd")
 	c.Assert(encryptString("!$#", 24), Equals, "!$#")
 }
+
+func (s *MainSuite) TestDecryptString(c *C) {
+	c.Assert(decryptString("abc", 0), Equals, "abc")
+	c.Assert(decryptString("ABC", 1), Equals, "zab")
+	c.Assert(decryptString("!$#", 24), Equals, "!$#")
+}

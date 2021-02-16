@@ -49,3 +49,7 @@ func encryptString(input string, shift int) string {
 	}
 	return output
 }
+
+func decryptString(input string, shift int) string {
+	return encryptString(input, 26 - shift)
+}
