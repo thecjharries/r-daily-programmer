@@ -37,3 +37,7 @@ func encryptLetter(letter string, shift int) string {
 	outputIndex := sanitizeShift(inputIndex + shift)
 	return string(romanAlphabet[outputIndex])
 }
+
+func decryptLetter(letter string, shift int) string {
+	return encryptLetter(letter, 26 - shift)
+}

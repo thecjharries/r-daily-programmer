@@ -43,3 +43,9 @@ func (s *MainSuite) TestEncryptLetter(c *C) {
 	c.Assert(encryptLetter("A", 1), Equals, "b")
 	c.Assert(encryptLetter("-", 0), Equals, "-")
 }
+
+func (s *MainSuite) TestDecryptLetter(c *C) {
+	c.Assert(decryptLetter("a", 0), Equals, "a")
+	c.Assert(decryptLetter("A", 1), Equals, "z")
+	c.Assert(decryptLetter("-", 0), Equals, "-")
+}
