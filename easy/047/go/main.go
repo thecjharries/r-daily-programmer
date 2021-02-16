@@ -41,3 +41,11 @@ func encryptLetter(letter string, shift int) string {
 func decryptLetter(letter string, shift int) string {
 	return encryptLetter(letter, 26 - shift)
 }
+
+func encryptString(input string, shift int) string {
+	output := ""
+	for _, character := range input {
+		output += encryptLetter(string(character), shift)
+	}
+	return output
+}
