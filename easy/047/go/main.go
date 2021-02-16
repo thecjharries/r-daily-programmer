@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
 
@@ -24,4 +27,13 @@ func main() {
 
 func sanitizeShift(shift int) int {
 	return ((shift % 26) + 26) % 26
+}
+
+func encryptLetter(letter string, shift int) string {
+	inputIndex := strings.Index(romanAlphabet, strings.ToLower(letter))
+	if inputIndex < 0 {
+		return letter
+	}
+	outputIndex := sanitizeShift(inputIndex + shift)
+	return string(romanAlphabet[outputIndex])
 }

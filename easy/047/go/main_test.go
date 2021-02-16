@@ -37,3 +37,9 @@ func (s *MainSuite) TestSanitizeShift(c *C) {
 	c.Assert(sanitizeShift(27), Equals, 1)
 	c.Assert(sanitizeShift(53), Equals, 1)
 }
+
+func (s *MainSuite) TestEncryptLetter(c *C) {
+	c.Assert(encryptLetter("a", 0), Equals, "a")
+	c.Assert(encryptLetter("A", 1), Equals, "b")
+	c.Assert(encryptLetter("-", 0), Equals, "-")
+}
