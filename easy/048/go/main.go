@@ -33,4 +33,5 @@ func evenToTheFrontOddToTheBack(input []int) []int {
 			input[rightIndex], input[leftIndex] = input[leftIndex], input[rightIndex]
 		}
 	}
+	return input
 }

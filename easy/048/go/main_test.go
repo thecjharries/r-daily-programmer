@@ -29,3 +29,16 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestEvenToTheFrontOddToTheBack(c *C) {
+	var input, output []int
+	input = []int{2, 1, 3}
+	output = []int{2, 1, 3}
+	c.Assert(evenToTheFrontOddToTheBack(input), DeepEquals, output)
+	input = []int{1, 2, 3}
+	output = []int{2, 1, 3}
+	c.Assert(evenToTheFrontOddToTheBack(input), DeepEquals, output)
+	input = []int{1, 3, 2}
+	output = []int{2, 3, 1}
+	c.Assert(evenToTheFrontOddToTheBack(input), DeepEquals, output)
+}
