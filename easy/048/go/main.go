@@ -19,3 +19,18 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func evenToTheFrontOddToTheBack(input []int) []int {
+	rightIndex, leftIndex := 0, len(input) - 1
+	for rightIndex < leftIndex {
+		for 0 == input[rightIndex] % 2 {
+			rightIndex++
+		}
+		for 1 == input[leftIndex] % 2 {
+			leftIndex--
+		}
+		if rightIndex < leftIndex {
+			input[rightIndex], input[leftIndex] = input[leftIndex], input[rightIndex]
+		}
+	}
+}
