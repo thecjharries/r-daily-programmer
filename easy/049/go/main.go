@@ -39,3 +39,13 @@ func pickDoorIndexToRemove(winningIndex, playerIndex int) int {
 	}
 	return removedDoor
 }
+
+func gameRound(playerSwitches bool) (playerWon bool) {
+	winningDoor := pickRandomIndex()
+	playerChoice := pickRandomIndex()
+	//removedDoor := pickDoorIndexToRemove(winningDoor, playerChoice)
+	if playerSwitches {
+		return playerChoice != winningDoor
+	}
+	return playerChoice == winningDoor
+}

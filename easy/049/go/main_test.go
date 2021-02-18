@@ -53,3 +53,11 @@ func (s *MainSuite) TestPickDoorIndexToRemove(c *C) {
 	c.Assert(pickDoorIndexToRemove(0, 0), Equals, 1)
 	c.Assert(pickDoorIndexToRemove(0, 1), Equals, 2)
 }
+
+func (s *MainSuite) TestGameRoundNoSwitch(c *C) {
+	c.Assert(gameRound(false), Equals, true)
+}
+
+func (s *MainSuite) TestGameRoundWithSwitch(c *C) {
+	c.Assert(gameRound(true), Equals, false)
+}
