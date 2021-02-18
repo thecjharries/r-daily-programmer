@@ -28,6 +28,6 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func pickWinnerIndex() int {
+func pickRandomIndex() int {
 	return rand.Intn(len(doors))
 }

@@ -45,6 +45,6 @@ func (s *MainSuite) TestMain(c *C) {
 
 }
 
-func (s *MainSuite) TestPickWinnerIndex(c *C) {
-	c.Assert(pickWinnerIndex(), Equals, 0)
+func (s *MainSuite) TestPickRandomIndex(c *C) {
+	c.Assert(pickRandomIndex(), Equals, 0)
 }
