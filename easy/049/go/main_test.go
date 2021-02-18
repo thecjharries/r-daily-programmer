@@ -48,3 +48,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestPickRandomIndex(c *C) {
 	c.Assert(pickRandomIndex(), Equals, 0)
 }
+
+func (s *MainSuite) TestPickDoorIndexToRemove(c *C) {
+	c.Assert(pickDoorIndexToRemove(0, 1), Equals, 2)
+}

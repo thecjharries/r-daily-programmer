@@ -31,3 +31,11 @@ func main() {
 func pickRandomIndex() int {
 	return rand.Intn(len(doors))
 }
+
+func pickDoorIndexToRemove(winningIndex, playerIndex int) int {
+	removedDoor := winningIndex
+	for removedDoor == winningIndex || removedDoor == playerIndex {
+		removedDoor = pickRandomIndex()
+	}
+	return removedDoor
+}
