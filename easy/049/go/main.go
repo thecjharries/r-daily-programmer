@@ -14,8 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+var doors = []int{1, 2, 3}
+
+var zSeed = time.Now().UnixNano()
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func pickWinnerIndex() int {
+	return rand.Intn(len(doors))
 }

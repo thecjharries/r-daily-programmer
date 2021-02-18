@@ -15,6 +15,7 @@
 package main
 
 import (
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -26,6 +27,24 @@ type MainSuite struct {}
 
 var _ = Suite(&MainSuite{})
 
+var oldSeed int64
+
+const newSeed int64 = 0
+
+func (s *MainSuite) SetUpTest(c *C) {
+	oldSeed = zSeed
+	zSeed = newSeed
+	rand.Seed(zSeed)
+}
+
+func (s *MainSuite) TearDownTest(c *C) {
+	zSeed = oldSeed
+}
+
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestPickWinnerIndex(c *C) {
+	c.Assert(pickWinnerIndex(), Equals, 0)
 }
