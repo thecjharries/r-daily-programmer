@@ -50,5 +50,6 @@ func (s *MainSuite) TestPickRandomIndex(c *C) {
 }
 
 func (s *MainSuite) TestPickDoorIndexToRemove(c *C) {
+	c.Assert(pickDoorIndexToRemove(0, 0), Equals, 1)
 	c.Assert(pickDoorIndexToRemove(0, 1), Equals, 2)
 }
