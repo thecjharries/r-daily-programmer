@@ -24,8 +24,20 @@ var doors = []int{1, 2, 3}
 
 var zSeed = time.Now().UnixNano()
 
+const maxRounds = 10000
+
 func main() {
-	fmt.Println("hello world")
+	var winSwitch, winNoSwitch int
+	for index := 0; index < maxRounds; index++ {
+		if gameRound(true) {
+			winSwitch++
+		}
+		if gameRound(false) {
+			winNoSwitch++
+		}
+	}
+	fmt.Printf("Win With Switch %%: %f\n", float64(winSwitch * 100) / float64(maxRounds))
+	fmt.Printf("Win Without Switch %%: %f\n", float64(winNoSwitch * 100) / float64(maxRounds))
 }
 
 func pickRandomIndex() int {
