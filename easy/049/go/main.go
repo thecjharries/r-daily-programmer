@@ -27,6 +27,7 @@ var zSeed = time.Now().UnixNano()
 const maxRounds = 10000
 
 func main() {
+	rand.Seed(zSeed)
 	var winSwitch, winNoSwitch int
 	for index := 0; index < maxRounds; index++ {
 		if gameRound(true) {
