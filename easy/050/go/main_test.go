@@ -31,5 +31,8 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestFindFirstTwoItemsThatSumToTotal(c *C) {
-
+	c.Assert(findFirstTwoItemsThatSumToTotal(100, []int{5, 75, 25}), DeepEquals, [2]int{1, 2})
+	c.Assert(findFirstTwoItemsThatSumToTotal(200, []int{150, 24, 79, 50, 88, 345, 3}), DeepEquals, [2]int{0, 3})
+	c.Assert(findFirstTwoItemsThatSumToTotal(8, []int{2, 1, 9, 4, 4, 56, 90, 3}), DeepEquals, [2]int{3, 4})
+	c.Assert(findFirstTwoItemsThatSumToTotal(100, []int{1, 1, 1, 1}), DeepEquals, [2]int{})
 }
