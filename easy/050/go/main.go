@@ -17,7 +17,11 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+	total := 100
+	items := []int{5, 75, 25}
+	fmt.Printf("Discovered indices: ")
+	fmt.Print(findFirstTwoItemsThatSumToTotal(total, items))
+	fmt.Printf("\n")
 }
 
 func findFirstTwoItemsThatSumToTotal(total int, items []int) [2]int {
