@@ -19,3 +19,14 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func findFirstTwoItemsThatSumToTotal(total int, items []int) (int, int) {
+	for first := 0; first < len(items); first++ {
+		for second := first + 1; second < len(items); second++ {
+			if total == first + second {
+				return first, second
+			}
+		}
+	}
+	return -1, -1
+}
