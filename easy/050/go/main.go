@@ -23,7 +23,7 @@ func main() {
 func findFirstTwoItemsThatSumToTotal(total int, items []int) [2]int {
 	for first := 0; first < len(items); first++ {
 		for second := first + 1; second < len(items); second++ {
-			if total == first + second {
+			if total == items[first] + items[second] {
 				return [2]int{first, second}
 			}
 		}
