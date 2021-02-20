@@ -32,3 +32,10 @@ func generateOrderedCombinations(size int, elements []int) (combinations [][]int
 	}
 	return
 }
+
+func generateAllOrderedCombinations(size int, elements []int) (combinations [][]int) {
+	for index := 0; index < len(elements) - size; index++ {
+		combinations = append(combinations, generateOrderedCombinations(size, elements[index:])...)
+	}
+	return
+}
