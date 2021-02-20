@@ -30,21 +30,14 @@ func (s *MainSuite) TestMain(c *C) {
 
 }
 
-func (s *MainSuite) TestGenerateOrderedCombinations(c *C) {
-	input := []int{1, 2, 3}
-	size := 2
-	output := [][]int{{1, 2}, {1, 3}}
-	c.Assert(generateOrderedCombinations(size, input), DeepEquals, output)
-}
-
-func (s *MainSuite) TestGenerateAllOrderedCombinations(c *C) {
+func (s *MainSuite) TestGenerateCombinations(c *C) {
 	var input []int
 	var size int
 	var output [][]int
 	input = []int{1, 2, 3}
 	size = 2
 	output = [][]int{{1, 2}, {1, 3}, {2, 3}}
-	c.Assert(generateAllOrderedCombinations(size, input), DeepEquals, output)
+	c.Assert(generateCombinations(size, input), DeepEquals, output)
 	input = []int{1, 2, 3, 4, 5}
 	size = 3
 	output = [][]int{
@@ -59,5 +52,5 @@ func (s *MainSuite) TestGenerateAllOrderedCombinations(c *C) {
 		{2, 4, 5},
 		{3, 4, 5},
 	}
-	c.Assert(generateAllOrderedCombinations(size, input), DeepEquals, output)
+	c.Assert(generateCombinations(size, input), DeepEquals, output)
 }

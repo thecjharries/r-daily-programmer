@@ -20,22 +20,19 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func generateOrderedCombinations(size int, elements []int) (combinations [][]int) {
+func generateCombinations(size int, elements []int) (combinations [][]int) {
 	if 1 == size {
 		for _, element := range elements {
 			combinations = append(combinations, []int{element})
 		}
 		return
 	}
-	for _, combination := range generateOrderedCombinations(size - 1, elements[1:]) {
+	if len(elements) == size {
+		return [][]int{elements}
+	}
+	for _, combination := range generateCombinations(size - 1, elements[1:]) {
 		combinations = append(combinations, append([]int{elements[0]}, combination...))
 	}
-	return
-}
-
-func generateAllOrderedCombinations(size int, elements []int) (combinations [][]int) {
-	for index := 0; index < len(elements) - size; index++ {
-		combinations = append(combinations, generateOrderedCombinations(size, elements[index:])...)
-	}
+	combinations = append(combinations, generateCombinations(size, elements[1:])...)
 	return
 }
