@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGenerateOrderedPermutations(c *C) {
+	input := []int{1, 2, 3}
+	size := 2
+	output := [][]int{{1, 2}, {1, 3}}
+	c.Assert(generateOrderedPermutations(size, input), DeepEquals, output)
+}
