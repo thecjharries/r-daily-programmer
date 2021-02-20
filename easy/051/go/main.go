@@ -19,3 +19,16 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func generateOrderedPermutations(size int, elements []int) (combinations [][]int) {
+	if 1 == size {
+		for _, element := range elements {
+			combinations = append(combinations, []int{element})
+		}
+		return
+	}
+	for _, combination := range generateOrderedPermutations(size - 1, elements[1:]) {
+		combinations = append(combinations, append([]int{elements[0]}, combination...))
+	}
+	return
+}
