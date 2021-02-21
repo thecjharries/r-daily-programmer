@@ -29,3 +29,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGetLetterValue(c *C) {
+	c.Assert(getLetterValue("a"), Equals, 1)
+	c.Assert(getLetterValue("z"), Equals, 26)
+}

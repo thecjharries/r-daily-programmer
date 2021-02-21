@@ -14,8 +14,17 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+const romanAlphabet string = " abcdefghijklmnopqrstuvwxyz"
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func getLetterValue(letter string) int {
+	return strings.Index(romanAlphabet, letter)
 }
