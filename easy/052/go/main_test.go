@@ -39,3 +39,9 @@ func (s *MainSuite) TestGetWordValue(c *C) {
 	c.Assert(getWordValue("Hat"), Equals, 29)
 	c.Assert(getWordValue("Shoe"), Equals, 47)
 }
+
+func (s *MainSuite) TestCreateWordValueSlice(c *C) {
+	input := []string{"Hat", "Shoe"}
+	output := []WordValue{{"Hat", 29}, {"Shoe", 47}}
+	c.Assert(createWordValueSlice(input), DeepEquals, output)
+}

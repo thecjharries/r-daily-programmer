@@ -21,6 +21,11 @@ import (
 
 const romanAlphabet string = " abcdefghijklmnopqrstuvwxyz"
 
+type WordValue struct {
+	word string
+	value int
+}
+
 func main() {
 	fmt.Println("hello world")
 }
@@ -35,4 +40,11 @@ func getWordValue(word string) int {
 		value += getLetterValue(string(letter))
 	}
 	return value
+}
+
+func createWordValueSlice(words []string) (wordValues []WordValue) {
+	for _, word := range words {
+		wordValues = append(wordValues, WordValue{word, getWordValue(word)})
+	}
+	return
 }
