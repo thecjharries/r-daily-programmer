@@ -34,3 +34,8 @@ func (s *MainSuite) TestGetLetterValue(c *C) {
 	c.Assert(getLetterValue("a"), Equals, 1)
 	c.Assert(getLetterValue("z"), Equals, 26)
 }
+
+func (s *MainSuite) TestGetWordValue(c *C) {
+	c.Assert(getWordValue("Hat"), Equals, 29)
+	c.Assert(getWordValue("Shoe"), Equals, 47)
+}

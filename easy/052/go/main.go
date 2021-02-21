@@ -28,3 +28,11 @@ func main() {
 func getLetterValue(letter string) int {
 	return strings.Index(romanAlphabet, letter)
 }
+
+func getWordValue(word string) int {
+	value := 0
+	for _, letter := range strings.ToLower(word) {
+		value += getLetterValue(string(letter))
+	}
+	return value
+}
