@@ -28,7 +28,9 @@ type WordValue struct {
 }
 
 func main() {
-	fmt.Println("hello world")
+	words := []string{"Shoe", "Hat"}
+	orderedWords := orderListOfWordsByValue(words)
+	fmt.Println(orderedWords)
 }
 
 func getLetterValue(letter string) int {
