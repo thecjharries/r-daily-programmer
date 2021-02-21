@@ -16,14 +16,15 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
 const romanAlphabet string = " abcdefghijklmnopqrstuvwxyz"
 
 type WordValue struct {
-	word string
-	value int
+	Word string
+	Value int
 }
 
 func main() {
@@ -47,4 +48,11 @@ func createWordValueSlice(words []string) (wordValues []WordValue) {
 		wordValues = append(wordValues, WordValue{word, getWordValue(word)})
 	}
 	return
+}
+
+func sortWordValueSlice(wordValues []WordValue) []WordValue {
+	sort.Slice(wordValues, func(first, second int) bool {
+		return wordValues[first].Value < wordValues[second].Value
+	})
+	return wordValues
 }
