@@ -57,7 +57,11 @@ func sortWordValueSlice(wordValues []WordValue) []WordValue {
 	return wordValues
 }
 
-func orderListOfWordsByValue(words []string) []WordValue {
+func orderListOfWordsByValue(words []string) (sortedWords []string) {
 	wordValues := createWordValueSlice(words)
-	return sortWordValueSlice(wordValues)
+	wordValues = sortWordValueSlice(wordValues)
+	for _, wordValue := range wordValues {
+		sortedWords = append(sortedWords, wordValue.Word)
+	}
+	return
 }
