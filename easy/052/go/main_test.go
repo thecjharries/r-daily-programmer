@@ -51,3 +51,9 @@ func (s *MainSuite) TestSortWordValueSlice(c *C) {
 	output := []WordValue{{"Hat", 29}, {"Shoe", 47}}
 	c.Assert(sortWordValueSlice(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestOrderListOfWordsByValue(c *C) {
+	input := []string{ "Shoe", "Hat"}
+	output := []WordValue{{"Hat", 29}, {"Shoe", 47}}
+	c.Assert(orderListOfWordsByValue(input), DeepEquals, output)
+}
