@@ -30,6 +30,16 @@ func combineTwoSortedIntSlices(first, second []int) (combined []int) {
 			combined = append(combined, second[secondIndex])
 			secondIndex++
 		}
+		if firstIndex >= len(first) {
+			combined = append(combined, second[secondIndex:]...)
+			secondIndex = len(second)
+			break
+		}
+		if secondIndex >= len(second) {
+			combined = append(combined, first[firstIndex:]...)
+			firstIndex = len(first)
+			break
+		}
 	}
 	return
 }
