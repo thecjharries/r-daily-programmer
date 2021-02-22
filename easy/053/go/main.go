@@ -19,3 +19,17 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func combineTwoSortedIntSlices(first, second []int) (combined []int) {
+	firstIndex, secondIndex := 0, 0
+	for firstIndex < len(first) || secondIndex < len(second) {
+		if first[firstIndex] < second[secondIndex] {
+			combined = append(combined, first[firstIndex])
+			firstIndex++
+		} else {
+			combined = append(combined, second[secondIndex])
+			secondIndex++
+		}
+	}
+	return
+}
