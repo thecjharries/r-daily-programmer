@@ -17,7 +17,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+	first := []int{1,3,5,7,9}
+	second := []int{2,4,6,8}
+	fmt.Println(combineTwoSortedIntSlices(first, second))
 }
 
 func combineTwoSortedIntSlices(first, second []int) (combined []int) {
