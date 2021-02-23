@@ -47,3 +47,9 @@ func (s *MainSuite) TestGetRandomLetters(c *C) {
 	c.Assert(getRandomLetters(1), Equals, "x")
 	c.Assert(getRandomLetters(10), Equals, "vlbzgbaicm")
 }
+
+func (s *MainSuite) TestPadPlaintext(c *C) {
+	c.Assert(padPlaintext(3, "qqq"), Equals, "qqq")
+	c.Assert(padPlaintext(4, "qqq"), Equals, "qqqr")
+	c.Assert(padPlaintext(10, "qqq"), Equals, "qqqajwwhth")
+}

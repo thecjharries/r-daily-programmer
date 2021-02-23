@@ -34,6 +34,16 @@ func getRandomLetters(count int) (randomLetters string) {
 	return
 }
 
+func padPlaintext(key int, plaintext string) (paddedPlaintext string) {
+	var desiredSize int
+	if key > len(plaintext) {
+		desiredSize = key
+	} else {
+		desiredSize = len(plaintext) + (len(plaintext) % key)
+	}
+	return plaintext + getRandomLetters(desiredSize - len(plaintext))
+}
+
 func encrypt(key int, plaintext string) (ciphertext string) {
 	return
 }
