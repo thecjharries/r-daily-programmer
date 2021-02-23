@@ -43,6 +43,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestGetRandomLetters(c *C) {
+	c.Assert(getRandomLetters(0), Equals, "")
 	c.Assert(getRandomLetters(1), Equals, "x")
 	c.Assert(getRandomLetters(10), Equals, "vlbzgbaicm")
 }
