@@ -26,6 +26,23 @@ type MainSuite struct {}
 
 var _ = Suite(&MainSuite{})
 
+const newSeed int64 = 0
+var oldSeed int64
+
+func (s *MainSuite) SetUpTest(c *C) {
+	oldSeed = zSeed
+	zSeed = newSeed
+}
+
+func (s *MainSuite) TearDownTest(c *C) {
+	zSeed = oldSeed
+}
+
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestGetRandomLetters(c *C) {
+	c.Assert(getRandomLetters(1), Equals, "x")
+	c.Assert(getRandomLetters(10), Equals, "vlbzgbaicm")
 }

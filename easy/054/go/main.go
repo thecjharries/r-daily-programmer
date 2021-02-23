@@ -14,8 +14,26 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+var zSeed = time.Now().UnixNano()
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func getRandomLetters(count int) (randomLetters string) {
+	for index := 0; index < count; index++ {
+		randomLetters += string(romanAlphabet[rand.Intn(len(romanAlphabet))])
+	}
+	return
+}
+
+func encrypt(key int, plaintext string) (ciphertext string) {
+	return
 }
