@@ -60,3 +60,8 @@ func (s *MainSuite) TestEncrypt(c *C) {
 	c.Assert(encrypt(3, "The cake is a lie!"), Equals, "T kiaihces eea  l!")
 	c.Assert(encrypt(7, "The cake is a lie!"), Equals, "Telh ieie s!c caauk b")
 }
+
+func (s *MainSuite) TestDecrypt(c *C) {
+	c.Assert(decrypt(3, "T kiaihces eea  l!"), Equals, "The cake is a lie!")
+	c.Assert(decrypt(7, "Telh ieie s!c caauk b"), Equals, "The cake is a lie!cub")
+}

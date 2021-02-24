@@ -56,3 +56,7 @@ func encrypt(key int, plaintext string) (ciphertext string) {
 	}
 	return
 }
+
+func decrypt(key int, ciphertext string) string {
+	return encrypt(len(ciphertext) / key, ciphertext)
+}
