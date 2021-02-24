@@ -45,5 +45,12 @@ func padPlaintext(key int, plaintext string) (paddedPlaintext string) {
 }
 
 func encrypt(key int, plaintext string) (ciphertext string) {
+	paddedPlaintext := padPlaintext(key, plaintext)
+	for column := 0; column < key; column++ {
+		for characterIndex := column; characterIndex < len(paddedPlaintext); characterIndex += key {
+			ciphertext += string(paddedPlaintext[characterIndex])
+			fmt.Println(ciphertext)
+		}
+	}
 	return
 }

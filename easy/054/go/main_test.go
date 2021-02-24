@@ -15,6 +15,7 @@
 package main
 
 import (
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -32,6 +33,7 @@ var oldSeed int64
 func (s *MainSuite) SetUpTest(c *C) {
 	oldSeed = zSeed
 	zSeed = newSeed
+	rand.Seed(zSeed)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,4 +54,9 @@ func (s *MainSuite) TestPadPlaintext(c *C) {
 	c.Assert(padPlaintext(3, "qqq"), Equals, "qqq")
 	c.Assert(padPlaintext(4, "qqq"), Equals, "qqqr")
 	c.Assert(padPlaintext(10, "qqq"), Equals, "qqqajwwhth")
+}
+
+func (s *MainSuite) TestEncrypt(c *C) {
+	c.Assert(encrypt(3, "The cake is a lie!"), Equals, "T kiaihces eea  l!")
+	c.Assert(encrypt(7, "The cake is a lie!"), Equals, "Telh ieie s!c vaamk z")
 }
