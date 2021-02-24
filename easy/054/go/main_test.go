@@ -46,17 +46,17 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestGetRandomLetters(c *C) {
 	c.Assert(getRandomLetters(0), Equals, "")
-	c.Assert(getRandomLetters(1), Equals, "x")
-	c.Assert(getRandomLetters(10), Equals, "vlbzgbaicm")
+	c.Assert(getRandomLetters(1), Equals, "c")
+	c.Assert(getRandomLetters(10), Equals, "ubyhizzkak")
 }
 
 func (s *MainSuite) TestPadPlaintext(c *C) {
 	c.Assert(padPlaintext(3, "qqq"), Equals, "qqq")
-	c.Assert(padPlaintext(4, "qqq"), Equals, "qqqr")
-	c.Assert(padPlaintext(10, "qqq"), Equals, "qqqajwwhth")
+	c.Assert(padPlaintext(4, "qqq"), Equals, "qqqc")
+	c.Assert(padPlaintext(10, "qqq"), Equals, "qqqubyhizz")
 }
 
 func (s *MainSuite) TestEncrypt(c *C) {
 	c.Assert(encrypt(3, "The cake is a lie!"), Equals, "T kiaihces eea  l!")
-	c.Assert(encrypt(7, "The cake is a lie!"), Equals, "Telh ieie s!c vaamk z")
+	c.Assert(encrypt(7, "The cake is a lie!"), Equals, "Telh ieie s!c caauk b")
 }
