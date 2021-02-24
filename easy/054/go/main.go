@@ -39,18 +39,20 @@ func padPlaintext(key int, plaintext string) (paddedPlaintext string) {
 	if key > len(plaintext) {
 		desiredSize = key
 	} else {
-		desiredSize = len(plaintext) + (len(plaintext) % key)
+		desiredSize = len(plaintext) + ((key - len(plaintext) % key) % key)
 	}
 	return plaintext + getRandomLetters(desiredSize - len(plaintext))
 }
 
 func encrypt(key int, plaintext string) (ciphertext string) {
 	paddedPlaintext := padPlaintext(key, plaintext)
+	fmt.Println(paddedPlaintext)
 	for column := 0; column < key; column++ {
 		for characterIndex := column; characterIndex < len(paddedPlaintext); characterIndex += key {
+			fmt.Println(characterIndex)
 			ciphertext += string(paddedPlaintext[characterIndex])
-			fmt.Println(ciphertext)
 		}
+		fmt.Println(ciphertext)
 	}
 	return
 }
