@@ -24,7 +24,7 @@ func getSlidingWindowMinimums(values []int, windowSize int) (minimums []int) {
 	for windowStartIndex := 0; windowStartIndex < len(values) - windowSize; windowStartIndex++ {
 		minimum := values[windowStartIndex]
 		for windowIndex := 1; windowIndex < windowSize; windowIndex++ {
-			if minimum < values[windowStartIndex + windowIndex] {
+			if minimum > values[windowStartIndex + windowIndex] {
 				minimum = values[windowStartIndex + windowIndex]
 			}
 		}
