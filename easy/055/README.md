@@ -6,4 +6,4 @@
 
 ## Prompt
 
-Write a program to solve the sliding window minimum problem using any of the methods possible. [This](http://home.tiac.net/~cri/2001/slidingmin.html) could be a helpful link.
+Write a program to solve the sliding window minimum problem using any of the methods possible. [This](https://web.archive.org/web/20120312192050/http://home.tiac.net/~cri/2001/slidingmin.html) could be a helpful link.
