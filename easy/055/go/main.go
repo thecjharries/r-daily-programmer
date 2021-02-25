@@ -17,7 +17,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+	input := []int{4,3,2,1,5,7,6,8,9}
+	windowSize := 3
+	fmt.Println(getSlidingWindowMinimums(input, windowSize))
 }
 
 func getSlidingWindowMinimums(values []int, windowSize int) (minimums []int) {
