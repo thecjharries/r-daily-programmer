@@ -29,3 +29,19 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGetSlidingWindowMinimums(c *C) {
+	var input, output []int
+	var windowSize int
+	input = []int{5,2,8,6,4,7}
+	windowSize = 20
+	c.Assert(getSlidingWindowMinimums(input, windowSize), DeepEquals, output)
+	input = []int{4,3,2,1,5,7,6,8,9}
+	output = []int{2,1,1,1,5,6,6}
+	windowSize = 3
+	c.Assert(getSlidingWindowMinimums(input, windowSize), DeepEquals, output)
+	input = []int{5,2,8,6,4,7}
+	output = []int{2,2,6,4,4}
+	windowSize = 2
+	c.Assert(getSlidingWindowMinimums(input, windowSize), DeepEquals, output)
+}
