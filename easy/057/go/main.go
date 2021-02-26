@@ -19,3 +19,23 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+// https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm
+func kadanesAlgorithm(values []int) []int {
+	var maxSum, maxStartIndex, maxEndIndex, currentSum, currentStartIndex int
+	//currentStartIndex, currentEndIndex, currentSum, currentValue := 0, 0, 0, 0
+	//maxStartIndex, maxEndIndex, maxSum := 0, 1, 0
+	for currentEndIndex, currentValue := range values {
+		if currentSum <= 0 {
+			currentSum = currentValue
+			currentStartIndex = currentEndIndex
+		} else {
+			currentSum += currentValue
+		}
+		if maxSum <= currentSum {
+			maxSum = currentSum
+			maxStartIndex, maxEndIndex = currentStartIndex, currentEndIndex + 1
+		}
+	}
+	return values[maxStartIndex:maxEndIndex]
+}
