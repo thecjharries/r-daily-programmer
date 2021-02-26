@@ -15,6 +15,7 @@
 package main
 
 import (
+	"io/ioutil"
 	"os"
 	"testing"
 
@@ -40,4 +41,16 @@ func (s *MainSuite) TestDeleteFile(c *C) {
 	deleteFile(filename)
 	_, notExistsError := os.Stat(filename)
 	c.Assert(os.IsNotExist(notExistsError), Equals, true)
+}
+
+func (s *MainSuite) TestWriteAbacabaSequenceToFile(c *C) {
+	output := `a
+aba
+abacaba
+`
+	alphabet := "abc"
+	filename := "scratch.txt"
+	writeAbacabaSequenceToFile(alphabet, filename)
+	fileContents, _ := ioutil.ReadFile(filename)
+	c.Assert(fileContents, DeepEquals, []byte(output))
 }

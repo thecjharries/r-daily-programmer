@@ -28,5 +28,19 @@ func deleteFile(filename string) {
 }
 
 func writeAbacabaSequenceToFile(alphabet, filename string) {
-
+	deleteFile(filename)
+	fileHandle, _ := os.Create(filename)
+	defer (func (){ _ = fileHandle.Close() })()
+	var abacabaCharacters []rune
+	for _, currentCharacter := range alphabet {
+		_, _ = fileHandle.WriteString(
+			fmt.Sprintf(
+				"%s%s%s\n",
+				string(abacabaCharacters),
+				string(currentCharacter),
+				string(abacabaCharacters),
+			),
+		)
+		abacabaCharacters = append(abacabaCharacters, append([]rune{currentCharacter}, abacabaCharacters...)...)
+	}
 }
