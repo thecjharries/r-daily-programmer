@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestKadanesAlgorithm(c *C) {
+	var input, output []int
+	input = []int{31, -41, 59, 26, -53, 58, 97, -93, -23, 84}
+	output = []int{59, 26, -53, 58, 97}
+	c.Assert(kadanesAlgorithm(input), DeepEquals, output)
+}
