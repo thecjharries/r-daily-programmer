@@ -19,8 +19,10 @@ import (
 	"os"
 )
 
+const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+
 func main() {
-	fmt.Println("hello world")
+	writeAbacabaSequenceToFile(romanAlphabet, "output.txt")
 }
 
 func deleteFile(filename string) {
