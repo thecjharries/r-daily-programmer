@@ -20,17 +20,15 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	values := []int{31, -41, 59, 26, -53, 58, 97, -93, -23, 84}
+	fmt.Println(kadanesAlgorithm(values))
 }
 
 // https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane's_algorithm
 func kadanesAlgorithm(values []int) []int {
 	var maxSum, maxStartIndex, maxEndIndex, currentSum, currentStartIndex int
-	//currentStartIndex, currentEndIndex, currentSum, currentValue := 0, 0, 0, 0
-	//maxStartIndex, maxEndIndex, maxSum := 0, 1, 0
 	currentSum = int(math.Inf(-1))
 	for currentEndIndex, currentValue := range values {
-		fmt.Printf("%d, %d\n", currentValue, currentSum)
 		if currentSum <= 0 {
 			if currentSum < currentValue {
 				currentSum = currentValue
