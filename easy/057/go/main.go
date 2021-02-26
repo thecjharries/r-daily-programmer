@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -25,10 +28,15 @@ func kadanesAlgorithm(values []int) []int {
 	var maxSum, maxStartIndex, maxEndIndex, currentSum, currentStartIndex int
 	//currentStartIndex, currentEndIndex, currentSum, currentValue := 0, 0, 0, 0
 	//maxStartIndex, maxEndIndex, maxSum := 0, 1, 0
+	currentSum = int(math.Inf(-1))
 	for currentEndIndex, currentValue := range values {
+		fmt.Printf("%d, %d\n", currentValue, currentSum)
 		if currentSum <= 0 {
-			currentSum = currentValue
-			currentStartIndex = currentEndIndex
+			if currentSum < currentValue {
+				currentSum = currentValue
+				currentStartIndex = currentEndIndex
+				maxStartIndex, maxEndIndex = currentStartIndex, currentEndIndex + 1
+			}
 		} else {
 			currentSum += currentValue
 		}
