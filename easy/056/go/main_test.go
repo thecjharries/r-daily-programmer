@@ -44,13 +44,51 @@ func (s *MainSuite) TestDeleteFile(c *C) {
 }
 
 func (s *MainSuite) TestWriteAbacabaSequenceToFile(c *C) {
-	output := `a
+	var output, alphabet, filename string
+	var fileContents []byte
+	output = `a
+`
+	alphabet = "a"
+	filename = "scratch.txt"
+	writeAbacabaSequenceToFile(alphabet, filename)
+	fileContents, _ = ioutil.ReadFile(filename)
+	c.Assert(fileContents, DeepEquals, []byte(output))
+	output = `a
+aba
+`
+	alphabet = "ab"
+	filename = "scratch.txt"
+	writeAbacabaSequenceToFile(alphabet, filename)
+	fileContents, _ = ioutil.ReadFile(filename)
+	c.Assert(fileContents, DeepEquals, []byte(output))
+	output = `a
 aba
 abacaba
 `
-	alphabet := "abc"
-	filename := "scratch.txt"
+	alphabet = "abc"
+	filename = "scratch.txt"
 	writeAbacabaSequenceToFile(alphabet, filename)
-	fileContents, _ := ioutil.ReadFile(filename)
+	fileContents, _ = ioutil.ReadFile(filename)
+	c.Assert(fileContents, DeepEquals, []byte(output))
+	output = `a
+aba
+abacaba
+abacabadabacaba
+`
+	alphabet = "abcd"
+	filename = "scratch.txt"
+	writeAbacabaSequenceToFile(alphabet, filename)
+	fileContents, _ = ioutil.ReadFile(filename)
+	c.Assert(fileContents, DeepEquals, []byte(output))
+	output = `a
+aba
+abacaba
+abacabadabacaba
+abacabadabacabaeabacabadabacaba
+`
+	alphabet = "abcde"
+	filename = "scratch.txt"
+	writeAbacabaSequenceToFile(alphabet, filename)
+	fileContents, _ = ioutil.ReadFile(filename)
 	c.Assert(fileContents, DeepEquals, []byte(output))
 }
