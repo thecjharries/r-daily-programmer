@@ -15,6 +15,7 @@
 package main
 
 import (
+	"os"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -28,4 +29,15 @@ var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
+}
+
+func (s *MainSuite) TestDeleteFile(c *C) {
+	filename := "test"
+	fileHandle, _ := os.Create(filename)
+	_ = fileHandle.Close()
+	_, existsError := os.Stat(filename)
+	c.Assert(existsError, IsNil)
+	deleteFile(filename)
+	_, notExistsError := os.Stat(filename)
+	c.Assert(os.IsNotExist(notExistsError), Equals, true)
 }

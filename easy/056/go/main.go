@@ -14,8 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func deleteFile(filename string) {
+	_ = os.Remove(filename)
+}
+
+func writeAbacabaSequenceToFile(alphabet, filename string) {
+
 }
