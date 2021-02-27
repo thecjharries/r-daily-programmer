@@ -29,3 +29,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestConvertNumberToBase(c *C) {
+	c.Assert(convertNumberToBase(35, base36Digits), Equals, "Y")
+}
