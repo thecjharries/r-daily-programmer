@@ -31,5 +31,9 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestConvertNumberToBase(c *C) {
-	c.Assert(convertNumberToBase(35, base36Digits), Equals, "Y")
+	c.Assert(convertNumberToBase(10, base36Digits), Equals, "A")
+	c.Assert(convertNumberToBase(100, base36Digits), Equals, "2S")
+	c.Assert(convertNumberToBase(1000, base36Digits), Equals, "RS")
+	c.Assert(convertNumberToBase(10000, base36Digits), Equals, "7PS")
+	c.Assert(convertNumberToBase(100000, base36Digits), Equals, "255S")
 }
