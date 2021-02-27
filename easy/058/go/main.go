@@ -16,6 +16,17 @@ package main
 
 import "fmt"
 
+const base36Digits string = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 func main() {
 	fmt.Println("hello world")
+}
+
+func convertNumberToBase(number int, baseDigits string) (numberInBase string) {
+	numberBeingConverted := number
+	for 0 < numberBeingConverted {
+		numberInBase = string(baseDigits[numberBeingConverted % len(baseDigits)]) + numberInBase
+		numberBeingConverted /= len(baseDigits)
+	}
+	return
 }
