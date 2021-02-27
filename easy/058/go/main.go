@@ -17,6 +17,7 @@ package main
 import "fmt"
 
 const base36Digits string = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const base27Digits string = "0123456789ABCDEFGHIJKLMNOPQ"
 
 func main() {
 	fmt.Println("hello world")
@@ -29,4 +30,14 @@ func convertNumberToBase(number int, baseDigits string) (numberInBase string) {
 		numberBeingConverted /= len(baseDigits)
 	}
 	return
+}
+
+func isNumberPalindromicInBase(number int, baseDigits string) bool {
+	numberInBase := convertNumberToBase(number, baseDigits)
+	for index := 0; index < len(numberInBase) / 2; index++ {
+		if numberInBase[index] != numberInBase[len(numberInBase) - index - 1] {
+			return false
+		}
+	}
+	return true
 }
