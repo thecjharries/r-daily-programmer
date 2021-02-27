@@ -37,3 +37,11 @@ func (s *MainSuite) TestConvertNumberToBase(c *C) {
 	c.Assert(convertNumberToBase(10000, base36Digits), Equals, "7PS")
 	c.Assert(convertNumberToBase(100000, base36Digits), Equals, "255S")
 }
+
+func (s *MainSuite) TestIsNumberPalindromicInBase(c *C) {
+	c.Assert(isNumberPalindromicInBase(1, base36Digits), Equals, true)
+	c.Assert(isNumberPalindromicInBase(100, base36Digits), Equals, false)
+	c.Assert(isNumberPalindromicInBase(16708, base27Digits), Equals, true)
+	c.Assert(isNumberPalindromicInBase(15167, base27Digits), Equals, true)
+	c.Assert(isNumberPalindromicInBase(15167, base36Digits), Equals, true)
+}
