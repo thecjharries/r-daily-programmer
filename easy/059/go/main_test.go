@@ -29,3 +29,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestFindFirstIndexOfNaively(c *C) {
+	c.Assert(findFirstIndexOfNaively("Double, double, toil and trouble", "il an"), Equals, 18)
+}
