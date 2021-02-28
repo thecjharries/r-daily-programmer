@@ -34,4 +34,5 @@ func (s *MainSuite) TestFindFirstIndexOfNaively(c *C) {
 	c.Assert(findFirstIndexOfNaively("Double, double, toil and trouble", "il an"), Equals, 18)
 	c.Assert(findFirstIndexOfNaively("aaaaa", "qqq"), Equals, -1)
 	c.Assert(findFirstIndexOfNaively("aaa", "aaaaa"), Equals, -1)
+	c.Assert(findFirstIndexOfNaively("hello world", "world"), Equals, 6)
 }
