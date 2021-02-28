@@ -21,6 +21,9 @@ func main() {
 }
 
 func findFirstIndexOfNaively(haystack, needle string) int {
+	if len(needle) > len(haystack) {
+		return -1
+	}
 	for leadIndex := 0; leadIndex < len(haystack) - len(needle); leadIndex++ {
 		needleMatches := true
 		for positionIndex := 0; positionIndex < len(needle); positionIndex++ {
