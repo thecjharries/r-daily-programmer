@@ -1,5 +1,9 @@
 # [6/2/2012] Challenge #59 [easy]
 
+## Note
+
+I've called my Go solution `findFirstIndexOfNaively` because a smarter solution exists. [The Knuth-Morris-Pratt algorithm](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm) does a smarter search that tracks previously searched positions and uses them to set the next start point.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/uh033/622012_challenge_59_easy/) by [u/oskar_s](https://old.reddit.com/user/oskar_s)
