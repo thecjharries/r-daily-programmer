@@ -17,7 +17,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+	needle := "world"
+	haystack := "hello world"
+	fmt.Println(findFirstIndexOfNaively(haystack, needle))
 }
 
 func findFirstIndexOfNaively(haystack, needle string) int {
