@@ -19,3 +19,19 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func findFirstIndexOfNaively(haystack, needle string) int {
+	for leadIndex := 0; leadIndex < len(haystack) - len(needle); leadIndex++ {
+		needleMatches := true
+		for positionIndex := 0; positionIndex < len(needle); positionIndex++ {
+			if needle[positionIndex] != haystack[leadIndex + positionIndex] {
+				needleMatches = false
+				break
+			}
+		}
+		if needleMatches {
+			return leadIndex
+		}
+	}
+	return -1
+}
