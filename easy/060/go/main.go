@@ -39,10 +39,19 @@ func removeEvenDivisors(number int) int {
 // https://www.geeksforgeeks.org/find-politeness-number/
 func determinePolitenessOfInt(number int) int {
 	politeness := 1
-	testingNumber := number
-	for 0 == testingNumber % 2 {
-		testingNumber /= 2
-	}
+	testingNumber := removeEvenDivisors(number)
 	oddFactor := 3
-	return oddFactor * politeness
+	for oddFactor * oddFactor < testingNumber {
+		numberOfTimesOddFactorDivides := 0
+		for 0 == testingNumber % oddFactor {
+			testingNumber /= oddFactor
+			numberOfTimesOddFactorDivides++
+		}
+		politeness = politeness * numberOfTimesOddFactorDivides + 1
+		oddFactor += 2
+	}
+	if 2 < testingNumber {
+		politeness *= 2
+	}
+	return politeness - 1
 }
