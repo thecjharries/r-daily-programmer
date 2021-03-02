@@ -19,3 +19,11 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func isIntPolite(number int) bool {
+	testingNumber := number
+	for 0 == testingNumber % 2 {
+		testingNumber /= 2
+	}
+	return testingNumber > 1
+}
