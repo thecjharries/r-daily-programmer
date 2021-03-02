@@ -20,14 +20,6 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func isIntPolite(number int) bool {
-	testingNumber := number
-	for 0 == testingNumber % 2 {
-		testingNumber /= 2
-	}
-	return testingNumber > 1
-}
-
 func removeEvenDivisors(number int) int {
 	reducingNumber := number
 	for 0 == reducingNumber % 2 {

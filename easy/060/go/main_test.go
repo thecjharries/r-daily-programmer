@@ -30,41 +30,6 @@ func (s *MainSuite) TestMain(c *C) {
 
 }
 
-func (s *MainSuite) TestIsIntPolite(c *C) {
-	c.Assert(isIntPolite(1), Equals, false)
-	c.Assert(isIntPolite(2), Equals, false)
-	c.Assert(isIntPolite(3), Equals, true)
-	c.Assert(isIntPolite(4), Equals, false)
-	c.Assert(isIntPolite(5), Equals, true)
-	c.Assert(isIntPolite(6), Equals, true)
-	c.Assert(isIntPolite(7), Equals, true)
-	c.Assert(isIntPolite(8), Equals, false)
-	c.Assert(isIntPolite(9), Equals, true)
-	c.Assert(isIntPolite(10), Equals, true)
-	c.Assert(isIntPolite(11), Equals, true)
-	c.Assert(isIntPolite(12), Equals, true)
-	c.Assert(isIntPolite(13), Equals, true)
-	c.Assert(isIntPolite(14), Equals, true)
-	c.Assert(isIntPolite(15), Equals, true)
-	c.Assert(isIntPolite(16), Equals, false)
-	c.Assert(isIntPolite(17), Equals, true)
-	c.Assert(isIntPolite(18), Equals, true)
-	c.Assert(isIntPolite(19), Equals, true)
-	c.Assert(isIntPolite(20), Equals, true)
-	c.Assert(isIntPolite(21), Equals, true)
-	c.Assert(isIntPolite(22), Equals, true)
-	c.Assert(isIntPolite(23), Equals, true)
-	c.Assert(isIntPolite(24), Equals, true)
-	c.Assert(isIntPolite(25), Equals, true)
-	c.Assert(isIntPolite(26), Equals, true)
-	c.Assert(isIntPolite(27), Equals, true)
-	c.Assert(isIntPolite(28), Equals, true)
-	c.Assert(isIntPolite(29), Equals, true)
-	c.Assert(isIntPolite(30), Equals, true)
-	c.Assert(isIntPolite(31), Equals, true)
-	c.Assert(isIntPolite(32), Equals, false)
-}
-
 func (s *MainSuite) TestRemoveEvenDivisors(c *C) {
 	c.Assert(removeEvenDivisors(2), Equals, 1)
 	c.Assert(removeEvenDivisors(3), Equals, 3)
