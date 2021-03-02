@@ -64,3 +64,9 @@ func (s *MainSuite) TestIsIntPolite(c *C) {
 	c.Assert(isIntPolite(31), Equals, true)
 	c.Assert(isIntPolite(32), Equals, false)
 }
+
+func (s *MainSuite) TestRemoveEvenDivisors(c *C) {
+	c.Assert(removeEvenDivisors(2), Equals, 1)
+	c.Assert(removeEvenDivisors(3), Equals, 3)
+	c.Assert(removeEvenDivisors(24), Equals, 3)
+}

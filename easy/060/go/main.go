@@ -27,3 +27,22 @@ func isIntPolite(number int) bool {
 	}
 	return testingNumber > 1
 }
+
+func removeEvenDivisors(number int) int {
+	reducingNumber := number
+	for 0 == reducingNumber % 2 {
+		reducingNumber /= 2
+	}
+	return reducingNumber
+}
+
+// https://www.geeksforgeeks.org/find-politeness-number/
+func determinePolitenessOfInt(number int) int {
+	politeness := 1
+	testingNumber := number
+	for 0 == testingNumber % 2 {
+		testingNumber /= 2
+	}
+	oddFactor := 3
+	return oddFactor * politeness
+}
