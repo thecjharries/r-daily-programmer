@@ -29,3 +29,11 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestRotateNumber(c *C) {
+	c.Assert(rotateNumber(19), Equals, int64(25))
+	c.Assert(rotateNumber(25), Equals, int64(28))
+	c.Assert(rotateNumber(28), Equals, int64(14))
+	c.Assert(rotateNumber(14), Equals, int64(7))
+	c.Assert(rotateNumber(7), Equals, int64(7))
+}

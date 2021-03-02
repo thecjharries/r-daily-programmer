@@ -14,8 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	fmt.Println("hello world")
+	binary := int64(19)
+	leadingDigit := strconv.FormatInt(binary & 1, 2)
+	shifted := strconv.FormatInt(binary >> 1, 2)
+	fmt.Println(leadingDigit + shifted)
+	fmt.Println(strconv.ParseInt(leadingDigit + shifted, 2, 64))
+	//fmt.Println(strconv.ParseInt(strconv.FormatInt(binary & 1, 2) + strconv.FormatInt(binary >> 1, 2), 2, 64))
+}
+
+func rotateNumber(number int64) int64 {
+	leadingDigit := strconv.FormatInt(number & 1, 2)
+	shifted := strconv.FormatInt(number >> 1, 2)
+	newNumber, _ := strconv.ParseInt(leadingDigit + shifted, 2, 64)
+	return newNumber
 }
