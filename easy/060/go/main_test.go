@@ -65,18 +65,6 @@ func (s *MainSuite) TestIsIntPolite(c *C) {
 	c.Assert(isIntPolite(32), Equals, false)
 }
 
-func (s *MainSuite) TestRemoveEvenDivisors(c *C) {
-	c.Assert(removeEvenDivisors(2), Equals, 1)
-	c.Assert(removeEvenDivisors(3), Equals, 3)
-	c.Assert(removeEvenDivisors(24), Equals, 3)
-}
-
-func (s *MainSuite) TestDeterminePoliteness(c *C) {
-	c.Assert(determinePolitenessOfInt(90), Equals, 5)
-	c.Assert(determinePolitenessOfInt(15), Equals, 3)
-	c.Assert(determinePolitenessOfInt(32), Equals, 0)
-}
-
 func (s *MainSuite) TestCreateIntRangeInclusive(c *C) {
 	c.Assert(createIntRangeInclusive(2, 5), DeepEquals, []int{2,3,4,5})
 }

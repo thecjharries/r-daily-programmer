@@ -28,34 +28,6 @@ func isIntPolite(number int) bool {
 	return math.Ceil(logBase2) != math.Floor(logBase2) && number > 1
 }
 
-func removeEvenDivisors(number int) int {
-	reducingNumber := number
-	for 0 == reducingNumber % 2 {
-		reducingNumber /= 2
-	}
-	return reducingNumber
-}
-
-// https://www.geeksforgeeks.org/find-politeness-number/
-func determinePolitenessOfInt(number int) int {
-	politeness := 1
-	testingNumber := removeEvenDivisors(number)
-	oddFactor := 3
-	for oddFactor * oddFactor < testingNumber {
-		numberOfTimesOddFactorDivides := 0
-		for 0 == testingNumber % oddFactor {
-			testingNumber /= oddFactor
-			numberOfTimesOddFactorDivides++
-		}
-		politeness = politeness * numberOfTimesOddFactorDivides + 1
-		oddFactor += 2
-	}
-	if 2 < testingNumber {
-		politeness *= 2
-	}
-	return politeness - 1
-}
-
 func createIntRangeInclusive(min, max int) (intRange []int) {
 	intRange = make([]int, max - min + 1)
 	for index := range intRange {
