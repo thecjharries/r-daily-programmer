@@ -39,4 +39,5 @@ func (s *MainSuite) TestRemoveEvenDivisors(c *C) {
 func (s *MainSuite) TestDeterminePoliteness(c *C) {
 	c.Assert(determinePolitenessOfInt(90), Equals, 5)
 	c.Assert(determinePolitenessOfInt(15), Equals, 3)
+	c.Assert(determinePolitenessOfInt(32), Equals, 0)
 }
