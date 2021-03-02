@@ -80,3 +80,9 @@ func (s *MainSuite) TestDeterminePoliteness(c *C) {
 func (s *MainSuite) TestCreateIntRangeInclusive(c *C) {
 	c.Assert(createIntRangeInclusive(2, 5), DeepEquals, []int{2,3,4,5})
 }
+
+func (s *MainSuite) TestDeterminePolitenessSequences(c *C) {
+	c.Assert(determinePolitenessSequences(64), DeepEquals, [][]int{})
+	c.Assert(determinePolitenessSequences(9), DeepEquals, [][]int{{2,3,4},{4,5}})
+	c.Assert(determinePolitenessSequences(15), DeepEquals, [][]int{{1,2,3,4,5},{4,5,6},{7,8}})
+}

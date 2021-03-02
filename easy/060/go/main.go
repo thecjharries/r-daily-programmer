@@ -63,3 +63,20 @@ func createIntRangeInclusive(min, max int) (intRange []int) {
 	}
 	return
 }
+
+func determinePolitenessSequences(number int) (sequences [][]int) {
+	if !isIntPolite(number) {
+		return [][]int{}
+	}
+	for beginningIndex := 1; beginningIndex < (number / 2) + 1; beginningIndex++ {
+		for endingIndex := beginningIndex + 1; endingIndex < number; endingIndex++ {
+			sum := (beginningIndex + endingIndex) * (endingIndex - beginningIndex + 1) / 2
+			if sum > number {
+				break
+			} else if sum == number {
+				sequences = append(sequences, createIntRangeInclusive(beginningIndex, endingIndex))
+			}
+		}
+	}
+	return
+}
