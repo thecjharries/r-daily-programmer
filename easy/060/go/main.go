@@ -14,10 +14,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func isIntPolite(number int) bool {
+	logBase2 := math.Log(float64(number)) / math.Log(2)
+	return math.Ceil(logBase2) != math.Floor(logBase2) && number > 1
 }
 
 func removeEvenDivisors(number int) int {
