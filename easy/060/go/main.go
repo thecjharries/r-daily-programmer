@@ -20,7 +20,8 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	number := 27
+	fmt.Println(determinePolitenessSequences(number))
 }
 
 func isIntPolite(number int) bool {
