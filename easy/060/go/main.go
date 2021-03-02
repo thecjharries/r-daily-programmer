@@ -47,3 +47,11 @@ func determinePolitenessOfInt(number int) int {
 	}
 	return politeness - 1
 }
+
+func createIntRangeInclusive(min, max int) (intRange []int) {
+	intRange = make([]int, max - min + 1)
+	for index := range intRange {
+		intRange[index] = min + index
+	}
+	return
+}

@@ -41,3 +41,7 @@ func (s *MainSuite) TestDeterminePoliteness(c *C) {
 	c.Assert(determinePolitenessOfInt(15), Equals, 3)
 	c.Assert(determinePolitenessOfInt(32), Equals, 0)
 }
+
+func (s *MainSuite) TestCreateIntRangeInclusive(c *C) {
+	c.Assert(createIntRangeInclusive(2, 5), DeepEquals, []int{2,3,4,5})
+}
