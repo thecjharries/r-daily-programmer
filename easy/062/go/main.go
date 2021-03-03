@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -29,11 +32,11 @@ func doesSubsetSumLessThanMax(maxSum float64, subset []float64) bool {
 }
 
 func ullmansPuzzle(elements []float64, maxSum float64, size int) (bool, []float64) {
-	combinations := generateCombinations(size, elements)
-	for _, subset := range combinations {
-		if doesSubsetSumLessThanMax(maxSum, subset) {
-			return true, subset
-		}
+	sorted := make([]float64, len(elements))
+	copy(sorted, elements)
+	sort.Float64s(sorted)
+	if doesSubsetSumLessThanMax(maxSum, sorted[0:size]) {
+		return true, sorted[0:size]
 	}
 	return false, nil
 }
