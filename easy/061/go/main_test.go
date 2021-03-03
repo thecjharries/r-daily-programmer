@@ -37,3 +37,9 @@ func (s *MainSuite) TestRotateNumber(c *C) {
 	c.Assert(rotateNumber(14), Equals, int64(7))
 	c.Assert(rotateNumber(7), Equals, int64(7))
 }
+
+func (s *MainSuite) TestGenerateBinaryRotationSequence(c *C) {
+	c.Assert(generateBinaryRotationSequence(19), DeepEquals, []int64{19,25,28,14,7})
+	c.Assert(generateBinaryRotationSequence(205), DeepEquals, []int64{205,230,115,121,124,62,31})
+	c.Assert(generateBinaryRotationSequence(357), DeepEquals, []int64{357,434,217,236,118,59,61,62,31})
+}

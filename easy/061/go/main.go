@@ -35,3 +35,15 @@ func rotateNumber(number int64) int64 {
 	newNumber, _ := strconv.ParseInt(leadingDigit + shifted, 2, 64)
 	return newNumber
 }
+
+func generateBinaryRotationSequence(number int64) (sequence []int64) {
+	currentNumber := number
+	sequence = append(sequence, currentNumber)
+	newNumber := rotateNumber(currentNumber)
+	for currentNumber != newNumber {
+		sequence = append(sequence, newNumber)
+		currentNumber = newNumber
+		newNumber = rotateNumber(currentNumber)
+	}
+	return
+}
