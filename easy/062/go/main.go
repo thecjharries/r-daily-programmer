@@ -36,3 +36,11 @@ func generateCombinations(size int, elements []float64) (combinations [][]float6
 	combinations = append(combinations, generateCombinations(size, elements[1:])...)
 	return
 }
+
+func doesSubsetSumLessThanMax(max float64, subset ...float64) bool {
+	sum := float64(0)
+	for _, element := range subset {
+		sum += element
+	}
+	return max > sum
+}

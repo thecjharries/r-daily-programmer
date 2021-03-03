@@ -54,3 +54,8 @@ func (s *MainSuite) TestGenerateCombinations(c *C) {
 	}
 	c.Assert(generateCombinations(size, input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestDoesSubsetSumLessThanMax(c *C) {
+	c.Assert(doesSubsetSumLessThanMax(10, 1, 2, 3), Equals, true)
+	c.Assert(doesSubsetSumLessThanMax(3, 1, 2, 3), Equals, false)
+}
