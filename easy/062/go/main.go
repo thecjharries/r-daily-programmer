@@ -20,18 +20,18 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func generateCombinations(size int, elements []int) (combinations [][]int) {
+func generateCombinations(size int, elements []float64) (combinations [][]float64) {
 	if 1 == size {
 		for _, element := range elements {
-			combinations = append(combinations, []int{element})
+			combinations = append(combinations, []float64{element})
 		}
 		return
 	}
 	if len(elements) == size {
-		return [][]int{elements}
+		return [][]float64{elements}
 	}
 	for _, combination := range generateCombinations(size - 1, elements[1:]) {
-		combinations = append(combinations, append([]int{elements[0]}, combination...))
+		combinations = append(combinations, append([]float64{elements[0]}, combination...))
 	}
 	combinations = append(combinations, generateCombinations(size, elements[1:])...)
 	return
