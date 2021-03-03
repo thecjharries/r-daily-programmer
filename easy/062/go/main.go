@@ -37,10 +37,20 @@ func generateCombinations(size int, elements []float64) (combinations [][]float6
 	return
 }
 
-func doesSubsetSumLessThanMax(max float64, subset ...float64) bool {
+func doesSubsetSumLessThanMax(maxSum float64, subset []float64) bool {
 	sum := float64(0)
 	for _, element := range subset {
 		sum += element
 	}
-	return max > sum
+	return maxSum > sum
+}
+
+func ullmansPuzzle(elements []float64, maxSum float64, size int) (bool, []float64) {
+	combinations := generateCombinations(size, elements)
+	for _, subset := range combinations {
+		if doesSubsetSumLessThanMax(maxSum, subset) {
+			return true, subset
+		}
+	}
+	return false, nil
 }
