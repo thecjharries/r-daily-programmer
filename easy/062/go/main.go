@@ -19,3 +19,20 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func generateCombinations(size int, elements []int) (combinations [][]int) {
+	if 1 == size {
+		for _, element := range elements {
+			combinations = append(combinations, []int{element})
+		}
+		return
+	}
+	if len(elements) == size {
+		return [][]int{elements}
+	}
+	for _, combination := range generateCombinations(size - 1, elements[1:]) {
+		combinations = append(combinations, append([]int{elements[0]}, combination...))
+	}
+	combinations = append(combinations, generateCombinations(size, elements[1:])...)
+	return
+}

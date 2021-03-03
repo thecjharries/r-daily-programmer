@@ -29,3 +29,28 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGenerateCombinations(c *C) {
+	var input []int
+	var size int
+	var output [][]int
+	input = []int{1, 2, 3}
+	size = 2
+	output = [][]int{{1, 2}, {1, 3}, {2, 3}}
+	c.Assert(generateCombinations(size, input), DeepEquals, output)
+	input = []int{1, 2, 3, 4, 5}
+	size = 3
+	output = [][]int{
+		{1, 2, 3},
+		{1, 2, 4},
+		{1, 2, 5},
+		{1, 3, 4},
+		{1, 3, 5},
+		{1, 4, 5},
+		{2, 3, 4},
+		{2, 3, 5},
+		{2, 4, 5},
+		{3, 4, 5},
+	}
+	c.Assert(generateCombinations(size, input), DeepEquals, output)
+}
