@@ -30,31 +30,6 @@ func (s *MainSuite) TestMain(c *C) {
 
 }
 
-func (s *MainSuite) TestGenerateCombinations(c *C) {
-	var input []float64
-	var size int
-	var output [][]float64
-	input = []float64{1, 2, 3}
-	size = 2
-	output = [][]float64{{1, 2}, {1, 3}, {2, 3}}
-	c.Assert(generateCombinations(size, input), DeepEquals, output)
-	input = []float64{1, 2, 3, 4, 5}
-	size = 3
-	output = [][]float64{
-		{1, 2, 3},
-		{1, 2, 4},
-		{1, 2, 5},
-		{1, 3, 4},
-		{1, 3, 5},
-		{1, 4, 5},
-		{2, 3, 4},
-		{2, 3, 5},
-		{2, 4, 5},
-		{3, 4, 5},
-	}
-	c.Assert(generateCombinations(size, input), DeepEquals, output)
-}
-
 func (s *MainSuite) TestDoesSubsetSumLessThanMax(c *C) {
 	c.Assert(doesSubsetSumLessThanMax(10, []float64{1, 2, 3}), Equals, true)
 	c.Assert(doesSubsetSumLessThanMax(3, []float64{1, 2, 3}), Equals, false)

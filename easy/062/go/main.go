@@ -20,23 +20,6 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func generateCombinations(size int, elements []float64) (combinations [][]float64) {
-	if 1 == size {
-		for _, element := range elements {
-			combinations = append(combinations, []float64{element})
-		}
-		return
-	}
-	if len(elements) == size {
-		return [][]float64{elements}
-	}
-	for _, combination := range generateCombinations(size - 1, elements[1:]) {
-		combinations = append(combinations, append([]float64{elements[0]}, combination...))
-	}
-	combinations = append(combinations, generateCombinations(size, elements[1:])...)
-	return
-}
-
 func doesSubsetSumLessThanMax(maxSum float64, subset []float64) bool {
 	sum := float64(0)
 	for _, element := range subset {
