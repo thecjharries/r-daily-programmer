@@ -24,7 +24,7 @@ func reverse(count int, elements []int) []int {
 	result := make([]int, len(elements))
 	copy(result, elements)
 	for index := 0; index < count / 2; index++ {
-		result[index], result[count - index] = result[count - index], result[index]
+		result[index], result[count - index - 1] = result[count - index - 1], result[index]
 	}
 	return result
 }
