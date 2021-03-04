@@ -39,6 +39,7 @@ func (s *MainSuite) TestReverse(c *C) {
 	c.Assert(reverse(2, input), DeepEquals, result)
 	result = []int{5, 4, 3, 2, 1}
 	c.Assert(reverse(5, input), DeepEquals, result)
+	c.Assert(reverse(50, input), DeepEquals, result)
 	input = []int{51, 41, 12, 62, 74}
 	result = []int{12, 41, 51, 62, 74}
 	c.Assert(reverse(3, input), DeepEquals, result)

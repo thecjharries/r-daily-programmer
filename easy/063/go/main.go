@@ -21,10 +21,16 @@ func main() {
 }
 
 func reverse(count int, elements []int) []int {
+	var reversedCount int
+	if count > len(elements) {
+		reversedCount = len(elements)
+	} else {
+		reversedCount = count
+	}
 	result := make([]int, len(elements))
 	copy(result, elements)
-	for index := 0; index < count / 2; index++ {
-		result[index], result[count - index - 1] = result[count - index - 1], result[index]
+	for index := 0; index < reversedCount / 2; index++ {
+		result[index], result[reversedCount - index - 1] = result[reversedCount - index - 1], result[index]
 	}
 	return result
 }
