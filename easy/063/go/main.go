@@ -19,3 +19,12 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func reverse(count int, elements []int) []int {
+	result := make([]int, len(elements))
+	copy(result, elements)
+	for index := 0; index < count / 2; index++ {
+		result[index], result[count - index] = result[count - index], result[index]
+	}
+	return result
+}
