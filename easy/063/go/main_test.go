@@ -29,3 +29,17 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestReverse(c *C) {
+	var input, result []int
+	input = []int{1, 2, 3, 4, 5}
+	result = []int{1, 2, 3, 4, 5}
+	c.Assert(reverse(1, input), DeepEquals, result)
+	result = []int{2, 1, 3, 4, 5}
+	c.Assert(reverse(2, input), DeepEquals, result)
+	result = []int{5, 4, 3, 2, 1}
+	c.Assert(reverse(5, input), DeepEquals, result)
+	input = []int{51, 41, 12, 62, 74}
+	result = []int{12, 41, 51, 62, 74}
+	c.Assert(reverse(3, input), DeepEquals, result)
+}
