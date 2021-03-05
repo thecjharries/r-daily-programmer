@@ -39,3 +39,7 @@ func (s *MainSuite) TestGreatestCommonDivisor(c *C) {
 func (s *MainSuite) TestGetTotatives(c *C) {
 	c.Assert(getTotatives(30), DeepEquals, []int{1, 7, 11, 13, 17, 19, 23, 29})
 }
+
+func (s *MainSuite) TestGetTotient(c *C) {
+	c.Assert(getTotient(30), Equals, 8)
+}

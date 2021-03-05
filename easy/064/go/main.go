@@ -35,3 +35,7 @@ func getTotatives(number int) (totatives []int) {
 	}
 	return
 }
+
+func getTotient(number int) int {
+	return len(getTotatives(number))
+}
