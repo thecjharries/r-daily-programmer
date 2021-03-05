@@ -47,3 +47,7 @@ func (s *MainSuite) TestGetTotient(c *C) {
 func (s *MainSuite) TestGetDivisors(c *C) {
 	c.Assert(getDivisors(60), DeepEquals, []int{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60})
 }
+
+func (s *MainSuite) TestGetNumberOfDivisors(c *C) {
+	c.Assert(getNumberOfDivisors(60), Equals, 12)
+}

@@ -54,3 +54,7 @@ func getDivisors(number int) (divisors []int) {
 	sort.Ints(divisors)
 	return
 }
+
+func getNumberOfDivisors(number int) int {
+	return len(getDivisors(number))
+}
