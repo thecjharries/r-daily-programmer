@@ -21,8 +21,17 @@ func main() {
 }
 
 func greatestCommonDivisor(first, second int) int {
-	if second == 0 {
+	if 0 == second {
 		return first
 	}
 	return greatestCommonDivisor(second, first % second)
+}
+
+func getTotatives(number int) (totatives []int) {
+	for index := 1; index < number; index++ {
+		if 1 == greatestCommonDivisor(number, index) {
+			totatives = append(totatives, index)
+		}
+	}
+	return
 }
