@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"sort"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -38,4 +42,15 @@ func getTotatives(number int) (totatives []int) {
 
 func getTotient(number int) int {
 	return len(getTotatives(number))
+}
+
+func getDivisors(number int) (divisors []int) {
+	for index := 1; index < int(math.Sqrt(float64(number))) + 1; index++ {
+		if 0 == number % index {
+			divisors = append(divisors, index)
+			divisors = append(divisors, number / index)
+		}
+	}
+	sort.Ints(divisors)
+	return
 }
