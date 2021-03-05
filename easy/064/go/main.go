@@ -19,3 +19,10 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func greatestCommonDivisor(first, second int) int {
+	if second == 0 {
+		return first
+	}
+	return greatestCommonDivisor(second, first % second)
+}

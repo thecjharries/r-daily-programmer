@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGreatestCommonDivisor(c *C) {
+	c.Assert(greatestCommonDivisor(3,5), Equals, 1)
+	c.Assert(greatestCommonDivisor(128, 64), Equals, 64)
+	c.Assert(greatestCommonDivisor(90, 105), Equals, 15)
+
+}
