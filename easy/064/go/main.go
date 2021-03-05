@@ -58,3 +58,11 @@ func getDivisors(number int) (divisors []int) {
 func getNumberOfDivisors(number int) int {
 	return len(getDivisors(number))
 }
+
+func getSumOfDivisors(number int) int {
+	totalSum := 0
+	for _, element := range getDivisors(number) {
+		totalSum += element
+	}
+	return totalSum
+}

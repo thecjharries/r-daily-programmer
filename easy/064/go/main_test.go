@@ -51,3 +51,7 @@ func (s *MainSuite) TestGetDivisors(c *C) {
 func (s *MainSuite) TestGetNumberOfDivisors(c *C) {
 	c.Assert(getNumberOfDivisors(60), Equals, 12)
 }
+
+func (s *MainSuite) TestGetSumOfDivisors(c *C) {
+	c.Assert(getSumOfDivisors(60), Equals, 168)
+}
