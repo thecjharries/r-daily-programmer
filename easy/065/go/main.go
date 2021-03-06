@@ -22,7 +22,7 @@ import (
 var usdDenominations = []float64{100.00, 20.00, 10.00, 5.00, 1.00, 0.25, 0.10, 0.05, 0.01}
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(convertCostToDenominations(12.33, usdDenominations))
 }
 
 func convertToUsd(number float64) float64 {
