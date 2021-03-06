@@ -44,3 +44,11 @@ func (s *MainSuite) TestReduceCostByDenomination(c *C) {
 	c.Assert(reduced, Equals, 0.0)
 	c.Assert(count, Equals, 40)
 }
+
+func (s *MainSuite) TestConvertCostToDenominations(c *C) {
+	var cost float64
+	var output []int
+	cost = 12.33
+	output = []int{0, 0, 1, 0, 2, 1, 0, 1, 3}
+	c.Assert(convertCostToDenominations(cost, usdDenominations), DeepEquals, output)
+}

@@ -19,6 +19,8 @@ import (
 	"math"
 )
 
+var usdDenominations = []float64{100.00, 20.00, 10.00, 5.00, 1.00, 0.25, 0.10, 0.05, 0.01}
+
 func main() {
 	fmt.Println("hello world")
 }
@@ -35,4 +37,13 @@ func reduceCostByDenomination(cost, denomination float64) (reducedCost float64, 
 		denominationCount++
 	}
 	return
+}
+
+func convertCostToDenominations(cost float64, denominations []float64) []int {
+	reducingCost := cost
+	denominationCount := make([]int, len(denominations))
+	for index, denomination := range denominations {
+		reducingCost, denominationCount[index] = reduceCostByDenomination(reducingCost, denomination)
+	}
+	return denominationCount
 }
