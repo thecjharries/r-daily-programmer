@@ -24,5 +24,15 @@ func main() {
 }
 
 func convertToUsd(number float64) float64 {
-	return math.Ceil(number * 100) / 100
+	return math.Round(number * 100) / 100
+}
+
+func reduceCostByDenomination(cost, denomination float64) (reducedCost float64, denominationCount int) {
+	reducedCost = cost
+	denominationCount = 0
+	for denomination <= reducedCost {
+		reducedCost = convertToUsd(reducedCost - denomination)
+		denominationCount++
+	}
+	return
 }

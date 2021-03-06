@@ -33,3 +33,14 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestConvertToUsd(c *C) {
 	c.Assert(convertToUsd(10.005), Equals, 10.01)
 }
+
+func (s *MainSuite) TestReduceCostByDenomination(c *C) {
+	var reduced float64
+	var count int
+	reduced, count = reduceCostByDenomination(24, 20)
+	c.Assert(reduced, Equals, 4.0)
+	c.Assert(count, Equals, 1)
+	reduced, count = reduceCostByDenomination(0.40, 0.01)
+	c.Assert(reduced, Equals, 0.0)
+	c.Assert(count, Equals, 40)
+}
