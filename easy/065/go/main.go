@@ -14,8 +14,15 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func convertToUsd(number float64) float64 {
+	return math.Ceil(number * 100) / 100
 }

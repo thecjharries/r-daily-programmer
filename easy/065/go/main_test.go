@@ -29,3 +29,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestConvertToUsd(c *C) {
+	c.Assert(convertToUsd(10.005), Equals, 10.01)
+}
