@@ -41,8 +41,10 @@ func (s *MainSuite) TestGetNumeralPosition(c *C) {
 	c.Assert(getNumeralPosition('I'), Equals, 6)
 }
 
-func (s *MainSuite) TestIsFirstNumeralSmallerThanSecond(c *C) {
-	c.Assert(isFirstNumeralSmallerThanSecond('q', 'M'), Equals, false)
-	c.Assert(isFirstNumeralSmallerThanSecond('M', 'D'), Equals, false)
-	c.Assert(isFirstNumeralSmallerThanSecond('D', 'M'), Equals, true)
+func (s *MainSuite) TestIsFirstLessThanSecondWithoutPrefixes(c *C) {
+	c.Assert(isFirstLessThanSecondWithoutPrefixes("X", "VIIII"), Equals, false)
+	c.Assert(isFirstLessThanSecondWithoutPrefixes("CX", "MX"), Equals, true)
+	c.Assert(isFirstLessThanSecondWithoutPrefixes("MDX", "MDXI"), Equals, true)
+	c.Assert(isFirstLessThanSecondWithoutPrefixes("MDX", "MDV"), Equals, false)
+	c.Assert(isFirstLessThanSecondWithoutPrefixes("MDV", "MDV"), Equals, false)
 }
