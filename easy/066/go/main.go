@@ -19,7 +19,7 @@ import "fmt"
 var romanNumeralsDecreasingOrder = []rune("MDCLXVI")
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(isFirstLessThanSecondWithoutPrefixes("X", "C"))
 }
 
 func getNumeralPosition(numeral rune) int {
