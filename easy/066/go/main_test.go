@@ -29,3 +29,14 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGetNumeralPosition(c *C) {
+	c.Assert(getNumeralPosition('q'), Equals, -1)
+	c.Assert(getNumeralPosition('M'), Equals, 0)
+	c.Assert(getNumeralPosition('D'), Equals, 1)
+	c.Assert(getNumeralPosition('C'), Equals, 2)
+	c.Assert(getNumeralPosition('L'), Equals, 3)
+	c.Assert(getNumeralPosition('X'), Equals, 4)
+	c.Assert(getNumeralPosition('V'), Equals, 5)
+	c.Assert(getNumeralPosition('I'), Equals, 6)
+}

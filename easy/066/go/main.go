@@ -16,8 +16,21 @@ package main
 
 import "fmt"
 
-const romanNumeralsIncreasingOrder ="IVXLCDM"
+var romanNumeralsDecreasingOrder = []rune("MDCLXVI")
 
 func main() {
 	fmt.Println("hello world")
 }
+
+func getNumeralPosition(numeral rune) int {
+	for index, element := range romanNumeralsDecreasingOrder {
+		if numeral == element {
+			return index
+		}
+	}
+	return -1
+}
+
+//func isFirstLessThanSecondWithoutPrefixes(first, second string) bool {
+//	return false
+//}
