@@ -40,3 +40,9 @@ func (s *MainSuite) TestGetNumeralPosition(c *C) {
 	c.Assert(getNumeralPosition('V'), Equals, 5)
 	c.Assert(getNumeralPosition('I'), Equals, 6)
 }
+
+func (s *MainSuite) TestIsFirstNumeralSmallerThanSecond(c *C) {
+	c.Assert(isFirstNumeralSmallerThanSecond('q', 'M'), Equals, false)
+	c.Assert(isFirstNumeralSmallerThanSecond('M', 'D'), Equals, false)
+	c.Assert(isFirstNumeralSmallerThanSecond('D', 'M'), Equals, true)
+}

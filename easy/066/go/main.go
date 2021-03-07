@@ -31,6 +31,10 @@ func getNumeralPosition(numeral rune) int {
 	return -1
 }
 
+func isFirstNumeralSmallerThanSecond(first, second rune) bool {
+	return getNumeralPosition(first) > getNumeralPosition(second)
+}
+
 //func isFirstLessThanSecondWithoutPrefixes(first, second string) bool {
 //	return false
 //}
