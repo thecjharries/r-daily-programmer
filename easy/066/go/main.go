@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+const romanNumeralsIncreasingOrder ="IVXLCDM"
+
 func main() {
 	fmt.Println("hello world")
 }
