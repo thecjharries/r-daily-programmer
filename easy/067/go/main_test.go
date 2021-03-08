@@ -34,3 +34,8 @@ func (s *MainSuite) TestReverseString(c *C) {
 	c.Assert(reverseString("hello world"), Equals, "dlrow olleh")
 	c.Assert(reverseString("abcde"), Equals, "edcba")
 }
+
+func (s *MainSuite) TestZeroPadBinaryString(c *C) {
+	c.Assert(zeroPadBinaryString("101", 6), Equals, "000101")
+	c.Assert(zeroPadBinaryString("110101", 3), Equals, "101")
+}

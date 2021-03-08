@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -26,4 +29,11 @@ func reverseString(input string) string {
 		output[index], output[len(output) - 1 - index] = output[len(output) - 1 - index], output[index]
 	}
 	return string(output)
+}
+
+func zeroPadBinaryString(binary string, bits int) string {
+	if bits < len(binary) {
+		return binary[len(binary) - bits:]
+	}
+	return strings.Repeat("0", bits - len(binary)) + binary
 }
