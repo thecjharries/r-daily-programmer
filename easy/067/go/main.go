@@ -19,3 +19,11 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func reverseString(input string) string {
+	output := []rune(input)
+	for index := 0; index < len(output) / 2; index++ {
+		output[index], output[len(output) - 1 - index] = output[len(output) - 1 - index], output[index]
+	}
+	return string(output)
+}
