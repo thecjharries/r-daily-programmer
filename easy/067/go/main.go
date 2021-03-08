@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -36,4 +37,12 @@ func zeroPadBinaryString(binary string, bits int) string {
 		return binary[len(binary) - bits:]
 	}
 	return strings.Repeat("0", bits - len(binary)) + binary
+}
+
+func reverseDecimalWithBinaryBits(decimal, bits int) int {
+	binary := strconv.FormatInt(int64(decimal), 2)
+	paddedBinary := zeroPadBinaryString(binary, bits)
+	reversedBinary := reverseString(paddedBinary)
+	converted, _ := strconv.ParseInt(reversedBinary, 2, 0)
+	return int(converted)
 }

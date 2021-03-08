@@ -39,3 +39,7 @@ func (s *MainSuite) TestZeroPadBinaryString(c *C) {
 	c.Assert(zeroPadBinaryString("101", 6), Equals, "000101")
 	c.Assert(zeroPadBinaryString("110101", 3), Equals, "101")
 }
+
+func (s *MainSuite) TestReverseDecimalWithBinaryBits(c *C) {
+	c.Assert(reverseDecimalWithBinaryBits(13, 32), Equals, 2952790016)
+}
