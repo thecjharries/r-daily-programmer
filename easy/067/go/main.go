@@ -21,7 +21,7 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(reverseDecimalWithBinaryBits(13, 32))
 }
 
 func reverseString(input string) string {
