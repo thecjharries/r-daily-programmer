@@ -29,3 +29,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestReverseString(c *C) {
+	c.Assert(reverseString("hello world"), Equals, "dlrow olleh")
+	c.Assert(reverseString("abcde"), Equals, "edcba")
+}
