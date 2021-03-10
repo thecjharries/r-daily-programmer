@@ -37,3 +37,13 @@ func reverseInteger(input int) int {
 	reversedInput, _ := strconv.ParseInt(reversedInputAsString, 10, 0)
 	return int(reversedInput)
 }
+
+func isIntegerPalindrome(input int) bool {
+	inputAsString := strconv.Itoa(input)
+	for index := 0; index < len(inputAsString) / 2; index++ {
+		if inputAsString[index] != inputAsString[len(inputAsString) - 1 - index] {
+			return false
+		}
+	}
+	return true
+}

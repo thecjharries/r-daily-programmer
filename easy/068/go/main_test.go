@@ -39,3 +39,8 @@ func (s *MainSuite) TestReverseInteger(c *C) {
 	c.Assert(reverseInteger(100), Equals, 1)
 	c.Assert(reverseInteger(13), Equals, 31)
 }
+
+func (s *MainSuite) TestIsIntegerPalindrome(c *C) {
+	c.Assert(isIntegerPalindrome(12), Equals, false)
+	c.Assert(isIntegerPalindrome(121), Equals, true)
+}
