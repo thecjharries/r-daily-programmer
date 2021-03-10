@@ -44,3 +44,15 @@ func (s *MainSuite) TestIsIntegerPalindrome(c *C) {
 	c.Assert(isIntegerPalindrome(12), Equals, false)
 	c.Assert(isIntegerPalindrome(121), Equals, true)
 }
+
+func (s *MainSuite) TestIsPrime(c *C) {
+	c.Assert(isPrime(2), Equals, true)
+	c.Assert(isPrime(3), Equals, true)
+	c.Assert(isPrime(4), Equals, false)
+	c.Assert(isPrime(12), Equals, false)
+	c.Assert(isPrime(13), Equals, true)
+	c.Assert(isPrime(14), Equals, false)
+	c.Assert(isPrime(30), Equals, false)
+	c.Assert(isPrime(31), Equals, true)
+	c.Assert(isPrime(32), Equals, false)
+}

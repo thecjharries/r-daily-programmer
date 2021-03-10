@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 )
 
@@ -42,6 +43,16 @@ func isIntegerPalindrome(input int) bool {
 	inputAsString := strconv.Itoa(input)
 	for index := 0; index < len(inputAsString) / 2; index++ {
 		if inputAsString[index] != inputAsString[len(inputAsString) - 1 - index] {
+			return false
+		}
+	}
+	return true
+}
+
+func isPrime(input int) bool {
+	for index := 2; index <= int(math.Sqrt(float64(input))); index++ {
+		fmt.Println(input, index)
+		if 0 == input % index {
 			return false
 		}
 	}
