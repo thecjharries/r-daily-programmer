@@ -34,3 +34,8 @@ func (s *MainSuite) TestReverseString(c *C) {
 	c.Assert(reverseString("hello world"), Equals, "dlrow olleh")
 	c.Assert(reverseString("abcde"), Equals, "edcba")
 }
+
+func (s *MainSuite) TestReverseInteger(c *C) {
+	c.Assert(reverseInteger(100), Equals, 1)
+	c.Assert(reverseInteger(13), Equals, 31)
+}

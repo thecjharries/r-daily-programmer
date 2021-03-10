@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	fmt.Println("hello world")
@@ -26,4 +29,11 @@ func reverseString(input string) string {
 		output[index], output[len(output) - 1 - index] = output[len(output) - 1 - index], output[index]
 	}
 	return string(output)
+}
+
+func reverseInteger(input int) int {
+	inputAsString := strconv.Itoa(input)
+	reversedInputAsString := reverseString(inputAsString)
+	reversedInput, _ := strconv.ParseInt(reversedInputAsString, 10, 0)
+	return int(reversedInput)
 }
