@@ -45,3 +45,21 @@ func formatLine(contents string, lengthOfLongestWord int, isCentered bool) strin
 		strings.Repeat(" ", lengthOfLongestWord - len(lineContents)),
 	)
 }
+
+func findLengthOfLongestWord(words []string) int {
+	maxLength := -1
+	for _, word := range words {
+		if maxLength < len(word) {
+			maxLength = len(word)
+		}
+	}
+	return maxLength
+}
+
+//func formatAsciiTableFromTitleAndList(title string, list []string) string {
+//	contents := make([]string, len(list) + 4)
+//	contents = append(
+//		contents,
+//		formatDividerLine()
+//		)
+//}

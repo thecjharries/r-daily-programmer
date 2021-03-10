@@ -40,3 +40,8 @@ func (s *MainSuite) TestFormatLine(c *C) {
 func (s *MainSuite) TestFormatDividerLine(c *C) {
 	c.Assert(formatDividerLine(13), Equals, "+---------------+")
 }
+
+func (s *MainSuite) TestFindLengthOfLongestWord(c *C) {
+	input := []string{"Necessities", "fairy", "cakes", "happy", "fish", "disgustipated", "melon-balls"}
+	c.Assert(findLengthOfLongestWord(input), Equals, 13)
+}
