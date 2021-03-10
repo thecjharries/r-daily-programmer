@@ -56,10 +56,18 @@ func findLengthOfLongestWord(words []string) int {
 	return maxLength
 }
 
-//func formatAsciiTableFromTitleAndList(title string, list []string) string {
-//	contents := make([]string, len(list) + 4)
-//	contents = append(
-//		contents,
-//		formatDividerLine()
-//		)
-//}
+func formatAsciiTableFromTitleAndList(title string, list []string) string {
+	var contents []string
+	lengthOfLongestWord := findLengthOfLongestWord(append(list, title))
+	contents = append(
+		contents,
+		formatDividerLine(lengthOfLongestWord),
+		formatLine(title, lengthOfLongestWord, true),
+		formatDividerLine(lengthOfLongestWord),
+	)
+	for _, element := range list {
+		contents = append(contents, formatLine(element, lengthOfLongestWord, false))
+	}
+	contents = append(contents, formatDividerLine(lengthOfLongestWord))
+	return strings.Join(contents, "\n")
+}

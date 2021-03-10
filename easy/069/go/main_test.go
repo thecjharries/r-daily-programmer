@@ -45,3 +45,19 @@ func (s *MainSuite) TestFindLengthOfLongestWord(c *C) {
 	input := []string{"Necessities", "fairy", "cakes", "happy", "fish", "disgustipated", "melon-balls"}
 	c.Assert(findLengthOfLongestWord(input), Equals, 13)
 }
+
+func (s *MainSuite) TestFormatAsciiTableFromTitleAndList(c *C) {
+	title := "Necessities"
+	list := []string{"fairy", "cakes", "happy", "fish", "disgustipated", "melon-balls"}
+	output := `+---------------+
+|  Necessities  |
++---------------+
+| fairy         |
+| cakes         |
+| happy         |
+| fish          |
+| disgustipated |
+| melon-balls   |
++---------------+`
+	c.Assert(formatAsciiTableFromTitleAndList(title, list), Equals, output)
+}
