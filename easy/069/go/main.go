@@ -24,6 +24,10 @@ func main() {
 	fmt.Println("hello world")
 }
 
+func formatHeaderLine(lengthOfLongestWord int) string {
+	return fmt.Sprintf("+%s+", strings.Repeat("-", lengthOfLongestWord + 2))
+}
+
 func formatLine(contents string, lengthOfLongestWord int, isCentered bool) string {
 	var lineContents string
 	if isCentered {
