@@ -21,7 +21,9 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	title := "Necessities"
+	list := []string{"fairy", "cakes", "happy", "fish", "disgustipated", "melon-balls"}
+	fmt.Println(formatAsciiTableFromTitleAndList(title, list))
 }
 
 func formatDividerLine(lengthOfLongestWord int) string {
