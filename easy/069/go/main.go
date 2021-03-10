@@ -24,7 +24,7 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func formatHeaderLine(lengthOfLongestWord int) string {
+func formatDividerLine(lengthOfLongestWord int) string {
 	return fmt.Sprintf("+%s+", strings.Repeat("-", lengthOfLongestWord + 2))
 }
 

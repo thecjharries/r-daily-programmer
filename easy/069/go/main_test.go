@@ -37,6 +37,6 @@ func (s *MainSuite) TestFormatLine(c *C) {
 	c.Assert(formatLine("disgustipated", 13, false), DeepEquals, "| disgustipated |")
 }
 
-func (s *MainSuite) TestFormatHeaderLine(c *C) {
-	c.Assert(formatHeaderLine(13), Equals, "+---------------+")
+func (s *MainSuite) TestFormatDividerLine(c *C) {
+	c.Assert(formatDividerLine(13), Equals, "+---------------+")
 }
