@@ -58,3 +58,7 @@ func isPrime(input int) bool {
 	}
 	return true
 }
+
+func isEmirp(input int) bool {
+	return !isIntegerPalindrome(input) && isPrime(input) && isPrime(reverseInteger(input))
+}

@@ -56,3 +56,10 @@ func (s *MainSuite) TestIsPrime(c *C) {
 	c.Assert(isPrime(31), Equals, true)
 	c.Assert(isPrime(32), Equals, false)
 }
+
+func (s *MainSuite) TestIsEmirp(c *C) {
+	c.Assert(isEmirp(13), Equals, true)
+	c.Assert(isEmirp(31), Equals, true)
+	c.Assert(isEmirp(2), Equals, false)
+	c.Assert(isEmirp(11), Equals, false)
+}
