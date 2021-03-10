@@ -63,3 +63,8 @@ func (s *MainSuite) TestIsEmirp(c *C) {
 	c.Assert(isEmirp(2), Equals, false)
 	c.Assert(isEmirp(11), Equals, false)
 }
+
+func (s *MainSuite) TestGetEmirpBelowMaxInclusive(c *C) {
+	c.Assert(getEmirpBelowMaxInclusive(10), DeepEquals, []int(nil))
+	c.Assert(getEmirpBelowMaxInclusive(107), DeepEquals, []int{13, 17, 31, 37, 71, 73, 79, 97, 107})
+}

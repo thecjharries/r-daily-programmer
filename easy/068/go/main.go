@@ -51,7 +51,6 @@ func isIntegerPalindrome(input int) bool {
 
 func isPrime(input int) bool {
 	for index := 2; index <= int(math.Sqrt(float64(input))); index++ {
-		fmt.Println(input, index)
 		if 0 == input % index {
 			return false
 		}
@@ -61,4 +60,13 @@ func isPrime(input int) bool {
 
 func isEmirp(input int) bool {
 	return !isIntegerPalindrome(input) && isPrime(input) && isPrime(reverseInteger(input))
+}
+
+func getEmirpBelowMaxInclusive(maxInteger int) (emirps []int) {
+	for index := 13; index <= maxInteger; index++ {
+		if isEmirp(index) {
+			emirps = append(emirps, index)
+		}
+	}
+	return
 }
