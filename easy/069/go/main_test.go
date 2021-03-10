@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestFormatLine(c *C) {
+	c.Assert(formatLine("Necessities", 13, true), DeepEquals, "|  Necessities  |")
+	c.Assert(formatLine("Necessities", 13, false), DeepEquals, "| Necessities   |")
+	c.Assert(formatLine("disgustipated", 13, true), DeepEquals, "| disgustipated |")
+	c.Assert(formatLine("disgustipated", 13, false), DeepEquals, "| disgustipated |")
+}

@@ -14,8 +14,30 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"strings"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func formatLine(contents string, lengthOfLongestWord int, isCentered bool) string {
+	var lineContents string
+	if isCentered {
+		lineContents = fmt.Sprintf(
+			"%s%s",
+			strings.Repeat(" ", int(math.Floor(float64(lengthOfLongestWord - len(contents)) / 2))),
+			contents,
+		)
+	} else {
+		lineContents = contents
+	}
+	return fmt.Sprintf(
+		"| %s%s |",
+		lineContents,
+		strings.Repeat(" ", lengthOfLongestWord - len(lineContents)),
+	)
 }
