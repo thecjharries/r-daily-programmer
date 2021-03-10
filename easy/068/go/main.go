@@ -21,7 +21,7 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(getEmirpBelowMaxInclusive(100))
 }
 
 func reverseString(input string) string {
