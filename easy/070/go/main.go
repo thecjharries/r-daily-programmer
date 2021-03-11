@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"regexp"
+	"sort"
 )
 
 type WordFrequency struct {
@@ -64,10 +65,17 @@ func generateFrequencyMapFromString(input string) (frequencyMap map[string]int) 
 	return
 }
 
-
 func convertFrequencyMapToWordFrequencies(frequencyMap map[string]int) (frequencies WordFrequencies) {
 	for key, value := range frequencyMap {
 		frequencies = append(frequencies, WordFrequency{Word: key, Frequency: value})
 	}
 	return
+}
+
+func selectTopWordsFromWordFrequencies(frequencies WordFrequencies, maxCount int) (results WordFrequencies) {
+	sort.Sort(frequencies)
+	if len(frequencies) < maxCount {
+		return frequencies
+	}
+	return frequencies[:maxCount]
 }

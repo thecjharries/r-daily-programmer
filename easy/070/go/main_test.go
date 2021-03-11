@@ -61,3 +61,10 @@ func (s *MainSuite) TestWordFrequenciesSort(c *C) {
 	sort.Sort(input)
 	c.Assert(input, DeepEquals, output)
 }
+
+func (s *MainSuite) TestSelectTopWordsFromWordFrequencies(c *C) {
+	input := WordFrequencies{{"qqq", 1}, {"world", 7}, {"hello", 2}}
+	output := WordFrequencies{{"world", 7}, {"hello", 2}, {"qqq", 1}}
+	c.Assert(selectTopWordsFromWordFrequencies(input, 10), DeepEquals, output)
+	c.Assert(selectTopWordsFromWordFrequencies(input, 1), DeepEquals, WordFrequencies{{"world", 7}})
+}
