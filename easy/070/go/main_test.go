@@ -43,3 +43,13 @@ func (s *MainSuite) TestGenerateFrequencyMapFromString(c *C) {
 	}
 	c.Assert(generateFrequencyMapFromString(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestConvertFrequencyMapToWordFrequencies(c *C) {
+	input := map[string]int {
+		"hello": 2,
+		"world": 1,
+		"qqq": 1,
+	}
+	output := WordFrequencies{{"hello", 2}, {"world", 1}, {"qqq", 1}}
+	c.Assert(convertFrequencyMapToWordFrequencies(input), DeepEquals, output)
+}

@@ -20,6 +20,13 @@ import (
 	"regexp"
 )
 
+type WordFrequency struct {
+	Word string
+	Frequency int
+}
+
+type WordFrequencies []WordFrequency
+
 var wordPattern = regexp.MustCompile(`\w+`)
 
 func main() {
@@ -41,6 +48,14 @@ func generateFrequencyMapFromString(input string) (frequencyMap map[string]int) 
 		} else {
 			frequencyMap[word] = 1
 		}
+	}
+	return
+}
+
+
+func convertFrequencyMapToWordFrequencies(frequencyMap map[string]int) (frequencies WordFrequencies) {
+	for key, value := range frequencyMap {
+		frequencies = append(frequencies, WordFrequency{Word: key, Frequency: value})
 	}
 	return
 }
