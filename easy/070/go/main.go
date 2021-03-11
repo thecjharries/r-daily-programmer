@@ -27,6 +27,18 @@ type WordFrequency struct {
 
 type WordFrequencies []WordFrequency
 
+func (w WordFrequencies) Len() int {
+	return len(w)
+}
+
+func (w WordFrequencies) Swap(i, j int) {
+	w[i], w[j] = w[j], w[i]
+}
+
+func (w WordFrequencies) Less(i, j int) bool {
+	return w[i].Frequency < w[j].Frequency
+}
+
 var wordPattern = regexp.MustCompile(`\w+`)
 
 func main() {
