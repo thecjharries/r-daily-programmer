@@ -14,8 +14,16 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+)
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func readFileIntoString(filename string) string {
+	buffer, _ := ioutil.ReadFile(filename)
+	return string(buffer)
 }

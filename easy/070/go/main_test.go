@@ -29,3 +29,7 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestReadFileIntoString(c *C) {
+	c.Assert(len(readFileIntoString("lorem_ipsum.txt")) > 0, Equals, true)
+}
