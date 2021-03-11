@@ -15,6 +15,7 @@
 package main
 
 import (
+	"sort"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,11 @@ func (s *MainSuite) TestConvertFrequencyMapToWordFrequencies(c *C) {
 	}
 	output := WordFrequencies{{"hello", 2}, {"world", 1}, {"qqq", 1}}
 	c.Assert(convertFrequencyMapToWordFrequencies(input), DeepEquals, output)
+}
+
+func (s *MainSuite) TestWordFrequenciesSort(c *C) {
+	input := WordFrequencies{{"qqq", 1}, {"world", 7}, {"hello", 2}}
+	output := WordFrequencies{{"world", 7}, {"hello", 2}, {"qqq", 1}}
+	sort.Sort(input)
+	c.Assert(input, DeepEquals, output)
 }

@@ -36,7 +36,7 @@ func (w WordFrequencies) Swap(i, j int) {
 }
 
 func (w WordFrequencies) Less(i, j int) bool {
-	return w[i].Frequency < w[j].Frequency
+	return w[i].Frequency > w[j].Frequency
 }
 
 var wordPattern = regexp.MustCompile(`\w+`)
