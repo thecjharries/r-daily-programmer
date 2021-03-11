@@ -17,7 +17,10 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"regexp"
 )
+
+var wordPattern = regexp.MustCompile(`\w+`)
 
 func main() {
 	fmt.Println("hello world")
@@ -26,4 +29,18 @@ func main() {
 func readFileIntoString(filename string) string {
 	buffer, _ := ioutil.ReadFile(filename)
 	return string(buffer)
+}
+
+func generateFrequencyMapFromString(input string) (frequencyMap map[string]int) {
+	frequencyMap = make(map[string]int)
+	words := wordPattern.FindAllString(input, -1)
+	for _, word := range words {
+		_, ok := frequencyMap[word]
+		if ok {
+			frequencyMap[word] += 1
+		} else {
+			frequencyMap[word] = 1
+		}
+	}
+	return
 }

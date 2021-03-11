@@ -33,3 +33,13 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestReadFileIntoString(c *C) {
 	c.Assert(len(readFileIntoString("lorem_ipsum.txt")) > 0, Equals, true)
 }
+
+func (s *MainSuite) TestGenerateFrequencyMapFromString(c *C) {
+	input := "hello hello world qqq"
+	output := map[string]int {
+		"hello": 2,
+		"world": 1,
+		"qqq": 1,
+	}
+	c.Assert(generateFrequencyMapFromString(input), DeepEquals, output)
+}
