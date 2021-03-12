@@ -29,3 +29,8 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestBruteForcePythagoreanTripletsFor(c *C) {
+	output := []PythagoreanTriplet{{15, 112, 113}, {40, 96, 104}, {48, 90, 102}, {60, 80, 100}}
+	c.Assert(bruteForcePythagoreanTripletsFor(240), DeepEquals, output)
+}
