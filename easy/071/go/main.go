@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type PythagoreanTriplet struct {
+	A int
+	B int
+	C int
+}
+
 func main() {
 	fmt.Println("hello world")
 }
