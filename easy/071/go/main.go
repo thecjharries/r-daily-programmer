@@ -26,7 +26,7 @@ type PythagoreanTriplet struct {
 }
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(bruteForcePythagoreanTripletsFor(504))
 }
 
 func bruteForcePythagoreanTripletsFor(sum float64) (triplets []PythagoreanTriplet) {
