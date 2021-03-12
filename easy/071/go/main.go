@@ -31,7 +31,7 @@ func main() {
 
 func bruteForcePythagoreanTripletsFor(sum float64) (triplets []PythagoreanTriplet) {
 	for a := float64(1); a < sum - 2; a++ {
-		for b := a + 1; b < sum - 2; b++ {
+		for b := a; b < sum - 2; b++ {
 			if math.Pow(a, 2) + math.Pow(b, 2) == math.Pow(504 - a - b, 2) {
 				triplets = append(triplets, PythagoreanTriplet{a, b, 504 - a - b})
 			}
