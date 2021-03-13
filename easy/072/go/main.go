@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type GenericFunction func(interface{}) interface{}
 
@@ -57,4 +60,8 @@ func iterateInputNGenerations(input string, generationCount int) (generations []
 		generations[index + 1] = nextGeneration(generations[index])
 	}
 	return
+}
+
+func iterateIntInputNGenerations(input int, generationCount int) (generations []string) {
+	return iterateInputNGenerations(strconv.FormatInt(int64(input), 2), generationCount)
 }

@@ -70,3 +70,13 @@ func (s *MainSuite) TestIterateInputNGenerations(c *C) {
 	output = []string{"0000010", "0000110", "0001110", "0011010", "0111110"}
 	c.Assert(iterateInputNGenerations(input, count), DeepEquals, output)
 }
+
+func (s *MainSuite) TestIterateIntInputNGenerations(c *C) {
+	var input int
+	var count int
+	var output []string
+	input = 7
+	count = 4
+	output = []string{"111", "101", "111", "101", "111"}
+	c.Assert(iterateIntInputNGenerations(input, count), DeepEquals, output)
+}
