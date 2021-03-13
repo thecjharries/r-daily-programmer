@@ -39,14 +39,18 @@ func applyRules(pattern []rune) rune {
 	return pattern[1]
 }
 
-//func nextGeneration(currentGeneration string) string {
-//	workingGeneration := []rune(currentGeneration)
-//	for startIndex := 0; startIndex < len(workingGeneration) - 2; startIndex ++ {
-//		fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
-//		for endIndex, newValue := range applyRules(workingGeneration[startIndex:startIndex + 3]) {
-//			workingGeneration[startIndex + endIndex] = newValue
-//		}
-//		fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
-//	}
-//	return string(workingGeneration)
-//}
+func nextGeneration(currentGeneration string) string {
+	workingGeneration := []rune(currentGeneration)
+	newGeneration := []rune(currentGeneration)
+	for index := 0; index < len(currentGeneration) - 1; index++ {
+		newGeneration[index + 1] = applyRules(workingGeneration[index:index + 3])
+	}
+	//for startIndex := 0; startIndex < len(workingGeneration) - 2; startIndex ++ {
+	//	fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
+	//	for endIndex, newValue := range applyRules(workingGeneration[startIndex:startIndex + 3]) {
+	//		workingGeneration[startIndex + endIndex] = newValue
+	//	}
+	//	fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
+	//}
+	return string(newGeneration)
+}
