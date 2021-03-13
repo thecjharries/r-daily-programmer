@@ -31,13 +31,28 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestApplyRules(c *C) {
-	c.Assert(applyRules([]rune{'2','2','2'}), DeepEquals, []rune{'2','2','2'})
-	c.Assert(applyRules([]rune{'1','1','1'}), DeepEquals, []rune{'1','0','1'})
-	c.Assert(applyRules([]rune{'1','1','0'}), DeepEquals, []rune{'1','1','0'})
-	c.Assert(applyRules([]rune{'1','0','1'}), DeepEquals, []rune{'1','1','1'})
-	c.Assert(applyRules([]rune{'0','1','1'}), DeepEquals, []rune{'0','1','1'})
-	c.Assert(applyRules([]rune{'0','0','1'}), DeepEquals, []rune{'0','1','1'})
-	c.Assert(applyRules([]rune{'0','1','0'}), DeepEquals, []rune{'0','1','0'})
-	c.Assert(applyRules([]rune{'1','0','0'}), DeepEquals, []rune{'1','0','0'})
-	c.Assert(applyRules([]rune{'0','0','0'}), DeepEquals, []rune{'0','0','0'})
+	c.Assert(applyRules([]rune{'2','2','2'}), Equals, '2')
+	c.Assert(applyRules([]rune{'1','1','1'}), Equals, '0')
+	c.Assert(applyRules([]rune{'1','1','0'}), Equals, '1')
+	c.Assert(applyRules([]rune{'1','0','1'}), Equals, '1')
+	c.Assert(applyRules([]rune{'0','1','1'}), Equals, '1')
+	c.Assert(applyRules([]rune{'0','0','1'}), Equals, '1')
+	c.Assert(applyRules([]rune{'0','1','0'}), Equals, '1')
+	c.Assert(applyRules([]rune{'1','0','0'}), Equals, '0')
+	c.Assert(applyRules([]rune{'0','0','0'}), Equals, '0')
 }
+
+//func (s *MainSuite) TestNewGeneration(c *C) {
+//	//c.Assert(nextGeneration("111"), Equals, "101")
+//	//c.Assert(nextGeneration("110"), Equals, "110")
+//	//c.Assert(nextGeneration("101"), Equals, "111")
+//	//c.Assert(nextGeneration("011"), Equals, "011")
+//	//c.Assert(nextGeneration("001"), Equals, "011")
+//	//c.Assert(nextGeneration("010"), Equals, "010")
+//	//c.Assert(nextGeneration("100"), Equals, "100")
+//	//c.Assert(nextGeneration("000"), Equals, "000")
+//	//c.Assert(nextGeneration("000000100"), Equals, "000001100")
+//	c.Assert(nextGeneration("000001100"), Equals, "000011100")
+//	c.Assert(nextGeneration("000011100"), Equals, "000110100")
+//	c.Assert(nextGeneration("000110100"), Equals, "001111100")
+//}

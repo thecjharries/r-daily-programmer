@@ -31,15 +31,22 @@ func main() {
 	fmt.Println("hello world")
 }
 
-func applyRules(pattern []rune) (newPattern []rune) {
-	newPattern = make([]rune, len(pattern))
-	copy(newPattern, pattern)
-	newRune, ok := rulesMap[string(newPattern)]
+func applyRules(pattern []rune) rune {
+	newRune, ok := rulesMap[string(pattern)]
 	if ok {
-		fmt.Println("ok")
-		newPattern[1] = newRune
-	} else {
-		fmt.Println(string(newPattern))
+		return newRune
 	}
-	return
+	return pattern[1]
 }
+
+//func nextGeneration(currentGeneration string) string {
+//	workingGeneration := []rune(currentGeneration)
+//	for startIndex := 0; startIndex < len(workingGeneration) - 2; startIndex ++ {
+//		fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
+//		for endIndex, newValue := range applyRules(workingGeneration[startIndex:startIndex + 3]) {
+//			workingGeneration[startIndex + endIndex] = newValue
+//		}
+//		fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
+//	}
+//	return string(workingGeneration)
+//}
