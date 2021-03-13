@@ -16,6 +16,30 @@ package main
 
 import "fmt"
 
+var rulesMap = map[string]rune {
+	"111": '0',
+	"110": '1',
+	"101": '1',
+	"011": '1',
+	"001": '1',
+	"010": '1',
+	"100": '0',
+	"000": '0',
+}
+
 func main() {
 	fmt.Println("hello world")
+}
+
+func applyRules(pattern []rune) (newPattern []rune) {
+	newPattern = make([]rune, len(pattern))
+	copy(newPattern, pattern)
+	newRune, ok := rulesMap[string(newPattern)]
+	if ok {
+		fmt.Println("ok")
+		newPattern[1] = newRune
+	} else {
+		fmt.Println(string(newPattern))
+	}
+	return
 }

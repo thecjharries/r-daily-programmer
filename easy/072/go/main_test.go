@@ -29,3 +29,15 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestApplyRules(c *C) {
+	c.Assert(applyRules([]rune{'2','2','2'}), DeepEquals, []rune{'2','2','2'})
+	c.Assert(applyRules([]rune{'1','1','1'}), DeepEquals, []rune{'1','0','1'})
+	c.Assert(applyRules([]rune{'1','1','0'}), DeepEquals, []rune{'1','1','0'})
+	c.Assert(applyRules([]rune{'1','0','1'}), DeepEquals, []rune{'1','1','1'})
+	c.Assert(applyRules([]rune{'0','1','1'}), DeepEquals, []rune{'0','1','1'})
+	c.Assert(applyRules([]rune{'0','0','1'}), DeepEquals, []rune{'0','1','1'})
+	c.Assert(applyRules([]rune{'0','1','0'}), DeepEquals, []rune{'0','1','0'})
+	c.Assert(applyRules([]rune{'1','0','0'}), DeepEquals, []rune{'1','0','0'})
+	c.Assert(applyRules([]rune{'0','0','0'}), DeepEquals, []rune{'0','0','0'})
+}
