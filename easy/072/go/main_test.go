@@ -56,3 +56,17 @@ func (s *MainSuite) TestNewGeneration(c *C) {
 	c.Assert(nextGeneration("000011100"), Equals, "000110100")
 	c.Assert(nextGeneration("000110100"), Equals, "001111100")
 }
+
+func (s *MainSuite) TestIterateInputNGenerations(c *C) {
+	var input string
+	var count int
+	var output []string
+	input = "111"
+	count = 4
+	output = []string{"111", "101", "111", "101", "111"}
+	c.Assert(iterateInputNGenerations(input, count), DeepEquals, output)
+	input = "0000010"
+	count = 4
+	output = []string{"0000010", "0000110", "0001110", "0011010", "0111110"}
+	c.Assert(iterateInputNGenerations(input, count), DeepEquals, output)
+}

@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type GenericFunction func(interface{}) interface{}
+
 var rulesMap = map[string]rune {
 	"111": '0',
 	"110": '1',
@@ -45,12 +47,14 @@ func nextGeneration(currentGeneration string) string {
 	for index := 0; index < len(currentGeneration) - 1; index++ {
 		newGeneration[index + 1] = applyRules(workingGeneration[index:index + 3])
 	}
-	//for startIndex := 0; startIndex < len(workingGeneration) - 2; startIndex ++ {
-	//	fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
-	//	for endIndex, newValue := range applyRules(workingGeneration[startIndex:startIndex + 3]) {
-	//		workingGeneration[startIndex + endIndex] = newValue
-	//	}
-	//	fmt.Println(startIndex, string(workingGeneration[startIndex:startIndex + 3]), string(workingGeneration))
-	//}
 	return string(newGeneration)
+}
+
+func iterateInputNGenerations(input string, generationCount int) (generations []string) {
+	generations = make([]string, generationCount + 1)
+	generations[0] = input
+	for index := 0; index < generationCount; index++ {
+		generations[index + 1] = nextGeneration(generations[index])
+	}
+	return
 }
