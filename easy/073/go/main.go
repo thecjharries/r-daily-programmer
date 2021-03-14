@@ -41,7 +41,7 @@ var operators = map[string]ReversePolishNotationOperator {
 }
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(computeReversePolishNotation(ReversePolishNotation{3, 5, "+", 7, 2, "-", "*"}))
 }
 
 func computeReversePolishNotation(notation ReversePolishNotation) int {
