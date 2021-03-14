@@ -36,3 +36,14 @@ func (s *MainSuite) TestMathOperations(c *C) {
 	c.Assert(add(a, b), Equals, 14)
 	c.Assert(subtract(a, b), Equals, 6)
 }
+
+func (s *MainSuite) TestComputeReversePolishNotation(c *C) {
+	var input ReversePolishNotation
+	var output int
+	input = ReversePolishNotation{3, 4, "*"}
+	output = 12
+	c.Assert(computeReversePolishNotation(input), Equals, output)
+	input = ReversePolishNotation{3, 4, "*", 6, 2, "-", "+"}
+	output = 16
+	c.Assert(computeReversePolishNotation(input), Equals, output)
+}

@@ -43,3 +43,20 @@ var operators = map[string]ReversePolishNotationOperator {
 func main() {
 	fmt.Println("hello world")
 }
+
+func computeReversePolishNotation(notation ReversePolishNotation) int {
+	var filo []int
+	filo = append(filo, notation[0].(int), notation[1].(int))
+	for index := 2; index < len(notation); index++ {
+		entry, isString := notation[index].(string)
+		if isString {
+			operation, allowedOperation := operators[entry]
+			if allowedOperation {
+				filo = append(filo[:len(filo) - 2], operation(filo[len(filo) - 2], filo[len(filo) - 1]))
+			}
+		} else {
+			filo = append(filo, notation[index].(int))
+		}
+	}
+	return filo[0]
+}
