@@ -32,7 +32,13 @@ func subtract(a, b int) int {
 	return a - b
 }
 
+type ReversePolishNotationOperator func(int, int) int
 
+var operators = map[string]ReversePolishNotationOperator {
+	"*": multiply,
+	"+": add,
+	"-": subtract,
+}
 
 func main() {
 	fmt.Println("hello world")
