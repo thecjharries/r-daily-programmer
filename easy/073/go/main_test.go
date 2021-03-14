@@ -29,3 +29,10 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestMathOperations(c *C) {
+	a, b := 10, 4
+	c.Assert(multiply(a, b), Equals, 40)
+	c.Assert(add(a, b), Equals, 14)
+	c.Assert(subtract(a, b), Equals, 6)
+}

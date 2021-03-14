@@ -16,6 +16,24 @@ package main
 
 import "fmt"
 
+type ReversePolishNotationEntry interface{}
+
+type ReversePolishNotation []ReversePolishNotationEntry
+
+func multiply(a, b int) int {
+	return a * b
+}
+
+func add(a, b int) int {
+	return a + b
+}
+
+func subtract(a, b int) int {
+	return a - b
+}
+
+
+
 func main() {
 	fmt.Println("hello world")
 }
