@@ -39,3 +39,15 @@ func reduceFibonacciSequenceToBeLessThan(input int64, fibonacciSequence []int64)
 	}
 	return fibonacciSequence[:index + 1]
 }
+
+func generateZeckendorfRepresentation(input int64) (zeckendorfRepresentation []int64) {
+	currentTotal := input
+	fibonacciSequence := generateFibonacciSequenceLessThan(currentTotal, []int64{})
+	for 1 < len(fibonacciSequence) {
+		currentValue := fibonacciSequence[len(fibonacciSequence) - 1]
+		zeckendorfRepresentation = append(zeckendorfRepresentation, currentValue)
+		currentTotal -= currentValue
+		fibonacciSequence = reduceFibonacciSequenceToBeLessThan(currentTotal, fibonacciSequence)
+	}
+	return
+}

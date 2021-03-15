@@ -46,3 +46,14 @@ func (s *MainSuite) TestReduceFibonacciSequenceToBeLessThan(c *C) {
 	output = fibonacciSequence[:8]
 	c.Assert(reduceFibonacciSequenceToBeLessThan(input, fibonacciSequence), DeepEquals, output)
 }
+
+func (s *MainSuite) TestGenerateZeckendorfRepresentation(c *C) {
+	var input int64
+	var output []int64
+	input = 100
+	output = []int64{89, 8, 3}
+	c.Assert(generateZeckendorfRepresentation(input), DeepEquals, output)
+	input = 14348907
+	output = []int64{9227465, 3524578, 1346269, 196418, 46368, 6765, 987, 55, 2}
+	c.Assert(generateZeckendorfRepresentation(input), DeepEquals, output)
+}
