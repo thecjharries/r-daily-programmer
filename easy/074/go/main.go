@@ -19,3 +19,15 @@ import "fmt"
 func main() {
 	fmt.Println("hello world")
 }
+
+func generateFibonacciSequenceLessThan(input int64, fibonacciSequence []int64) []int64 {
+	if 0 == len(fibonacciSequence) {
+		return generateFibonacciSequenceLessThan(input, []int64{0, 1})
+	}
+	penultimate := fibonacciSequence[len(fibonacciSequence) - 2]
+	ultimate := fibonacciSequence[len(fibonacciSequence) - 1]
+	if input > penultimate + ultimate {
+		return generateFibonacciSequenceLessThan(input, append(fibonacciSequence, penultimate + ultimate))
+	}
+	return fibonacciSequence
+}
