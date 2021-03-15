@@ -14,10 +14,13 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(generateZeckendorfRepresentation(int64(math.Pow(3, 15))))
 }
 
 func generateFibonacciSequenceLessThan(input int64, fibonacciSequence []int64) []int64 {
