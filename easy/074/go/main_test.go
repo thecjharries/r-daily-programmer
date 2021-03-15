@@ -34,3 +34,15 @@ func (s *MainSuite) TestGenerateFibonacciSequenceLessThan(c *C) {
 	output := []int64{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89}
 	c.Assert(generateFibonacciSequenceLessThan(100, []int64{}), DeepEquals, output)
 }
+
+func (s *MainSuite) TestReduceFibonacciSequenceToBeLessThan(c *C) {
+	fibonacciSequence := []int64{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89}
+	var input int64
+	var output []int64
+	input = 70
+	output = fibonacciSequence[:11]
+	c.Assert(reduceFibonacciSequenceToBeLessThan(input, fibonacciSequence), DeepEquals, output)
+	input = 20
+	output = fibonacciSequence[:8]
+	c.Assert(reduceFibonacciSequenceToBeLessThan(input, fibonacciSequence), DeepEquals, output)
+}

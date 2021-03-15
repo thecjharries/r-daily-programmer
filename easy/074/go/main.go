@@ -31,3 +31,11 @@ func generateFibonacciSequenceLessThan(input int64, fibonacciSequence []int64) [
 	}
 	return fibonacciSequence
 }
+
+func reduceFibonacciSequenceToBeLessThan(input int64, fibonacciSequence []int64) []int64 {
+	index := len(fibonacciSequence) - 1
+	for input < fibonacciSequence[index] {
+		index--
+	}
+	return fibonacciSequence[:index + 1]
+}
