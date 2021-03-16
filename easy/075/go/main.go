@@ -37,3 +37,11 @@ func splitEquation(equation string) (string, string) {
 	exploded := strings.Split(equation, "=")
 	return exploded[0], exploded[1]
 }
+
+func sanitizeRhs(rhs string) string {
+	sanitized := rhs
+	for simpleFunc, properFunc := range functionMap {
+		sanitized = strings.ReplaceAll(sanitized, simpleFunc, properFunc)
+	}
+	return sanitized
+}

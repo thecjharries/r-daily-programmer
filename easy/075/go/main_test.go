@@ -37,5 +37,10 @@ func (s *MainSuite) TestSplitEquation(c *C) {
 	foundLhs, foundRhs := splitEquation(input)
 	c.Assert(foundLhs, Equals, outputLhs)
 	c.Assert(foundRhs, Equals, outputRhs)
+}
 
+func (s *MainSuite) TestSanitizeRhs(c *C) {
+	input := "abs(x)+abs(y)"
+	output := "fabsf(x)+fabsf(y)"
+	c.Assert(sanitizeRhs(input), Equals, output)
 }
