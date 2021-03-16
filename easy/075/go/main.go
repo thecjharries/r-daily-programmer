@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var functionMap = map[string]string {
 	"sqrt": "sqrtf",
@@ -28,4 +31,9 @@ var functionMap = map[string]string {
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func splitEquation(equation string) (string, string) {
+	exploded := strings.Split(equation, "=")
+	return exploded[0], exploded[1]
 }

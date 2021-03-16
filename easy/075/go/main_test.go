@@ -29,3 +29,13 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestSplitEquation(c *C) {
+	input := "L0(x,y)=abs(x)+abs(y)"
+	outputLhs := "L0(x,y)"
+	outputRhs := "abs(x)+abs(y)"
+	foundLhs, foundRhs := splitEquation(input)
+	c.Assert(foundLhs, Equals, outputLhs)
+	c.Assert(foundRhs, Equals, outputRhs)
+
+}
