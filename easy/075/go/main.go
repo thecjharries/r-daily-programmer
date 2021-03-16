@@ -16,6 +16,16 @@ package main
 
 import "fmt"
 
+var functionMap = map[string]string {
+	"sqrt": "sqrtf",
+	"abs": "fabsf",
+	"sin": "sinf",
+	"cos": "cosf",
+	"tan": "tanf",
+	"exp": "expf",
+	"log": "logf",
+}
+
 func main() {
 	fmt.Println("hello world")
 }
