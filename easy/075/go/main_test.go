@@ -50,3 +50,12 @@ func (s *MainSuite) TestSanitizeLhs(c *C) {
 	output := "L0(float x, float y)"
 	c.Assert(sanitizeLhs(input), Equals, output)
 }
+
+func (s *MainSuite) TestProcessEquation(c *C) {
+	input := "L0(x,y)=abs(x)+abs(y)"
+	output := `float L0(float x, float y)
+{
+	return fabsf(x)+fabsf(y);
+}`
+	c.Assert(processEquation(input), Equals, output)
+}

@@ -32,6 +32,11 @@ var functionMap = map[string]string {
 
 var lhsPattern = regexp.MustCompile(`(?P<name>[a-zA-Z0-9_]+)\((?P<args>[^)]+)\)`)
 
+const funcTemplate string = `float %s
+{
+	return %s;
+}`
+
 func main() {
 	fmt.Println("hello world")
 }
@@ -56,4 +61,9 @@ func sanitizeLhs(lhs string) string {
 		args[index] = fmt.Sprintf("float %s", args[index])
 	}
 	return fmt.Sprintf("%s(%s)", matched[1], strings.Join(args, ", "))
+}
+
+func processEquation(equation string) string {
+	lhs, rhs := splitEquation(equation)
+	return fmt.Sprintf(funcTemplate, sanitizeLhs(lhs), sanitizeRhs(rhs))
 }
