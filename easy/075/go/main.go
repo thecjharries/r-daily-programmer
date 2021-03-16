@@ -38,7 +38,7 @@ const funcTemplate string = `float %s
 }`
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println(processEquation("big(x,y)=sqrt(x+y)*10"))
 }
 
 func splitEquation(equation string) (string, string) {
