@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
 
@@ -28,6 +29,8 @@ var functionMap = map[string]string {
 	"exp": "expf",
 	"log": "logf",
 }
+
+var lhsPattern = regexp.MustCompile(`(?P<name>[a-zA-Z0-9_]+)\((?P<args>[^)]+)\)`)
 
 func main() {
 	fmt.Println("hello world")
@@ -44,4 +47,13 @@ func sanitizeRhs(rhs string) string {
 		sanitized = strings.ReplaceAll(sanitized, simpleFunc, properFunc)
 	}
 	return sanitized
+}
+
+func sanitizeLhs(lhs string) string {
+	matched := lhsPattern.FindStringSubmatch(lhs)
+	args := strings.Split(matched[2], ",")
+	for index := 0; index < len(args); index++ {
+		args[index] = fmt.Sprintf("float %s", args[index])
+	}
+	return fmt.Sprintf("%s(%s)", matched[1], strings.Join(args, ", "))
 }

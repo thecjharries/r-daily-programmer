@@ -44,3 +44,9 @@ func (s *MainSuite) TestSanitizeRhs(c *C) {
 	output := "fabsf(x)+fabsf(y)"
 	c.Assert(sanitizeRhs(input), Equals, output)
 }
+
+func (s *MainSuite) TestSanitizeLhs(c *C) {
+	input := "L0(x,y)"
+	output := "L0(float x, float y)"
+	c.Assert(sanitizeLhs(input), Equals, output)
+}
