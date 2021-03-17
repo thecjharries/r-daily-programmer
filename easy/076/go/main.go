@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -30,11 +31,16 @@ func createExceptionsMap(exceptions []string) (exceptionsMap map[string]bool) {
 	return
 }
 
-//func titleCaseWithExceptions(input string, exceptions []string) string {
-//	exploded := strings.Split(input, " ")
-//	exploded[0] = strings.Title(exploded[0])
-//	for index := 0; index < len(exploded); index++ {
-//		// do something
-//	}
-//	return strings.Join(exploded, " ")
-//}
+func titleCaseWithExceptions(input string, exceptions []string) string {
+	exceptionMap := createExceptionsMap(exceptions)
+	exploded := strings.Split(input, " ")
+	exploded[0] = strings.Title(strings.ToLower(exploded[0]))
+	for index := 1; index < len(exploded); index++ {
+		exploded[index] = strings.ToLower(exploded[index])
+		_, isException := exceptionMap[exploded[index]]
+		if !isException {
+			exploded[index] = strings.Title(exploded[index])
+		}
+	}
+	return strings.Join(exploded, " ")
+}

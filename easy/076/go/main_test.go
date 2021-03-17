@@ -38,3 +38,16 @@ func (s *MainSuite) TestCreateExceptionsMap(c *C) {
 	}
 	c.Assert(createExceptionsMap(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestTitleCaseWithExceptions(c *C) {
+	var phrase, output string
+	var exceptions []string
+	phrase = "the quick brown fox jumps over the lazy dog"
+	exceptions = []string{"jumps", "the", "over"}
+	output = "The Quick Brown Fox jumps over the Lazy Dog"
+	c.Assert(titleCaseWithExceptions(phrase, exceptions), Equals, output)
+	phrase = "THE vitamins ARE IN my fresh CALIFORNIA raisins"
+	exceptions = []string{"are", "is", "in", "your", "my"}
+	output = "The Vitamins are in my Fresh California Raisins"
+	c.Assert(titleCaseWithExceptions(phrase, exceptions), Equals, output)
+}
