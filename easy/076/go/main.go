@@ -14,8 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("hello world")
 }
+
+func createExceptionsMap(exceptions []string) (exceptionsMap map[string]bool) {
+	exceptionsMap = make(map[string]bool, len(exceptions))
+	for _, exception := range exceptions {
+		exceptionsMap[exception] = true
+	}
+	return
+}
+
+//func titleCaseWithExceptions(input string, exceptions []string) string {
+//	exploded := strings.Split(input, " ")
+//	exploded[0] = strings.Title(exploded[0])
+//	for index := 0; index < len(exploded); index++ {
+//		// do something
+//	}
+//	return strings.Join(exploded, " ")
+//}

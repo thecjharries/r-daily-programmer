@@ -29,3 +29,12 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestCreateExceptionsMap(c *C) {
+	input := []string{"one", "two"}
+	output := map[string]bool {
+		"one": true,
+		"two": true,
+	}
+	c.Assert(createExceptionsMap(input), DeepEquals, output)
+}
