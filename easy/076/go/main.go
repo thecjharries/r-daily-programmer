@@ -20,7 +20,9 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world")
+	phrase := "THE vitamins ARE IN my fresh CALIFORNIA raisins"
+	exceptions := []string{"are", "is", "in", "your", "my"}
+	fmt.Println(titleCaseWithExceptions(phrase, exceptions))
 }
 
 func createExceptionsMap(exceptions []string) (exceptionsMap map[string]bool) {
