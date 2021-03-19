@@ -1,5 +1,9 @@
 # [7/18/2012] Challenge #78 [easy] (Keyboard Locale Simulator)
 
+## Notes
+
+The Go solution only uses two characters to show the concept. Adding the rest is tedium.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/wrqbr/7182012_challenge_78_easy_keyboard_locale/) by [u/Steve132](https://old.reddit.com/user/Steve132)
