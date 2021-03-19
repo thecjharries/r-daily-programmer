@@ -30,8 +30,14 @@ func (s *MainSuite) TestMain(c *C) {
 
 }
 
-func (s *MainSuite) TestProcessKeyPressNoShift(c *C) {
+func (s *MainSuite) TestProcessKeyPressNoModifiers(c *C) {
 	c.Assert(processKeyPress('a', false, false), Equals, 'a')
 	c.Assert(processKeyPress('0', false, false), Equals, '0')
 	c.Assert(processKeyPress('z', false, false), Equals, 'z')
+}
+
+func (s *MainSuite) TestProcessKeyPressWithShiftNoCaps(c *C) {
+	c.Assert(processKeyPress('a', true, false), Equals, 'A')
+	c.Assert(processKeyPress('0', true, false), Equals, ')')
+	c.Assert(processKeyPress('z', true, false), Equals, 'z')
 }
