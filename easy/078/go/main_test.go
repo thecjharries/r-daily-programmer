@@ -47,3 +47,10 @@ func (s *MainSuite) TestProcessKeyPressNoShiftWithCaps(c *C) {
 	c.Assert(processKeyPress('0', false, true), Equals, '0')
 	c.Assert(processKeyPress('z', false, true), Equals, 'z')
 }
+
+
+func (s *MainSuite) TestProcessKeyPressWithShiftWithCaps(c *C) {
+	c.Assert(processKeyPress('a', true, true), Equals, 'A')
+	c.Assert(processKeyPress('0', true, true), Equals, ')')
+	c.Assert(processKeyPress('z', true, true), Equals, 'z')
+}
