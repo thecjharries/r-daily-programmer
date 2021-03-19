@@ -16,15 +16,31 @@ package main
 
 import "fmt"
 
-var shiftModifierMap = map[string]string {
-	"a": "A",
-	"0": ")",
+var shiftModifierMap = map[rune]rune {
+	'a': 'A',
+	'0': ')',
 }
 
-var capsModifierMap = map[string]string {
-	"a": "A",
+var capsModifierMap = map[rune]rune {
+	'a': 'A',
 }
 
 func main() {
 	fmt.Println("hello world")
+}
+
+func processKeyPress(character rune, shift, caps bool) rune {
+	if caps {
+		capsCharacter, hasCaps := capsModifierMap[character]
+		if hasCaps {
+			return capsCharacter
+		}
+	}
+	if shift {
+		shiftCharacter, hasShift := shiftModifierMap[character]
+		if hasShift {
+			return shiftCharacter
+		}
+	}
+	return character
 }
