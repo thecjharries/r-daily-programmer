@@ -29,3 +29,25 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestGenerateMorseSequences(c *C) {
+	var length int
+	var seed string
+	var output []string
+	length = 1
+	seed = ""
+	output = []string{"."}
+	c.Assert(generateMorseSequences(length, seed), DeepEquals, output)
+	length = 2
+	seed = ""
+	output = []string{"..", "-"}
+	c.Assert(generateMorseSequences(length, seed), DeepEquals, output)
+	length = 3
+	seed = ""
+	output = []string{"...", ".-", "-."}
+	c.Assert(generateMorseSequences(length, seed), DeepEquals, output)
+	length = 4
+	seed = ""
+	output = []string{"....", "..-", ".-.", "-..", "--"}
+	c.Assert(generateMorseSequences(length, seed), DeepEquals, output)
+}
