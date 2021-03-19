@@ -29,3 +29,9 @@ var _ = Suite(&MainSuite{})
 func (s *MainSuite) TestMain(c *C) {
 
 }
+
+func (s *MainSuite) TestProcessKeyPressNoShift(c *C) {
+	c.Assert(processKeyPress('a', false, false), Equals, 'a')
+	c.Assert(processKeyPress('0', false, false), Equals, '0')
+	c.Assert(processKeyPress('z', false, false), Equals, 'z')
+}
