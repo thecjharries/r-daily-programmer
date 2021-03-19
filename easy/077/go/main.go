@@ -30,3 +30,7 @@ func generateMorseSequences(length int, seed string) (sequences []string) {
 	sequences = append(sequences, generateMorseSequences(length - 2, seed + "-")...)
 	return
 }
+
+func Morse(length int) []string {
+	return generateMorseSequences(length, "")
+}

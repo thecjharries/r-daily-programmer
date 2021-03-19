@@ -51,3 +51,11 @@ func (s *MainSuite) TestGenerateMorseSequences(c *C) {
 	output = []string{"....", "..-", ".-.", "-..", "--"}
 	c.Assert(generateMorseSequences(length, seed), DeepEquals, output)
 }
+
+func (s *MainSuite) TestMorse(c *C) {
+	var length int
+	var output []string
+	length = 4
+	output = []string{"....", "..-", ".-.", "-..", "--"}
+	c.Assert(Morse(length), DeepEquals, output)
+}
