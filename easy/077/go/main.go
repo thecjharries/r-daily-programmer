@@ -17,7 +17,10 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("hello world")
+	// the bonus, 35+, generates very fast but takes forever to print
+	// writing them to a file would probably be better
+	length := 10
+	fmt.Println(Morse(length))
 }
 
 func generateMorseSequences(length int, seed string) (sequences []string) {
