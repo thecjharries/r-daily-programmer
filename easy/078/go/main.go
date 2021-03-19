@@ -16,6 +16,15 @@ package main
 
 import "fmt"
 
+var shiftModifierMap = map[string]string {
+	"a": "A",
+	"0": ")",
+}
+
+var capsModifierMap = map[string]string {
+	"a": "A",
+}
+
 func main() {
 	fmt.Println("hello world")
 }
