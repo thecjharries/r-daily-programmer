@@ -28,14 +28,17 @@ type MainSuite struct {}
 var _ = Suite(&MainSuite{})
 
 var printCallCount int
+var printSpyContents string
 
 func printSpy(format string, a ...interface{}) (n int, err error) {
+	printSpyContents = fmt.Sprintf(format, a...)
 	printCallCount++
 	return
 }
 
 func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
+	printSpyContents = ""
 	zPrint = printSpy
 }
 
@@ -45,7 +48,9 @@ func (s *MainSuite) TearDownTest(c *C) {
 
 func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 0)
+	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
+	c.Assert(printSpyContents, Equals, "hello world")
 
 }
