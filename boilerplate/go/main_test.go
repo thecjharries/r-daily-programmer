@@ -52,5 +52,4 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
-
 }
