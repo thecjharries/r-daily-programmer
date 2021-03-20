@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+var zPrint = fmt.Printf
+
 func main() {
-	fmt.Println("hello world")
+	_, _ = zPrint("hello world")
 }
