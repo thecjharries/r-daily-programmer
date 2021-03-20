@@ -52,5 +52,9 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
 
+func (s *MainSuite) TestStepCountStepsGuard(c *C) {
+	c.Assert(func(){stepCount(1, 2, 0)}, PanicMatches, ErrorStepsBelowTwo)
+	c.Assert(func(){stepCount(1, 2, 4)}, Not(Panics), nil)
 }

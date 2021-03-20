@@ -18,6 +18,15 @@ import "fmt"
 
 var zPrint = fmt.Printf
 
+const ErrorStepsBelowTwo string = "You cannot have fewer than 2 steps"
+
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func stepCount(start, end float64, steps int) []float64 {
+	if steps < 2 {
+		panic(ErrorStepsBelowTwo)
+	}
+	return []float64(nil)
 }
