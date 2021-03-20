@@ -24,9 +24,14 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func stepCount(start, end float64, steps int) []float64 {
-	if steps < 2 {
+func stepCount(start, end float64, totalSteps int) (steps []float64) {
+	if totalSteps < 2 {
 		panic(ErrorStepsBelowTwo)
 	}
-	return []float64(nil)
+	steps = append(steps, start)
+	for index := 0; index < totalSteps - 2; index++ {
+		steps = append(steps, steps[index] + (end - start) / (float64(totalSteps) - 1))
+	}
+	steps = append(steps, end)
+	return
 }

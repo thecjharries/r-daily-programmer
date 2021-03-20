@@ -58,3 +58,17 @@ func (s *MainSuite) TestStepCountStepsGuard(c *C) {
 	c.Assert(func(){stepCount(1, 2, 0)}, PanicMatches, ErrorStepsBelowTwo)
 	c.Assert(func(){stepCount(1, 2, 4)}, Not(Panics), nil)
 }
+
+func (s *MainSuite) TestStepCountNoIntermediate(c *C) {
+	c.Assert(stepCount(1, 2, 2), DeepEquals, []float64{1, 2})
+}
+
+func (s *MainSuite) TestStepCountWithSteps(c *C) {
+	c.Assert(stepCount(1, 3, 3), DeepEquals, []float64{1, 2, 3})
+	c.Assert(stepCount(1, 4, 4), DeepEquals, []float64{1, 2, 3, 4})
+	c.Assert(stepCount(1, 2, 3), DeepEquals, []float64{1, 1.5, 2})
+	c.Assert(stepCount(18.75, -22.00, 5), DeepEquals, []float64{18.75, 8.5625, -1.625, -11.8125, -22.0})
+	c.Assert(stepCount(-5.75, 12.00, 5), DeepEquals, []float64{-5.75, -1.3125, 3.125, 7.5625, 12.0})
+	c.Assert(stepCount(13.50, -20.75, 3), DeepEquals, []float64{13.5, -3.625, -20.75})
+	c.Assert(stepCount(9.75, 3.00, 9), DeepEquals, []float64{9.75, 8.90625, 8.0625, 7.21875, 6.375, 5.53125, 4.6875, 3.84375, 3.0})
+}
