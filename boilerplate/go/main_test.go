@@ -30,8 +30,8 @@ var _ = Suite(&MainSuite{})
 var printCallCount int
 var printSpyContents string
 
-func printSpy(format string, a ...interface{}) (n int, err error) {
-	printSpyContents = fmt.Sprintf(format, a...)
+func printSpy(a ...interface{}) (n int, err error) {
+	printSpyContents = fmt.Sprint(a...)
 	printCallCount++
 	return
 }
@@ -43,7 +43,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
-	zPrint = fmt.Printf
+	zPrint = fmt.Println
 }
 
 func (s *MainSuite) TestMain(c *C) {
