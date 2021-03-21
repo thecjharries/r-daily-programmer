@@ -18,12 +18,19 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path"
+	"sort"
 	"strings"
 )
 
 var dictionaryPath string = path.Join("..", "enable1.txt")
 
 type AnagramDictionary map[string][]string
+
+func (d *AnagramDictionary) ToAnagramKey(word string) string {
+	exploded := strings.Split(word, "")
+	sort.Strings(exploded)
+	return strings.Join(exploded, "")
+}
 
 func NewDictionary(filename string) *AnagramDictionary {
 	byteContents, _ := ioutil.ReadFile(filename)
@@ -33,6 +40,7 @@ func NewDictionary(filename string) *AnagramDictionary {
 	)
 	dictionary := make(AnagramDictionary, len(stringContents))
 	for _, word := range stringContents {
+
 		dictionary[word] = []string(nil)
 	}
 	return &dictionary

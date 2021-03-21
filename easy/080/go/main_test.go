@@ -54,6 +54,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "hello world")
 }
 
+func (s *MainSuite) TestAnagramDictionaryToAnagramKey(c *C) {
+	dictionary := AnagramDictionary{}
+	c.Assert(dictionary.ToAnagramKey("word"), Equals, "dorw")
+}
+
 func (s *MainSuite) TestNewDictionary(c *C) {
 	dictionary := NewDictionary("test_dictionary.txt")
 	c.Assert(len(*dictionary) == 1, Equals, true)
