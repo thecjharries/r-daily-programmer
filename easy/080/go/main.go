@@ -23,20 +23,24 @@ import (
 
 var dictionaryPath string = path.Join("..", "enable1.txt")
 
-type Dictionary map[string]bool
+type AnagramDictionary map[string]bool
 
-func (d *Dictionary) IsWord(word string) bool {
+func (d *AnagramDictionary) IsWord(word string) bool {
 	_, isWord := (*d)[word]
 	return isWord
 }
 
-func NewDictionary(filename string) *Dictionary {
+func (d *AnagramDictionary) Anagrams(word string) (anagrams []string) {
+	return
+}
+
+func NewDictionary(filename string) *AnagramDictionary {
 	byteContents, _ := ioutil.ReadFile(filename)
 	stringContents := strings.Split(
 		strings.Trim(string(byteContents), "\n"),
 		"\n",
 	)
-	dictionary := make(Dictionary, len(stringContents))
+	dictionary := make(AnagramDictionary, len(stringContents))
 	for _, word := range stringContents {
 		dictionary[word] = true
 	}

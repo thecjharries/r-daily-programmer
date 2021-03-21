@@ -55,7 +55,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestDictionaryIsWord(c *C) {
-	dictionary := Dictionary{
+	dictionary := AnagramDictionary{
 		"word": true,
 	}
 	c.Assert(dictionary.IsWord("word"), Equals, true)
