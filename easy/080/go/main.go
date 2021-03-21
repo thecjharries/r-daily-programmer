@@ -14,13 +14,33 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"path"
+	"strings"
+)
+
+var dictionaryPath string = path.Join("..", "enable1.txt")
 
 type Dictionary map[string]bool
 
 func (d *Dictionary) IsWord(word string) bool {
 	_, isWord := (*d)[word]
 	return isWord
+}
+
+func NewDictionary(filename string) *Dictionary {
+	byteContents, _ := ioutil.ReadFile(filename)
+	stringContents := strings.Split(
+		strings.Trim(string(byteContents), "\n"),
+		"\n",
+	)
+	dictionary := make(Dictionary, len(stringContents))
+	for _, word := range stringContents {
+		dictionary[word] = true
+	}
+	return &dictionary
 }
 
 var zPrint = fmt.Printf
