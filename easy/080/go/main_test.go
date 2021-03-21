@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDictionaryIsWord(c *C) {
+	dictionary := Dictionary{
+		"word": true,
+	}
+	c.Assert(dictionary.IsWord("word"), Equals, true)
+	c.Assert(dictionary.IsWord("qqq"), Equals, false)
+}

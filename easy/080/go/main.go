@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+type Dictionary map[string]bool
+
+func (d *Dictionary) IsWord(word string) bool {
+	_, isWord := (*d)[word]
+	return isWord
+}
+
 var zPrint = fmt.Printf
 
 func main() {
