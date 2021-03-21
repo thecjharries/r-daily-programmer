@@ -62,4 +62,5 @@ func (s *MainSuite) TestAnagramDictionaryToAnagramKey(c *C) {
 func (s *MainSuite) TestNewDictionary(c *C) {
 	dictionary := NewDictionary("test_dictionary.txt")
 	c.Assert(len(*dictionary) == 1, Equals, true)
+	c.Assert((*dictionary)["dorw"], DeepEquals, []string{"word"})
 }

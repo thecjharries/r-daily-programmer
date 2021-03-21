@@ -40,8 +40,13 @@ func NewDictionary(filename string) *AnagramDictionary {
 	)
 	dictionary := make(AnagramDictionary, len(stringContents))
 	for _, word := range stringContents {
-
-		dictionary[word] = []string(nil)
+		key := dictionary.ToAnagramKey(word)
+		_, keyExists := dictionary[key]
+		if keyExists {
+			dictionary[key] = append(dictionary[key], word)
+		} else {
+			dictionary[key] = []string{word}
+		}
 	}
 	return &dictionary
 }
