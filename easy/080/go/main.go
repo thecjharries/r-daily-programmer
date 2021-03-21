@@ -62,5 +62,6 @@ func NewAnagramDictionary(filename string) *AnagramDictionary {
 var zPrint = fmt.Printf
 
 func main() {
-	_, _ = zPrint("hello world")
+	dictionary := NewAnagramDictionary(dictionaryPath)
+	_, _ = zPrint("%v", dictionary.Anagrams("triangle"))
 }
