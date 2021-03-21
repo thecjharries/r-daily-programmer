@@ -54,17 +54,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "hello world")
 }
 
-func (s *MainSuite) TestDictionaryIsWord(c *C) {
-	dictionary := AnagramDictionary{
-		"word": true,
-	}
-	c.Assert(dictionary.IsWord("word"), Equals, true)
-	c.Assert(dictionary.IsWord("qqq"), Equals, false)
-}
-
 func (s *MainSuite) TestNewDictionary(c *C) {
 	dictionary := NewDictionary("test_dictionary.txt")
 	c.Assert(len(*dictionary) == 1, Equals, true)
-	c.Assert(dictionary.IsWord("word"), Equals, true)
-	c.Assert(dictionary.IsWord("qqq"), Equals, false)
 }
