@@ -32,7 +32,7 @@ func (d *AnagramDictionary) ToAnagramKey(word string) string {
 	return strings.Join(exploded, "")
 }
 
-func NewDictionary(filename string) *AnagramDictionary {
+func NewAnagramDictionary(filename string) *AnagramDictionary {
 	byteContents, _ := ioutil.ReadFile(filename)
 	stringContents := strings.Split(
 		strings.Trim(string(byteContents), "\n"),
