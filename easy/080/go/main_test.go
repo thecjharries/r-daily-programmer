@@ -56,7 +56,7 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestAnagramDictionaryToAnagramKey(c *C) {
 	dictionary := AnagramDictionary{}
-	c.Assert(dictionary.ToAnagramKey("word"), Equals, "dorw")
+	c.Assert(dictionary.ToAnagramKey("WOrd"), Equals, "dorw")
 }
 
 func (s *MainSuite) TestNewAnagramDictionary(c *C) {

@@ -27,7 +27,7 @@ var dictionaryPath string = path.Join("..", "enable1.txt")
 type AnagramDictionary map[string][]string
 
 func (d *AnagramDictionary) ToAnagramKey(word string) string {
-	exploded := strings.Split(word, "")
+	exploded := strings.Split(strings.ToLower(word), "")
 	sort.Strings(exploded)
 	return strings.Join(exploded, "")
 }
