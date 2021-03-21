@@ -64,3 +64,9 @@ func (s *MainSuite) TestNewAnagramDictionary(c *C) {
 	c.Assert(len(*dictionary), Equals, 1)
 	c.Assert(len((*dictionary)["eloprsu"]), Equals, 3)
 }
+
+func (s *MainSuite) TestAnagramDictionaryAnagrams(c *C) {
+	dictionary := NewAnagramDictionary("test_dictionary.txt")
+	c.Assert(len(dictionary.Anagrams("leprous")), Equals, 3)
+	c.Assert(len(dictionary.Anagrams("word")), Equals, 1)
+}

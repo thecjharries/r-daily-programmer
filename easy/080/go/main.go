@@ -32,6 +32,14 @@ func (d *AnagramDictionary) ToAnagramKey(word string) string {
 	return strings.Join(exploded, "")
 }
 
+func (d *AnagramDictionary) Anagrams(word string) []string {
+	anagrams, hasAnagrams := (*d)[d.ToAnagramKey(word)]
+	if hasAnagrams {
+		return anagrams
+	}
+	return []string{word}
+}
+
 func NewAnagramDictionary(filename string) *AnagramDictionary {
 	byteContents, _ := ioutil.ReadFile(filename)
 	stringContents := strings.Split(
