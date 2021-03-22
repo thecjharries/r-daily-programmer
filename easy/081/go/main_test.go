@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDiscreteSlopesLessThanTwoPoints(c *C) {
+	c.Assert(discreteSlopes([]R2Point(nil)), DeepEquals, []float64(nil))
+	c.Assert(discreteSlopes([]R2Point{{1,1}}), DeepEquals, []float64(nil))
+}
+
+func (s *MainSuite) TestDiscreteSlopesEnoughPoints(c *C) {
+	c.Assert(discreteSlopes([]R2Point{{1,1}, {2,2}}), DeepEquals, []float64{1})
+}
