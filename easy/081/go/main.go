@@ -28,8 +28,12 @@ func main() {
 }
 
 func discreteSlopes(coordinates []R2Point) (slopes []float64) {
+	if len(coordinates) < 2 {
+		return
+	}
 	slopes = make([]float64, len(coordinates) - 1)
-	for index := 0; index < len(coordinates) - 2; index++ {
+	for index := 0; index < len(coordinates) - 1; index++ {
+		fmt.Println(coordinates[index], coordinates[index + 1])
 		slopes[index] = (coordinates[index + 1].Y - coordinates[index].Y) / (coordinates[index + 1].X - coordinates[index].X)
 	}
 	return
