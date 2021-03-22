@@ -24,7 +24,7 @@ type R2Point struct {
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(discreteSlopes([]R2Point{{-1,-1},{-0.5,-0.5},{0,0},{0.5,0.5},{1,1}}))
 }
 
 func discreteSlopes(coordinates []R2Point) (slopes []float64) {
@@ -33,7 +33,6 @@ func discreteSlopes(coordinates []R2Point) (slopes []float64) {
 	}
 	slopes = make([]float64, len(coordinates) - 1)
 	for index := 0; index < len(coordinates) - 1; index++ {
-		fmt.Println(coordinates[index], coordinates[index + 1])
 		slopes[index] = (coordinates[index + 1].Y - coordinates[index].Y) / (coordinates[index + 1].X - coordinates[index].X)
 	}
 	return
