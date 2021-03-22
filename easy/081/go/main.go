@@ -16,8 +16,21 @@ package main
 
 import "fmt"
 
+type R2Point struct {
+	X float64
+	Y float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func discreteSlopes(coordinates []R2Point) (slopes []float64) {
+	slopes = make([]float64, len(coordinates) - 1)
+	for index := 0; index < len(coordinates) - 2; index++ {
+		slopes[index] = (coordinates[index + 1].Y - coordinates[index].Y) / (coordinates[index + 1].X - coordinates[index].X)
+	}
+	return
 }
