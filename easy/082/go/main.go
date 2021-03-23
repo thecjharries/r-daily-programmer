@@ -16,8 +16,17 @@ package main
 
 import "fmt"
 
+const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func substringsOfRomanAlphabet(numberOfLetters int) (substrings []string) {
+	if 0 > numberOfLetters || len(romanAlphabet) < numberOfLetters {
+		return
+	}
+	return
 }

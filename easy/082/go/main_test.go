@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSubstringsOfRomanAlphabetNoLetters(c *C) {
+	c.Assert(substringsOfRomanAlphabet(0), DeepEquals, []string(nil))
+	c.Assert(substringsOfRomanAlphabet(-1), DeepEquals, []string(nil))
+}
+
+func (s *MainSuite) TestSubstringsOfRomanAlphabetTooManyLetters(c *C) {
+	c.Assert(substringsOfRomanAlphabet(27), DeepEquals, []string(nil))
+	c.Assert(substringsOfRomanAlphabet(1000), DeepEquals, []string(nil))
+}
