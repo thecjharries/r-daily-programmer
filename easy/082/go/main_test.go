@@ -63,3 +63,7 @@ func (s *MainSuite) TestSubstringsOfRomanAlphabetTooManyLetters(c *C) {
 	c.Assert(substringsOfRomanAlphabet(27), DeepEquals, []string(nil))
 	c.Assert(substringsOfRomanAlphabet(1000), DeepEquals, []string(nil))
 }
+func (s *MainSuite) TestSubstringsOfRomanAlphabetNormalLetters(c *C)  {
+	c.Assert(substringsOfRomanAlphabet(1), DeepEquals, []string{"a"})
+	c.Assert(substringsOfRomanAlphabet(3), DeepEquals, []string{"abc", "bc", "c", "ab", "b", "a"})
+}
