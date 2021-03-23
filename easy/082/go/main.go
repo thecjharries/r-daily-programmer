@@ -21,7 +21,7 @@ const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(substringsOfRomanAlphabet(5))
 }
 
 func substringsOfRomanAlphabet(numberOfLetters int) (substrings []string) {
