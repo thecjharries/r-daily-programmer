@@ -16,6 +16,21 @@ package main
 
 import "fmt"
 
+type NumberScale struct {
+	Number uint64
+	Short  string
+	Long   string
+}
+
+var ScalesLargestToSmallest = []NumberScale{
+	{1000000000000000000000, "sextillion", "trilliard"},
+	{1000000000000000000, "quintillion", "trillion"},
+	{1000000000000000, "quadrillion", "billiard"},
+	{1000000000000, "trillion", "billion"},
+	{1000000000, "billion", "milliard"},
+	{1000000, "million", "million"},
+}
+
 var zPrint = fmt.Println
 
 func main() {
