@@ -57,3 +57,19 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestConvertToScaleRepresentation(c *C) {
 	c.Assert(convertToScaleRepresentation(1234567891111), DeepEquals, []int{0, 0, 1, 234, 567, 891, 111})
 }
+
+func (s *MainSuite) TestbuildScaleRepresentationStrings(c *C) {
+	var short, long string
+	short, long = buildScaleRepresentationStrings([]int{0, 0, 1, 234, 567, 891, 111})
+	c.Assert(short, Equals, "1 trillion, 234 billion, 567 million, 891 thousand, and 111")
+	c.Assert(long, Equals, "1 billion, 234 milliard, 567 million, 891 thousand, and 111")
+	short, long = buildScaleRepresentationStrings([]int{0, 0, 0, 0, 0, 0, 0})
+	c.Assert(short, Equals, "")
+	c.Assert(long, Equals, "")
+	short, long = buildScaleRepresentationStrings([]int{0, 0, 1, 234, 567, 891, 0})
+	c.Assert(short, Equals, "1 trillion, 234 billion, 567 million, 891 thousand")
+	c.Assert(long, Equals, "1 billion, 234 milliard, 567 million, 891 thousand")
+	short, long = buildScaleRepresentationStrings([]int{0, 0, 0, 0, 0, 891, 111})
+	c.Assert(short, Equals, "891 thousand and 111")
+	c.Assert(long, Equals, "891 thousand and 111")
+}

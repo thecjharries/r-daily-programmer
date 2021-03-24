@@ -50,3 +50,27 @@ func convertToScaleRepresentation(number uint64) (representation []int) {
 	}
 	return
 }
+
+func buildScaleRepresentationStrings(scaleRepresentation []int) (short, long string) {
+	comma := ""
+	nonZeroComponents := 0
+	finalIndex := len(ScalesLargestToSmallest) - 1
+	for index, scale := range ScalesLargestToSmallest[:finalIndex] {
+		if 0 < scaleRepresentation[index] {
+			short += fmt.Sprintf("%s%d %s", comma, scaleRepresentation[index], scale.Short)
+			long += fmt.Sprintf("%s%d %s", comma, scaleRepresentation[index], scale.Long)
+			comma = ", "
+			nonZeroComponents++
+		}
+	}
+	if 0 < scaleRepresentation[finalIndex] {
+		if 1 == nonZeroComponents {
+			comma = " and "
+		} else if 1 < nonZeroComponents {
+			comma += "and "
+		}
+		short += fmt.Sprintf("%s%d", comma, scaleRepresentation[finalIndex])
+		long += fmt.Sprintf("%s%d", comma, scaleRepresentation[finalIndex])
+	}
+	return
+}
