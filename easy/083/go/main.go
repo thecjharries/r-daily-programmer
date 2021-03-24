@@ -23,16 +23,30 @@ type NumberScale struct {
 }
 
 var ScalesLargestToSmallest = []NumberScale{
-	{1000000000000000000000, "sextillion", "trilliard"},
 	{1000000000000000000, "quintillion", "trillion"},
 	{1000000000000000, "quadrillion", "billiard"},
 	{1000000000000, "trillion", "billion"},
 	{1000000000, "billion", "milliard"},
 	{1000000, "million", "million"},
+	{1000, "thousand", "thousand"},
+	{1, "", ""},
 }
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertToScaleRepresentation(number uint64) (representation []int) {
+	representation = make([]int, len(ScalesLargestToSmallest))
+	currentNumber := number
+	for index, scale := range ScalesLargestToSmallest {
+		if scale.Number < currentNumber {
+			factor := currentNumber / scale.Number
+			representation[index] = int(factor)
+			currentNumber -= factor * scale.Number
+		}
+	}
+	return
 }

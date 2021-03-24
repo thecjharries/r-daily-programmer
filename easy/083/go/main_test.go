@@ -23,7 +23,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -52,4 +52,8 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestConvertToScaleRepresentation(c *C) {
+	c.Assert(convertToScaleRepresentation(1234567891111), DeepEquals, []int{0, 0, 1, 234, 567, 891, 111})
 }
