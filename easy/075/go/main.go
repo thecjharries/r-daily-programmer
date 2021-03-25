@@ -20,14 +20,14 @@ import (
 	"strings"
 )
 
-var functionMap = map[string]string {
+var functionMap = map[string]string{
 	"sqrt": "sqrtf",
-	"abs": "fabsf",
-	"sin": "sinf",
-	"cos": "cosf",
-	"tan": "tanf",
-	"exp": "expf",
-	"log": "logf",
+	"abs":  "fabsf",
+	"sin":  "sinf",
+	"cos":  "cosf",
+	"tan":  "tanf",
+	"exp":  "expf",
+	"log":  "logf",
 }
 
 var lhsPattern = regexp.MustCompile(`(?P<name>[a-zA-Z0-9_]+)\((?P<args>[^)]+)\)`)

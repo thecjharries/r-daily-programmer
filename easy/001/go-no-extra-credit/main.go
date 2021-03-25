@@ -23,12 +23,12 @@ import (
 )
 
 const resultFormatString string = "your name is %s, you are %s years old, and your username is %s"
+
 var prompts = [3]string{
 	"Your name?",
 	"Your age?",
 	"Your username?",
 }
-
 
 func main() {
 	fmt.Println(buildResult(io.Reader(os.Stdin)))

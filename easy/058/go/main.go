@@ -26,7 +26,7 @@ func main() {
 func convertNumberToBase(number int, baseDigits string) (numberInBase string) {
 	numberBeingConverted := number
 	for 0 < numberBeingConverted {
-		numberInBase = string(baseDigits[numberBeingConverted % len(baseDigits)]) + numberInBase
+		numberInBase = string(baseDigits[numberBeingConverted%len(baseDigits)]) + numberInBase
 		numberBeingConverted /= len(baseDigits)
 	}
 	return
@@ -34,8 +34,8 @@ func convertNumberToBase(number int, baseDigits string) (numberInBase string) {
 
 func isNumberPalindromicInBase(number int, baseDigits string) bool {
 	numberInBase := convertNumberToBase(number, baseDigits)
-	for index := 0; index < len(numberInBase) / 2; index++ {
-		if numberInBase[index] != numberInBase[len(numberInBase) - index - 1] {
+	for index := 0; index < len(numberInBase)/2; index++ {
+		if numberInBase[index] != numberInBase[len(numberInBase)-index-1] {
 			return false
 		}
 	}

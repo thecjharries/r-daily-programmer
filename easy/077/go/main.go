@@ -29,8 +29,8 @@ func generateMorseSequences(length int, seed string) (sequences []string) {
 	} else if length < 0 {
 		return []string{}
 	}
-	sequences = generateMorseSequences(length - 1, seed + ".")
-	sequences = append(sequences, generateMorseSequences(length - 2, seed + "-")...)
+	sequences = generateMorseSequences(length-1, seed+".")
+	sequences = append(sequences, generateMorseSequences(length-2, seed+"-")...)
 	return
 }
 

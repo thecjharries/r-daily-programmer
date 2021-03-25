@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -31,7 +31,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestWalkDuplicates(c *C) {
-	input := []int{1,2,3,3,4}
+	input := []int{1, 2, 3, 3, 4}
 	duplicates := []int{3}
 	c.Assert(walkForDuplicates(input), DeepEquals, duplicates)
 }

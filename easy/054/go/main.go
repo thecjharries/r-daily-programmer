@@ -21,6 +21,7 @@ import (
 )
 
 const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+
 var zSeed = time.Now().UnixNano()
 
 func main() {
@@ -39,9 +40,9 @@ func padPlaintext(key int, plaintext string) (paddedPlaintext string) {
 	if key > len(plaintext) {
 		desiredSize = key
 	} else {
-		desiredSize = len(plaintext) + ((key - len(plaintext) % key) % key)
+		desiredSize = len(plaintext) + ((key - len(plaintext)%key) % key)
 	}
-	return plaintext + getRandomLetters(desiredSize - len(plaintext))
+	return plaintext + getRandomLetters(desiredSize-len(plaintext))
 }
 
 func encrypt(key int, plaintext string) (ciphertext string) {
@@ -58,5 +59,5 @@ func encrypt(key int, plaintext string) (ciphertext string) {
 }
 
 func decrypt(key int, ciphertext string) string {
-	return encrypt(len(ciphertext) / key, ciphertext)
+	return encrypt(len(ciphertext)/key, ciphertext)
 }

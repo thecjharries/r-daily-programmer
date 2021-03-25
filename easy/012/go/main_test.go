@@ -30,7 +30,6 @@ type MainSuite struct {
 const getStringInputInput string = "test\n"
 const getStringInputOutput string = "test"
 
-
 var _ = Suite(&MainSuite{
 	getInputReader: strings.NewReader(getStringInputInput),
 })
@@ -46,7 +45,7 @@ func (s *MainSuite) TestGetStringInput(c *C) {
 
 func (s *MainSuite) TestPermuteAndPrintStringBaseCase(c *C) {
 	callCount := 0
-	zPrintFunction = func(a ...interface{}) (int, error){
+	zPrintFunction = func(a ...interface{}) (int, error) {
 		callCount++
 		return 0, nil
 	}
@@ -56,7 +55,7 @@ func (s *MainSuite) TestPermuteAndPrintStringBaseCase(c *C) {
 
 func (s *MainSuite) TestPermuteAndPrintStringRecursiveCase(c *C) {
 	callCount := 0
-	zPrintFunction = func(a ...interface{}) (int, error){
+	zPrintFunction = func(a ...interface{}) (int, error) {
 		callCount++
 		return 0, nil
 	}

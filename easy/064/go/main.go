@@ -28,7 +28,7 @@ func greatestCommonDivisor(first, second int) int {
 	if 0 == second {
 		return first
 	}
-	return greatestCommonDivisor(second, first % second)
+	return greatestCommonDivisor(second, first%second)
 }
 
 func getTotatives(number int) (totatives []int) {
@@ -45,10 +45,10 @@ func getTotient(number int) int {
 }
 
 func getDivisors(number int) (divisors []int) {
-	for index := 1; index < int(math.Sqrt(float64(number))) + 1; index++ {
-		if 0 == number % index {
+	for index := 1; index < int(math.Sqrt(float64(number)))+1; index++ {
+		if 0 == number%index {
 			divisors = append(divisors, index)
-			divisors = append(divisors, number / index)
+			divisors = append(divisors, number/index)
 		}
 	}
 	sort.Ints(divisors)

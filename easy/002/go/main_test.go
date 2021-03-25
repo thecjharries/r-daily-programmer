@@ -31,7 +31,7 @@ const getStringInputInput string = "test\n"
 const getStringInputOutput string = "test"
 
 type getFloat64InputFixture struct {
-	input string
+	input  string
 	result float64
 }
 
@@ -42,7 +42,7 @@ var getFloat64InputFixtures = []getFloat64InputFixture{
 }
 
 type float64InputResultFixture struct {
-	input float64
+	input  float64
 	result float64
 }
 

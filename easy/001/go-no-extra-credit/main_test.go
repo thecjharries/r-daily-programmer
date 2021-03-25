@@ -24,7 +24,7 @@ import (
 func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
-	getInputReader *strings.Reader
+	getInputReader    *strings.Reader
 	buildOutputReader *strings.Reader
 }
 
@@ -34,7 +34,7 @@ const buildResultInput string = "qqq\n"
 const buildResultOutput string = "your name is qqq, you are  years old, and your username is "
 
 var _ = Suite(&MainSuite{
-	getInputReader: strings.NewReader(getInputInput),
+	getInputReader:    strings.NewReader(getInputInput),
 	buildOutputReader: strings.NewReader(buildResultInput),
 })
 

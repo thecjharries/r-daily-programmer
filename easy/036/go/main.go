@@ -31,7 +31,7 @@ func openLockers(lockerCount int) (lockers []bool) {
 	lockers = make([]bool, lockerCount)
 	for studentNumber := 1; studentNumber <= lockerCount; studentNumber++ {
 		for lockerNumber := studentNumber; lockerNumber <= lockerCount; lockerNumber += studentNumber {
-			lockers[lockerNumber - 1] = !lockers[lockerNumber - 1]
+			lockers[lockerNumber-1] = !lockers[lockerNumber-1]
 		}
 	}
 	return

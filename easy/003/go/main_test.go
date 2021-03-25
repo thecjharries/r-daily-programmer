@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 type rotateAlphabetFixture struct {
 	places int
@@ -39,7 +39,7 @@ var rotateAlphabetFixtures = []rotateAlphabetFixture{
 }
 
 type stringInputResultFixture struct {
-	input string
+	input  string
 	result string
 }
 

@@ -22,7 +22,7 @@ import (
 )
 
 type WordFrequency struct {
-	Word string
+	Word      string
 	Frequency int
 }
 

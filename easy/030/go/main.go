@@ -15,17 +15,17 @@
 package main
 
 func main() {
-	getFirstTwoElementsThatSumToTarget([]int{1,2,3,4}, 4)
+	getFirstTwoElementsThatSumToTarget([]int{1, 2, 3, 4}, 4)
 }
 
 // Returns true if a and b sum to the target
 func doesInputSumToTarget(a, b, target int) bool {
-	return target == a + b
+	return target == a+b
 }
 
 func getFirstTwoElementsThatSumToTarget(input []int, target int) (found [2]int) {
 	for firstIndex, first := range input {
-		for _, second := range input[firstIndex + 1:] {
+		for _, second := range input[firstIndex+1:] {
 			if doesInputSumToTarget(first, second, target) {
 				return [2]int{first, second}
 			}

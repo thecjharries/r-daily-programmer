@@ -31,6 +31,6 @@ func substringsOfRomanAlphabet(numberOfLetters int) (substrings []string) {
 	for index := 0; index < numberOfLetters; index++ {
 		substrings = append(substrings, romanAlphabet[index:numberOfLetters])
 	}
-	substrings = append(substrings, substringsOfRomanAlphabet(numberOfLetters - 1)...)
+	substrings = append(substrings, substringsOfRomanAlphabet(numberOfLetters-1)...)
 	return
 }

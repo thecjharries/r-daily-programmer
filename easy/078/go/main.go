@@ -16,12 +16,12 @@ package main
 
 import "fmt"
 
-var shiftModifierMap = map[rune]rune {
+var shiftModifierMap = map[rune]rune{
 	'a': 'A',
 	'0': ')',
 }
 
-var capsModifierMap = map[rune]rune {
+var capsModifierMap = map[rune]rune{
 	'a': 'A',
 }
 

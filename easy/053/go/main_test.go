@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -31,9 +31,9 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestCombineTwoSortedIntSlices(c *C) {
-	first := []int{1,5,7,8}
-	second := []int{2,3,4,7,9}
-	output := []int{1,2,3,4,5,7,7,8,9}
+	first := []int{1, 5, 7, 8}
+	second := []int{2, 3, 4, 7, 9}
+	output := []int{1, 2, 3, 4, 5, 7, 7, 8, 9}
 	c.Assert(combineTwoSortedIntSlices(first, second), DeepEquals, output)
 	c.Assert(combineTwoSortedIntSlices(second, first), DeepEquals, output)
 }

@@ -21,17 +21,17 @@ import (
 )
 
 func main() {
-	input := []float64{1,2,3}
+	input := []float64{1, 2, 3}
 	fmt.Println(input)
 	fmt.Println(sumSquaresOfTwoLargest(input...))
 }
 
-func findTwoLargest(inputs... float64) (float64, float64) {
+func findTwoLargest(inputs ...float64) (float64, float64) {
 	sort.Float64s(inputs)
-	return inputs[len(inputs) - 1], inputs[len(inputs) - 2]
+	return inputs[len(inputs)-1], inputs[len(inputs)-2]
 }
 
-func sumSquaresOfTwoLargest(inputs... float64) float64 {
+func sumSquaresOfTwoLargest(inputs ...float64) float64 {
 	first, second := findTwoLargest(inputs...)
 	return math.Pow(first, 2) + math.Pow(second, 2)
 }

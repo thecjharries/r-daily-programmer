@@ -27,7 +27,7 @@ func main() {
 }
 
 func formatDividerLine(lengthOfLongestWord int) string {
-	return fmt.Sprintf("+%s+", strings.Repeat("-", lengthOfLongestWord + 2))
+	return fmt.Sprintf("+%s+", strings.Repeat("-", lengthOfLongestWord+2))
 }
 
 func formatLine(contents string, lengthOfLongestWord int, isCentered bool) string {
@@ -35,7 +35,7 @@ func formatLine(contents string, lengthOfLongestWord int, isCentered bool) strin
 	if isCentered {
 		lineContents = fmt.Sprintf(
 			"%s%s",
-			strings.Repeat(" ", int(math.Floor(float64(lengthOfLongestWord - len(contents)) / 2))),
+			strings.Repeat(" ", int(math.Floor(float64(lengthOfLongestWord-len(contents))/2))),
 			contents,
 		)
 	} else {
@@ -44,7 +44,7 @@ func formatLine(contents string, lengthOfLongestWord int, isCentered bool) strin
 	return fmt.Sprintf(
 		"| %s%s |",
 		lineContents,
-		strings.Repeat(" ", lengthOfLongestWord - len(lineContents)),
+		strings.Repeat(" ", lengthOfLongestWord-len(lineContents)),
 	)
 }
 

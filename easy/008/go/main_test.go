@@ -23,9 +23,9 @@ import (
 func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
-	givenBottleCount int
+	givenBottleCount    int
 	givenGeneratedLyric string
-	givenGeneratedSong string
+	givenGeneratedSong  string
 }
 
 var _ = Suite(&MainSuite{

@@ -30,7 +30,7 @@ func generateCombinations(size int, elements []int) (combinations [][]int) {
 	if len(elements) == size {
 		return [][]int{elements}
 	}
-	for _, combination := range generateCombinations(size - 1, elements[1:]) {
+	for _, combination := range generateCombinations(size-1, elements[1:]) {
 		combinations = append(combinations, append([]int{elements[0]}, combination...))
 	}
 	combinations = append(combinations, generateCombinations(size, elements[1:])...)

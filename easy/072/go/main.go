@@ -21,7 +21,7 @@ import (
 
 type GenericFunction func(interface{}) interface{}
 
-var rulesMap = map[string]rune {
+var rulesMap = map[string]rune{
 	"111": '0',
 	"110": '1',
 	"101": '1',
@@ -47,17 +47,17 @@ func applyRules(pattern []rune) rune {
 func nextGeneration(currentGeneration string) string {
 	workingGeneration := []rune(currentGeneration)
 	newGeneration := []rune(currentGeneration)
-	for index := 0; index < len(currentGeneration) - 1; index++ {
-		newGeneration[index + 1] = applyRules(workingGeneration[index:index + 3])
+	for index := 0; index < len(currentGeneration)-1; index++ {
+		newGeneration[index+1] = applyRules(workingGeneration[index : index+3])
 	}
 	return string(newGeneration)
 }
 
 func iterateInputNGenerations(input string, generationCount int) (generations []string) {
-	generations = make([]string, generationCount + 1)
+	generations = make([]string, generationCount+1)
 	generations[0] = input
 	for index := 0; index < generationCount; index++ {
-		generations[index + 1] = nextGeneration(generations[index])
+		generations[index+1] = nextGeneration(generations[index])
 	}
 	return
 }

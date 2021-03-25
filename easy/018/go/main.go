@@ -66,10 +66,10 @@ func main() {
 }
 
 func formatPhoneNumber(phoneNumber string) string {
-	countryCode := phoneNumber[:len(phoneNumber) - 10]
-	areaCode := phoneNumber[len(phoneNumber) - 10:len(phoneNumber) - 7]
-	almostLastThree := phoneNumber[len(phoneNumber) - 7:len(phoneNumber) - 4]
-	lastFour := phoneNumber[len(phoneNumber) - 4:]
+	countryCode := phoneNumber[:len(phoneNumber)-10]
+	areaCode := phoneNumber[len(phoneNumber)-10 : len(phoneNumber)-7]
+	almostLastThree := phoneNumber[len(phoneNumber)-7 : len(phoneNumber)-4]
+	lastFour := phoneNumber[len(phoneNumber)-4:]
 	return fmt.Sprintf("%s-%s-%s-%s", countryCode, areaCode, almostLastThree, lastFour)
 }
 

@@ -32,7 +32,7 @@ func insertCharacterIntoEveryPositionOfString(existingString []rune, newCharacte
 	for index := 0; index <= len(existingString); index++ {
 		permutations = append(
 			permutations,
-			string(existingString[:index]) + string(newCharacter) + string(existingString[index:]),
+			string(existingString[:index])+string(newCharacter)+string(existingString[index:]),
 		)
 	}
 	return

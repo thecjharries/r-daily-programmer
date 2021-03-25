@@ -23,7 +23,7 @@ import (
 const romanAlphabet string = " abcdefghijklmnopqrstuvwxyz"
 
 type WordValue struct {
-	Word string
+	Word  string
 	Value int
 }
 

@@ -37,8 +37,8 @@ func main() {
 			winNoSwitch++
 		}
 	}
-	fmt.Printf("Win With Switch %%: %f\n", float64(winSwitch * 100) / float64(maxRounds))
-	fmt.Printf("Win Without Switch %%: %f\n", float64(winNoSwitch * 100) / float64(maxRounds))
+	fmt.Printf("Win With Switch %%: %f\n", float64(winSwitch*100)/float64(maxRounds))
+	fmt.Printf("Win Without Switch %%: %f\n", float64(winNoSwitch*100)/float64(maxRounds))
 }
 
 func pickRandomIndex() int {

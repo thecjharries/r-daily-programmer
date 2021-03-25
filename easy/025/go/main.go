@@ -44,7 +44,7 @@ func (v *VoteCount) CandidateWithMostVotes() (candidateWithMostVotes string, can
 // If empty, no winner
 func (v *VoteCount) MajorityWinner() (winner string) {
 	candidateWithMostVotes, candidateVotes, totalVotes := v.CandidateWithMostVotes()
-	if float64(totalVotes) / 2 < float64(candidateVotes) {
+	if float64(totalVotes)/2 < float64(candidateVotes) {
 		return candidateWithMostVotes
 	}
 	return

@@ -51,7 +51,7 @@ func getFloat64Input(prompt string, source io.Reader) float64 {
 }
 
 func roundToUsd(input float64) float64 {
-	return math.Round(input * 100) / 100
+	return math.Round(input*100) / 100
 }
 
 func getUsdPercentage(base float64, percent float64) float64 {

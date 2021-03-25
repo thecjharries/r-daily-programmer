@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -47,7 +47,6 @@ func (s *MainSuite) TestProcessKeyPressNoShiftWithCaps(c *C) {
 	c.Assert(processKeyPress('0', false, true), Equals, '0')
 	c.Assert(processKeyPress('z', false, true), Equals, 'z')
 }
-
 
 func (s *MainSuite) TestProcessKeyPressWithShiftWithCaps(c *C) {
 	c.Assert(processKeyPress('a', true, true), Equals, 'A')

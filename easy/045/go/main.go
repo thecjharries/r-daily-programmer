@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	squareSize int = 3
+	squareSize     int    = 3
 	whiteCharacter string = " "
 	blackCharacter string = "#"
 )

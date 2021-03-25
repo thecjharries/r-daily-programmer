@@ -33,7 +33,7 @@ func main() {
 
 func generateLyrics(bottleCount int) string {
 	if 0 < bottleCount {
-		return fmt.Sprintf(nthLyric, bottleCount, bottleCount, bottleCount - 1)
+		return fmt.Sprintf(nthLyric, bottleCount, bottleCount, bottleCount-1)
 	}
 	if 0 > bottleCount {
 		panic(errorBadBottleCount)

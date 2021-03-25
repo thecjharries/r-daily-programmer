@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -53,7 +53,7 @@ func (s *MainSuite) TestSortWordValueSlice(c *C) {
 }
 
 func (s *MainSuite) TestOrderListOfWordsByValue(c *C) {
-	input := []string{ "Shoe", "Hat"}
+	input := []string{"Shoe", "Hat"}
 	output := []string{"Hat", "Shoe"}
 	c.Assert(orderListOfWordsByValue(input), DeepEquals, output)
 }

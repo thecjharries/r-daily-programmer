@@ -26,8 +26,8 @@ func main() {
 
 func reverseString(input string) string {
 	output := []rune(input)
-	for index := 0; index < len(output) / 2; index++ {
-		output[index], output[len(output) - 1 - index] = output[len(output) - 1 - index], output[index]
+	for index := 0; index < len(output)/2; index++ {
+		output[index], output[len(output)-1-index] = output[len(output)-1-index], output[index]
 	}
 	return string(output)
 }
@@ -41,8 +41,8 @@ func reverseInteger(input int) int {
 
 func isIntegerPalindrome(input int) bool {
 	inputAsString := strconv.Itoa(input)
-	for index := 0; index < len(inputAsString) / 2; index++ {
-		if inputAsString[index] != inputAsString[len(inputAsString) - 1 - index] {
+	for index := 0; index < len(inputAsString)/2; index++ {
+		if inputAsString[index] != inputAsString[len(inputAsString)-1-index] {
 			return false
 		}
 	}
@@ -51,7 +51,7 @@ func isIntegerPalindrome(input int) bool {
 
 func isPrime(input int) bool {
 	for index := 2; index <= int(math.Sqrt(float64(input))); index++ {
-		if 0 == input % index {
+		if 0 == input%index {
 			return false
 		}
 	}

@@ -15,8 +15,9 @@
 package main
 
 import (
-	"github.com/shopspring/decimal"
 	"testing"
+
+	"github.com/shopspring/decimal"
 
 	. "gopkg.in/check.v1"
 )
@@ -25,7 +26,7 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
 	roundPrecision int32
-	number decimal.Decimal
+	number         decimal.Decimal
 }
 
 var _ = Suite(&MainSuite{

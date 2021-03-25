@@ -35,11 +35,11 @@ func main() {
 // Determines whether or not the given year is a leap year
 // https://en.wikipedia.org/wiki/Leap_year#Algorithm
 func isLeapYear(year int) bool {
-	if 0 != year % 4 {
+	if 0 != year%4 {
 		return false
-	} else if 0 != year % 100 {
+	} else if 0 != year%100 {
 		return true
-	} else if 0 != year % 400 {
+	} else if 0 != year%400 {
 		return false
 	}
 	return true
@@ -48,5 +48,5 @@ func isLeapYear(year int) bool {
 // Gets the century for the given year
 // Centuries begin at 1, not 0
 func getCentury(year int) int {
-	return int(math.Floor(float64(year - 1) / 100)) + 1
+	return int(math.Floor(float64(year-1)/100)) + 1
 }

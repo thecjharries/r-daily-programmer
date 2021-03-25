@@ -40,7 +40,7 @@ func readFileIntoStringSlice(filename string) []string {
 	return result
 }
 
-func findLengthOfLongestLine(stringSlice []string) int{
+func findLengthOfLongestLine(stringSlice []string) int {
 	maxLength := 0
 	for _, line := range stringSlice {
 		if len(line) > maxLength {
@@ -64,7 +64,7 @@ func rightJustifyStringSlice(stringSlice []string) []string {
 	for _, line := range stringSlice {
 		result = append(
 			result,
-			strings.Repeat(" ", maxLength - len(line)) +
+			strings.Repeat(" ", maxLength-len(line))+
 				removeWrappingSpaceRegexp.ReplaceAllString(line, "$1"),
 		)
 	}

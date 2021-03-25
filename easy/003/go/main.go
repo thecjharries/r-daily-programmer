@@ -27,7 +27,7 @@ type GenericCipher interface {
 }
 
 type CaesarCipher struct {
-	places int
+	places          int
 	encryptAlphabet string
 	decryptAlphabet string
 }

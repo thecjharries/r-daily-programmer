@@ -24,9 +24,9 @@ func main() {
 }
 
 func rotateNumber(number int64) int64 {
-	leadingDigit := strconv.FormatInt(number & 1, 2)
-	shifted := strconv.FormatInt(number >> 1, 2)
-	newNumber, _ := strconv.ParseInt(leadingDigit + shifted, 2, 64)
+	leadingDigit := strconv.FormatInt(number&1, 2)
+	shifted := strconv.FormatInt(number>>1, 2)
+	newNumber, _ := strconv.ParseInt(leadingDigit+shifted, 2, 64)
 	return newNumber
 }
 

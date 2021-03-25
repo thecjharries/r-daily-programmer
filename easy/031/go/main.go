@@ -45,7 +45,7 @@ func base10ToBase26(input int) (base26 string) {
 func base26ToBase10(input string) (base10 int) {
 	base10 = 0
 	for index, base26 := range input {
-		base10 += int(math.Pow(26, float64(len(input) - index - 1))) *
+		base10 += int(math.Pow(26, float64(len(input)-index-1))) *
 			strings.Index(base26Alphabet, string(base26))
 	}
 	return base10

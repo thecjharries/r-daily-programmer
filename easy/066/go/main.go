@@ -43,4 +43,3 @@ func isFirstLessThanSecondWithoutPrefixes(first, second string) bool {
 	}
 	return len(first) < len(second)
 }
-

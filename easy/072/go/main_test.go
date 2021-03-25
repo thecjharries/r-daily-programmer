@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -31,15 +31,15 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestApplyRules(c *C) {
-	c.Assert(applyRules([]rune{'2','2','2'}), Equals, '2')
-	c.Assert(applyRules([]rune{'1','1','1'}), Equals, '0')
-	c.Assert(applyRules([]rune{'1','1','0'}), Equals, '1')
-	c.Assert(applyRules([]rune{'1','0','1'}), Equals, '1')
-	c.Assert(applyRules([]rune{'0','1','1'}), Equals, '1')
-	c.Assert(applyRules([]rune{'0','0','1'}), Equals, '1')
-	c.Assert(applyRules([]rune{'0','1','0'}), Equals, '1')
-	c.Assert(applyRules([]rune{'1','0','0'}), Equals, '0')
-	c.Assert(applyRules([]rune{'0','0','0'}), Equals, '0')
+	c.Assert(applyRules([]rune{'2', '2', '2'}), Equals, '2')
+	c.Assert(applyRules([]rune{'1', '1', '1'}), Equals, '0')
+	c.Assert(applyRules([]rune{'1', '1', '0'}), Equals, '1')
+	c.Assert(applyRules([]rune{'1', '0', '1'}), Equals, '1')
+	c.Assert(applyRules([]rune{'0', '1', '1'}), Equals, '1')
+	c.Assert(applyRules([]rune{'0', '0', '1'}), Equals, '1')
+	c.Assert(applyRules([]rune{'0', '1', '0'}), Equals, '1')
+	c.Assert(applyRules([]rune{'1', '0', '0'}), Equals, '0')
+	c.Assert(applyRules([]rune{'0', '0', '0'}), Equals, '0')
 }
 
 func (s *MainSuite) TestNewGeneration(c *C) {

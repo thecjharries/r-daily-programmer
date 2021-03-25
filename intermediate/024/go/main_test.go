@@ -22,12 +22,12 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 type continuedFractionFixture struct {
-	n int64
-	m int64
-	numerator int64
+	n           int64
+	m           int64
+	numerator   int64
 	denominator int64
 }
 
@@ -40,15 +40,15 @@ var continuedFractionFixtures = []continuedFractionFixture{
 }
 
 type piFixture struct {
-	precision int64
-	numerator int64
+	precision   int64
+	numerator   int64
 	denominator int64
 }
 
 var piFixtures = []piFixture{
 	{1, 4, 1},
 	{2, 4, 2},
-	{3,  28, 8},
+	{3, 28, 8},
 	{4, 184, 60},
 }
 

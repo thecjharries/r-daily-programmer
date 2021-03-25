@@ -17,17 +17,17 @@ package main
 import "fmt"
 
 func main() {
-	input := []int{4,3,2,1,5,7,6,8,9}
+	input := []int{4, 3, 2, 1, 5, 7, 6, 8, 9}
 	windowSize := 3
 	fmt.Println(getSlidingWindowMinimums(input, windowSize))
 }
 
 func getSlidingWindowMinimums(values []int, windowSize int) (minimums []int) {
-	for windowStartIndex := 0; windowStartIndex < len(values) - windowSize + 1; windowStartIndex++ {
+	for windowStartIndex := 0; windowStartIndex < len(values)-windowSize+1; windowStartIndex++ {
 		minimum := values[windowStartIndex]
 		for windowIndex := 1; windowIndex < windowSize; windowIndex++ {
-			if minimum > values[windowStartIndex + windowIndex] {
-				minimum = values[windowStartIndex + windowIndex]
+			if minimum > values[windowStartIndex+windowIndex] {
+				minimum = values[windowStartIndex+windowIndex]
 			}
 		}
 		minimums = append(minimums, minimum)

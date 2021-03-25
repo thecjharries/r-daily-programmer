@@ -34,7 +34,7 @@ func subtract(a, b int) int {
 
 type ReversePolishNotationOperator func(int, int) int
 
-var operators = map[string]ReversePolishNotationOperator {
+var operators = map[string]ReversePolishNotationOperator{
 	"*": multiply,
 	"+": add,
 	"-": subtract,
@@ -52,7 +52,7 @@ func computeReversePolishNotation(notation ReversePolishNotation) int {
 		if isString {
 			operation, allowedOperation := operators[entry]
 			if allowedOperation {
-				filo = append(filo[:len(filo) - 2], operation(filo[len(filo) - 2], filo[len(filo) - 1]))
+				filo = append(filo[:len(filo)-2], operation(filo[len(filo)-2], filo[len(filo)-1]))
 			}
 		} else {
 			filo = append(filo, notation[index].(int))

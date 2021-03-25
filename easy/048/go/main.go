@@ -22,12 +22,12 @@ func main() {
 }
 
 func evenToTheFrontOddToTheBack(input []int) []int {
-	rightIndex, leftIndex := 0, len(input) - 1
+	rightIndex, leftIndex := 0, len(input)-1
 	for rightIndex < leftIndex {
-		for 0 == input[rightIndex] % 2 {
+		for 0 == input[rightIndex]%2 {
 			rightIndex++
 		}
-		for 1 == input[leftIndex] % 2 {
+		for 1 == input[leftIndex]%2 {
 			leftIndex--
 		}
 		if rightIndex < leftIndex {

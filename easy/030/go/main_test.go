@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -32,11 +32,11 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestDoesInputSumToTarget(c *C) {
 	c.Assert(doesInputSumToTarget(1, 2, 3), Equals, true)
-	c.Assert(doesInputSumToTarget(1,2, 4), Equals, false)
+	c.Assert(doesInputSumToTarget(1, 2, 4), Equals, false)
 }
 
 func (s *MainSuite) TestGetFirstTwoElementsThatSumToTarget(c *C) {
 	var emptyResult [2]int
-	c.Assert(getFirstTwoElementsThatSumToTarget([]int{1,2,3}, 16), DeepEquals, emptyResult)
-	c.Assert(getFirstTwoElementsThatSumToTarget([]int{1,2,3}, 3), DeepEquals, [2]int{1,2})
+	c.Assert(getFirstTwoElementsThatSumToTarget([]int{1, 2, 3}, 16), DeepEquals, emptyResult)
+	c.Assert(getFirstTwoElementsThatSumToTarget([]int{1, 2, 3}, 3), DeepEquals, [2]int{1, 2})
 }

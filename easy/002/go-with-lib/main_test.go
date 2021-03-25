@@ -22,10 +22,10 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 type float64InputResultFixture struct {
-	input float64
+	input  float64
 	result float64
 }
 

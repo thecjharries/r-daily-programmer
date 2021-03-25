@@ -16,10 +16,11 @@ package main
 
 import (
 	"fmt"
-	. "github.com/thecjharries/dprgstd/clinput"
 	"io"
 	"math"
 	"os"
+
+	. "github.com/thecjharries/dprgstd/clinput"
 )
 
 func main() {
@@ -36,7 +37,7 @@ func main() {
 }
 
 func roundToUsd(input float64) float64 {
-	return math.Round(input * 100) / 100
+	return math.Round(input*100) / 100
 }
 
 func getUsdPercentage(base float64, percent float64) float64 {

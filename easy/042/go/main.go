@@ -16,13 +16,13 @@ package main
 
 import "fmt"
 
-var farmOccupants = map[string]string {
-	"cow": "moo",
-	"chicken": "cluck",
-	"turkey": "gobble",
+var farmOccupants = map[string]string{
+	"cow":      "moo",
+	"chicken":  "cluck",
+	"turkey":   "gobble",
 	"kangaroo": "g'day mate",
-	"T-Rex": "GAAAAARGH",
-	"dog": "bark",
+	"T-Rex":    "GAAAAARGH",
+	"dog":      "bark",
 }
 
 // https://www.kidsongs.com/lyrics/old-macdonald-had-a-farm.html

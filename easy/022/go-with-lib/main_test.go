@@ -22,11 +22,10 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
 func (s *MainSuite) TestMain(c *C) {
 
 }
-

@@ -16,16 +16,17 @@ package main
 
 import (
 	"fmt"
-	. "github.com/thecjharries/dprgstd/clinput"
 	"io"
 	"math/rand"
 	"os"
 	"time"
+
+	. "github.com/thecjharries/dprgstd/clinput"
 )
 
 type QuestionAnswer struct {
 	Question string
-	Answer string
+	Answer   string
 }
 
 type Quiz struct {
@@ -62,10 +63,9 @@ var sampleQuiz = Quiz{
 	[]QuestionAnswer{
 		{"12 * 12?", "144"},
 		{"What is reddit?", "website with cats"},
-		{"Translate: hola","hello"},
+		{"Translate: hola", "hello"},
 	},
 }
-
 
 func main() {
 	rand.Seed(zSeed)

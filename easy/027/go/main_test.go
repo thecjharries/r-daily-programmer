@@ -22,10 +22,10 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 type isLeapYearFixture struct {
-	year int
+	year       int
 	isLeapYear bool
 }
 

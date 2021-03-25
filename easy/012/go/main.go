@@ -44,7 +44,7 @@ func permuteAndPrint(stringToPermute []rune, startingIndex int) {
 	}
 	for movingIndex := startingIndex; movingIndex < len(stringToPermute); movingIndex++ {
 		stringToPermute[startingIndex], stringToPermute[movingIndex] = stringToPermute[movingIndex], stringToPermute[startingIndex]
-		permuteAndPrint(stringToPermute, startingIndex + 1)
+		permuteAndPrint(stringToPermute, startingIndex+1)
 		stringToPermute[startingIndex], stringToPermute[movingIndex] = stringToPermute[movingIndex], stringToPermute[startingIndex]
 	}
 }

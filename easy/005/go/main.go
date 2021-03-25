@@ -57,7 +57,7 @@ func getStringInput(prompt string, source io.Reader) string {
 
 func loadValidCredentials(credsPath string) []Credentials {
 	handle, _ := os.Open(credsPath)
-	defer (func(){ _ = handle.Close() })()
+	defer (func() { _ = handle.Close() })()
 	byteArray, _ := ioutil.ReadAll(handle)
 	var credentials []Credentials
 	_ = json.Unmarshal(byteArray, &credentials)

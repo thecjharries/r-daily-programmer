@@ -16,14 +16,15 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/shopspring/decimal"
 )
 
 var pi30Digits decimal.Decimal
 var oneDecimal = decimal.New(1, 0)
 var twoDecimal = decimal.New(2, 0)
-var threeDecimal = decimal.New(3,0)
-var fourDecimal = decimal.New(4,0)
+var threeDecimal = decimal.New(3, 0)
+var fourDecimal = decimal.New(4, 0)
 
 const digitPrecision int32 = 30
 

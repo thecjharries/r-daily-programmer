@@ -18,17 +18,17 @@ import "fmt"
 
 type BinaryNode struct {
 	Parent *BinaryNode
-	Left *BinaryNode
-	Right *BinaryNode
-	Depth int
-	Value interface{}
+	Left   *BinaryNode
+	Right  *BinaryNode
+	Depth  int
+	Value  interface{}
 }
 
-func (n* BinaryNode) NewChild(value interface{}) *BinaryNode {
+func (n *BinaryNode) NewChild(value interface{}) *BinaryNode {
 	return &BinaryNode{
 		Parent: n,
-		Depth: n.Depth + 1,
-		Value: value,
+		Depth:  n.Depth + 1,
+		Value:  value,
 	}
 }
 

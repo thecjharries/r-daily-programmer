@@ -23,7 +23,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -37,19 +37,19 @@ func (s *MainSuite) TestReadFileIntoString(c *C) {
 
 func (s *MainSuite) TestGenerateFrequencyMapFromString(c *C) {
 	input := "hello hello world qqq"
-	output := map[string]int {
+	output := map[string]int{
 		"hello": 2,
 		"world": 1,
-		"qqq": 1,
+		"qqq":   1,
 	}
 	c.Assert(generateFrequencyMapFromString(input), DeepEquals, output)
 }
 
 func (s *MainSuite) TestConvertFrequencyMapToWordFrequencies(c *C) {
-	input := map[string]int {
+	input := map[string]int{
 		"hello": 2,
 		"world": 1,
-		"qqq": 1,
+		"qqq":   1,
 	}
 	output := WordFrequencies{{"hello", 2}, {"world", 1}, {"qqq", 1}}
 	c.Assert(convertFrequencyMapToWordFrequencies(input), DeepEquals, output)

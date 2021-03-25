@@ -22,9 +22,9 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
-type baseChangeFixture  struct{
+type baseChangeFixture struct {
 	base10 int
 	base26 string
 }
@@ -41,13 +41,13 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestBase10ToBase26(c *C) {
-	for _, fixture := range base10ToBase26Fixtures{
+	for _, fixture := range base10ToBase26Fixtures {
 		c.Assert(base10ToBase26(fixture.base10), Equals, fixture.base26)
 	}
 }
 
 func (s *MainSuite) TestBase26ToBase10(c *C) {
-	for _, fixture := range base10ToBase26Fixtures{
+	for _, fixture := range base10ToBase26Fixtures {
 		c.Assert(base26ToBase10(fixture.base26), Equals, fixture.base10)
 	}
 }

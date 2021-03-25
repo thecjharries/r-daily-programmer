@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -32,8 +32,8 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestVoteCountTotalVotes(c *C) {
 	sample := VoteCount{
-		"one": 1,
-		"two": 2,
+		"one":   1,
+		"two":   2,
 		"three": 3,
 	}
 	c.Assert(sample.TotalVotes(), Equals, 6)
@@ -41,8 +41,8 @@ func (s *MainSuite) TestVoteCountTotalVotes(c *C) {
 
 func (s *MainSuite) TestVoteCountCandidateWithMostVotes(c *C) {
 	sample := VoteCount{
-		"one": 1,
-		"two": 2,
+		"one":   1,
+		"two":   2,
 		"three": 3,
 	}
 	candidateWithMostVotes, candidateVotes, totalVotes := sample.CandidateWithMostVotes()
@@ -51,11 +51,10 @@ func (s *MainSuite) TestVoteCountCandidateWithMostVotes(c *C) {
 	c.Assert(totalVotes, Equals, 6)
 }
 
-
 func (s *MainSuite) TestVoteCountMajorityWinnerWithNoWinner(c *C) {
 	sample := VoteCount{
-		"one": 1,
-		"two": 2,
+		"one":   1,
+		"two":   2,
 		"three": 3,
 	}
 	c.Assert(sample.MajorityWinner(), Equals, "")
@@ -63,8 +62,8 @@ func (s *MainSuite) TestVoteCountMajorityWinnerWithNoWinner(c *C) {
 
 func (s *MainSuite) TestVoteCountMajorityWinnerWithWinner(c *C) {
 	sample := VoteCount{
-		"one": 1,
-		"two": 2,
+		"one":  1,
+		"two":  2,
 		"four": 4,
 	}
 	c.Assert(sample.MajorityWinner(), Equals, "four")

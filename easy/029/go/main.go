@@ -32,7 +32,7 @@ func splitStringInTwoEqualPieces(input string) (string, string) {
 func isPalindrome(input string) bool {
 	first, second := splitStringInTwoEqualPieces(input)
 	for index := 0; index < len(first); index++ {
-		if first[index] != second[len(second) - index - 1] {
+		if first[index] != second[len(second)-index-1] {
 			return false
 		}
 	}

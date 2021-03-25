@@ -29,8 +29,8 @@ func stepCount(start, end float64, totalSteps int) (steps []float64) {
 		panic(ErrorStepsBelowTwo)
 	}
 	steps = append(steps, start)
-	for index := 0; index < totalSteps - 2; index++ {
-		steps = append(steps, steps[index] + (end - start) / (float64(totalSteps) - 1))
+	for index := 0; index < totalSteps-2; index++ {
+		steps = append(steps, steps[index]+(end-start)/(float64(totalSteps)-1))
 	}
 	steps = append(steps, end)
 	return

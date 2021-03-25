@@ -66,7 +66,7 @@ func max(numbers ...int) int {
 }
 
 func randomIntInRange(minInt, maxInt int) int {
-	return rand.Intn(maxInt - minInt + 1) + minInt
+	return rand.Intn(maxInt-minInt+1) + minInt
 }
 
 func randomAsciiCharacterInRange(minInt, maxInt int) string {

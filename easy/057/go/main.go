@@ -33,14 +33,14 @@ func kadanesAlgorithm(values []int) []int {
 			if currentSum < currentValue {
 				currentSum = currentValue
 				currentStartIndex = currentEndIndex
-				maxStartIndex, maxEndIndex = currentStartIndex, currentEndIndex + 1
+				maxStartIndex, maxEndIndex = currentStartIndex, currentEndIndex+1
 			}
 		} else {
 			currentSum += currentValue
 		}
 		if maxSum <= currentSum {
 			maxSum = currentSum
-			maxStartIndex, maxEndIndex = currentStartIndex, currentEndIndex + 1
+			maxStartIndex, maxEndIndex = currentStartIndex, currentEndIndex+1
 		}
 	}
 	return values[maxStartIndex:maxEndIndex]

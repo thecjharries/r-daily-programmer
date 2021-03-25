@@ -26,7 +26,7 @@ func main() {
 }
 
 func convertToUsd(number float64) float64 {
-	return math.Round(number * 100) / 100
+	return math.Round(number*100) / 100
 }
 
 func reduceCostByDenomination(cost, denomination float64) (reducedCost float64, denominationCount int) {

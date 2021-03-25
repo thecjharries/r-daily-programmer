@@ -23,7 +23,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -56,9 +56,9 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestDiscreteSlopesLessThanTwoPoints(c *C) {
 	c.Assert(discreteSlopes([]R2Point(nil)), DeepEquals, []float64(nil))
-	c.Assert(discreteSlopes([]R2Point{{1,1}}), DeepEquals, []float64(nil))
+	c.Assert(discreteSlopes([]R2Point{{1, 1}}), DeepEquals, []float64(nil))
 }
 
 func (s *MainSuite) TestDiscreteSlopesEnoughPoints(c *C) {
-	c.Assert(discreteSlopes([]R2Point{{1,1}, {2,2}}), DeepEquals, []float64{1})
+	c.Assert(discreteSlopes([]R2Point{{1, 1}, {2, 2}}), DeepEquals, []float64{1})
 }

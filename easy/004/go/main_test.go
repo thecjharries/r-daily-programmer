@@ -22,13 +22,13 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
 const (
-	minFromIntRange int = 0
-	maxFromIntRage int = 10
+	minFromIntRange    int = 0
+	maxFromIntRage     int = 10
 	randomStringLength int = 20
 )
 

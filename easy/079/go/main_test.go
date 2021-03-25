@@ -23,7 +23,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -55,8 +55,8 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestStepCountStepsGuard(c *C) {
-	c.Assert(func(){stepCount(1, 2, 0)}, PanicMatches, ErrorStepsBelowTwo)
-	c.Assert(func(){stepCount(1, 2, 4)}, Not(Panics), nil)
+	c.Assert(func() { stepCount(1, 2, 0) }, PanicMatches, ErrorStepsBelowTwo)
+	c.Assert(func() { stepCount(1, 2, 4) }, Not(Panics), nil)
 }
 
 func (s *MainSuite) TestStepCountNoIntermediate(c *C) {

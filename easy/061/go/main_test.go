@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -39,7 +39,7 @@ func (s *MainSuite) TestRotateNumber(c *C) {
 }
 
 func (s *MainSuite) TestGenerateBinaryRotationSequence(c *C) {
-	c.Assert(generateBinaryRotationSequence(19), DeepEquals, []int64{19,25,28,14,7})
-	c.Assert(generateBinaryRotationSequence(205), DeepEquals, []int64{205,230,115,121,124,62,31})
-	c.Assert(generateBinaryRotationSequence(357), DeepEquals, []int64{357,434,217,236,118,59,61,62,31})
+	c.Assert(generateBinaryRotationSequence(19), DeepEquals, []int64{19, 25, 28, 14, 7})
+	c.Assert(generateBinaryRotationSequence(205), DeepEquals, []int64{205, 230, 115, 121, 124, 62, 31})
+	c.Assert(generateBinaryRotationSequence(357), DeepEquals, []int64{357, 434, 217, 236, 118, 59, 61, 62, 31})
 }

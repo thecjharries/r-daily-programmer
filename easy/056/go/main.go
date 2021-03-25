@@ -32,7 +32,7 @@ func deleteFile(filename string) {
 func writeAbacabaSequenceToFile(alphabet, filename string) {
 	deleteFile(filename)
 	fileHandle, _ := os.Create(filename)
-	defer (func (){ _ = fileHandle.Close() })()
+	defer (func() { _ = fileHandle.Close() })()
 	var abacabaCharacters []rune
 	for _, currentCharacter := range alphabet {
 		_, _ = fileHandle.WriteString(

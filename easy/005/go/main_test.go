@@ -25,7 +25,7 @@ func TestRootMain(t *testing.T) { TestingT(t) }
 
 type MainSuite struct {
 	getStringInputReader *strings.Reader
-	validCredentials []Credentials
+	validCredentials     []Credentials
 }
 
 const getStringInputInput string = "test\n"
@@ -34,7 +34,7 @@ const lenValidCreds int = 1
 
 var _ = Suite(&MainSuite{
 	getStringInputReader: strings.NewReader(getStringInputInput),
-	validCredentials: []Credentials{{"sage", "sage"}},
+	validCredentials:     []Credentials{{"sage", "sage"}},
 })
 
 func (s *MainSuite) TestMain(c *C) {

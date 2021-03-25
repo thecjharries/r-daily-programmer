@@ -49,7 +49,7 @@ func encryptLetter(letter string, shift int) string {
 }
 
 func decryptLetter(letter string, shift int) string {
-	return encryptLetter(letter, 26 - shift)
+	return encryptLetter(letter, 26-shift)
 }
 
 func encryptString(input string, shift int) string {
@@ -61,5 +61,5 @@ func encryptString(input string, shift int) string {
 }
 
 func decryptString(input string, shift int) string {
-	return encryptString(input, 26 - shift)
+	return encryptString(input, 26-shift)
 }

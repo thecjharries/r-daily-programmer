@@ -32,11 +32,11 @@ func main() {
 }
 
 func getStarsForLine(lineNumber int) string {
-	count := int(math.Pow(2, math.Max(0, float64(lineNumber - 1))))
+	count := int(math.Pow(2, math.Max(0, float64(lineNumber-1))))
 	return strings.Repeat("@", count)
 }
 
-func findLengthOfLongestLine(stringSlice []string) int{
+func findLengthOfLongestLine(stringSlice []string) int {
 	maxLength := 0
 	for _, line := range stringSlice {
 		if len(line) > maxLength {
@@ -52,7 +52,7 @@ func rightJustifyStringSlice(stringSlice []string) []string {
 	for _, line := range stringSlice {
 		result = append(
 			result,
-			strings.Repeat(" ", maxLength - len(line)) +
+			strings.Repeat(" ", maxLength-len(line))+
 				removeWrappingSpaceRegexp.ReplaceAllString(line, "$1"),
 		)
 	}
@@ -62,7 +62,7 @@ func rightJustifyStringSlice(stringSlice []string) []string {
 // https://stackoverflow.com/a/19239850
 func reverseStringSlice(stringSlice []string) []string {
 	result := stringSlice
-	for lead, tail := 0, len(result) - 1; lead < tail; lead, tail = lead + 1, tail - 1 {
+	for lead, tail := 0, len(result)-1; lead < tail; lead, tail = lead+1, tail-1 {
 		result[lead], result[tail] = result[tail], result[lead]
 	}
 	return result

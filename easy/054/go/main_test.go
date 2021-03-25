@@ -23,11 +23,12 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
 const newSeed int64 = 0
+
 var oldSeed int64
 
 func (s *MainSuite) SetUpTest(c *C) {

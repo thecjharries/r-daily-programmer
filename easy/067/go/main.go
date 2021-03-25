@@ -26,17 +26,17 @@ func main() {
 
 func reverseString(input string) string {
 	output := []rune(input)
-	for index := 0; index < len(output) / 2; index++ {
-		output[index], output[len(output) - 1 - index] = output[len(output) - 1 - index], output[index]
+	for index := 0; index < len(output)/2; index++ {
+		output[index], output[len(output)-1-index] = output[len(output)-1-index], output[index]
 	}
 	return string(output)
 }
 
 func zeroPadBinaryString(binary string, bits int) string {
 	if bits < len(binary) {
-		return binary[len(binary) - bits:]
+		return binary[len(binary)-bits:]
 	}
-	return strings.Repeat("0", bits - len(binary)) + binary
+	return strings.Repeat("0", bits-len(binary)) + binary
 }
 
 func reverseDecimalWithBinaryBits(decimal, bits int) int {

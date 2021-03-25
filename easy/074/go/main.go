@@ -27,10 +27,10 @@ func generateFibonacciSequenceLessThan(input int64, fibonacciSequence []int64) [
 	if 0 == len(fibonacciSequence) {
 		return generateFibonacciSequenceLessThan(input, []int64{0, 1})
 	}
-	penultimate := fibonacciSequence[len(fibonacciSequence) - 2]
-	ultimate := fibonacciSequence[len(fibonacciSequence) - 1]
-	if input > penultimate + ultimate {
-		return generateFibonacciSequenceLessThan(input, append(fibonacciSequence, penultimate + ultimate))
+	penultimate := fibonacciSequence[len(fibonacciSequence)-2]
+	ultimate := fibonacciSequence[len(fibonacciSequence)-1]
+	if input > penultimate+ultimate {
+		return generateFibonacciSequenceLessThan(input, append(fibonacciSequence, penultimate+ultimate))
 	}
 	return fibonacciSequence
 }
@@ -40,14 +40,14 @@ func reduceFibonacciSequenceToBeLessThan(input int64, fibonacciSequence []int64)
 	for input < fibonacciSequence[index] {
 		index--
 	}
-	return fibonacciSequence[:index + 1]
+	return fibonacciSequence[:index+1]
 }
 
 func generateZeckendorfRepresentation(input int64) (zeckendorfRepresentation []int64) {
 	currentTotal := input
 	fibonacciSequence := generateFibonacciSequenceLessThan(currentTotal, []int64{})
 	for 1 < len(fibonacciSequence) {
-		currentValue := fibonacciSequence[len(fibonacciSequence) - 1]
+		currentValue := fibonacciSequence[len(fibonacciSequence)-1]
 		zeckendorfRepresentation = append(zeckendorfRepresentation, currentValue)
 		currentTotal -= currentValue
 		fibonacciSequence = reduceFibonacciSequenceToBeLessThan(currentTotal, fibonacciSequence)

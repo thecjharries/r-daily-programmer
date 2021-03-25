@@ -22,11 +22,11 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
-type removeConsecutiveDuplicateRunesFixture struct{
-	input []rune
-	stripped []rune
+type removeConsecutiveDuplicateRunesFixture struct {
+	input      []rune
+	stripped   []rune
 	duplicates []rune
 }
 

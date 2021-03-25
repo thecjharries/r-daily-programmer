@@ -22,7 +22,7 @@ import (
 
 func TestRootMain(t *testing.T) { TestingT(t) }
 
-type MainSuite struct {}
+type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
@@ -32,7 +32,7 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestCreateExceptionsMap(c *C) {
 	input := []string{"one", "two"}
-	output := map[string]bool {
+	output := map[string]bool{
 		"one": true,
 		"two": true,
 	}

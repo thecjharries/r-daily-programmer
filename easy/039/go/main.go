@@ -31,14 +31,14 @@ func main() {
 func fizzBuzz(max int) (output []string) {
 	output = make([]string, max)
 	for index := 1; index <= max; index++ {
-		if 0 == index % 3 {
-			output[index - 1] += "Fizz"
+		if 0 == index%3 {
+			output[index-1] += "Fizz"
 		}
-		if 0 == index % 5 {
-			output[index - 1] += "Buzz"
+		if 0 == index%5 {
+			output[index-1] += "Buzz"
 		}
-		if 0 == len(output[index - 1]) {
-			output[index - 1] = strconv.Itoa(index)
+		if 0 == len(output[index-1]) {
+			output[index-1] = strconv.Itoa(index)
 		}
 	}
 	return
