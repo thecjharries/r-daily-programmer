@@ -1,5 +1,13 @@
 # [8/3/2012] Challenge #85 [easy] (Row/column sorting)
 
+## Notes
+
+Because of some personal issues, I don't feel like putting in the extra time it would take to make Go print the columns in order. It's a rehash of the code in the `computeColumnSums` so I'm not missing anything by not repeating the process.
+
+Both funcs return a map. The row sums are easy as the map stores the row. The column sums are harder because the map holds the column index.
+
+The reason I went with a flat slice with parametrized rows/cols was to make it all easier using the standard algorithm to turn a flat slice into a matrix.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/xq0yv/832012_challenge_85_easy_rowcolumn_sorting/) by ???
