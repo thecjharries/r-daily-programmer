@@ -30,11 +30,17 @@ func sum(numbers ...int) int {
 	return totalSum
 }
 
-//
-//func computeRowSums(matrix [][]int) (rowSums map[int][][]int) {
-//	rowSums = make(map[int][][]int)
-//	for _, row := range matrix {
-//		s
-//	}
-//	return
-//}
+func computeRowSums(matrix []int, numRows, numCols int) (rowSums map[int][][]int) {
+	rowSums = make(map[int][][]int)
+	for rowIndex := 0; rowIndex < numRows*numCols; rowIndex += numCols {
+		row := matrix[rowIndex : rowIndex+numCols]
+		rowSum := sum(row...)
+		_, rowSumExists := rowSums[rowSum]
+		if rowSumExists {
+			rowSums[rowSum] = append(rowSums[rowSum], row)
+		} else {
+			rowSums[rowSum] = [][]int{row}
+		}
+	}
+	return
+}

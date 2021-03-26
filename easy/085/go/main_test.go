@@ -57,3 +57,15 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestSum(c *C) {
 	c.Assert(sum(1, 2, 3), Equals, 6)
 }
+
+func (s *MainSuite) TestRowSums(c *C) {
+	matrix := []int{10, 5, 4, 20, 9, 33, 27, 16, 11, 6, 55, 3, 11, 6, 55, 3}
+	numRows := 4
+	numCols := 4
+	output := map[int][][]int{
+		39: {{10, 5, 4, 20}},
+		85: {{9, 33, 27, 16}},
+		75: {{11, 6, 55, 3}, {11, 6, 55, 3}},
+	}
+	c.Assert(computeRowSums(matrix, numRows, numCols), DeepEquals, output)
+}
