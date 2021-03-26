@@ -22,13 +22,13 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-//func sum(numbers ...int) int {
-//	totalSum := 0
-//	for _, number := range numbers {
-//		totalSum += number
-//	}
-//	return totalSum
-//}
+func sum(numbers ...int) int {
+	totalSum := 0
+	for _, number := range numbers {
+		totalSum += number
+	}
+	return totalSum
+}
 
 //
 //func computeRowSums(matrix [][]int) (rowSums map[int][][]int) {

@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSum(c *C) {
+	c.Assert(sum(1, 2, 3), Equals, 6)
+}
