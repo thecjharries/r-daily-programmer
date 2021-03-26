@@ -44,3 +44,20 @@ func computeRowSums(matrix []int, numRows, numCols int) (rowSums map[int][][]int
 	}
 	return
 }
+
+func computeColumnSums(matrix []int, numRows, numCols int) (colSums map[int][]int) {
+	colSums = make(map[int][]int)
+	for columnIndex := 0; columnIndex < numCols; columnIndex++ {
+		colSum := 0
+		for rowIndex := 0; rowIndex < numRows; rowIndex++ {
+			colSum += matrix[columnIndex+rowIndex*numCols]
+		}
+		_, colSumExists := colSums[colSum]
+		if colSumExists {
+			colSums[colSum] = append(colSums[colSum], columnIndex)
+		} else {
+			colSums[colSum] = []int{columnIndex}
+		}
+	}
+	return
+}
