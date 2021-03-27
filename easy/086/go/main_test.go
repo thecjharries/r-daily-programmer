@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRunLengthTupleString(c *C) {
+	var tuple RunLengthTuple
+	tuple = RunLengthTuple{10, "l"}
+	c.Assert(tuple.String(), Equals, "llllllllll")
+	tuple = RunLengthTuple{1, "e"}
+	c.Assert(tuple.String(), Equals, "e")
+}

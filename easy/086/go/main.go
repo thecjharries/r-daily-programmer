@@ -14,11 +14,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type RunLengthTuple struct {
 	Count  int
 	Letter string
+}
+
+func (r *RunLengthTuple) String() string {
+	return strings.Repeat(r.Letter, r.Count)
 }
 
 type RunLengthEncoding []RunLengthTuple
