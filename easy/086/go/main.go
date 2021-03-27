@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+type RunLengthTuple struct {
+	Count  int
+	Letter string
+}
+
+type RunLengthEncoding []RunLengthTuple
+
 var zPrint = fmt.Println
 
 func main() {
