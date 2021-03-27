@@ -30,6 +30,28 @@ func (r *RunLengthTuple) String() string {
 
 type RunLengthEncoding []RunLengthTuple
 
+func (r *RunLengthEncoding) String() string {
+	output := ""
+	for _, tuple := range *r {
+		output += tuple.String()
+	}
+	return output
+}
+
+func NewRunLengthEncoding(input string) (encoding RunLengthEncoding) {
+	currentTuple := RunLengthTuple{1, string(input[0])}
+	for index := 1; index < len(input); index++ {
+		if currentTuple.Letter == string(input[index]) {
+			currentTuple.Count++
+		} else {
+			encoding = append(encoding, currentTuple)
+			currentTuple = RunLengthTuple{1, string(input[index])}
+		}
+	}
+	encoding = append(encoding, currentTuple)
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {

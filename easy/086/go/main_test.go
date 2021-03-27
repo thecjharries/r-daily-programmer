@@ -61,3 +61,12 @@ func (s *MainSuite) TestRunLengthTupleString(c *C) {
 	tuple = RunLengthTuple{1, "e"}
 	c.Assert(tuple.String(), Equals, "e")
 }
+
+func (s *MainSuite) TestRunLengthEncodingString(c *C) {
+	encoding := RunLengthEncoding{{1, "H"}, {5, "e"}, {5, "l"}, {5, "o"}, {1, "n"}, {1, "u"}, {1, "r"}, {1, "s"}, {1, "e"}}
+	c.Assert(encoding.String(), Equals, "Heeeeelllllooooonurse")
+}
+
+func (s *MainSuite) TestNewRunLengthEncoding(c *C) {
+	c.Assert(NewRunLengthEncoding("Heeeeelllllooooonurse"), DeepEquals, RunLengthEncoding{{1, "H"}, {5, "e"}, {5, "l"}, {5, "o"}, {1, "n"}, {1, "u"}, {1, "r"}, {1, "s"}, {1, "e"}})
+}
