@@ -30,6 +30,7 @@ type Rectangle struct {
 	BottomRight *Coordinate
 }
 
+// Doesn't check validity of coordinates
 func NewRectangleFromFloat64s(topLeftX, topLeftY, bottomRightX, bottomRightY float64) *Rectangle {
 	return &Rectangle{
 		TopLeft:     NewCoordinate(topLeftX, topLeftY),
