@@ -30,7 +30,7 @@ type Rectangle struct {
 	BottomRight *Coordinate
 }
 
-func (r *Rectangle) Contains(rectangle *Rectangle) bool {
+func (r *Rectangle) ContainsRectangle(rectangle *Rectangle) bool {
 	return r.TopLeft.X <= rectangle.TopLeft.X &&
 		r.TopLeft.Y <= rectangle.TopLeft.Y &&
 		r.BottomRight.X >= rectangle.BottomRight.X &&
@@ -49,4 +49,14 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func rectangleIntersection(first, second *Rectangle) (intersection *Rectangle) {
+	if first.ContainsRectangle(second) {
+		return second
+	}
+	if second.ContainsRectangle(first) {
+		return first
+	}
+	return
 }

@@ -66,11 +66,24 @@ func (s *MainSuite) TestNewRectangle(c *C) {
 	c.Assert(NewRectangleFromFloat64s(1, 1, 2, 2), DeepEquals, output)
 }
 
-func (s *MainSuite) TestRectangleContains(c *C) {
+func (s *MainSuite) TestRectangleContainsRectangle(c *C) {
 	var first, second *Rectangle
 	first = &Rectangle{&Coordinate{1, 1}, &Coordinate{10, 10}}
 	second = &Rectangle{&Coordinate{1, 2}, &Coordinate{5, 5}}
-	c.Assert(first.Contains(second), Equals, true)
+	c.Assert(first.ContainsRectangle(second), Equals, true)
 	second = &Rectangle{&Coordinate{1, 2}, &Coordinate{15, 5}}
-	c.Assert(first.Contains(second), Equals, false)
+	c.Assert(first.ContainsRectangle(second), Equals, false)
+}
+
+func (s *MainSuite) TestRectangleIntersectionNoIntersection(c *C) {
+	first := &Rectangle{&Coordinate{1, 1}, &Coordinate{2, 2}}
+	second := &Rectangle{&Coordinate{2, 2}, &Coordinate{3, 3}}
+	c.Assert(rectangleIntersection(first, second), DeepEquals, (*Rectangle)(nil))
+}
+
+func (s *MainSuite) TestRectangleIntersectionContainment(c *C) {
+	first := &Rectangle{&Coordinate{1, 1}, &Coordinate{10, 10}}
+	second := &Rectangle{&Coordinate{1, 2}, &Coordinate{5, 5}}
+	c.Assert(rectangleIntersection(first, second), DeepEquals, second)
+	c.Assert(rectangleIntersection(second, first), DeepEquals, second)
 }
