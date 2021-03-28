@@ -84,6 +84,16 @@ func (s *MainSuite) TestRectangleContainsCoordinate(c *C) {
 	c.Assert(rectangle.ContainsCoordinate(coordinate), Equals, false)
 }
 
+func (s *MainSuite) TestRectangleIntersectsRectangle(c *C) {
+	var first, second *Rectangle
+	first = &Rectangle{&Coordinate{1, 1}, &Coordinate{10, 10}}
+	second = &Rectangle{&Coordinate{1, 2}, &Coordinate{5, 5}}
+	c.Assert(first.IntersectsRectangle(second), Equals, true)
+	second = &Rectangle{&Coordinate{11, 12}, &Coordinate{15, 15}}
+	c.Assert(first.IntersectsRectangle(second), Equals, false)
+
+}
+
 func (s *MainSuite) TestRectangleIntersectionNoIntersection(c *C) {
 	first := &Rectangle{&Coordinate{1, 1}, &Coordinate{2, 2}}
 	second := &Rectangle{&Coordinate{2, 2}, &Coordinate{3, 3}}

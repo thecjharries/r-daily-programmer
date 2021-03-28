@@ -44,6 +44,13 @@ func (r *Rectangle) ContainsCoordinate(coordinate *Coordinate) bool {
 		r.BottomRight.Y >= coordinate.Y
 }
 
+func (r *Rectangle) IntersectsRectangle(rectangle *Rectangle) bool {
+	return r.ContainsCoordinate(rectangle.TopLeft) ||
+		r.ContainsCoordinate(rectangle.BottomRight) ||
+		rectangle.ContainsCoordinate(r.TopLeft) ||
+		rectangle.ContainsCoordinate(r.BottomRight)
+}
+
 // Doesn't check validity of coordinates
 func NewRectangleFromFloat64s(topLeftX, topLeftY, bottomRightX, bottomRightY float64) *Rectangle {
 	return &Rectangle{
