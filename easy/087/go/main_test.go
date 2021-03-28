@@ -57,3 +57,11 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestNewCoordinate(c *C) {
 	c.Assert(NewCoordinate(1, 1), DeepEquals, &Coordinate{1, 1})
 }
+
+func (s *MainSuite) TestNewRectangle(c *C) {
+	output := &Rectangle{
+		TopLeft:     &Coordinate{1, 1},
+		BottomRight: &Coordinate{2, 2},
+	}
+	c.Assert(NewRectangleFromFloat64s(1, 1, 2, 2), DeepEquals, output)
+}

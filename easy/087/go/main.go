@@ -25,6 +25,18 @@ func NewCoordinate(x, y float64) *Coordinate {
 	return &Coordinate{X: x, Y: y}
 }
 
+type Rectangle struct {
+	TopLeft     *Coordinate
+	BottomRight *Coordinate
+}
+
+func NewRectangleFromFloat64s(topLeftX, topLeftY, bottomRightX, bottomRightY float64) *Rectangle {
+	return &Rectangle{
+		TopLeft:     NewCoordinate(topLeftX, topLeftY),
+		BottomRight: NewCoordinate(bottomRightX, bottomRightY),
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
