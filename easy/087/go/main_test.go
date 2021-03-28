@@ -65,3 +65,12 @@ func (s *MainSuite) TestNewRectangle(c *C) {
 	}
 	c.Assert(NewRectangleFromFloat64s(1, 1, 2, 2), DeepEquals, output)
 }
+
+func (s *MainSuite) TestRectangleContains(c *C) {
+	var first, second *Rectangle
+	first = &Rectangle{&Coordinate{1, 1}, &Coordinate{10, 10}}
+	second = &Rectangle{&Coordinate{1, 2}, &Coordinate{5, 5}}
+	c.Assert(first.Contains(second), Equals, true)
+	second = &Rectangle{&Coordinate{1, 2}, &Coordinate{15, 5}}
+	c.Assert(first.Contains(second), Equals, false)
+}

@@ -30,6 +30,13 @@ type Rectangle struct {
 	BottomRight *Coordinate
 }
 
+func (r *Rectangle) Contains(rectangle *Rectangle) bool {
+	return r.TopLeft.X <= rectangle.TopLeft.X &&
+		r.TopLeft.Y <= rectangle.TopLeft.Y &&
+		r.BottomRight.X >= rectangle.BottomRight.X &&
+		r.BottomRight.Y >= rectangle.BottomRight.Y
+}
+
 // Doesn't check validity of coordinates
 func NewRectangleFromFloat64s(topLeftX, topLeftY, bottomRightX, bottomRightY float64) *Rectangle {
 	return &Rectangle{
