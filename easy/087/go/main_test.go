@@ -96,7 +96,7 @@ func (s *MainSuite) TestRectangleIntersectsRectangle(c *C) {
 
 func (s *MainSuite) TestRectangleIntersectionNoIntersection(c *C) {
 	first := &Rectangle{&Coordinate{1, 1}, &Coordinate{2, 2}}
-	second := &Rectangle{&Coordinate{2, 2}, &Coordinate{3, 3}}
+	second := &Rectangle{&Coordinate{3, 3}, &Coordinate{4, 4}}
 	c.Assert(rectangleIntersection(first, second), DeepEquals, (*Rectangle)(nil))
 }
 
@@ -105,4 +105,16 @@ func (s *MainSuite) TestRectangleIntersectionContainment(c *C) {
 	second := &Rectangle{&Coordinate{1, 2}, &Coordinate{5, 5}}
 	c.Assert(rectangleIntersection(first, second), DeepEquals, second)
 	c.Assert(rectangleIntersection(second, first), DeepEquals, second)
+}
+
+func (s *MainSuite) TestRectangleIntersectionZeroArea(c *C) {
+	first := &Rectangle{&Coordinate{1, 1}, &Coordinate{2, 2}}
+	second := &Rectangle{&Coordinate{2, 2}, &Coordinate{3, 3}}
+	c.Assert(rectangleIntersection(first, second), DeepEquals, &Rectangle{&Coordinate{2, 2}, &Coordinate{2, 2}})
+}
+
+func (s *MainSuite) TestRectangleIntersectionNonZeroArea(c *C) {
+	first := &Rectangle{&Coordinate{3, 3}, &Coordinate{10, 10}}
+	second := &Rectangle{&Coordinate{6, 6}, &Coordinate{12, 12}}
+	c.Assert(rectangleIntersection(first, second), DeepEquals, &Rectangle{&Coordinate{6, 6}, &Coordinate{10, 10}})
 }

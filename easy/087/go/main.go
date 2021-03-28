@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Coordinate struct {
 	X float64
@@ -66,11 +69,17 @@ func main() {
 }
 
 func rectangleIntersection(first, second *Rectangle) (intersection *Rectangle) {
-	if first.ContainsRectangle(second) {
-		return second
-	}
-	if second.ContainsRectangle(first) {
-		return first
+	if first.IntersectsRectangle(second) {
+		intersection = &Rectangle{
+			TopLeft: NewCoordinate(
+				math.Max(first.TopLeft.X, second.TopLeft.X),
+				math.Max(first.TopLeft.Y, second.TopLeft.Y),
+			),
+			BottomRight: NewCoordinate(
+				math.Min(first.BottomRight.X, second.BottomRight.X),
+				math.Min(first.BottomRight.Y, second.BottomRight.Y),
+			),
+		}
 	}
 	return
 }
