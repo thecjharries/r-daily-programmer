@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewCoordinate(c *C) {
+	c.Assert(NewCoordinate(1, 1), DeepEquals, &Coordinate{1, 1})
+}
