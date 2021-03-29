@@ -14,10 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
+
+const romanAlphabet = "abcdefghijklmnopqrstuvwxyz"
+
+var notLettersPattern = regexp.MustCompile(`[^a-z]`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func sanitizePlaintext(plaintext string) string {
+	sanitized := strings.ToLower(plaintext)
+	return notLettersPattern.ReplaceAllString(sanitized, "")
+}
+
+func encrypt(key, plaintext string) (ciphertext string) {
+	return
 }
