@@ -36,5 +36,12 @@ func sanitizePlaintext(plaintext string) string {
 }
 
 func encrypt(key, plaintext string) (ciphertext string) {
+	sanitizedKey := sanitizePlaintext(key)
+	sanitizedPlaintext := sanitizePlaintext(plaintext)
+	for index, character := range sanitizedPlaintext {
+		keyIndex := strings.Index(romanAlphabet, string(sanitizedKey[index%len(sanitizedKey)]))
+		characterIndex := strings.Index(romanAlphabet, string(character))
+		ciphertext += string(romanAlphabet[(keyIndex+characterIndex)%len(romanAlphabet)])
+	}
 	return
 }

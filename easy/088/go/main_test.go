@@ -58,3 +58,7 @@ func (s *MainSuite) TestSanitizePlaintext(c *C) {
 	c.Assert(sanitizePlaintext("TEST"), Equals, "test")
 	c.Assert(sanitizePlaintext("qqq123-+=qqq"), Equals, "qqqqqq")
 }
+
+func (s *MainSuite) TestEncrypt(c *C) {
+	c.Assert(encrypt("GLADOS", "THECAKEISALIE"), Equals, "zsefocktsdzak")
+}
