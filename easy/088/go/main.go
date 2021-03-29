@@ -45,3 +45,14 @@ func encrypt(key, plaintext string) (ciphertext string) {
 	}
 	return
 }
+
+func decrypt(key, ciphertext string) (plaintext string) {
+	sanitizedKey := sanitizePlaintext(key)
+	sanitizedCipherText := sanitizePlaintext(ciphertext)
+	for index, character := range sanitizedCipherText {
+		keyIndex := strings.Index(romanAlphabet, string(sanitizedKey[index%len(sanitizedKey)]))
+		characterIndex := strings.Index(romanAlphabet, string(character))
+		plaintext += string(romanAlphabet[(26+characterIndex-keyIndex)%len(romanAlphabet)])
+	}
+	return
+}
