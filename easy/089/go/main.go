@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math"
 	"strconv"
 	"strings"
 )
@@ -41,10 +42,17 @@ func loadData() (data []float64) {
 
 func arithmeticMean(data []float64) float64 {
 	totalSum := float64(0)
-	count := float64(0)
 	for _, number := range data {
 		totalSum += number
-		count++
 	}
-	return totalSum / count
+	return totalSum / float64(len(data))
+}
+
+func variance(data []float64) float64 {
+	mean := arithmeticMean(data)
+	sum := float64(0)
+	for _, number := range data {
+		sum += math.Pow(number-mean, 2)
+	}
+	return sum / float64(len(data))
 }
