@@ -60,3 +60,13 @@ func variance(data []float64) float64 {
 func standardDeviation(data []float64) float64 {
 	return math.Sqrt(variance(data))
 }
+
+func promptStatisticalSuite(data []float64) string {
+	dataVariance := variance(data)
+	return fmt.Sprintf(
+		"Mean is %0.2f\nVariance is %0.2f\nStandard deviation is %0.2f\n",
+		arithmeticMean(data),
+		dataVariance,
+		math.Sqrt(dataVariance),
+	)
+}

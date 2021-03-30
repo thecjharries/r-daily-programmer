@@ -73,3 +73,8 @@ func (s *MainSuite) TestStandardDeviation(c *C) {
 	data := []float64{600, 470, 170, 430, 300}
 	c.Assert(standardDeviation(data), Equals, 147.32277488562318)
 }
+
+func (s *MainSuite) TestPromptStatisticalSuite(c *C) {
+	data := []float64{600, 470, 170, 430, 300}
+	c.Assert(promptStatisticalSuite(data), Equals, "Mean is 394.00\nVariance is 21704.00\nStandard deviation is 147.32\n")
+}
