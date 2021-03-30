@@ -58,3 +58,8 @@ func (s *MainSuite) TestLoadData(c *C) {
 	data := loadData()
 	c.Assert(len(data), Equals, 60)
 }
+
+func (s *MainSuite) TestArithmeticMean(c *C) {
+	data := []float64{1, -1}
+	c.Assert(arithmeticMean(data), Equals, float64(0))
+}

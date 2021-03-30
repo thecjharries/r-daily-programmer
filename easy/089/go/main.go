@@ -38,3 +38,13 @@ func loadData() (data []float64) {
 	}
 	return
 }
+
+func arithmeticMean(data []float64) float64 {
+	totalSum := float64(0)
+	count := float64(0)
+	for _, number := range data {
+		totalSum += number
+		count++
+	}
+	return totalSum / count
+}
