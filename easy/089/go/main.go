@@ -27,7 +27,7 @@ const dataFilename string = "./dataset.txt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(promptStatisticalSuite(loadData()))
 }
 
 func loadData() (data []float64) {

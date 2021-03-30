@@ -51,7 +51,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "Mean is 0.33\nVariance is 0.07\nStandard deviation is 0.26\n")
 }
 
 func (s *MainSuite) TestLoadData(c *C) {
