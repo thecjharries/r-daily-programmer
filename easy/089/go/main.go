@@ -14,10 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strconv"
+	"strings"
+)
+
+const dataFilename string = "./dataset.txt"
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func loadData() (data []float64) {
+	contents, _ := ioutil.ReadFile(dataFilename)
+	exploded := strings.Split(strings.TrimSpace(string(contents)), "\n")
+	data = make([]float64, len(exploded))
+	for index, number := range exploded {
+		data[index], _ = strconv.ParseFloat(number, 64)
+	}
+	return
 }
