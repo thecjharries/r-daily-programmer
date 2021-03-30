@@ -60,8 +60,8 @@ func (s *MainSuite) TestLoadData(c *C) {
 }
 
 func (s *MainSuite) TestArithmeticMean(c *C) {
-	data := []float64{1, -1}
-	c.Assert(arithmeticMean(data), Equals, float64(0))
+	data := []float64{600, 470, 170, 430, 300}
+	c.Assert(arithmeticMean(data), Equals, float64(394))
 }
 
 func (s *MainSuite) TestVariance(c *C) {
