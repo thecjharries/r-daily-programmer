@@ -68,3 +68,8 @@ func (s *MainSuite) TestVariance(c *C) {
 	data := []float64{600, 470, 170, 430, 300}
 	c.Assert(variance(data), Equals, float64(21704))
 }
+
+func (s *MainSuite) TestStandardDeviation(c *C) {
+	data := []float64{600, 470, 170, 430, 300}
+	c.Assert(standardDeviation(data), Equals, 147.32277488562318)
+}

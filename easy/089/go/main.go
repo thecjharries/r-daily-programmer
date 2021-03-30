@@ -56,3 +56,7 @@ func variance(data []float64) float64 {
 	}
 	return sum / float64(len(data))
 }
+
+func standardDeviation(data []float64) float64 {
+	return math.Sqrt(variance(data))
+}
