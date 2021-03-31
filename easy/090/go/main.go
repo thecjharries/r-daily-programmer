@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type Raster struct {
+	Image    [][]int
+	CurrentX int
+	CurrentY int
+}
+
 var zPrint = fmt.Println
 
 func main() {
