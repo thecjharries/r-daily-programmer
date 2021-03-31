@@ -60,8 +60,12 @@ func (r *Raster) String() string {
 }
 
 func NewRaster(width, height int, actions string) (raster *Raster) {
+	slices := make([][]int, height)
+	for index := 0; index < height; index++ {
+		slices[index] = make([]int, width)
+	}
 	raster = &Raster{
-		Image:    make([][]int, width, height),
+		Image:    slices,
 		CurrentX: 0,
 		CurrentY: 0,
 	}

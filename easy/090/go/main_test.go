@@ -105,3 +105,11 @@ func (s *MainSuite) TestRasterString(c *C) {
 	}
 	c.Assert(raster.String(), Equals, "00\n00\n")
 }
+
+func (s *MainSuite) TestNewRaster(c *C) {
+	c.Assert(
+		NewRaster(5, 5, "PESPESPESPESPNNNNPWSPWSPWSPWSP").String(),
+		Equals,
+		"10001\n01010\n00100\n01010\n10001\n",
+	)
+}
