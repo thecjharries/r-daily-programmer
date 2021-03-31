@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type Raster struct {
 	Image    [][]int
@@ -43,6 +46,17 @@ func (r *Raster) ParseAction(action rune) {
 	} else if 'S' == action {
 		r.Stamp()
 	}
+}
+
+func (r *Raster) String() string {
+	output := ""
+	for _, row := range r.Image {
+		for _, pixel := range row {
+			output += strconv.Itoa(pixel)
+		}
+		output += "\n"
+	}
+	return output
 }
 
 func NewRaster(width, height int, actions string) (raster *Raster) {
