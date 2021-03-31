@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRasterStamp(c *C) {
+	raster := Raster{
+		Image:    [][]int{{0, 0}},
+		CurrentX: 0,
+		CurrentY: 0,
+	}
+	raster.Stamp()
+	c.Assert(raster.Image, DeepEquals, [][]int{{1, 0}})
+}
