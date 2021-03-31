@@ -63,3 +63,14 @@ func (s *MainSuite) TestRasterStamp(c *C) {
 	raster.Stamp()
 	c.Assert(raster.Image, DeepEquals, [][]int{{1, 0}})
 }
+
+func (s *MainSuite) TestRasterMove(c *C) {
+	raster := Raster{
+		Image:    [][]int{{0, 0}},
+		CurrentX: 0,
+		CurrentY: 0,
+	}
+	raster.Move(1, 1)
+	c.Assert(raster.CurrentX, Equals, 1)
+	c.Assert(raster.CurrentY, Equals, 1)
+}
