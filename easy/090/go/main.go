@@ -26,6 +26,11 @@ func (r *Raster) Stamp() {
 	r.Image[r.CurrentX][r.CurrentY] = 1
 }
 
+func (r *Raster) Move(x, y int) {
+	r.CurrentX += x
+	r.CurrentY += y
+}
+
 var zPrint = fmt.Println
 
 func main() {
