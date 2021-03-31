@@ -22,6 +22,10 @@ type Raster struct {
 	CurrentY int
 }
 
+func (r *Raster) Stamp() {
+	r.Image[r.CurrentX][r.CurrentY] = 1
+}
+
 var zPrint = fmt.Println
 
 func main() {
