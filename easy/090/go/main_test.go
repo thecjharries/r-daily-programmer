@@ -96,3 +96,12 @@ func (s *MainSuite) TestRasterParseAction(c *C) {
 	c.Assert(raster.CurrentX, Equals, 0)
 	c.Assert(raster.CurrentY, Equals, 0)
 }
+
+func (s *MainSuite) TestRasterString(c *C) {
+	raster := Raster{
+		Image:    [][]int{{0, 0}, {0, 0}},
+		CurrentX: 0,
+		CurrentY: 0,
+	}
+	c.Assert(raster.String(), Equals, "00\n00\n")
+}
