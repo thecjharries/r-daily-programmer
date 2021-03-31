@@ -31,6 +31,32 @@ func (r *Raster) Move(x, y int) {
 	r.CurrentY += y
 }
 
+func (r *Raster) ParseAction(action rune) {
+	if 'N' == action {
+		r.Move(0, 1)
+	} else if 'S' == action {
+		r.Move(0, -1)
+	} else if 'E' == action {
+		r.Move(1, 0)
+	} else if 'W' == action {
+		r.Move(-1, 0)
+	} else if 'S' == action {
+		r.Stamp()
+	}
+}
+
+func NewRaster(width, height int, actions string) (raster *Raster) {
+	raster = &Raster{
+		Image:    make([][]int, width, height),
+		CurrentX: 0,
+		CurrentY: 0,
+	}
+	for _, action := range actions {
+		raster.ParseAction(action)
+	}
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
