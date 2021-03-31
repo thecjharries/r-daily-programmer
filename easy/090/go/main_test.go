@@ -74,3 +74,25 @@ func (s *MainSuite) TestRasterMove(c *C) {
 	c.Assert(raster.CurrentX, Equals, 1)
 	c.Assert(raster.CurrentY, Equals, 1)
 }
+
+func (s *MainSuite) TestRasterParseAction(c *C) {
+	raster := Raster{
+		Image:    [][]int{{0, 0}, {0, 0}},
+		CurrentX: 0,
+		CurrentY: 0,
+	}
+	raster.ParseAction('P')
+	c.Assert(raster.Image, DeepEquals, [][]int{{1, 0}, {0, 0}})
+	raster.ParseAction('S')
+	c.Assert(raster.CurrentX, Equals, 0)
+	c.Assert(raster.CurrentY, Equals, 1)
+	raster.ParseAction('N')
+	c.Assert(raster.CurrentX, Equals, 0)
+	c.Assert(raster.CurrentY, Equals, 0)
+	raster.ParseAction('E')
+	c.Assert(raster.CurrentX, Equals, 1)
+	c.Assert(raster.CurrentY, Equals, 0)
+	raster.ParseAction('W')
+	c.Assert(raster.CurrentX, Equals, 0)
+	c.Assert(raster.CurrentY, Equals, 0)
+}

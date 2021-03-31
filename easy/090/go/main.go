@@ -36,14 +36,14 @@ func (r *Raster) Move(x, y int) {
 
 func (r *Raster) ParseAction(action rune) {
 	if 'N' == action {
-		r.Move(0, 1)
-	} else if 'S' == action {
 		r.Move(0, -1)
+	} else if 'S' == action {
+		r.Move(0, 1)
 	} else if 'E' == action {
 		r.Move(1, 0)
 	} else if 'W' == action {
 		r.Move(-1, 0)
-	} else if 'S' == action {
+	} else if 'P' == action {
 		r.Stamp()
 	}
 }
