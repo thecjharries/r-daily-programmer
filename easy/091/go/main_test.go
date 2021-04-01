@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSleepSortRoutine(c *C) {
+	channel := make(chan int, 1)
+	c.Assert(len(channel), Equals, 0)
+	sleepSortRoutine(1, channel)
+	c.Assert(<-channel, Equals, 1)
+}

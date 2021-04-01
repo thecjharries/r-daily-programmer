@@ -14,10 +14,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func sleepSortRoutine(number int, channel chan int) {
+	time.Sleep(time.Millisecond * time.Duration(number))
+	channel <- number
 }
