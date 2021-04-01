@@ -22,13 +22,11 @@ import (
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(sleepSort([]int{3, 1, 4, 1, 5, 9}))
 }
 
 func sleepSortRoutine(number int, sortChannel chan int) {
-	fmt.Printf("Waiting %d", number)
 	time.Sleep(time.Millisecond * time.Duration(number))
-	fmt.Printf("Sending %d", number)
 	sortChannel <- number
 }
 
