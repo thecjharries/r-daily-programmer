@@ -55,8 +55,14 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestSleepSortRoutine(c *C) {
-	channel := make(chan int, 1)
-	c.Assert(len(channel), Equals, 0)
-	sleepSortRoutine(1, channel)
-	c.Assert(<-channel, Equals, 1)
+	sortChannel := make(chan int, 1)
+	c.Assert(len(sortChannel), Equals, 0)
+	sleepSortRoutine(1, sortChannel)
+	c.Assert(<-sortChannel, Equals, 1)
+}
+
+func (s *MainSuite) TestSleepSort(c *C) {
+	input := []int{3, 1, 4, 1, 5, 9}
+	output := []int{1, 1, 3, 4, 5, 9}
+	c.Assert(sleepSort(input), DeepEquals, output)
 }

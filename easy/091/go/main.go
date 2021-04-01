@@ -25,7 +25,20 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func sleepSortRoutine(number int, channel chan int) {
+func sleepSortRoutine(number int, sortChannel chan int) {
+	fmt.Printf("Waiting %d", number)
 	time.Sleep(time.Millisecond * time.Duration(number))
-	channel <- number
+	fmt.Printf("Sending %d", number)
+	sortChannel <- number
+}
+
+func sleepSort(numbers []int) (sorted []int) {
+	sortChannel := make(chan int, len(numbers))
+	for _, number := range numbers {
+		go sleepSortRoutine(number, sortChannel)
+	}
+	for index := 0; index < len(numbers); index++ {
+		sorted = append(sorted, <-sortChannel)
+	}
+	return
 }
