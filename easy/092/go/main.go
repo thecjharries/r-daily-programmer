@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
 
@@ -123,6 +124,8 @@ const (
 	errorUnknownCharacter   string = "Unknown Roman character"
 )
 
+var morseCodePattern = regexp.MustCompile(`^[.\- ]+$`)
+
 var zPrint = fmt.Println
 
 func main() {
@@ -172,4 +175,11 @@ func translateMorseToRoman(morseWords string) string {
 		}
 	}
 	return output
+}
+
+func translate(input string) string {
+	if morseCodePattern.MatchString(input) {
+		return translateMorseToRoman(input)
+	}
+	return translateRomanToMorse(input)
 }
