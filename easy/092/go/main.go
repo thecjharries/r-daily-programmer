@@ -108,16 +108,16 @@ func morseCharacterToRomanCharacter(morseCharacter string) string {
 	return value
 }
 
-func translateRomanToMorse(romanWords string) string {
+func translateRomanWordToMorseWord(romanWord string) string {
 	var output []string
-	for _, character := range romanWords {
+	for _, character := range romanWord {
 		output = append(output, romanCharacterToMorseCharacter(string(character)))
 	}
 	return strings.Join(output[:], " ")
 }
 
-func translateMorseToRoman(morseWords string) string {
-	input := strings.Split(morseWords, " ")
+func translateMorseWordToRomanWord(morseWord string) string {
+	input := strings.Split(morseWord, " ")
 	output := ""
 	for _, character := range input {
 		output += morseCharacterToRomanCharacter(character)
