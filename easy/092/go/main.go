@@ -21,6 +21,16 @@ import (
 
 // https://gist.github.com/mohayonao/094c71af14fe4791c5dd
 var romanToMorse = map[string]string{
+	"0": "-----",
+	"1": ".----",
+	"2": "..---",
+	"3": "...--",
+	"4": "....-",
+	"5": ".....",
+	"6": "-....",
+	"7": "--...",
+	"8": "---..",
+	"9": "----.",
 	"a": ".-",
 	"b": "-...",
 	"c": "-.-.",
@@ -47,35 +57,65 @@ var romanToMorse = map[string]string{
 	"x": "-..-",
 	"y": "-.--",
 	"z": "--..",
+	".": ".-.-.-",
+	",": "--..--",
+	"?": "..--..",
+	"!": "-.-.--",
+	"-": "-....-",
+	"/": "-..-.",
+	"@": ".--.-.",
+	"(": "-.--.",
+	")": "-.--.-",
+	" ": "",
 }
 
 var morseToRoman = map[string]string{
-	".-":   "a",
-	"-...": "b",
-	"-.-.": "c",
-	"-..":  "d",
-	".":    "e",
-	"..-.": "f",
-	"--.":  "g",
-	"....": "h",
-	"..":   "i",
-	".---": "j",
-	"-.-":  "k",
-	".-..": "l",
-	"--":   "m",
-	"-.":   "n",
-	"---":  "o",
-	".--.": "p",
-	"--.-": "q",
-	".-.":  "r",
-	"...":  "s",
-	"-":    "t",
-	"..-":  "u",
-	"...-": "v",
-	".--":  "w",
-	"-..-": "x",
-	"-.--": "y",
-	"--..": "z",
+	"-----":  "0",
+	".----":  "1",
+	"..---":  "2",
+	"...--":  "3",
+	"....-":  "4",
+	".....":  "5",
+	"-....":  "6",
+	"--...":  "7",
+	"---..":  "8",
+	"----.":  "9",
+	".-":     "a",
+	"-...":   "b",
+	"-.-.":   "c",
+	"-..":    "d",
+	".":      "e",
+	"..-.":   "f",
+	"--.":    "g",
+	"....":   "h",
+	"..":     "i",
+	".---":   "j",
+	"-.-":    "k",
+	".-..":   "l",
+	"--":     "m",
+	"-.":     "n",
+	"---":    "o",
+	".--.":   "p",
+	"--.-":   "q",
+	".-.":    "r",
+	"...":    "s",
+	"-":      "t",
+	"..-":    "u",
+	"...-":   "v",
+	".--":    "w",
+	"-..-":   "x",
+	"-.--":   "y",
+	"--..":   "z",
+	".-.-.-": ".",
+	"--..--": ",",
+	"..--..": "?",
+	"-.-.--": "!",
+	"-....-": "-",
+	"-..-.":  "/",
+	".--.-.": "@",
+	"-.--.":  "(",
+	"-.--.-": ")",
+	"  ":     " ",
 }
 
 const (
@@ -108,19 +148,28 @@ func morseCharacterToRomanCharacter(morseCharacter string) string {
 	return value
 }
 
-func translateRomanWordToMorseWord(romanWord string) string {
+func translateRomanToMorse(romanWords string) string {
 	var output []string
-	for _, character := range romanWord {
+	for _, character := range romanWords {
 		output = append(output, romanCharacterToMorseCharacter(string(character)))
 	}
 	return strings.Join(output[:], " ")
 }
 
-func translateMorseWordToRomanWord(morseWord string) string {
-	input := strings.Split(morseWord, " ")
+func translateMorseToRoman(morseWords string) string {
+	input := strings.Split(morseWords, "  ")
 	output := ""
-	for _, character := range input {
+
+	firstWord := strings.Split(input[0], " ")
+	for _, character := range firstWord {
 		output += morseCharacterToRomanCharacter(character)
+	}
+	for _, word := range input[1:] {
+		output += " "
+		morseCharacters := strings.Split(word, " ")
+		for _, character := range morseCharacters {
+			output += morseCharacterToRomanCharacter(character)
+		}
 	}
 	return output
 }

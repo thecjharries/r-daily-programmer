@@ -93,11 +93,11 @@ func (s *MainSuite) TestMorseCharacterToRomanCharacterReturnsProperOutput(c *C) 
 }
 
 func (s *MainSuite) TestTranslateRomanToMorse(c *C) {
-	translated := translateRomanWordToMorseWord("aaa")
-	c.Assert(translated, Equals, ".- .- .-")
+	translated := translateRomanToMorse("aa aa")
+	c.Assert(translated, Equals, ".- .-  .- .-")
 }
 
 func (s *MainSuite) TestTranslateMorseToRoman(c *C) {
-	translated := translateMorseWordToRomanWord(".... . .-.. .-.. ---")
-	c.Assert(translated, Equals, "hello")
+	translated := translateMorseToRoman(".... . .-.. .-.. ---  -.. .- .. .-.. -.--  .--. .-. --- --. .-. .- -- -- . .-.  --. --- --- -..  .-.. ..- -.-. -.-  --- -.  - .... .  -.-. .... .- .-.. .-.. . -. --. . ...  - --- -.. .- -.--")
+	c.Assert(translated, Equals, "hello daily programmer good luck on the challenges today")
 }
