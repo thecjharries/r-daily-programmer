@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var digits = map[int][]string{
 	0: {"+-+", "| |", "+ +", "| |", "+-+"},
@@ -33,4 +37,17 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func intToSevenSegment(input int) string {
+	intAsString := strconv.Itoa(input)
+	representation := make([]string, 5)
+	for _, character := range intAsString {
+		characterAsInt, _ := strconv.Atoi(string(character))
+		characterRepresentation, _ := digits[characterAsInt]
+		for index, row := characterRepresentation {
+			representation[index] += row
+		}
+	}
+	return strings.Join(representation, "\n")
 }
