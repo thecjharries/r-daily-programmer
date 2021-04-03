@@ -45,7 +45,8 @@ func intToSevenSegment(input int) string {
 	for _, character := range intAsString {
 		characterAsInt, _ := strconv.Atoi(string(character))
 		characterRepresentation, _ := digits[characterAsInt]
-		for index, row := characterRepresentation {
+		for index, row := range characterRepresentation {
+			representation[index] += " "
 			representation[index] += row
 		}
 	}
