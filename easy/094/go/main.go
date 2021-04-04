@@ -24,7 +24,7 @@ var elements = []string{"Ac", "Ag", "Al", "Am", "Ar", "As", "At", "Au", "B", "Ba
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(replaceAllElements("dailyprogrammer"))
 }
 
 func replaceInstancesOfElement(element, haystack string) (replacements []string) {
