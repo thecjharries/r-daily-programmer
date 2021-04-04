@@ -60,3 +60,18 @@ func (s *MainSuite) TestReplaceInstancesOfElement(c *C) {
 	output := []string{"[H]Hhelium", "h[H]helium", "hH[H]elium"}
 	c.Assert(replaceInstancesOfElement(element, haystack), DeepEquals, output)
 }
+
+func (s *MainSuite) TestReplaceAllElements(c *C) {
+	haystack := "dailyprogrammer"
+	output := []string{
+		"dailyprogr[Am]mer",
+		"dailyprogramm[Er]",
+		"da[I]lyprogrammer",
+		"dailypr[O]grammer",
+		"daily[P]rogrammer",
+		"daily[Pr]ogrammer",
+		"dailyprog[Ra]mmer",
+		"dail[Y]programmer",
+	}
+	c.Assert(replaceAllElements(haystack), DeepEquals, output)
+}

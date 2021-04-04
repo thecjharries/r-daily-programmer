@@ -31,7 +31,7 @@ func replaceInstancesOfElement(element, haystack string) (replacements []string)
 	pattern := regexp.MustCompile(fmt.Sprintf("(?i)%s", element))
 	currentLead := 0
 	location := pattern.FindStringIndex(haystack)
-	for nil != location && len(haystack) > location[1] {
+	for nil != location && len(haystack) >= location[1] {
 		replacements = append(
 			replacements,
 			fmt.Sprintf(
@@ -43,6 +43,16 @@ func replaceInstancesOfElement(element, haystack string) (replacements []string)
 		)
 		currentLead += location[1]
 		location = pattern.FindStringIndex(haystack[currentLead:])
+	}
+	return
+}
+
+func replaceAllElements(haystack string) (replacements []string) {
+	for _, element := range elements {
+		replacements = append(
+			replacements,
+			replaceInstancesOfElement(element, haystack)...,
+		)
 	}
 	return
 }
