@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestReplaceInstancesOfElement(c *C) {
+	element := "H"
+	haystack := "hHhelium"
+	output := []string{"[H]Hhelium", "h[H]helium", "hH[H]elium"}
+	c.Assert(replaceInstancesOfElement(element, haystack), DeepEquals, output)
+}
