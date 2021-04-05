@@ -75,3 +75,7 @@ night, the of forests the In
 bright burning Tyger! Tyger!`
 	c.Assert(input, Not(Equals), output)
 }
+
+func (s *MainSuite) TestReverseSliceOfStrings(c *C) {
+	c.Assert(reverseSliceOfStrings([]string{"one", "two", "three"}), DeepEquals, []string{"three", "two", "one"})
+}

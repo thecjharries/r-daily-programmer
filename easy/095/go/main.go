@@ -21,3 +21,12 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func reverseSliceOfStrings(collection []string) (reversed []string) {
+	reversed = make([]string, len(collection))
+	copy(reversed, collection)
+	for index := 0; index < len(reversed)/2; index++ {
+		reversed[index], reversed[len(reversed)-index-1] = reversed[len(reversed)-index-1], reversed[index]
+	}
+	return
+}
