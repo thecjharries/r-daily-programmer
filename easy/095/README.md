@@ -1,5 +1,9 @@
 # [9/03/2012] Challenge #95 [easy] (Reversing text in file)
 
+## Note
+
+The file I/O is trivial and annoying. I'm skipping it for this exercise.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/za9op/9032012_challenge_95_easy_reversing_text_in_file/) by [u/oskar_s](https://old.reddit.com/user/oskar_s)
