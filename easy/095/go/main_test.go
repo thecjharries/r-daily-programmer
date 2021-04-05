@@ -80,7 +80,3 @@ bright burning Tyger! Tyger!`
 func (s *MainSuite) TestReverseSliceOfStrings(c *C) {
 	c.Assert(reverseSliceOfStrings([]string{"one", "two", "three"}), DeepEquals, []string{"three", "two", "one"})
 }
-
-func (s *MainSuite) TestReverseSliceOfStringSlices(c *C) {
-	c.Assert(reverseSliceOfStringSlices([][]string{{"one"}, {"two"}, {"three"}}), DeepEquals, [][]string{{"three"}, {"two"}, {"one"}})
-}

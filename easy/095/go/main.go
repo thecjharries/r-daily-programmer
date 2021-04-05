@@ -34,15 +34,6 @@ func reverseSliceOfStrings(collection []string) (reversed []string) {
 	return
 }
 
-func reverseSliceOfStringSlices(collection [][]string) (reversed [][]string) {
-	reversed = make([][]string, len(collection))
-	copy(reversed, collection)
-	for index := 0; index < len(reversed)/2; index++ {
-		reversed[index], reversed[len(reversed)-index-1] = reversed[len(reversed)-index-1], reversed[index]
-	}
-	return
-}
-
 func reverseText(input string) (output string) {
 	lines := strings.Split(input, "\n")
 	for index, line := range lines {
