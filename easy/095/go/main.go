@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -38,4 +41,13 @@ func reverseSliceOfStringSlices(collection [][]string) (reversed [][]string) {
 		reversed[index], reversed[len(reversed)-index-1] = reversed[len(reversed)-index-1], reversed[index]
 	}
 	return
+}
+
+func reverseText(input string) (output string) {
+	lines := strings.Split(input, "\n")
+	for index, line := range lines {
+		exploded := strings.Split(line, " ")
+		lines[index] = strings.Join(reverseSliceOfStrings(exploded), " ")
+	}
+	return strings.Join(reverseSliceOfStrings(lines), "\n")
 }

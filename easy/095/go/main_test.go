@@ -74,6 +74,7 @@ eye or hand immortal What
 night, the of forests the In
 bright burning Tyger! Tyger!`
 	c.Assert(input, Not(Equals), output)
+	c.Assert(reverseText(input), Equals, output)
 }
 
 func (s *MainSuite) TestReverseSliceOfStrings(c *C) {
