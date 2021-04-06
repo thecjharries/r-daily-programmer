@@ -33,5 +33,5 @@ func playersFromMoney(totalMoney int) (playerCount int) {
 	} else {
 		additionalController = 2
 	}
-	return additionalController + totalMoney*3/72
+	return additionalController + (totalMoney/72)*3
 }

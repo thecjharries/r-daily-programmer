@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPlayersFromMoney(c *C) {
+	c.Assert(playersFromMoney(10), Equals, 1)
+	c.Assert(playersFromMoney(20), Equals, 2)
+	c.Assert(playersFromMoney(60), Equals, 3)
+	c.Assert(playersFromMoney(80), Equals, 4)
+}
