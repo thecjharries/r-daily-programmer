@@ -14,10 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func playersFromMoney(totalMoney int) (playerCount int) {
+	additionalController := 0
+	if 20 > totalMoney%72 {
+		additionalController = 1
+	} else if 52 <= totalMoney%72 {
+		additionalController = 3
+	} else {
+		additionalController = 2
+	}
+	return additionalController + totalMoney*3/72
 }
