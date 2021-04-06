@@ -21,7 +21,7 @@ import (
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(playersFromMoney(9001))
 }
 
 func playersFromMoney(totalMoney int) (playerCount int) {
