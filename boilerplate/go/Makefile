@@ -15,5 +15,5 @@ bootstrap-feature-branch:
 	git commit -m 'Copy Go boilerplate'
 
 git-prompt-runner:
-	git add main.go
+	git add main.go main_test.go
 	git commit -m 'Add prompt runner to main'
