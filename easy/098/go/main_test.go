@@ -61,3 +61,8 @@ func (s *MainSuite) TestGetHorizontalRule(c *C) {
 func (s *MainSuite) TestGetHeaderRow(c *C) {
 	c.Assert(getHeaderRow("+", 4), Equals, " +  |  0  1  2  3  4 ")
 }
+
+func (s *MainSuite) TestGetTableRow(c *C) {
+	operation := func(a, b int) int { return a + b }
+	c.Assert(getTableRow(0, 4, operation), Equals, " 0  |  0  1  2  3  4 ")
+}

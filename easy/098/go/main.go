@@ -36,3 +36,11 @@ func getHeaderRow(operation string, maximumNumber int) (output string) {
 	}
 	return
 }
+
+func getTableRow(currentNumber, maximumNumber int, operation func(int, int) int) (output string) {
+	output = fmt.Sprintf(" %d  | ", currentNumber)
+	for index := 0; index <= maximumNumber; index++ {
+		output += fmt.Sprintf(" %d ", operation(currentNumber, index))
+	}
+	return
+}
