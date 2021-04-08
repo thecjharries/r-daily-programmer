@@ -73,3 +73,9 @@ func (s *MainSuite) TestDumpTextFile(c *C) {
 	output := "=== abc.txt (4 bytes)\nabc\n"
 	c.Assert(dumpTextFile(input), Equals, output)
 }
+
+func (s *MainSuite) TestWalkAndDumpTextFiles(c *C) {
+	pwd, _ := os.Getwd()
+	output := "=== abc.txt (4 bytes)\nabc\n\n\n=== def.txt (4 bytes)\ndef\n\n\n=== ghi.txt (4 bytes)\nghi\n\n\n"
+	c.Assert(walkAndDumpTxtFiles(pwd), Equals, output)
+}

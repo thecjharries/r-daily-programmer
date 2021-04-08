@@ -39,3 +39,12 @@ func dumpTextFile(textFilePath string) (output string) {
 	output += string(contents)
 	return
 }
+
+func walkAndDumpTxtFiles(directoryPath string) (output string) {
+	textFiles := findTextFilesInDirectory(directoryPath)
+	for _, textFile := range textFiles {
+		output += dumpTextFile(textFile)
+		output += "\n\n"
+	}
+	return
+}
