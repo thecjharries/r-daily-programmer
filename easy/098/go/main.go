@@ -33,7 +33,7 @@ func main() {
 }
 
 func getHorizontalRule(maximumNumber int) string {
-	return strings.Repeat("-", 3*(maximumNumber+2))
+	return strings.Repeat("-", 3*(maximumNumber+3))
 }
 
 func getHeaderRow(operation string, maximumNumber int) (output string) {
