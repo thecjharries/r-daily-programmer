@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetHorizontalRule(c *C) {
+	c.Assert(getHorizontalRule(1), Equals, "---------")
+}

@@ -14,10 +14,17 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getHorizontalRule(maximumNumber int) string {
+	return strings.Repeat("-", 3*(maximumNumber+2))
 }
