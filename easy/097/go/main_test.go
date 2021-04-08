@@ -66,3 +66,10 @@ func (s *MainSuite) Test(c *C) {
 	}
 	c.Assert(basenames, DeepEquals, desired)
 }
+
+func (s *MainSuite) TestDumpTextFile(c *C) {
+	pwd, _ := os.Getwd()
+	input := filepath.Join(pwd, "abc.txt")
+	output := "=== abc.txt (4 bytes)\nabc\n"
+	c.Assert(dumpTextFile(input), Equals, output)
+}

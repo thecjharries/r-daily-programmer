@@ -16,6 +16,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"path/filepath"
 )
 
@@ -28,4 +30,12 @@ func main() {
 func findTextFilesInDirectory(directoryPath string) (textFilePaths []string) {
 	files, _ := filepath.Glob(filepath.Join(directoryPath, "*.txt"))
 	return files
+}
+
+func dumpTextFile(textFilePath string) (output string) {
+	fileInfo, _ := os.Stat(textFilePath)
+	output = fmt.Sprintf("=== %s (%d bytes)\n", filepath.Base(textFilePath), fileInfo.Size())
+	contents, _ := ioutil.ReadFile(textFilePath)
+	output += string(contents)
+	return
 }
