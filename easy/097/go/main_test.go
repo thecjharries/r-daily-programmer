@@ -56,7 +56,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "hello world")
 }
 
-func (s *MainSuite) Test(c *C) {
+func (s *MainSuite) TestFindTextFilesInDirectory(c *C) {
 	desired := []string{"abc.txt", "def.txt", "ghi.txt"}
 	pwd, _ := os.Getwd()
 	output := findTextFilesInDirectory(pwd)
