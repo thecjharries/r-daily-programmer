@@ -28,3 +28,11 @@ func main() {
 func getHorizontalRule(maximumNumber int) string {
 	return strings.Repeat("-", 3*(maximumNumber+2))
 }
+
+func getHeaderRow(operation string, maximumNumber int) (output string) {
+	output = fmt.Sprintf(" %s  | ", operation)
+	for index := 0; index <= maximumNumber; index++ {
+		output += fmt.Sprintf(" %d ", index)
+	}
+	return
+}

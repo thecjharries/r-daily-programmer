@@ -57,3 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestGetHorizontalRule(c *C) {
 	c.Assert(getHorizontalRule(1), Equals, "---------")
 }
+
+func (s *MainSuite) TestGetHeaderRow(c *C) {
+	c.Assert(getHeaderRow("+", 4), Equals, " +  |  0  1  2  3  4 ")
+}
