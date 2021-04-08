@@ -14,10 +14,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"path/filepath"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func findTextFilesInDirectory(directoryPath string) (textFilePaths []string) {
+	files, _ := filepath.Glob(filepath.Join(directoryPath, "*.txt"))
+	return files
 }

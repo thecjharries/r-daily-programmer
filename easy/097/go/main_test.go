@@ -16,6 +16,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +54,15 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) Test(c *C) {
+	desired := []string{"abc.txt", "def.txt", "ghi.txt"}
+	pwd, _ := os.Getwd()
+	output := findTextFilesInDirectory(pwd)
+	basenames := make([]string, len(output))
+	for index, filename := range output {
+		basenames[index] = filepath.Base(filename)
+	}
+	c.Assert(basenames, DeepEquals, desired)
 }
