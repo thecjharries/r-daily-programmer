@@ -66,3 +66,7 @@ func (s *MainSuite) TestGetTableRow(c *C) {
 	operation := func(a, b int) int { return a + b }
 	c.Assert(getTableRow(0, 4, operation), Equals, " 0  |  0  1  2  3  4 ")
 }
+
+func (s *MainSuite) TestBuildTable(c *C) {
+	c.Assert(buildTable("+", 4), Equals, " +  |  0  1  2  3  4 \n------------------\n 0  |  0  1  2  3  4 \n 1  |  1  2  3  4  5 \n 2  |  2  3  4  5  6 \n 3  |  3  4  5  6  7 \n 4  |  4  5  6  7  8 ")
+}

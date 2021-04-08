@@ -19,6 +19,13 @@ import (
 	"strings"
 )
 
+var operations = map[string]func(int, int) int{
+	"+": func(a, b int) int { return a + b },
+	"-": func(a, b int) int { return a - b },
+	"*": func(a, b int) int { return a * b },
+	"/": func(a, b int) int { return a / b },
+}
+
 var zPrint = fmt.Println
 
 func main() {
@@ -43,4 +50,14 @@ func getTableRow(currentNumber, maximumNumber int, operation func(int, int) int)
 		output += fmt.Sprintf(" %d ", operation(currentNumber, index))
 	}
 	return
+}
+
+func buildTable(operation string, maximumNumber int) string {
+	operationFunc, _ := operations[operation]
+	rows := []string{getHeaderRow(operation, maximumNumber)}
+	rows = append(rows, getHorizontalRule(maximumNumber))
+	for index := 0; index <= maximumNumber; index++ {
+		rows = append(rows, getTableRow(index, maximumNumber, operationFunc))
+	}
+	return strings.Join(rows, "\n")
 }
