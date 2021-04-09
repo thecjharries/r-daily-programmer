@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetLetterIndex(c *C) {
+	c.Assert(getLetterIndex('a'), Equals, 1)
+	c.Assert(getLetterIndex('!'), Equals, -1)
+}
