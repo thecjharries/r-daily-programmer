@@ -58,3 +58,9 @@ func (s *MainSuite) TestGetLetterIndex(c *C) {
 	c.Assert(getLetterIndex('a'), Equals, 1)
 	c.Assert(getLetterIndex('!'), Equals, -1)
 }
+
+func (s *MainSuite) TestIsWordAlphabetized(c *C) {
+	c.Assert(isWordAlphabetized("ghost"), Equals, true)
+	c.Assert(isWordAlphabetized("bee"), Equals, true)
+	c.Assert(isWordAlphabetized("cab"), Equals, false)
+}

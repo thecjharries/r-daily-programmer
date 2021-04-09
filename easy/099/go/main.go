@@ -58,3 +58,16 @@ func getLetterIndex(letter rune) int {
 	}
 	return -1
 }
+
+func isWordAlphabetized(word string) bool {
+	oldIndex := -2
+	for _, character := range word {
+		currentIndex := getLetterIndex(character)
+		if oldIndex <= currentIndex {
+			oldIndex = currentIndex
+		} else {
+			return false
+		}
+	}
+	return true
+}
