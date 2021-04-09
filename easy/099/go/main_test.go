@@ -64,3 +64,7 @@ func (s *MainSuite) TestIsWordAlphabetized(c *C) {
 	c.Assert(isWordAlphabetized("bee"), Equals, true)
 	c.Assert(isWordAlphabetized("cab"), Equals, false)
 }
+
+func (s *MainSuite) TestLoadDictionary(c *C) {
+	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
+}

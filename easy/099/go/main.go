@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
 
 var runeToInt = map[rune]int{
 	'a': 1,
@@ -70,4 +74,12 @@ func isWordAlphabetized(word string) bool {
 		}
 	}
 	return true
+}
+
+func loadDictionary(filename string) []string {
+	byteContents, _ := ioutil.ReadFile(filename)
+	return strings.Split(
+		strings.Trim(string(byteContents), "\n"),
+		"\n",
+	)
 }
