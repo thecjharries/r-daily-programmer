@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"strings"
 )
 
@@ -49,10 +50,13 @@ var runeToInt = map[rune]int{
 	'z': 26,
 }
 
+var dictionaryPath = filepath.Join("..", "enable1.txt")
+
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	dictionary := loadDictionary(dictionaryPath)
+	_, _ = zPrint(countAlphabetizedWordsInDictionary(dictionary))
 }
 
 func getLetterIndex(letter rune) int {
@@ -82,4 +86,14 @@ func loadDictionary(filename string) []string {
 		strings.Trim(string(byteContents), "\n"),
 		"\n",
 	)
+}
+
+func countAlphabetizedWordsInDictionary(dictionary []string) (count int) {
+	count = 0
+	for _, word := range dictionary {
+		if isWordAlphabetized(word) {
+			count++
+		}
+	}
+	return
 }

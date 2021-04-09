@@ -51,7 +51,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "638")
 }
 
 func (s *MainSuite) TestGetLetterIndex(c *C) {
@@ -67,4 +67,9 @@ func (s *MainSuite) TestIsWordAlphabetized(c *C) {
 
 func (s *MainSuite) TestLoadDictionary(c *C) {
 	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
+}
+
+func (s *MainSuite) TestCountAlphabetizedWordsInDictionary(c *C) {
+	dictionary := loadDictionary("test_dictionary.txt")
+	c.Assert(countAlphabetizedWordsInDictionary(dictionary), Equals, 2)
 }
