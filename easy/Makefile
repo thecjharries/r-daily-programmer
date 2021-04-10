@@ -1,5 +1,5 @@
 ifeq (,$(NUM))
-	NUM=$(shell printf "%03d" $(shell expr $(shell find . -maxdepth 1 -type d | sort -r | head -n 1 | sed -e 's/[^0-9]//g') + 1))
+	NUM=$(shell printf "%03d" $(shell expr $(shell find . -maxdepth 1 -type d -name '[0-9][0-9][0-9]' | sort -r | head -n 1 | sed -e 's/[^0-9]//g') + 1))
 endif
 
 # Usage
