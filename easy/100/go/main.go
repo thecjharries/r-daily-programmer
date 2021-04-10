@@ -26,8 +26,8 @@ func main() {
 }
 
 func sleepCycleTimes(wakeup time.Time) (sleepTimes []time.Time) {
-	for index := 0; index < 5; index++ {
-		sleepTimes = append(sleepTimes, wakeup.Add(time.Duration(-5*60+(90*index))*time.Minute))
+	for index := 1; index < 5; index++ {
+		sleepTimes = append(sleepTimes, wakeup.Add(time.Duration(-90*(2+index))*time.Minute))
 	}
 	return
 }
