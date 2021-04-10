@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	. "gopkg.in/check.v1"
 )
@@ -52,4 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestSleepCycleTimes(c *C) {
+	wakeup := time.Date(2000, 1, 2, 6, 15, 0, 0, time.UTC)
+	output := []time.Time{
+		time.Date(2000, 1, 2, 1, 45, 0, 0, time.UTC),
+		time.Date(2000, 1, 2, 0, 15, 0, 0, time.UTC),
+		time.Date(2000, 1, 1, 22, 45, 0, 0, time.UTC),
+		time.Date(2000, 1, 1, 21, 15, 0, 0, time.UTC),
+	}
+	c.Assert(sleepCycleTimes(wakeup), DeepEquals, output)
 }
