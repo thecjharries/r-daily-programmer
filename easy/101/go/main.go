@@ -38,3 +38,12 @@ func hasRepeatedCharacter(year int) bool {
 	}
 	return false
 }
+
+func countYearsWithRepeatedCharacter(min, max int) (count int) {
+	for index := min; index <= max; index++ {
+		if !hasRepeatedCharacter(index) {
+			count++
+		}
+	}
+	return
+}

@@ -58,3 +58,7 @@ func (s *MainSuite) TestHasRepeatedCharacter(c *C) {
 	c.Assert(hasRepeatedCharacter(1980), Equals, false)
 	c.Assert(hasRepeatedCharacter(1981), Equals, true)
 }
+
+func (s *MainSuite) TestCountYearsWithRepeatedCharacter(c *C) {
+	c.Assert(countYearsWithRepeatedCharacter(1980, 1987), Equals, 7)
+}
