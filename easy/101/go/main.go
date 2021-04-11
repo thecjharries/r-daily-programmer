@@ -16,10 +16,25 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func hasRepeatedCharacter(year int) bool {
+	numberAsString := strconv.Itoa(year)
+	charactersInNumber := make(map[rune]bool, len(numberAsString))
+	for _, character := range numberAsString {
+		_, exists := charactersInNumber[character]
+		if exists {
+			return false
+		} else {
+			charactersInNumber[character] = true
+		}
+	}
+	return true
 }
