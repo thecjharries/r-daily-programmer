@@ -31,10 +31,10 @@ func hasRepeatedCharacter(year int) bool {
 	for _, character := range numberAsString {
 		_, exists := charactersInNumber[character]
 		if exists {
-			return false
+			return true
 		} else {
 			charactersInNumber[character] = true
 		}
 	}
-	return true
+	return false
 }

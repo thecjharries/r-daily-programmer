@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestHasRepeatedCharacter(c *C) {
+	c.Assert(hasRepeatedCharacter(1980), Equals, false)
+	c.Assert(hasRepeatedCharacter(1981), Equals, true)
+}
