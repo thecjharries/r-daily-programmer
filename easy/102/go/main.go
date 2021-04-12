@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type DiceSet struct {
+	Count    int
+	Sides    int
+	Modifier int
+}
+
 var zPrint = fmt.Println
 
 func main() {
