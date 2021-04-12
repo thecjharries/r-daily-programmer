@@ -14,12 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 type DiceSet struct {
 	Count    int
 	Sides    int
 	Modifier int
+}
+
+func (d *DiceSet) Roll() (total int) {
+	for index := 0; index < d.Count; index++ {
+		total += rand.Intn(d.Sides) + 1
+	}
+	return total + d.Modifier
 }
 
 var zPrint = fmt.Println
