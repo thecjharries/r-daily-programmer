@@ -63,3 +63,19 @@ func (s *MainSuite) TestDiceSetRoll(c *C) {
 	c.Assert(diceSet.Roll() > 0, Equals, true)
 	c.Assert(diceSet.Roll() < 7, Equals, true)
 }
+
+func (s *MainSuite) TestNewDiceSet(c *C) {
+	var diceSet *DiceSet
+	diceSet = NewDiceSet("d6")
+	c.Assert(diceSet.Count, Equals, 1)
+	c.Assert(diceSet.Sides, Equals, 6)
+	c.Assert(diceSet.Modifier, Equals, 0)
+	diceSet = NewDiceSet("3d4-7")
+	c.Assert(diceSet.Count, Equals, 3)
+	c.Assert(diceSet.Sides, Equals, 4)
+	c.Assert(diceSet.Modifier, Equals, -7)
+	diceSet = NewDiceSet("5d12+2")
+	c.Assert(diceSet.Count, Equals, 5)
+	c.Assert(diceSet.Sides, Equals, 12)
+	c.Assert(diceSet.Modifier, Equals, 2)
+}

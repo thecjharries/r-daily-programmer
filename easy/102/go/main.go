@@ -17,7 +17,11 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"regexp"
+	"strconv"
 )
+
+var diceNotationPattern = regexp.MustCompile(`(?P<count>\d*)d(?P<sides>\d+)(?P<modifier>[+\-]\d+)?`)
 
 type DiceSet struct {
 	Count    int
@@ -30,6 +34,22 @@ func (d *DiceSet) Roll() (total int) {
 		total += rand.Intn(d.Sides) + 1
 	}
 	return total + d.Modifier
+}
+
+func NewDiceSet(notation string) *DiceSet {
+	matches := diceNotationPattern.FindStringSubmatch(notation)
+	fmt.Println(matches)
+	count, _ := strconv.ParseInt(matches[1], 10, 0)
+	if 1 > count {
+		count = 1
+	}
+	sides, _ := strconv.ParseInt(matches[2], 10, 0)
+	modifier, _ := strconv.ParseInt(matches[3], 10, 0)
+	return &DiceSet{
+		Count:    int(count),
+		Sides:    int(sides),
+		Modifier: int(modifier),
+	}
 }
 
 var zPrint = fmt.Println
