@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 var leetDictionary = map[rune][]string{
 	'A': {"4", "/-\\", "/_\\", "@", "/\\", "Д", "а"},
@@ -52,9 +55,9 @@ func main() {
 }
 
 func translateLetter(letter rune) string {
-	_, exists := leetDictionary[letter]
+	possibleTranslations, exists := leetDictionary[letter]
 	if exists {
-		return "qqq"
+		return possibleTranslations[rand.Intn(len(possibleTranslations))]
 	}
 	return string(letter)
 }
