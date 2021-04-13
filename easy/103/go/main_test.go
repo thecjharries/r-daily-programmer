@@ -67,3 +67,8 @@ func (s *MainSuite) TestTranslateLetter(c *C) {
 func (s *MainSuite) TestTranslateToLeet(c *C) {
 	c.Assert(translateToLeet("dailyprog"), Equals, "|]/_\\|1у/oЯΘ6")
 }
+
+func (s *MainSuite) TestCountPossibleTranslations(c *C) {
+	c.Assert(countPossibleTranslations("a"), Equals, int64(8))
+	c.Assert(countPossibleTranslations("dailyprog"), Equals, int64(40656000))
+}

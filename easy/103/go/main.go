@@ -69,3 +69,14 @@ func translateToLeet(input string) (output string) {
 	}
 	return
 }
+
+func countPossibleTranslations(input string) (count int64) {
+	count = 1
+	for _, letter := range strings.ToUpper(input) {
+		possibleTranslations, exists := leetDictionary[letter]
+		if exists {
+			count *= int64(len(possibleTranslations) + 1)
+		}
+	}
+	return
+}
