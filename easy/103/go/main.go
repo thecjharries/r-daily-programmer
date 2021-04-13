@@ -50,3 +50,11 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func translateLetter(letter rune) string {
+	_, exists := leetDictionary[letter]
+	if exists {
+		return "qqq"
+	}
+	return string(letter)
+}
