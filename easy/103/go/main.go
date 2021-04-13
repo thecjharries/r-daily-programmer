@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 var leetDictionary = map[rune][]string{
@@ -60,4 +61,11 @@ func translateLetter(letter rune) string {
 		return possibleTranslations[rand.Intn(len(possibleTranslations))]
 	}
 	return string(letter)
+}
+
+func translateToLeet(input string) (output string) {
+	for _, letter := range strings.ToUpper(input) {
+		output += translateLetter(letter)
+	}
+	return
 }

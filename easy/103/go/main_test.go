@@ -63,3 +63,7 @@ func (s *MainSuite) TestTranslateLetter(c *C) {
 	c.Assert(translateLetter('L'), Equals, "|")
 	c.Assert(translateLetter('L'), Equals, "1")
 }
+
+func (s *MainSuite) TestTranslateToLeet(c *C) {
+	c.Assert(translateToLeet("dailyprog"), Equals, "|]/_\\|1у/oЯΘ6")
+}
