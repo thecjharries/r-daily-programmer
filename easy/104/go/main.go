@@ -23,7 +23,7 @@ func main() {
 }
 
 func daysPlantWillFunction(totalDays int) (runningDays int) {
-	for index := 0; index < totalDays; index++ {
+	for index := 1; index <= totalDays; index++ {
 		if 0 != index%3 && 0 != index%14 && 0 != index%100 {
 			runningDays++
 		}

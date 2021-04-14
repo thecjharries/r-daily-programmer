@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDaysPlantWillFunction(c *C) {
+	c.Assert(daysPlantWillFunction(10), Equals, 7)
+	c.Assert(daysPlantWillFunction(5991), Equals, 3675)
+}
