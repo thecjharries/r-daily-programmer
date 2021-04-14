@@ -19,7 +19,7 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(daysPlantWillFunction(1000))
 }
 
 func daysPlantWillFunction(totalDays int) (runningDays int) {
