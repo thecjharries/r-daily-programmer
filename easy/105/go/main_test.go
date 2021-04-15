@@ -66,3 +66,12 @@ func (s *MainSuite) TestConvertDictionaryToSortedLetterMap(c *C) {
 	}
 	c.Assert(convertDictionaryToSortedLetterMap(dictionary), DeepEquals, output)
 }
+
+func (s *MainSuite) TestFindPossibleUnscrambling(c *C) {
+	wordList := map[string][]string{
+		"dgo": {"dog", "god"},
+		"bee": {"bee"},
+	}
+	c.Assert(findPossibleUnscrambling("ogd", wordList), DeepEquals, []string{"dog", "god"})
+	c.Assert(findPossibleUnscrambling("nope", wordList), DeepEquals, []string(nil))
+}

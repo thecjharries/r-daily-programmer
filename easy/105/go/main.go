@@ -53,3 +53,14 @@ func convertDictionaryToSortedLetterMap(dictionary []string) map[string][]string
 	}
 	return sortedLetterMap
 }
+
+func findPossibleUnscrambling(scrambledWord string, wordList map[string][]string) (discoveredWords []string) {
+	exploded := strings.Split(scrambledWord, "")
+	sort.Strings(exploded)
+	sortedWord := strings.Join(exploded, "")
+	words, exists := wordList[sortedWord]
+	if exists {
+		return words
+	}
+	return discoveredWords
+}
