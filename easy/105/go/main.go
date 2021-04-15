@@ -41,9 +41,7 @@ func loadDictionary(filename string) []string {
 func convertDictionaryToSortedLetterMap(dictionary []string) map[string][]string {
 	sortedLetterMap := make(map[string][]string)
 	for _, word := range dictionary {
-		exploded := strings.Split(word, "")
-		sort.Strings(exploded)
-		sortedWord := strings.Join(exploded, "")
+		sortedWord := sortWord(word)
 		_, exists := sortedLetterMap[sortedWord]
 		if exists {
 			sortedLetterMap[sortedWord] = append(sortedLetterMap[sortedWord], word)
@@ -55,12 +53,15 @@ func convertDictionaryToSortedLetterMap(dictionary []string) map[string][]string
 }
 
 func findPossibleUnscrambling(scrambledWord string, wordList map[string][]string) (discoveredWords []string) {
-	exploded := strings.Split(scrambledWord, "")
-	sort.Strings(exploded)
-	sortedWord := strings.Join(exploded, "")
-	words, exists := wordList[sortedWord]
+	words, exists := wordList[sortWord(scrambledWord)]
 	if exists {
 		return words
 	}
 	return discoveredWords
+}
+
+func sortWord(word string) string {
+	exploded := strings.Split(word, "")
+	sort.Strings(exploded)
+	return strings.Join(exploded, "")
 }

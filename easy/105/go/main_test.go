@@ -75,3 +75,8 @@ func (s *MainSuite) TestFindPossibleUnscrambling(c *C) {
 	c.Assert(findPossibleUnscrambling("ogd", wordList), DeepEquals, []string{"dog", "god"})
 	c.Assert(findPossibleUnscrambling("nope", wordList), DeepEquals, []string(nil))
 }
+
+func (s *MainSuite) TestSortWord(c *C) {
+	c.Assert(sortWord("god"), Equals, "dgo")
+	c.Assert(sortWord("bee"), Equals, "bee")
+}
