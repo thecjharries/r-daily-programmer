@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -35,4 +36,20 @@ func loadDictionary(filename string) []string {
 		strings.Trim(string(byteContents), "\n"),
 		"\n",
 	)
+}
+
+func convertDictionaryToSortedLetterMap(dictionary []string) map[string][]string {
+	sortedLetterMap := make(map[string][]string)
+	for _, word := range dictionary {
+		exploded := strings.Split(word, "")
+		sort.Strings(exploded)
+		sortedWord := strings.Join(exploded, "")
+		_, exists := sortedLetterMap[sortedWord]
+		if exists {
+			sortedLetterMap[sortedWord] = append(sortedLetterMap[sortedWord], word)
+		} else {
+			sortedLetterMap[sortedWord] = []string{word}
+		}
+	}
+	return sortedLetterMap
 }

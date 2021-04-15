@@ -57,3 +57,12 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestLoadDictionary(c *C) {
 	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
 }
+
+func (s *MainSuite) TestConvertDictionaryToSortedLetterMap(c *C) {
+	dictionary := []string{"dog", "god", "bee"}
+	output := map[string][]string{
+		"dgo": {"dog", "god"},
+		"bee": {"bee"},
+	}
+	c.Assert(convertDictionaryToSortedLetterMap(dictionary), DeepEquals, output)
+}
