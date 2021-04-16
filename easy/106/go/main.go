@@ -19,8 +19,14 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 )
+
+type WordFrequency struct {
+	Word  string
+	Count int
+}
 
 var novelPath = filepath.Join("..", "enable1.txt")
 
@@ -49,4 +55,38 @@ func countPatternsInString(input string) map[string]int {
 		}
 	}
 	return wordCount
+}
+
+func determineTopTenWords(wordCount map[string]int) []*WordFrequency {
+	countWord := make(map[int][]string)
+	for word, count := range wordCount {
+		_, exists := countWord[count]
+		if exists {
+			countWord[count] = append(countWord[count], word)
+		} else {
+			countWord[count] = []string{word}
+		}
+	}
+	var counts []int
+	for count := range countWord {
+		counts = append(counts, count)
+	}
+	sort.Sort(sort.Reverse(sort.IntSlice(counts)))
+	var frequencies []*WordFrequency
+	for _, count := range counts {
+		wordsAtCount, _ := countWord[count]
+		for _, word := range wordsAtCount {
+			frequencies = append(
+				frequencies,
+				&WordFrequency{
+					Word:  word,
+					Count: count,
+				},
+			)
+		}
+		if 10 <= len(frequencies) {
+			break
+		}
+	}
+	return frequencies[0:10]
 }
