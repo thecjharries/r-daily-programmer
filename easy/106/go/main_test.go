@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestLoadFileIntoString(c *C) {
+	c.Assert(loadFileIntoString("sample_novel.txt"), Equals, "the quick brown fox jumped over the lazy dog.")
+}

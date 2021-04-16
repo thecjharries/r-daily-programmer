@@ -14,10 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
+	"strings"
+)
+
+var novelPath = filepath.Join("..", "enable1.txt")
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func loadFileIntoString(filename string) string {
+	byteContents, _ := ioutil.ReadFile(filename)
+	return strings.Trim(string(byteContents), "\n")
 }
