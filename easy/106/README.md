@@ -1,5 +1,9 @@
 # [10/23/2012] Challenge #106 [Easy] (Random Talker, Part 1)
 
+## Note
+
+The `determineTopTenWords` are not deterministic (AFAIK). Because the map is not ordered, the insertions into the final slice seem to be random per count. I don't want to solve this problem with an extra sort (I'm lazy), so the tests will occasionally fail.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/11xje0/10232012_challenge_106_easy_random_talker_part_1/) by [u/spacemoses](https://old.reddit.com/user/spacemoses)
