@@ -28,14 +28,17 @@ type WordFrequency struct {
 	Count int
 }
 
-var novelPath = filepath.Join("..", "enable1.txt")
+var novelPath = filepath.Join("..", "pg5200.txt")
 
 var promptPattern = regexp.MustCompile(`[".,:;!?()[\]{}]|[^".,:;!?()[\]{}\s]+`)
 
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	novel := loadFileIntoString(novelPath)
+	wordCount := countPatternsInString(novel)
+	topTen := determineTopTenWords(wordCount)
+	_, _ = zPrint(topTen)
 }
 
 func loadFileIntoString(filename string) string {
