@@ -18,10 +18,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
 var novelPath = filepath.Join("..", "enable1.txt")
+
+var promptPattern = regexp.MustCompile(`[".,:;!?()[\]{}]|[^".,:;!?()[\]{}\s]+`)
 
 var zPrint = fmt.Println
 
@@ -32,4 +35,18 @@ func main() {
 func loadFileIntoString(filename string) string {
 	byteContents, _ := ioutil.ReadFile(filename)
 	return strings.Trim(string(byteContents), "\n")
+}
+
+func countPatternsInString(input string) map[string]int {
+	results := promptPattern.FindAllString(input, -1)
+	wordCount := make(map[string]int)
+	for _, result := range results {
+		_, exists := wordCount[result]
+		if exists {
+			wordCount[result] += 1
+		} else {
+			wordCount[result] = 1
+		}
+	}
+	return wordCount
 }

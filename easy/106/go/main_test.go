@@ -57,3 +57,13 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestLoadFileIntoString(c *C) {
 	c.Assert(loadFileIntoString("sample_novel.txt"), Equals, "the quick brown fox jumped over the lazy dog.")
 }
+
+func (s *MainSuite) TestCountPatternsInString(c *C) {
+	input := "test test cat."
+	output := map[string]int{
+		"test": 2,
+		"cat":  1,
+		".":    1,
+	}
+	c.Assert(countPatternsInString(input), DeepEquals, output)
+}
