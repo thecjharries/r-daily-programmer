@@ -39,8 +39,10 @@ func iteratePossiblePlaintext(number, workingPlaintext string) []string {
 	newPossibilities = append(newPossibilities, iteratePossiblePlaintext(number[1:], newWorkingPlaintext)...)
 	if 1 < len(number) {
 		currentCode, _ = strconv.Atoi(number[0:2])
-		newWorkingPlaintext = workingPlaintext + string(romanAlphabet[currentCode]-1)
-		newPossibilities = append(newPossibilities, iteratePossiblePlaintext(number[2:], newWorkingPlaintext)...)
+		if currentCode < 27 {
+			newWorkingPlaintext = workingPlaintext + string(romanAlphabet[currentCode]-1)
+			newPossibilities = append(newPossibilities, iteratePossiblePlaintext(number[2:], newWorkingPlaintext)...)
+		}
 	}
 	return newPossibilities
 }

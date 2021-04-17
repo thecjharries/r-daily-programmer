@@ -56,6 +56,11 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestIteratePossiblePlaintext(c *C) {
 	var input string
+	var output []string
 	input = "123"
-	c.Assert(iteratePossiblePlaintext(input, ""), DeepEquals, []string{"abc", "aw", "lc"})
+	output = []string{"abc", "aw", "lc"}
+	c.Assert(iteratePossiblePlaintext(input, ""), DeepEquals, output)
+	input = "85121215"
+	output = []string{"heababae", "heababo", "heabaue", "heablae", "heablo", "heaubae", "heaubo", "heauue", "helabae", "helabo", "helaue", "hellae", "hello"}
+	c.Assert(iteratePossiblePlaintext(input, ""), DeepEquals, output)
 }
