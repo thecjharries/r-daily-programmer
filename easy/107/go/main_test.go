@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIteratePossiblePlaintext(c *C) {
+	var input string
+	input = "123"
+	c.Assert(iteratePossiblePlaintext(input, ""), DeepEquals, []string{"abc", "aw", "lc"})
+}
