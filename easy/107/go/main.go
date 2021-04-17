@@ -14,10 +14,33 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
+var romanAlphabet = "abcdefghijklmnopqrstuvwxyz"
+
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func iteratePossiblePlaintext(number, workingPlaintext string) []string {
+	if 0 == len(number) {
+		return []string{workingPlaintext}
+	}
+	var newPossibilities []string
+	var newWorkingPlaintext string
+	var currentCode int
+	currentCode, _ = strconv.Atoi(string(number[0]))
+	newWorkingPlaintext = workingPlaintext + string(romanAlphabet[currentCode])
+	newPossibilities = append(newPossibilities, iteratePossiblePlaintext(number[1:], newWorkingPlaintext)...)
+	if 1 < len(number) {
+		currentCode, _ = strconv.Atoi(number[0:2])
+		newWorkingPlaintext = workingPlaintext + string(romanAlphabet[currentCode])
+		newPossibilities = append(newPossibilities, iteratePossiblePlaintext(number[2:], newWorkingPlaintext)...)
+	}
+	return newPossibilities
 }
