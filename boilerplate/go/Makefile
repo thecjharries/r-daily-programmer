@@ -17,3 +17,6 @@ bootstrap-feature-branch:
 git-prompt-runner:
 	git add main.go main_test.go
 	git commit -m 'Add prompt runner to main'
+
+finish:
+	git flow feature finish
