@@ -24,7 +24,7 @@ var zPrint = fmt.Println
 var romanAlphabet = "abcdefghijklmnopqrstuvwxyz"
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(iteratePossiblePlaintext("85121215", ""))
 }
 
 func iteratePossiblePlaintext(number, workingPlaintext string) []string {

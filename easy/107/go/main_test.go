@@ -51,7 +51,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "[heababae heababo heabaue heablae heablo heaubae heaubo heauue helabae helabo helaue hellae hello]")
 }
 
 func (s *MainSuite) TestIteratePossiblePlaintext(c *C) {
