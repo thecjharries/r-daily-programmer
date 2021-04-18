@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 var zPrint = fmt.Println
@@ -27,4 +28,13 @@ func main() {
 
 func getExponent(number float64) (exponent float64) {
 	return math.Floor(math.Log10(number))
+}
+
+func convertToScientific(number float64) string {
+	exponent := getExponent(number)
+	return fmt.Sprintf(
+		"%s x 10^%d",
+		strconv.FormatFloat(number/math.Pow(10, exponent), 'f', -1, 64),
+		int64(exponent),
+	)
 }

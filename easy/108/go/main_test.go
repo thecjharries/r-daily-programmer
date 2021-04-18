@@ -58,3 +58,8 @@ func (s *MainSuite) TestGetExponent(c *C) {
 	c.Assert(getExponent(.654), Equals, float64(-1))
 	c.Assert(getExponent(239487), Equals, float64(5))
 }
+
+func (s *MainSuite) Test(c *C) {
+	c.Assert(convertToScientific(.654), Equals, "6.54 x 10^-1")
+	c.Assert(convertToScientific(239487), Equals, "2.39487 x 10^5")
+}
