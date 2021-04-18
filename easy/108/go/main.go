@@ -14,10 +14,17 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getExponent(number float64) (exponent float64) {
+	return math.Floor(math.Log10(number))
 }

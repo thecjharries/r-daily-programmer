@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetExponent(c *C) {
+	c.Assert(getExponent(.654), Equals, float64(-1))
+	c.Assert(getExponent(239487), Equals, float64(5))
+}
