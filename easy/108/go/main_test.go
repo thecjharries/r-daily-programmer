@@ -59,7 +59,12 @@ func (s *MainSuite) TestGetExponent(c *C) {
 	c.Assert(getExponent(239487), Equals, float64(5))
 }
 
-func (s *MainSuite) Test(c *C) {
+func (s *MainSuite) TestConvertToScientific(c *C) {
 	c.Assert(convertToScientific(.654), Equals, "6.54 x 10^-1")
 	c.Assert(convertToScientific(239487), Equals, "2.39487 x 10^5")
+}
+
+func (s *MainSuite) TestConvertToDecimal(c *C) {
+	c.Assert(convertToDecimal("6.54 x 10^-1"), Equals, float64(.654))
+	c.Assert(convertToDecimal("2.39487 x 10^5"), Equals, float64(239487))
 }

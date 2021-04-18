@@ -17,8 +17,11 @@ package main
 import (
 	"fmt"
 	"math"
+	"regexp"
 	"strconv"
 )
+
+var promptScientificPattern = regexp.MustCompile(`\s*([^\s]*)\s*x\s+10\^([^\s]*)\s*`)
 
 var zPrint = fmt.Println
 
@@ -37,4 +40,11 @@ func convertToScientific(number float64) string {
 		strconv.FormatFloat(number/math.Pow(10, exponent), 'f', -1, 64),
 		int64(exponent),
 	)
+}
+
+func convertToDecimal(number string) float64 {
+	matches := promptScientificPattern.FindAllStringSubmatch(number, -1)
+	base, _ := strconv.ParseFloat(matches[0][1], 64)
+	exponent, _ := strconv.ParseFloat(matches[0][2], 64)
+	return base * math.Pow(10, exponent)
 }
