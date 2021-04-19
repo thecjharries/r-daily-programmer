@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsOnlyDigits(c *C) {
+	c.Assert(isOnlyDigits("123"), Equals, true)
+	c.Assert(isOnlyDigits("123.123"), Equals, false)
+	c.Assert(isOnlyDigits("abc"), Equals, false)
+}
