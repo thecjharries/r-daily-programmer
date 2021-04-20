@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var shiftedAlphabet = " snvfrghjokl;,mp[wtdyibcuxSNVFRGHJOKL:<MP{WTDYIBCUX"
 var romanAlphabet = " abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ"
@@ -25,4 +28,23 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func shiftToRoman(input string) (result string) {
+	for _, character := range input {
+		characterAsString := string(character)
+		translation, exists := shiftedToRomanAlphabetCache[characterAsString]
+		if exists {
+			result += translation
+		} else {
+			index := strings.Index(shiftedAlphabet, characterAsString)
+			if -1 < index {
+				shiftedToRomanAlphabetCache[characterAsString] = string(romanAlphabet[index])
+				result += string(romanAlphabet[index])
+			} else {
+				result += characterAsString
+			}
+		}
+	}
+	return
 }
