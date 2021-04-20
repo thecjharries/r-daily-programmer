@@ -19,6 +19,8 @@ import "fmt"
 var shiftedAlphabet = " snvfrghjokl;,mp[wtdyibcuxSNVFRGHJOKL:<MP{WTDYIBCUX"
 var romanAlphabet = " abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ"
 
+var shiftedToRomanAlphabetCache = map[string]string{}
+
 var zPrint = fmt.Println
 
 func main() {
