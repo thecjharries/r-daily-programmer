@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestShiftToRoman(c *C) {
+	c.Assert(shiftToRoman(shiftedAlphabet), Equals, romanAlphabet)
+	c.Assert(shiftToRoman("snv^&*"), Equals, "abc^&*")
+}
