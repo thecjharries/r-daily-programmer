@@ -27,7 +27,8 @@ var shiftedToRomanAlphabetCache = map[string]string{}
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(shiftToRoman("Jr;;p ept;f"))
+	_, _ = zPrint(shiftToRoman("Lmiyj od ,u jrtp"))
 }
 
 func shiftToRoman(input string) (result string) {

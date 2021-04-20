@@ -50,8 +50,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 0)
 	c.Assert(printSpyContents, Equals, "")
 	main()
-	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printCallCount, Equals, 2)
+	c.Assert(printSpyContents, Equals, "Knuth is my hero")
 }
 
 func (s *MainSuite) TestShiftToRoman(c *C) {
