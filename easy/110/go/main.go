@@ -16,6 +16,9 @@ package main
 
 import "fmt"
 
+var shiftedAlphabet = " snvfrghjokl;,mp[wtdyibcuxSNVFRGHJOKL:<MP{WTDYIBCUX"
+var romanAlphabet = " abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ"
+
 var zPrint = fmt.Println
 
 func main() {
