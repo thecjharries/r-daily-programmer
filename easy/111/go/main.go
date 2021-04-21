@@ -28,5 +28,5 @@ func main() {
 }
 
 func tidyFromPrompt(input string) string {
-	return ""
+	return promptPattern.ReplaceAllString(input, "")
 }
