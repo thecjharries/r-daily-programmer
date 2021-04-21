@@ -14,10 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var promptPattern = regexp.MustCompile(`.?\*+.?`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func tidyFromPrompt(input string) string {
+	return ""
 }
