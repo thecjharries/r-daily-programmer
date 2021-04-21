@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTidyFromPrompt(c *C) {
+	c.Assert(tidyFromPrompt("adf*lp"), Equals, "adp")
+	c.Assert(tidyFromPrompt("a*o"), Equals, "")
+	c.Assert(tidyFromPrompt("*dech*"), Equals, "ec")
+	c.Assert(tidyFromPrompt("de**po"), Equals, "do")
+	c.Assert(tidyFromPrompt("sa*n*ti"), Equals, "si")
+	c.Assert(tidyFromPrompt("abc"), Equals, "abc")
+}
