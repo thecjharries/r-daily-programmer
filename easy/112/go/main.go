@@ -16,10 +16,24 @@ package main
 
 import (
 	"fmt"
+	"net/url"
+	"strings"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseUrlAndReturnParams(rawUrl string) (params map[string]string) {
+	parsed, err := url.ParseRequestURI(rawUrl)
+	if nil != err {
+		return
+	}
+	params = make(map[string]string, len(parsed.Query()))
+	for key, value := range parsed.Query() {
+		params[key] = strings.Join(value, " ")
+	}
+	return
 }
