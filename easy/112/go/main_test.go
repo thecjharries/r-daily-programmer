@@ -63,4 +63,7 @@ func (s *MainSuite) TestParseUrlAndReturnParams(c *C) {
 		"action": "edit",
 	}
 	c.Assert(parseUrlAndReturnParams(input), DeepEquals, output)
+	input = "w/index.php?title=Main_Page&action=edit"
+	output = map[string]string(nil)
+	c.Assert(parseUrlAndReturnParams(input), DeepEquals, output)
 }
