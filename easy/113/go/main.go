@@ -41,3 +41,14 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func determineType(input string) TypeString {
+	if intPattern.MatchString(input) {
+		return TypeStringInt
+	} else if floatPattern.MatchString(input) {
+		return TypeStringFloat
+	} else if datePattern.MatchString(input) {
+		return TypeStringDate
+	}
+	return TypeStringText
+}
