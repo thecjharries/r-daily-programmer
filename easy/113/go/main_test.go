@@ -60,3 +60,14 @@ func (s *MainSuite) TestTypeStringString(c *C) {
 	c.Assert(TypeString(2).String(), Equals, "Date")
 	c.Assert(TypeString(3).String(), Equals, "Text")
 }
+
+func (s *MainSuite) TestDetermineType(c *C) {
+	c.Assert(determineType("123"), Equals, TypeString(TypeStringInt))
+	c.Assert(determineType("+123"), Equals, TypeString(TypeStringInt))
+	c.Assert(determineType("-123"), Equals, TypeString(TypeStringInt))
+	c.Assert(determineType("123.456"), Equals, TypeString(TypeStringFloat))
+	c.Assert(determineType("20-11-2012"), Equals, TypeString(TypeStringDate))
+	c.Assert(determineType("Hello, World!"), Equals, TypeString(TypeStringText))
+	c.Assert(determineType("Hello 123"), Equals, TypeString(TypeStringText))
+
+}
