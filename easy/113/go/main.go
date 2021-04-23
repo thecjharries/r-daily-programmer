@@ -23,6 +23,19 @@ var intPattern = regexp.MustCompile(`^[-+]?\d+$`)
 var floatPattern = regexp.MustCompile(`^\d+\.\d*$`)
 var datePattern = regexp.MustCompile(`^\d{2}-\d{2}-\d{4}$`)
 
+type TypeString int
+
+const (
+	TypeStringInt = iota
+	TypeStringFloat
+	TypeStringDate
+	TypeStringText
+)
+
+func (t TypeString) String() string {
+	return [...]string{"Int", "Float", "Date", "Text"}[t]
+}
+
 var zPrint = fmt.Println
 
 func main() {
