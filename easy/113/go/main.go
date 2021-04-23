@@ -14,7 +14,14 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var intPattern = regexp.MustCompile(`^[-+]?\d+$`)
+var floatPattern = regexp.MustCompile(`^\d+\.\d*$`)
+var datePattern = regexp.MustCompile(`^\d{2}-\d{2}-\d{4}$`)
 
 var zPrint = fmt.Println
 
