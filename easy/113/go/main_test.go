@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTypeStringString(c *C) {
+	c.Assert(TypeString(0).String(), Equals, "Int")
+	c.Assert(TypeString(1).String(), Equals, "Float")
+	c.Assert(TypeString(2).String(), Equals, "Date")
+	c.Assert(TypeString(3).String(), Equals, "Text")
+}
