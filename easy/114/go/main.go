@@ -36,3 +36,11 @@ func loadDictionary(filename string) []string {
 		"\n",
 	)
 }
+
+func convertDictionaryToMap(dictionary []string) (dictionaryAsMap map[string]bool) {
+	dictionaryAsMap = make(map[string]bool, len(dictionary))
+	for _, word := range dictionary {
+		dictionaryAsMap[word] = true
+	}
+	return
+}

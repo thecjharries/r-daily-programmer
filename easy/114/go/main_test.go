@@ -57,3 +57,9 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestLoadDictionary(c *C) {
 	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
 }
+
+func (s *MainSuite) TestConvertDictionaryToMap(c *C) {
+	input := []string{"bee", "cab", "ghost"}
+	output := map[string]bool{"bee": true, "cab": true, "ghost": true}
+	c.Assert(convertDictionaryToMap(input), DeepEquals, output)
+}
