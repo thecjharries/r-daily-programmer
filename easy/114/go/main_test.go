@@ -51,7 +51,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "[duma puma pima puma puja pula puma puna pupa puma pump]")
 }
 
 func (s *MainSuite) TestLoadDictionary(c *C) {

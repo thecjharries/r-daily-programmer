@@ -27,7 +27,9 @@ var romanAlphabet = "abcdefghijklmnopqrstuvwxyz"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	dictionary := loadDictionary(dictionaryPath)
+	dictionaryAsMap := convertDictionaryToMap(dictionary)
+	_, _ = zPrint(findWordLadderSiblings("puma", dictionaryAsMap))
 }
 
 func loadDictionary(filename string) []string {
