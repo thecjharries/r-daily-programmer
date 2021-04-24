@@ -22,6 +22,7 @@ import (
 )
 
 var dictionaryPath = filepath.Join("..", "selected four-letter words.txt")
+var romanAlphabet = "abcdefghijklmnopqrstuvwxyz"
 
 var zPrint = fmt.Println
 
@@ -41,6 +42,19 @@ func convertDictionaryToMap(dictionary []string) (dictionaryAsMap map[string]boo
 	dictionaryAsMap = make(map[string]bool, len(dictionary))
 	for _, word := range dictionary {
 		dictionaryAsMap[word] = true
+	}
+	return
+}
+
+func findWordLadderSiblings(word string, dictionaryAsMap map[string]bool) (siblings []string) {
+	for wordIndex := 0; wordIndex < len(word); wordIndex++ {
+		for alphabetIndex := 0; alphabetIndex < len(romanAlphabet); alphabetIndex++ {
+			newWord := word[:wordIndex] + string(romanAlphabet[alphabetIndex]) + word[wordIndex+1:]
+			_, exists := dictionaryAsMap[newWord]
+			if exists {
+				siblings = append(siblings, newWord)
+			}
+		}
 	}
 	return
 }

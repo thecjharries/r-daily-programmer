@@ -63,3 +63,9 @@ func (s *MainSuite) TestConvertDictionaryToMap(c *C) {
 	output := map[string]bool{"bee": true, "cab": true, "ghost": true}
 	c.Assert(convertDictionaryToMap(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestFindWordLadderSiblings(c *C) {
+	dictionaryAsMap := map[string]bool{"bee": true, "cab": true, "ghost": true}
+	c.Assert(findWordLadderSiblings("qqq", dictionaryAsMap), DeepEquals, []string(nil))
+	c.Assert(findWordLadderSiblings("bed", dictionaryAsMap), DeepEquals, []string{"bee"})
+}
