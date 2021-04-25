@@ -1,5 +1,9 @@
 # [1/2/2013] Challenge #115 [Easy] Guess-that-number game!
 
+## Note
+
+I don't feel like putting together the I/O today for the Go solution. Long day; tedious code. The check is there.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/15ul7q/122013_challenge_115_easy_guessthatnumber_game/) by [u/nint22](https://old.reddit.com/user/nint22)
