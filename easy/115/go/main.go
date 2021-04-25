@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+type Game struct {
+	WinningNumber int
+}
+
 var zPrint = fmt.Println
 
 func main() {
