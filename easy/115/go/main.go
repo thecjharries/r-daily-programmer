@@ -14,10 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 type Game struct {
 	WinningNumber int
+}
+
+func NewGame() *Game {
+	return &Game{
+		WinningNumber: rand.Intn(100) + 1,
+	}
 }
 
 var zPrint = fmt.Println
