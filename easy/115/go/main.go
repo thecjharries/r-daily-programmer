@@ -29,6 +29,15 @@ func NewGame() *Game {
 	}
 }
 
+func (g *Game) Check(guess int) string {
+	if guess < g.WinningNumber {
+		return "higher"
+	} else if guess > g.WinningNumber {
+		return "lower"
+	}
+	return "winner"
+}
+
 var zPrint = fmt.Println
 
 func main() {

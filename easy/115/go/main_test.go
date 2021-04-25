@@ -60,3 +60,10 @@ func (s *MainSuite) TestNewGame(c *C) {
 	game := NewGame()
 	c.Assert(game.WinningNumber, Equals, 75)
 }
+
+func (s *MainSuite) TestGameCheck(c *C) {
+	game := NewGame()
+	c.Assert(game.Check(10), Equals, "higher")
+	c.Assert(game.Check(80), Equals, "lower")
+	c.Assert(game.Check(75), Equals, "winner")
+}
