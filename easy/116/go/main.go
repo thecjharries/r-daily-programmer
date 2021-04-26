@@ -34,3 +34,15 @@ func getAllStringPermutations(stringToPermute string, startingIndex int) (permut
 	}
 	return
 }
+
+func getAllUniqueStringPermutations(stringToPermute string) (permutations []string) {
+	nonuniquePermutations := getAllStringPermutations(stringToPermute, 0)
+	permutationMap := make(map[string]bool, len(nonuniquePermutations))
+	for _, permutation := range nonuniquePermutations {
+		permutationMap[permutation] = true
+	}
+	for key := range permutationMap {
+		permutations = append(permutations, key)
+	}
+	return
+}
