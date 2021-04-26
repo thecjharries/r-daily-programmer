@@ -14,12 +14,15 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(getAllUniqueStringPermutations("abbccc"))
 }
 
 func getAllStringPermutations(stringToPermute string, startingIndex int) (permutations []string) {
@@ -44,5 +47,6 @@ func getAllUniqueStringPermutations(stringToPermute string) (permutations []stri
 	for key := range permutationMap {
 		permutations = append(permutations, key)
 	}
+	sort.Strings(permutations)
 	return
 }
