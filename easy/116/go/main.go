@@ -21,3 +21,16 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func getAllStringPermutations(stringToPermute string, startingIndex int) (permutations []string) {
+	if len(stringToPermute) <= startingIndex {
+		return []string{stringToPermute}
+	}
+	stringAsRunes := []rune(stringToPermute)
+	for movingIndex := startingIndex; movingIndex <= len(stringAsRunes); movingIndex++ {
+		stringAsRunes[startingIndex], stringAsRunes[movingIndex] = stringAsRunes[movingIndex], stringAsRunes[startingIndex]
+		permutations = append(permutations, getAllStringPermutations(string(stringAsRunes), startingIndex+1)...)
+		stringAsRunes[startingIndex], stringAsRunes[movingIndex] = stringAsRunes[movingIndex], stringAsRunes[startingIndex]
+	}
+	return
+}
