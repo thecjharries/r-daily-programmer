@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetAllStringPermutations(c *C) {
+	var input string
+	var output []string
+	input = "baz"
+	output = []string{"baz", "bza", "abz", "azb", "zab", "zba"}
+	c.Assert(getAllStringPermutations(input, 0), DeepEquals, output)
+}
