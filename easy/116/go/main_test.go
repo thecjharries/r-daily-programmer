@@ -51,7 +51,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "[abbccc abcbcc abccbc abcccb acbbcc acbcbc acbccb accbbc accbcb acccbb babccc bacbcc baccbc bacccb bbaccc bbcacc bbccac bbccca bcabcc bcacbc bcaccb bcbacc bcbcac bcbcca bccabc bccacb bccbac bccbca bcccab bcccba cabbcc cabcbc cabccb cacbbc cacbcb caccbb cbabcc cbacbc cbaccb cbbacc cbbcac cbbcca cbcabc cbcacb cbcbac cbcbca cbccab cbccba ccabbc ccabcb ccacbb ccbabc ccbacb ccbbac ccbbca ccbcab ccbcba cccabb cccbab cccbba]")
 }
 
 func (s *MainSuite) TestGetAllStringPermutations(c *C) {
