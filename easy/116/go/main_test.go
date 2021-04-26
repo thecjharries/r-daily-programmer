@@ -61,3 +61,11 @@ func (s *MainSuite) TestGetAllStringPermutations(c *C) {
 	output = []string{"baz", "bza", "abz", "azb", "zab", "zba"}
 	c.Assert(getAllStringPermutations(input, 0), DeepEquals, output)
 }
+
+func (s *MainSuite) TestGetAllUniqueStringPermutations(c *C) {
+	var input string
+	var output []string
+	input = "foo"
+	output = []string{"foo", "ofo", "oof"}
+	c.Assert(getAllUniqueStringPermutations(input), DeepEquals, output)
+}
