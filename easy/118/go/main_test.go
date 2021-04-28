@@ -59,4 +59,11 @@ func (s *MainSuite) TestFormatTime(c *C) {
 	testTime, _ := time.Parse(time.RFC3339Nano, "2021-04-28T17:41:44.68072657-05:00")
 	c.Assert(formatTime("%l", testTime), Equals, "680")
 	c.Assert(formatTime("%s", testTime), Equals, "44")
+	c.Assert(formatTime("%m", testTime), Equals, "41")
+	c.Assert(formatTime("%h", testTime), Equals, "5")
+	c.Assert(formatTime("%H", testTime), Equals, "17")
+	c.Assert(formatTime("%c", testTime), Equals, "44")
+	c.Assert(formatTime("%d", testTime), Equals, "28")
+	c.Assert(formatTime("%M", testTime), Equals, "4")
+	c.Assert(formatTime("%y", testTime), Equals, "2021")
 }
