@@ -34,7 +34,11 @@ func formatTime(format string, timeToFormat time.Time) (result string) {
 	result = strings.ReplaceAll(result, "%m", strconv.Itoa(timeToFormat.Minute()))
 	result = strings.ReplaceAll(result, "%h", timeToFormat.Format("3"))
 	result = strings.ReplaceAll(result, "%H", strconv.Itoa(timeToFormat.Hour()))
-	result = strings.ReplaceAll(result, "%c", strconv.Itoa(timeToFormat.Second()))
+	amOrPm := "AM"
+	if 11 < timeToFormat.Hour() {
+		amOrPm = "PM"
+	}
+	result = strings.ReplaceAll(result, "%c", amOrPm)
 	result = strings.ReplaceAll(result, "%d", strconv.Itoa(timeToFormat.Day()))
 	result = strings.ReplaceAll(result, "%M", strconv.Itoa(int(timeToFormat.Month())))
 	result = strings.ReplaceAll(result, "%y", strconv.Itoa(timeToFormat.Year()))

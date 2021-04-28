@@ -62,7 +62,7 @@ func (s *MainSuite) TestFormatTime(c *C) {
 	c.Assert(formatTime("%m", testTime), Equals, "41")
 	c.Assert(formatTime("%h", testTime), Equals, "5")
 	c.Assert(formatTime("%H", testTime), Equals, "17")
-	c.Assert(formatTime("%c", testTime), Equals, "44")
+	c.Assert(formatTime("%c", testTime), Equals, "PM")
 	c.Assert(formatTime("%d", testTime), Equals, "28")
 	c.Assert(formatTime("%M", testTime), Equals, "4")
 	c.Assert(formatTime("%y", testTime), Equals, "2021")
