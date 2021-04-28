@@ -14,10 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"encoding/hex"
+	"fmt"
+	"io/ioutil"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func hexdumpFile(filename string) string {
+	contents, _ := ioutil.ReadFile(filename)
+	return hex.Dump(contents)
 }
