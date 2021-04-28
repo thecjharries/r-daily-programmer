@@ -14,10 +14,21 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+	"time"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func formatTime(format string, timeToFormat time.Time) (result string) {
+	result = format
+	result = strings.ReplaceAll(result, "%l", strconv.Itoa(timeToFormat.Nanosecond()/1000000))
+	return
 }

@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	. "gopkg.in/check.v1"
 )
@@ -52,4 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestFormatTime(c *C) {
+	testTime, _ := time.Parse(time.RFC3339Nano, "2021-04-28T17:41:44.68072657-05:00")
+	c.Assert(formatTime("%l", testTime), Equals, "680")
 }
