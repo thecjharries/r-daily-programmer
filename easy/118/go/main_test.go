@@ -66,4 +66,7 @@ func (s *MainSuite) TestFormatTime(c *C) {
 	c.Assert(formatTime("%d", testTime), Equals, "28")
 	c.Assert(formatTime("%M", testTime), Equals, "4")
 	c.Assert(formatTime("%y", testTime), Equals, "2021")
+	c.Assert(formatTime("%s.%l", testTime), Equals, "44.680")
+	c.Assert(formatTime("%s:%m:%h %M/%d/%y", testTime), Equals, "44:41:5 4/28/2021")
+	c.Assert(formatTime("The minute is %m! The hour is %h.", testTime), Equals, "The minute is 41! The hour is 5.")
 }
