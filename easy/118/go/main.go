@@ -30,5 +30,6 @@ func main() {
 func formatTime(format string, timeToFormat time.Time) (result string) {
 	result = format
 	result = strings.ReplaceAll(result, "%l", strconv.Itoa(timeToFormat.Nanosecond()/1000000))
+	result = strings.ReplaceAll(result, "%s", strconv.Itoa(timeToFormat.Second()))
 	return
 }
