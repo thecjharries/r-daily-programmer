@@ -23,7 +23,7 @@ import (
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(hexdumpFile("Makefile"))
 }
 
 func hexdumpFile(filename string) string {
