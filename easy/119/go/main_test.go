@@ -66,3 +66,16 @@ func (s *MainSuite) TestNewCurrency(c *C) {
 	}
 	c.Assert(NewCurrency(inputValue, UsCoins...), DeepEquals, output)
 }
+
+func (s *MainSuite) TestCurrencyString(c *C) {
+	currency := Currency{
+		{"Quarter", 25, 4},
+		{"Dime", 10, 2},
+		{"Nickel", 5, 0},
+		{"Penny", 1, 3},
+	}
+	c.Assert(currency.String(), Equals, `
+Quarter: 4
+Dime: 2
+Penny: 3`)
+}

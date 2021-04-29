@@ -41,7 +41,6 @@ func NewCurrency(value float64, coins ...Coin) (currency Currency) {
 	currency = make([]Coin, len(coins))
 	copy(currency, coins)
 	for index, coin := range currency {
-		fmt.Println(currentValue)
 		currency[index].Count = currentValue / coin.Value
 		currentValue -= currency[index].Count * coin.Value
 	}
