@@ -53,3 +53,16 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewCurrency(c *C) {
+	var inputValue float64
+	var output Currency
+	inputValue = 1.23
+	output = Currency{
+		{"Quarter", 25, 4},
+		{"Dime", 10, 2},
+		{"Nickel", 5, 0},
+		{"Penny", 1, 3},
+	}
+	c.Assert(NewCurrency(inputValue, UsCoins...), DeepEquals, output)
+}

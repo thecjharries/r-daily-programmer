@@ -16,13 +16,12 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 )
 
 type Coin struct {
 	Name  string
-	Value float64
+	Value int
 	Count int
 }
 
@@ -38,21 +37,22 @@ func (c *Currency) String() (output string) {
 }
 
 func NewCurrency(value float64, coins ...Coin) (currency Currency) {
-	currentValue := value
+	currentValue := int(value * 100)
 	currency = make([]Coin, len(coins))
 	copy(currency, coins)
-	for _, coin := range currency {
-		coin.Count = int(math.Floor(currentValue / coin.Value))
-		currentValue -= float64(coin.Count) * coin.Value
+	for index, coin := range currency {
+		fmt.Println(currentValue)
+		currency[index].Count = currentValue / coin.Value
+		currentValue -= currency[index].Count * coin.Value
 	}
 	return
 }
 
 var UsCoins = []Coin{
-	{"Quarter", .25, 0},
-	{"Dime", .10, 0},
-	{"Nickel", .05, 0},
-	{"Penny", .01, 0},
+	{"Quarter", 25, 0},
+	{"Dime", 10, 0},
+	{"Nickel", 5, 0},
+	{"Penny", 1, 0},
 }
 
 var zPrint = fmt.Println
