@@ -48,6 +48,13 @@ func NewCurrency(value float64, coins ...Coin) (currency Currency) {
 	return
 }
 
+var UsCoins = []Coin{
+	{"Quarter", .25, 0},
+	{"Dime", .10, 0},
+	{"Nickel", .05, 0},
+	{"Penny", .01, 0},
+}
+
 var zPrint = fmt.Println
 
 func main() {
