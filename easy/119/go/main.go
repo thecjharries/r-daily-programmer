@@ -16,6 +16,14 @@ package main
 
 import "fmt"
 
+type Coin struct {
+	Name  string
+	Value float64
+	Count int
+}
+
+type Currency []Coin
+
 var zPrint = fmt.Println
 
 func main() {
