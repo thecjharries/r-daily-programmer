@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"strconv"
+)
 
 type Coin struct {
 	Name  string
@@ -23,6 +27,26 @@ type Coin struct {
 }
 
 type Currency []Coin
+
+func (c *Currency) String() (output string) {
+	for _, coin := range *c {
+		if 0 < coin.Count {
+			output += fmt.Sprintf("\n%s: %s", coin.Name, strconv.Itoa(coin.Count))
+		}
+	}
+	return
+}
+
+func NewCurrency(value float64, coins ...Coin) (currency Currency) {
+	currentValue := value
+	currency = make([]Coin, len(coins))
+	copy(currency, coins)
+	for _, coin := range currency {
+		coin.Count = int(math.Floor(currentValue / coin.Value))
+		currentValue -= float64(coin.Count) * coin.Value
+	}
+	return
+}
 
 var zPrint = fmt.Println
 
