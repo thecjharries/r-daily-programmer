@@ -27,11 +27,11 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func readInput(reader io.Reader) (count int) {
+func countReaderLinesOverSeconds(reader io.Reader, seconds int) (count int) {
 	quitScanning := make(chan bool)
 	scanner := bufio.NewScanner(reader)
 	go (func() {
-		time.Sleep(3 * time.Second)
+		time.Sleep(time.Duration(seconds) * time.Second)
 		quitScanning <- false
 	})()
 	for {

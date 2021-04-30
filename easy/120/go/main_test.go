@@ -59,5 +59,5 @@ func (s *MainSuite) TestReadInput(c *C) {
 	input := strings.NewReader(`one
 two
 three`)
-	c.Assert(readInput(input), Equals, 3)
+	c.Assert(countReaderLinesOverSeconds(input, 1), Equals, 3)
 }
