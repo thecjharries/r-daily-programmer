@@ -14,10 +14,34 @@
 
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"io"
+	"time"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func readInput(reader io.Reader) (count int) {
+	quitScanning := make(chan bool)
+	scanner := bufio.NewScanner(reader)
+	go (func() {
+		time.Sleep(3 * time.Second)
+		quitScanning <- false
+	})()
+	for {
+		select {
+		case <-quitScanning:
+			return
+		default:
+			if scanner.Scan() {
+				count++
+			}
+		}
+	}
 }
