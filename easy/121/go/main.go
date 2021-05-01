@@ -21,3 +21,13 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func getZeroValueTotal(coins int) (zeroCount int) {
+	if 0 == coins {
+		return 1
+	}
+	zeroCount += getZeroValueTotal(coins / 2)
+	zeroCount += getZeroValueTotal(coins / 3)
+	zeroCount += getZeroValueTotal(coins / 4)
+	return
+}
