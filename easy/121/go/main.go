@@ -19,7 +19,7 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(getZeroValueTotal(1000))
 }
 
 func getZeroValueTotal(coins int) (zeroCount int) {
