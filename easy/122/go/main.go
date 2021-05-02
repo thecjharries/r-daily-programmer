@@ -19,7 +19,7 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(calculatePositiveHashUnder10(1073741824))
 }
 
 func calculatePositiveHashUnder10(input int) (result int) {
