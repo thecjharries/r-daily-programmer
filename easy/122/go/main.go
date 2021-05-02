@@ -21,3 +21,11 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func calculatePositiveHashUnder10(input int) (result int) {
+	result = input
+	for 9 < result {
+		result = result%10 + calculatePositiveHashUnder10(result/10)
+	}
+	return
+}
