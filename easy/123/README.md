@@ -1,5 +1,9 @@
 # [04/29/13] Challenge #123 [Easy] New-Line Troubles
 
+## Note
+
+The Go solution doesn't do the whole "use a file" because that's not really the logic being exercised and it's tedious. If the result were saved to a file, not printed to the console, I would have implemented it. Since it's not, I just stopped with fixing a passed-in string.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1dbpm9/042913_challenge_123_easy_newline_troubles/) by [u/nint22](https://old.reddit.com/user/nint22)
