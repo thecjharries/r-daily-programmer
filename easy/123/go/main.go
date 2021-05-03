@@ -14,10 +14,17 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func fixNewlines(replacement, haystack string) string {
+	return strings.ReplaceAll(haystack, `\r?\n`, replacement)
 }
