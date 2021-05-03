@@ -21,6 +21,11 @@ import (
 
 var newlinePattern = regexp.MustCompile(`\r?\n`)
 
+const (
+	windowsNewline = "\r\n"
+	unixNewline    = "\n"
+)
+
 var zPrint = fmt.Println
 
 func main() {
@@ -29,4 +34,15 @@ func main() {
 
 func fixNewlines(replacement, haystack string) string {
 	return newlinePattern.ReplaceAllString(haystack, replacement)
+}
+
+func replaceNewlines(os, haystack string) string {
+	switch os {
+	case "windows":
+		return fixNewlines(windowsNewline, haystack)
+	case "unix":
+		return fixNewlines(unixNewline, haystack)
+	default:
+		return haystack
+	}
 }
