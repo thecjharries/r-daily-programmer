@@ -40,7 +40,7 @@ func replaceNewlines(os, haystack string) string {
 	switch os {
 	case "windows":
 		return fixNewlines(windowsNewline, haystack)
-	case "unix":
+	case "posix":
 		return fixNewlines(unixNewline, haystack)
 	default:
 		return haystack

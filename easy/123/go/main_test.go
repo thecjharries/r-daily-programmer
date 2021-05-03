@@ -58,3 +58,9 @@ func (s *MainSuite) TestFixNewlines(c *C) {
 	c.Assert(fixNewlines("\n", "test\r\none\ntwo"), Equals, "test\none\ntwo")
 	c.Assert(fixNewlines("\r\n", "test\r\none\ntwo"), Equals, "test\r\none\r\ntwo")
 }
+
+func (s *MainSuite) TestReplaceNewlines(c *C) {
+	c.Assert(replaceNewlines("windows", "test\r\none\ntwo"), Equals, "test\r\none\r\ntwo")
+	c.Assert(replaceNewlines("posix", "test\r\none\ntwo"), Equals, "test\none\ntwo")
+	c.Assert(replaceNewlines("qqq", "test\r\none\ntwo"), Equals, "test\r\none\ntwo")
+}
