@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFixNewlines(c *C) {
+	c.Assert(fixNewlines("\n", "test\r\none\ntwo"), Equals, "test\none\ntwo")
+	c.Assert(fixNewlines("\r\n", "test\r\none\ntwo"), Equals, "test\r\none\r\ntwo")
+}

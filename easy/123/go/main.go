@@ -16,8 +16,10 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"regexp"
 )
+
+var newlinePattern = regexp.MustCompile(`\r?\n`)
 
 var zPrint = fmt.Println
 
@@ -26,5 +28,5 @@ func main() {
 }
 
 func fixNewlines(replacement, haystack string) string {
-	return strings.ReplaceAll(haystack, `\r?\n`, replacement)
+	return newlinePattern.ReplaceAllString(haystack, replacement)
 }
