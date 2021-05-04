@@ -28,6 +28,18 @@ func (e *Edge) String() string {
 
 type GraphFromEdges []Edge
 
+func (g *GraphFromEdges) Len() int {
+	return len(*g)
+}
+
+func (g *GraphFromEdges) Less(i, j int) bool {
+	return (*g)[i].Start <= (*g)[j].Start && (*g)[i].Finish < (*g)[j].Finish
+}
+
+func (g *GraphFromEdges) Swap(i, j int) {
+	(*g)[i], (*g)[j] = (*g)[j], (*g)[i]
+}
+
 var zPrint = fmt.Println
 
 func main() {

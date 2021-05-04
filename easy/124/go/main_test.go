@@ -62,3 +62,44 @@ func (s *MainSuite) TestEdgeString(c *C) {
 	}
 	c.Assert(edge.String(), Equals, "A")
 }
+
+func (s *MainSuite) TestGraphFromEdgesLen(c *C) {
+	graph := GraphFromEdges{
+		{"A", 1, 2},
+		{"B", 2, 3},
+		{"C", 2, 4},
+		{"D", 4, 5},
+	}
+	c.Assert(graph.Len(), Equals, 4)
+}
+
+func (s *MainSuite) TestGraphFromEdgesLess(c *C) {
+	graph := GraphFromEdges{
+		{"A", 1, 2},
+		{"B", 2, 3},
+		{"C", 2, 4},
+		{"D", 4, 5},
+	}
+	c.Assert(graph.Less(0, 1), Equals, true)
+	c.Assert(graph.Less(1, 2), Equals, true)
+	c.Assert(graph.Less(2, 3), Equals, true)
+	c.Assert(graph.Less(3, 0), Equals, false)
+}
+
+func (s *MainSuite) TestGraphFromEdgesSwap(c *C) {
+	graph := GraphFromEdges{
+		{"A", 1, 2},
+		{"B", 2, 3},
+		{"C", 2, 4},
+		{"D", 4, 5},
+	}
+	graphSwapped := GraphFromEdges{
+		{"A", 1, 2},
+		{"B", 2, 3},
+		{"D", 4, 5},
+		{"C", 2, 4},
+	}
+	c.Assert(graph, Not(DeepEquals), graphSwapped)
+	graph.Swap(2, 3)
+	c.Assert(graph, DeepEquals, graphSwapped)
+}
