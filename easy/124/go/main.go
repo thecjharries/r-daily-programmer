@@ -62,5 +62,5 @@ func main() {
 		{"A", 3, 4},
 	}
 	sort.Sort(graph)
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(graph)
 }
