@@ -47,7 +47,7 @@ func (g GraphFromEdges) String() (output string) {
 	for _, edge := range g {
 		output += fmt.Sprintf("%s ", edge.String())
 	}
-	return output + "\n"
+	return
 }
 
 var zPrint = fmt.Println

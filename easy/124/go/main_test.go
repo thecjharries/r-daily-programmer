@@ -103,3 +103,13 @@ func (s *MainSuite) TestGraphFromEdgesSwap(c *C) {
 	graph.Swap(2, 3)
 	c.Assert(graph, DeepEquals, graphSwapped)
 }
+
+func (s *MainSuite) TestGraphFromEdgesString(c *C) {
+	graph := GraphFromEdges{
+		{"A", 1, 2},
+		{"B", 2, 3},
+		{"C", 2, 4},
+		{"D", 4, 5},
+	}
+	c.Assert(graph.String(), Equals, "A B C D ")
+}
