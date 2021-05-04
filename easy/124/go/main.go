@@ -22,6 +22,10 @@ type Edge struct {
 	Finish int
 }
 
+func (e *Edge) String() string {
+	return e.Name
+}
+
 type GraphFromEdges []Edge
 
 var zPrint = fmt.Println

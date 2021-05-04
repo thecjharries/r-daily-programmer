@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestEdgeString(c *C) {
+	edge := Edge{
+		Name:   "A",
+		Start:  1,
+		Finish: 2,
+	}
+	c.Assert(edge.String(), Equals, "A")
+}
