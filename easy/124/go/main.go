@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Edge struct {
 	Name   string
@@ -28,20 +31,36 @@ func (e *Edge) String() string {
 
 type GraphFromEdges []Edge
 
-func (g *GraphFromEdges) Len() int {
-	return len(*g)
+func (g GraphFromEdges) Len() int {
+	return len(g)
 }
 
-func (g *GraphFromEdges) Less(i, j int) bool {
-	return (*g)[i].Start <= (*g)[j].Start && (*g)[i].Finish < (*g)[j].Finish
+func (g GraphFromEdges) Less(i, j int) bool {
+	return g[i].Start <= g[j].Start && g[i].Finish < g[j].Finish
 }
 
-func (g *GraphFromEdges) Swap(i, j int) {
-	(*g)[i], (*g)[j] = (*g)[j], (*g)[i]
+func (g GraphFromEdges) Swap(i, j int) {
+	g[i], g[j] = g[j], g[i]
+}
+
+func (g GraphFromEdges) String() (output string) {
+	for _, edge := range g {
+		output += fmt.Sprintf("%s ", edge.String())
+	}
+	return output + "\n"
 }
 
 var zPrint = fmt.Println
 
 func main() {
+	graph := GraphFromEdges{
+		{"F", 2, 3},
+		{"B", 1, 2},
+		{"D", 6, 5},
+		{"C", 6, 7},
+		{"E", 5, 4},
+		{"A", 3, 4},
+	}
+	sort.Sort(graph)
 	_, _ = zPrint("hello world")
 }
