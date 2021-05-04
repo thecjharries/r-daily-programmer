@@ -16,6 +16,14 @@ package main
 
 import "fmt"
 
+type Edge struct {
+	Name   string
+	Start  int
+	Finish int
+}
+
+type GraphFromEdges []Edge
+
 var zPrint = fmt.Println
 
 func main() {
