@@ -29,5 +29,6 @@ func main() {
 
 func countSymbols(haystack string) (count int) {
 	matches := symbolPattern.FindAllStringIndex(haystack, -1)
+	fmt.Println(matches)
 	return len(matches)
 }
