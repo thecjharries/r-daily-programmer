@@ -1,5 +1,9 @@
 # [05/13/13] Challenge #125 [Easy] Word Analytics
 
+## Note
+
+The Go solution only looks at #3 from the prompt. The others are repeats of previous work and fairly tedious in Go.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1e97ob/051313_challenge_125_easy_word_analytics/) by [u/nint22](https://old.reddit.com/user/nint22)
