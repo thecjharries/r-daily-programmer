@@ -14,10 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var symbolPattern = regexp.MustCompile(`(?i)[^a-z0-9\s]`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func countSymbols(haystack string) (count int) {
+	return
 }
