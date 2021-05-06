@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestInsertFirstIntoSecondSorted(c *C) {
+	first := []int{692, 1, 32}
+	second := []int{0, 0, 0, 14, 15, 123, 2431}
+	final := []int{1, 14, 15, 32, 123, 692, 2431}
+	c.Assert(insertFirstIntoSecondSorted(first, second), DeepEquals, final)
+}
