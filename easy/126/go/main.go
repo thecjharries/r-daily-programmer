@@ -30,7 +30,8 @@ func insertFirstIntoSecondSorted(first, second []int) []int {
 				if second[secondIndex] < first[firstIndex] {
 					second[secondIndex-1] = second[secondIndex]
 				} else {
-					second[secondIndex] = first[firstIndex]
+					second[secondIndex-1] = first[firstIndex]
+					break
 				}
 			}
 		}
