@@ -21,3 +21,20 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func insertFirstIntoSecondSorted(first, second []int) []int {
+	firstIndex := 0
+	for firstIndex < len(first) {
+		for secondIndex := 1; secondIndex < len(second); secondIndex++ {
+			if 0 != second[secondIndex] {
+				if second[secondIndex] < first[firstIndex] {
+					second[secondIndex-1] = second[secondIndex]
+				} else {
+					second[secondIndex] = first[firstIndex]
+				}
+			}
+		}
+		firstIndex++
+	}
+	return second
+}
