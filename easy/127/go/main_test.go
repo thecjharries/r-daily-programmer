@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPromptMcCarthy91(c *C) {
+	c.Assert(promptMcCarthy91(99, false), Equals, 91)
+	c.Assert(promptMcCarthy91(101, false), Equals, 91)
+	c.Assert(promptMcCarthy91(102, false), Equals, 92)
+}
