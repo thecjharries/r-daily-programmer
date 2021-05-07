@@ -50,8 +50,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 0)
 	c.Assert(printSpyContents, Equals, "")
 	main()
-	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printCallCount, Equals, 6)
+	c.Assert(printSpyContents, Equals, "91 since 101 is greater than 100")
 }
 
 func (s *MainSuite) TestPromptMcCarthy91(c *C) {

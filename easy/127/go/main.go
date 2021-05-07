@@ -19,12 +19,21 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	promptMcCarthy91(99, false)
 }
 
 func promptMcCarthy91(start int, isRecursive bool) int {
+	if !isRecursive {
+		_, _ = zPrint(fmt.Sprintf("M(%d)", start))
+	}
 	if 100 < start {
+		formatString := "M(%d) since %d is greater than 100"
+		if 101 == start {
+			formatString = "%d since %d is greater than 100"
+		}
+		_, _ = zPrint(fmt.Sprintf(formatString, start-10, start))
 		return start - 10
 	}
+	_, _ = zPrint(fmt.Sprintf("M(M(%d)) since %d is equal to or less than 100", start+11, start))
 	return promptMcCarthy91(promptMcCarthy91(start+11, true), true)
 }
