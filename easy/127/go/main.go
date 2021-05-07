@@ -21,3 +21,10 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func promptMcCarthy91(start int, isRecursive bool) int {
+	if 100 < start {
+		return start - 10
+	}
+	return promptMcCarthy91(promptMcCarthy91(start+11, true), true)
+}
