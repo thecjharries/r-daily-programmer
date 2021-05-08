@@ -58,3 +58,7 @@ func (s *MainSuite) TestHashStringIntBySummingDigits(c *C) {
 	c.Assert(hashStringIntBySummingDigits("12345"), Equals, "15")
 	c.Assert(hashStringIntBySummingDigits("15"), Equals, "6")
 }
+
+func (s *MainSuite) TestGenerateStepsToPositiveHashUnder10(c *C) {
+	c.Assert(generateStepsToPositiveHashUnder10("12345"), DeepEquals, []string{"12345", "15", "6"})
+}
