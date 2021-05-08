@@ -14,10 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func hashStringIntBySummingDigits(input string) string {
+	exploded := strings.Split(input, "")
+	sum := 0
+	for _, digit := range exploded {
+		converted, _ := strconv.Atoi(digit)
+		sum += converted
+	}
+	return strconv.Itoa(sum)
 }
