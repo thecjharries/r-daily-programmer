@@ -35,3 +35,11 @@ func hashStringIntBySummingDigits(input string) string {
 	}
 	return strconv.Itoa(sum)
 }
+
+func generateStepsToPositiveHashUnder10(input string) (steps []string) {
+	steps = append(steps, input)
+	for 1 < len(steps[len(steps)-1]) {
+		steps = append(steps, hashStringIntBySummingDigits(steps[len(steps)-1]))
+	}
+	return
+}
