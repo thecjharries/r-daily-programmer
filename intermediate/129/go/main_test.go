@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRealVectorRoundToFivePlaces(c *C) {
+	vector := RealVector{}
+	c.Assert(vector.RoundToFivePlaces(1.0), Equals, 1.00000)
+}
+
+//func (s *MainSuite) TestRealVectorLength(c *C) {
+//	var vector RealVector
+//	vector = RealVector{1, 1}
+//	c.Assert()
+//}
