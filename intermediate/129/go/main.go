@@ -30,7 +30,7 @@ func (r *RealVector) Length() float64 {
 	for _, element := range *r {
 		sum += math.Pow(element, 2)
 	}
-	return math.Sqrt(sum)
+	return r.RoundToFivePlaces(math.Sqrt(sum))
 }
 
 var zPrint = fmt.Println

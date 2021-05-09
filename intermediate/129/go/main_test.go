@@ -59,8 +59,8 @@ func (s *MainSuite) TestRealVectorRoundToFivePlaces(c *C) {
 	c.Assert(vector.RoundToFivePlaces(1.0), Equals, 1.00000)
 }
 
-//func (s *MainSuite) TestRealVectorLength(c *C) {
-//	var vector RealVector
-//	vector = RealVector{1, 1}
-//	c.Assert()
-//}
+func (s *MainSuite) TestRealVectorLength(c *C) {
+	var vector RealVector
+	vector = RealVector{1, 1}
+	c.Assert(vector.Length(), Equals, 1.41421)
+}
