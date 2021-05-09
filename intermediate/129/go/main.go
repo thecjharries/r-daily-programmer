@@ -14,9 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type RealVector []float64
+
+func (r *RealVector) Length() float64 {
+	sum := 0.0
+	for _, element := range *r {
+		sum += math.Pow(element, 2)
+	}
+	return math.Sqrt(sum)
+}
 
 var zPrint = fmt.Println
 
