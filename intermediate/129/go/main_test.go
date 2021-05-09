@@ -64,3 +64,10 @@ func (s *MainSuite) TestRealVectorLength(c *C) {
 	vector = RealVector{1, 1}
 	c.Assert(vector.Length(), Equals, 1.41421)
 }
+
+func (s *MainSuite) TestRealVectorNormalized(c *C) {
+	var vector RealVector
+	vector = RealVector{1.2, 3.4}
+	output := RealVector{0.33282, 0.94299}
+	c.Assert(vector.Normalized(), DeepEquals, &output)
+}
