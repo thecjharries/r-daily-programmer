@@ -21,6 +21,10 @@ import (
 
 type RealVector []float64
 
+func (r *RealVector) RoundToFivePlaces(input float64) float64 {
+	return math.Round(input*100000) / 100000
+}
+
 func (r *RealVector) Length() float64 {
 	sum := 0.0
 	for _, element := range *r {
