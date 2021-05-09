@@ -42,6 +42,16 @@ func (r *RealVector) Normalized() *RealVector {
 	return &unit
 }
 
+// I'm assuming the vectors are the same length because I'm lazy
+// If not this will panic
+func (r *RealVector) Dot(vector *RealVector) float64 {
+	sum := 0.0
+	for index := 0; index < len(*r); index++ {
+		sum += (*r)[index] * (*vector)[index]
+	}
+	return r.RoundToFivePlaces(sum)
+}
+
 var zPrint = fmt.Println
 
 func main() {
