@@ -1,5 +1,9 @@
 # [07/10/13] Challenge #129 [Intermediate] N-Dimensional Vectors
 
+## Note
+
+I'm skipping the whole file processing thing for the Go solution. It's unrelated to the point of the challenge, vector operations, and exists solely to get things into the program. I/O is onerous and not that interesting to me right now.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1hzq9y/071013_challenge_129_intermediate_ndimensional/) by [u/nint22](https://old.reddit.com/user/nint22)
