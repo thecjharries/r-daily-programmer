@@ -71,3 +71,9 @@ func (s *MainSuite) TestRealVectorNormalized(c *C) {
 	output := RealVector{0.33282, 0.94299}
 	c.Assert(vector.Normalized(), DeepEquals, &output)
 }
+
+func (s *MainSuite) TestRealVectorDot(c *C) {
+	first := RealVector{1, 1}
+	second := RealVector{1.2, 3.4}
+	c.Assert(first.Dot(&second), Equals, 4.6)
+}
