@@ -33,6 +33,15 @@ func (r *RealVector) Length() float64 {
 	return r.RoundToFivePlaces(math.Sqrt(sum))
 }
 
+func (r *RealVector) Normalized() *RealVector {
+	unit := RealVector{}
+	length := r.Length()
+	for _, element := range *r {
+		unit = append(unit, r.RoundToFivePlaces(element/length))
+	}
+	return &unit
+}
+
 var zPrint = fmt.Println
 
 func main() {
