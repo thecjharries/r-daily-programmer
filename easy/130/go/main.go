@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var dieNotationPattern = regexp.MustCompile(`(?P<count>\d+)d(?P<sides>\d+)`)
 
 var zPrint = fmt.Println
 
