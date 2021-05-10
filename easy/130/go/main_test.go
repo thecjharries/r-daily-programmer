@@ -68,3 +68,12 @@ func (s *MainSuite) TestParseNotation(c *C) {
 	c.Assert(foundCount, Equals, desiredCount)
 	c.Assert(foundSides, Equals, desiredSides)
 }
+
+func (s *MainSuite) TestRollTheDice(c *C) {
+	rolls := rollTheDice(100, 20)
+	c.Assert(len(rolls), Equals, 100)
+	for _, roll := range rolls {
+		c.Assert(roll > 0, Equals, true)
+		c.Assert(roll < 21, Equals, true)
+	}
+}
