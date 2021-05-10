@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"regexp"
 	"strconv"
 )
@@ -32,5 +33,12 @@ func parseNotation(notation string) (count, sides int) {
 	matches := dieNotationPattern.FindStringSubmatch(notation)
 	count, _ = strconv.Atoi(matches[1])
 	sides, _ = strconv.Atoi(matches[2])
+	return
+}
+
+func rollTheDice(count, sides int) (rolls []int) {
+	for index := 0; index < count; index++ {
+		rolls = append(rolls, rand.Intn(sides)+1)
+	}
 	return
 }
