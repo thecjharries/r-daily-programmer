@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 )
 
 var dieNotationPattern = regexp.MustCompile(`(?P<count>\d+)d(?P<sides>\d+)`)
@@ -25,4 +26,11 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseNotation(notation string) (count, sides int) {
+	matches := dieNotationPattern.FindStringSubmatch(notation)
+	count, _ = strconv.Atoi(matches[1])
+	sides, _ = strconv.Atoi(matches[2])
+	return
 }
