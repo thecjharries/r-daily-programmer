@@ -42,3 +42,8 @@ func rollTheDice(count, sides int) (rolls []int) {
 	}
 	return
 }
+
+func parseAndRoll(notation string) []int {
+	count, sides := parseNotation(notation)
+	return rollTheDice(count, sides)
+}

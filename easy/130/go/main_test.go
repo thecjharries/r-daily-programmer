@@ -77,3 +77,12 @@ func (s *MainSuite) TestRollTheDice(c *C) {
 		c.Assert(roll < 21, Equals, true)
 	}
 }
+
+func (s *MainSuite) TestParseAndRoll(c *C) {
+	rolls := parseAndRoll("100d20")
+	c.Assert(len(rolls), Equals, 100)
+	for _, roll := range rolls {
+		c.Assert(roll > 0, Equals, true)
+		c.Assert(roll < 21, Equals, true)
+	}
+}
