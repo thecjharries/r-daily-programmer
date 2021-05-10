@@ -53,3 +53,18 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseNotation(c *C) {
+	var notation string
+	var foundCount, desiredCount, foundSides, desiredSides int
+	notation = "2d20"
+	desiredCount, desiredSides = 2, 20
+	foundCount, foundSides = parseNotation(notation)
+	c.Assert(foundCount, Equals, desiredCount)
+	c.Assert(foundSides, Equals, desiredSides)
+	notation = "4d6"
+	desiredCount, desiredSides = 4, 6
+	foundCount, foundSides = parseNotation(notation)
+	c.Assert(foundCount, Equals, desiredCount)
+	c.Assert(foundSides, Equals, desiredSides)
+}
