@@ -27,7 +27,7 @@ func main() {
 
 func reverseString(input string) string {
 	result := []rune(input)
-	for index := 0; index < len(result); index++ {
+	for index := 0; index < len(result)/2; index++ {
 		result[index], result[len(result)-1-index] = result[len(result)-1-index], result[index]
 	}
 	return string(result)
