@@ -36,3 +36,7 @@ func reverseString(input string) string {
 func uppercaseString(input string) string {
 	return strings.ToUpper(input)
 }
+
+func verifyTransformation(input string, transformation func(string) string, output string) bool {
+	return transformation(input) == output
+}
