@@ -57,3 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestReverseString(c *C) {
 	c.Assert(reverseString("car"), Equals, "rac")
 }
+
+func (s *MainSuite) TestUppercaseString(c *C) {
+	c.Assert(uppercaseString("batman"), Equals, "BATMAN")
+}
