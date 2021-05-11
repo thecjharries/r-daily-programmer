@@ -14,10 +14,25 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func reverseString(input string) string {
+	result := []rune(input)
+	for index := 0; index < len(result); index++ {
+		result[index], result[len(result)-1-index] = result[len(result)-1-index], result[index]
+	}
+	return string(result)
+}
+
+func uppercaseString(input string) string {
+	return strings.ToUpper(input)
 }
