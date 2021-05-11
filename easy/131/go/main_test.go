@@ -65,3 +65,12 @@ func (s *MainSuite) TestUppercaseString(c *C) {
 	c.Assert(uppercaseString("Graph"), Equals, "GRAPH")
 	c.Assert(uppercaseString("One"), Not(Equals), "one")
 }
+
+func (s *MainSuite) TestVerifyTransformation(c *C) {
+	c.Assert(verifyTransformation("Car", reverseString, "raC"), Equals, true)
+	c.Assert(verifyTransformation("Alpha", reverseString, "AhplA"), Equals, false)
+	c.Assert(verifyTransformation("Discuss", reverseString, "noissucsiD"), Equals, false)
+	c.Assert(verifyTransformation("batman", uppercaseString, "BATMAN"), Equals, true)
+	c.Assert(verifyTransformation("Graph", uppercaseString, "GRAPH"), Equals, true)
+	c.Assert(verifyTransformation("One", uppercaseString, "one"), Equals, false)
+}
