@@ -24,10 +24,10 @@ func main() {
 
 func gcdEuclideanMod(a, b int) int {
 	if 0 == a {
-		return a
+		return b
 	}
 	if 0 == b {
-		return b
+		return a
 	}
 	if a < b {
 		return gcdEuclideanMod(a, b%a)
