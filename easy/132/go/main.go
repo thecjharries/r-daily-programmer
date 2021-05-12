@@ -21,3 +21,16 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func gcdEuclideanMod(a, b int) int {
+	if 0 == a {
+		return a
+	}
+	if 0 == b {
+		return b
+	}
+	if a < b {
+		return gcdEuclideanMod(a, b%a)
+	}
+	return gcdEuclideanMod(b, a%b)
+}
