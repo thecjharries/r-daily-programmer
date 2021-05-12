@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGcdEuclideanMod(c *C) {
+	c.Assert(gcdEuclideanMod(0, 10), Equals, 10)
+	c.Assert(gcdEuclideanMod(32, 12), Equals, 4)
+	c.Assert(gcdEuclideanMod(142341, 512345), Equals, 1)
+	c.Assert(gcdEuclideanMod(65535, 4294967295), Equals, 65535)
+}
