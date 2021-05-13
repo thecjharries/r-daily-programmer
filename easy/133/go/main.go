@@ -53,6 +53,15 @@ func (b *Building) ProcessRoomLogEntry(entry RoomLogEntry) {
 	}
 }
 
+func NewBuilding(roomLogEntries []RoomLogEntry) Building {
+	rooms := make(map[int]*RoomData)
+	building := Building{Rooms: rooms}
+	for _, entry := range roomLogEntries {
+		building.ProcessRoomLogEntry(entry)
+	}
+	return building
+}
+
 var zPrint = fmt.Println
 
 func main() {
