@@ -21,6 +21,15 @@ type RoomData struct {
 	VisitorCount int
 }
 
+func (r *RoomData) String(roomId int) string {
+	return fmt.Sprintf(
+		"Room %d, %d minute average visit, %d visitor(s) total",
+		roomId,
+		r.TotalTime/r.VisitorCount,
+		r.VisitorCount,
+	)
+}
+
 type Building struct {
 	Rooms map[int]*RoomData
 }
