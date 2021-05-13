@@ -1,5 +1,9 @@
 #[07/15/13] Challenge #133 [Easy] Foot-Traffic Analysis
 
+## Note
+
+For Go, I'm skipping the whole file thing and just verifying the lines
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1iambu/071513_challenge_133_easy_foottraffic_analysis/) by [u/nint22](https://old.reddit.com/user/nint22)
