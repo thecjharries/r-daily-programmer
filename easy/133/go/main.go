@@ -16,6 +16,15 @@ package main
 
 import "fmt"
 
+type RoomData struct {
+	TotalTime    int
+	VisitorCount int
+}
+
+type Building struct {
+	Rooms map[int]RoomData
+}
+
 var zPrint = fmt.Println
 
 func main() {
