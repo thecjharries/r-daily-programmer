@@ -2,7 +2,7 @@
 
 ## Note
 
-For Go, I'm skipping the whole file thing and just verifying the lines
+For Go, I'm skipping the whole file thing and just verifying the lines. I'm also skipping the full verification for two reasons. 1) Sorting maps in Go is tedious and not interesting. 2) There's some question in the comments about averages being off by one; the problem is not well-defined.
 
 ## Source
 

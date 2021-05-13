@@ -85,10 +85,66 @@ func (s *MainSuite) TestRoomDataString(c *C) {
 }
 
 func (s *MainSuite) TestBuildingString(c *C) {
-	entries := []RoomLogEntry{
+	var entries []RoomLogEntry
+	var building Building
+	entries = []RoomLogEntry{
 		{0, 0, true, 540},
 		{0, 0, false, 560},
 	}
-	building := NewBuilding(entries)
+	building = NewBuilding(entries)
 	c.Assert(building.String(), Equals, "Room 0, 20 minute average visit, 1 visitor(s) total\n")
+	//	entries = []RoomLogEntry{
+	//		{0, 11, true, 347},
+	//		{1, 13, true, 307},
+	//		{2, 15, true, 334},
+	//		{3, 6, true, 334},
+	//		{4, 9, true, 334},
+	//		{5, 2, true, 334},
+	//		{6, 2, true, 334},
+	//		{7, 11, true, 334},
+	//		{8, 1, true, 334},
+	//		{0, 11, false, 376},
+	//		{1, 13, false, 321},
+	//		{2, 15, false, 389},
+	//		{3, 6, false, 412},
+	//		{4, 9, false, 418},
+	//		{5, 2, false, 414},
+	//		{6, 2, false, 349},
+	//		{7, 11, false, 418},
+	//		{8, 1, false, 418},
+	//		{0, 12, true, 437},
+	//		{1, 28, true, 343},
+	//		{2, 32, true, 408},
+	//		{3, 15, true, 458},
+	//		{4, 18, true, 424},
+	//		{5, 26, true, 442},
+	//		{6, 7, true, 435},
+	//		{7, 19, true, 456},
+	//		{8, 19, true, 450},
+	//		{0, 12, false, 455},
+	//		{1, 28, false, 374},
+	//		{2, 32, false, 495},
+	//		{3, 15, false, 462},
+	//		{4, 18, false, 500},
+	//		{5, 26, false, 479},
+	//		{6, 7, false, 493},
+	//		{7, 19, false, 471},
+	//		{8, 19, false, 458},
+	//	}
+	//	building = NewBuilding(entries)
+	//	output := `Room 1, 85 minute average visit, 1 visitor total
+	//Room 2, 48 minute average visit, 2 visitors total
+	//Room 6, 79 minute average visit, 1 visitor total
+	//Room 7, 59 minute average visit, 1 visitor total
+	//Room 9, 85 minute average visit, 1 visitor total
+	//Room 11, 57 minute average visit, 2 visitors total
+	//Room 12, 19 minute average visit, 1 visitor total
+	//Room 13, 15 minute average visit, 1 visitor total
+	//Room 15, 30 minute average visit, 2 visitors total
+	//Room 18, 77 minute average visit, 1 visitor total
+	//Room 19, 12 minute average visit, 2 visitors total
+	//Room 28, 32 minute average visit, 1 visitor total
+	//Room 32, 88 minute average visit, 1 visitor total
+	//`
+	//	c.Assert(building.String(), Equals, output)
 }
