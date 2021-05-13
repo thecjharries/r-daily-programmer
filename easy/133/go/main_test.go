@@ -75,3 +75,11 @@ func (s *MainSuite) TestNewBuilding(c *C) {
 	c.Assert(building.Rooms[0].VisitorCount, Equals, 1)
 	c.Assert(building.Rooms[0].TotalTime, Equals, 20)
 }
+
+func (s *MainSuite) TestRoomDataString(c *C) {
+	room := RoomData{
+		TotalTime:    40,
+		VisitorCount: 2,
+	}
+	c.Assert(room.String(0), Equals, "Room 0, 20 minute average visit, 2 visitor(s) total")
+}
