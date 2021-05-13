@@ -35,10 +35,10 @@ type RoomLogEntry struct {
 func (b *Building) ProcessRoomLogEntry(entry RoomLogEntry) {
 	var timeIncrement, visitorIncrement int
 	if entry.Enter {
-		timeIncrement = entry.Timestamp
+		timeIncrement = -entry.Timestamp
 		visitorIncrement = 1
 	} else {
-		timeIncrement = -entry.Timestamp
+		timeIncrement = entry.Timestamp
 		visitorIncrement = 0
 	}
 	_, exists := b.Rooms[entry.RoomId]
