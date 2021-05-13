@@ -62,6 +62,14 @@ func (b *Building) ProcessRoomLogEntry(entry RoomLogEntry) {
 	}
 }
 
+func (b *Building) String() string {
+	output := ""
+	for roomId, room := range b.Rooms {
+		output += room.String(roomId) + "\n"
+	}
+	return output
+}
+
 func NewBuilding(roomLogEntries []RoomLogEntry) Building {
 	rooms := make(map[int]*RoomData)
 	building := Building{Rooms: rooms}
