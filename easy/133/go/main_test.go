@@ -65,3 +65,13 @@ func (s *MainSuite) TestBuildingProcessRoomLogEntry(c *C) {
 	c.Assert(building.Rooms[0].VisitorCount, Equals, 1)
 	c.Assert(building.Rooms[0].TotalTime, Equals, 20)
 }
+
+func (s *MainSuite) TestNewBuilding(c *C) {
+	entries := []RoomLogEntry{
+		{0, 0, true, 540},
+		{0, 0, false, 560},
+	}
+	building := NewBuilding(entries)
+	c.Assert(building.Rooms[0].VisitorCount, Equals, 1)
+	c.Assert(building.Rooms[0].TotalTime, Equals, 20)
+}
