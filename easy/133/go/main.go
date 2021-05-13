@@ -22,7 +22,35 @@ type RoomData struct {
 }
 
 type Building struct {
-	Rooms map[int]RoomData
+	Rooms map[int]*RoomData
+}
+
+type RoomLogEntry struct {
+	VisitorId int
+	RoomId    int
+	Enter     bool
+	Timestamp int
+}
+
+func (b *Building) ProcessRoomLogEntry(entry RoomLogEntry) {
+	var timeIncrement, visitorIncrement int
+	if entry.Enter {
+		timeIncrement = entry.Timestamp
+		visitorIncrement = 1
+	} else {
+		timeIncrement = -entry.Timestamp
+		visitorIncrement = 0
+	}
+	_, exists := b.Rooms[entry.RoomId]
+	if exists {
+		b.Rooms[entry.RoomId].TotalTime += timeIncrement
+		b.Rooms[entry.RoomId].VisitorCount += visitorIncrement
+	} else {
+		b.Rooms[entry.RoomId] = &RoomData{
+			TotalTime:    timeIncrement,
+			VisitorCount: visitorIncrement,
+		}
+	}
 }
 
 var zPrint = fmt.Println
