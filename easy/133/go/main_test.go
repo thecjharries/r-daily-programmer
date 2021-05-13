@@ -83,3 +83,12 @@ func (s *MainSuite) TestRoomDataString(c *C) {
 	}
 	c.Assert(room.String(0), Equals, "Room 0, 20 minute average visit, 2 visitor(s) total")
 }
+
+func (s *MainSuite) TestBuildingString(c *C) {
+	entries := []RoomLogEntry{
+		{0, 0, true, 540},
+		{0, 0, false, 560},
+	}
+	building := NewBuilding(entries)
+	c.Assert(building.String(), Equals, "Room 0, 20 minute average visit, 1 visitor(s) total\n")
+}
