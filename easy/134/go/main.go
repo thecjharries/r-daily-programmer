@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func largestNumberWithDigitCountDivisibleByFactor(digitCount, factor int) int {
+	powerOfTen := int(math.Pow(10, float64(digitCount)))
+	tentativeResult := powerOfTen - powerOfTen%factor
+	if len(strconv.Itoa(tentativeResult)) < digitCount {
+		return -1
+	}
+	return tentativeResult
 }
