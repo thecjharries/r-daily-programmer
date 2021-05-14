@@ -26,7 +26,7 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func largestNumberWithDigitCountDivisibleByFactor(digitCount, factor int) int {
+func getLargestNumberWithDigitCountDivisibleByFactor(digitCount, factor int) int {
 	powerOfTen := int(math.Pow(10, float64(digitCount)))
 	tentativeResult := powerOfTen - powerOfTen%factor
 	if len(strconv.Itoa(tentativeResult)) < digitCount {
