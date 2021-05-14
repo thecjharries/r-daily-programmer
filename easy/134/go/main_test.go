@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetLargestNumberWithDigitCountDivisibleByFactor(c *C) {
+	c.Assert(getLargestNumberWithDigitCountDivisibleByFactor(3, 2), Equals, 998)
+	c.Assert(getLargestNumberWithDigitCountDivisibleByFactor(2, 101), Equals, -1)
+	c.Assert(getLargestNumberWithDigitCountDivisibleByFactor(7, 4241275), Equals, 8482550)
+}
