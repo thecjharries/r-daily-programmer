@@ -27,8 +27,8 @@ func main() {
 }
 
 func getLargestNumberWithDigitCountDivisibleByFactor(digitCount, factor int) int {
-	powerOfTen := int(math.Pow(10, float64(digitCount)))
-	tentativeResult := powerOfTen - powerOfTen%factor
+	oneOffOfPowerOfTen := int(math.Pow(10, float64(digitCount)) - 1)
+	tentativeResult := oneOffOfPowerOfTen - oneOffOfPowerOfTen%factor
 	if len(strconv.Itoa(tentativeResult)) < digitCount {
 		return -1
 	}
