@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+var operators = []string{"+", "-", "*", "/"}
+
 var zPrint = fmt.Println
 
 func main() {
