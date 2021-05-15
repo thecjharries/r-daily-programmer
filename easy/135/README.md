@@ -1,5 +1,15 @@
 # [08/13/13] Challenge #135 [Easy] Arithmetic Equations
 
+## Note on Go Solution
+
+I really don't feel like building an arbitray expression evaluator so I'm using [knetic/govaluate](https://github.com/Knetic/govaluate).
+
+```shell
+ go get -u github.com/knetic/govaluate
+```
+
+As usual recently, I'm also skipping the CLI I/O because that's just tedious. I should probably switch to a new language.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1k7s7p/081313_challenge_135_easy_arithmetic_equations/) by [u/nint22](https://old.reddit.com/user/nint22)
