@@ -61,3 +61,8 @@ func (s *MainSuite) TestBuildEquation(c *C) {
 	c.Assert(len(equation), Equals, 13)
 	c.Assert(equation, Equals, "1 * 5 * 9 + 8")
 }
+
+func (s *MainSuite) TestVerifyAnswer(c *C) {
+	c.Assert(verifyAnswer("1 * 5 * 9 + 8", 10), Equals, false)
+	c.Assert(verifyAnswer("1 * 5 * 9 + 8", 53), Equals, true)
+}
