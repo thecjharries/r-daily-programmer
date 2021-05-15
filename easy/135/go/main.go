@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 var operators = []string{"+", "-", "*", "/"}
 
@@ -22,4 +25,24 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func buildEquation(minInt, maxInt int) string {
+	randomInts := make([]int, 4)
+	randomOps := make([]string, 3)
+	for index := 0; index < 3; index++ {
+		randomInts[index] = rand.Intn(maxInt-minInt) + minInt + 1
+		randomOps[index] = operators[rand.Intn(len(operators))]
+	}
+	randomInts[3] = rand.Intn(maxInt-minInt) + minInt + 1
+	return fmt.Sprintf(
+		"%d %s %d %s %d %s %d",
+		randomInts[0],
+		randomOps[0],
+		randomInts[1],
+		randomOps[1],
+		randomInts[2],
+		randomOps[2],
+		randomInts[3],
+	)
 }
