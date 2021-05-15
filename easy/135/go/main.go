@@ -52,5 +52,5 @@ func buildEquation(minInt, maxInt int) string {
 func verifyAnswer(equation string, answer int) bool {
 	expression, _ := govaluate.NewEvaluableExpression(equation)
 	result, _ := expression.Evaluate(nil)
-	return result == answer
+	return int(result.(float64)) == answer
 }
