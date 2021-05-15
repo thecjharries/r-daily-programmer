@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
