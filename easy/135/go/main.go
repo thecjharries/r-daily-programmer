@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"math/rand"
+
+	"github.com/knetic/govaluate"
 )
 
 var operators = []string{"+", "-", "*", "/"}
@@ -45,4 +47,10 @@ func buildEquation(minInt, maxInt int) string {
 		randomOps[2],
 		randomInts[3],
 	)
+}
+
+func verifyAnswer(equation string, answer int) bool {
+	expression, _ := govaluate.NewEvaluableExpression(equation)
+	result, _ := expression.Evaluate(nil)
+	return result == answer
 }
