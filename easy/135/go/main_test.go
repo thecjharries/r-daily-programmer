@@ -55,3 +55,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestBuildEquation(c *C) {
+	equation := buildEquation(0, 9)
+	c.Assert(len(equation), Equals, 13)
+	c.Assert(equation, Equals, "1 * 5 * 9 + 8")
+}
