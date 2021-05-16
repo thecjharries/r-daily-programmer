@@ -89,3 +89,13 @@ func (s *MainSuite) TestNewStudent(c *C) {
 	}
 	c.Assert(NewStudent(name, grades), DeepEquals, student)
 }
+
+func (s *MainSuite) TestClassGetAverage(c *C) {
+	class := Class{
+		{
+			Name:   "ABIGAIL",
+			Grades: []float64{11, 3, 5, 20, 4, 2, 8, 17, 4, 5},
+		},
+	}
+	c.Assert(class.GetAverage(), Equals, 7.90)
+}
