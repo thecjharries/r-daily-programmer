@@ -33,11 +33,8 @@ func (s *Student) GetAverageFraction() (float64, float64) {
 }
 
 func (s *Student) GetAverage() float64 {
-	sum := float64(0)
-	for _, score := range s.Grades {
-		sum += score
-	}
-	return math.Round(sum*100/float64(len(s.Grades))) / 100
+	sum, total := s.GetAverageFraction()
+	return math.Round(sum*100/total) / 100
 }
 
 func (s *Student) String() string {
