@@ -24,6 +24,14 @@ type Student struct {
 	Grades []float64
 }
 
+func (s *Student) GetAverageFraction() (float64, float64) {
+	sum := float64(0)
+	for _, score := range s.Grades {
+		sum += score
+	}
+	return sum, float64(len(s.Grades))
+}
+
 func (s *Student) GetAverage() float64 {
 	sum := float64(0)
 	for _, score := range s.Grades {
