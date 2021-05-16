@@ -1,5 +1,9 @@
 # [08/13/13] Challenge #136 [Easy] Student Management
 
+## Go Note
+
+As normal, skipping the file i/o because it's tedious.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1kphtf/081313_challenge_136_easy_student_management/) by [u/nint22](https://old.reddit.com/user/nint22)
