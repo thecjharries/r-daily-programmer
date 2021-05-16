@@ -50,6 +50,16 @@ func NewStudent(name string, grades []float64) *Student {
 
 type Class []Student
 
+func (c *Class) GetAverage() float64 {
+	sum, total := float64(0), float64(0)
+	for _, student := range *c {
+		studentSum, studentTotal := student.GetAverageFraction()
+		sum += studentSum
+		total += studentTotal
+	}
+	return math.Round(sum*100/total) / 100
+}
+
 var zPrint = fmt.Println
 
 func main() {
