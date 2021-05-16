@@ -32,6 +32,13 @@ func (s *Student) GetAverage() float64 {
 	return math.Round(sum*100/float64(len(s.Grades))) / 100
 }
 
+func NewStudent(name string, grades []float64) *Student {
+	return &Student{
+		Name:   name,
+		Grades: grades,
+	}
+}
+
 type Class []Student
 
 var zPrint = fmt.Println
