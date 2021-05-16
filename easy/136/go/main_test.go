@@ -62,6 +62,14 @@ func (s *MainSuite) TestStudentGetAverage(c *C) {
 	c.Assert(student.GetAverage(), Equals, 7.90)
 }
 
+func (s *MainSuite) TestStudentString(c *C) {
+	student := Student{
+		Name:   "ABIGAIL",
+		Grades: []float64{11, 3, 5, 20, 4, 2, 8, 17, 4, 5},
+	}
+	c.Assert(student.String(), Equals, "ABIGAIL 7.90")
+}
+
 func (s *MainSuite) TestNewStudent(c *C) {
 	name := "ABIGAIL"
 	grades := []float64{11, 3, 5, 20, 4, 2, 8, 17, 4, 5}
