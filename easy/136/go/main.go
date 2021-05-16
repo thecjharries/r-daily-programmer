@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+type Student struct {
+	Name   string
+	Grades []float64
+}
+
+type Class []Student
+
 var zPrint = fmt.Println
 
 func main() {
