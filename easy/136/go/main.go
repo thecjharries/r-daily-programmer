@@ -60,6 +60,14 @@ func (c *Class) GetAverage() float64 {
 	return math.Round(sum*100/total) / 100
 }
 
+func (c *Class) String() (output string) {
+	output = fmt.Sprintf("%.2f\n", c.GetAverage())
+	for _, student := range *c {
+		output += fmt.Sprintf("%s\n", student.String())
+	}
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
