@@ -33,7 +33,7 @@ func (s *Student) GetAverage() float64 {
 }
 
 func (s *Student) String() string {
-	return fmt.Sprintf("%s %2f", s.Name, s.GetAverage())
+	return fmt.Sprintf("%s %.2f", s.Name, s.GetAverage())
 }
 
 func NewStudent(name string, grades []float64) *Student {
