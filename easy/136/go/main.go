@@ -14,11 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Student struct {
 	Name   string
 	Grades []float64
+}
+
+func (s *Student) GetAverage() float64 {
+	sum := float64(0)
+	for _, score := range s.Grades {
+		sum += score
+	}
+	return math.Round(sum*100/float64(len(s.Grades))) / 100
 }
 
 type Class []Student
