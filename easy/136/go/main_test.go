@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestStudentGetAverage(c *C) {
+	student := Student{
+		Name:   "ABIGAIL",
+		Grades: []float64{11, 3, 5, 20, 4, 2, 8, 17, 4, 5},
+	}
+	c.Assert(student.GetAverage(), Equals, 7.90)
+}
