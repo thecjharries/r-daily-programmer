@@ -99,3 +99,16 @@ func (s *MainSuite) TestClassGetAverage(c *C) {
 	}
 	c.Assert(class.GetAverage(), Equals, 7.90)
 }
+
+func (s *MainSuite) TestClassString(c *C) {
+	class := Class{
+		{
+			Name:   "ABIGAIL",
+			Grades: []float64{11, 3, 5, 20, 4, 2, 8, 17, 4, 5},
+		},
+	}
+	output := `7.90
+ABIGAIL 7.90
+`
+	c.Assert(class.String(), Equals, output)
+}
