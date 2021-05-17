@@ -73,4 +73,29 @@ func (s *MainSuite) TestRotateWords(c *C) {
 		"!",
 	}
 	c.Assert(rotateWords(input), DeepEquals, output)
+	input = []string{
+		"Kernel",
+		"Microcontroller",
+		"Register",
+		"Memory",
+		"Operator",
+	}
+	output = []string{
+		"KMRMO",
+		"eieep",
+		"rcgme",
+		"nrior",
+		"eosra",
+		"lctyt",
+		" oe o",
+		" nr r",
+		" t   ",
+		" r   ",
+		" o   ",
+		" l   ",
+		" l   ",
+		" e   ",
+		" r   ",
+	}
+	c.Assert(rotateWords(input), DeepEquals, output)
 }
