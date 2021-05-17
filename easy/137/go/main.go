@@ -39,6 +39,7 @@ func rotateWords(words []string) (rotated []string) {
 		if 0 < currentActiveWords {
 			rotated = append(rotated, currentRow)
 		}
+		wordIndex++
 		activeWords = currentActiveWords
 	}
 	return
