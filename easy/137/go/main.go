@@ -21,3 +21,25 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func rotateWords(words []string) (rotated []string) {
+	activeWords := len(words)
+	wordIndex := 0
+	for 0 < activeWords {
+		currentRow := ""
+		currentActiveWords := len(words)
+		for index := 0; index < len(words); index++ {
+			if len(words[index]) <= wordIndex {
+				currentRow += " "
+				currentActiveWords--
+			} else {
+				currentRow += string(words[index][wordIndex])
+			}
+		}
+		if 0 < currentActiveWords {
+			rotated = append(rotated, currentRow)
+		}
+		activeWords = currentActiveWords
+	}
+	return
+}
