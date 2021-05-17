@@ -1,5 +1,9 @@
 # [08/13/13] Challenge #137 [Easy] String Transposition
 
+## Go Note
+
+As normal, skipping the file i/o because it's tedious.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1m1jam/081313_challenge_137_easy_string_transposition/) by [u/nint22](https://old.reddit.com/user/nint22)
