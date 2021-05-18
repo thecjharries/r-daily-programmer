@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type Particle struct {
+	Mass float64
+	X    float64
+	Y    float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
