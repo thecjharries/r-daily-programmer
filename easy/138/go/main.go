@@ -26,7 +26,7 @@ type Particle struct {
 }
 
 func (p *Particle) SimplifiedColombsLaw(secondParticle Particle) float64 {
-	return math.Round((p.Mass*secondParticle.Mass)*1000/math.Sqrt(math.Pow(p.X-secondParticle.X, 2)+math.Pow(p.Y-secondParticle.Y, 2))) / 1000
+	return math.Round((p.Mass*secondParticle.Mass)*10000/math.Pow(math.Sqrt(math.Pow(p.X-secondParticle.X, 2)+math.Pow(p.Y-secondParticle.Y, 2)), 2)) / 10000
 }
 
 var zPrint = fmt.Println
