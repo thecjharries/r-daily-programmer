@@ -53,3 +53,31 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParticleSimplifiedColombsLaw(c *C) {
+	var particle1, particle2 Particle
+	particle1 = Particle{
+		Mass: 1,
+		X:    -5.2,
+		Y:    3.8,
+	}
+	particle2 = Particle{
+		Mass: 1,
+		X:    8.7,
+		Y:    -4.1,
+	}
+	c.Assert(particle1.SimplifiedColombsLaw(particle2), Equals, particle2.SimplifiedColombsLaw(particle1))
+	c.Assert(particle1.SimplifiedColombsLaw(particle2), Equals, 0.0039)
+	particle1 = Particle{
+		Mass: 4,
+		X:    0.04,
+		Y:    -0.02,
+	}
+	particle2 = Particle{
+		Mass: 4,
+		X:    -0.02,
+		Y:    -0.03,
+	}
+	c.Assert(particle1.SimplifiedColombsLaw(particle2), Equals, particle2.SimplifiedColombsLaw(particle1))
+	c.Assert(particle1.SimplifiedColombsLaw(particle2), Equals, 4324.3243)
+}
