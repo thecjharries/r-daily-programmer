@@ -29,10 +29,11 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func isPanagram(word string) bool {
+func isPanagram(phrase string) bool {
 	workingAlphabet := romanAlphabet
+	sanitizedPhrase := strings.ToLower(phrase)
 	for _, letter := range romanAlphabetSlice {
-		if strings.Contains(word, letter) {
+		if strings.Contains(sanitizedPhrase, letter) {
 			workingAlphabet = strings.ReplaceAll(workingAlphabet, letter, "")
 		}
 	}
