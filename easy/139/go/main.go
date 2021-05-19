@@ -14,12 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+
+var romanAlphabetSlice = strings.Split(romanAlphabet, "")
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func isPanagram(word string) bool {
+	workingAlphabet := romanAlphabet
+	for _, letter := range romanAlphabetSlice {
+		if strings.Contains(word, letter) {
+			workingAlphabet = strings.ReplaceAll(workingAlphabet, letter, "")
+		}
+	}
+	return "" == workingAlphabet
 }
