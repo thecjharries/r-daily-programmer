@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+const romanAlphabet string = "abcdefghijklmnopqrstuvwxyz"
+
 var zPrint = fmt.Println
 
 func main() {
