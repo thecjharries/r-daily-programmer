@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsPanagram(c *C) {
+	c.Assert(isPanagram("The quick brown fox jumps over the lazy dog."), Equals, true)
+	c.Assert(isPanagram("Pack my box with five dozen liquor jugs"), Equals, true)
+	c.Assert(isPanagram("Saxophones quickly blew over my jazzy hair"), Equals, false)
+
+}
