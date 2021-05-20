@@ -41,3 +41,7 @@ func writeInCamelCase(words string) (output string) {
 	}
 	return
 }
+
+func writeInSnakeCase(words string) string {
+	return strings.ReplaceAll(sanitizeVariableNameString(words), " ", "_")
+}
