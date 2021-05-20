@@ -19,7 +19,7 @@ import (
 	"regexp"
 )
 
-var notAllowedPattern = regexp.MustCompile(`[^a-zA-Z0-9_]`)
+var notAllowedPattern = regexp.MustCompile(`[^a-zA-Z0-9_ ]`)
 
 var zPrint = fmt.Println
 
@@ -28,7 +28,7 @@ func main() {
 }
 
 // Note this doesn't ensure we start with a letter which is usually a requirement
-func sanitizeString(input string) string {
+func sanitizeVariableNameString(input string) string {
 	return notAllowedPattern.ReplaceAllString(input, "")
 }
 

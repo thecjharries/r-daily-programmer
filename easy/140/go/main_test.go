@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSanitizeVariableNameString(c *C) {
+	c.Assert(sanitizeVariableNameString("hello world"), Equals, "hello world")
+	c.Assert(sanitizeVariableNameString("hello world111"), Equals, "hello world111")
+	c.Assert(sanitizeVariableNameString("hello_world"), Equals, "hello_world")
+	c.Assert(sanitizeVariableNameString("hello-world"), Equals, "helloworld")
+}
