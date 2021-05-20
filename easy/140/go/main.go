@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 var notAllowedPattern = regexp.MustCompile(`[^a-zA-Z0-9_ ]`)
@@ -32,6 +33,11 @@ func sanitizeVariableNameString(input string) string {
 	return notAllowedPattern.ReplaceAllString(input, "")
 }
 
-func writeInCamelCase(words string) string {
-	return ""
+func writeInCamelCase(words string) (output string) {
+	exploded := strings.Split(sanitizeVariableNameString(words), " ")
+	output = exploded[0]
+	for index := 1; index < len(exploded); index++ {
+		output += strings.ToUpper(exploded[index][0:1]) + strings.ToLower(exploded[index][1:])
+	}
+	return
 }
