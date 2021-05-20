@@ -66,3 +66,9 @@ func (s *MainSuite) TestWriteInCamelCase(c *C) {
 	c.Assert(writeInCamelCase("user id"), Equals, "userId")
 	c.Assert(writeInCamelCase("map controller delegate manager"), Equals, "mapControllerDelegateManager")
 }
+
+func (s *MainSuite) TestWriteInSnakeCase(c *C) {
+	c.Assert(writeInSnakeCase("hello world"), Equals, "hello_world")
+	c.Assert(writeInSnakeCase("user id"), Equals, "user_id")
+	c.Assert(writeInSnakeCase("map controller delegate manager"), Equals, "map_controller_delegate_manager")
+}
