@@ -72,3 +72,9 @@ func (s *MainSuite) TestWriteInSnakeCase(c *C) {
 	c.Assert(writeInSnakeCase("user id"), Equals, "user_id")
 	c.Assert(writeInSnakeCase("map controller delegate manager"), Equals, "map_controller_delegate_manager")
 }
+
+func (s *MainSuite) TestWriteInConstantCase(c *C) {
+	c.Assert(writeInConstantCase("hello world"), Equals, "HELLO_WORLD")
+	c.Assert(writeInConstantCase("user id"), Equals, "USER_ID")
+	c.Assert(writeInConstantCase("map controller delegate manager"), Equals, "MAP_CONTROLLER_DELEGATE_MANAGER")
+}
