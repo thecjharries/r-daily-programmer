@@ -45,3 +45,7 @@ func writeInCamelCase(words string) (output string) {
 func writeInSnakeCase(words string) string {
 	return strings.ReplaceAll(sanitizeVariableNameString(words), " ", "_")
 }
+
+func writeInConstantCase(words string) string {
+	return strings.ToUpper(strings.ReplaceAll(sanitizeVariableNameString(words), " ", "_"))
+}
