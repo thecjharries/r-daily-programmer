@@ -60,3 +60,9 @@ func (s *MainSuite) TestSanitizeVariableNameString(c *C) {
 	c.Assert(sanitizeVariableNameString("hello_world"), Equals, "hello_world")
 	c.Assert(sanitizeVariableNameString("hello-world"), Equals, "helloworld")
 }
+
+func (s *MainSuite) TestWriteInCamelCase(c *C) {
+	c.Assert(writeInCamelCase("hello world"), Equals, "helloWorld")
+	c.Assert(writeInCamelCase("user id"), Equals, "userId")
+	c.Assert(writeInCamelCase("map controller delegate manager"), Equals, "mapControllerDelegateManager")
+}
