@@ -14,10 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var notAllowedPattern = regexp.MustCompile(`[^a-zA-Z0-9_]`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+// Note this doesn't ensure we start with a letter which is usually a requirement
+func sanitizeString(input string) string {
+	return notAllowedPattern.ReplaceAllString(input, "")
+}
+
+func writeInCamelCase(words string) string {
+	return ""
 }
