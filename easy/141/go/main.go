@@ -21,3 +21,12 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func computeFletcher16(data []byte) uint16 {
+	var simpleSum, modularSum uint16
+	for index := 0; index < len(data); index++ {
+		simpleSum = (simpleSum + uint16(data[index])) % 255
+		modularSum = (simpleSum + modularSum) % 255
+	}
+	return (modularSum << 8) | simpleSum
+}
