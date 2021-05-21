@@ -19,7 +19,8 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	input := "Fletcher"
+	_, _ = zPrint(fmt.Sprintf("%04X", computeFletcher16([]byte(input))))
 }
 
 func computeFletcher16(data []byte) uint16 {
