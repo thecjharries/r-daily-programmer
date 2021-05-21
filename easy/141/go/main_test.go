@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestComputeFletcher16(c *C) {
+	var checksum uint16
+	checksum = computeFletcher16([]byte("Fletcher"))
+	c.Assert(fmt.Sprintf("%04X", checksum), Equals, "D330")
+	checksum = computeFletcher16([]byte("Sally sells seashells by the seashore."))
+	c.Assert(fmt.Sprintf("%04X", checksum), Equals, "D23E")
+	checksum = computeFletcher16([]byte("Les chaussettes de l'archi-duchesse, sont-elles seches ou archi-seches ?"))
+	c.Assert(fmt.Sprintf("%04X", checksum), Equals, "404D")
+}
