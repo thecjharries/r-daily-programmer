@@ -21,3 +21,14 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func dropSand(sandMap [][]rune) [][]rune {
+	for nextRow := 1; nextRow < len(sandMap); nextRow++ {
+		for column := 0; column < len(sandMap[nextRow]); column++ {
+			if ' ' == sandMap[nextRow][column] && '.' == sandMap[nextRow-1][column] {
+				sandMap[nextRow-1][column], sandMap[nextRow][column] = sandMap[nextRow][column], sandMap[nextRow-1][column]
+			}
+		}
+	}
+	return sandMap
+}
