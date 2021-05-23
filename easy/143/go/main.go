@@ -79,3 +79,13 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func convertBrailleToRoman(brailleLetters []string) (romanLetters string) {
+	for _, letter := range brailleLetters {
+		foundLetter, exists := brailleToRoman[letter]
+		if exists {
+			romanLetters += foundLetter
+		}
+	}
+	return
+}
