@@ -53,3 +53,20 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertBrailleToRoman(c *C) {
+	input := []string{
+		"O.OO..",
+		"O..O..",
+		"O.O.O.",
+		"O.O.O.",
+		"O..OO.",
+		".OOO.O",
+		"O..OO.",
+		"O.OOO.",
+		"O.O.O.",
+		"OO.O..",
+	}
+	output := "helloworld"
+	c.Assert(convertBrailleToRoman(input), Equals, output)
+}
