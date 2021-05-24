@@ -22,8 +22,8 @@ func (p *PriceList) GeneratePriceDifferences(newList PriceList) map[string]strin
 	differences := make(map[string]string)
 	for element, newPrice := range newList {
 		currentPrice, exists := (*p)[element]
-		if exists && 0 != currentPrice-newPrice {
-			differences[element] = fmt.Sprintf("%+d", currentPrice-newPrice)
+		if exists && 0 != newPrice-currentPrice {
+			differences[element] = fmt.Sprintf("%+d", newPrice-currentPrice)
 		}
 	}
 	return differences
