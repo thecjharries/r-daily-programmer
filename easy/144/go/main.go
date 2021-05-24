@@ -18,6 +18,17 @@ import "fmt"
 
 type PriceList map[string]int
 
+func (p *PriceList) PriceDifferences(newList PriceList) map[string]string {
+	differences := make(map[string]string)
+	for element, newPrice := range newList {
+		currentPrice, exists := (*p)[element]
+		if exists && 0 != currentPrice-newPrice {
+			differences[element] = fmt.Sprintf("%+d", currentPrice-newPrice)
+		}
+	}
+	return differences
+}
+
 var zPrint = fmt.Println
 
 func main() {
