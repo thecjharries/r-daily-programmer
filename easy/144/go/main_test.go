@@ -53,3 +53,24 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPriceListGeneratePriceDifferences(c *C) {
+	first := PriceList{
+		"CarriageBolt": 45,
+		"Eyebolt":      50,
+		"Washer":       120,
+		"Rivet":        10,
+	}
+	second := PriceList{
+		"CarriageBolt": 45,
+		"Eyebolt":      45,
+		"Washer":       140,
+		"Rivet":        10,
+	}
+	difference := map[string]string{
+
+		"Eyebolt": "-5",
+		"Washer":  "+20",
+	}
+	c.Assert(first.GeneratePriceDifferences(second), DeepEquals, difference)
+}
