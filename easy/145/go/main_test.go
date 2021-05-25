@@ -59,3 +59,9 @@ func (s *MainSuite) TestGenerateTreeOdd(c *C) {
 	output = " * \n***\n###\n"
 	c.Assert(generateTree(3, "*", "#"), Equals, output)
 }
+
+func (s *MainSuite) TestGenerateTreeEven(c *C) {
+	var output string
+	output = "  *  \n *** \n*****\n ### \n"
+	c.Assert(generateTree(4, "*", "#"), Equals, output)
+}
