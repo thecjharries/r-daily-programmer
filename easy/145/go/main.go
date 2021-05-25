@@ -31,14 +31,14 @@ func generateTree(baseWidth int, leaves, trunk string) (output string) {
 	}
 	for leafCount := 1; leafCount <= baseWidth; leafCount += 2 {
 		output += fmt.Sprintf(
-			"%s%s%s",
+			"%s%s%s\n",
 			strings.Repeat(" ", (baseWidth-leafCount)/2),
 			strings.Repeat(leaves, leafCount),
 			strings.Repeat(" ", (baseWidth-leafCount)/2),
 		)
 	}
 	output += fmt.Sprintf(
-		"%s%s%s",
+		"%s%s%s\n",
 		strings.Repeat(" ", (baseWidth-3)/2),
 		strings.Repeat(leaves, 3),
 		strings.Repeat(" ", (baseWidth-3)/2),
