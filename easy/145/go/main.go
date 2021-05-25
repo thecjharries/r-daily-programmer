@@ -40,7 +40,7 @@ func generateTree(baseWidth int, leaves, trunk string) (output string) {
 	output += fmt.Sprintf(
 		"%s%s%s\n",
 		strings.Repeat(" ", (baseWidth-3)/2),
-		strings.Repeat(leaves, 3),
+		strings.Repeat(trunk, 3),
 		strings.Repeat(" ", (baseWidth-3)/2),
 	)
 	return
