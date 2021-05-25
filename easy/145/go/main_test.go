@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGenerateTreeOdd(c *C) {
+	var output string
+	output = " * \n***\n###\n"
+	c.Assert(generateTree(3, "*", "#"), Equals, output)
+}
