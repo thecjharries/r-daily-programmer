@@ -14,10 +14,34 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func generateTree(baseWidth int, leaves, trunk string) (output string) {
+	if 0 == baseWidth%2 {
+		baseWidth += 1
+	}
+	for leafCount := 1; leafCount <= baseWidth; leafCount += 2 {
+		output += fmt.Sprintf(
+			"%s%s%s",
+			strings.Repeat(" ", (baseWidth-leafCount)/2),
+			strings.Repeat(leaves, leafCount),
+			strings.Repeat(" ", (baseWidth-leafCount)/2),
+		)
+	}
+	output += fmt.Sprintf(
+		"%s%s%s",
+		strings.Repeat(" ", (baseWidth-3)/2),
+		strings.Repeat(leaves, 3),
+		strings.Repeat(" ", (baseWidth-3)/2),
+	)
+	return
 }
