@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestComputeSideLength(c *C) {
+	c.Assert(computeSideLength(5, 3.7), Equals, 4.349610866964301)
+	c.Assert(computeSideLength(100, 1.0), Equals, 0.06282151815625658)
+}
