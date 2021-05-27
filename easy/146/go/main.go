@@ -28,3 +28,7 @@ func main() {
 func computeSideLength(sides, circumradius float64) float64 {
 	return 2 * math.Sin(math.Pi/sides) * circumradius
 }
+
+func computePerimeter(sides, circumradius float64) float64 {
+	return math.Round(sides*computeSideLength(sides, circumradius)*1000) / 1000
+}
