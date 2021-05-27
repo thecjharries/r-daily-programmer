@@ -58,3 +58,8 @@ func (s *MainSuite) TestComputeSideLength(c *C) {
 	c.Assert(computeSideLength(5, 3.7), Equals, 4.349610866964301)
 	c.Assert(computeSideLength(100, 1.0), Equals, 0.06282151815625658)
 }
+
+func (s *MainSuite) TestComputePerimeter(c *C) {
+	c.Assert(computePerimeter(5, 3.7), Equals, 21.748)
+	c.Assert(computePerimeter(100, 1.0), Equals, 6.282)
+}
