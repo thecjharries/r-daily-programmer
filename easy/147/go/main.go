@@ -21,3 +21,10 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func isScoreValid(score int) bool {
+	if (0 == score) || (3 == score) || (5 < score) {
+		return true
+	}
+	return false
+}
