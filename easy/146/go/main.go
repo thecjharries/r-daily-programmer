@@ -14,10 +14,17 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func computeSideLength(sides, circumradius float64) float64 {
+	return 2 * math.Sin(math.Pi/sides) * circumradius
 }
