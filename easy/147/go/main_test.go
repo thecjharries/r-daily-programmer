@@ -53,3 +53,16 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsScoreValid(c *C) {
+	c.Assert(isScoreValid(-100), Equals, false)
+	c.Assert(isScoreValid(-1), Equals, false)
+	c.Assert(isScoreValid(0), Equals, true)
+	c.Assert(isScoreValid(1), Equals, false)
+	c.Assert(isScoreValid(2), Equals, false)
+	c.Assert(isScoreValid(3), Equals, true)
+	c.Assert(isScoreValid(4), Equals, false)
+	c.Assert(isScoreValid(5), Equals, false)
+	c.Assert(isScoreValid(6), Equals, true)
+	c.Assert(isScoreValid(100), Equals, true)
+}
