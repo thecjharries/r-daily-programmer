@@ -19,7 +19,7 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(countLockPositions(5, 1, 2, 3))
 }
 
 // Left the calculation unsimplified to illustrate the steps.
