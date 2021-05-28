@@ -21,3 +21,14 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+// Left the calculation unsimplified to illustrate the steps.
+func countLockPositions(lockSize, firstPosition, secondPosition, thirdPosition int) (result int) {
+	result = 2 * lockSize
+	result += firstPosition
+	result += lockSize
+	// Add the extra lockSize to ensure number is positive
+	result += (firstPosition - secondPosition + lockSize) % lockSize
+	result += (thirdPosition - secondPosition + lockSize) % lockSize
+	return
+}
