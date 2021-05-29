@@ -29,5 +29,5 @@ func main() {
 }
 
 func stripSpaces(input string) string {
-	return strings.ReplaceAll(input, `\s`, "")
+	return strings.ReplaceAll(input, " ", "")
 }
