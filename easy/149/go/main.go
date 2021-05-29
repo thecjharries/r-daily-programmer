@@ -31,3 +31,12 @@ func main() {
 func stripSpaces(input string) string {
 	return strings.ReplaceAll(input, " ", "")
 }
+
+func removeVowels(input string) (consonants, vowels string) {
+	vowelsMatches := vowelsPattern.FindAllStringSubmatch(input, -1)
+	for _, match := range vowelsMatches {
+		vowels += match[0]
+	}
+	consonants = vowelsPattern.ReplaceAllString(stripSpaces(input), "")
+	return
+}
