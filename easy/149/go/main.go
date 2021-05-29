@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 var vowelsPattern = regexp.MustCompile(`([aeiou]+)`)
@@ -25,4 +26,8 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func stripSpaces(input string) string {
+	return strings.ReplaceAll(input, `\s`, "")
 }
