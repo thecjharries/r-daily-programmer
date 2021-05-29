@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var vowelsPattern = regexp.MustCompile(`([aeiou]+)`)
 
 var zPrint = fmt.Println
 
