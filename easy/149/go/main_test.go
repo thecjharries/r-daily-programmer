@@ -57,3 +57,19 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestStripSpaces(c *C) {
 	c.Assert(stripSpaces("hello world foo bar"), Equals, "helloworldfoobar")
 }
+
+func (s *MainSuite) TestRemoveVowels(c *C) {
+	var input, consonants, foundConsonants, vowels, foundVowels string
+	input = "all those who believe in psychokinesis raise my hand"
+	consonants = "llthswhblvnpsychknssrsmyhnd"
+	vowels = "aoeoeieeioieiaiea"
+	foundConsonants, foundVowels = removeVowels(input)
+	c.Assert(foundConsonants, Equals, consonants)
+	c.Assert(foundVowels, Equals, vowels)
+	input = "did you hear about the excellent farmer who was outstanding in his field"
+	consonants = "ddyhrbtthxcllntfrmrwhwststndngnhsfld"
+	vowels = "ioueaaoueeeeaeoaouaiiiie"
+	foundConsonants, foundVowels = removeVowels(input)
+	c.Assert(foundConsonants, Equals, consonants)
+	c.Assert(foundVowels, Equals, vowels)
+}
