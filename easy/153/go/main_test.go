@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFactorial(c *C) {
+	c.Assert(factorial(1), Equals, 1)
+	c.Assert(factorial(2), Equals, 2)
+	c.Assert(factorial(3), Equals, 6)
+}
