@@ -21,3 +21,10 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func factorial(n int) int {
+	if 2 > n {
+		return 1
+	}
+	return n * factorial(n-1)
+}
