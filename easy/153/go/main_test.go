@@ -59,3 +59,9 @@ func (s *MainSuite) TestFactorial(c *C) {
 	c.Assert(factorial(2), Equals, 2)
 	c.Assert(factorial(3), Equals, 6)
 }
+
+func (s *MainSuite) TestPascalsPyramid(c *C) {
+	c.Assert(pascalsPyramid(0), DeepEquals, [][]int{{1}})
+	c.Assert(pascalsPyramid(1), DeepEquals, [][]int{{1, 1}, {1}})
+	c.Assert(pascalsPyramid(2), DeepEquals, [][]int{{1, 2, 1}, {2, 2}, {1}})
+}

@@ -32,7 +32,7 @@ func factorial(n int) int {
 func pascalsPyramid(layer int) (pyramid [][]int) {
 	for row := 0; row <= layer; row++ {
 		var pyramidRow []int
-		for a := layer - row; a > 0; a-- {
+		for a := layer - row; a >= 0; a-- {
 			b := layer - row - a
 			pyramidRow = append(pyramidRow, factorial(layer)/(factorial(row)*factorial(a)*factorial(b)))
 		}
