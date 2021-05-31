@@ -21,3 +21,10 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func decodePrompt(input string) (result string) {
+	for _, character := range input {
+		result += string(character - 4)
+	}
+	return
+}
