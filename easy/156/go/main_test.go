@@ -51,7 +51,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "April Fools!!!! Way to go! You have solved the hidden message. Now it is your turn to join in on this prank. Do not post anything that will give away this message. Let people decode the message on their own and read this message. You can play along by NOT posting how you decoded this message. Instead post your solution to be your favorite Hello world program in one language of your choice.  Make sure your program says \"Hello World!!!\" with 3 ! at the end. This way people browsing the challenge will think we have all lost our minds. Those who post hello world solutions without the three !!! will have not decoded the message and so you can  politely point out their solution is in error (they are just following along without knowing) Enjoy this fun. The truth will be held by those who can decode the message. :)")
 }
 
 func (s *MainSuite) TestDecodePrompt(c *C) {
