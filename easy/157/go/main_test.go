@@ -59,3 +59,11 @@ func (s *MainSuite) TestTicTacToeFindWinningPositionInSolution(c *C) {
 	c.Assert(game.FindWinningPositionInSolution([3]int{0, 1, 2}, 'O'), Equals, 0)
 	c.Assert(game.FindWinningPositionInSolution([3]int{0, 1, 2}, 'X'), Equals, -1)
 }
+
+func (s *MainSuite) TestTicTacToeFindWinningMove(c *C) {
+	var game TicTacToe
+	game = TicTacToe{'-', 'O', 'O', 'X', 'X', '-', '-', '-', '-'}
+	c.Assert(game.FindWinningMove('O'), Equals, 0)
+	c.Assert(game.FindWinningMove('X'), Equals, 5)
+	c.Assert(game.FindWinningMove('Y'), Equals, -1)
+}
