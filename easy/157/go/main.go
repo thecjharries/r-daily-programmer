@@ -36,7 +36,7 @@ func (t *TicTacToe) FindWinningPositionInSolution(solution [3]int, piece rune) (
 		if piece == (*t)[position] {
 			foundCount++
 		}
-		if '-' == position {
+		if '-' == (*t)[position] {
 			solutionPosition = position
 		}
 	}

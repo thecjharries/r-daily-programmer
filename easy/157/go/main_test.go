@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTicTacToeFindWinningPositionInSolution(c *C) {
+	game := TicTacToe{'-', 'O', 'O', 'X', 'X', '-', '-', '-', '-'}
+	c.Assert(game.FindWinningPositionInSolution([3]int{0, 1, 2}, 'O'), Equals, 0)
+	c.Assert(game.FindWinningPositionInSolution([3]int{0, 1, 2}, 'X'), Equals, -1)
+}
