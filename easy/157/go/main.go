@@ -46,6 +46,16 @@ func (t *TicTacToe) FindWinningPositionInSolution(solution [3]int, piece rune) (
 	return -1
 }
 
+func (t *TicTacToe) FindWinningMove(piece rune) (solutionPosition int) {
+	for _, possibleSolution := range solutionIndices {
+		solutionPosition = t.FindWinningPositionInSolution(possibleSolution, piece)
+		if -1 < solutionPosition {
+			return
+		}
+	}
+	return -1
+}
+
 var zPrint = fmt.Println
 
 func main() {
