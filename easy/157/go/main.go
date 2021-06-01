@@ -27,7 +27,7 @@ var solutionIndices = [][3]int{
 	{2, 4, 6},
 }
 
-type TicTacToe [3][3]int
+type TicTacToe [9]int
 
 var zPrint = fmt.Println
 
