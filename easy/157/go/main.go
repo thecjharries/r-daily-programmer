@@ -27,7 +27,24 @@ var solutionIndices = [][3]int{
 	{2, 4, 6},
 }
 
-type TicTacToe [9]int
+type TicTacToe [9]rune
+
+func (t *TicTacToe) FindWinningPositionInSolution(solution [3]int, piece rune) (solutionPosition int) {
+	solutionPosition = -1
+	foundCount := 0
+	for _, position := range solution {
+		if piece == (*t)[position] {
+			foundCount++
+		}
+		if '-' == position {
+			solutionPosition = position
+		}
+	}
+	if 2 == foundCount {
+		return solutionPosition
+	}
+	return -1
+}
 
 var zPrint = fmt.Println
 
