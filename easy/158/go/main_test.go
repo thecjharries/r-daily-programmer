@@ -55,5 +55,5 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestDiscoverTornNumbers(c *C) {
-	c.Assert(discoverTornNumbers(), DeepEquals, []int{9801, 3025})
+	c.Assert(discoverTornNumbers(), DeepEquals, []int{3025, 9801})
 }

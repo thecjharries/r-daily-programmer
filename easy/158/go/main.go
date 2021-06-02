@@ -26,8 +26,8 @@ func main() {
 }
 
 func discoverTornNumbers() (tornNumbers []int) {
-	for lower := 1; lower < 100; lower++ {
-		for upper := 10; upper < 100; upper++ {
+	for upper := 10; upper < 100; upper++ {
+		for lower := 1; lower < 100; lower++ {
 			potentialNumber := 100*upper + lower
 			if (upper+lower)*(upper+lower) == potentialNumber {
 				potentialNumberString := strconv.Itoa(potentialNumber)
