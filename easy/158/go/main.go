@@ -14,10 +14,32 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func discoverTornNumbers() (tornNumbers []int) {
+	for lower := 1; lower < 100; lower++ {
+		for upper := 10; upper < 100; upper++ {
+			potentialNumber := 100*upper + lower
+			if (upper+lower)*(upper+lower) == potentialNumber {
+				potentialNumberString := strconv.Itoa(potentialNumber)
+				unique := make(map[rune]bool)
+				for _, element := range potentialNumberString {
+					unique[element] = true
+				}
+				if 4 == len(unique) {
+					tornNumbers = append(tornNumbers, potentialNumber)
+				}
+			}
+		}
+	}
+	return
 }
