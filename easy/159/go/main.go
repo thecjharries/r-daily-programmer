@@ -20,11 +20,12 @@ type RpsGame map[string]map[string]string
 
 // This provides an arbitrary value because maps are not sorted
 // This is impossible to test reliably
-func (r *RpsGame) ComputerMove() string {
+func (r *RpsGame) ComputerMove() (move string) {
 	for key := range *r {
-		return key
+		move = key
+		break
 	}
-	return ""
+	return
 }
 
 var RockPaperScissorsLizardSpock = RpsGame{
