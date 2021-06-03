@@ -29,15 +29,14 @@ func (r *RpsGame) ComputerMove() (move string) {
 }
 
 func (r *RpsGame) Round(humanMove string) string {
-	var subject, object string
-	action := "???"
-	winner := "Neither"
 	computerMove := r.ComputerMove()
+	subject := humanMove
+	action := "???"
+	object := computerMove
+	winner := "Neither"
 	humanResult, humanOk := (*r)[humanMove][computerMove]
 	if humanOk {
-		subject = humanMove
 		action = humanResult
-		object = computerMove
 	}
 	computerResult, computerOk := (*r)[humanMove][computerMove]
 	if computerOk {
