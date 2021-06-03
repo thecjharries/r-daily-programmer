@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type RpsGame map[string]map[string]string
+
 var RockPaperScissorsLizardSpock = map[string]map[string]string{
 	"rock": {
 		"scissors": "crushes",
