@@ -16,6 +16,29 @@ package main
 
 import "fmt"
 
+var RockPaperScissorsLizardSpock = map[string]map[string]string{
+	"rock": {
+		"scissors": "crushes",
+		"lizard":   "crushes",
+	},
+	"paper": {
+		"rock":  "covers",
+		"spock": "disproves",
+	},
+	"scissors": {
+		"paper":  "cuts",
+		"lizard": "decapitates",
+	},
+	"lizard": {
+		"paper": "eats",
+		"spock": "poisons",
+	},
+	"spock": {
+		"rock":     "vaporizes",
+		"scissors": "smashes",
+	},
+}
+
 var zPrint = fmt.Println
 
 func main() {
