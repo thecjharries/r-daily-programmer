@@ -46,11 +46,13 @@ func (s *MainSuite) TearDownTest(c *C) {
 	zPrint = fmt.Println
 }
 
+// This should, in theory, test all branches. It might not b/c of the randomness
+// of ComputerMove and our inability to derandomize that
 func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 0)
 	c.Assert(printSpyContents, Equals, "")
 	main()
-	c.Assert(printCallCount, Equals, 1)
+	c.Assert(printCallCount, Equals, 5)
 }
 
 func (s *MainSuite) TestRpsGameComputerMove(c *C) {
