@@ -28,6 +28,26 @@ func (r *RpsGame) ComputerMove() (move string) {
 	return
 }
 
+func (r *RpsGame) Round(humanMove string) string {
+	var subject, object string
+	action := "???"
+	winner := "Neither"
+	computerMove := r.ComputerMove()
+	humanResult, humanOk := (*r)[humanMove][computerMove]
+	if humanOk {
+		subject = humanMove
+		action = humanResult
+		object = computerMove
+	}
+	computerResult, computerOk := (*r)[humanMove][computerMove]
+	if computerOk {
+		subject = computerMove
+		action = computerResult
+		object = humanMove
+	}
+	return fmt.Sprintf("%s %s %s; %s wins", subject, action, object, winner)
+}
+
 var RockPaperScissorsLizardSpock = RpsGame{
 	"rock": {
 		"scissors": "crushes",
