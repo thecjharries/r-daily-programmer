@@ -37,12 +37,14 @@ func (r *RpsGame) Round(humanMove string) string {
 	humanResult, humanOk := (*r)[humanMove][computerMove]
 	if humanOk {
 		action = humanResult
+		winner = "human"
 	}
-	computerResult, computerOk := (*r)[humanMove][computerMove]
+	computerResult, computerOk := (*r)[computerMove][humanMove]
 	if computerOk {
 		subject = computerMove
 		action = computerResult
 		object = humanMove
+		winner = "computer"
 	}
 	return fmt.Sprintf("%s %s %s; %s wins", subject, action, object, winner)
 }
