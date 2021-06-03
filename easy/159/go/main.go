@@ -73,5 +73,5 @@ var RockPaperScissorsLizardSpock = RpsGame{
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(RockPaperScissorsLizardSpock.Round("test"))
 }
