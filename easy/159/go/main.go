@@ -18,6 +18,15 @@ import "fmt"
 
 type RpsGame map[string]map[string]string
 
+// This provides an arbitrary value because maps are not sorted
+// This is impossible to test reliably
+func (r *RpsGame) ComputerMove() string {
+	for key := range *r {
+		return key
+	}
+	return ""
+}
+
 var RockPaperScissorsLizardSpock = RpsGame{
 	"rock": {
 		"scissors": "crushes",
