@@ -68,6 +68,30 @@ func (t *PromptTriangle) ComputeEdgeA() {
 	}
 }
 
+func (t *PromptTriangle) ComputeEdgeB() {
+	if 0 < t.b {
+		return
+	}
+	if 0 < t.c {
+		if 0 < t.a {
+			t.b = math.Sqrt(math.Pow(t.c, 2) - math.Pow(t.a, 2))
+			return
+		}
+		if 0 < t.B {
+			t.b = math.Sin(t.B) * t.c
+			return
+		}
+		if 0 < t.A {
+			t.b = math.Cos(t.A) * t.c
+			return
+		}
+	}
+	if 0 < t.B && 0 < t.a && 0 < t.A {
+		t.a = math.Sin(t.B) * t.a / math.Sin(t.A)
+		return
+	}
+}
+
 func (t *PromptTriangle) ComputeEdgeC() {
 	t.c = math.Sqrt(math.Pow(t.a, 2) + math.Pow(t.b, 2))
 }
