@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+type PromptTriangle struct {
+	a, b, c, A, B, C float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
