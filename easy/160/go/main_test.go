@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -68,7 +69,7 @@ func (s *MainSuite) TestNewPromptTriangle(c *C) {
 	c.Assert(result.c, Equals, 1.0)
 	c.Assert(result.A, Equals, 1.0)
 	c.Assert(result.B, Equals, 1.0)
-	c.Assert(result.C, Equals, 90.0)
+	c.Assert(result.C, Equals, math.Pi/2)
 }
 
 func (s *MainSuite) TestPromptTriangleComputeEdgeC(c *C) {

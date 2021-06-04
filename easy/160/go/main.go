@@ -25,7 +25,7 @@ type PromptTriangle struct {
 
 func NewPromptTriangle(partialValues PromptTriangle) (result *PromptTriangle) {
 	result = new(PromptTriangle)
-	result.C = 90
+	result.C = math.Pi / 2
 	if 0 < partialValues.a {
 		result.a = partialValues.a
 	}
