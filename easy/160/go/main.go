@@ -20,6 +20,27 @@ type PromptTriangle struct {
 	a, b, c, A, B, C float64
 }
 
+func NewPromptTriangle(partialValues PromptTriangle) (result *PromptTriangle) {
+	result = new(PromptTriangle)
+	result.C = 90
+	if 0 < partialValues.a {
+		result.a = partialValues.a
+	}
+	if 0 < partialValues.b {
+		result.a = partialValues.b
+	}
+	if 0 < partialValues.c {
+		result.a = partialValues.c
+	}
+	if 0 < partialValues.A {
+		result.a = partialValues.A
+	}
+	if 0 < partialValues.B {
+		result.a = partialValues.B
+	}
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
