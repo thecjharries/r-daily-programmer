@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type PromptTriangle struct {
 	a, b, c, A, B, C float64
@@ -39,6 +42,10 @@ func NewPromptTriangle(partialValues PromptTriangle) (result *PromptTriangle) {
 		result.B = partialValues.B
 	}
 	return
+}
+
+func (t *PromptTriangle) ComputeEdgeC() {
+	t.c = math.Sqrt(math.Pow(t.a, 2) + math.Pow(t.b, 2))
 }
 
 var zPrint = fmt.Println
