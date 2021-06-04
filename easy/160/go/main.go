@@ -44,6 +44,30 @@ func NewPromptTriangle(partialValues PromptTriangle) (result *PromptTriangle) {
 	return
 }
 
+func (t *PromptTriangle) ComputeEdgeA() {
+	if 0 < t.a {
+		return
+	}
+	if 0 < t.c {
+		if 0 < t.b {
+			t.a = math.Sqrt(math.Pow(t.c, 2) - math.Pow(t.b, 2))
+			return
+		}
+		if 0 < t.A {
+			t.a = math.Sin(t.A) * t.c
+			return
+		}
+		if 0 < t.B {
+			t.a = math.Cos(t.B) * t.c
+			return
+		}
+	}
+	if 0 < t.A && 0 < t.b && 0 < t.B {
+		t.a = math.Sin(t.A) * t.b / math.Sin(t.B)
+		return
+	}
+}
+
 func (t *PromptTriangle) ComputeEdgeC() {
 	t.c = math.Sqrt(math.Pow(t.a, 2) + math.Pow(t.b, 2))
 }
