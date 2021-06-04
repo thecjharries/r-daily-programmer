@@ -159,7 +159,7 @@ func (t *PromptTriangle) ComputeAngleB() {
 	}
 }
 
-func (t *PromptTriangle) ComputeEverything() {
+func (t *PromptTriangle) DiscoverUnknowns() {
 	count := 0
 	for 0 == t.a || 0 == t.b || 0 == t.c || 0 == t.A || 0 == t.B {
 		t.ComputeEdgeA()

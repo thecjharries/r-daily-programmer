@@ -81,3 +81,25 @@ func (s *MainSuite) TestPromptTriangleComputeEdgeC(c *C) {
 	triangle.ComputeEdgeC()
 	c.Assert(triangle.c, Equals, 5.0)
 }
+
+func (s *MainSuite) TestPromptTriangleComputeDiscoverUnknowns(c *C) {
+	triangle := NewPromptTriangle(PromptTriangle{
+		a: 3,
+		b: 4,
+	})
+	result := &PromptTriangle{
+		a: 3,
+		b: 4,
+		c: 5,
+		A: 0.6435011087932843,
+		B: 0.9272952180016123,
+		C: math.Pi / 2,
+	}
+	c.Assert(triangle.c, Equals, 0.0)
+	c.Assert(triangle.A, Equals, 0.0)
+	c.Assert(triangle.B, Equals, 0.0)
+	triangle.DiscoverUnknowns()
+	c.Assert(triangle, DeepEquals, result)
+	badTriangle := NewPromptTriangle(PromptTriangle{a: 1})
+	c.Assert(func() { badTriangle.DiscoverUnknowns() }, Panics, "Not enough info to define the triangle")
+}
