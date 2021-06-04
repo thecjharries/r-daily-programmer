@@ -70,3 +70,13 @@ func (s *MainSuite) TestNewPromptTriangle(c *C) {
 	c.Assert(result.B, Equals, 1.0)
 	c.Assert(result.C, Equals, 90.0)
 }
+
+func (s *MainSuite) TestPromptTriangleComputeEdgeC(c *C) {
+	triangle := PromptTriangle{
+		a: 4,
+		b: 3,
+	}
+	c.Assert(triangle.c, Equals, 0.0)
+	triangle.ComputeEdgeC()
+	c.Assert(triangle.c, Equals, 5.0)
+}
