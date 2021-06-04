@@ -2,7 +2,7 @@
 
 ## Source
 
-[Original post]() by [u/](https://old.reddit.com/user/)
+[Original post]() by [u/]()
 
 ## Prompt
 
