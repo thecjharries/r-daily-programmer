@@ -140,6 +140,25 @@ func (t *PromptTriangle) ComputeAngleA() {
 	}
 }
 
+func (t *PromptTriangle) ComputeAngleB() {
+	if 0 < t.B {
+		return
+	}
+	if 0 < t.c {
+		if 0 < t.a {
+			t.B = math.Acos(t.a / t.c)
+			return
+		}
+		if 0 < t.b {
+			t.B = math.Asin(t.b / t.c)
+			return
+		}
+	} else if 0 < t.A {
+		t.B = math.Pi/2 - t.A
+		return
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
