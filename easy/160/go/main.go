@@ -27,16 +27,16 @@ func NewPromptTriangle(partialValues PromptTriangle) (result *PromptTriangle) {
 		result.a = partialValues.a
 	}
 	if 0 < partialValues.b {
-		result.a = partialValues.b
+		result.b = partialValues.b
 	}
 	if 0 < partialValues.c {
-		result.a = partialValues.c
+		result.c = partialValues.c
 	}
 	if 0 < partialValues.A {
-		result.a = partialValues.A
+		result.A = partialValues.A
 	}
 	if 0 < partialValues.B {
-		result.a = partialValues.B
+		result.B = partialValues.B
 	}
 	return
 }

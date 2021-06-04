@@ -53,3 +53,20 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewPromptTriangle(c *C) {
+	result := NewPromptTriangle(PromptTriangle{
+		a: 1,
+		b: 1,
+		c: 1,
+		A: 1,
+		B: 1,
+		C: 1,
+	})
+	c.Assert(result.a, Equals, 1.0)
+	c.Assert(result.b, Equals, 1.0)
+	c.Assert(result.c, Equals, 1.0)
+	c.Assert(result.A, Equals, 1.0)
+	c.Assert(result.B, Equals, 1.0)
+	c.Assert(result.C, Equals, 90.0)
+}
