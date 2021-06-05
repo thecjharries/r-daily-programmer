@@ -85,6 +85,13 @@ func (s *MainSuite) TestDeckDealBlackjackHand(c *C) {
 	c.Assert((*hand)[1].Value, Equals, CardValue2)
 }
 
+func (s *MainSuite) TestDeckBlackjackCount(c *C) {
+	deck := NewDeck(1)
+	count, total := deck.BlackjackCount()
+	c.Assert(count, Equals, 2)
+	c.Assert(total, Equals, 26)
+}
+
 func (s *MainSuite) TestNewDeck(c *C) {
 	deck := NewDeck(1)
 	c.Assert(len(*deck), Equals, 52)
