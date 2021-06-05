@@ -51,6 +51,11 @@ func (c CardSuit) String() string {
 	return []string{"clubs", "diamonds", "hearts", "spades"}[c]
 }
 
+type Card struct {
+	Value CardValue
+	Suit  CardSuit
+}
+
 var zPrint = fmt.Println
 
 func main() {
