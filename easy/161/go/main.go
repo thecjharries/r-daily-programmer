@@ -71,6 +71,13 @@ func (d *Deck) Shuffle() {
 	})
 }
 
+func (d *Deck) DealBlackjackHand() *BlackjackHand {
+	hand := new(BlackjackHand)
+	*hand = append(*hand, (*d)[0], (*d)[1])
+	*d = (*d)[2:]
+	return hand
+}
+
 func NewDeck(totalDecks int) *Deck {
 	var deck Deck
 	for index := 0; index < totalDecks; index++ {
