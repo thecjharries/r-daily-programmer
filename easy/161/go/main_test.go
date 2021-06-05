@@ -85,3 +85,22 @@ func (s *MainSuite) TestBlackjackHandValue(c *C) {
 	}
 	c.Assert(hand.Value(), Equals, 11)
 }
+
+func (s *MainSuite) TestBlackjackHandIsBlackjack(c *C) {
+	var hand BlackjackHand
+	hand = BlackjackHand{
+		{CardValueAce, CardSuitClubs},
+		{CardValueQueen, CardSuitClubs},
+	}
+	c.Assert(hand.IsBlackjack(), Equals, true)
+	hand = BlackjackHand{
+		{CardValue2, CardSuitClubs},
+		{CardValue9, CardSuitClubs},
+	}
+	c.Assert(hand.IsBlackjack(), Equals, false)
+	hand = BlackjackHand{
+		{CardValue3, CardSuitClubs},
+		{CardValue9, CardSuitClubs},
+	}
+	c.Assert(hand.IsBlackjack(), Equals, false)
+}
