@@ -95,7 +95,7 @@ func (s *MainSuite) TestBlackjackHandValue(c *C) {
 		{CardValueAce, CardSuitClubs},
 		{CardValueQueen, CardSuitClubs},
 	}
-	c.Assert(hand.Value(), Equals, 11)
+	c.Assert(hand.Value(), Equals, 21)
 }
 
 func (s *MainSuite) TestBlackjackHandIsBlackjack(c *C) {

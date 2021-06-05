@@ -22,8 +22,7 @@ import (
 type CardValue int
 
 const (
-	CardValueAce CardValue = iota + 1
-	CardValue2
+	CardValue2 CardValue = iota + 2
 	CardValue3
 	CardValue4
 	CardValue5
@@ -32,6 +31,7 @@ const (
 	CardValue8
 	CardValue9
 	CardValue10
+	CardValueAce
 	CardValueJack  = CardValue10
 	CardValueQueen = CardValueJack
 	CardValueKing  = CardValueQueen
@@ -97,17 +97,21 @@ func NewDeck(totalDecks int) *Deck {
 type BlackjackHand []Card
 
 func (h *BlackjackHand) Value() (value int) {
+	aceCount := -1
 	for _, card := range *h {
 		value += card.Value.Value()
+		if CardValueAce == card.Value {
+			aceCount++
+		}
+	}
+	if 0 < aceCount {
+		value -= aceCount * 10
 	}
 	return
 }
 
 func (h *BlackjackHand) IsBlackjack() bool {
-	if 2 == len(*h) && 11 == h.Value() {
-		return CardValueAce == (*h)[0].Value || CardValueAce == (*h)[1].Value
-	}
-	return false
+	return 2 == len(*h) && 21 == h.Value()
 }
 
 var zPrint = fmt.Println
