@@ -19,18 +19,18 @@ import "fmt"
 type CardValue int
 
 const (
-	CardValue2 CardValue = iota
-	CardValue3
-	CardValue4
-	CardValue5
-	CardValue6
-	CardValue7
-	CardValue8
-	CardValue9
-	CardValue10
-	CardValueJ
-	CardValueQ
-	CardValueK
+	Value2 CardValue = iota
+	Value3
+	Value4
+	Value5
+	Value6
+	Value7
+	Value8
+	Value9
+	Value10
+	ValueJ
+	ValueQ
+	ValueK
 )
 
 func (c CardValue) Value() int {
