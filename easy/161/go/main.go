@@ -56,6 +56,8 @@ type Card struct {
 	Suit  CardSuit
 }
 
+type Deck []Card
+
 var zPrint = fmt.Println
 
 func main() {
