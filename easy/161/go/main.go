@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 type CardValue int
 
@@ -61,6 +64,12 @@ type Card struct {
 }
 
 type Deck []Card
+
+func (d *Deck) Shuffle() {
+	rand.Shuffle(len(*d), func(i, j int) {
+		(*d)[i], (*d)[j] = (*d)[j], (*d)[i]
+	})
+}
 
 func NewDeck(totalDecks int) *Deck {
 	var deck Deck
