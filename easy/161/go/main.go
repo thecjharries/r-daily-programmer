@@ -78,6 +78,17 @@ func (d *Deck) DealBlackjackHand() *BlackjackHand {
 	return hand
 }
 
+func (d *Deck) BlackjackCount() (count int, total int) {
+	for 0 < len(*d) {
+		hand := d.DealBlackjackHand()
+		total++
+		if hand.IsBlackjack() {
+			count++
+		}
+	}
+	return
+}
+
 func NewDeck(totalDecks int) *Deck {
 	var deck Deck
 	for index := 0; index < totalDecks; index++ {
