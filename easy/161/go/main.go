@@ -96,12 +96,12 @@ func (h *BlackjackHand) Value() (value int) {
 	return
 }
 
-//func (h *BlackjackHand) IsBlackjack() bool {
-//	if 2 == len(*h) {
-//
-//	}
-//	return false
-//}
+func (h *BlackjackHand) IsBlackjack() bool {
+	if 2 == len(*h) && 11 == h.Value() {
+		return CardValueAce == (*h)[0].Value || CardValueAce == (*h)[1].Value
+	}
+	return false
+}
 
 var zPrint = fmt.Println
 
