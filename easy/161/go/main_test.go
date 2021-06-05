@@ -61,3 +61,8 @@ func (s *MainSuite) TestCardValueValue(c *C) {
 func (s *MainSuite) TestCardSuitString(c *C) {
 	c.Assert(CardSuit(CardSuitClubs).String(), Equals, "clubs")
 }
+
+func (s *MainSuite) TestNewDeck(c *C) {
+	deck := NewDeck(1)
+	c.Assert(len(*deck), Equals, 52)
+}
