@@ -77,3 +77,11 @@ func (s *MainSuite) TestNewDeck(c *C) {
 	deck := NewDeck(1)
 	c.Assert(len(*deck), Equals, 52)
 }
+
+func (s *MainSuite) TestBlackjackHandValue(c *C) {
+	hand := BlackjackHand{
+		{CardValueAce, CardSuitClubs},
+		{CardValueQueen, CardSuitClubs},
+	}
+	c.Assert(hand.Value(), Equals, 11)
+}
