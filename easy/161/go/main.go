@@ -16,6 +16,36 @@ package main
 
 import "fmt"
 
+type CardValue int
+
+const (
+	CardValue2 CardValue = iota
+	CardValue3
+	CardValue4
+	CardValue5
+	CardValue6
+	CardValue7
+	CardValue8
+	CardValue9
+	CardValue10
+	CardValueJ
+	CardValueQ
+	CardValueK
+)
+
+type CardSuit int
+
+const (
+	SuitClubs CardSuit = iota
+	SuitDiamonds
+	SuitHearts
+	SuitSpades
+)
+
+func (c CardSuit) String() string {
+	return []string{"clubs", "diamonds", "hearts", "spades"}[c]
+}
+
 var zPrint = fmt.Println
 
 func main() {
