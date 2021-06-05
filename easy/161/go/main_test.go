@@ -91,11 +91,17 @@ func (s *MainSuite) TestNewDeck(c *C) {
 }
 
 func (s *MainSuite) TestBlackjackHandValue(c *C) {
-	hand := BlackjackHand{
+	var hand BlackjackHand
+	hand = BlackjackHand{
 		{CardValueAce, CardSuitClubs},
 		{CardValueQueen, CardSuitClubs},
 	}
 	c.Assert(hand.Value(), Equals, 21)
+	hand = BlackjackHand{
+		{CardValueAce, CardSuitClubs},
+		{CardValueAce, CardSuitClubs},
+	}
+	c.Assert(hand.Value(), Equals, 12)
 }
 
 func (s *MainSuite) TestBlackjackHandIsBlackjack(c *C) {
