@@ -38,6 +38,8 @@ func (c CardValue) Value() int {
 	return int(c)
 }
 
+var CardValues = []CardValue{CardValueAce, CardValue2, CardValue3, CardValue4, CardValue5, CardValue6, CardValue7, CardValue8, CardValue9, CardValue10, CardValueJack, CardValueQueen, CardValueKing}
+
 type CardSuit int
 
 const (
@@ -51,12 +53,30 @@ func (c CardSuit) String() string {
 	return []string{"clubs", "diamonds", "hearts", "spades"}[c]
 }
 
+var CardSuits = []CardSuit{CardSuitClubs, CardSuitDiamonds, CardSuitHearts, CardSuitSpades}
+
 type Card struct {
 	Value CardValue
 	Suit  CardSuit
 }
 
 type Deck []Card
+
+func NewDeck(totalDecks int) *Deck {
+	var deck Deck
+	for index := 0; index < totalDecks; index++ {
+		for _, suit := range CardSuits {
+			for _, value := range CardValues {
+				card := Card{
+					Value: value,
+					Suit:  suit,
+				}
+				deck = append(deck, card)
+			}
+		}
+	}
+	return &deck
+}
 
 var zPrint = fmt.Println
 
