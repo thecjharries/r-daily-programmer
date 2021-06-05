@@ -33,6 +33,10 @@ const (
 	CardValueK
 )
 
+func (c CardValue) Value() int {
+	return int(c)
+}
+
 type CardSuit int
 
 const (
