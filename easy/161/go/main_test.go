@@ -55,9 +55,9 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestCardValueValue(c *C) {
-	c.Assert(CardValue(Value2).Value(), Equals, 0)
+	c.Assert(CardValue(CardValue2).Value(), Equals, 0)
 }
 
 func (s *MainSuite) TestCardSuitString(c *C) {
-	c.Assert(CardSuit(SuitClubs).String(), Equals, "clubs")
+	c.Assert(CardSuit(CardSuitClubs).String(), Equals, "clubs")
 }

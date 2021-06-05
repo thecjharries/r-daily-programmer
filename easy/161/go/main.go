@@ -19,18 +19,18 @@ import "fmt"
 type CardValue int
 
 const (
-	Value2 CardValue = iota
-	Value3
-	Value4
-	Value5
-	Value6
-	Value7
-	Value8
-	Value9
-	Value10
-	ValueJ
-	ValueQ
-	ValueK
+	CardValue2 CardValue = iota
+	CardValue3
+	CardValue4
+	CardValue5
+	CardValue6
+	CardValue7
+	CardValue8
+	CardValue9
+	CardValue10
+	CardValueJ
+	CardValueQ
+	CardValueK
 )
 
 func (c CardValue) Value() int {
@@ -40,10 +40,10 @@ func (c CardValue) Value() int {
 type CardSuit int
 
 const (
-	SuitClubs CardSuit = iota
-	SuitDiamonds
-	SuitHearts
-	SuitSpades
+	CardSuitClubs CardSuit = iota
+	CardSuitDiamonds
+	CardSuitHearts
+	CardSuitSpades
 )
 
 func (c CardSuit) String() string {
