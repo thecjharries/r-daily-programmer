@@ -89,6 +89,20 @@ func NewDeck(totalDecks int) *Deck {
 
 type BlackjackHand []Card
 
+func (h *BlackjackHand) Value() (value int) {
+	for _, card := range *h {
+		value += card.Value.Value()
+	}
+	return
+}
+
+//func (h *BlackjackHand) IsBlackjack() bool {
+//	if 2 == len(*h) {
+//
+//	}
+//	return false
+//}
+
 var zPrint = fmt.Println
 
 func main() {
