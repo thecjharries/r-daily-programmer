@@ -87,6 +87,8 @@ func NewDeck(totalDecks int) *Deck {
 	return &deck
 }
 
+type BlackjackHand []Card
+
 var zPrint = fmt.Println
 
 func main() {
