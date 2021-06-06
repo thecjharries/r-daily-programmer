@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDecompressWord(c *C) {
+	input := "2! ! R 1^ 3 0 4^ . E"
+	dictionary := []string{
+		"is",
+		"my",
+		"hello",
+		"name",
+		"stan",
+	}
+	_ = decompress(input, dictionary)
+}

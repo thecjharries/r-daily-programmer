@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
+	"strings"
 )
 
 const (
@@ -35,4 +37,29 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+// Matches return as the tuple
+// (group, entire match, <word>, <case>, <newline>, <eof>, <punctuation>)
+// Go obfuscates named groups behind a bunch of junk
+func decompress(input string, dictionary []string) (output string) {
+	matches := compressionPattern.FindAllStringSubmatch(input, -1)
+	for _, match := range matches {
+		// We don't care about the whole match, the group, or EOF
+		if "" != match[PatternMatchWord] {
+			dictionaryIndex, _ := strconv.Atoi(match[PatternMatchWord])
+			word := dictionary[dictionaryIndex]
+			if "^" == match[PatternMatchCase] {
+				word = strings.Title(word)
+			} else if "!" == match[PatternMatchCase] {
+				word = strings.ToUpper(word)
+			}
+			output += fmt.Sprintf(" %s", word)
+		} else if "" != match[PatternMatchNewline] {
+			output += "\n"
+		} else if "" != match[PatternMatchPunctuation] {
+			output += match[PatternMatchPunctuation]
+		}
+	}
+	return
 }
