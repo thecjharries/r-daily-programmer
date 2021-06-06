@@ -61,5 +61,5 @@ func decompress(input string, dictionary []string) (output string) {
 			output += match[PatternMatchPunctuation]
 		}
 	}
-	return
+	return strings.TrimSpace(output)
 }
