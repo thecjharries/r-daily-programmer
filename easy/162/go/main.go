@@ -55,7 +55,7 @@ func decompress(input string, dictionary []string) (output string) {
 				word = strings.ToUpper(word)
 			}
 			space := " "
-			if 0 < len(output) && '\n' == output[len(output)-1] {
+			if 0 < len(output) && ('\n' == output[len(output)-1] || '-' == output[len(output)-1]) {
 				space = ""
 			}
 			output += fmt.Sprintf("%s%s", space, word)
