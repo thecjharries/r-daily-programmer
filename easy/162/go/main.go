@@ -54,7 +54,11 @@ func decompress(input string, dictionary []string) (output string) {
 			} else if "!" == match[PatternMatchCase] {
 				word = strings.ToUpper(word)
 			}
-			output += fmt.Sprintf(" %s", word)
+			space := " "
+			if 0 < len(output) && '\n' == output[len(output)-1] {
+				space = ""
+			}
+			output += fmt.Sprintf("%s%s", space, word)
 		} else if "" != match[PatternMatchNewline] {
 			output += "\n"
 		} else if "" != match[PatternMatchPunctuation] {
