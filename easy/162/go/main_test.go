@@ -55,8 +55,10 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestDecompressWord(c *C) {
-	input := "2! ! R 1^ 3 0 4^ . E"
-	dictionary := []string{
+	var input string
+	var dictionary []string
+	input = "2! ! R 1^ 3 0 4^ . E"
+	dictionary = []string{
 		"is",
 		"my",
 		"hello",
@@ -64,4 +66,28 @@ func (s *MainSuite) TestDecompressWord(c *C) {
 		"stan",
 	}
 	c.Assert(decompress(input, dictionary), Equals, "HELLO!\nMy name is Stan.")
+	input = "0^ 1 6 7 8 5 10 2 . R\n0^ 1 6 7 8 3 10 4 . R\n0^ 1 6 7 8 15 16 17 . R\n0^ 1 6 7 8 11 . R\n0^ 1 6 7 12 13 14 9 . R\n0^ 1 6 7 8 , 18^ - 0^ - 19 . R E"
+	dictionary = []string{
+		"i",
+		"do",
+		"house",
+		"with",
+		"mouse",
+		"in",
+		"not",
+		"like",
+		"them",
+		"ham",
+		"a",
+		"anywhere",
+		"green",
+		"eggs",
+		"and",
+		"here",
+		"or",
+		"there",
+		"sam",
+		"am",
+	}
+	c.Assert(decompress(input, dictionary), Equals, "I do not like them in a house.\nI do not like them with a mouse.\nI do not like them here or there.\nI do not like them anywhere.\nI do not like green eggs and ham.\nI do not like them, Sam-I-am.")
 }
