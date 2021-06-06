@@ -19,6 +19,16 @@ import (
 	"regexp"
 )
 
+const (
+	PatternMatchWhole int = iota
+	PatternMatchGroup
+	PatternMatchWord
+	PatternMatchCase
+	PatternMatchNewline
+	PatternMatchEof
+	PatternMatchPunctuation
+)
+
 var compressionPattern = regexp.MustCompile(`((?P<word>\d+)(?P<case>[\^!]?)|(?P<newline>R)|(?P<eof>E)|(?P<punctuation>[^\d\s]))`)
 
 var zPrint = fmt.Println
