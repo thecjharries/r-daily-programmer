@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var compressionPattern = regexp.MustCompile(`((?P<word>\d+)(?P<case>[\^!]?)|(?P<newline>R)|(?P<eof>E)|(?P<punctuation>[^\d\s]))`)
 
 var zPrint = fmt.Println
 
