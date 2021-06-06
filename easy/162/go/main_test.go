@@ -63,5 +63,5 @@ func (s *MainSuite) TestDecompressWord(c *C) {
 		"name",
 		"stan",
 	}
-	_ = decompress(input, dictionary)
+	c.Assert(decompress(input, dictionary), Equals, "HELLO!\nMy name is Stan.")
 }
