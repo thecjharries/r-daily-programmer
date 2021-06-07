@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewDiceRollDistribution(c *C) {
+	distribution := NewDiceRollDistribution(6, []int{100, 10})
+	c.Assert(distribution.DiceSides, Equals, 6)
+	c.Assert(distribution.Counts, DeepEquals, []int{10, 100})
+	c.Assert(len(distribution.Rolls), Equals, 2)
+}
