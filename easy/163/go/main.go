@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type DiceRollDistribution struct {
+	Counts    []int
+	Rolls     [][]float64
+	DiceSides int
+}
+
 var zPrint = fmt.Println
 
 func main() {
