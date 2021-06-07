@@ -41,6 +41,17 @@ func (d *DiceRollDistribution) RollAll() {
 	}
 }
 
+func (d *DiceRollDistribution) Print() (output string) {
+	for index, count := range d.Counts {
+		output += fmt.Sprintf("%*d  ", 10, count)
+		for _, rolls := range d.Rolls[index] {
+			output += fmt.Sprintf("%*.2f", 3, float64(rolls)/float64(count))
+		}
+		output += "\n"
+	}
+	return
+}
+
 func NewDiceRollDistribution(sides int, counts []int) *DiceRollDistribution {
 	var rolls [][]int
 	for range counts {
