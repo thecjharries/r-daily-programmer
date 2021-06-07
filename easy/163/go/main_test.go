@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,6 +54,63 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestDiceRollDistributionSingleRoll(c *C) {
+	distribution := NewDiceRollDistribution(6, []int{10, 100})
+	c.Assert(distribution.Rolls[0][0], Equals, 0)
+	c.Assert(distribution.Rolls[0][1], Equals, 0)
+	c.Assert(distribution.Rolls[0][2], Equals, 0)
+	c.Assert(distribution.Rolls[0][3], Equals, 0)
+	c.Assert(distribution.Rolls[0][4], Equals, 0)
+	c.Assert(distribution.Rolls[0][5], Equals, 0)
+	c.Assert(distribution.Rolls[1][0], Equals, 0)
+	c.Assert(distribution.Rolls[1][1], Equals, 0)
+	c.Assert(distribution.Rolls[1][2], Equals, 0)
+	c.Assert(distribution.Rolls[1][3], Equals, 0)
+	c.Assert(distribution.Rolls[1][4], Equals, 0)
+	c.Assert(distribution.Rolls[1][5], Equals, 0)
+	distribution.SingleRoll(0)
+	c.Assert(distribution.Rolls[0][0], Equals, 1)
+	c.Assert(distribution.Rolls[0][1], Equals, 0)
+	c.Assert(distribution.Rolls[0][2], Equals, 0)
+	c.Assert(distribution.Rolls[0][3], Equals, 0)
+	c.Assert(distribution.Rolls[0][4], Equals, 0)
+	c.Assert(distribution.Rolls[0][5], Equals, 0)
+	c.Assert(distribution.Rolls[1][0], Equals, 1)
+	c.Assert(distribution.Rolls[1][1], Equals, 0)
+	c.Assert(distribution.Rolls[1][2], Equals, 0)
+	c.Assert(distribution.Rolls[1][3], Equals, 0)
+	c.Assert(distribution.Rolls[1][4], Equals, 0)
+	c.Assert(distribution.Rolls[1][5], Equals, 0)
+	distribution.SingleRoll(10)
+	c.Assert(distribution.Rolls[0][0], Equals, 1)
+	c.Assert(distribution.Rolls[0][1], Equals, 0)
+	c.Assert(distribution.Rolls[0][2], Equals, 0)
+	c.Assert(distribution.Rolls[0][3], Equals, 0)
+	c.Assert(distribution.Rolls[0][4], Equals, 0)
+	c.Assert(distribution.Rolls[0][5], Equals, 0)
+	c.Assert(distribution.Rolls[1][0], Equals, 2)
+	c.Assert(distribution.Rolls[1][1], Equals, 0)
+	c.Assert(distribution.Rolls[1][2], Equals, 0)
+	c.Assert(distribution.Rolls[1][3], Equals, 0)
+	c.Assert(distribution.Rolls[1][4], Equals, 0)
+	c.Assert(distribution.Rolls[1][5], Equals, 0)
+	distribution.SingleRoll(11)
+	distribution.SingleRoll(12)
+	distribution.SingleRoll(13)
+	c.Assert(distribution.Rolls[0][0], Equals, 1)
+	c.Assert(distribution.Rolls[0][1], Equals, 0)
+	c.Assert(distribution.Rolls[0][2], Equals, 0)
+	c.Assert(distribution.Rolls[0][3], Equals, 0)
+	c.Assert(distribution.Rolls[0][4], Equals, 0)
+	c.Assert(distribution.Rolls[0][5], Equals, 0)
+	c.Assert(distribution.Rolls[1][0], Equals, 2)
+	c.Assert(distribution.Rolls[1][1], Equals, 1)
+	c.Assert(distribution.Rolls[1][2], Equals, 0)
+	c.Assert(distribution.Rolls[1][3], Equals, 0)
+	c.Assert(distribution.Rolls[1][4], Equals, 1)
+	c.Assert(distribution.Rolls[1][5], Equals, 1)
 }
 
 func (s *MainSuite) TestNewDiceRollDistribution(c *C) {

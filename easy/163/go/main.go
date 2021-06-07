@@ -22,7 +22,7 @@ import (
 
 type DiceRollDistribution struct {
 	Counts    []int
-	Rolls     [][]float64
+	Rolls     [][]int
 	DiceSides int
 }
 
@@ -36,9 +36,9 @@ func (d *DiceRollDistribution) SingleRoll(rollNumber int) {
 }
 
 func NewDiceRollDistribution(sides int, counts []int) *DiceRollDistribution {
-	var rolls [][]float64
+	var rolls [][]int
 	for range counts {
-		rolls = append(rolls, make([]float64, sides))
+		rolls = append(rolls, make([]int, sides))
 	}
 	sort.Ints(counts)
 	return &DiceRollDistribution{
