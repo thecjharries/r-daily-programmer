@@ -14,12 +14,28 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type DiceRollDistribution struct {
 	Counts    []int
 	Rolls     [][]float64
 	DiceSides int
+}
+
+func NewDiceRollDistribution(sides int, counts []int) *DiceRollDistribution {
+	var rolls [][]float64
+	for range counts {
+		rolls = append(rolls, make([]float64, sides))
+	}
+	sort.Ints(counts)
+	return &DiceRollDistribution{
+		Counts:    counts,
+		Rolls:     rolls,
+		DiceSides: sides,
+	}
 }
 
 var zPrint = fmt.Println
