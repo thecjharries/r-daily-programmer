@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sort"
 )
 
@@ -23,6 +24,15 @@ type DiceRollDistribution struct {
 	Counts    []int
 	Rolls     [][]float64
 	DiceSides int
+}
+
+func (d *DiceRollDistribution) SingleRoll(rollNumber int) {
+	roll := rand.Intn(d.DiceSides)
+	for index, count := range d.Counts {
+		if rollNumber < count {
+			d.Rolls[index][roll]++
+		}
+	}
 }
 
 func NewDiceRollDistribution(sides int, counts []int) *DiceRollDistribution {
