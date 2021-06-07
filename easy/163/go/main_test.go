@@ -142,6 +142,13 @@ func (s *MainSuite) TestDiceRollDistributionRollAll(c *C) {
 	c.Assert(distribution.Rolls[1][5], Equals, 13)
 }
 
+func (s *MainSuite) TestDiceRollDistributionPrint(c *C) {
+	distribution := NewDiceRollDistribution(6, []int{10, 100})
+	c.Assert(distribution.Print(), Equals, "        10   0.00%   0.00%   0.00%   0.00%   0.00%   0.00%\n       100   0.00%   0.00%   0.00%   0.00%   0.00%   0.00%\n")
+	distribution.RollAll()
+	c.Assert(distribution.Print(), Equals, "        10  40.00%  20.00%   0.00%   0.00%  20.00%  20.00%\n       100  29.00%  13.00%  19.00%  10.00%  16.00%  13.00%\n")
+}
+
 func (s *MainSuite) TestNewDiceRollDistribution(c *C) {
 	distribution := NewDiceRollDistribution(6, []int{100, 10})
 	c.Assert(distribution.DiceSides, Equals, 6)
