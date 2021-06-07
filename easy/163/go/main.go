@@ -35,6 +35,12 @@ func (d *DiceRollDistribution) SingleRoll(rollNumber int) {
 	}
 }
 
+func (d *DiceRollDistribution) RollAll() {
+	for index := 0; index < d.Counts[len(d.Counts)-1]; index++ {
+		d.SingleRoll(index)
+	}
+}
+
 func NewDiceRollDistribution(sides int, counts []int) *DiceRollDistribution {
 	var rolls [][]int
 	for range counts {
