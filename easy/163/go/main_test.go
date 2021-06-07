@@ -113,6 +113,35 @@ func (s *MainSuite) TestDiceRollDistributionSingleRoll(c *C) {
 	c.Assert(distribution.Rolls[1][5], Equals, 1)
 }
 
+func (s *MainSuite) TestDiceRollDistributionRollAll(c *C) {
+	distribution := NewDiceRollDistribution(6, []int{10, 100})
+	c.Assert(distribution.Rolls[0][0], Equals, 0)
+	c.Assert(distribution.Rolls[0][1], Equals, 0)
+	c.Assert(distribution.Rolls[0][2], Equals, 0)
+	c.Assert(distribution.Rolls[0][3], Equals, 0)
+	c.Assert(distribution.Rolls[0][4], Equals, 0)
+	c.Assert(distribution.Rolls[0][5], Equals, 0)
+	c.Assert(distribution.Rolls[1][0], Equals, 0)
+	c.Assert(distribution.Rolls[1][1], Equals, 0)
+	c.Assert(distribution.Rolls[1][2], Equals, 0)
+	c.Assert(distribution.Rolls[1][3], Equals, 0)
+	c.Assert(distribution.Rolls[1][4], Equals, 0)
+	c.Assert(distribution.Rolls[1][5], Equals, 0)
+	distribution.RollAll()
+	c.Assert(distribution.Rolls[0][0], Equals, 4)
+	c.Assert(distribution.Rolls[0][1], Equals, 2)
+	c.Assert(distribution.Rolls[0][2], Equals, 0)
+	c.Assert(distribution.Rolls[0][3], Equals, 0)
+	c.Assert(distribution.Rolls[0][4], Equals, 2)
+	c.Assert(distribution.Rolls[0][5], Equals, 2)
+	c.Assert(distribution.Rolls[1][0], Equals, 29)
+	c.Assert(distribution.Rolls[1][1], Equals, 13)
+	c.Assert(distribution.Rolls[1][2], Equals, 19)
+	c.Assert(distribution.Rolls[1][3], Equals, 10)
+	c.Assert(distribution.Rolls[1][4], Equals, 16)
+	c.Assert(distribution.Rolls[1][5], Equals, 13)
+}
+
 func (s *MainSuite) TestNewDiceRollDistribution(c *C) {
 	distribution := NewDiceRollDistribution(6, []int{100, 10})
 	c.Assert(distribution.DiceSides, Equals, 6)
