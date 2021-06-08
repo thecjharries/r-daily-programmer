@@ -13,5 +13,6 @@
 // limitations under the License.
 
 fn main() {
+    // Output 'Hello World' to the console.
     println!("Hello World!");
 }
