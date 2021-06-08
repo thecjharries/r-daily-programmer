@@ -15,4 +15,14 @@
 fn main() {
     // Output 'Hello World' to the console.
     println!("Hello World!");
+    // Return an array of the first 100 numbers that are divisible by 3 and 5.
+    let mut fizzbuzz = Vec::new();
+    let mut index: i32 = 1;
+    while 100 > fizzbuzz.len() {
+        if 0 == index % 3 && 0 == index % 5 {
+            fizzbuzz.push(index);
+        }
+        index += 1;
+    }
+    println!("{:?}", fizzbuzz);
 }
