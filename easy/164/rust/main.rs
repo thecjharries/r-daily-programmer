@@ -25,4 +25,7 @@ fn main() {
         index += 1;
     }
     println!("{:?}", fizzbuzz);
+    // Sum all the elements of an array
+    let sum_array: [i32; 4] = [1,2,3,4];
+    println!("{}", sum_array.iter().sum::<i32>())
 }
