@@ -25,6 +25,13 @@ type GameOfLife struct {
 	Height int
 }
 
+func (g *GameOfLife) String() (output string) {
+	for index := 0; index < len(g.Map); index += g.Width {
+		output += g.Map[index:index+g.Width] + "\n"
+	}
+	return
+}
+
 func NewGameOfLife(width, height int, gameMap string) *GameOfLife {
 	return &GameOfLife{
 		Map:    strings.ReplaceAll(gameMap, "\n", ""),
