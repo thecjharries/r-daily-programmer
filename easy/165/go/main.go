@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type GameOfLife struct {
+	Map    string
+	Width  int
+	Height int
+}
+
 var zPrint = fmt.Println
 
 func main() {
