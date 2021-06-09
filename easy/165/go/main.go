@@ -14,12 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type GameOfLife struct {
 	Map    string
 	Width  int
 	Height int
+}
+
+func NewGameOfLife(width, height int, gameMap string) *GameOfLife {
+	return &GameOfLife{
+		Map:    strings.ReplaceAll(gameMap, "\n", ""),
+		Width:  width,
+		Height: height,
+	}
 }
 
 var zPrint = fmt.Println
