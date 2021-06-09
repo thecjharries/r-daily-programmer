@@ -60,3 +60,8 @@ func (s *MainSuite) TestNewGameOfLife(c *C) {
 	c.Assert(game.Height, Equals, 10)
 	c.Assert(game.Map, Equals, "......................#..........#.......###........................................................")
 }
+
+func (s *MainSuite) TestGameOfLifeString(c *C) {
+	game := NewGameOfLife(10, 10, "..........\n..........\n..#.......\n...#......\n.###......\n..........\n..........\n..........\n..........\n..........")
+	c.Assert(game.String(), Equals, "..........\n..........\n..#.......\n...#......\n.###......\n..........\n..........\n..........\n..........\n..........\n")
+}
