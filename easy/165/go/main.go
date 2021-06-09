@@ -32,6 +32,17 @@ func (g *GameOfLife) String() (output string) {
 	return
 }
 
+func (g *GameOfLife) GetCellNeighborOnCount(x, y int) (count int) {
+	for _, verticalIndex := range []int{(y - 1) % g.Height, y, (y + 1) % g.Height} {
+		for _, horizontalIndex := range []int{(x - 1) % g.Width, x, (x + 1) % g.Width} {
+			if x != horizontalIndex && y != verticalIndex && '#' == g.Map[x+y*g.Width] {
+				count++
+			}
+		}
+	}
+	return
+}
+
 func NewGameOfLife(width, height int, gameMap string) *GameOfLife {
 	return &GameOfLife{
 		Map:    strings.ReplaceAll(gameMap, "\n", ""),
