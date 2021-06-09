@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewGameOfLife(c *C) {
+	game := NewGameOfLife(10, 10, "..........\n..........\n..#.......\n...#......\n.###......\n..........\n..........\n..........\n..........\n..........")
+	c.Assert(game.Width, Equals, 10)
+	c.Assert(game.Height, Equals, 10)
+	c.Assert(game.Map, Equals, "......................#..........#.......###........................................................")
+}
