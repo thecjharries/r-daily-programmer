@@ -33,14 +33,35 @@ func (g *GameOfLife) String() (output string) {
 }
 
 func (g *GameOfLife) GetCellNeighborOnCount(x, y int) (count int) {
-	for _, verticalIndex := range []int{(y - 1) % g.Height, y, (y + 1) % g.Height} {
-		for _, horizontalIndex := range []int{(x - 1) % g.Width, x, (x + 1) % g.Width} {
-			if x != horizontalIndex && y != verticalIndex && '#' == g.Map[x+y*g.Width] {
+	for _, verticalIndex := range []int{(y - 1 + g.Height) % g.Height, y, (y + 1 + g.Height) % g.Height} {
+		for _, horizontalIndex := range []int{(x - 1 + g.Width) % g.Width, x, (x + 1 + g.Width) % g.Width} {
+			if x != horizontalIndex && y != verticalIndex && '#' == g.Map[horizontalIndex+verticalIndex*g.Width] {
 				count++
 			}
 		}
 	}
 	return
+}
+
+func (g *GameOfLife) Iterate() {
+	newMap := ""
+	for y := 0; y < g.Height; y++ {
+		for x := 0; x < g.Height; x++ {
+			neighborsOn := g.GetCellNeighborOnCount(x, y)
+			if 3 == neighborsOn {
+				if '#' == g.Map[x+y*g.Width] {
+					newMap += "."
+				} else {
+					newMap += "#"
+				}
+			} else if 2 == neighborsOn && '#' == g.Map[x+y*g.Width] {
+				newMap += "."
+			} else {
+				newMap += string(g.Map[x+y*g.Width])
+			}
+		}
+	}
+	g.Map = newMap
 }
 
 func NewGameOfLife(width, height int, gameMap string) *GameOfLife {
