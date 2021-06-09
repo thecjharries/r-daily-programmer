@@ -35,7 +35,7 @@ func (g *GameOfLife) String() (output string) {
 func (g *GameOfLife) GetCellNeighborOnCount(x, y int) (count int) {
 	for _, verticalIndex := range []int{(y - 1 + g.Height) % g.Height, y, (y + 1 + g.Height) % g.Height} {
 		for _, horizontalIndex := range []int{(x - 1 + g.Width) % g.Width, x, (x + 1 + g.Width) % g.Width} {
-			if x != horizontalIndex && y != verticalIndex && '#' == g.Map[horizontalIndex+verticalIndex*g.Width] {
+			if (x != horizontalIndex || y != verticalIndex) && '#' == g.Map[horizontalIndex+verticalIndex*g.Width] {
 				count++
 			}
 		}
