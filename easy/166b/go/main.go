@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type Planet struct {
+	Name           string
+	Radius         float64
+	AverageDensity float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
