@@ -19,7 +19,7 @@ import (
 	"math"
 )
 
-const GravitationalConstant float64 = .0000000000667
+const GravitationalConstant float64 = 6.67e-11
 
 type Planet struct {
 	Name           string
