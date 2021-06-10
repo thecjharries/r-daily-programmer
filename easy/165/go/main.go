@@ -46,15 +46,11 @@ func (g *GameOfLife) GetCellNeighborOnCount(x, y int) (count int) {
 func (g *GameOfLife) Iterate() {
 	newMap := ""
 	for y := 0; y < g.Height; y++ {
-		for x := 0; x < g.Height; x++ {
+		for x := 0; x < g.Width; x++ {
 			neighborsOn := g.GetCellNeighborOnCount(x, y)
-			if 3 == neighborsOn {
-				if '#' == g.Map[x+y*g.Width] {
-					newMap += "."
-				} else {
-					newMap += "#"
-				}
-			} else if 2 == neighborsOn && '#' == g.Map[x+y*g.Width] {
+			if 3 == neighborsOn && "." == string(g.Map[x+y*g.Width]) {
+				newMap += "#"
+			} else if (2 > neighborsOn || 3 < neighborsOn) && '#' == g.Map[x+y*g.Width] {
 				newMap += "."
 			} else {
 				newMap += string(g.Map[x+y*g.Width])
