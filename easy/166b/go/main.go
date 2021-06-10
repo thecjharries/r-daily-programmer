@@ -31,6 +31,10 @@ func (p *Planet) Volume() float64 {
 	return 4.0 * math.Pi * math.Pow(p.Radius, 3) / 3
 }
 
+func (p *Planet) Mass() float64 {
+	return p.Volume() * p.AverageDensity
+}
+
 var zPrint = fmt.Println
 
 func main() {
