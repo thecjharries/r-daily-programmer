@@ -60,6 +60,12 @@ func (g *GameOfLife) Iterate() {
 	g.Map = newMap
 }
 
+func (g *GameOfLife) IterateMultipleTimes(count int) {
+	for index := 0; index < count; index++ {
+		g.Iterate()
+	}
+}
+
 func NewGameOfLife(width, height int, gameMap string) *GameOfLife {
 	return &GameOfLife{
 		Map:    strings.ReplaceAll(gameMap, "\n", ""),
