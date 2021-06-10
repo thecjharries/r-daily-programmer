@@ -61,3 +61,11 @@ func (s *MainSuite) TestPlanetVolume(c *C) {
 	planet = Planet{Radius: 7636500}
 	c.Assert(planet.Volume(), Equals, 1.8653987335682594e+21)
 }
+
+func (s *MainSuite) TestPlanetMass(c *C) {
+	var planet Planet
+	planet = Planet{Radius: 3104500, AverageDensity: 5009}
+	c.Assert(planet.Mass(), Equals, 6.277903468564534e+23)
+	planet = Planet{Radius: 7636500, AverageDensity: 4966}
+	c.Assert(planet.Mass(), Equals, 9.263570110899977e+24)
+}
