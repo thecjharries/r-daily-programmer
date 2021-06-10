@@ -87,3 +87,10 @@ func (s *MainSuite) TestGameOfLifeIterate(c *C) {
 	game.Iterate()
 	c.Assert(game.String(), Equals, "..........\n..........\n..........\n..........\n...#......\n....##....\n...##.....\n..........\n..........\n..........\n")
 }
+
+func (s *MainSuite) TestGameOfLifeIterateMultipleTimes(c *C) {
+	game := NewGameOfLife(10, 10, "..........\n..........\n..#.......\n...#......\n.###......\n..........\n..........\n..........\n..........\n..........")
+	c.Assert(game.Map, Equals, "......................#..........#.......###........................................................")
+	game.IterateMultipleTimes(7)
+	c.Assert(game.String(), Equals, "..........\n..........\n..........\n..........\n...#......\n....##....\n...##.....\n..........\n..........\n..........\n")
+}
