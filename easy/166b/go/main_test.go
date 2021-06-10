@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPlanetVolume(c *C) {
+	var planet Planet
+	planet = Planet{Radius: 3104500}
+	c.Assert(planet.Volume(), Equals, 1.2533247092362817e+20)
+	planet = Planet{Radius: 7636500}
+	c.Assert(planet.Volume(), Equals, 1.8653987335682594e+21)
+}
