@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+const GravitationalConstant float64 = .0000000000667
 
 type Planet struct {
 	Name           string
