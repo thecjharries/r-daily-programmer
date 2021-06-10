@@ -35,6 +35,10 @@ func (p *Planet) Mass() float64 {
 	return p.Volume() * p.AverageDensity
 }
 
+func (p *Planet) CalculateWeight(objectMass float64) float64 {
+	return GravitationalConstant * p.Mass() * objectMass / math.Pow(p.Radius, 2)
+}
+
 var zPrint = fmt.Println
 
 func main() {
