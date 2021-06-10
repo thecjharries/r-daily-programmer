@@ -73,3 +73,17 @@ func (s *MainSuite) TestGameOfLifeGetCellNeighborOnCount(c *C) {
 	c.Assert(game.GetCellNeighborOnCount(3, 3), Equals, 3)
 	c.Assert(game.GetCellNeighborOnCount(9, 9), Equals, 0)
 }
+
+func (s *MainSuite) TestGameOfLifeIterate(c *C) {
+	game := NewGameOfLife(10, 10, "..........\n..........\n..#.......\n...#......\n.###......\n..........\n..........\n..........\n..........\n..........")
+	c.Assert(game.Map, Equals, "......................#..........#.......###........................................................")
+	game.Iterate()
+	c.Assert(game.Map, Equals, "...............................#.#........##........#...............................................")
+	game.Iterate()
+	game.Iterate()
+	game.Iterate()
+	game.Iterate()
+	game.Iterate()
+	game.Iterate()
+	c.Assert(game.String(), Equals, "..........\n..........\n..........\n..........\n...#......\n....##....\n...##.....\n..........\n..........\n..........\n")
+}
