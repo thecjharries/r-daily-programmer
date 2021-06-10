@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 const GravitationalConstant float64 = .0000000000667
@@ -24,6 +25,10 @@ type Planet struct {
 	Name           string
 	Radius         float64
 	AverageDensity float64
+}
+
+func (p *Planet) Volume() float64 {
+	return 4.0 * math.Pi * math.Pow(p.Radius, 3) / 3
 }
 
 var zPrint = fmt.Println
