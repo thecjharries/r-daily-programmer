@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTemplateHtmlPage(c *C) {
+	paragraphs := []string{"This is my paragraph entry"}
+	c.Assert(templateHtmlPage(paragraphs), Equals, "<!DOCTYPE html>\n<html>\n    <head>\n        <title></title>\n    </head>\n\n    <body>\n        <p>This is my paragraph entry</p>\n    </body>\n</html>\n")
+}
