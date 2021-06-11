@@ -14,10 +14,21 @@
 
 package main
 
-import "fmt"
+import (
+	"bytes"
+	"fmt"
+	"html/template"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func templateHtmlPage(paragraphs []string) string {
+	tmpl := template.Must(template.New("html").ParseGlob("*.tmpl"))
+	var output bytes.Buffer
+	_ = tmpl.Execute(&output, paragraphs)
+	return output.String()
 }
