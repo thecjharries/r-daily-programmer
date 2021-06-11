@@ -27,7 +27,7 @@ func main() {
 }
 
 func templateHtmlPage(paragraphs []string) string {
-	tmpl := template.Must(template.New("html").ParseGlob("*.tmpl"))
+	tmpl := template.Must(template.New("output.html.tmpl").ParseGlob("*.tmpl"))
 	var output bytes.Buffer
 	_ = tmpl.Execute(&output, paragraphs)
 	return output.String()
