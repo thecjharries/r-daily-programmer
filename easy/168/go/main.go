@@ -31,3 +31,10 @@ func findAllWords(haystack string) []string {
 	matches := promptWordPattern.FindAllString(haystack, -1)
 	return matches
 }
+
+func getWordAtIndex(index int, haystack []string) string {
+	if 0 <= index-1 && len(haystack) > index-1 {
+		return haystack[index-1]
+	}
+	return ""
+}
