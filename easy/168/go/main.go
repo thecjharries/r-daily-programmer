@@ -26,3 +26,8 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findAllWords(haystack string) []string {
+	matches := promptWordPattern.FindAllString(haystack, -1)
+	return matches[1:]
+}
