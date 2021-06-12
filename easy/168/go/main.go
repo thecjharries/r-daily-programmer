@@ -29,5 +29,5 @@ func main() {
 
 func findAllWords(haystack string) []string {
 	matches := promptWordPattern.FindAllString(haystack, -1)
-	return matches[1:]
+	return matches
 }
