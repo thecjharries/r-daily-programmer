@@ -58,3 +58,19 @@ func (s *MainSuite) TestFindAllWords(c *C) {
 	words := findAllWords("The lazy cat slept in the sunlight.")
 	c.Assert(len(words), Equals, 7)
 }
+
+func (s *MainSuite) TestGetWordAtIndex(c *C) {
+	words := findAllWords("...You...!!!@!3124131212 Hello have this is a --- string Solved !!...? to test @\n\n\n#!#@#@%$**#$@ Congratz this!!!!!!!!!!!!!!!!one ---Problem\n\n")
+	c.Assert(getWordAtIndex(12, words), Equals, "Congratz")
+	c.Assert(getWordAtIndex(-1, words), Equals, "")
+	c.Assert(getWordAtIndex(1, words), Equals, "You")
+	c.Assert(getWordAtIndex(-100, words), Equals, "")
+	c.Assert(getWordAtIndex(4, words), Equals, "have")
+	c.Assert(getWordAtIndex(1000, words), Equals, "")
+	c.Assert(getWordAtIndex(9, words), Equals, "Solved")
+	c.Assert(getWordAtIndex(-1000, words), Equals, "")
+	c.Assert(getWordAtIndex(16, words), Equals, "")
+	c.Assert(getWordAtIndex(13, words), Equals, "this")
+	c.Assert(getWordAtIndex(17, words), Equals, "")
+	c.Assert(getWordAtIndex(15, words), Equals, "Problem")
+}
