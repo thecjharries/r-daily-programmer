@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var promptWordPattern = regexp.MustCompile(`[a-zA-Z0-9]+`)
 
 var zPrint = fmt.Println
 
