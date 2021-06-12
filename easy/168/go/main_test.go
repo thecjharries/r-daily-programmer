@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindAllWords(c *C) {
+	words := findAllWords("The lazy cat slept in the sunlight.")
+	c.Assert(len(words), Equals, 7)
+}
