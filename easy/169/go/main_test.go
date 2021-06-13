@@ -53,3 +53,17 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRotate2dArray90(c *C) {
+	input := [][]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+	output := [][]int{
+		{7, 4, 1},
+		{8, 5, 2},
+		{9, 6, 3},
+	}
+	c.Assert(rotate2dArray90(input), DeepEquals, output)
+}
