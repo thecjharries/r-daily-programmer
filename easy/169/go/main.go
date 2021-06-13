@@ -21,3 +21,14 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func rotate2dArray90(input [][]int) (output [][]int) {
+	output = make([][]int, len(input))
+	for rowIndex := 0; rowIndex < len(input); rowIndex++ {
+		output[rowIndex] = make([]int, len(input[rowIndex]))
+		for columnIndex := 0; columnIndex < len(input[rowIndex]); columnIndex++ {
+			output[rowIndex] = append(output[rowIndex], input[len(input[rowIndex])-rowIndex-1][columnIndex])
+		}
+	}
+	return
+}
