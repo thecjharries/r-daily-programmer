@@ -64,39 +64,6 @@ func (s *MainSuite) TestCardSuitString(c *C) {
 	c.Assert(CardSuit(CardSuitClubs).String(), Equals, "clubs")
 }
 
-func (s *MainSuite) TestDeckShuffle(c *C) {
-	deck := NewDeck(1)
-	c.Assert((*deck)[0].Suit, Equals, CardSuitClubs)
-	c.Assert((*deck)[0].Value, Equals, CardValueAce)
-	deck.Shuffle()
-	c.Assert((*deck)[0].Suit, Equals, CardSuitDiamonds)
-	c.Assert((*deck)[0].Value, Equals, CardValue7)
-}
-
-func (s *MainSuite) TestDeckDealBlackjackHand(c *C) {
-	deck := NewDeck(1)
-	c.Assert(len(*deck), Equals, 52)
-	hand := deck.DealBlackjackHand()
-	c.Assert(len(*deck), Equals, 50)
-	c.Assert(len(*hand), Equals, 2)
-	c.Assert((*hand)[0].Suit, Equals, CardSuitClubs)
-	c.Assert((*hand)[0].Value, Equals, CardValueAce)
-	c.Assert((*hand)[1].Suit, Equals, CardSuitClubs)
-	c.Assert((*hand)[1].Value, Equals, CardValue2)
-}
-
-func (s *MainSuite) TestDeckBlackjackCount(c *C) {
-	deck := NewDeck(1)
-	count, total := deck.BlackjackCount()
-	c.Assert(count, Equals, 2)
-	c.Assert(total, Equals, 26)
-}
-
-func (s *MainSuite) TestNewDeck(c *C) {
-	deck := NewDeck(1)
-	c.Assert(len(*deck), Equals, 52)
-}
-
 func (s *MainSuite) TestBlackjackHandValue(c *C) {
 	var hand BlackjackHand
 	hand = BlackjackHand{

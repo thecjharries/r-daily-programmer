@@ -16,7 +16,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"regexp"
 	"strings"
 )
@@ -86,48 +85,6 @@ var CardSuits = []CardSuit{CardSuitClubs, CardSuitDiamonds, CardSuitHearts, Card
 type Card struct {
 	Value CardValue
 	Suit  CardSuit
-}
-
-type Deck []Card
-
-func (d *Deck) Shuffle() {
-	rand.Shuffle(len(*d), func(i, j int) {
-		(*d)[i], (*d)[j] = (*d)[j], (*d)[i]
-	})
-}
-
-func (d *Deck) DealBlackjackHand() *BlackjackHand {
-	hand := new(BlackjackHand)
-	*hand = append(*hand, (*d)[0], (*d)[1])
-	*d = (*d)[2:]
-	return hand
-}
-
-func (d *Deck) BlackjackCount() (count int, total int) {
-	for 0 < len(*d) {
-		hand := d.DealBlackjackHand()
-		total++
-		if hand.IsBlackjack() {
-			count++
-		}
-	}
-	return
-}
-
-func NewDeck(totalDecks int) *Deck {
-	var deck Deck
-	for index := 0; index < totalDecks; index++ {
-		for _, suit := range CardSuits {
-			for _, value := range CardValues {
-				card := Card{
-					Value: value,
-					Suit:  suit,
-				}
-				deck = append(deck, card)
-			}
-		}
-	}
-	return &deck
 }
 
 var handSyntaxPattern = regexp.MustCompile(`(?i)(\w+) of (\w+)`)
