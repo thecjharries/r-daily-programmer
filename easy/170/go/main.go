@@ -38,6 +38,22 @@ const (
 	CardValueKing  = CardValueQueen
 )
 
+var CardNameToValue = map[string]CardValue{
+	"two":   CardValue2,
+	"three": CardValue3,
+	"four":  CardValue4,
+	"five":  CardValue5,
+	"six":   CardValue6,
+	"seven": CardValue7,
+	"eight": CardValue8,
+	"nine":  CardValue9,
+	"ten":   CardValue10,
+	"ace":   CardValueAce,
+	"jack":  CardValueJack,
+	"queen": CardValueQueen,
+	"king":  CardValueKing,
+}
+
 func (c CardValue) Value() int {
 	return int(c)
 }
