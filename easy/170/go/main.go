@@ -123,6 +123,8 @@ func NewBlackjackHandFromString(input string) (hand BlackjackHand) {
 	return
 }
 
+type BlackjackGame []BlackjackHand
+
 var zPrint = fmt.Println
 
 func main() {
