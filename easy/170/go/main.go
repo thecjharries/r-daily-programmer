@@ -38,7 +38,7 @@ const (
 	CardValueKing  = CardValueQueen
 )
 
-var CardNameToValue = map[string]CardValue{
+var cardValueNameToCardValue = map[string]CardValue{
 	"two":   CardValue2,
 	"three": CardValue3,
 	"four":  CardValue4,
@@ -68,6 +68,13 @@ const (
 	CardSuitHearts
 	CardSuitSpades
 )
+
+var cardSuitNameToCardSuit = map[string]CardSuit{
+	"clubs":    CardSuitClubs,
+	"diamonds": CardSuitDiamonds,
+	"hearts":   CardSuitHearts,
+	"spades":   CardSuitSpades,
+}
 
 func (c CardSuit) String() string {
 	return []string{"clubs", "diamonds", "hearts", "spades"}[c]
