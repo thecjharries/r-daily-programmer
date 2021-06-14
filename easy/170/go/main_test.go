@@ -129,3 +129,12 @@ func (s *MainSuite) TestBlackjackHandIsBlackjack(c *C) {
 	}
 	c.Assert(hand.IsBlackjack(), Equals, false)
 }
+
+func (s *MainSuite) TestNewBlackjackHandFromString(c *C) {
+	input := "Ace of Diamonds, Ten of Clubs"
+	output := BlackjackHand{
+		{CardValueAce, CardSuitDiamonds},
+		{CardValue10, CardSuitClubs},
+	}
+	c.Assert(NewBlackjackHandFromString(input), DeepEquals, output)
+}
