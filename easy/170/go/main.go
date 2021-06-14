@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"math/rand"
 	"regexp"
+	"strings"
 )
 
 type CardValue int
@@ -149,6 +150,20 @@ func (h *BlackjackHand) Value() (value int) {
 
 func (h *BlackjackHand) IsBlackjack() bool {
 	return 2 == len(*h) && 21 == h.Value()
+}
+
+func NewBlackjackHandFromString(input string) (hand BlackjackHand) {
+	matches := handSyntaxPattern.FindAllStringSubmatch(strings.ToLower(input), -1)
+	for _, match := range matches {
+		hand = append(
+			hand,
+			Card{
+				Value: cardValueNameToCardValue[match[1]],
+				Suit:  cardSuitNameToCardSuit[match[2]],
+			},
+		)
+	}
+	return
 }
 
 var zPrint = fmt.Println
