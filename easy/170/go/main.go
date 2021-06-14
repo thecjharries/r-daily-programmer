@@ -125,6 +125,13 @@ func NewBlackjackHandFromString(input string) (hand BlackjackHand) {
 
 type BlackjackGame []BlackjackHand
 
+func NewBlackjackGameFromStrings(input []string) (game BlackjackGame) {
+	for _, handInput := range input {
+		game = append(game, NewBlackjackHandFromString(handInput))
+	}
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
