@@ -130,3 +130,15 @@ func (s *MainSuite) TestNewBlackjackGameFromStrings(c *C) {
 	}
 	c.Assert(NewBlackjackGameFromStrings(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestBlackjackGameWinner(c *C) {
+	game := NewBlackjackGameFromStrings([]string{
+		"Ace of Diamonds, Ten of Clubs",
+		"Three of Hearts, Six of Spades, Seven of Spades",
+		"Ten of Hearts, Three of Diamonds, Jack of Clubs",
+	})
+	c.Assert(game.Winner(), DeepEquals, BlackjackHand{
+		{CardValueAce, CardSuitDiamonds},
+		{CardValue10, CardSuitClubs},
+	})
+}
