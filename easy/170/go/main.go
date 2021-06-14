@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"regexp"
 )
 
 type CardValue int
@@ -104,6 +105,8 @@ func NewDeck(totalDecks int) *Deck {
 	}
 	return &deck
 }
+
+var handSyntaxPattern = regexp.MustCompile(`(?i)(\w+) of (\w+)`)
 
 type BlackjackHand []Card
 
