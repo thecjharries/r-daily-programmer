@@ -125,6 +125,22 @@ func NewBlackjackHandFromString(input string) (hand BlackjackHand) {
 
 type BlackjackGame []BlackjackHand
 
+func (g *BlackjackGame) Winner() (winner BlackjackHand) {
+	maxPoints := -1
+	for _, hand := range *g {
+		currentPoints := hand.Value()
+		if 22 > currentPoints {
+			if maxPoints == currentPoints {
+				winner = BlackjackHand(nil)
+			} else if maxPoints < currentPoints {
+				maxPoints = currentPoints
+				winner = hand
+			}
+		}
+	}
+	return
+}
+
 func NewBlackjackGameFromStrings(input []string) (game BlackjackGame) {
 	for _, handInput := range input {
 		game = append(game, NewBlackjackHandFromString(handInput))
