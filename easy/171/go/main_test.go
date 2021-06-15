@@ -59,4 +59,16 @@ func (s *MainSuite) TestConvertHexToAsciiPicture(c *C) {
 	input = "18 3C 7E 7E 18 18 18 18"
 	output = "00011000\n00111100\n01111110\n01111110\n00011000\n00011000\n00011000\n00011000\n"
 	c.Assert(convertHexToAsciiPicture(input), Equals, output)
+	input = "FF 81 BD A5 A5 BD 81 FF"
+	output = "11111111\n10000001\n10111101\n10100101\n10100101\n10111101\n10000001\n11111111\n"
+	c.Assert(convertHexToAsciiPicture(input), Equals, output)
+	input = "AA 55 AA 55 AA 55 AA 55"
+	output = "10101010\n01010101\n10101010\n01010101\n10101010\n01010101\n10101010\n01010101\n"
+	c.Assert(convertHexToAsciiPicture(input), Equals, output)
+	input = "3E 7F FC F8 F8 FC 7F 3E"
+	output = "00111110\n01111111\n11111100\n11111000\n11111000\n11111100\n01111111\n00111110\n"
+	c.Assert(convertHexToAsciiPicture(input), Equals, output)
+	input = "93 93 93 F3 F3 93 93 93"
+	output = "10010011\n10010011\n10010011\n11110011\n11110011\n10010011\n10010011\n10010011\n"
+	c.Assert(convertHexToAsciiPicture(input), Equals, output)
 }
