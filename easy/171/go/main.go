@@ -14,10 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"encoding/hex"
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertHexToAsciiPicture(input string) (output string) {
+	byteLines, _ := hex.DecodeString(strings.ReplaceAll(input, " ", ""))
+	for _, byteLine := range byteLines {
+		output += fmt.Sprintf("%08b\n", byteLine)
+	}
+	return
 }
