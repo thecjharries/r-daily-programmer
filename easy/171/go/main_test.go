@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertHexToAsciiPicture(c *C) {
+	var input, output string
+	input = "18 3C 7E 7E 18 18 18 18"
+	output = "00011000\n00111100\n01111110\n01111110\n00011000\n00011000\n00011000\n00011000\n"
+	c.Assert(convertHexToAsciiPicture(input), Equals, output)
+}
