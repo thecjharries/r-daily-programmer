@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+// https://gist.github.com/anonymous/0ce707518d9e581499f5
+var pbmDictionary = map[rune]string{
+	'a': "0 0 1 0 0\n0 1 0 1 0\n1 0 0 0 1\n1 1 1 1 1\n1 0 0 0 1\n1 0 0 0 1\n1 0 0 0 1",
+	'b': "1 1 1 1 0\n1 0 0 0 1\n1 0 0 0 1\n1 1 1 1 0\n1 0 0 0 1\n1 0 0 0 1\n1 1 1 1 0",
+	'c': "0 1 1 1 0\n1 0 0 0 1\n1 0 0 0 0\n1 0 0 0 0\n1 0 0 0 0\n1 0 0 0 1\n0 1 1 1 0",
+}
+
 var zPrint = fmt.Println
 
 func main() {
