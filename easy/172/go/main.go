@@ -39,7 +39,7 @@ func encode(input string) string {
 		if exists {
 			explodedCharacter := strings.Split(pbmString, "\n")
 			for index, line := range explodedCharacter {
-				exploded[index] += line
+				exploded[index] += "0" + line
 			}
 		}
 	}
