@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // https://gist.github.com/anonymous/0ce707518d9e581499f5
 var pbmDictionary = map[rune]string{
@@ -29,4 +32,16 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func encode()
+func encode(input string) string {
+	exploded := make([]string, 7)
+	for _, character := range input {
+		pbmString, exists := pbmDictionary[character]
+		if exists {
+			explodedCharacter := strings.Split(pbmString, "\n")
+			for index, line := range explodedCharacter {
+				exploded[index] += line
+			}
+		}
+	}
+	return strings.Join(exploded, "\n")
+}
