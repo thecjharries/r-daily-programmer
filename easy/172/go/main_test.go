@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestEncode(c *C) {
+	c.Assert(encode("abcd"), Equals, "000100011110001110\n001010010001010001\n010001010001010000\n011111011110010000\n010001010001010000\n010001010001010001\n010001011110001110")
+}
