@@ -18,24 +18,24 @@ import "fmt"
 
 var unitConversions = map[string]map[string]float64{
 	"metres": {
-		"inches":      0.0,
-		"miles":       0.0,
-		"attoparsecs": 0.0,
+		"inches":      1 / 39.37,
+		"miles":       1609,
+		"attoparsecs": 32.408,
 	},
 	"inches": {
-		"metres":      0.0,
-		"miles":       0.0,
-		"attoparsecs": 0.0,
+		"metres":      39.37,
+		"miles":       63360,
+		"attoparsecs": 1.215,
 	},
 	"miles": {
-		"metres":      0.0,
-		"inches":      0.0,
-		"attoparsecs": 0.0,
+		"metres":      1 / 1609,
+		"inches":      1 / 63360,
+		"attoparsecs": 1 / 52155,
 	},
 	"attoparsecs": {
-		"metres": 0.0,
-		"inches": 0.0,
-		"miles":  0.0,
+		"metres": 1 / 32.408,
+		"inches": 1 / 1.215,
+		"miles":  52155,
 	},
 	"kilograms": {
 		"pounds":                 0.0,
