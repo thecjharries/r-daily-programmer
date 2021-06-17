@@ -22,19 +22,19 @@ import (
 
 var unitConversions = map[string]map[string]float64{
 	"metres": {
-		"inches":      1 / 39.37,
-		"miles":       1609,
+		"inches":      39.37,
+		"miles":       1 / 1609,
 		"attoparsecs": 32.408,
 	},
 	"inches": {
-		"metres":      39.37,
-		"miles":       63360,
-		"attoparsecs": 1.215,
+		"metres":      1 / 39.37,
+		"miles":       1 / 63360,
+		"attoparsecs": 1 / 1.215,
 	},
 	"miles": {
-		"metres":      1 / 1609,
-		"inches":      1 / 63360,
-		"attoparsecs": 1 / 52155,
+		"metres":      1609,
+		"inches":      63360,
+		"attoparsecs": 52155,
 	},
 	"attoparsecs": {
 		"metres": 1 / 32.408,
