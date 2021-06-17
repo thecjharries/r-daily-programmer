@@ -65,5 +65,9 @@ func (s *MainSuite) TestParseConversion(c *C) {
 	c.Assert(amount, Equals, 3.0)
 	c.Assert(fromUnit, Equals, "hogsheads of Beryllium")
 	c.Assert(toUnit, Equals, "inches")
+}
 
+func (s *MainSuite) TestConvert(c *C) {
+	c.Assert(convert("3 metres to inches"), Equals, "3.000000 metres is 118.110000 inches")
+	c.Assert(convert("3 metres to pounds"), Equals, "3.000000 metres cannot be converted to pounds")
 }
