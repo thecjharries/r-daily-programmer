@@ -16,6 +16,49 @@ package main
 
 import "fmt"
 
+var unitConversions = map[string]map[string]float64{
+	"metres": {
+		"inches":      0.0,
+		"miles":       0.0,
+		"attoparsecs": 0.0,
+	},
+	"inches": {
+		"metres":      0.0,
+		"miles":       0.0,
+		"attoparsecs": 0.0,
+	},
+	"miles": {
+		"metres":      0.0,
+		"inches":      0.0,
+		"attoparsecs": 0.0,
+	},
+	"attoparsecs": {
+		"metres": 0.0,
+		"inches": 0.0,
+		"miles":  0.0,
+	},
+	"kilograms": {
+		"pounds":                 0.0,
+		"ounces":                 0.0,
+		"hogsheads of Beryllium": 0.0,
+	},
+	"pounds": {
+		"kilograms":              0.0,
+		"ounces":                 0.0,
+		"hogsheads of Beryllium": 0.0,
+	},
+	"ounces": {
+		"kilograms":              0.0,
+		"pounds":                 0.0,
+		"hogsheads of Beryllium": 0.0,
+	},
+	"hogsheads of Beryllium": {
+		"kilograms": 0.0,
+		"pounds":    0.0,
+		"ounces":    0.0,
+	},
+}
+
 var zPrint = fmt.Println
 
 func main() {
