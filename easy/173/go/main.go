@@ -76,3 +76,15 @@ func parseConversion(input string) (amount float64, fromUnit, toUnit string) {
 	amount, _ = strconv.ParseFloat(match[1], 64)
 	return amount, match[2], match[3]
 }
+
+func convert(input string) (output string) {
+	amount, fromUnit, toUnit := parseConversion(input)
+	var result string
+	conversion, exists := unitConversions[fromUnit][toUnit]
+	if exists {
+		result = fmt.Sprintf("is %f %s", amount*conversion, toUnit)
+	} else {
+		result = fmt.Sprintf("cannot be converted to %s", toUnit)
+	}
+	return fmt.Sprintf("%f %s %s", amount, fromUnit, result)
+}
