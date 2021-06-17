@@ -63,7 +63,7 @@ var unitConversions = map[string]map[string]float64{
 	},
 }
 
-var conversionPattern = regexp.MustCompile(`(.*) (.*) to (.*)`)
+var conversionPattern = regexp.MustCompile(`([^ ]*) (.*) to (.*)`)
 
 var zPrint = fmt.Println
 
