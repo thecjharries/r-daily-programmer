@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
 
 var unitConversions = map[string]map[string]float64{
 	"metres": {
@@ -58,6 +61,8 @@ var unitConversions = map[string]map[string]float64{
 		"ounces":    0.0,
 	},
 }
+
+var conversionPattern = regexp.MustCompile(`(.*) (.*) to (.*)`)
 
 var zPrint = fmt.Println
 
