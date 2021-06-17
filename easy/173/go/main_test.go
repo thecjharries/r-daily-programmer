@@ -53,3 +53,17 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseConversion(c *C) {
+	var amount float64
+	var fromUnit, toUnit string
+	amount, fromUnit, toUnit = parseConversion("3 metres to inches")
+	c.Assert(amount, Equals, 3.0)
+	c.Assert(fromUnit, Equals, "metres")
+	c.Assert(toUnit, Equals, "inches")
+	amount, fromUnit, toUnit = parseConversion("3 hogsheads of Beryllium to inches")
+	c.Assert(amount, Equals, 3.0)
+	c.Assert(fromUnit, Equals, "hogsheads of Beryllium")
+	c.Assert(toUnit, Equals, "inches")
+
+}
