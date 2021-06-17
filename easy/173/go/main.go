@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 )
 
 var unitConversions = map[string]map[string]float64{
@@ -68,4 +69,10 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseConversion(input string) (amount float64, fromUnit, toUnit string) {
+	match := conversionPattern.FindStringSubmatch(input)
+	amount, _ = strconv.ParseFloat(match[1], 64)
+	return amount, match[2], match[3]
 }
