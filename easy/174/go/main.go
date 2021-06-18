@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getNthThueMorseElement(n int64) (element string) {
+	for index := int64(1); index <= n; index++ {
+		numberAsBinary := strconv.FormatInt(index, 2)
+		onesCount := strings.Count(numberAsBinary, "1")
+		element += strconv.Itoa(onesCount % 2)
+	}
+	return
 }
