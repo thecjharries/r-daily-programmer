@@ -27,7 +27,7 @@ func main() {
 }
 
 func getNthThueMorseElement(n int64) (element string) {
-	for index := int64(1); index <= n; index++ {
+	for index := int64(0); index <= n; index++ {
 		numberAsBinary := strconv.FormatInt(index, 2)
 		onesCount := strings.Count(numberAsBinary, "1")
 		element += strconv.Itoa(onesCount % 2)

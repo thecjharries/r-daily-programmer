@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetNthThueMorseElement(c *C) {
+	c.Assert(getNthThueMorseElement(1), Equals, "01")
+	c.Assert(getNthThueMorseElement(63), Equals, "0110100110010110100101100110100110010110011010010110100110010110")
+}
