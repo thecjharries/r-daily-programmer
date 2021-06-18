@@ -2,7 +2,7 @@
 
 ## Source
 
-[Original post](https://old.reddit.com/r/dailyprogrammer/comments/2cld8m/8042014_challenge_174_easy_thuemorse_sequences/) by [u/Coder_d00d](https://old.reddit.com/user/Coder_d00d)
+[Original post](https://old.reddit.com/r/dailyprogrammer/comments/2cld8m/8042014_challenge_174_easy_thuemorse_sequences/) by [u/jnazario](https://old.reddit.com/user/jnazario)
 
 ## Prompt
 
