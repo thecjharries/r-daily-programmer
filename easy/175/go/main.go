@@ -28,7 +28,7 @@ func main() {
 
 func bogo(scrambled, sorted string) (iterations int) {
 	currentIteration := scrambled
-	for scrambled != sorted {
+	for currentIteration != sorted {
 		exploded := strings.Split(currentIteration, "")
 		rand.Shuffle(
 			len(exploded),
