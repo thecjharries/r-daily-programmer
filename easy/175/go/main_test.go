@@ -55,3 +55,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestBogo(c *C) {
+	c.Assert(bogo("lolhe", "hello"), Equals, 105)
+}
