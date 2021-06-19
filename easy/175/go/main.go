@@ -14,10 +14,30 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func bogo(scrambled, sorted string) (iterations int) {
+	currentIteration := scrambled
+	for scrambled != sorted {
+		exploded := strings.Split(currentIteration, "")
+		rand.Shuffle(
+			len(exploded),
+			func(i, j int) {
+				exploded[i], exploded[j] = exploded[j], exploded[i]
+			},
+		)
+		currentIteration = strings.Join(exploded, "")
+		iterations++
+	}
+	return
 }
