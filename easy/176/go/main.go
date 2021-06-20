@@ -32,7 +32,7 @@ type Cell struct {
 }
 
 func NewCellFromString(cellDefn string) (cell Cell) {
-	matched := cellSyntaxPattern.FindAllString(cellDefn, -1)
+	matched := cellSyntaxPattern.FindStringSubmatch(cellDefn)
 	row, _ := strconv.Atoi(matched[2])
 	return Cell{
 		Row:    row,

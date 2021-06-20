@@ -63,3 +63,12 @@ func (s *MainSuite) TestGetLetterDigit(c *C) {
 func (s *MainSuite) TestGetCellColumn(c *C) {
 	c.Assert(getCellColumn("ABC"), Equals, 731)
 }
+
+func (s *MainSuite) TestNewCellFromString(c *C) {
+	input := "ABC23"
+	output := Cell{
+		Row:    23,
+		Column: 731,
+	}
+	c.Assert(NewCellFromString(input), DeepEquals, output)
+}
