@@ -17,17 +17,34 @@ package main
 import (
 	"fmt"
 	"math"
+	"regexp"
+	"strconv"
 	"strings"
 )
 
 var letterDigit = []rune(" abcdefghijklmnopqrstuvwxyz")
+
+var cellSyntaxPattern = regexp.MustCompile(`(?i)([a-z]+)(\d+)`)
 
 type Cell struct {
 	Row    int
 	Column int
 }
 
+func NewCellFromString(cellDefn string) (cell Cell) {
+	matched := cellSyntaxPattern.FindAllString(cellDefn, -1)
+	row, _ := strconv.Atoi(matched[2])
+	return Cell{
+		Row:    row,
+		Column: getCellColumn(matched[1]),
+	}
+}
+
 type CellSelection []Cell
+
+//func CellSelectionFromRange(cellRange string) (selection CellSelection) {
+//
+//}
 
 var zPrint = fmt.Println
 
