@@ -59,3 +59,7 @@ func (s *MainSuite) TestGetLetterDigit(c *C) {
 	c.Assert(getLetterDigit('z'), Equals, 26)
 	c.Assert(getLetterDigit('+'), Equals, -1)
 }
+
+func (s *MainSuite) TestGetCellColumn(c *C) {
+	c.Assert(getCellColumn("ABC"), Equals, 731)
+}
