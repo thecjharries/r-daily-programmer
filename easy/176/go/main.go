@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var letterDigit = []rune(" abcdefghijklmnopqrstuvwxyz")
 
@@ -31,4 +34,13 @@ func getLetterDigit(letter rune) int {
 		}
 	}
 	return -1
+}
+
+func getCellColumn(column string) (cellColumn int) {
+	power := 0.0
+	for index := len(column) - 1; index >= 0; index-- {
+		cellColumn += getLetterDigit(rune(column[index])) * int(math.Pow(26, power))
+		power += 1
+	}
+	return cellColumn
 }
