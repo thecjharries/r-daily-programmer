@@ -42,9 +42,17 @@ func NewCellFromString(cellDefn string) (cell Cell) {
 
 type CellSelection []Cell
 
-//func CellSelectionFromRange(cellRange string) (selection CellSelection) {
-//
-//}
+func CellSelectionFromColonRange(cellRange string) (selection CellSelection) {
+	exploded := strings.Split(cellRange, ":")
+	first := NewCellFromString(exploded[0])
+	last := NewCellFromString(exploded[1])
+	for rowIndex := first.Row; rowIndex <= last.Row; rowIndex++ {
+		for columnIndex := first.Column; columnIndex <= last.Column; columnIndex++ {
+			selection = append(selection, Cell{rowIndex, columnIndex})
+		}
+	}
+	return
+}
 
 var zPrint = fmt.Println
 
