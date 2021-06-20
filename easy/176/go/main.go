@@ -16,8 +16,19 @@ package main
 
 import "fmt"
 
+var letterDigit = []rune(" abcdefghijklmnopqrstuvwxyz")
+
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getLetterDigit(letter rune) int {
+	for index, element := range letterDigit {
+		if letter == element {
+			return index
+		}
+	}
+	return -1
 }
