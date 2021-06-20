@@ -27,6 +27,8 @@ type Cell struct {
 	Column int
 }
 
+type CellSelection []Cell
+
 var zPrint = fmt.Println
 
 func main() {
