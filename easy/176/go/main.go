@@ -22,6 +22,11 @@ import (
 
 var letterDigit = []rune(" abcdefghijklmnopqrstuvwxyz")
 
+type Cell struct {
+	Row    int
+	Column int
+}
+
 var zPrint = fmt.Println
 
 func main() {
