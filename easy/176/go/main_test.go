@@ -72,3 +72,13 @@ func (s *MainSuite) TestNewCellFromString(c *C) {
 	}
 	c.Assert(NewCellFromString(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestNewCellSelectionFromColonRange(c *C) {
+	input := "B1:B3"
+	output := CellSelection{
+		{1, 2},
+		{2, 2},
+		{3, 2},
+	}
+	c.Assert(NewCellSelectionFromColonRange(input), DeepEquals, output)
+}

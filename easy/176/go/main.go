@@ -42,7 +42,7 @@ func NewCellFromString(cellDefn string) (cell Cell) {
 
 type CellSelection []Cell
 
-func CellSelectionFromColonRange(cellRange string) (selection CellSelection) {
+func NewCellSelectionFromColonRange(cellRange string) (selection CellSelection) {
 	exploded := strings.Split(cellRange, ":")
 	first := NewCellFromString(exploded[0])
 	last := NewCellFromString(exploded[1])
