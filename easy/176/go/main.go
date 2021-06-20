@@ -34,7 +34,7 @@ func getLetterDigit(letter rune) int {
 			return index
 		}
 	}
-	return -1
+	return 0
 }
 
 func getCellColumn(column string) (cellColumn int) {

@@ -57,7 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestGetLetterDigit(c *C) {
 	c.Assert(getLetterDigit('a'), Equals, 1)
 	c.Assert(getLetterDigit('z'), Equals, 26)
-	c.Assert(getLetterDigit('+'), Equals, -1)
+	c.Assert(getLetterDigit('+'), Equals, 0)
 }
 
 func (s *MainSuite) TestGetCellColumn(c *C) {
