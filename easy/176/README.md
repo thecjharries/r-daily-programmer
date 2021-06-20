@@ -1,5 +1,9 @@
 # [8/18/2014] Challenge #176 [Easy] Spreadsheet Developer pt. 1: Cell Selection
 
+## Note on Go
+
+Go doesn't (easily) do set theoretic operations and I'm on vacation so I'm stopping with what I've got. It's not complete. It probably needs a redesign.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/2dvc81/8182014_challenge_176_easy_spreadsheet_developer/) by [u/Elite6809](https://old.reddit.com/user/Elite6809)
