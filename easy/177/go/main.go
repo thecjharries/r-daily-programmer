@@ -21,3 +21,10 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func quicksort(input []int) []int {
+	if 0 == len(input) || 1 == len(input) {
+		return input
+	}
+	return []int(nil)
+}
