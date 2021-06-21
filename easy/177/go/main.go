@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 var zPrint = fmt.Println
 
@@ -26,5 +29,17 @@ func quicksort(input []int) []int {
 	if 0 == len(input) || 1 == len(input) {
 		return input
 	}
-	return []int(nil)
+	pivotIndex := rand.Intn(len(input))
+	var smaller, greater []int
+	for index := 0; index < len(input); index++ {
+		if pivotIndex == index {
+			continue
+		}
+		if input[pivotIndex] > input[index] {
+			smaller = append(smaller, input[index])
+		} else {
+			greater = append(greater, input[index])
+		}
+	}
+	return append(quicksort(smaller), append([]int{input[pivotIndex]}, quicksort(greater)...)...)
 }
