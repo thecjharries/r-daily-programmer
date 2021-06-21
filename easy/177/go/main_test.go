@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestQuicksort(c *C) {
+	var input, output []int
+	input = []int{1, 2, 3, 4, 5, 6}
+	output = []int{1, 2, 3, 4, 5, 6}
+	c.Assert(quicksort(input), DeepEquals, output)
+	input = []int{6, 5, 4, 3, 2, 1}
+	c.Assert(quicksort(input), DeepEquals, output)
+	input = []int{1, 6, 2, 5, 3, 4}
+	c.Assert(quicksort(input), DeepEquals, output)
+}
