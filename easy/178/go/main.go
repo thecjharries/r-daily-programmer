@@ -48,6 +48,16 @@ func (p *Point2d) Scale(x, y, factor float64) *Point2d {
 	return p
 }
 
+func (p *Point2d) Reflect(xAxis, yAxis bool) *Point2d {
+	if xAxis {
+		p.X *= -1
+	}
+	if yAxis {
+		p.Y *= -1
+	}
+	return p
+}
+
 var zPrint = fmt.Println
 
 func main() {

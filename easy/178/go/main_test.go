@@ -85,3 +85,12 @@ func (s *MainSuite) TestPoint2dScale(c *C) {
 	c.Assert(point.X, DeepEquals, -1.0)
 	c.Assert(point.Y, DeepEquals, -1.0)
 }
+
+func (s *MainSuite) TestPoint2dReflect(c *C) {
+	point := NewPoint2d(1, 1)
+	c.Assert(point.X, DeepEquals, 1.0)
+	c.Assert(point.Y, DeepEquals, 1.0)
+	point.Reflect(true, true)
+	c.Assert(point.X, DeepEquals, -1.0)
+	c.Assert(point.Y, DeepEquals, -1.0)
+}
