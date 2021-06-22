@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+type Point2d struct {
+	X, Y float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
