@@ -36,9 +36,9 @@ func (p *Point2d) Translate(x, y float64) *Point2d {
 	return p
 }
 
-func (p *Point2d) Rotate(originX, originY, theta float64) *Point2d {
-	p.X = math.Cos(theta)*(p.X-originX) - math.Sin(theta)*(p.Y-originY) + originX
-	p.Y = math.Sin(theta)*(p.X-originX) - math.Cos(theta)*(p.Y-originY) + originY
+func (p *Point2d) Rotate(x, y, theta float64) *Point2d {
+	p.X = math.Cos(theta)*(p.X-x) - math.Sin(theta)*(p.Y-y) + x
+	p.Y = math.Sin(theta)*(p.X-x) - math.Cos(theta)*(p.Y-y) + y
 	return p
 }
 
