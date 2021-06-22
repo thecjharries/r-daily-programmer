@@ -42,6 +42,12 @@ func (p *Point2d) Rotate(x, y, theta float64) *Point2d {
 	return p
 }
 
+func (p *Point2d) Scale(x, y, factor float64) *Point2d {
+	p.X = factor*(p.X-x) + x
+	p.Y = factor*(p.Y-y) + y
+	return p
+}
+
 var zPrint = fmt.Println
 
 func main() {
