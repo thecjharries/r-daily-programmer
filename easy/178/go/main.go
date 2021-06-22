@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Point2d struct {
 	X, Y float64
@@ -30,6 +33,12 @@ func NewPoint2d(x, y float64) *Point2d {
 func (p *Point2d) Translate(x, y float64) *Point2d {
 	p.X += x
 	p.Y += y
+	return p
+}
+
+func (p *Point2d) Rotate(originX, originY, theta float64) *Point2d {
+	p.X = math.Cos(theta)*(p.X-originX) - math.Sin(theta)*(p.Y-originY) + originX
+	p.Y = math.Sin(theta)*(p.X-originX) - math.Cos(theta)*(p.Y-originY) + originY
 	return p
 }
 

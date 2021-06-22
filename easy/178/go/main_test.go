@@ -67,3 +67,12 @@ func (s *MainSuite) TestPoint2dTranslate(c *C) {
 	c.Assert(point.X, DeepEquals, 0.0)
 	c.Assert(point.Y, DeepEquals, 5.0)
 }
+
+func (s *MainSuite) TestPoint2dRotate(c *C) {
+	point := NewPoint2d(0, 0)
+	c.Assert(point.X, DeepEquals, 0.0)
+	c.Assert(point.Y, DeepEquals, 0.0)
+	point.Rotate(1, 1, 1)
+	c.Assert(point.X, DeepEquals, 1.3011686789397567)
+	c.Assert(point.Y, DeepEquals, 1.79372701072887)
+}
