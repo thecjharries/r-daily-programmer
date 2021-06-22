@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewPoint2d(c *C) {
+	output := &Point2d{0.1, 0.2}
+	c.Assert(NewPoint2d(0.1, 0.2), DeepEquals, output)
+}
