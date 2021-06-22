@@ -58,3 +58,12 @@ func (s *MainSuite) TestNewPoint2d(c *C) {
 	output := &Point2d{0.1, 0.2}
 	c.Assert(NewPoint2d(0.1, 0.2), DeepEquals, output)
 }
+
+func (s *MainSuite) TestPoint2dTranslate(c *C) {
+	point := NewPoint2d(0, 0)
+	c.Assert(point.X, DeepEquals, 0.0)
+	c.Assert(point.Y, DeepEquals, 0.0)
+	point.Translate(0, 5)
+	c.Assert(point.X, DeepEquals, 0.0)
+	c.Assert(point.Y, DeepEquals, 5.0)
+}

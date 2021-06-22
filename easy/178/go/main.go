@@ -27,11 +27,11 @@ func NewPoint2d(x, y float64) *Point2d {
 	}
 }
 
-//func (p *Point2d) Translate(x, y float64) *Point2d {
-//	p.X += x
-//	p.Y += y
-//	return p
-//}
+func (p *Point2d) Translate(x, y float64) *Point2d {
+	p.X += x
+	p.Y += y
+	return p
+}
 
 var zPrint = fmt.Println
 
