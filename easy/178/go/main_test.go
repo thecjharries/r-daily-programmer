@@ -94,3 +94,8 @@ func (s *MainSuite) TestPoint2dReflect(c *C) {
 	c.Assert(point.X, DeepEquals, -1.0)
 	c.Assert(point.Y, DeepEquals, -1.0)
 }
+
+func (s *MainSuite) TestPoint2dString(c *C) {
+	point := NewPoint2d(1, 1)
+	c.Assert(point.String(), Equals, "(1.000000, 1.000000)")
+}

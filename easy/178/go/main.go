@@ -58,6 +58,10 @@ func (p *Point2d) Reflect(xAxis, yAxis bool) *Point2d {
 	return p
 }
 
+func (p *Point2d) String() string {
+	return fmt.Sprintf("(%f, %f)", p.X, p.Y)
+}
+
 var zPrint = fmt.Println
 
 func main() {
