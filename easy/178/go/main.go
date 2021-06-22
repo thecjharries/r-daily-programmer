@@ -36,24 +36,23 @@ func (p *Point2d) Translate(x, y float64) *Point2d {
 	return p
 }
 
-func (p *Point2d) Rotate(x, y, theta float64) *Point2d {
-	p.X = math.Cos(theta)*(p.X-x) - math.Sin(theta)*(p.Y-y) + x
-	p.Y = math.Sin(theta)*(p.X-x) - math.Cos(theta)*(p.Y-y) + y
-	return p
-}
-
 func (p *Point2d) Scale(x, y, factor float64) *Point2d {
 	p.X = factor*(p.X-x) + x
 	p.Y = factor*(p.Y-y) + y
 	return p
 }
 
+func (p *Point2d) Rotate(x, y, theta float64) *Point2d {
+	p.X, p.Y = math.Cos(-theta)*(p.X-x)-math.Sin(-theta)*(p.Y-y)+x, math.Sin(-theta)*(p.X-x)+math.Cos(-theta)*(p.Y-y)+y
+	return p
+}
+
 func (p *Point2d) Reflect(xAxis, yAxis bool) *Point2d {
 	if xAxis {
-		p.X *= -1
+		p.Y *= -1
 	}
 	if yAxis {
-		p.Y *= -1
+		p.X *= -1
 	}
 	return p
 }
@@ -65,5 +64,14 @@ func (p *Point2d) String() string {
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	point := NewPoint2d(0, 5).
+		Translate(3, 2).
+		Scale(1, 3, 0.5).
+		Rotate(3, 2, math.Pi/2).
+		Reflect(true, false).
+		Translate(2, -1).
+		Scale(0, 0, -0.25).
+		Rotate(1, -3, math.Pi).
+		Reflect(false, true)
+	_, _ = zPrint(point)
 }

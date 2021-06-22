@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -51,7 +52,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "(-4.000000, -7.000000)")
 }
 
 func (s *MainSuite) TestNewPoint2d(c *C) {
@@ -60,39 +61,42 @@ func (s *MainSuite) TestNewPoint2d(c *C) {
 }
 
 func (s *MainSuite) TestPoint2dTranslate(c *C) {
-	point := NewPoint2d(0, 0)
-	c.Assert(point.X, DeepEquals, 0.0)
-	c.Assert(point.Y, DeepEquals, 0.0)
-	point.Translate(0, 5)
-	c.Assert(point.X, DeepEquals, 0.0)
-	c.Assert(point.Y, DeepEquals, 5.0)
-}
-
-func (s *MainSuite) TestPoint2dRotate(c *C) {
-	point := NewPoint2d(0, 0)
-	c.Assert(point.X, DeepEquals, 0.0)
-	c.Assert(point.Y, DeepEquals, 0.0)
-	point.Rotate(1, 1, 1)
-	c.Assert(point.X, DeepEquals, 1.3011686789397567)
-	c.Assert(point.Y, DeepEquals, 1.79372701072887)
+	point := NewPoint2d(0, 5)
+	c.Assert(point.X, Equals, 0.0)
+	c.Assert(point.Y, Equals, 5.0)
+	point.Translate(3, 2)
+	c.Assert(point.X, Equals, 3.0)
+	c.Assert(point.Y, Equals, 7.0)
 }
 
 func (s *MainSuite) TestPoint2dScale(c *C) {
-	point := NewPoint2d(1, 1)
-	c.Assert(point.X, DeepEquals, 1.0)
-	c.Assert(point.Y, DeepEquals, 1.0)
-	point.Scale(3, 3, 2)
-	c.Assert(point.X, DeepEquals, -1.0)
-	c.Assert(point.Y, DeepEquals, -1.0)
+	point := NewPoint2d(3, 7)
+	c.Assert(point.X, Equals, 3.0)
+	c.Assert(point.Y, Equals, 7.0)
+	point.Scale(1, 3, 0.5)
+	c.Assert(point.X, Equals, 2.0)
+	c.Assert(point.Y, Equals, 5.0)
+}
+
+func (s *MainSuite) TestPoint2dRotate(c *C) {
+	point := NewPoint2d(2, 5)
+	c.Assert(point.X, Equals, 2.0)
+	c.Assert(point.Y, Equals, 5.0)
+	point.Rotate(3, 2, math.Pi/2)
+	c.Assert(point.X, Equals, 6.0)
+	c.Assert(point.Y, Equals, 3.0)
 }
 
 func (s *MainSuite) TestPoint2dReflect(c *C) {
-	point := NewPoint2d(1, 1)
-	c.Assert(point.X, DeepEquals, 1.0)
-	c.Assert(point.Y, DeepEquals, 1.0)
+	point := NewPoint2d(3, 3)
+	c.Assert(point.X, Equals, 3.0)
+	c.Assert(point.Y, Equals, 3.0)
+	point.Reflect(true, false)
+	c.Assert(point.X, Equals, 3.0)
+	c.Assert(point.Y, Equals, -3.0)
 	point.Reflect(true, true)
-	c.Assert(point.X, DeepEquals, -1.0)
-	c.Assert(point.Y, DeepEquals, -1.0)
+	c.Assert(point.X, Equals, -3.0)
+	c.Assert(point.Y, Equals, 3.0)
 }
 
 func (s *MainSuite) TestPoint2dString(c *C) {
