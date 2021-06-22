@@ -20,6 +20,19 @@ type Point2d struct {
 	X, Y float64
 }
 
+func NewPoint2d(x, y float64) *Point2d {
+	return &Point2d{
+		X: x,
+		Y: y,
+	}
+}
+
+//func (p *Point2d) Translate(x, y float64) *Point2d {
+//	p.X += x
+//	p.Y += y
+//	return p
+//}
+
 var zPrint = fmt.Println
 
 func main() {
