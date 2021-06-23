@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"image/color"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestConvertPixelToGreyscale(c *C) {
+	input := color.RGBA{
+		R: 255,
+		G: 0,
+		B: 0,
+		A: 1,
+	}
+	output := color.Gray{Y: 194}
+	c.Assert(convertPixelToGreyscale(input), DeepEquals, output)
 }
