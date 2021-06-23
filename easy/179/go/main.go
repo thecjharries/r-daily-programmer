@@ -14,10 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"image/color"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+// http://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/
+func convertPixelToGreyscale(pixel color.Color) (newPixel color.Color) {
+	red, green, blue, _ := pixel.RGBA()
+	return color.Gray{uint8(0.21*float64(red) + 0.72*float64(green) + 0.07*float64(blue)/256)}
 }
