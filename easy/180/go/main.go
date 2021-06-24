@@ -26,7 +26,7 @@ func main() {
 }
 
 func getNthLookAndSayIteration(n, seed int) int {
-	if 0 == n {
+	if 2 > n {
 		return seed
 	}
 	seedAsString := strconv.Itoa(seed)
@@ -42,6 +42,7 @@ func getNthLookAndSayIteration(n, seed int) int {
 			count = 1
 		}
 	}
+	nextIterationAsString += fmt.Sprintf("%d%s", count, string(currentNumber))
 	nextIteration, _ := strconv.Atoi(nextIterationAsString)
 	return getNthLookAndSayIteration(n-1, nextIteration)
 }
