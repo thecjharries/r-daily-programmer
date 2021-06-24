@@ -14,10 +14,34 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getNthLookAndSayIteration(n, seed int) int {
+	if 0 == n {
+		return seed
+	}
+	seedAsString := strconv.Itoa(seed)
+	nextIterationAsString := ""
+	currentNumber := rune(seedAsString[0])
+	count := 1
+	for _, element := range seedAsString[1:] {
+		if currentNumber == element {
+			count++
+		} else {
+			nextIterationAsString += fmt.Sprintf("%d%s", count, string(currentNumber))
+			currentNumber = element
+			count = 1
+		}
+	}
+	nextIteration, _ := strconv.Atoi(nextIterationAsString)
+	return getNthLookAndSayIteration(n-1, nextIteration)
 }
