@@ -59,4 +59,5 @@ func (s *MainSuite) TestGetNthLookAndSayIteration(c *C) {
 	c.Assert(getNthLookAndSayIteration(2, 1), Equals, 11)
 	c.Assert(getNthLookAndSayIteration(3, 1), Equals, 21)
 	c.Assert(getNthLookAndSayIteration(4, 1), Equals, 1211)
+	c.Assert(getNthLookAndSayIteration(20, 22), Equals, 22)
 }
