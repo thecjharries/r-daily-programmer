@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetNthLookAndSayIteration(c *C) {
+	c.Assert(getNthLookAndSayIteration(1, 1), Equals, 1)
+	c.Assert(getNthLookAndSayIteration(2, 1), Equals, 11)
+	c.Assert(getNthLookAndSayIteration(3, 1), Equals, 21)
+	c.Assert(getNthLookAndSayIteration(4, 1), Equals, 1211)
+}
