@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 )
 
 var equationPattern = regexp.MustCompile(`y=(?:(.+)x)?\+?(.+)?`)
@@ -27,9 +28,13 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-//func parseSingleEquation(equation string) (a, b float64) {
-//	return
-//}
+func parseSingleEquation(equation string) (a, b float64) {
+	match := equationPattern.FindAllStringSubmatch(equation, -1)[0]
+	a, _ = strconv.ParseFloat(match[1], 64)
+	b, _ = strconv.ParseFloat(match[2], 64)
+	return
+}
+
 //
 //func parseEquations(first, second string) (a1, b1, a2, b2 float64) {
 //
