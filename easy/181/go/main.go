@@ -35,8 +35,10 @@ func parseSingleEquation(equation string) (a, b float64) {
 	return
 }
 
-//
-//func parseEquations(first, second string) (a1, b1, a2, b2 float64) {
-//
-//	return
-//}
+func solveEquationPair(first, second string) (x, y float64) {
+	a1, b1 := parseSingleEquation(first)
+	a2, b2 := parseSingleEquation(second)
+	x = (b2 - b1) / (a1 - a2)
+	y = a1*x + b1
+	return
+}
