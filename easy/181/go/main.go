@@ -14,10 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var equationPattern = regexp.MustCompile(`y=(?:(.+)x)?\+?(.+)?`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+//func parseSingleEquation(equation string) (a, b float64) {
+//	return
+//}
+//
+//func parseEquations(first, second string) (a1, b1, a2, b2 float64) {
+//
+//	return
+//}
