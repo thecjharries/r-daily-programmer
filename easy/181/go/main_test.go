@@ -73,3 +73,16 @@ func (s *MainSuite) TestParseSingleEquation(c *C) {
 		c.Assert(b, Equals, fixture.B)
 	}
 }
+
+func (s *MainSuite) TestSolveEquationPair(c *C) {
+	var x, y float64
+	x, y = solveEquationPair("y=2x+2", "y=5x-4")
+	c.Assert(x, Equals, 2.0)
+	c.Assert(y, Equals, 6.0)
+	x, y = solveEquationPair("y=-5x", "y=-4x+1")
+	c.Assert(x, Equals, -1.0)
+	c.Assert(y, Equals, 5.0)
+	x, y = solveEquationPair("y=0.5x+1.3", "y=-1.4x-0.2")
+	c.Assert(x, Equals, -0.7894736842105263)
+	c.Assert(y, Equals, 0.9052631578947369)
+}
