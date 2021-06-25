@@ -53,3 +53,23 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+type ParseSingleEquationFixture struct {
+	Input string
+	A, B  float64
+}
+
+func (s *MainSuite) TestParseSingleEquation(c *C) {
+	fixtures := []ParseSingleEquationFixture{
+		{"y=5x-4", 5.0, -4.0},
+		{"y=2x+2", 2.0, 2.0},
+		{"y=-5x", -5.0, 0.0},
+		{"y=-4x+1", -4.0, 1.0},
+		{"y=0.5", 0.0, 0.5},
+	}
+	for _, fixture := range fixtures {
+		a, b := parseSingleEquation(fixture.Input)
+		c.Assert(a, Equals, fixture.A)
+		c.Assert(b, Equals, fixture.B)
+	}
+}
