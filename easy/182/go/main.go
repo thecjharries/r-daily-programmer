@@ -30,8 +30,8 @@ func main() {
 
 func convertTextToLines(columnWidth int, text string) (lines []string) {
 	words := spacePattern.Split(text, -1)
-	var currentLine string
-	for _, word := range words {
+	currentLine := words[0]
+	for _, word := range words[1:] {
 		if columnWidth < len(currentLine)+1+len(word) {
 			lines = append(lines, currentLine+strings.Repeat(" ", columnWidth-len(currentLine)))
 			currentLine = word
@@ -39,5 +39,6 @@ func convertTextToLines(columnWidth int, text string) (lines []string) {
 			currentLine += " " + word
 		}
 	}
+	lines = append(lines, currentLine+strings.Repeat(" ", columnWidth-len(currentLine)))
 	return
 }

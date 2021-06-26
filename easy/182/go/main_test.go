@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertTextToLines(c *C) {
+	input := "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at pharetra sapien, id sodales ipsum. Vivamus"
+	output := []string{
+		"Lorem ipsum dolor sit    ",
+		"amet, consectetur        ",
+		"adipiscing elit. Ut at   ",
+		"pharetra sapien, id      ",
+		"sodales ipsum. Vivamus   ",
+	}
+	c.Assert(convertTextToLines(25, input), DeepEquals, output)
+}
