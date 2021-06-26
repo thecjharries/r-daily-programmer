@@ -60,3 +60,12 @@ func convertLinesToFinal(numberOfColumns, columnWidth, spacingWidth int, lines [
 	}
 	return strings.Join(output, "\n")
 }
+
+func columnizeText(numberOfColumns, columnWidth, spacingWidth int, text string) string {
+	return convertLinesToFinal(
+		numberOfColumns,
+		columnWidth,
+		spacingWidth,
+		convertTextToLines(columnWidth, text),
+	)
+}

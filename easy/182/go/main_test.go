@@ -77,3 +77,9 @@ func (s *MainSuite) TestConvertLinesToFinal(c *C) {
 	output := "Lorem ipsum dolor sit         adipiscing elit. Ut at        sodales ipsum. Vivamus   \namet, consectetur             pharetra sapien, id                                    "
 	c.Assert(convertLinesToFinal(3, 25, 5, lines), Equals, output)
 }
+
+func (s *MainSuite) TestColumnizeText(c *C) {
+	input := "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at pharetra sapien, id sodales ipsum. Vivamus"
+	output := "Lorem ipsum dolor sit         adipiscing elit. Ut at        sodales ipsum. Vivamus   \namet, consectetur             pharetra sapien, id                                    "
+	c.Assert(columnizeText(3, 25, 5, input), Equals, output)
+}
