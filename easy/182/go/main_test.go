@@ -65,3 +65,15 @@ func (s *MainSuite) TestConvertTextToLines(c *C) {
 	}
 	c.Assert(convertTextToLines(25, input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestConvertLinesToFinal(c *C) {
+	lines := []string{
+		"Lorem ipsum dolor sit    ",
+		"amet, consectetur        ",
+		"adipiscing elit. Ut at   ",
+		"pharetra sapien, id      ",
+		"sodales ipsum. Vivamus   ",
+	}
+	output := "Lorem ipsum dolor sit         adipiscing elit. Ut at        sodales ipsum. Vivamus   \namet, consectetur             pharetra sapien, id                                    "
+	c.Assert(convertLinesToFinal(3, 25, 5, lines), Equals, output)
+}
