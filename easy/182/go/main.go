@@ -14,10 +14,30 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
+
+var spacePattern = regexp.MustCompile(`\s+`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertTextToLines(columnWidth int, text string) (lines []string) {
+	words := spacePattern.Split(text, -1)
+	var currentLine string
+	for _, word := range words {
+		if columnWidth < len(currentLine)+1+len(word) {
+			lines = append(lines, currentLine+strings.Repeat(" ", columnWidth-len(currentLine)))
+			currentLine = word
+		} else {
+			currentLine += " " + word
+		}
+	}
+	return
 }
