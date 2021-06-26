@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"regexp"
 	"strings"
 )
@@ -40,5 +41,22 @@ func convertTextToLines(columnWidth int, text string) (lines []string) {
 		}
 	}
 	lines = append(lines, currentLine+strings.Repeat(" ", columnWidth-len(currentLine)))
+	return
+}
+
+func convertLinesToFinal(numberOfColumns, columnWidth, spacingWidth int, lines []string) (output string) {
+	totalLines := int(math.Ceil(float64(len(lines)) / float64(numberOfColumns)))
+	linesPerColumn := totalLines / numberOfColumns
+	for lineIndex := 0; lineIndex < totalLines; lineIndex++ {
+		var currentLine []string
+		for columnIndex := 0; columnIndex < numberOfColumns; columnIndex++ {
+			if len(lines) < lineIndex+columnIndex*linesPerColumn {
+				currentLine = append(currentLine, strings.Repeat(" ", columnWidth))
+			} else {
+				currentLine = append(currentLine, lines[lineIndex+columnIndex*linesPerColumn])
+			}
+		}
+		output += strings.Join(currentLine, strings.Repeat(" ", spacingWidth))
+	}
 	return
 }
