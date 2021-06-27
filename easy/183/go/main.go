@@ -42,7 +42,7 @@ func NewSemVer(input string) SemVer {
 
 type SemVers []SemVer
 
-func (s SemVers) Length() int {
+func (s SemVers) Len() int {
 	return len(s)
 }
 
