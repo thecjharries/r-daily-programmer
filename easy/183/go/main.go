@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 )
 
 var semverPattern = regexp.MustCompile(`^(?P<major>\d+)\.(?P<minor>\d+).(?P<patch>\d+)(?:-(?P<label>[^+\s]+))?(?:\+.*)?$`)
@@ -24,6 +25,19 @@ var semverPattern = regexp.MustCompile(`^(?P<major>\d+)\.(?P<minor>\d+).(?P<patc
 type SemVer struct {
 	Major, Minor, Patch int
 	Label               string
+}
+
+func NewSemVer(input string) SemVer {
+	match := semverPattern.FindAllStringSubmatch(input, -1)[0]
+	major, _ := strconv.Atoi(match[1])
+	minor, _ := strconv.Atoi(match[2])
+	patch, _ := strconv.Atoi(match[3])
+	return SemVer{
+		Major: major,
+		Minor: minor,
+		Patch: patch,
+		Label: match[4],
+	}
 }
 
 var zPrint = fmt.Println
