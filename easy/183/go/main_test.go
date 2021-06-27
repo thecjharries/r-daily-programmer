@@ -71,3 +71,13 @@ func (s *MainSuite) TestSemVersLength(c *C) {
 	}
 	c.Assert(semvers.Length(), Equals, 1)
 }
+
+func (s *MainSuite) TestSemVersSwap(c *C) {
+	semvers := SemVers{
+		NewSemVer("2.0.11-alpha"),
+		NewSemVer("0.1.7+amd64"),
+	}
+	c.Assert(semvers[0].Major, Equals, 2)
+	semvers.Swap(0, 1)
+	c.Assert(semvers[0].Major, Equals, 0)
+}

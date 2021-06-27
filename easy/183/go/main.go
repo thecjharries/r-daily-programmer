@@ -46,6 +46,10 @@ func (s SemVers) Length() int {
 	return len(s)
 }
 
+func (s SemVers) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
+}
+
 var zPrint = fmt.Println
 
 func main() {
