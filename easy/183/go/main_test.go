@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewSemVer(c *C) {
+	input := "2.0.11-alpha"
+	output := SemVer{
+		Major: 2,
+		Minor: 0,
+		Patch: 11,
+		Label: "alpha",
+	}
+	c.Assert(NewSemVer(input), DeepEquals, output)
+}
