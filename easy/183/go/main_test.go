@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -98,4 +99,28 @@ func (s *MainSuite) TestSemVersLess(c *C) {
 	c.Assert(semvers.Less(3, 0), Equals, false)
 	c.Assert(semvers.Less(0, 4), Equals, true)
 	c.Assert(semvers.Less(4, 0), Equals, false)
+}
+
+func (s *MainSuite) TestSemVersSort(c *C) {
+	input := SemVers{
+		NewSemVer("2.0.11-alpha"),
+		NewSemVer("0.1.7+amd64"),
+		NewSemVer("0.10.7+20141005"),
+		NewSemVer("2.0.12+i386"),
+		NewSemVer("1.2.34"),
+		NewSemVer("2.0.11+i386"),
+		NewSemVer("20.1.1+i386"),
+	}
+	output := SemVers{
+		NewSemVer("0.1.7+amd64"),
+		NewSemVer("0.10.7+20141005"),
+		NewSemVer("1.2.34"),
+		NewSemVer("2.0.11-alpha"),
+		NewSemVer("2.0.11+i386"),
+		NewSemVer("2.0.12+i386"),
+		NewSemVer("20.1.1+i386"),
+	}
+	c.Assert(input, Not(DeepEquals), output)
+	sort.Sort(input)
+	c.Assert(input, DeepEquals, output)
 }
