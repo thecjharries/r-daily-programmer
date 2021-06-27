@@ -81,3 +81,21 @@ func (s *MainSuite) TestSemVersSwap(c *C) {
 	semvers.Swap(0, 1)
 	c.Assert(semvers[0].Major, Equals, 0)
 }
+
+func (s *MainSuite) TestSemVersLess(c *C) {
+	semvers := SemVers{
+		NewSemVer("2.0.11-alpha"),
+		NewSemVer("0.1.7+amd64"),
+		NewSemVer("2.0.11+i386"),
+		NewSemVer("2.1.11+i386"),
+		NewSemVer("2.0.12+i386"),
+	}
+	c.Assert(semvers.Less(0, 1), Equals, false)
+	c.Assert(semvers.Less(1, 0), Equals, true)
+	c.Assert(semvers.Less(0, 2), Equals, true)
+	c.Assert(semvers.Less(2, 0), Equals, false)
+	c.Assert(semvers.Less(0, 3), Equals, true)
+	c.Assert(semvers.Less(3, 0), Equals, false)
+	c.Assert(semvers.Less(0, 4), Equals, true)
+	c.Assert(semvers.Less(4, 0), Equals, false)
+}
