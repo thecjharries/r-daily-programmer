@@ -19,7 +19,7 @@ import (
 	"regexp"
 )
 
-var semverPattern = regexp.MustCompile(`^(?P<major>\d+)\.(?P<minor>\d+).(?P<patch>\d+)(?P<label>-[^+\s]+)?(?:\+.*)?$`)
+var semverPattern = regexp.MustCompile(`^(?P<major>\d+)\.(?P<minor>\d+).(?P<patch>\d+)(?:-(?P<label>[^+\s]+))?(?:\+.*)?$`)
 
 var zPrint = fmt.Println
 
