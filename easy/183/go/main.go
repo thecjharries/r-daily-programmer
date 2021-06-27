@@ -50,6 +50,25 @@ func (s SemVers) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
 
+func (s SemVers) Less(i, j int) bool {
+	if s[i].Major < s[j].Major {
+		return true
+	} else if s[i].Major > s[j].Major {
+		return false
+	}
+	if s[i].Minor < s[j].Minor {
+		return true
+	} else if s[i].Minor > s[j].Minor {
+		return false
+	}
+	if s[i].Patch < s[j].Patch {
+		return true
+	} else if s[i].Patch > s[j].Patch {
+		return false
+	}
+	return "" != s[i].Label && "" == s[j].Label
+}
+
 var zPrint = fmt.Println
 
 func main() {
