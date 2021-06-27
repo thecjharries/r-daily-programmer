@@ -64,3 +64,10 @@ func (s *MainSuite) TestNewSemVer(c *C) {
 	}
 	c.Assert(NewSemVer(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestSemVersLength(c *C) {
+	semvers := SemVers{
+		NewSemVer("2.0.11-alpha"),
+	}
+	c.Assert(semvers.Length(), Equals, 1)
+}
