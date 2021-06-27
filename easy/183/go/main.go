@@ -40,6 +40,12 @@ func NewSemVer(input string) SemVer {
 	}
 }
 
+type SemVers []SemVer
+
+func (s SemVers) Length() int {
+	return len(s)
+}
+
 var zPrint = fmt.Println
 
 func main() {
