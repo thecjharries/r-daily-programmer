@@ -24,8 +24,12 @@ func (s *SmartStack) Push(element int) {
 	s.Stack = append(s.Stack, element)
 	for index := 0; index < len(s.Sorted); index++ {
 		if element < s.Sorted[index] {
-			s.Sorted = append(s.Sorted[:index-1], append([]int{element}, s.Sorted[index:]...)...)
+			s.Sorted = append(s.Sorted[:index], append([]int{element}, s.Sorted[index:]...)...)
+			break
 		}
+	}
+	if len(s.Sorted) != len(s.Stack) {
+		s.Sorted = append(s.Sorted, element)
 	}
 }
 
