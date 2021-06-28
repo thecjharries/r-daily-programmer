@@ -45,6 +45,10 @@ func (s *SmartStack) Pop() (element int) {
 	return element
 }
 
+func (s *SmartStack) Len() int {
+	return len(s.Stack)
+}
+
 var zPrint = fmt.Println
 
 func main() {
