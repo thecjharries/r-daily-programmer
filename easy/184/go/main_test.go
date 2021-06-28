@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSmartStackPush(c *C) {
+	stack := SmartStack{
+		Sorted: []int{10},
+		Stack:  []int{10},
+	}
+	stack.Push(15)
+	stack.Push(12)
+	stack.Push(5)
+	c.Assert(stack.Sorted, DeepEquals, []int{5, 10, 12, 15})
+	c.Assert(stack.Stack, DeepEquals, []int{10, 15, 12, 5})
+}
