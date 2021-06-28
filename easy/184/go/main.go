@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+type SmartStack struct {
+	Sorted, Stack []int
+}
+
 var zPrint = fmt.Println
 
 func main() {
