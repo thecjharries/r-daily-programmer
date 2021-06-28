@@ -20,6 +20,15 @@ type SmartStack struct {
 	Sorted, Stack []int
 }
 
+func (s *SmartStack) Push(element int) {
+	s.Stack = append(s.Stack, element)
+	for index := 0; index < len(s.Sorted); index++ {
+		if element < s.Sorted[index] {
+			s.Sorted = append(s.Sorted[:index-1], append([]int{element}, s.Sorted[index:]...)...)
+		}
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
