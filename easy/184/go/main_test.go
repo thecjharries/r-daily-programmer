@@ -84,3 +84,13 @@ func (s *MainSuite) TestSmartStackLen(c *C) {
 	}
 	c.Assert(stack.Len(), Equals, 4)
 }
+
+func (s *MainSuite) TestSmartStackRemoveGreater(c *C) {
+	stack := SmartStack{
+		Sorted: []int{5, 10, 12, 15},
+		Stack:  []int{10, 15, 12, 5},
+	}
+	stack.RemoveGreater(11)
+	c.Assert(stack.Sorted, DeepEquals, []int{5, 10})
+	c.Assert(stack.Stack, DeepEquals, []int{10, 5})
+}
