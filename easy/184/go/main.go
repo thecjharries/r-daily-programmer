@@ -45,6 +45,19 @@ func (s *SmartStack) Pop() (element int) {
 	return element
 }
 
+func (s *SmartStack) RemoveGreater(number int) {
+	for index := 0; index < len(s.Sorted); index++ {
+		if number < s.Stack[index] {
+			s.Stack = append(s.Stack[:index], s.Stack[index+1:]...)
+		}
+		// This is redundant after the first because it's sorted
+		// However, it's still O(n) ¯\_(ツ)_/¯
+		if number < s.Sorted[index] {
+			s.Sorted = append(s.Sorted[:index], s.Sorted[index+1:]...)
+		}
+	}
+}
+
 func (s *SmartStack) Len() int {
 	return len(s.Stack)
 }
