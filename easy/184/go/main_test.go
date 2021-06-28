@@ -65,3 +65,15 @@ func (s *MainSuite) TestSmartStackPush(c *C) {
 	c.Assert(stack.Sorted, DeepEquals, []int{5, 10, 12, 15})
 	c.Assert(stack.Stack, DeepEquals, []int{10, 15, 12, 5})
 }
+
+func (s *MainSuite) TestSmartStackPop(c *C) {
+	stack := SmartStack{
+		Sorted: []int{5, 10, 12, 15},
+		Stack:  []int{10, 15, 12, 5},
+	}
+	element := stack.Pop()
+	c.Assert(element, Equals, 5)
+	c.Assert(stack.Sorted, DeepEquals, []int{10, 12, 15})
+	c.Assert(stack.Stack, DeepEquals, []int{10, 15, 12})
+
+}
