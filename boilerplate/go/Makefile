@@ -4,6 +4,9 @@ test:
 coverage: test
 	go tool cover -func=.coverage.out
 
+coverage-report: coverage
+	go tool cover -html=.coverage.out
+
 run:
 	go run main.go
 
