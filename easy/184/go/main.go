@@ -33,6 +33,18 @@ func (s *SmartStack) Push(element int) {
 	}
 }
 
+func (s *SmartStack) Pop() (element int) {
+	element = s.Stack[len(s.Stack)-1]
+	s.Stack = s.Stack[:len(s.Stack)-1]
+	for index := 0; index < len(s.Sorted); index++ {
+		if element == s.Sorted[index] {
+			s.Sorted = append(s.Sorted[:index], s.Sorted[index+1:]...)
+			break
+		}
+	}
+	return element
+}
+
 var zPrint = fmt.Println
 
 func main() {
