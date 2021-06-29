@@ -23,7 +23,7 @@ import (
 )
 
 var dictionaryPath = filepath.Join("..", "enable1.txt")
-var atPattern = regexp.MustCompile(`at`)
+var atPattern = regexp.MustCompile(`.*at.*`)
 
 var zPrint = fmt.Println
 
