@@ -47,3 +47,15 @@ func findWordsThatContainAt(dictionary []string) (atWords []string) {
 	}
 	return
 }
+
+func formatAtWordsForPrinting(atWords []string) string {
+	outputRows := make([]string, len(atWords))
+	for index := 0; index < len(outputRows); index++ {
+		outputRows[index] = fmt.Sprintf(
+			"%s : %s",
+			strings.ReplaceAll(atWords[index], "at", "@"),
+			atWords[index],
+		)
+	}
+	return strings.Join(outputRows, "\n")
+}
