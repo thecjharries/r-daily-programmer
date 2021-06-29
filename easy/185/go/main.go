@@ -18,10 +18,12 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
 var dictionaryPath = filepath.Join("..", "enable1.txt")
+var atPattern = regexp.MustCompile(`at`)
 
 var zPrint = fmt.Println
 
@@ -35,4 +37,11 @@ func loadDictionary(filename string) []string {
 		strings.Trim(string(byteContents), "\n"),
 		"\n",
 	)
+}
+
+func findWordsThatContainAt(dictionary []string) (atWords []string) {
+	for _, element := range dictionary {
+		// regexp
+	}
+	return
 }
