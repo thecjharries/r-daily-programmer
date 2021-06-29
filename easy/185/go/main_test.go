@@ -57,3 +57,9 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestLoadDictionary(c *C) {
 	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
 }
+
+func (s *MainSuite) TestFindWordsThatContainAt(c *C) {
+	dictionary := []string{"bee", "cab", "ghost", "attack"}
+	output := []string{"attack"}
+	c.Assert(findWordsThatContainAt(dictionary), DeepEquals, output)
+}
