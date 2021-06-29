@@ -63,3 +63,12 @@ func (s *MainSuite) TestFindWordsThatContainAt(c *C) {
 	output := []string{"attack"}
 	c.Assert(findWordsThatContainAt(dictionary), DeepEquals, output)
 }
+
+func (s *MainSuite) TestFormatAtWordsForPrinting(c *C) {
+	atWords := []string{"attack", "ratata", "drat", "testaatt"}
+	output := `@tack : attack
+r@@a : ratata
+dr@ : drat
+testa@t : testaatt`
+	c.Assert(formatAtWordsForPrinting(atWords), Equals, output)
+}
