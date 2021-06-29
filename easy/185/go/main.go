@@ -41,7 +41,9 @@ func loadDictionary(filename string) []string {
 
 func findWordsThatContainAt(dictionary []string) (atWords []string) {
 	for _, element := range dictionary {
-		// regexp
+		if atPattern.MatchString(element) {
+			atWords = append(atWords, element)
+		}
 	}
 	return
 }
