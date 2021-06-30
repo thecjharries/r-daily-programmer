@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRunCommand(c *C) {
+	c.Assert(runCommand("test", "true"), Equals, "")
+	c.Assert(runCommand("echo", "rad"), Equals, "rad\n")
+}
