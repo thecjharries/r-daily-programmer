@@ -30,3 +30,7 @@ func runCommand(args ...string) string {
 	output, _ := command.Output()
 	return string(output)
 }
+
+func getRunningProcesses() string {
+	return runCommand("ps", "aux")
+}
