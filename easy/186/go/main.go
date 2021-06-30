@@ -16,10 +16,17 @@ package main
 
 import (
 	"fmt"
+	"os/exec"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func runCommand(args ...string) string {
+	command := exec.Command(args[0], args[1:]...)
+	output, _ := command.Output()
+	return string(output)
 }
