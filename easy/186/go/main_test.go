@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -57,4 +58,9 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestRunCommand(c *C) {
 	c.Assert(runCommand("test", "true"), Equals, "")
 	c.Assert(runCommand("echo", "rad"), Equals, "rad\n")
+}
+
+func (s *MainSuite) TestGetRunningProcesses(c *C) {
+	processes := getRunningProcesses()
+	c.Assert(regexp.MustCompile(`^USER`).MatchString(processes), Equals, true)
 }
