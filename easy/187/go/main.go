@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+type Flag struct {
+	Short, Long string
+}
+
 var zPrint = fmt.Println
 
 func main() {
