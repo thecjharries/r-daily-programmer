@@ -79,3 +79,15 @@ func (s *MainSuite) TestFlagString(c *C) {
 	}
 	c.Assert(flag.String(), Equals, "flag: all")
 }
+
+func (s *MainSuite) TestParseFlags(c *C) {
+	input := "-aN --force 12 --verbose 192.168.0.44"
+	availableFlags := []*Flag{
+		NewFlag("a", "all"),
+		NewFlag("f", "force"),
+		NewFlag("n", "networking"),
+		NewFlag("N", "numerical-list"),
+	}
+	output := "flag: all\nflag: numerical-list\nflag: force\nparameter: 12\nflag: verbose\nparameter: 192.168.0.44\n"
+	c.Assert(parseFlags(input, availableFlags), Equals, output)
+}
