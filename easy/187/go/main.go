@@ -20,6 +20,13 @@ type Flag struct {
 	Short, Long string
 }
 
+func NewFlag(short, long string) *Flag {
+	return &Flag{
+		Short: short,
+		Long:  long,
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
