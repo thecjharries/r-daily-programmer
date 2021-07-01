@@ -71,3 +71,11 @@ func (s *MainSuite) TestFlagIsActive(c *C) {
 	c.Assert(flag.IsActive("all"), Equals, true)
 	c.Assert(flag.IsActive("qqq"), Equals, false)
 }
+
+func (s *MainSuite) TestFlagString(c *C) {
+	flag := &Flag{
+		Short: "a",
+		Long:  "all",
+	}
+	c.Assert(flag.String(), Equals, "flag: all")
+}

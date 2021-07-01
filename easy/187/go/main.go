@@ -24,6 +24,10 @@ func (f *Flag) IsActive(input string) bool {
 	return f.Short == input || f.Long == input
 }
 
+func (f *Flag) String() string {
+	return fmt.Sprintf("flag: %s", f.Long)
+}
+
 func NewFlag(short, long string) *Flag {
 	return &Flag{
 		Short: short,
