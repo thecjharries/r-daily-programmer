@@ -20,6 +20,10 @@ type Flag struct {
 	Short, Long string
 }
 
+func (f *Flag) IsActive(input string) bool {
+	return f.Short == input || f.Long == input
+}
+
 func NewFlag(short, long string) *Flag {
 	return &Flag{
 		Short: short,
