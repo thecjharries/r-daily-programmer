@@ -44,19 +44,24 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func parseFlags(input string, availableFlags []Flag) (output string) {
+func parseFlags(input string, availableFlags []*Flag) (output string) {
 	argv := strings.Split(input, " ")
 	for _, arg := range argv {
 		if strings.HasPrefix(arg, "--") {
-			currentArg := strings.ReplaceAll(arg, "-", "")
+			currentArg := strings.TrimPrefix(arg, "--")
+			found := false
 			for _, flag := range availableFlags {
 				if flag.IsActive(currentArg) {
 					output += flag.String() + "\n"
+					found = true
 					break
 				}
 			}
+			if !found {
+				output += fmt.Sprintf("flag: %s\n", currentArg)
+			}
 		} else if strings.HasPrefix(arg, "-") {
-			for _, shortFlag := range strings.Split(strings.ReplaceAll(arg, "-", ""), "") {
+			for _, shortFlag := range strings.Split(strings.TrimPrefix(arg, "-"), "") {
 				for _, flag := range availableFlags {
 					if flag.IsActive(shortFlag) {
 						output += flag.String() + "\n"
@@ -65,7 +70,7 @@ func parseFlags(input string, availableFlags []Flag) (output string) {
 				}
 			}
 		} else {
-			output += fmt.Sprintf("parameter: %s", arg)
+			output += fmt.Sprintf("parameter: %s\n", arg)
 		}
 	}
 	return
