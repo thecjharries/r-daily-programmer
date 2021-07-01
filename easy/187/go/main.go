@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Flag struct {
 	Short, Long string
@@ -39,4 +42,31 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseFlags(input string, availableFlags []Flag) (output string) {
+	argv := strings.Split(input, " ")
+	for _, arg := range argv {
+		if strings.HasPrefix(arg, "--") {
+			currentArg := strings.ReplaceAll(arg, "-", "")
+			for _, flag := range availableFlags {
+				if flag.IsActive(currentArg) {
+					output += flag.String() + "\n"
+					break
+				}
+			}
+		} else if strings.HasPrefix(arg, "-") {
+			for _, shortFlag := range strings.Split(strings.ReplaceAll(arg, "-", ""), "") {
+				for _, flag := range availableFlags {
+					if flag.IsActive(shortFlag) {
+						output += flag.String() + "\n"
+						break
+					}
+				}
+			}
+		} else {
+			output += fmt.Sprintf("parameter: %s", arg)
+		}
+	}
+	return
 }
