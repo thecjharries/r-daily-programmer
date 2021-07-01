@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewFlag(c *C) {
+	flag := &Flag{
+		Short: "a",
+		Long:  "all",
+	}
+	c.Assert(NewFlag("a", "all"), DeepEquals, flag)
+}
