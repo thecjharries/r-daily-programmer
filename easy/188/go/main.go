@@ -16,6 +16,15 @@ package main
 
 import "fmt"
 
+const (
+	DateFormatOne   = "2006-01-02"
+	DateFormatTwo   = "01/02/06"
+	DateFormatThree = "01/06/02"
+	DateFormatFour  = "02*01*2006"
+	DateFormatFive  = "Jan 02, 06"
+	DateFormatSix   = "Jan 02, 2006"
+)
+
 var zPrint = fmt.Println
 
 func main() {
