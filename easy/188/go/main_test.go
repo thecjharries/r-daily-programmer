@@ -57,7 +57,19 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestParseDate(c *C) {
 	var output time.Time
-	output, _ = time.Parse("2006-01-02", "1996-10-24")
+	output = time.Date(1996, 10, 24, 0, 0, 0, 0, time.UTC)
 	c.Assert(parseDate("1996-10-24", DateFormatOne), DeepEquals, output)
 	c.Assert(parseDate("09#65#21", DateFormatOne), DeepEquals, time.Time{})
+}
+
+func (s *MainSuite) TestParseDates(c *C) {
+	input := []string{
+		"1996-10-24",
+		"09#65#21",
+	}
+	output := []time.Time{
+		time.Date(1996, 10, 24, 0, 0, 0, 0, time.UTC),
+		time.Date(2065, 9, 21, 0, 0, 0, 0, time.UTC),
+	}
+	c.Assert(parseDates(input), DeepEquals, output)
 }
