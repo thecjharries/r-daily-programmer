@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 const (
 	DateFormatOne   = "2006-01-02"
@@ -29,4 +32,13 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseDate(input, format string) time.Time {
+	date, err := time.Parse(format, input)
+	if nil != err {
+		var emptyTime time.Time
+		return emptyTime
+	}
+	return date
 }
