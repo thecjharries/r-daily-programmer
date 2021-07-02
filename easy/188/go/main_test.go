@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	. "gopkg.in/check.v1"
 )
@@ -52,4 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestParseDate(c *C) {
+	var output time.Time
+	output, _ = time.Parse("2006-01-02", "1996-10-24")
+	c.Assert(parseDate("1996-10-24", DateFormatOne), DeepEquals, output)
+	c.Assert(parseDate("09#65#21", DateFormatOne), DeepEquals, time.Time{})
 }
