@@ -37,8 +37,7 @@ func main() {
 func parseDate(input, format string) time.Time {
 	date, err := time.Parse(format, input)
 	if nil != err {
-		var emptyTime time.Time
-		return emptyTime
+		return time.Time{}
 	}
 	return date
 }
