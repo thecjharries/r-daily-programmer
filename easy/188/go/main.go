@@ -41,3 +41,16 @@ func parseDate(input, format string) time.Time {
 	}
 	return date
 }
+
+func parseDates(dates []string) (parsedDates []time.Time) {
+	for _, input := range dates {
+		for _, format := range []string{DateFormatOne, DateFormatTwo, DateFormatThree, DateFormatFour, DateFormatFive, DateFormatSix} {
+			newDate := parseDate(input, format)
+			if "0001-01-01 00:00:00 +0000 UTC" != newDate.String() {
+				parsedDates = append(parsedDates, newDate)
+				break
+			}
+		}
+	}
+	return
+}
