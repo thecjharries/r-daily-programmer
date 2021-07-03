@@ -55,7 +55,7 @@ func (g *HangmanGame) Guess(letter rune) string {
 func NewGame(wordToPlay string, availableGuesses int) *HangmanGame {
 	return &HangmanGame{
 		ChosenWord:       wordToPlay,
-		GuessedLetters:   nil,
+		GuessedLetters:   make(map[rune]bool),
 		GuessesRemaining: availableGuesses,
 	}
 }
