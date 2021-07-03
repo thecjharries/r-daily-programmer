@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewGame(c *C) {
+	game := NewGame("test", 5)
+	c.Assert(game.ChosenWord, Equals, "test")
+	c.Assert(game.GuessedLetters, DeepEquals, []rune(nil))
+	c.Assert(game.GuessesRemaining, Equals, 5)
+
+}
