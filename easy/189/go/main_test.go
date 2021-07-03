@@ -68,3 +68,12 @@ func (s *MainSuite) TestHangmanGameString(c *C) {
 	}
 	c.Assert(game.String(), Equals, "t__t\nGuesses remaining: 3")
 }
+
+func (s *MainSuite) TestHangmanGameGuess(c *C) {
+	game := NewGame("test", 4)
+	c.Assert(game.GuessesRemaining, Equals, 4)
+	game.Guess('t')
+	c.Assert(game.GuessesRemaining, Equals, 3)
+	game.Guess('t')
+	c.Assert(game.GuessesRemaining, Equals, 3)
+}
