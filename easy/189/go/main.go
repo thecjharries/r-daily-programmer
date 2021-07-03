@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type HangmanGame struct {
 	ChosenWord       string
@@ -22,13 +25,16 @@ type HangmanGame struct {
 	GuessesRemaining int
 }
 
-//func (g *HangmanGame) String() string {
-//	representation := g.ChosenWord
-//	for _, character := range representation {
-//		found := false
-//		for
-//	}
-//}
+func (g *HangmanGame) String() string {
+	representation := g.ChosenWord
+	for _, character := range representation {
+		_, guessed := g.GuessedLetters[character]
+		if !guessed {
+			representation = strings.ReplaceAll(representation, string(character), "_")
+		}
+	}
+	return fmt.Sprintf("%s\nGuesses remaining: %d", representation, g.GuessesRemaining)
+}
 
 func NewGame(wordToPlay string, availableGuesses int) *HangmanGame {
 	return &HangmanGame{
