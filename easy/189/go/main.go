@@ -18,9 +18,17 @@ import "fmt"
 
 type HangmanGame struct {
 	ChosenWord       string
-	GuessedLetters   []rune
+	GuessedLetters   map[rune]bool
 	GuessesRemaining int
 }
+
+//func (g *HangmanGame) String() string {
+//	representation := g.ChosenWord
+//	for _, character := range representation {
+//		found := false
+//		for
+//	}
+//}
 
 func NewGame(wordToPlay string, availableGuesses int) *HangmanGame {
 	return &HangmanGame{

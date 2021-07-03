@@ -57,7 +57,5 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestNewGame(c *C) {
 	game := NewGame("test", 5)
 	c.Assert(game.ChosenWord, Equals, "test")
-	c.Assert(game.GuessedLetters, DeepEquals, []rune(nil))
 	c.Assert(game.GuessesRemaining, Equals, 5)
-
 }
