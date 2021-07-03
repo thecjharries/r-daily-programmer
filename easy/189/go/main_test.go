@@ -59,3 +59,12 @@ func (s *MainSuite) TestNewGame(c *C) {
 	c.Assert(game.ChosenWord, Equals, "test")
 	c.Assert(game.GuessesRemaining, Equals, 5)
 }
+
+func (s *MainSuite) TestHangmanGameString(c *C) {
+	game := &HangmanGame{
+		ChosenWord:       "test",
+		GuessedLetters:   map[rune]bool{'t': true, 'a': false},
+		GuessesRemaining: 3,
+	}
+	c.Assert(game.String(), Equals, "t__t\nGuesses remaining: 3")
+}
