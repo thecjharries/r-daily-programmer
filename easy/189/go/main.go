@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type HangmanGame struct {
+	ChosenWord       string
+	GuessedLetters   []rune
+	GuessesRemaining int
+}
+
 var zPrint = fmt.Println
 
 func main() {
