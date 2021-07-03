@@ -22,6 +22,14 @@ type HangmanGame struct {
 	GuessesRemaining int
 }
 
+func NewGame(wordToPlay string, availableGuesses int) *HangmanGame {
+	return &HangmanGame{
+		ChosenWord:       wordToPlay,
+		GuessedLetters:   nil,
+		GuessesRemaining: availableGuesses,
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
