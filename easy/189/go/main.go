@@ -36,6 +36,22 @@ func (g *HangmanGame) String() string {
 	return fmt.Sprintf("%s\nGuesses remaining: %d", representation, g.GuessesRemaining)
 }
 
+func (g *HangmanGame) Guess(letter rune) string {
+	_, guessed := g.GuessedLetters[letter]
+	if 0 < g.GuessesRemaining && !guessed {
+		g.GuessesRemaining--
+		inWord := false
+		for _, character := range g.ChosenWord {
+			if letter == character {
+				inWord = true
+				break
+			}
+		}
+		g.GuessedLetters[letter] = inWord
+	}
+	return g.String()
+}
+
 func NewGame(wordToPlay string, availableGuesses int) *HangmanGame {
 	return &HangmanGame{
 		ChosenWord:       wordToPlay,
