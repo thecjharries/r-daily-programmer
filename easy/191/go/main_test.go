@@ -61,3 +61,10 @@ func (s *MainSuite) TestParseWords(c *C) {
 	c.Assert(len(output), Equals, 69)
 	c.Assert(output[0], Equals, "lorem")
 }
+
+func (s *MainSuite) TestCountWords(c *C) {
+	count := countWords(parseWords(loremIpsum))
+	c.Assert(count["lorem"], Equals, 1)
+	c.Assert(count["in"], Equals, 3)
+	c.Assert(len(count), Equals, 63)
+}
