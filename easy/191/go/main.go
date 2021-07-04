@@ -31,3 +31,16 @@ func main() {
 func parseWords(input string) []string {
 	return wordPattern.FindAllString(strings.ToLower(input), -1)
 }
+
+func countWords(words []string) map[string]int {
+	count := make(map[string]int)
+	for _, word := range words {
+		currentCount, exists := count[word]
+		if exists {
+			count[word] = currentCount + 1
+		} else {
+			count[word] = 1
+		}
+	}
+	return count
+}
