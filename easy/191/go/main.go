@@ -14,10 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
+
+var wordPattern = regexp.MustCompile(`\w+`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseWords(input string) []string {
+	return wordPattern.FindAllString(strings.ToLower(input), -1)
 }
