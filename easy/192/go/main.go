@@ -14,10 +14,40 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func carryAdd(numbers ...int) (sum, carries []int) {
+	var numbersAsStrings [][]string
+	for _, number := range numbers {
+		numberAsString := strconv.Itoa(number)
+		numbersAsStrings = append(numbersAsStrings, strings.Split(numberAsString, ""))
+	}
+	tensIndex := 0
+	numberWasAdded := true
+	carries = []int{0}
+	for numberWasAdded {
+		numberWasAdded = false
+		sum = append([]int{carries[0]}, sum...)
+		for _, number := range numbersAsStrings {
+			if len(number) > tensIndex {
+				numberWasAdded = true
+				currentNumber, _ := strconv.Atoi(number[len(number)-tensIndex-1])
+				sum[0] += currentNumber
+			}
+		}
+		carries = append([]int{sum[0] / 10}, carries...)
+		sum[0] %= 10
+		tensIndex++
+	}
+	return
 }
