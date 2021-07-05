@@ -59,4 +59,7 @@ func (s *MainSuite) TestCarryAdd(c *C) {
 	sum, carries = carryAdd(23, 9, 66)
 	c.Assert(sum, DeepEquals, []int{0, 9, 8})
 	c.Assert(carries, DeepEquals, []int{0, 1, 0})
+	sum, carries = carryAdd(8765, 305)
+	c.Assert(sum, DeepEquals, []int{0, 9, 0, 7, 0})
+	c.Assert(carries, DeepEquals, []int{0, 1, 0, 1, 0})
 }
