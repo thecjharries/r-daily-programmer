@@ -45,9 +45,11 @@ func carryAdd(numbers ...int) (sum, carries []int) {
 				sum[0] += currentNumber
 			}
 		}
-		carries = append([]int{sum[0] / 10}, carries...)
-		sum[0] %= 10
-		tensIndex++
+		if numberWasAdded {
+			carries = append([]int{sum[0] / 10}, carries...)
+			sum[0] %= 10
+			tensIndex++
+		}
 	}
 	return
 }
