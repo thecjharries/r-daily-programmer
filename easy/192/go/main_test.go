@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCarryAdd(c *C) {
+	var sum, carries []int
+	sum, carries = carryAdd(23, 9, 66)
+	c.Assert(sum, DeepEquals, []int{0, 9, 8})
+	c.Assert(carries, DeepEquals, []int{0, 1, 0})
+}
