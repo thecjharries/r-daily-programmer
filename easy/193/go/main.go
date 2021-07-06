@@ -44,3 +44,10 @@ func calculateCylinderFromVolume(volume float64) string {
 		2*math.Sqrt(volume/(math.Pi*height)),
 	)
 }
+
+func calculateSphereFromVolume(volume float64) string {
+	return fmt.Sprintf(
+		"Sphere: %0.2fm Radius",
+		math.Pow(3*volume/4/math.Pi, 1.0/3),
+	)
+}
