@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func calculateCubeFromVolume(volume float64) string {
+	edge := math.Pow(volume, 1.0/3)
+	return fmt.Sprintf(
+		"Cube: %0.2fm width, %0.2fm, high, %0.2fm tall",
+		edge,
+		edge,
+		edge,
+	)
 }
