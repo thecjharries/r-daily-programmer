@@ -65,3 +65,7 @@ func (s *MainSuite) TestCalculateCylinderFromVolume(c *C) {
 func (s *MainSuite) TestCalculateSphereFromVolume(c *C) {
 	c.Assert(calculateSphereFromVolume(27.0), Equals, "Sphere: 1.86m Radius")
 }
+
+func (s *MainSuite) TestCalculateConeFromVolume(c *C) {
+	c.Assert(calculateConeFromVolume(27.0), Equals, "Cone: 9.00m tall, 1.69m Radius")
+}
