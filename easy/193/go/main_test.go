@@ -57,3 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestCalculateCubeFromVolume(c *C) {
 	c.Assert(calculateCubeFromVolume(27.0), Equals, "Cube: 3.00m width, 3.00m, high, 3.00m tall")
 }
+
+func (s *MainSuite) TestCalculateCylinderFromVolume(c *C) {
+	c.Assert(calculateCylinderFromVolume(27.0), Equals, "Cylinder: 3.00m tall, Diameter of 3.39m")
+}

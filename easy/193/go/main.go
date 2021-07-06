@@ -35,3 +35,12 @@ func calculateCubeFromVolume(volume float64) string {
 		edge,
 	)
 }
+
+func calculateCylinderFromVolume(volume float64) string {
+	height := math.Pow(volume, 1.0/3)
+	return fmt.Sprintf(
+		"Cylinder: %0.2fm tall, Diameter of %0.2fm",
+		height,
+		2*math.Sqrt(volume/(math.Pi*height)),
+	)
+}
