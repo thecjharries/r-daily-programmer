@@ -51,3 +51,12 @@ func calculateSphereFromVolume(volume float64) string {
 		math.Pow(3*volume/4/math.Pi, 1.0/3),
 	)
 }
+
+func calculateConeFromVolume(volume float64) string {
+	height := math.Pow(math.Pow(volume, 1.0/3), 2)
+	return fmt.Sprintf(
+		"Cone: %0.2fm tall, 0.2fm Radius",
+		height,
+		math.Sqrt(3*volume/math.Pi/height),
+	)
+}
