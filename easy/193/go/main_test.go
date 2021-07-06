@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateCubeFromVolume(c *C) {
+	c.Assert(calculateCubeFromVolume(27.0), Equals, "Cube: 3.00m width, 3.00m, high, 3.00m tall")
+}
