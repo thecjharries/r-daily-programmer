@@ -28,6 +28,7 @@ func main() {
 func calculateCubeFromVolume(volume float64) string {
 	edge := math.Pow(volume, 1.0/3)
 	return fmt.Sprintf(
+		// Note the fmt string is copied from the prompt with its comma splice
 		"Cube: %0.2fm width, %0.2fm, high, %0.2fm tall",
 		edge,
 		edge,
