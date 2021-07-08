@@ -25,11 +25,12 @@ type PathResolver struct {
 
 func (r *PathResolver) Resolve(path string) (resolvedPath string) {
 	sections := strings.Split(path, "/")
-	for _, element := range sections {
+	for _, element := range sections[1:] {
 		resolvedPath = strings.Join([]string{resolvedPath, element}, "/")
 		source, exists := r.Symlinks[resolvedPath]
-		if exists {
+		for exists {
 			resolvedPath = source
+			source, exists = r.Symlinks[resolvedPath]
 		}
 	}
 	return
