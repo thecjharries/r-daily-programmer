@@ -14,10 +14,25 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type PathResolver struct {
 	Symlinks map[string]string
+}
+
+func (r *PathResolver) Resolve(path string) (resolvedPath string) {
+	sections := strings.Split(path, "/")
+	for _, element := range sections {
+		resolvedPath = strings.Join([]string{resolvedPath, element}, "/")
+		source, exists := r.Symlinks[resolvedPath]
+		if exists {
+			resolvedPath = source
+		}
+	}
+	return
 }
 
 var zPrint = fmt.Println
