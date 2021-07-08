@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+type PathResolver struct {
+	Symlinks map[string]string
+}
+
 var zPrint = fmt.Println
 
 func main() {
