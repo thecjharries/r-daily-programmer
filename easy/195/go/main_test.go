@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPathResolverResolve(c *C) {
+	resolver := PathResolver{
+		Symlinks: map[string]string{
+			"/bin/thing":             "/bin/thing-3",
+			"/bin/thing-3":           "/bin/thing-3.2",
+			"/bin/thing-3.2/include": "/usr/include",
+			"/usr/include/SDL":       "/usr/local/include/SDL",
+		},
+	}
+	c.Assert(resolver.Resolve("/bin/thing/include/SDL/stan"), Equals, "/usr/local/include/SDL/stan")
+}
