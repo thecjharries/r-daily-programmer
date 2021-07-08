@@ -32,6 +32,7 @@ func (r *PathResolver) Resolve(path string) (resolvedPath string) {
 			resolvedPath = source
 			source, exists = r.Symlinks[resolvedPath]
 		}
+		resolvedPath = strings.TrimSuffix(resolvedPath, "/")
 	}
 	return
 }

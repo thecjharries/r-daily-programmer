@@ -55,7 +55,8 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestPathResolverResolve(c *C) {
-	resolver := PathResolver{
+	var resolver PathResolver
+	resolver = PathResolver{
 		Symlinks: map[string]string{
 			"/bin/thing":             "/bin/thing-3",
 			"/bin/thing-3":           "/bin/thing-3.2",
@@ -64,4 +65,12 @@ func (s *MainSuite) TestPathResolverResolve(c *C) {
 		},
 	}
 	c.Assert(resolver.Resolve("/bin/thing/include/SDL/stan"), Equals, "/usr/local/include/SDL/stan")
+	resolver = PathResolver{
+		Symlinks: map[string]string{
+			"/bin":               "/usr/bin",
+			"/usr/bin":           "/usr/local/bin/",
+			"/usr/local/bin/log": "/var/log-2014",
+		},
+	}
+	c.Assert(resolver.Resolve("/bin/log/rc"), Equals, "/var/log-2014/rc")
 }
