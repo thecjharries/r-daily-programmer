@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewIntegerSet(c *C) {
+	input := []int{1, 1, 2, 2, 3, 3, 4, 4}
+	output := IntegerSet{
+		1: struct{}{},
+		2: struct{}{},
+		3: struct{}{},
+		4: struct{}{},
+	}
+	set := NewIntegerSet(input...)
+	c.Assert(set, DeepEquals, output)
+}

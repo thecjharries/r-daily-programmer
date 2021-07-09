@@ -21,7 +21,7 @@ type IntegerSet map[int]struct{}
 func NewIntegerSet(numbers ...int) IntegerSet {
 	set := make(IntegerSet)
 	for _, number := range numbers {
-		set[number] = struct{}(nil)
+		set[number] = struct{}{}
 	}
 	return set
 }
