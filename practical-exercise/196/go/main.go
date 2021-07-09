@@ -18,6 +18,11 @@ import "fmt"
 
 type IntegerSet map[int]struct{}
 
+func (s *IntegerSet) Contains(number int) bool {
+	_, exists := (*s)[number]
+	return exists
+}
+
 func NewIntegerSet(numbers ...int) IntegerSet {
 	set := make(IntegerSet)
 	for _, number := range numbers {
