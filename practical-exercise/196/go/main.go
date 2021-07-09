@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type IntegerSet map[int]struct{}
+
 var zPrint = fmt.Println
 
 func main() {
