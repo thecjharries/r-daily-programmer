@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strconv"
+	"strings"
+)
 
 type IntegerSet map[int]struct{}
 
@@ -54,6 +59,16 @@ func (s *IntegerSet) Equals(otherSet IntegerSet) bool {
 		}
 	}
 	return true
+}
+
+func (s *IntegerSet) String() string {
+	var contents []string
+	for key, _ := range *s {
+		contents = append(contents, strconv.Itoa(key))
+	}
+	sort.Strings(contents)
+	return fmt.Sprintf("{%s}", strings.Join(contents, ", "))
+
 }
 
 func NewIntegerSet(numbers ...int) IntegerSet {
