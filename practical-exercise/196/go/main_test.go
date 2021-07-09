@@ -96,3 +96,16 @@ func (s *MainSuite) TestIntegerSetIntersection(c *C) {
 	c.Assert(firstSet.Intersection(thirdSet), DeepEquals, subSet)
 	c.Assert(thirdSet.Intersection(firstSet), DeepEquals, subSet)
 }
+
+func (s *MainSuite) TestIntegerSetEquals(c *C) {
+	firstSet := NewIntegerSet(1, 2, 3)
+	secondSet := NewIntegerSet(4, 5, 6)
+	thirdSet := NewIntegerSet(1, 2, 3)
+	fourthSet := NewIntegerSet(1, 2, 3, 4)
+	c.Assert(firstSet.Equals(secondSet), Equals, false)
+	c.Assert(secondSet.Equals(firstSet), Equals, false)
+	c.Assert(firstSet.Equals(thirdSet), Equals, true)
+	c.Assert(thirdSet.Equals(firstSet), Equals, true)
+	c.Assert(firstSet.Equals(fourthSet), Equals, false)
+	c.Assert(fourthSet.Equals(firstSet), Equals, false)
+}
