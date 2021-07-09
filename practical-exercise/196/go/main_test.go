@@ -76,3 +76,11 @@ func (s *MainSuite) TestIntegerSetContains(c *C) {
 	c.Assert(set.Contains(1), Equals, true)
 	c.Assert(set.Contains(5), Equals, false)
 }
+
+func (s *MainSuite) TestIntegerSetUnion(c *C) {
+	firstSet := NewIntegerSet(1, 2, 3)
+	secondSet := NewIntegerSet(4, 5, 6)
+	finalSet := NewIntegerSet(1, 2, 3, 4, 5, 6)
+	c.Assert(firstSet.Union(secondSet), DeepEquals, finalSet)
+	c.Assert(secondSet.Union(finalSet), DeepEquals, finalSet)
+}
