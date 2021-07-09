@@ -65,3 +65,14 @@ func (s *MainSuite) TestNewIntegerSet(c *C) {
 	set := NewIntegerSet(input...)
 	c.Assert(set, DeepEquals, output)
 }
+
+func (s *MainSuite) TestIntegerSetContains(c *C) {
+	set := IntegerSet{
+		1: struct{}{},
+		2: struct{}{},
+		3: struct{}{},
+		4: struct{}{},
+	}
+	c.Assert(set.Contains(1), Equals, true)
+	c.Assert(set.Contains(5), Equals, false)
+}
