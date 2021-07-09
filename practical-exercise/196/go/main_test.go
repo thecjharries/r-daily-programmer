@@ -109,3 +109,9 @@ func (s *MainSuite) TestIntegerSetEquals(c *C) {
 	c.Assert(firstSet.Equals(fourthSet), Equals, false)
 	c.Assert(fourthSet.Equals(firstSet), Equals, false)
 }
+
+func (s *MainSuite) TestIntegerSetString(c *C) {
+	set := NewIntegerSet(1, 2, 3)
+	output := "{1, 2, 3}"
+	c.Assert(set.String(), Equals, output)
+}
