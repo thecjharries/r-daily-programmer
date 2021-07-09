@@ -34,6 +34,16 @@ func (s *IntegerSet) Union(otherSet IntegerSet) IntegerSet {
 	return set
 }
 
+func (s *IntegerSet) Intersection(otherSet IntegerSet) IntegerSet {
+	set := make(IntegerSet)
+	for key, _ := range *s {
+		if _, exists := otherSet[key]; exists {
+			set[key] = struct{}{}
+		}
+	}
+	return set
+}
+
 func NewIntegerSet(numbers ...int) IntegerSet {
 	set := make(IntegerSet)
 	for _, number := range numbers {
