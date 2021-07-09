@@ -23,6 +23,17 @@ func (s *IntegerSet) Contains(number int) bool {
 	return exists
 }
 
+func (s *IntegerSet) Union(otherSet *IntegerSet) IntegerSet {
+	set := make(IntegerSet)
+	for key, _ := range *s {
+		set[key] = struct{}{}
+	}
+	for key, _ := range *otherSet {
+		set[key] = struct{}{}
+	}
+	return set
+}
+
 func NewIntegerSet(numbers ...int) IntegerSet {
 	set := make(IntegerSet)
 	for _, number := range numbers {
