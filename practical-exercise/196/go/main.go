@@ -44,6 +44,18 @@ func (s *IntegerSet) Intersection(otherSet IntegerSet) IntegerSet {
 	return set
 }
 
+func (s *IntegerSet) Equals(otherSet IntegerSet) bool {
+	if len(otherSet) != len(*s) {
+		return false
+	}
+	for key, _ := range *s {
+		if _, exists := otherSet[key]; !exists {
+			return false
+		}
+	}
+	return true
+}
+
 func NewIntegerSet(numbers ...int) IntegerSet {
 	set := make(IntegerSet)
 	for _, number := range numbers {
