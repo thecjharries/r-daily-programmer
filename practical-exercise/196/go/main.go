@@ -18,6 +18,14 @@ import "fmt"
 
 type IntegerSet map[int]struct{}
 
+func NewIntegerSet(numbers ...int) IntegerSet {
+	set := make(IntegerSet)
+	for _, number := range numbers {
+		set[number] = struct{}(nil)
+	}
+	return set
+}
+
 var zPrint = fmt.Println
 
 func main() {
