@@ -19,7 +19,7 @@ import (
 	"regexp"
 )
 
-var numberPattern = regexp.MustCompile(`\d`)
+var notNumberPattern = regexp.MustCompile(`[^\d]`)
 
 var zPrint = fmt.Println
 
