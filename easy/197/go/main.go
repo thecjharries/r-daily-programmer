@@ -21,6 +21,7 @@ import (
 	"strings"
 )
 
+var notDashPattern = regexp.MustCompile(`[^-]`)
 var notNumberPattern = regexp.MustCompile(`[^\d]`)
 
 var zPrint = fmt.Println
@@ -30,6 +31,10 @@ func main() {
 }
 
 func isValidIsbn(input string) bool {
+	dashStripped := notDashPattern.ReplaceAllString(input, "")
+	if 10 != len(dashStripped) {
+		return false
+	}
 	converted := notNumberPattern.ReplaceAllString(input, "")
 	checksum := 0
 	if 9 == len(converted) {
