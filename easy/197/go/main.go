@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
+	"strings"
 )
 
 var notNumberPattern = regexp.MustCompile(`[^\d]`)
@@ -25,4 +27,19 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func isValidIsbn(input string) bool {
+	converted := notNumberPattern.ReplaceAllString(input, "")
+	checksum := 0
+	if 9 == len(converted) {
+		checksum = 10
+	} else if 10 != len(converted) {
+		return false
+	}
+	for index, character := range strings.Split(converted, "") {
+		number, _ := strconv.Atoi(character)
+		checksum += (10 - index) * number
+	}
+	return 0 == checksum%11
 }
