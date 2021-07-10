@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var numberPattern = regexp.MustCompile(`\d`)
 
 var zPrint = fmt.Println
 
