@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsValidIsbnWrongLength(c *C) {
+	c.Assert(isValidIsbn("156881111"), Equals, false)
+	c.Assert(isValidIsbn("15688111"), Equals, false)
+	c.Assert(isValidIsbn("15688111111"), Equals, false)
+}
