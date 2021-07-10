@@ -21,7 +21,7 @@ import (
 	"strings"
 )
 
-var notDashPattern = regexp.MustCompile(`[^-]`)
+var dashPattern = regexp.MustCompile(`-`)
 var notNumberPattern = regexp.MustCompile(`[^\d]`)
 
 var zPrint = fmt.Println
@@ -35,7 +35,7 @@ func main() {
 // I am too lazy to do that right now
 func isValidIsbn(input string) bool {
 	// This is messy
-	dashStripped := notDashPattern.ReplaceAllString(input, "")
+	dashStripped := dashPattern.ReplaceAllString(input, "")
 	if 10 != len(dashStripped) {
 		return false
 	}
@@ -43,8 +43,6 @@ func isValidIsbn(input string) bool {
 	checksum := 0
 	if 9 == len(converted) {
 		checksum = 10
-	} else if 10 != len(converted) {
-		return false
 	}
 	for index, character := range strings.Split(converted, "") {
 		number, _ := strconv.Atoi(character)

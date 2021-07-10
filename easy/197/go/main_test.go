@@ -59,3 +59,8 @@ func (s *MainSuite) TestIsValidIsbnWrongLength(c *C) {
 	c.Assert(isValidIsbn("15688111"), Equals, false)
 	c.Assert(isValidIsbn("15688111111"), Equals, false)
 }
+
+func (s *MainSuite) TestIsValidIsbn(c *C) {
+	c.Assert(isValidIsbn("156881111X"), Equals, true)
+	c.Assert(isValidIsbn("0-7475-3269-9"), Equals, true)
+}
