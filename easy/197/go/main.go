@@ -30,7 +30,11 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+// There are still ways to break this, like '156881111q'
+// The best way to handle this is to regex valid ISBN syntax
+// I am too lazy to do that right now
 func isValidIsbn(input string) bool {
+	// This is messy
 	dashStripped := notDashPattern.ReplaceAllString(input, "")
 	if 10 != len(dashStripped) {
 		return false
