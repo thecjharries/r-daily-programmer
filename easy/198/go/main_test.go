@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCompareWords(c *C) {
+	var first, second string
+	first, second = compareWords("because", "cause")
+	c.Assert(first, Equals, "be")
+	c.Assert(second, Equals, "")
+	first, second = compareWords("hello", "below")
+	c.Assert(first, Equals, "hl")
+	c.Assert(second, Equals, "bw")
+}
