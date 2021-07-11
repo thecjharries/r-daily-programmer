@@ -14,10 +14,33 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func compareWords(firstWord, secondWord string) (string, string) {
+	firstLetters, secondLetters := strings.Split(firstWord, ""), strings.Split(secondWord, "")
+	firstIndex := 0
+	for firstIndex < len(firstLetters) {
+		notFound := true
+		for secondIndex, secondLetter := range secondLetters {
+			if firstLetters[firstIndex] == secondLetter {
+				notFound = false
+				firstLetters = append(firstLetters[:firstIndex], firstLetters[firstIndex+1:]...)
+				secondLetters = append(secondLetters[:secondIndex], secondLetters[secondIndex+1:]...)
+				break
+			}
+		}
+		if notFound {
+			firstIndex++
+		}
+	}
+	return strings.Join(firstLetters, ""), strings.Join(secondLetters, "")
 }
