@@ -63,3 +63,9 @@ func (s *MainSuite) TestCompareWords(c *C) {
 	c.Assert(first, Equals, "hl")
 	c.Assert(second, Equals, "bw")
 }
+
+func (s *MainSuite) TestPlayWordsWithEnemies(c *C) {
+	c.Assert(playWordsWithEnemies("because", "cause"), Equals, "first")
+	c.Assert(playWordsWithEnemies("cause", "because"), Equals, "second")
+	c.Assert(playWordsWithEnemies("hello", "below"), Equals, "tie")
+}
