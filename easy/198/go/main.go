@@ -44,3 +44,13 @@ func compareWords(firstWord, secondWord string) (string, string) {
 	}
 	return strings.Join(firstLetters, ""), strings.Join(secondLetters, "")
 }
+
+func playWordsWithEnemies(first, second string) string {
+	firstLeftover, secondLeftover := compareWords(first, second)
+	if len(firstLeftover) > len(secondLeftover) {
+		return "first"
+	} else if len(firstLeftover) < len(secondLeftover) {
+		return "second"
+	}
+	return "tie"
+}
