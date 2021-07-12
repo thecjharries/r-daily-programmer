@@ -14,22 +14,39 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-var normalToBanner = map[string][]string{
-	"1": {"   ", "  |", "  |", "   "},
-	"2": {" _ ", " _|", "|_ ", "   "},
-	"3": {" _ ", " _|", " _|", "   "},
-	"4": {"   ", "|_|", "  |", "   "},
-	"5": {" _ ", "|_ ", " _|", "   "},
-	"6": {" _ ", "|_ ", "|_|", "   "},
-	"7": {" _ ", "  |", "  |", "   "},
-	"8": {" _ ", "|_|", "|_|", "   "},
-	"9": {" _ ", "|_|", " _|", "   "},
+var normalToBanner = map[rune][]string{
+	'1': {"   ", "  |", "  |", "   "},
+	'2': {" _ ", " _|", "|_ ", "   "},
+	'3': {" _ ", " _|", " _|", "   "},
+	'4': {"   ", "|_|", "  |", "   "},
+	'5': {" _ ", "|_ ", " _|", "   "},
+	'6': {" _ ", "|_ ", "|_|", "   "},
+	'7': {" _ ", "  |", "  |", "   "},
+	'8': {" _ ", "|_|", "|_|", "   "},
+	'9': {" _ ", "|_|", " _|", "   "},
+	'0': {" _ ", "| |", "|_|", "   "},
 }
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertStringToBanner(input string) string {
+	output := make([]string, 4)
+	for _, character := range input {
+		banner, exists := normalToBanner[character]
+		if exists {
+			for index, line := range banner {
+				output[index] = fmt.Sprintf("%s %s", output[index], line)
+			}
+		}
+	}
+	return strings.Join(output, "\n")
 }
