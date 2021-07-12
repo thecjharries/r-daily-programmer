@@ -44,7 +44,7 @@ func convertStringToBanner(input string) string {
 		banner, exists := normalToBanner[character]
 		if exists {
 			for index, line := range banner {
-				output[index] = fmt.Sprintf("%s %s", output[index], line)
+				output[index] = fmt.Sprintf("%s%s", output[index], line)
 			}
 		}
 	}
