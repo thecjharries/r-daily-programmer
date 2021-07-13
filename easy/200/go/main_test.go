@@ -62,3 +62,16 @@ func (s *MainSuite) TestGridString(c *C) {
 	}
 	c.Assert(grid.String(), Equals, "...\n...\n...")
 }
+
+func (s *MainSuite) TestGridFill(c *C) {
+	grid := Grid{
+		{'.', '.', '.'},
+		{'.', '.', '.'},
+		{'.', '.', '.'},
+	}
+	grid.Fill(1, 1, '+')
+	c.Assert(grid.String(), Equals, "+++\n+++\n+++")
+	grid[0][1] = '.'
+	grid.Fill(1, 1, '*')
+	c.Assert(grid.String(), Equals, "*.*\n***\n***")
+}
