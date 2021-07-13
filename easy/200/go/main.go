@@ -18,6 +18,13 @@ import "fmt"
 
 type Grid [][]rune
 
+func (g *Grid) String() (output string) {
+	for _, row := range *g {
+		output = fmt.Sprintf("%s\n%s", output, string(row))
+	}
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
