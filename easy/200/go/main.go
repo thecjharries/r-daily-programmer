@@ -14,15 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Grid [][]rune
 
-func (g *Grid) String() (output string) {
-	for _, row := range *g {
-		output = fmt.Sprintf("%s\n%s", output, string(row))
+func (g *Grid) String() string {
+	combined := make([]string, len(*g))
+	for index, row := range *g {
+		combined[index] = string(row)
 	}
-	return
+	return strings.Join(combined, "\n")
 }
 
 var zPrint = fmt.Println

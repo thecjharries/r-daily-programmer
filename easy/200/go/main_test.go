@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGridString(c *C) {
+	grid := Grid{
+		{'.', '.', '.'},
+		{'.', '.', '.'},
+		{'.', '.', '.'},
+	}
+	c.Assert(grid.String(), Equals, "...\n...\n...")
+}
