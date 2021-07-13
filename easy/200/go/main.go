@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type Grid [][]rune
+
 var zPrint = fmt.Println
 
 func main() {
