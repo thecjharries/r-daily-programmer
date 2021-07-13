@@ -34,9 +34,7 @@ func (g *Grid) Fill(startX, startY int, fill rune) {
 	coordinates := []int{startX, startY}
 	for 0 < len(coordinates) {
 		currentX, currentY := coordinates[0], coordinates[1]
-		if 2 < len(coordinates) {
-			coordinates = coordinates[2:]
-		}
+		coordinates = coordinates[2:]
 		if characterToReplace == (*g)[currentX][currentY] {
 			(*g)[currentX][currentY] = fill
 			coordinates = append(
