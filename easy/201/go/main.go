@@ -27,7 +27,6 @@ func main() {
 }
 
 func daysUntil(year, month, day int) int {
-	desiredDate := time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.Local)
-	difference := desiredDate.Sub(time.Now())
+	difference := time.Until(time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.Local))
 	return int(math.Ceil(difference.Hours() / 24))
 }
