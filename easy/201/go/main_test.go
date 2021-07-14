@@ -56,6 +56,9 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestDaysUntil(c *C) {
-	currentTime := time.Now().Add(time.Hour * 24 * 15)
+	var currentTime time.Time
+	currentTime = time.Now().Add(time.Hour * 24 * 15)
 	c.Assert(daysUntil(currentTime.Year(), int(currentTime.Month()), currentTime.Day()), Equals, 15)
+	currentTime = time.Now().Add(-time.Hour * 24 * 15)
+	c.Assert(daysUntil(currentTime.Year(), int(currentTime.Month()), currentTime.Day()), Equals, -15)
 }
