@@ -14,10 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"time"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func daysUntil(year, month, day int) int {
+	desiredDate := time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.Local)
+	difference := desiredDate.Sub(time.Now())
+	return int(math.Ceil(difference.Hours() / 24))
 }
