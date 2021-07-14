@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	. "gopkg.in/check.v1"
 )
@@ -52,4 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestDaysUntil(c *C) {
+	currentTime := time.Now().Add(time.Hour * 24 * 15)
+	c.Assert(daysUntil(currentTime.Year(), int(currentTime.Month()), currentTime.Day()), Equals, 15)
 }
