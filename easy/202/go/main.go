@@ -27,8 +27,8 @@ func main() {
 
 func parseBinaryToString(input string) string {
 	var parsedRunes []rune
-	for index := 0; index < len(input); index += 8 {
-		parsedInt, _ := strconv.ParseInt(input[index:index+8], 2, 0)
+	for endIndex := 8; endIndex <= len(input); endIndex += 8 {
+		parsedInt, _ := strconv.ParseInt(input[endIndex-8:endIndex], 2, 0)
 		parsedRunes = append(parsedRunes, rune(parsedInt))
 	}
 	return string(parsedRunes)
