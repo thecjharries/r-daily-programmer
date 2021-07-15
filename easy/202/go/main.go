@@ -16,8 +16,11 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strconv"
 )
+
+var notBinaryRegex = regexp.MustCompile(`[^10]`)
 
 var zPrint = fmt.Println
 
@@ -27,8 +30,9 @@ func main() {
 
 func parseBinaryToString(input string) string {
 	var parsedRunes []rune
-	for endIndex := 8; endIndex <= len(input); endIndex += 8 {
-		parsedInt, _ := strconv.ParseInt(input[endIndex-8:endIndex], 2, 0)
+	sanitizedInput := notBinaryRegex.ReplaceAllString(input, "")
+	for endIndex := 8; endIndex <= len(sanitizedInput); endIndex += 8 {
+		parsedInt, _ := strconv.ParseInt(sanitizedInput[endIndex-8:endIndex], 2, 0)
 		parsedRunes = append(parsedRunes, rune(parsedInt))
 	}
 	return string(parsedRunes)
