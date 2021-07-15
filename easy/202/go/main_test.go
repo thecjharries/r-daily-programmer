@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseBinaryToString(c *C) {
+	c.Assert(parseBinaryToString("0100100001100101011011000110110001101111001000000101011101101111011100100110110001100100"), Equals, "Hello World")
+}
