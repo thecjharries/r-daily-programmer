@@ -14,10 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseBinaryToString(input string) string {
+	var parsedRunes []rune
+	for index := 0; index < len(input); index += 8 {
+		parsedInt, _ := strconv.ParseInt(input[index:index+8], 2, 0)
+		parsedRunes = append(parsedRunes, rune(parsedInt))
+	}
+	return string(parsedRunes)
 }
