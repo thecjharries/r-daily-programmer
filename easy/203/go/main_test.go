@@ -51,5 +51,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "")
 	main()
 	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
+	c.Assert(printSpyContents, Equals, "■")
+}
+
+func (s *MainSuite) TestPromptRunner(c *C) {
+	c.Assert(promptRunner(), Equals, "■")
 }
