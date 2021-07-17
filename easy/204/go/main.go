@@ -26,6 +26,6 @@ func main() {
 }
 
 func findLine(line, haystack string) string {
-	linePattern := regexp.MustCompile(fmt.Sprintf(`(    [\s\S]*)+^.%s.*$(\n    .*)+`, line))
+	linePattern := regexp.MustCompile(fmt.Sprintf(`(?i)(?:    [\s\S]*)+.*%s.*(?:\n    .*)+`, line))
 	return linePattern.FindString(haystack)
 }
