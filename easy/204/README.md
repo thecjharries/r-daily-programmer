@@ -12,7 +12,7 @@ I didn't always want to be a computer programmer, you know. I used to have dream
 
 Alas, my acting career was brief, lasting exactly as long as one high-school production of Macbeth. I played old King Duncan, who gets brutally murdered by Macbeth in the beginning of Act II. It was just as well, really, because I had a terribly hard time remembering all those lines!
 
-For instance: I would remember that Act IV started with the three witches brewing up some sort of horrible potion, filled will all sorts nasty stuff, but except for "Eye of newt", I couldn't for the life of me remember what was in it! Today, with our modern computers and internet, such a question is easy to settle: you simply open up [the full text of the play](https://gist.githubusercontent.com/Quackmatic/f8deb2b64dd07ea0985d/raw/macbeth.txt) and press Ctrl-F (or Cmd-F, if you're on a Mac) and search for "Eye of newt".
+For instance: I would remember that Act IV started with the three witches brewing up some sort of horrible potion, filled will all sorts nasty stuff, but except for "Eye of newt", I couldn't for the life of me remember what was in it! Today, with our modern computers and internet, such a question is easy to settle: you simply open up [the full text of the play](https://web.archive.org/web/20180826160918/https://gist.githubusercontent.com/Quackmatic/f8deb2b64dd07ea0985d/raw/macbeth.txt) and press Ctrl-F (or Cmd-F, if you're on a Mac) and search for "Eye of newt".
 
 And, indeed, here's the passage:
 
@@ -32,7 +32,7 @@ In today's challenge, we will automate this process. You will be given the full 
 #Formal inputs & outputs
 
 ##Input description
-First off all, you're going to need a full copy of the play, which you can find here: [macbeth.txt](https://gist.githubusercontent.com/Quackmatic/f8deb2b64dd07ea0985d/raw/macbeth.txt). Either right click and save it to your local computer, or open it and copy the contents into a local file.
+First off all, you're going to need a full copy of the play, which you can find here: [macbeth.txt](https://web.archive.org/web/20180826160918/https://gist.githubusercontent.com/Quackmatic/f8deb2b64dd07ea0985d/raw/macbeth.txt). Either right click and save it to your local computer, or open it and copy the contents into a local file.
 
 This version of the play uses consistent formatting, and should be especially easy for computers to parse. I recommend perusing it briefly to get a feel for how it's formatted, but in particular you should notice that all lines of dialog are indented 4 spaces, and only dialog is indented that far.
 
