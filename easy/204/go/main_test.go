@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindLine(c *C) {
+	var line, haystack string
+	line = "eye of newt"
+	haystack = "\n  SECOND WITCH.\n    Fillet of a fenny snake,\n    In the caldron boil and bake;\n    Eye of newt, and toe of frog,\n    Wool of bat, and tongue of dog,\n    Adder's fork, and blind-worm's sting,\n    Lizard's leg, and howlet's wing,\n    For a charm of powerful trouble,\n    Like a hell-broth boil and bubble.\n\n  ALL.\n    Double, double, toil and trouble;\n    Fire, burn; and caldron, bubble."
+	c.Assert(findLine(line, haystack), Equals, "    Fillet of a fenny snake,\n    In the caldron boil and bake;\n    Eye of newt, and toe of frog,\n    Wool of bat, and tongue of dog,\n    Adder's fork, and blind-worm's sting,\n    Lizard's leg, and howlet's wing,\n    For a charm of powerful trouble,\n    Like a hell-broth boil and bubble.")
+}
