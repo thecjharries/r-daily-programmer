@@ -14,10 +14,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func findLine(line, haystack string) string {
+	linePattern := regexp.MustCompile(fmt.Sprintf(`(    [\s\S]*)+^.%s.*$(\n    .*)+`, line))
+	return linePattern.FindString(haystack)
 }
