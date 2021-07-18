@@ -28,14 +28,55 @@ func main() {
 }
 
 func simplifyDateRange(first, second string) string {
+	currentDate := time.Now()
 	firstDate, _ := time.Parse(inputDateFormat, first)
 	secondDate, _ := time.Parse(inputDateFormat, second)
-	if secondDate.Year() == firstDate.Year() {
-		if secondDate.Month() == firstDate.Month() {
-			return fmt.Sprintf("%s - %d", firstDate.Format("January 2"), secondDate.Day())
+	var firstYear, firstMonth, secondYear, secondMonth string
+	if currentDate.Year() != firstDate.Year() {
+		secondYear = fmt.Sprintf(", %d", secondDate.Year())
+		firstMonth = firstDate.Format("January")
+		if firstDate.Year() != secondDate.Year() {
+			firstYear = fmt.Sprintf(", %d", firstDate.Year())
+			secondMonth = secondDate.Format(" January")
 		} else {
-			return fmt.Sprintf("%s - %s", firstDate.Format("January 2"), secondDate.Format("January 2"))
+			firstYear = ""
+			if firstDate.Month() != secondDate.Month() {
+				secondMonth = secondDate.Format(" January")
+			} else {
+				if firstDate.Day() == secondDate.Day() {
+					return firstDate.Format("January 2, 2006")
+				}
+				secondMonth = ""
+			}
+		}
+	} else {
+		firstMonth = firstDate.Format("January")
+		if firstDate.Year() != secondDate.Year() {
+			secondMonth = secondDate.Format(" January")
+			if secondDate.Year()-firstDate.Year() == 1 && firstDate.Month() > secondDate.Month() {
+				secondYear = ""
+			} else {
+				firstYear = fmt.Sprintf(", %d", firstDate.Year())
+				secondYear = fmt.Sprintf(", %d", secondDate.Year())
+			}
+		} else {
+			secondYear = ""
 		}
 	}
-	return fmt.Sprintf("%s - %s", firstDate.Format("January 2, 2006"), secondDate.Format("January 2, 2006"))
+	//if secondDate.Year() == firstDate.Year() {
+	//	if secondDate.Month() == firstDate.Month() {
+	//		return fmt.Sprintf("%s - %d", firstDate.Format("January 2"), secondDate.Day())
+	//	} else {
+	//		return fmt.Sprintf("%s - %s", firstDate.Format("January 2"), secondDate.Format("January 2"))
+	//	}
+	//}
+	return fmt.Sprintf(
+		"%s %d%s -%s %d%s",
+		firstMonth,
+		firstDate.Day(),
+		firstYear,
+		secondMonth,
+		secondDate.Day(),
+		secondYear,
+	)
 }
