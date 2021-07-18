@@ -14,10 +14,28 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+var inputDateFormat = "2006-01-02"
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func simplifyDateRange(first, second string) string {
+	firstDate, _ := time.Parse(inputDateFormat, first)
+	secondDate, _ := time.Parse(inputDateFormat, second)
+	if secondDate.Year() == firstDate.Year() {
+		if secondDate.Month() == firstDate.Month() {
+			return fmt.Sprintf("%s - %d", firstDate.Format("January 2"), secondDate.Day())
+		} else {
+			return fmt.Sprintf("%s - %s", firstDate.Format("January 2"), secondDate.Format("January 2"))
+		}
+	}
+	return fmt.Sprintf("%s - %s", firstDate.Format("January 2, 2006"), secondDate.Format("January 2, 2006"))
 }
