@@ -58,4 +58,8 @@ func (s *MainSuite) TestRecurrenceRelation(c *C) {
 	var output []int
 	output = []int{1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047}
 	c.Assert(recurrenceRelation("*2 +1", 1, 10), DeepEquals, output)
+	output = []int{0, 1, 4, 13, 40, 121, 364, 1093, 3280, 9841, 29524}
+	c.Assert(recurrenceRelation("+2 *3 -5", 0, 10), DeepEquals, output)
+	output = []int{1, -2, 4, -8}
+	c.Assert(recurrenceRelation("*(-2)", 1, 3), DeepEquals, output)
 }
