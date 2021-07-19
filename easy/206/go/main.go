@@ -30,11 +30,15 @@ func main() {
 func recurrenceRelation(relation string, startingTerm, count int) (sequence []int) {
 	formula := strings.Replace(relation, " ", ")", -1)
 	parenthesisCount := strings.Count(formula, ")")
-	formula = fmt.Sprintf("%s%d%s", strings.Repeat("(", parenthesisCount), startingTerm, formula)
+	formula = fmt.Sprintf("%scurrent%s", strings.Repeat("(", parenthesisCount), formula)
 	expression, _ := govaluate.NewEvaluableExpression(formula)
+	parameters := make(map[string]interface{}, 8)
+	parameters["current"] = startingTerm
+	sequence = append(sequence, startingTerm)
 	for index := 0; index < count; index++ {
-		result, _ := expression.Eval(nil)
-		sequence = append(sequence, result.(int))
+		result, _ := expression.Evaluate(parameters)
+		sequence = append(sequence, int(result.(float64)))
+		parameters["current"] = int(result.(float64))
 	}
 	return
 }
