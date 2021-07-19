@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRecurrenceRelation(c *C) {
+	var output []int
+	output = []int{1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047}
+	c.Assert(recurrenceRelation("*2 +1", 1, 10), DeepEquals, output)
+}
