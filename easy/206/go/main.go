@@ -28,9 +28,9 @@ func main() {
 }
 
 func recurrenceRelation(relation string, startingTerm, count int) (sequence []int) {
+	spaceCount := strings.Count(relation, " ")
 	formula := strings.Replace(relation, " ", ")", -1)
-	parenthesisCount := strings.Count(formula, ")")
-	formula = fmt.Sprintf("%scurrent%s", strings.Repeat("(", parenthesisCount), formula)
+	formula = fmt.Sprintf("%scurrent%s", strings.Repeat("(", spaceCount), formula)
 	expression, _ := govaluate.NewEvaluableExpression(formula)
 	parameters := make(map[string]interface{}, 8)
 	parameters["current"] = startingTerm
