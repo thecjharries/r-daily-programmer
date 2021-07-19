@@ -14,10 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/knetic/govaluate"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func recurrenceRelation(relation string, startingTerm, count int) (sequence []int) {
+	formula := strings.Replace(relation, " ", ")", -1)
+	parenthesisCount := strings.Count(formula, ")")
+	formula = fmt.Sprintf("%s%d%s", strings.Repeat("(", parenthesisCount), startingTerm, formula)
+	expression, _ := govaluate.NewEvaluableExpression(formula)
+	for index := 0; index < count; index++ {
+		result, _ := expression.Eval(nil)
+		sequence = append(sequence, result.(int))
+	}
+	return
 }
