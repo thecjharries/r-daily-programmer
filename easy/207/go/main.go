@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+var baseComplements = map[rune]rune{
+	'A': 'T',
+	'T': 'A',
+	'C': 'G',
+	'G': 'C',
+}
+
 var zPrint = fmt.Println
 
 func main() {
