@@ -28,3 +28,16 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func buildComplement(dnaSide string) string {
+	var dnaStrand []rune
+	for _, character := range dnaSide {
+		complement, exists := baseComplements[character]
+		if exists {
+			dnaStrand = append(dnaStrand, complement)
+		} else {
+			dnaStrand = append(dnaStrand, character)
+		}
+	}
+	return fmt.Sprintf("%s\n%s", dnaSide, string(dnaStrand))
+}
