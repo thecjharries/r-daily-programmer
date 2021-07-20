@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestBuildComplement(c *C) {
+	var input, output string
+	input = "A A T G C C T A T G G C"
+	output = "A A T G C C T A T G G C\nT T A C G G A T A C C G"
+	c.Assert(buildComplement(input), Equals, output)
+}
