@@ -22,7 +22,7 @@ import (
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(cullNonUniqueNumbers([]int{3, 1, 3, 4, 4, 1, 4, 5, 2, 1, 4, 4, 4, 4, 1, 4, 3, 2, 5, 5, 2, 2, 2, 4, 2, 4, 4, 4, 4, 1}))
 }
 
 func cullNonUniqueNumbers(input []int) (output []int) {
