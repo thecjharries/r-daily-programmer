@@ -14,10 +14,25 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func cullNonUniqueNumbers(input []int) (output []int) {
+	uniqueNumbers := make(map[int]struct{})
+	for _, element := range input {
+		uniqueNumbers[element] = struct{}{}
+	}
+	for key, _ := range uniqueNumbers {
+		output = append(output, key)
+	}
+	sort.Ints(output)
+	return
 }
