@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCullNonUniqueNumbers(c *C) {
+	var input, output []int
+	input = []int{1, 1, 2, 2, 3, 3, 4, 4}
+	output = []int{1, 2, 3, 4}
+	c.Assert(cullNonUniqueNumbers(input), DeepEquals, output)
+}
