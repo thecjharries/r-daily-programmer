@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 )
 
@@ -32,5 +33,14 @@ func getSortedValuesAndMap(input map[string]float64) (values []float64, valueKey
 		valueKeymap[value] = key
 	}
 	sort.Float64s(values)
+	return
+}
+
+func buildFlairMap(times map[string]float64) (output string) {
+	values, valueKeyMap := getSortedValuesAndMap(times)
+	previousValue := 0.0
+	for _, value := range values {
+		output += fmt.Sprintf("%s: %d\n", valueKeyMap[value], int(math.Floor(60-(value-previousValue))))
+	}
 	return
 }
