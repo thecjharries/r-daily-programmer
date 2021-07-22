@@ -25,12 +25,12 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func getSortedValuesAndMap(input map[string]int) (values []int, valueKeymap map[int]string) {
-	valueKeymap = make(map[int]string)
+func getSortedValuesAndMap(input map[string]float64) (values []float64, valueKeymap map[float64]string) {
+	valueKeymap = make(map[float64]string)
 	for key, value := range input {
 		values = append(values, value)
 		valueKeymap[value] = key
 	}
-	sort.Ints(values)
+	sort.Float64s(values)
 	return
 }
