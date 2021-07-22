@@ -78,3 +78,17 @@ func (s *MainSuite) TestGetSortedValuesAndMap(c *C) {
 	c.Assert(foundValues, DeepEquals, desiredValues)
 	c.Assert(foundMap, DeepEquals, desiredMap)
 }
+
+func (s *MainSuite) TestBuildFlair(c *C) {
+	input := map[string]float64{
+		"bholzer":      101.09,
+		"Cosmologicon": 27.45,
+		"nint22":       13.76,
+		"nooodl":       7.29,
+		"nottoobadguy": 74.56,
+		"oskar_s":      39.90,
+		"Steve132":     61.82,
+	}
+	output := "nooodl: 52\nnint22: 53\nCosmologicon: 46\noskar_s: 47\nSteve132: 38\nnottoobadguy: 47\nbholzer: 33\n"
+	c.Assert(buildFlair(input), Equals, output)
+}
