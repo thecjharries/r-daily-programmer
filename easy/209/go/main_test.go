@@ -53,3 +53,28 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetSortedValuesAndMap(c *C) {
+	input := map[string]float64{
+		"bholzer":      101.09,
+		"Cosmologicon": 27.45,
+		"nint22":       13.76,
+		"nooodl":       7.29,
+		"nottoobadguy": 74.56,
+		"oskar_s":      39.90,
+		"Steve132":     61.82,
+	}
+	desiredValues := []float64{7.29, 13.76, 27.45, 39.9, 61.82, 74.56, 101.09}
+	desiredMap := map[float64]string{
+		101.09: "bholzer",
+		27.45:  "Cosmologicon",
+		13.76:  "nint22",
+		7.29:   "nooodl",
+		74.56:  "nottoobadguy",
+		39.90:  "oskar_s",
+		61.82:  "Steve132",
+	}
+	foundValues, foundMap := getSortedValuesAndMap(input)
+	c.Assert(foundValues, DeepEquals, desiredValues)
+	c.Assert(foundMap, DeepEquals, desiredMap)
+}
