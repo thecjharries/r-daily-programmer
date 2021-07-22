@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getSortedValuesAndMap(input map[string]int) (values []int, valueKeymap map[int]string) {
+	valueKeymap = make(map[int]string)
+	for key, value := range input {
+		values = append(values, value)
+		valueKeymap[value] = key
+	}
+	sort.Ints(values)
+	return
 }
