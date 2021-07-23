@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 var zPrint = fmt.Println
@@ -27,6 +28,7 @@ func main() {
 
 func findBinaryAndOpposite(input int) (string, int) {
 	binary := strconv.FormatInt(int64(input), 2)
+	binary = strings.Repeat("0", 8-len(binary)) + binary
 	oppositeBinary := ""
 	for _, character := range binary {
 		if '1' == character {
