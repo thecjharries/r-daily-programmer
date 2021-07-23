@@ -57,7 +57,7 @@ func buildMatchOutput(first, second int) (output string) {
 	secondBinary, secondOpposite := findBinaryAndOpposite(second)
 	compabilityPercent := findCompabilityPercent(firstBinary, secondBinary)
 	return fmt.Sprintf(
-		"%d%% Compability\n%d should avoid %d\n%d should avoid %d",
+		"%2.f%% Compatibility\n%d should avoid %d\n%d should avoid %d",
 		compabilityPercent,
 		first,
 		firstOpposite,

@@ -65,3 +65,7 @@ func (s *MainSuite) TestFindBinaryAndOpposite(c *C) {
 func (s *MainSuite) TestFindCompabilityPercent(c *C) {
 	c.Assert(findCompabilityPercent("01100100", "00101010"), Equals, 50.0)
 }
+
+func (s *MainSuite) TestBuildMatchOutput(c *C) {
+	c.Assert(buildMatchOutput(100, 42), Equals, "50% Compatibility\n100 should avoid 155\n42 should avoid 213")
+}
