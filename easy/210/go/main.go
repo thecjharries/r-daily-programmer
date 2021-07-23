@@ -14,10 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func findBinaryAndOpposite(input int) (string, int) {
+	binary := strconv.FormatInt(int64(input), 2)
+	oppositeBinary := ""
+	for _, character := range binary {
+		if '1' == character {
+			oppositeBinary += "0"
+		} else {
+			oppositeBinary += "1"
+		}
+	}
+	opposite64, _ := strconv.ParseInt(oppositeBinary, 2, 0)
+	return binary, int(opposite64)
 }
