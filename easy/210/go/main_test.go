@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindBinaryAndOpposite(c *C) {
+	var binary string
+	var opposite int
+	binary, opposite = findBinaryAndOpposite(100)
+	c.Assert(binary, Equals, "01100100")
+	c.Assert(opposite, Equals, 155)
+}
