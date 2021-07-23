@@ -51,3 +51,17 @@ func findCompabilityPercent(first, second string) float64 {
 	}
 	return math.Round(count/8*10000) / 100
 }
+
+func buildMatchOutput(first, second int) (output string) {
+	firstBinary, firstOpposite := findBinaryAndOpposite(first)
+	secondBinary, secondOpposite := findBinaryAndOpposite(second)
+	compabilityPercent := findCompabilityPercent(firstBinary, secondBinary)
+	return fmt.Sprintf(
+		"%d%% Compability\n%d should avoid %d\n%d should avoid %d",
+		compabilityPercent,
+		first,
+		firstOpposite,
+		second,
+		secondOpposite,
+	)
+}
