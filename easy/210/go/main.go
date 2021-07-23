@@ -49,5 +49,5 @@ func findCompabilityPercent(first, second string) float64 {
 			count += 1
 		}
 	}
-	return math.Round(count*100) / 100
+	return math.Round(count/8*10000) / 100
 }
