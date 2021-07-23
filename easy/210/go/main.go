@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 	"strings"
 )
@@ -39,4 +40,14 @@ func findBinaryAndOpposite(input int) (string, int) {
 	}
 	opposite64, _ := strconv.ParseInt(oppositeBinary, 2, 0)
 	return binary, int(opposite64)
+}
+
+func findCompabilityPercent(first, second string) float64 {
+	count := 0.0
+	for index := 0; index < 8; index++ {
+		if first[index] == second[index] {
+			count += 1
+		}
+	}
+	return math.Round(count*100) / 100
 }
