@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCreateNameRhyme(c *C) {
+	c.Assert(createNameRhyme("Nick!"), Equals, "Nick, Nick bo Bick,\nBonana fanna fo Fick,\nFee fy mo Mick,\nNick!")
+}
