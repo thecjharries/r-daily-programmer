@@ -19,7 +19,7 @@ import "fmt"
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	_, _ = zPrint(createNameRhyme("Lincoln!"))
 }
 
 func createNameRhyme(name string) string {
