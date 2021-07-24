@@ -25,11 +25,11 @@ func main() {
 func createNameRhyme(name string) string {
 	return fmt.Sprintf(
 		"%s, %s bo B%s,\nBonana fanna fo F%s,\nFee fy mo M%s,\n%s",
-		name[1:len(name)-2],
-		name[1:len(name)-2],
-		name[2:len(name)-2],
-		name[2:len(name)-2],
-		name[2:len(name)-2],
+		name[:len(name)-1],
+		name[:len(name)-1],
+		name[1:len(name)-1],
+		name[1:len(name)-1],
+		name[1:len(name)-1],
 		name,
 	)
 }
