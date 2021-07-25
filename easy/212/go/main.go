@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var consonantPattern = regexp.MustCompile(`(?i)bcdfghjklmnpqrtsvwxz`)
 
 var zPrint = fmt.Println
 
