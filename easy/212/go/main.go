@@ -19,10 +19,14 @@ import (
 	"regexp"
 )
 
-var consonantPattern = regexp.MustCompile(`(?i)bcdfghjklmnpqrtsvwxz`)
+var consonantPattern = regexp.MustCompile(`(?i)(bcdfghjklmnpqrtsvwxz)`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertToRobbersLanguage(input string) string {
+	return consonantPattern.ReplaceAllString(input, "$1o$1")
 }
