@@ -17,9 +17,10 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
-var consonantPattern = regexp.MustCompile(`(?i)(bcdfghjklmnpqrtsvwxz)`)
+var consonantPattern = regexp.MustCompile(`(?i)([bcdfghjklmnpqrtsvwxz])`)
 
 var zPrint = fmt.Println
 
@@ -28,5 +29,5 @@ func main() {
 }
 
 func convertToRobbersLanguage(input string) string {
-	return consonantPattern.ReplaceAllString(input, "$1o$1")
+	return consonantPattern.ReplaceAllStringFunc(input, func(source string) string { return fmt.Sprintf("%so%s", source, strings.ToLower(source)) })
 }
