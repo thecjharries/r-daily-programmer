@@ -60,8 +60,8 @@ func main() {
 
 func convertHexToWords(hex string) (output string) {
 	for index, character := range hex[2:] {
-		if 3 == index {
-			output += " bitey "
+		if 2 == index {
+			output += " bitey"
 		}
 		if 0 == index%2 {
 			word, exists := highOrderHexToWord[character]
