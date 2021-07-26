@@ -16,6 +16,42 @@ package main
 
 import "fmt"
 
+var highOrderHexToWord = map[rune]string{
+	'1': "Eleventy",
+	'2': "Twenty",
+	'3': "Thirty",
+	'4': "Fourty",
+	'5': "Fifty",
+	'6': "Sitxy",
+	'7': "Seventy",
+	'8': "Eighty",
+	'9': "Ninety",
+	'A': "Atta",
+	'B': "Bibbity",
+	'C': "City",
+	'D': "Dickety",
+	'E': "Ebbity",
+	'F': "Fleventy",
+}
+
+var lowOrderHexToWord = map[rune]string{
+	'1': "One",
+	'2': "Two",
+	'3': "Three",
+	'4': "Four",
+	'5': "Five",
+	'6': "Six",
+	'7': "Seven",
+	'8': "Eight",
+	'9': "Nine",
+	'A': "Aye",
+	'B': "Bee",
+	'C': "Cee",
+	'D': "Dee",
+	'E': "Ee",
+	'F': "Eff",
+}
+
 var zPrint = fmt.Println
 
 func main() {
