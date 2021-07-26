@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertHexToWords(c *C) {
+	c.Assert(convertHexToWords("0xF5"), Equals, "Fleventy Five")
+	c.Assert(convertHexToWords("0xBBBB"), Equals, "Bibbity Bee bitey Bibbity Bee")
+}
