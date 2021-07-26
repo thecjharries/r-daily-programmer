@@ -57,3 +57,29 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func convertHexToWords(hex string) (output string) {
+	for index, character := range hex[2:] {
+		if 3 == index {
+			output += " bitey "
+		}
+		if 0 == index%2 {
+			word, exists := highOrderHexToWord[character]
+			if exists {
+				if 0 < len(output) {
+					output += " "
+				}
+				output += word
+			}
+		} else {
+			word, exists := lowOrderHexToWord[character]
+			if exists {
+				if 0 < len(output) {
+					output += " "
+				}
+				output += word
+			}
+		}
+	}
+	return
+}
