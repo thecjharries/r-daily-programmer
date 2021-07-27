@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateStandardDeviation(c *C) {
+	c.Assert(calculateStandardDeviation(5, 6, 11, 13, 19, 20, 25, 26, 28, 37), Equals, 9.7775)
+	c.Assert(calculateStandardDeviation(37, 81, 86, 91, 97, 108, 109, 112, 112, 114, 115, 117, 121, 123, 141), Equals, 23.2908)
+}
