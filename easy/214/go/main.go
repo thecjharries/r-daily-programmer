@@ -33,7 +33,7 @@ func calculateStandardDeviation(input ...float64) float64 {
 	mean := sum / float64(len(input))
 	diffSum := 0.0
 	for _, number := range input {
-		diffSum = math.Pow(number-mean, 2)
+		diffSum += math.Pow(number-mean, 2)
 	}
 	return math.Round(math.Sqrt(diffSum/float64(len(input)))*10000) / 10000
 }
