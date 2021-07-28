@@ -46,11 +46,12 @@ func explodeAndSumNumber(base, number float64) (total float64) {
 	return
 }
 
-//func findSadCycle(base, start float64) (result Float64Slice) {
-//	currentNumber := start
-//	for 1 != currentNumber || -1 < result.IndexOf(currentNumber) {
-//
-//	}
-//	if 1 == c
-//	return
-//}
+func findSadCycle(base, start float64) (result Float64Slice) {
+	result = make(Float64Slice, 0)
+	currentNumber := start
+	for 1 != currentNumber || -1 < result.IndexOf(currentNumber) {
+		currentNumber = explodeAndSumNumber(base, currentNumber)
+		result = append(result, currentNumber)
+	}
+	return result[result.IndexOf(currentNumber):]
+}
