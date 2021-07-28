@@ -59,3 +59,9 @@ func (s *MainSuite) TestFloat64SliceIndexOf(c *C) {
 	c.Assert(slice.IndexOf(10), Equals, -1)
 	c.Assert(slice.IndexOf(5), Equals, 4)
 }
+
+func (s *MainSuite) TestExplodeAndSumNumber(c *C) {
+	c.Assert(explodeAndSumNumber(2, 12), Equals, 5.0)
+	c.Assert(explodeAndSumNumber(2, 5), Equals, 25.0)
+	c.Assert(explodeAndSumNumber(2, 25), Equals, 29.0)
+}
