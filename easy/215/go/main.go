@@ -18,6 +18,15 @@ import "fmt"
 
 type Float64Slice []float64
 
+func (f *Float64Slice) IndexOf(number float64) int {
+	for index, element := range *f {
+		if number == element {
+			return index
+		}
+	}
+	return -1
+}
+
 var zPrint = fmt.Println
 
 func main() {
