@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type Float64Slice []float64
+
 var zPrint = fmt.Println
 
 func main() {
