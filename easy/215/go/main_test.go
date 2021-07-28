@@ -65,3 +65,9 @@ func (s *MainSuite) TestExplodeAndSumNumber(c *C) {
 	c.Assert(explodeAndSumNumber(2, 5), Equals, 25.0)
 	c.Assert(explodeAndSumNumber(2, 25), Equals, 29.0)
 }
+
+func (s *MainSuite) TestFindSadCycles(c *C) {
+	c.Assert(findSadCycle(2, 13), DeepEquals, Float64Slice{1})
+	c.Assert(findSadCycle(2, 12), DeepEquals, Float64Slice{89, 145, 42, 20, 4, 16, 37, 58})
+	c.Assert(findSadCycle(5, 117649), DeepEquals, Float64Slice{10933, 59536, 73318, 50062})
+}
