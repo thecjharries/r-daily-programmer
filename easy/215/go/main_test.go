@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFloat64SliceIndexOf(c *C) {
+	slice := Float64Slice{1, 2, 3, 4, 5}
+	c.Assert(slice.IndexOf(10), Equals, -1)
+	c.Assert(slice.IndexOf(5), Equals, 4)
+}
