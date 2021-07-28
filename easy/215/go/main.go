@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"strconv"
+)
 
 type Float64Slice []float64
 
@@ -32,3 +36,21 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func explodeAndSumNumber(base, number float64) (total float64) {
+	numberAsString := strconv.Itoa(int(number))
+	for _, element := range numberAsString {
+		currentFloat, _ := strconv.ParseFloat(string(element), 64)
+		total += math.Pow(currentFloat, base)
+	}
+	return
+}
+
+//func findSadCycle(base, start float64) (result Float64Slice) {
+//	currentNumber := start
+//	for 1 != currentNumber || -1 < result.IndexOf(currentNumber) {
+//
+//	}
+//	if 1 == c
+//	return
+//}
