@@ -60,6 +60,10 @@ func (s *MainSuite) TestCardValueValue(c *C) {
 	c.Assert(CardValue(CardValue2).Value(), Equals, 2)
 }
 
+func (s *MainSuite) TestCardValueString(c *C) {
+	c.Assert(CardValue(CardValueAce).String(), Equals, "ace")
+}
+
 func (s *MainSuite) TestCardSuitString(c *C) {
 	c.Assert(CardSuit(CardSuitClubs).String(), Equals, "clubs")
 }

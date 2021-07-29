@@ -31,14 +31,18 @@ const (
 	CardValue8
 	CardValue9
 	CardValue10
+	CardValueJack
+	CardValueQueen
+	CardValueKing
 	CardValueAce
-	CardValueJack  = CardValue10
-	CardValueQueen = CardValueJack
-	CardValueKing  = CardValueQueen
 )
 
 func (c CardValue) Value() int {
 	return int(c)
+}
+
+func (c CardValue) String() string {
+	return []string{"", "", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king", "ace"}[c]
 }
 
 var CardValues = []CardValue{CardValueAce, CardValue2, CardValue3, CardValue4, CardValue5, CardValue6, CardValue7, CardValue8, CardValue9, CardValue10, CardValueJack, CardValueQueen, CardValueKing}
@@ -63,6 +67,16 @@ type Card struct {
 	Suit  CardSuit
 }
 
+type Cards []Card
+
+//func (c *Cards) String() (output string) {
+//	cards := make([]string, 0)
+//	for _, card := range *c {
+//		cards
+//	}
+//	return
+//}
+
 type Deck []Card
 
 func (d *Deck) Shuffle() {
@@ -78,6 +92,11 @@ func (d *Deck) DealCards(count int) (dealtCards []Card) {
 	}
 	return
 }
+
+//func (d *Deck) DealSimpleTexasHoldEmHand(playerCount int) (output string) {
+//	output =fmt.Sprintf("Your hand: %s", d.DealCards(2))
+//	return
+//}
 
 func NewDeck(totalDecks int) *Deck {
 	var deck Deck
