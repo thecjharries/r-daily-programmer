@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 type CardValue int
@@ -69,13 +70,13 @@ type Card struct {
 
 type Cards []Card
 
-//func (c *Cards) String() (output string) {
-//	cards := make([]string, 0)
-//	for _, card := range *c {
-//		cards
-//	}
-//	return
-//}
+func (c *Cards) String() string {
+	cards := make([]string, 0)
+	for _, card := range *c {
+		cards = append(cards, fmt.Sprintf("%s of %s", card.Value.String(), card.Suit.String()))
+	}
+	return strings.Join(cards, ", ")
+}
 
 type Deck []Card
 
@@ -85,9 +86,9 @@ func (d *Deck) Shuffle() {
 	})
 }
 
-func (d *Deck) DealCards(count int) (dealtCards []Card) {
+func (d *Deck) DealCards(count int) (dealtCards Cards) {
 	if 0 < count {
-		dealtCards = (*d)[:count]
+		dealtCards = Cards((*d)[:count])
 		*d = (*d)[count:]
 	}
 	return

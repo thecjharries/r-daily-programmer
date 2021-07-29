@@ -68,6 +68,12 @@ func (s *MainSuite) TestCardSuitString(c *C) {
 	c.Assert(CardSuit(CardSuitClubs).String(), Equals, "clubs")
 }
 
+func (s *MainSuite) TestCardsString(c *C) {
+	deck := NewDeck(1)
+	cards := deck.DealCards(2)
+	c.Assert(cards.String(), Equals, "ace of clubs, two of clubs")
+}
+
 func (s *MainSuite) TestDeckShuffle(c *C) {
 	deck := NewDeck(1)
 	c.Assert((*deck)[0].Suit, Equals, CardSuitClubs)
@@ -79,7 +85,7 @@ func (s *MainSuite) TestDeckShuffle(c *C) {
 
 func (s *MainSuite) TestDeckDealCards(c *C) {
 	deck := NewDeck(1)
-	c.Assert(deck.DealCards(-1), DeepEquals, []Card(nil))
+	c.Assert(deck.DealCards(-1), DeepEquals, Cards(nil))
 	cards := deck.DealCards(1)
 	c.Assert(cards[0].Suit, Equals, CardSuitClubs)
 	c.Assert(cards[0].Value, Equals, CardValueAce)
