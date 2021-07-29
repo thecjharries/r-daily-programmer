@@ -70,9 +70,9 @@ type Card struct {
 
 type Cards []Card
 
-func (c *Cards) String() string {
+func (c Cards) String() string {
 	cards := make([]string, 0)
-	for _, card := range *c {
+	for _, card := range c {
 		cards = append(cards, fmt.Sprintf("%s of %s", card.Value.String(), card.Suit.String()))
 	}
 	return strings.Join(cards, ", ")
@@ -94,10 +94,16 @@ func (d *Deck) DealCards(count int) (dealtCards Cards) {
 	return
 }
 
-//func (d *Deck) DealSimpleTexasHoldEmHand(playerCount int) (output string) {
-//	output =fmt.Sprintf("Your hand: %s", d.DealCards(2))
-//	return
-//}
+func (d *Deck) DealSimpleTexasHoldEmHand(playerCount int) (output string) {
+	output = fmt.Sprintf("Your hand: %s\n", (d.DealCards(2)).String())
+	for index := 1; index <= playerCount-1; index++ {
+		output += fmt.Sprintf("CPU %d hand: %s\n", index, (d.DealCards(2)).String())
+	}
+	output += fmt.Sprintf("\nFlop: %s\n", (d.DealCards(3)).String())
+	output += fmt.Sprintf("Turn: %s\n", (d.DealCards(1)).String())
+	output += fmt.Sprintf("River: %s", (d.DealCards(1)).String())
+	return
+}
 
 func NewDeck(totalDecks int) *Deck {
 	var deck Deck

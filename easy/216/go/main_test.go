@@ -93,6 +93,11 @@ func (s *MainSuite) TestDeckDealCards(c *C) {
 
 }
 
+func (s *MainSuite) TestDeckDealSimpleTexasHoldEmHand(c *C) {
+	deck := NewDeck(1)
+	c.Assert(deck.DealSimpleTexasHoldEmHand(3), Equals, "Your hand: ace of clubs, two of clubs\nCPU 1 hand: three of clubs, four of clubs\nCPU 2 hand: five of clubs, six of clubs\n\nFlop: seven of clubs, eight of clubs, nine of clubs\nTurn: ten of clubs\nRiver: jack of clubs")
+}
+
 func (s *MainSuite) TestNewDeck(c *C) {
 	deck := NewDeck(1)
 	c.Assert(len(*deck), Equals, 52)
