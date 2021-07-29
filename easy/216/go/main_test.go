@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,4 +54,26 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestCardValueValue(c *C) {
+	c.Assert(CardValue(CardValue2).Value(), Equals, 2)
+}
+
+func (s *MainSuite) TestCardSuitString(c *C) {
+	c.Assert(CardSuit(CardSuitClubs).String(), Equals, "clubs")
+}
+
+func (s *MainSuite) TestDeckShuffle(c *C) {
+	deck := NewDeck(1)
+	c.Assert((*deck)[0].Suit, Equals, CardSuitClubs)
+	c.Assert((*deck)[0].Value, Equals, CardValueAce)
+	deck.Shuffle()
+	c.Assert((*deck)[0].Suit, Equals, CardSuitDiamonds)
+	c.Assert((*deck)[0].Value, Equals, CardValue7)
+}
+
+func (s *MainSuite) TestNewDeck(c *C) {
+	deck := NewDeck(1)
+	c.Assert(len(*deck), Equals, 52)
 }
