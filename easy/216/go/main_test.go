@@ -73,6 +73,16 @@ func (s *MainSuite) TestDeckShuffle(c *C) {
 	c.Assert((*deck)[0].Value, Equals, CardValue7)
 }
 
+func (s *MainSuite) TestDeckDealCards(c *C) {
+	deck := NewDeck(1)
+	c.Assert(deck.DealCards(-1), DeepEquals, []Card(nil))
+	cards := deck.DealCards(1)
+	c.Assert(cards[0].Suit, Equals, CardSuitClubs)
+	c.Assert(cards[0].Value, Equals, CardValueAce)
+	c.Assert(len(cards), Equals, 1)
+
+}
+
 func (s *MainSuite) TestNewDeck(c *C) {
 	deck := NewDeck(1)
 	c.Assert(len(*deck), Equals, 52)
