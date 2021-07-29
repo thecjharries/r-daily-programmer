@@ -71,6 +71,14 @@ func (d *Deck) Shuffle() {
 	})
 }
 
+func (d *Deck) DealCards(count int) (dealtCards []Card) {
+	if 0 < count {
+		dealtCards = (*d)[:count]
+		*d = (*d)[count:]
+	}
+	return
+}
+
 func NewDeck(totalDecks int) *Deck {
 	var deck Deck
 	for index := 0; index < totalDecks; index++ {
