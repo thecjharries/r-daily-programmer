@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDistributeLogs(c *C) {
+	c.Assert(distributeLogs(7, []int{1, 1, 1, 2, 1, 3, 1, 4, 1}), DeepEquals, []int{3, 2, 2, 2, 2, 3, 2, 4, 2})
+}

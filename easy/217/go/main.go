@@ -23,6 +23,7 @@ func main() {
 }
 
 func distributeLogs(newLogs int, currentPiles []int) (newPiles []int) {
+	newPiles = make([]int, len(currentPiles))
 	copy(newPiles, currentPiles)
 	currentSmallest := 0
 	logCount := newLogs
