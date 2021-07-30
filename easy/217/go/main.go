@@ -21,3 +21,26 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func distributeLogs(newLogs int, currentPiles []int) (newPiles []int) {
+	copy(newPiles, currentPiles)
+	currentSmallest := 0
+	logCount := newLogs
+	for logCount > 0 {
+		nextSmallest := int(^uint(0) >> 1)
+		for pileIndex := 0; pileIndex < len(newPiles); pileIndex++ {
+			if newPiles[pileIndex] == currentSmallest {
+				newPiles[pileIndex]++
+				logCount--
+			}
+			if 0 == logCount {
+				break
+			}
+			if newPiles[pileIndex] < nextSmallest {
+				nextSmallest = newPiles[pileIndex]
+			}
+		}
+		currentSmallest = nextSmallest
+	}
+	return
+}
