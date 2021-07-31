@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTodoListAddItem(c *C) {
+	todo := new(TodoList)
+	c.Assert(len(*todo), Equals, 0)
+	todo.AddItem("Take a shower")
+	c.Assert(len(*todo), Equals, 1)
+}
