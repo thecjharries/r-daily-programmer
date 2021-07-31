@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type TodoList []string
 
@@ -31,6 +34,10 @@ func (l *TodoList) DeleteItem(item string) *TodoList {
 		}
 	}
 	return l
+}
+
+func (l *TodoList) ViewList() string {
+	return strings.Join(*l, "\n")
 }
 
 var zPrint = fmt.Println
