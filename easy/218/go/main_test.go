@@ -71,3 +71,15 @@ func (s *MainSuite) TestTodoListDeleteItem(c *C) {
 		DeleteItem("Go to work")
 	c.Assert(len(*todo), Equals, 2)
 }
+
+func (s *MainSuite) TestTodoListViewList(c *C) {
+	todo := new(TodoList)
+	c.Assert(len(*todo), Equals, 0)
+	todo.
+		AddItem("Take a shower").
+		AddItem("Go to work").
+		AddItem("Buy a new phone").
+		DeleteItem("Go to work")
+	c.Assert(len(*todo), Equals, 2)
+	c.Assert(todo.ViewList(), Equals, "Take a shower\nBuy a new phone")
+}
