@@ -23,6 +23,16 @@ func (l *TodoList) AddItem(item string) *TodoList {
 	return l
 }
 
+func (l *TodoList) DeleteItem(item string) *TodoList {
+	for index, element := range *l {
+		if item == element {
+			*l = append((*l)[:index], (*l)[index+1:]...)
+			break
+		}
+	}
+	return l
+}
+
 var zPrint = fmt.Println
 
 func main() {
