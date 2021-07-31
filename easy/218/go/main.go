@@ -18,6 +18,11 @@ import "fmt"
 
 type TodoList []string
 
+func (l *TodoList) AddItem(item string) *TodoList {
+	*l = append(*l, item)
+	return l
+}
+
 var zPrint = fmt.Println
 
 func main() {
