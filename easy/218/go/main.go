@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type TodoList []string
+
 var zPrint = fmt.Println
 
 func main() {
