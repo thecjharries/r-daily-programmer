@@ -53,3 +53,33 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTodoListAddItem(c *C) {
+	todo := new(TodoList)
+	c.Assert(len(*todo), Equals, 0)
+	todo.AddItem("Take a shower")
+	c.Assert(len(*todo), Equals, 1)
+}
+
+func (s *MainSuite) TestTodoListDeleteItem(c *C) {
+	todo := new(TodoList)
+	c.Assert(len(*todo), Equals, 0)
+	todo.
+		AddItem("Take a shower").
+		AddItem("Go to work").
+		AddItem("Buy a new phone").
+		DeleteItem("Go to work")
+	c.Assert(len(*todo), Equals, 2)
+}
+
+func (s *MainSuite) TestTodoListViewList(c *C) {
+	todo := new(TodoList)
+	c.Assert(len(*todo), Equals, 0)
+	todo.
+		AddItem("Take a shower").
+		AddItem("Go to work").
+		AddItem("Buy a new phone").
+		DeleteItem("Go to work")
+	c.Assert(len(*todo), Equals, 2)
+	c.Assert(todo.ViewList(), Equals, "Take a shower\nBuy a new phone")
+}

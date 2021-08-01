@@ -14,7 +14,31 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+type TodoList []string
+
+func (l *TodoList) AddItem(item string) *TodoList {
+	*l = append(*l, item)
+	return l
+}
+
+func (l *TodoList) DeleteItem(item string) *TodoList {
+	for index, element := range *l {
+		if item == element {
+			*l = append((*l)[:index], (*l)[index+1:]...)
+			break
+		}
+	}
+	return l
+}
+
+func (l *TodoList) ViewList() string {
+	return strings.Join(*l, "\n")
+}
 
 var zPrint = fmt.Println
 
