@@ -83,3 +83,12 @@ func (s *MainSuite) TestTodoListViewList(c *C) {
 	c.Assert(len(*todo), Equals, 2)
 	c.Assert(todo.ViewList(), Equals, "Take a shower\nBuy a new phone")
 }
+
+func (s *MainSuite) TestTodoListUpdateItem(c *C) {
+	todo := new(TodoList)
+	c.Assert(len(*todo), Equals, 0)
+	todo.AddItem("Take a shower")
+	c.Assert((*todo)[0], Equals, "Take a shower")
+	todo.UpdateItem("Take a shower", "Take a bath")
+	c.Assert((*todo)[0], Equals, "Take a bath")
+}
