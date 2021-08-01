@@ -36,6 +36,16 @@ func (l *TodoList) DeleteItem(item string) *TodoList {
 	return l
 }
 
+func (l *TodoList) UpdateItem(item, updatedItem string) *TodoList {
+	for index, element := range *l {
+		if item == element {
+			(*l)[index] = updatedItem
+			break
+		}
+	}
+	return l
+}
+
 func (l *TodoList) ViewList() string {
 	return strings.Join(*l, "\n")
 }
