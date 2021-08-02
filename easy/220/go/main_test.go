@@ -59,3 +59,10 @@ func (s *MainSuite) TestExplodeOnWhitespace(c *C) {
 	output := []string{"This", "challenge", "doesn't", "seem", "so", "hard."}
 	c.Assert(explodeOnWhitespace(input), DeepEquals, output)
 }
+
+func (s *MainSuite) TestOrganizeWord(c *C) {
+	var input, output string
+	input = "Mickey's"
+	output = "Ceikms'y"
+	c.Assert(organizeWord(input), Equals, output)
+}
