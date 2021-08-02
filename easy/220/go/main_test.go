@@ -66,3 +66,8 @@ func (s *MainSuite) TestOrganizeWord(c *C) {
 	output = "Ceikms'y"
 	c.Assert(organizeWord(input), Equals, output)
 }
+
+func (s *MainSuite) TestOrganizeSentence(c *C) {
+	c.Assert(organizeSentence("This challenge doesn't seem so hard."), Equals, "Hist aceeghlln denos't eems os adhr.")
+	c.Assert(organizeSentence("There are more things between heaven and earth, Horatio, than are dreamt of in your philosophy."), Equals, "Eehrt aer emor ghinst beeentw aeehnv adn aehrt, Ahioort, ahnt aer ademrt fo in oruy hhilooppsy.")
+}
