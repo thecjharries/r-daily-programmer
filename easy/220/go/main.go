@@ -58,3 +58,14 @@ func organizeWord(input string) string {
 	}
 	return string(outputRune)
 }
+
+func organizeSentence(input string) string {
+	rawWords := explodeOnWhitespace(input)
+	outputWords := make([]string, 0)
+	for _, rawWord := range rawWords {
+		outputWords = append(outputWords, organizeWord(rawWord))
+	}
+	// Note that we're possibly returning the wrong string
+	// The explosion happens on _all_ whitespace whereas this joins with a space
+	return strings.Join(outputWords, " ")
+}
