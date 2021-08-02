@@ -14,10 +14,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var whitespacePattern = regexp.MustCompile(`\s`)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func explodeOnWhitespace(input string) []string {
+	return whitespacePattern.Split(input, -1)
 }
