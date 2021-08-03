@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertToWordSnake(c *C) {
+	var input []string
+	var output string
+	input = []string{"cat", "tack"}
+	output = "cat\n  a\n  c\n  k"
+	c.Assert(convertToWordSnake(input), Equals, output)
+	input = []string{"SHENANIGANS", "SALTY", "YOUNGSTER"}
+	output = "SHENANIGANS\n          A\n          A\n          T\n          YOUNGSTER"
+	c.Assert(convertToWordSnake(input), Equals, output)
+}
