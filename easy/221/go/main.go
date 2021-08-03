@@ -26,7 +26,7 @@ func main() {
 }
 
 func convertToWordSnake(input []string) string {
-	outputRows := make([]string, 0)
+	outputRows := make([]string, 1)
 	currentSpacing := 0
 	for index, word := range input {
 		if 0 == index%2 {
