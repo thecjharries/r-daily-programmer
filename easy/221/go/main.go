@@ -14,10 +14,29 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertToWordSnake(input []string) string {
+	outputRows := make([]string, 0)
+	currentSpacing := 0
+	for index, word := range input {
+		if 0 == index%2 {
+			outputRows[len(outputRows)-1] = strings.Repeat(" ", currentSpacing) + word
+			currentSpacing += len(word) - 1
+		} else {
+			for _, character := range word[1:] {
+				outputRows = append(outputRows, strings.Repeat(" ", currentSpacing)+string(character))
+			}
+		}
+	}
+	return strings.Join(outputRows, "\n")
 }
