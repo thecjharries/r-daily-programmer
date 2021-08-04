@@ -88,7 +88,7 @@ func balanceWord(word string) ([3]string, int) {
 	leftSum, rightSum := 0, 0
 	leftWeight, rightWeight := 0, 0
 	leftIndex, rightIndex := 0, len(word)-1
-	for leftIndex < rightIndex-1 {
+	for leftIndex < rightIndex {
 		if leftWeight < rightWeight {
 			leftSum += getLetterValue(rune(word[leftIndex]))
 			leftWeight += leftSum
@@ -100,7 +100,7 @@ func balanceWord(word string) ([3]string, int) {
 		}
 	}
 	if leftWeight == rightWeight {
-		return [3]string{word[:leftIndex], word[leftIndex:rightIndex], word[rightIndex:]}, leftWeight
+		return [3]string{word[:leftIndex], word[leftIndex : rightIndex+1], word[rightIndex+1:]}, leftWeight
 	}
 	return [3]string{}, -1
 }
