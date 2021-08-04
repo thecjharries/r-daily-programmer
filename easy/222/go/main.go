@@ -99,7 +99,7 @@ func balanceWord(word string) ([3]string, int) {
 			rightIndex--
 		}
 	}
-	if leftWeight == rightWeight {
+	if leftIndex == rightIndex && leftWeight == rightWeight {
 		return [3]string{word[:leftIndex], word[leftIndex : rightIndex+1], word[rightIndex+1:]}, leftWeight
 	}
 	return [3]string{}, -1
