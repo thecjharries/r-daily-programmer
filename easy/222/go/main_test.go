@@ -83,3 +83,16 @@ func (s *MainSuite) TestGetLetterValue(c *C) {
 	c.Assert(getLetterValue('z'), Equals, 26)
 	c.Assert(getLetterValue('1'), Equals, 0)
 }
+
+func (s *MainSuite) TestBalanceWord(c *C) {
+	var balance, desiredBalance [3]string
+	var weight, desiredWeight int
+	desiredBalance = [3]string{"s", "t", "ead"}
+	desiredWeight = 19
+	balance, weight = balanceWord("stead")
+	c.Assert(balance, DeepEquals, desiredBalance)
+	c.Assert(weight, Equals, desiredWeight)
+	balance, weight = balanceWord("SUPERGLUE")
+	c.Assert(balance, DeepEquals, [3]string{})
+	c.Assert(weight, Equals, -1)
+}
