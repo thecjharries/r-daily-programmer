@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindGarlandDegree(c *C) {
+	c.Assert(findGarlandDegree("programmer"), Equals, 0)
+	c.Assert(findGarlandDegree("ceramic"), Equals, 1)
+	c.Assert(findGarlandDegree("onion"), Equals, 2)
+	c.Assert(findGarlandDegree("alfalfa"), Equals, 4)
+}
