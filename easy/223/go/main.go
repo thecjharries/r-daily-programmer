@@ -25,7 +25,7 @@ func main() {
 func findGarlandDegree(word string) (degree int) {
 	degree = 0
 	for index := 1; index < len(word); index++ {
-		if word[:index] == word[len(word)-index-1:] {
+		if word[:index] == word[len(word)-index:] {
 			degree = index
 		}
 	}
