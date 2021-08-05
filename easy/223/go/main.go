@@ -21,3 +21,13 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findGarlandDegree(word string) (degree int) {
+	degree = 0
+	for index := 1; index < len(word); index++ {
+		if word[:index] == word[len(word)-index-1:] {
+			degree = index
+		}
+	}
+	return
+}
