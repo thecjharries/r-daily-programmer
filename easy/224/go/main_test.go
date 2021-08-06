@@ -65,3 +65,13 @@ func (s *MainSuite) TestShuffleIntSlice(c *C) {
 	c.Assert(firstOutput, DeepEquals, []int{3, 4, 2, 5, 8, 6, 7, 1})
 	c.Assert(secondOutput, DeepEquals, []int{1, 3, 2, 6, 8, 4, 5, 7})
 }
+
+func (s *MainSuite) TestShuffleIntSliceFisherYates(c *C) {
+	var input, firstOutput, secondOutput []int
+	input = []int{1, 2, 3, 4, 5, 6, 7, 8}
+	firstOutput = shuffleIntSliceFisherYaters(input)
+	secondOutput = shuffleIntSliceFisherYaters(input)
+	c.Assert(firstOutput, Not(DeepEquals), secondOutput)
+	c.Assert(firstOutput, DeepEquals, []int{2, 8, 7, 5, 3, 4, 1, 6})
+	c.Assert(secondOutput, DeepEquals, []int{6, 5, 2, 3, 7, 4, 8, 1})
+}
