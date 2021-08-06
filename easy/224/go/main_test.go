@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,4 +54,14 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestShuffleIntSlice(c *C) {
+	var input, firstOutput, secondOutput []int
+	input = []int{1, 2, 3, 4, 5, 6, 7, 8}
+	firstOutput = shuffleIntSlice(input)
+	secondOutput = shuffleIntSlice(input)
+	c.Assert(firstOutput, Not(DeepEquals), secondOutput)
+	c.Assert(firstOutput, DeepEquals, []int{3, 4, 2, 5, 8, 6, 7, 1})
+	c.Assert(secondOutput, DeepEquals, []int{1, 3, 2, 6, 8, 4, 5, 7})
 }
