@@ -35,3 +35,13 @@ func shuffleIntSlice(input []int) (output []int) {
 	}
 	return
 }
+
+func shuffleIntSliceFisherYaters(input []int) []int {
+	output := make([]int, len(input))
+	copy(output, input)
+	for index := len(output) - 1; 0 < index; index-- {
+		swappedIndex := rand.Intn(index)
+		output[index], output[swappedIndex] = output[swappedIndex], output[index]
+	}
+	return output
+}
