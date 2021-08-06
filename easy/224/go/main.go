@@ -14,10 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func shuffleIntSlice(input []int) (output []int) {
+	inputReduced := make([]int, len(input))
+	copy(inputReduced, input)
+	for 0 < len(inputReduced) {
+		index := rand.Intn(len(inputReduced))
+		output = append(output, inputReduced[index])
+		inputReduced = append(inputReduced[:index], inputReduced[index+1:]...)
+	}
+	return
 }
