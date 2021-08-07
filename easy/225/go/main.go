@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var sidebarPattern = regexp.MustCompile(` ?(?:\+-+\+|\|[^|]+\|) ?`)
 
 var zPrint = fmt.Println
 
