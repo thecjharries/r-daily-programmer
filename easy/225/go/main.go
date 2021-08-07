@@ -20,8 +20,9 @@ import (
 	"strings"
 )
 
-var sidebarPattern = regexp.MustCompile(` ?(?:\+-+\+|\|[^|]+\|) ?`)
+var sidebarPattern = regexp.MustCompile(`(?U) *?(?:\+-+\+|\|[^|]+\|) *?`)
 var hyphenatedPattern = regexp.MustCompile(`-\n`)
+var multipleSpaces = regexp.MustCompile(`  +`)
 
 var zPrint = fmt.Println
 
@@ -32,6 +33,9 @@ func main() {
 func decolumnizeText(input string) (output string) {
 	output = sidebarPattern.ReplaceAllString(input, "")
 	output = hyphenatedPattern.ReplaceAllString(output, "")
-	output = strings.ReplaceAll(output, "  ", " ")
+	output = multipleSpaces.ReplaceAllString(output, "")
+	output = strings.ReplaceAll(output, "\n", "  ")
+	output = strings.ReplaceAll(output, "    ", "\n\n")
+	output = multipleSpaces.ReplaceAllString(output, " ")
 	return
 }
