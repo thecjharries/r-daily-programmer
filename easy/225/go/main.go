@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 var sidebarPattern = regexp.MustCompile(` ?(?:\+-+\+|\|[^|]+\|) ?`)
@@ -31,5 +32,6 @@ func main() {
 func decolumnizeText(input string) (output string) {
 	output = sidebarPattern.ReplaceAllString(input, "")
 	output = hyphenatedPattern.ReplaceAllString(output, "")
+	output = strings.ReplaceAll(output, "  ", " ")
 	return
 }
