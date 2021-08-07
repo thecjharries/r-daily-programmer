@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDecolumnizeText(c *C) {
+	var input, output string
+	input = "This is an example piece of text. This is an exam-\nple piece of text. This is an example piece of\ntext. This is an example\npiece of text. This is a +-----------------------+\nsample for a challenge.  |                       |\nLorum ipsum dolor sit a- |       top class       |\nmet and other words. The |        feature        |\nproper word for a layout |                       |\nlike this would be type- +-----------------------+\nsetting, or so I would\nimagine, but for now let's carry on calling it an\nexample piece of text. Hold up - the end of the\n                 paragraph is approaching - notice\n+--------------+ the double line break for a para-\n|              | graph.\n|              |\n|   feature    | And so begins the start of the\n|   bonanza    | second paragraph but as you can\n|              | see it's only marginally better\n|              | than the other one so you've not\n+--------------+ really gained much - sorry. I am\n                 certainly not a budding author\nas you can see from this example input. Perhaps I\nneed to work on my writing skills."
+	output = "This is an example piece of text. This is an example piece of text. This is an example piece of text. This is an example piece of text. This is a sample for a challenge. Lorum ipsum dolor sit amet and other words. The proper word for a layout like this would be typesetting, or so I would imagine, but for now let's carry on calling it an example piece of text. Hold up - the end of the paragraph is approaching - notice the double line break for a paragraph.\n\nAnd so begins the start of the second paragraph but as you can see it's only marginally better than the other one so you've not really gained much - sorry. I am certainly not a budding author as you can see from this example input. Perhaps I need to work on my writing skills."
+	c.Assert(decolumnizeText(input), Equals, output)
+}
