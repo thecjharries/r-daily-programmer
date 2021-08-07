@@ -30,6 +30,7 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+// SO SLOW SO MANY PASSES
 func decolumnizeText(input string) (output string) {
 	output = sidebarPattern.ReplaceAllString(input, "")
 	output = hyphenatedPattern.ReplaceAllString(output, "")
