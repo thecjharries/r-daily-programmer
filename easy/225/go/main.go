@@ -20,6 +20,7 @@ import (
 )
 
 var sidebarPattern = regexp.MustCompile(` ?(?:\+-+\+|\|[^|]+\|) ?`)
+var hyphenatedPattern = regexp.MustCompile(`-\n`)
 
 var zPrint = fmt.Println
 
@@ -29,5 +30,6 @@ func main() {
 
 func decolumnizeText(input string) (output string) {
 	output = sidebarPattern.ReplaceAllString(input, "")
+	output = hyphenatedPattern.ReplaceAllString(output, "")
 	return
 }
