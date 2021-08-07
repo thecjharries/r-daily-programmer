@@ -26,3 +26,8 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func decolumnizeText(input string) (output string) {
+	output = sidebarPattern.ReplaceAllString(input, "")
+	return
+}
