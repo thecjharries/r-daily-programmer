@@ -25,6 +25,14 @@ func (f *Fraction) String() string {
 	return fmt.Sprintf("%d/%d", f.Numerator, f.Denominator)
 }
 
+func (f *Fraction) gcd(first, second int) int {
+	a, b := first, second
+	for 0 == a%b {
+		a, b = b, a%b
+	}
+	return b
+}
+
 var zPrint = fmt.Println
 
 func main() {
