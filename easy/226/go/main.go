@@ -26,8 +26,13 @@ func (f *Fraction) String() string {
 }
 
 func (f *Fraction) gcd(first, second int) int {
-	a, b := first, second
-	for 0 == a%b {
+	var a, b int
+	if first > second {
+		a, b = first, second
+	} else {
+		a, b = second, first
+	}
+	for 0 < a%b {
 		a, b = b, a%b
 	}
 	return b
