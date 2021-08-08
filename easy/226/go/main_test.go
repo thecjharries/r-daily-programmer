@@ -61,3 +61,10 @@ func (s *MainSuite) TestFractionString(c *C) {
 	}
 	c.Assert(fraction.String(), Equals, "1/2")
 }
+
+func (s *MainSuite) TestFractionGcd(c *C) {
+	fraction := Fraction{}
+	c.Assert(fraction.gcd(2, 4), Equals, 2)
+	c.Assert(fraction.gcd(4, 2), Equals, 2)
+	c.Assert(fraction.gcd(66, 55), Equals, 11)
+}
