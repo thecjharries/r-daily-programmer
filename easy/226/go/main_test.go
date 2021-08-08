@@ -77,3 +77,14 @@ func (s *MainSuite) TestFractionReduce(c *C) {
 	fraction.Reduce()
 	c.Assert(fraction.String(), Equals, "1/5")
 }
+
+func (s *MainSuite) TestFractionAdd(c *C) {
+	first, second := new(Fraction), new(Fraction)
+	first.Numerator = 1
+	first.Denominator = 6
+	second.Numerator = 3
+	second.Denominator = 10
+	c.Assert(first.String(), Equals, "1/6")
+	first.Add(second)
+	c.Assert(first.String(), Equals, "7/15")
+}
