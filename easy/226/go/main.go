@@ -45,6 +45,12 @@ func (f *Fraction) Reduce() *Fraction {
 	return f
 }
 
+func (f *Fraction) Add(fraction *Fraction) *Fraction {
+	f.Numerator = f.Numerator*fraction.Denominator + fraction.Numerator*f.Denominator
+	f.Denominator *= fraction.Denominator
+	return f.Reduce()
+}
+
 var zPrint = fmt.Println
 
 func main() {
