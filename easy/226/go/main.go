@@ -38,6 +38,13 @@ func (f *Fraction) gcd(first, second int) int {
 	return b
 }
 
+func (f *Fraction) Reduce() *Fraction {
+	gcd := f.gcd(f.Numerator, f.Denominator)
+	f.Numerator /= gcd
+	f.Denominator /= gcd
+	return f
+}
+
 var zPrint = fmt.Println
 
 func main() {
