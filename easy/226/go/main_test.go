@@ -68,3 +68,12 @@ func (s *MainSuite) TestFractionGcd(c *C) {
 	c.Assert(fraction.gcd(4, 2), Equals, 2)
 	c.Assert(fraction.gcd(66, 55), Equals, 11)
 }
+
+func (s *MainSuite) TestFractionReduce(c *C) {
+	fraction := new(Fraction)
+	fraction.Numerator = 10
+	fraction.Denominator = 50
+	c.Assert(fraction.String(), Equals, "10/50")
+	fraction.Reduce()
+	c.Assert(fraction.String(), Equals, "1/5")
+}
