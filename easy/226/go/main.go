@@ -21,6 +21,10 @@ type Fraction struct {
 	Denominator int
 }
 
+func (f *Fraction) String() string {
+	return fmt.Sprintf("%d/%d", f.Numerator, f.Denominator)
+}
+
 var zPrint = fmt.Println
 
 func main() {
