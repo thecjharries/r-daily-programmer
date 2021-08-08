@@ -16,6 +16,11 @@ package main
 
 import "fmt"
 
+type Fraction struct {
+	Numerator   int
+	Denominator int
+}
+
 var zPrint = fmt.Println
 
 func main() {
