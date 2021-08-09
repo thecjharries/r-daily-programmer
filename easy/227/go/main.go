@@ -38,5 +38,5 @@ func convertPointToNumber(spiralSize, x, y int) (result int) {
 	} else {
 		result = 4*coefficient*coefficient + coefficient + 1 + adjustedY
 	}
-	return 0
+	return
 }
