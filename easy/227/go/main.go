@@ -40,3 +40,10 @@ func convertPointToNumber(spiralSize, x, y int) (result int) {
 	}
 	return
 }
+
+func convertNumberToPoint(spiralSize, number int) (x, y int) {
+	coefficient := 1 + (math.Sqrt(float64(number-1))-1)/2
+	x = 1 + spiralSize/2 + int(math.Min(coefficient, math.Max(-coefficient, math.Abs(float64(number)-4*coefficient*coefficient-coefficient-1)-2*coefficient)))
+	y = 1 + spiralSize/2 + int(math.Min(coefficient, math.Max(-coefficient, math.Abs(float64(number)-4*coefficient*coefficient+coefficient-1)-2*coefficient)))
+	return
+}
