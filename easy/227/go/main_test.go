@@ -59,3 +59,16 @@ func (s *MainSuite) TestConvertPointToNumber(c *C) {
 	c.Assert(convertPointToNumber(7, 1, 1), Equals, 37)
 	c.Assert(convertPointToNumber(9, 6, 8), Equals, 47)
 }
+
+func (s *MainSuite) TestConvertNumberToPoint(c *C) {
+	var x, y int
+	x, y = convertNumberToPoint(3, 8)
+	c.Assert(x, Equals, 2)
+	c.Assert(y, Equals, 3)
+	x, y = convertNumberToPoint(7, 37)
+	c.Assert(x, Equals, 1)
+	c.Assert(y, Equals, 1)
+	x, y = convertNumberToPoint(9, 47)
+	c.Assert(x, Equals, 6)
+	c.Assert(y, Equals, 8)
+}
