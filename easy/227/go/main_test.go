@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertPointToNumber(c *C) {
+	c.Assert(convertPointToNumber(3, 2, 3), Equals, 8)
+	c.Assert(convertPointToNumber(7, 1, 1), Equals, 37)
+	c.Assert(convertPointToNumber(9, 6, 8), Equals, 47)
+}
