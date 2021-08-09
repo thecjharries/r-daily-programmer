@@ -14,10 +14,29 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertPointToNumber(spiralSize, x, y int) (result int) {
+	adjustedX := x - spiralSize/2 - 1
+	adjustedY := y - spiralSize/2 - 1
+	coefficient := int(math.Max(math.Abs(float64(adjustedX)), math.Abs(float64(adjustedY))))
+	if coefficient == adjustedY {
+		result = 4*coefficient*coefficient + 3*coefficient + 1 + adjustedX
+	} else if -1*coefficient == adjustedY {
+		result = 4*coefficient*coefficient - coefficient + 1 - adjustedX
+	} else if coefficient == x {
+		result = 4*coefficient*coefficient - 3*coefficient + 1 - adjustedY
+	} else {
+		result = 4*coefficient*coefficient + coefficient + 1 + adjustedY
+	}
+	return 0
 }
