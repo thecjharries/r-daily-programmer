@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDetermineLexicalOrderOfWord(c *C) {
+	c.Assert(determineLexicalOrderOfWord("billowy"), Equals, "IN ORDER")
+	c.Assert(determineLexicalOrderOfWord("sponged"), Equals, "REVERSE ORDER")
+	c.Assert(determineLexicalOrderOfWord("fiddle"), Equals, "NOT IN ORDER")
+}
