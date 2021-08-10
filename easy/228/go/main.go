@@ -35,7 +35,7 @@ func determineLexicalOrderOfWord(word string) string {
 	if reflect.DeepEqual(wordExploded, wordExplodedSorted) {
 		return "IN ORDER"
 	}
-	sort.Sort(sort.Reverse(sort.StringSlice(wordExploded)))
+	sort.Sort(sort.Reverse(sort.StringSlice(wordExplodedSorted)))
 	if reflect.DeepEqual(wordExploded, wordExplodedSorted) {
 		return "REVERSE ORDER"
 	}
