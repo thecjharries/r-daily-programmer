@@ -16,10 +16,28 @@ package main
 
 import (
 	"fmt"
+	"reflect"
+	"sort"
+	"strings"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func determineLexicalOrderOfWord(word string) string {
+	wordExploded := strings.Split(word, "")
+	wordExplodedSorted := make([]string, len(wordExploded))
+	copy(wordExplodedSorted, wordExploded)
+	sort.Strings(wordExplodedSorted)
+	if reflect.DeepEqual(wordExploded, wordExplodedSorted) {
+		return "IN ORDER"
+	}
+	sort.Sort(sort.Reverse(sort.StringSlice(wordExploded)))
+	if reflect.DeepEqual(wordExploded, wordExplodedSorted) {
+		return "REVERSE ORDER"
+	}
+	return "NOT IN ORDER"
 }
