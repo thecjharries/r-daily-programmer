@@ -16,10 +16,19 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func calculateDottieNumber(iterations int) (dottie float64) {
+	dottie = 0
+	for index := 0; index < iterations; index++ {
+		dottie = math.Cos(dottie)
+	}
+	return
 }
