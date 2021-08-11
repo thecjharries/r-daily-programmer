@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateDottieNumber(c *C) {
+	c.Assert(calculateDottieNumber(10), Equals, 0.73140404242251)
+	c.Assert(calculateDottieNumber(100), Equals, 0.7390851332151606)
+	c.Assert(calculateDottieNumber(1000), Equals, 0.7390851332151606)
+	c.Assert(calculateDottieNumber(10000), Equals, 0.7390851332151606)
+}
