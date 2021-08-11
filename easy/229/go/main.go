@@ -22,7 +22,8 @@ import (
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	iterations := 100
+	_, _ = zPrint(calculateDottieNumber(iterations))
 }
 
 func calculateDottieNumber(iterations int) (dottie float64) {
