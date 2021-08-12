@@ -14,10 +14,42 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+
+	"github.com/romanyx/jwalk"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func findJsonItem(itemToFind string, rawJson string) (result string) {
+	walkableJson, _ := jwalk.Parse([]byte(rawJson))
+	switch rootJson := walkableJson.(type) {
+	case jwalk.ObjectWalker:
+		_ = rootJson.Walk(func(key string, value interface{}) error {
+			switch parsedJsonValue := value.(type) {
+			case jwalk.Value:
+				switch parsedValue := parsedJsonValue.Interface().(type) {
+				case []interface{}:
+					for index, element := range parsedValue {
+						switch item := element.(type) {
+						case string:
+							if item == itemToFind {
+								result = fmt.Sprintf("%s -> %d", key, index)
+							}
+						}
+					}
+				default:
+					fmt.Println(reflect.TypeOf(parsedValue))
+				}
+			}
+			return nil
+		})
+	}
+	return
 }
