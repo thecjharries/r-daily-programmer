@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindJsonItem(c *C) {
+	var input string
+	input = "{\"name\": \"William Shakespeare\", \"wife\": {\"birthYear\": 1555, \"deathYear\": \n\"Fun fact, she's a vampire\", \"name\": \"Anne Hathaway\", \"dead\": false}, \n\"favoriteWebsites\": [\"dailysonneter\", \"dailyprogrammer\", \n\"vine (he's way into 6-second cat videos)\"], \"dead\": true, \"birthYear\": 1564, \n\"facebookProfile\": null, \"selectedWorks\": [{\"written\": 1606, \"name\": \n\"The Tragedy of Macbeth\", \"isItAwesome\": true}, {\"written\": 1608, \"name\": \n\"Coriolanus\", \"isItAwesome\": \"It's alright, but kinda fascist-y\"}], \"deathYear\":\n 1616}"
+	c.Assert(findJsonItem("dailyprogrammer", input), Equals, "favoriteWebsites -> 1")
+}
