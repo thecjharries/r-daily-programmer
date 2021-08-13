@@ -18,6 +18,17 @@ import (
 	"fmt"
 )
 
+var rule90 = map[string]string{
+	"111": "0",
+	"101": "0",
+	"010": "0",
+	"000": "0",
+	"110": "1",
+	"100": "1",
+	"011": "1",
+	"001": "1",
+}
+
 var zPrint = fmt.Println
 
 func main() {
