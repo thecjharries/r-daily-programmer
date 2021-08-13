@@ -34,3 +34,21 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func walkRule90(start string, iterations int) (results []string) {
+	results = append(results, start)
+	for iterationIndex := 0; iterationIndex < iterations; iterationIndex++ {
+		currentState := "0" + results[iterationIndex] + "0"
+		fmt.Println(currentState)
+		nextState := ""
+		for stateEndIndex := 3; stateEndIndex <= len(currentState); stateEndIndex++ {
+			character, exists := rule90[currentState[stateEndIndex-3:stateEndIndex]]
+			if exists {
+				nextState += character
+				fmt.Println(currentState[stateEndIndex-3:stateEndIndex], character)
+			}
+		}
+		results = append(results, nextState)
+	}
+	return
+}
