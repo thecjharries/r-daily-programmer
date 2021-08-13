@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestWalkRule90(c *C) {
+	input := "1101010"
+	c.Assert(walkRule90(input, 5), DeepEquals, []string{"1101010", "1100001", "1110010", "1011101", "0010100", "0100010"})
+}
