@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 var notLettersPattern = regexp.MustCompile(`(?i)[^a-z]`)
@@ -25,4 +26,14 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func isPalindrome(input string) bool {
+	sanitizedInput := strings.ToLower(notLettersPattern.ReplaceAllString(input, ""))
+	for index := 0; index < len(sanitizedInput)/2; index++ {
+		if sanitizedInput[index] != sanitizedInput[len(sanitizedInput)-index-1] {
+			return false
+		}
+	}
+	return true
 }
