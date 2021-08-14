@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsPalindrome(c *C) {
+	c.Assert(isPalindrome("Was it a car\nor a cat\nI saw?"), Equals, true)
+	c.Assert(isPalindrome("A man, a plan, \na canal, a hedgehog, \na podiatrist, \nPanama!"), Equals, false)
+}
