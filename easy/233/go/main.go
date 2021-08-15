@@ -14,10 +14,31 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func buildAsciiHouse(blueprint string) string {
+	explodedBlueprint := strings.Split(blueprint, "\n")
+	house := make([]string, 2*len(explodedBlueprint))
+	for rowIndex, row := range explodedBlueprint {
+		for _, character := range row {
+			switch character {
+			case ' ':
+				house[2*rowIndex] += "     "
+				house[2*rowIndex+1] += "     "
+			case '*':
+				house[2*rowIndex] += "+---+"
+				house[2*rowIndex+1] += "|   |"
+			}
+		}
+	}
+	return strings.Join(house, "\n")
 }
