@@ -18,7 +18,6 @@ import (
 	"fmt"
 	"math"
 	"sort"
-	"strconv"
 )
 
 var zPrint = fmt.Println
@@ -29,19 +28,19 @@ func main() {
 
 func discover4DigitVampireNumbers() (results []string) {
 	discovered := make(map[float64][]float64)
-	minNumber := math.Pow(10, 2)
-	maxNumber := math.Pow(10, 3)
+	minNumber := math.Pow(10, 1)
+	maxNumber := math.Pow(10, 2)
 	for firstNumber := minNumber; firstNumber < maxNumber; firstNumber++ {
 		for secondNumber := minNumber; secondNumber < maxNumber; secondNumber++ {
 			product := firstNumber * secondNumber
 			_, exists := discovered[product]
-			if 4 == len(strconv.FormatFloat(product, 'f', -1, 64)) && !exists {
+			if 4 == len(fmt.Sprintf("%g", product)) && !exists {
 				discovered[product] = []float64{firstNumber, secondNumber}
 			}
 		}
 	}
 	for key, value := range discovered {
-		results = append(results, fmt.Sprintf("%f = %v", key, value))
+		results = append(results, fmt.Sprintf("%g = %v", key, value))
 	}
 	sort.Strings(results)
 	return
