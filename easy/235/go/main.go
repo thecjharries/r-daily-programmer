@@ -48,3 +48,10 @@ func getUniquePrimeFactors(number int) (uniquePrimeFactors []int) {
 	}
 	return uniquePrimeFactors
 }
+
+func sum(numbers ...int) (totalSum int) {
+	for _, number := range numbers {
+		totalSum += number
+	}
+	return totalSum
+}
