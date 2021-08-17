@@ -21,3 +21,30 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+// Modified from https://siongui.github.io/2017/05/09/go-find-all-prime-factors-of-integer-number/
+func getUniquePrimeFactors(number int) (uniquePrimeFactors []int) {
+	currentNumber := number
+	// Remove all possible 2s as factors
+	if 0 == currentNumber%2 {
+		uniquePrimeFactors = append(uniquePrimeFactors, 2)
+		for 0 == currentNumber%2 {
+			currentNumber /= 2
+		}
+	}
+	// Look at odd numbers
+	// Since we count up, only primes will be included
+	for possiblePrime := 3; possiblePrime*possiblePrime <= currentNumber; possiblePrime += 2 {
+		if 0 == currentNumber%possiblePrime {
+			uniquePrimeFactors = append(uniquePrimeFactors, possiblePrime)
+			for 0 == currentNumber%possiblePrime {
+				currentNumber /= possiblePrime
+			}
+		}
+	}
+	// The original input was prime
+	if 2 < currentNumber {
+		uniquePrimeFactors = append(uniquePrimeFactors, currentNumber)
+	}
+	return uniquePrimeFactors
+}
