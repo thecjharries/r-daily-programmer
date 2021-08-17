@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGetUniquePrimeFactors(c *C) {
+	c.Assert(getUniquePrimeFactors(23), DeepEquals, []int{23})
+	c.Assert(getUniquePrimeFactors(24), DeepEquals, []int{2, 3})
+	c.Assert(getUniquePrimeFactors(360), DeepEquals, []int{2, 3, 5})
+	c.Assert(getUniquePrimeFactors(714), DeepEquals, []int{2, 3, 7, 17})
+	c.Assert(getUniquePrimeFactors(715), DeepEquals, []int{5, 11, 13})
+}
