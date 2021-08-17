@@ -55,3 +55,7 @@ func sum(numbers ...int) (totalSum int) {
 	}
 	return totalSum
 }
+
+func isRuthAaronPair(first, second int) bool {
+	return sum(getUniquePrimeFactors(first)...) == sum(getUniquePrimeFactors(second)...)
+}

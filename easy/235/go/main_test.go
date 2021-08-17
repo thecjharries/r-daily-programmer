@@ -66,3 +66,13 @@ func (s *MainSuite) TestSum(c *C) {
 	c.Assert(sum([]int{5, 11, 13}...), Equals, 29)
 	c.Assert(sum([]int{2, 3, 7, 17}...), Equals, 29)
 }
+
+func (s *MainSuite) TestIsRuthAaronPair(c *C) {
+	c.Assert(isRuthAaronPair(714, 715), Equals, true)
+	c.Assert(isRuthAaronPair(77, 78), Equals, true)
+	c.Assert(isRuthAaronPair(5, 6), Equals, true)
+	c.Assert(isRuthAaronPair(2107, 2108), Equals, true)
+	c.Assert(isRuthAaronPair(492, 493), Equals, true)
+	c.Assert(isRuthAaronPair(20, 21), Equals, false)
+	c.Assert(isRuthAaronPair(128, 129), Equals, false)
+}
