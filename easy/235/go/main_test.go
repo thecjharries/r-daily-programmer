@@ -61,3 +61,8 @@ func (s *MainSuite) TestGetUniquePrimeFactors(c *C) {
 	c.Assert(getUniquePrimeFactors(714), DeepEquals, []int{2, 3, 7, 17})
 	c.Assert(getUniquePrimeFactors(715), DeepEquals, []int{5, 11, 13})
 }
+
+func (s *MainSuite) TestSum(c *C) {
+	c.Assert(sum([]int{5, 11, 13}...), Equals, 29)
+	c.Assert(sum([]int{2, 3, 7, 17}...), Equals, 29)
+}
