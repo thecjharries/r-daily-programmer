@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+const pieces string = "OISZLJT"
+
 var zPrint = fmt.Println
 
 func main() {
