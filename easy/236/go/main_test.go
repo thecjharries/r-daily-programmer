@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,4 +54,10 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestNewBag(c *C) {
+	c.Assert(NewBag(), DeepEquals, Bag{"S", "L", "J", "O", "Z", "I", "T"})
+	c.Assert(NewBag(), DeepEquals, Bag{"S", "T", "J", "O", "L", "Z", "I"})
+	c.Assert(NewBag(), DeepEquals, Bag{"L", "O", "S", "T", "Z", "I", "J"})
 }
