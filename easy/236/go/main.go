@@ -14,9 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"strings"
+)
 
-const pieces string = "OISZLJT"
+const tetrominoPieces string = "OISZLJT"
+
+type Bag []string
+
+func NewBag() Bag {
+	pieces := strings.Split(tetrominoPieces, "")
+	rand.Shuffle(len(pieces), func(i, j int) {
+		pieces[i], pieces[j] = pieces[j], pieces[i]
+	})
+	return Bag(pieces)
+}
 
 var zPrint = fmt.Println
 
