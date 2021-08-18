@@ -37,3 +37,13 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func buildGameSet(numberOfPieces int) (result string) {
+	for index := 0; index < numberOfPieces/len(tetrominoPieces); index++ {
+		bag := NewBag()
+		result += strings.Join(bag, "")
+	}
+	remainingBag := NewBag()
+	result += strings.Join(remainingBag[:numberOfPieces%7], "")
+	return
+}
