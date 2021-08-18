@@ -61,3 +61,8 @@ func (s *MainSuite) TestNewBag(c *C) {
 	c.Assert(NewBag(), DeepEquals, Bag{"S", "T", "J", "O", "L", "Z", "I"})
 	c.Assert(NewBag(), DeepEquals, Bag{"L", "O", "S", "T", "Z", "I", "J"})
 }
+
+func (s *MainSuite) TestBuildGameSet(c *C) {
+	c.Assert(buildGameSet(50), Equals, "SLJOZITSTJOLZILOSTZIJSOZTILJZOJTSLIJZLSTIOTZIOJSLT")
+	c.Assert(len(buildGameSet(20)), Equals, 20)
+}
