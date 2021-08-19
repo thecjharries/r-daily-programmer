@@ -14,10 +14,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
+	"strings"
+)
 
 var zPrint = fmt.Println
+var dictionaryPath = filepath.Join("..", "enable1.txt")
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func loadDictionary(filename string) []string {
+	byteContents, _ := ioutil.ReadFile(filename)
+	return strings.Split(
+		strings.Trim(string(byteContents), "\n"),
+		"\n",
+	)
 }
