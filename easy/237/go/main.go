@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 )
 
@@ -34,4 +35,14 @@ func loadDictionary(filename string) []string {
 		strings.Trim(string(byteContents), "\n"),
 		"\n",
 	)
+}
+
+func findLongestWordGivenLetters(letters string, dictionary []string) (longestWord string) {
+	wordPattern := regexp.MustCompile(fmt.Sprintf("^[%s]+$", letters))
+	for _, word := range dictionary {
+		if len(word) > len(longestWord) && wordPattern.MatchString(word) {
+			longestWord = word
+		}
+	}
+	return
 }
