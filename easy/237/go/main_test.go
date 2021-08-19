@@ -55,5 +55,11 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestLoadDictionary(c *C) {
-	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
+	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"be", "bee", "ebb", "cab", "ghost"})
+}
+
+func (s *MainSuite) TestFindLongestWordGivenLetters(c *C) {
+	dictionary := loadDictionary("test_dictionary.txt")
+	c.Assert(findLongestWordGivenLetters("xxxx", dictionary), Equals, "")
+	c.Assert(findLongestWordGivenLetters("eb", dictionary), Equals, "bee")
 }
