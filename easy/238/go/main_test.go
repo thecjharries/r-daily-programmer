@@ -59,3 +59,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestGetRandomVowel(c *C) {
 	c.Assert(getRandomVowel(), Equals, "u")
 }
+
+func (s *MainSuite) TestGetRandomConsonant(c *C) {
+	c.Assert(getRandomConsonant(), Equals, "q")
+}

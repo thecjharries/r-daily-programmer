@@ -28,3 +28,7 @@ func main() {
 func getRandomVowel() string {
 	return string("aeiou"[rand.Intn(5)])
 }
+
+func getRandomConsonant() string {
+	return string("bcdfghjklmnpqrstvwxyz"[rand.Intn(21)])
+}
