@@ -63,3 +63,9 @@ func (s *MainSuite) TestGetRandomVowel(c *C) {
 func (s *MainSuite) TestGetRandomConsonant(c *C) {
 	c.Assert(getRandomConsonant(), Equals, "q")
 }
+
+func (s *MainSuite) TestCreateWordFromForm(c *C) {
+	c.Assert(createWordFromForm("cvcvcc"), Equals, "qukesc")
+	c.Assert(createWordFromForm("CcvV"), Equals, "YsoO")
+	c.Assert(createWordFromForm("cvcvcvcvcvcvcvcvcvcv"), Equals, "tipojewacuwopadecaki")
+}

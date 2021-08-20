@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 var zPrint = fmt.Println
@@ -31,4 +32,20 @@ func getRandomVowel() string {
 
 func getRandomConsonant() string {
 	return string("bcdfghjklmnpqrstvwxyz"[rand.Intn(21)])
+}
+
+func createWordFromForm(form string) (result string) {
+	for _, element := range form {
+		switch element {
+		case 'c':
+			result += getRandomConsonant()
+		case 'C':
+			result += strings.ToUpper(getRandomConsonant())
+		case 'v':
+			result += getRandomVowel()
+		case 'V':
+			result += strings.ToUpper(getRandomVowel())
+		}
+	}
+	return
 }
