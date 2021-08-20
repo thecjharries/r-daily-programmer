@@ -16,10 +16,15 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func getRandomVowel() string {
+	return string("aeiou"[rand.Intn(5)])
 }
