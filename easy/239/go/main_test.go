@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDisplayGameOfThreeSteps(c *C) {
+	c.Assert(displayGameOfThreeSteps(100), DeepEquals, []string{"100 -1", "33 0", "11 1", "4 -1", "1"})
+}
