@@ -21,3 +21,23 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func displayGameOfThreeSteps(startingNumber int) (steps []string) {
+	currentNumber := startingNumber
+	for 1 < currentNumber {
+		var change int
+		if 0 == currentNumber%3 {
+			change = 0
+			currentNumber /= 3
+		} else if 0 == (currentNumber+1)%3 {
+			change = 1
+			currentNumber += 1
+		} else if 0 == (currentNumber-1)%3 {
+			change = -1
+			currentNumber -= 1
+		}
+		steps = append(steps, fmt.Sprintf("%d %d", currentNumber, change))
+	}
+	steps = append(steps, "1")
+	return
+}
