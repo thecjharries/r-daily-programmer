@@ -28,15 +28,14 @@ func displayGameOfThreeSteps(startingNumber int) (steps []string) {
 		var change int
 		if 0 == currentNumber%3 {
 			change = 0
-			currentNumber /= 3
 		} else if 0 == (currentNumber+1)%3 {
 			change = 1
-			currentNumber += 1
 		} else if 0 == (currentNumber-1)%3 {
 			change = -1
-			currentNumber -= 1
 		}
 		steps = append(steps, fmt.Sprintf("%d %d", currentNumber, change))
+		currentNumber += change
+		currentNumber /= 3
 	}
 	steps = append(steps, "1")
 	return
