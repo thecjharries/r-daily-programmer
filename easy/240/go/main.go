@@ -14,10 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func scrambleWord(word string) string {
+	explodedWord := strings.Split(word, "")
+	explodedWord[0], explodedWord[len(explodedWord)-2] = explodedWord[len(explodedWord)-2], explodedWord[0]
+	rand.Shuffle(len(explodedWord)-2, func(i, j int) { explodedWord[i], explodedWord[j] = explodedWord[j], explodedWord[i] })
+	explodedWord[0], explodedWord[len(explodedWord)-2] = explodedWord[len(explodedWord)-2], explodedWord[0]
+	return strings.Join(explodedWord, "")
 }
