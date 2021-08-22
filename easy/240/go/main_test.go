@@ -58,6 +58,5 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestScrambleWord(c *C) {
 	c.Assert(scrambleWord("the"), Equals, "the")
-	c.Assert(scrambleWord("that"), Equals, "that")
-	c.Assert(scrambleWord("that"), Equals, "taht")
+	c.Assert(scrambleWord("Cambridge"), Equals, "Crigbadme")
 }
