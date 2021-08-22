@@ -55,3 +55,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestScrambleWord(c *C) {
+	c.Assert(scrambleWord("the"), Equals, "the")
+	c.Assert(scrambleWord("that"), Equals, "that")
+	c.Assert(scrambleWord("that"), Equals, "taht")
+}
