@@ -14,10 +14,31 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertFenToBoard(fen string) string {
+	explodedFen := strings.Split(fen, "/")
+	explodedBoard := make([]string, 0)
+	for rowIndex, row := range explodedFen {
+		explodedBoard[rowIndex] = ""
+		for _, character := range row {
+			count, err := strconv.Atoi(string(character))
+			if nil != err {
+				explodedBoard[rowIndex] += string(character)
+			} else {
+				explodedBoard[rowIndex] += strings.Repeat(".", count)
+			}
+		}
+	}
+	return strings.Join(explodedBoard, "")
 }
