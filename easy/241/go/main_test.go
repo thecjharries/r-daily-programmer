@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertFenToBoard(c *C) {
+	c.Assert(convertFenToBoard("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"), Equals, "rnbqkbnr\npppppppp\n........\n........\n........\n........\nPPPPPPPP\nRNBQKBNR")
+	c.Assert(convertFenToBoard("snbqkbns/pppppppp/8/8/4P3/8/PPPP1PPP/SNBQKBNS"), Equals, "snbqkbns\npppppppp\n........\n........\n....P...\n........\nPPPP.PPP\nSNBQKBNS")
+}
