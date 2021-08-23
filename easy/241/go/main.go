@@ -28,7 +28,7 @@ func main() {
 
 func convertFenToBoard(fen string) string {
 	explodedFen := strings.Split(fen, "/")
-	explodedBoard := make([]string, 0)
+	explodedBoard := make([]string, len(explodedFen))
 	for rowIndex, row := range explodedFen {
 		explodedBoard[rowIndex] = ""
 		for _, character := range row {
@@ -40,5 +40,5 @@ func convertFenToBoard(fen string) string {
 			}
 		}
 	}
-	return strings.Join(explodedBoard, "")
+	return strings.Join(explodedBoard, "\n")
 }
