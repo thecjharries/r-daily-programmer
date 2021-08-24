@@ -21,3 +21,15 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func calculateWeeksNecessary(peopleToSupport, startingPlants int) (weeks int) {
+	weeks = 1
+	currentPlants := 0
+	holdingTerm := startingPlants
+	for currentPlants < peopleToSupport {
+		currentPlants += holdingTerm
+		holdingTerm += currentPlants
+		weeks++
+	}
+	return
+}
