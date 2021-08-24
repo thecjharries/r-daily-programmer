@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -22,7 +25,10 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func calculateWeeksNecessary(peopleToSupport, startingPlants int) (weeks int) {
+func calculateWeeksNecessary(peopleToSupport, startingPlants int) (weeks float64) {
+	if 1 > startingPlants {
+		return math.Inf(1)
+	}
 	weeks = 1
 	currentPlants := 0
 	holdingTerm := startingPlants
