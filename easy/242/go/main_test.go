@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestCalculateWeeksNecessary(c *C) {
+	c.Assert(calculateWeeksNecessary(200, 15), Equals, 5.0)
+	c.Assert(calculateWeeksNecessary(50000, 1), Equals, 14.0)
+	c.Assert(calculateWeeksNecessary(150000, 250), Equals, 9.0)
+	c.Assert(calculateWeeksNecessary(20, 0), Equals, math.Inf(1))
 }
