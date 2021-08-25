@@ -62,3 +62,10 @@ func (s *MainSuite) TestComputerDivisors(c *C) {
 func (s *MainSuite) TestSum(c *C) {
 	c.Assert(sum(1, 2, 3), Equals, 6)
 }
+
+func (s *MainSuite) TestDetermineNumberClass(c *C) {
+	c.Assert(determineNumberClass(18), Equals, "abundant 3")
+	c.Assert(determineNumberClass(27), Equals, "deficient 14")
+	c.Assert(determineNumberClass(28), Equals, "perfect")
+	c.Assert(determineNumberClass(30), Equals, "abundant 12")
+}
