@@ -16,7 +16,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 var zPrint = fmt.Println
@@ -27,9 +26,9 @@ func main() {
 
 func computeDivisors(number int) (divisors []int) {
 	divisors = []int{1, number}
-	for possibleDivisor := 2; possibleDivisor < int(math.Ceil(math.Sqrt(float64(number)))); possibleDivisor++ {
+	for possibleDivisor := 2; possibleDivisor <= number/2; possibleDivisor++ {
 		if 0 == number%possibleDivisor {
-			divisors = append(divisors)
+			divisors = append(divisors, possibleDivisor)
 		}
 	}
 	return
