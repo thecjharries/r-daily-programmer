@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func computeDivisors(number int) (divisors []int) {
+	divisors = []int{1, number}
+	for possibleDivisor := 2; possibleDivisor < int(math.Ceil(math.Sqrt(float64(number)))); possibleDivisor++ {
+		if 0 == number%possibleDivisor {
+			divisors = append(divisors)
+		}
+	}
+	return
 }
