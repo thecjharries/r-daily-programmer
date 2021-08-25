@@ -33,3 +33,10 @@ func computeDivisors(number int) (divisors []int) {
 	}
 	return
 }
+
+func sum(numbers ...int) (totalSum int) {
+	for _, number := range numbers {
+		totalSum += number
+	}
+	return
+}

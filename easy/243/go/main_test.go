@@ -58,3 +58,7 @@ func (s *MainSuite) TestComputerDivisors(c *C) {
 	c.Assert(computeDivisors(21), DeepEquals, []int{1, 21, 3, 7})
 	c.Assert(computeDivisors(12), DeepEquals, []int{1, 12, 2, 3, 4, 6})
 }
+
+func (s *MainSuite) TestSum(c *C) {
+	c.Assert(sum(1, 2, 3), Equals, 6)
+}
