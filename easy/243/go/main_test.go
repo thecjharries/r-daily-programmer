@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestComputerDivisors(c *C) {
+	c.Assert(computeDivisors(21), DeepEquals, []int{1, 21, 3, 7})
+	c.Assert(computeDivisors(12), DeepEquals, []int{1, 12, 2, 3, 4, 6})
+}
