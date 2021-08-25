@@ -40,3 +40,14 @@ func sum(numbers ...int) (totalSum int) {
 	}
 	return
 }
+
+func determineNumberClass(number int) string {
+	comparison := 2*number - sum(computeDivisors(number)...)
+	if 0 == comparison {
+		return "perfect"
+	} else if 0 > comparison {
+		return fmt.Sprintf("deficient %d", -1*comparison)
+	} else {
+		return fmt.Sprintf("abundant %d", comparison)
+	}
+}
