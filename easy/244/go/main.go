@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type ForkInputFunc func(int, ...int) int
+
 var zPrint = fmt.Println
 
 func main() {
