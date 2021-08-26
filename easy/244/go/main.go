@@ -38,3 +38,21 @@ func forkFunc(first, second ForkInputFunc, remaining ...ForkInputFunc) ForkInput
 	}
 	return nil
 }
+
+func sum(y int, x ...int) (totalSum int) {
+	totalSum = y
+	for _, number := range x {
+		totalSum += number
+	}
+	return
+}
+
+func count(y int, x ...int) int {
+	paramCount := y
+	paramCount = len(x) + 1
+	return paramCount
+}
+
+func divide(y int, x ...int) int {
+	return y / x[0]
+}
