@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPlaceholders(c *C) {
+	c.Assert(sum(1, 2, 3), Equals, 6)
+	c.Assert(count(1, 2, 3, 4), Equals, 4)
+	c.Assert(divide(4, 2), Equals, 2)
+}
