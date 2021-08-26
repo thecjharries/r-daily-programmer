@@ -59,3 +59,12 @@ func (s *MainSuite) TestPlaceholders(c *C) {
 	c.Assert(count(1, 2, 3, 4), Equals, 4)
 	c.Assert(divide(4, 2), Equals, 2)
 }
+
+func (s *MainSuite) TestForkFunc(c *C) {
+	first := forkFunc(sum, divide, count)
+	c.Assert(first(1, 2, 3, 4, 5), Equals, 3)
+	second := forkFunc(sum, divide, sum, divide, count)
+	c.Assert(second(1, 2, 3, 4, 5), Equals, 5)
+	third := forkFunc(sum, divide)
+	c.Assert(third, IsNil)
+}
