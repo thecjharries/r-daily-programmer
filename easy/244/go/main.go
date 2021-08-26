@@ -23,3 +23,18 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func forkFunc(first, second ForkInputFunc, remaining ...ForkInputFunc) ForkInputFunc {
+	if 0 < len(remaining) {
+		if 1 == len(remaining) {
+			return func(y int, x ...int) int {
+				return second(first(y, x...), remaining[0](y, x...))
+			}
+		} else if 1 == len(remaining)%2 {
+			return func(y int, x ...int) int {
+				return second(first(y, x...), forkFunc(remaining[0], remaining[1], remaining[2:]...)(y, x...))
+			}
+		}
+	}
+	return nil
+}
