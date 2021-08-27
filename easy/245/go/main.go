@@ -14,7 +14,13 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var monthDayYearPattern = regexp.MustCompile(`^\s*(?P<month>\d{1,2})[^\d]+(?P<day>\d{1,2})[^\d]+(?P<year>\d{2}|\d{4})\s*$`)
+var yearMonthDayPattern = regexp.MustCompile(`^\s*(?P<year>\d{4})[^\d]+(?P<month>\d{1,2})[^\d]+(?P<day>\d{1,2})\s*$`)
 
 var zPrint = fmt.Println
 
