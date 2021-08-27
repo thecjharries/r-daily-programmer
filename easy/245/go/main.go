@@ -45,6 +45,9 @@ func parseDate(input string) string {
 		dayIndex = 3
 	}
 	year, _ := strconv.Atoi(match[yearIndex])
+	if 3 == yearIndex && 2 == len(match[yearIndex]) {
+		year += 2000
+	}
 	month, _ := strconv.Atoi(match[monthIndex])
 	day, _ := strconv.Atoi(match[dayIndex])
 	return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
