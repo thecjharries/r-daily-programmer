@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseDate(c *C) {
+	c.Assert(parseDate("2/13/15"), Equals, "2015-02-13")
+	c.Assert(parseDate("1-31-10"), Equals, "2010-01-31")
+	c.Assert(parseDate("5 10 2015"), Equals, "2015-05-10")
+	c.Assert(parseDate("2012 3 17"), Equals, "2012-03-17")
+	c.Assert(parseDate("2001-01-01"), Equals, "2001-01-01")
+	c.Assert(parseDate("2008/01/07"), Equals, "2008-01-07")
+}
