@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
+	"time"
 )
 
 var monthDayYearPattern = regexp.MustCompile(`^\s*(?P<month>\d{1,2})[^\d]+(?P<day>\d{1,2})[^\d]+(?P<year>\d{2}|\d{4})\s*$`)
@@ -26,4 +28,24 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseDate(input string) string {
+	var match []string
+	var yearIndex, monthIndex, dayIndex int
+	if monthDayYearPattern.MatchString(input) {
+		match = monthDayYearPattern.FindStringSubmatch(input)
+		yearIndex = 3
+		monthIndex = 1
+		dayIndex = 2
+	} else {
+		match = yearMonthDayPattern.FindStringSubmatch(input)
+		yearIndex = 1
+		monthIndex = 2
+		dayIndex = 3
+	}
+	year, _ := strconv.Atoi(match[yearIndex])
+	month, _ := strconv.Atoi(match[monthIndex])
+	day, _ := strconv.Atoi(match[dayIndex])
+	return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC).Format("2006-01-02")
 }
