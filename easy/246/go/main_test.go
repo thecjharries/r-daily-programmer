@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateMaxLightsGivenDesiredHours(c *C) {
+	c.Assert(calculateMaxLightsGivenDesiredHours(1), Equals, 300.0)
+	c.Assert(calculateMaxLightsGivenDesiredHours(4), Equals, 75.0)
+	c.Assert(calculateMaxLightsGivenDesiredHours(8), Equals, 35.0)
+	c.Assert(calculateMaxLightsGivenDesiredHours(12), Equals, 25.0)
+}
