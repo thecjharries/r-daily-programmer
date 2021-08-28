@@ -28,3 +28,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func calculateMaxLightsGivenDesiredHours(desiredHours float64) float64 {
+	return batteryAmps / desiredHours / ledSerialAmps
+}
