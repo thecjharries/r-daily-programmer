@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+const (
+	batteryVoltage float64 = 9
+	batteryAmps    float64 = 1200
+	ledSerialCount float64 = 5
+	ledSerialAmps  float64 = 20
+)
+
 var zPrint = fmt.Println
 
 func main() {
