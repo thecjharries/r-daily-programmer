@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 const (
 	batteryVoltage float64 = 9
@@ -30,5 +33,5 @@ func main() {
 }
 
 func calculateMaxLightsGivenDesiredHours(desiredHours float64) float64 {
-	return batteryAmps / desiredHours / ledSerialAmps
+	return math.Floor(math.Floor(batteryAmps/desiredHours/ledSerialAmps*ledSerialCount)/ledSerialCount) * ledSerialCount
 }
