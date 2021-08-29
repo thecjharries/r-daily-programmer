@@ -74,4 +74,6 @@ func (s *MainSuite) TestAssignSecretSantas(c *C) {
 	list = SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}, {"Bruno", "Anna", "Matthew", "Lucas"}}
 	results = []string{"Lucas -> Jerry", "Matthew -> Joe", "Bruno -> Jeff", "Anna -> Johnson"}
 	c.Assert(assignSecretSantas(list), DeepEquals, results)
+	list = SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}, {"Bruno", "Anna", "Matthew", "Lucas", "Bob"}}
+	c.Assert(assignSecretSantas(list), DeepEquals, []string(nil))
 }
