@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestSecretSantaListSort(c *C) {
+	unsorted := SecretSantaList{{"Joe"}, {"Jeff", "Jerry"}, {"Johnson"}}
+	sorted := SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}}
+	c.Assert(unsorted, Not(DeepEquals), sorted)
+	sort.Sort(unsorted)
+	c.Assert(unsorted, DeepEquals, sorted)
 }
