@@ -16,6 +16,9 @@ package main
 
 import "fmt"
 
+type Family []string
+type SecretSantaList []Family
+
 var zPrint = fmt.Println
 
 func main() {
