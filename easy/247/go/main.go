@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sort"
 )
 
@@ -40,10 +41,22 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+func shuffleAndSortList(list SecretSantaList) (shuffledAndSorted SecretSantaList) {
+	shuffledAndSorted = make(SecretSantaList, len(list))
+	copy(shuffledAndSorted, list)
+	for familyIndex, family := range shuffledAndSorted {
+		rand.Shuffle(len(family), func(i, j int) { family[i], family[j] = family[j], family[i] })
+		shuffledAndSorted[familyIndex] = family
+	}
+	rand.Shuffle(len(shuffledAndSorted), func(i, j int) {
+		shuffledAndSorted[i], shuffledAndSorted[j] = shuffledAndSorted[j], shuffledAndSorted[i]
+	})
+	sort.Sort(shuffledAndSorted)
+	return
+}
+
 func assignSecretSantas(list SecretSantaList) (results []string) {
-	workingList := make(SecretSantaList, len(list))
-	copy(workingList, list)
-	sort.Sort(workingList)
+	workingList := shuffleAndSortList(list)
 	for 0 < len(workingList) {
 		currentFamily := workingList[0]
 		workingList = workingList[1:]
