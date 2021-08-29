@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sort"
 	"testing"
 
@@ -41,6 +42,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -67,9 +69,9 @@ func (s *MainSuite) TestAssignSecretSantas(c *C) {
 	var results []string
 	var list SecretSantaList
 	list = SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}}
-	results = []string{"Jeff -> Joe", "Jerry -> Johnson"}
+	results = []string{"Jeff -> Johnson", "Jerry -> Joe"}
 	c.Assert(assignSecretSantas(list), DeepEquals, results)
 	list = SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}, {"Bruno", "Anna", "Matthew", "Lucas"}}
-	results = []string{"Bruno -> Jeff", "Anna -> Joe", "Matthew -> Jerry", "Lucas -> Johnson"}
+	results = []string{"Lucas -> Jerry", "Matthew -> Joe", "Bruno -> Jeff", "Anna -> Johnson"}
 	c.Assert(assignSecretSantas(list), DeepEquals, results)
 }
