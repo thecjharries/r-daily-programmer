@@ -49,14 +49,17 @@ func assignSecretSantas(list SecretSantaList) (results []string) {
 		workingList = workingList[1:]
 		nextFamily := 0
 		for 0 < len(currentFamily) {
-			results = append(results, fmt.Sprintf("%s -> %s"), currentFamily[0], workingList[nextFamily][0])
+			results = append(results, fmt.Sprintf("%s -> %s", currentFamily[0], workingList[nextFamily][0]))
 			currentFamily = currentFamily[1:]
 			if 1 == len(workingList[nextFamily]) {
 				workingList = append(workingList[:nextFamily], workingList[nextFamily+1:]...)
 			} else {
 				workingList[nextFamily] = workingList[nextFamily][1:]
 			}
-			nextFamily = (nextFamily + 1) % len(workingList)
+			if 0 < len(workingList) {
+				nextFamily = (nextFamily + 1) % len(workingList)
+			}
 		}
 	}
+	return
 }
