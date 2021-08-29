@@ -19,6 +19,18 @@ import "fmt"
 type Family []string
 type SecretSantaList []Family
 
+func (l SecretSantaList) Len() int {
+	return len(l)
+}
+
+func (l SecretSantaList) Swap(i, j int) {
+	l[i], l[j] = l[j], l[i]
+}
+
+func (l SecretSantaList) Less(i, j int) bool {
+	return len(l[i]) < len(l[j])
+}
+
 var zPrint = fmt.Println
 
 func main() {
