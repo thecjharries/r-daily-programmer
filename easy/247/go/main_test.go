@@ -62,3 +62,14 @@ func (s *MainSuite) TestSecretSantaListSort(c *C) {
 	sort.Sort(unsorted)
 	c.Assert(unsorted, DeepEquals, sorted)
 }
+
+func (s *MainSuite) TestAssignSecretSantas(c *C) {
+	var results []string
+	var list SecretSantaList
+	list = SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}}
+	results = []string{"Jeff -> Joe", "Jerry -> Johnson"}
+	c.Assert(assignSecretSantas(list), DeepEquals, results)
+	list = SecretSantaList{{"Jeff", "Jerry"}, {"Joe"}, {"Johnson"}, {"Bruno", "Anna", "Matthew", "Lucas"}}
+	results = []string{"Bruno -> Jeff", "Anna -> Joe", "Matthew -> Jerry", "Lucas -> Johnson"}
+	c.Assert(assignSecretSantas(list), DeepEquals, results)
+}
