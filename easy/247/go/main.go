@@ -23,6 +23,13 @@ import (
 type Family []string
 type SecretSantaList []Family
 
+func (l SecretSantaList) Count() (count int) {
+	for _, family := range l {
+		count += len(family)
+	}
+	return count
+}
+
 func (l SecretSantaList) Len() int {
 	return len(l)
 }
@@ -56,6 +63,9 @@ func shuffleAndSortList(list SecretSantaList) (shuffledAndSorted SecretSantaList
 }
 
 func assignSecretSantas(list SecretSantaList) (results []string) {
+	if 0 != list.Count()%2 {
+		return
+	}
 	workingList := shuffleAndSortList(list)
 	for 0 < len(workingList) {
 		currentFamily := workingList[0]
