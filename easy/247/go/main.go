@@ -28,7 +28,7 @@ func (l SecretSantaList) Swap(i, j int) {
 }
 
 func (l SecretSantaList) Less(i, j int) bool {
-	return len(l[i]) < len(l[j])
+	return len(l[i]) > len(l[j])
 }
 
 var zPrint = fmt.Println
