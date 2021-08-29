@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type Family []string
 type SecretSantaList []Family
@@ -35,4 +38,25 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func assignSecretSantas(list SecretSantaList) (results []string) {
+	workingList := make(SecretSantaList, len(list))
+	copy(workingList, list)
+	sort.Sort(workingList)
+	for 0 < len(workingList) {
+		currentFamily := workingList[0]
+		workingList = workingList[1:]
+		nextFamily := 0
+		for 0 < len(currentFamily) {
+			results = append(results, fmt.Sprintf("%s -> %s"), currentFamily[0], workingList[nextFamily][0])
+			currentFamily = currentFamily[1:]
+			if 1 == len(workingList[nextFamily]) {
+				workingList = append(workingList[:nextFamily], workingList[nextFamily+1:]...)
+			} else {
+				workingList[nextFamily] = workingList[nextFamily][1:]
+			}
+			nextFamily = (nextFamily + 1) % len(workingList)
+		}
+	}
 }
