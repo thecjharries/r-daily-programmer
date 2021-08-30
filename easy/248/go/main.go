@@ -16,6 +16,16 @@ package main
 
 import "fmt"
 
+type Point struct {
+	Red   int
+	Blue  int
+	Green int
+}
+
+func (p *Point) String() string {
+	return fmt.Sprintf("%3d %3d %3d", p.Red, p.Green, p.Blue)
+}
+
 var zPrint = fmt.Println
 
 func main() {
