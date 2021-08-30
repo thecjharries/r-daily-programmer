@@ -55,6 +55,10 @@ func (g *Grid) String() string {
 	return strings.Join(output, "\n")
 }
 
+func (g *Grid) Point(color Point, x, y int) {
+	(*g)[x][y] = color
+}
+
 func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
 	for xIndex := startX; xIndex <= endX; xIndex++ {
 		(*g)[xIndex][(endY-startY)*xIndex/(endX-startX)+startY] = color
