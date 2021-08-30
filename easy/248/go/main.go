@@ -18,8 +18,8 @@ import "fmt"
 
 type Point struct {
 	Red   int
-	Blue  int
 	Green int
+	Blue  int
 }
 
 func (p *Point) String() string {
