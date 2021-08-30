@@ -58,3 +58,9 @@ func (s *MainSuite) TestPointString(c *C) {
 	point := Point{0, 0, 255}
 	c.Assert(point.String(), Equals, "  0   0 255")
 }
+
+func (s *MainSuite) TestNewGrid(c *C) {
+	grid := NewGrid(1, 1)
+	c.Assert(len(*grid), Equals, 1)
+	c.Assert((*grid)[0][0].Red, Equals, 0)
+}
