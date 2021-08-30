@@ -22,6 +22,19 @@ type Point struct {
 	Blue  int
 }
 
+type Grid [][]Point
+
+func NewGrid(columns, rows int) *Grid {
+	grid := new(Grid)
+	for yIndex := 0; yIndex < rows; yIndex++ {
+		(*grid)[yIndex] = make([]Point, columns)
+		for xIndex := 0; xIndex < columns; xIndex++ {
+			(*grid)[yIndex][xIndex] = Point{}
+		}
+	}
+	return grid
+}
+
 func (p *Point) String() string {
 	return fmt.Sprintf("%3d %3d %3d", p.Red, p.Green, p.Blue)
 }
