@@ -50,7 +50,7 @@ func (g *Grid) String() string {
 		for _, entry := range row {
 			currentRow = append(currentRow, entry.String())
 		}
-		output = append(output, strings.Join(currentRow, " "))
+		output = append(output, strings.Join(currentRow, "   "))
 	}
 	return strings.Join(output, "\n")
 }
