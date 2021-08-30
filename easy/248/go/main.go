@@ -66,8 +66,9 @@ func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
 }
 
 func (g *Grid) Rect(color Point, startX, startY, width, height int) {
-	for xIndex := startX; xIndex <= width; xIndex++ {
-		for yIndex := startY; yIndex <= height; yIndex++ {
+	for xIndex := startX; xIndex < startX+width; xIndex++ {
+		for yIndex := startY; yIndex < startY+height; yIndex++ {
+			fmt.Println(color, xIndex, yIndex)
 			g.Point(color, xIndex, yIndex)
 		}
 	}

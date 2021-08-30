@@ -85,3 +85,11 @@ func (s *MainSuite) TestGridLine(c *C) {
 	c.Assert((*grid)[1][3].Green, Equals, 100)
 	c.Assert((*grid)[2][4].Blue, Equals, 100)
 }
+
+func (s *MainSuite) TestGridRect(c *C) {
+	grid := NewGrid(5, 3)
+	c.Assert((*grid)[1][3].Red, Equals, 0)
+	grid.Rect(Point{100, 100, 100}, 1, 3, 2, 2)
+	c.Assert((*grid)[1][3].Red, Equals, 100)
+	c.Assert((*grid)[2][4].Green, Equals, 100)
+}
