@@ -70,6 +70,13 @@ func (s *MainSuite) TestGridString(c *C) {
 	c.Assert(grid.String(), Equals, "  0   0   0     0   0   0     0   0   0     0   0   0     0   0   0\n  0   0   0     0   0   0     0   0   0     0   0   0     0   0   0\n  0   0   0     0   0   0     0   0   0     0   0   0     0   0   0")
 }
 
+func (s *MainSuite) TestPoint(c *C) {
+	grid := NewGrid(5, 3)
+	c.Assert((*grid)[0][2].Blue, Equals, 0)
+	grid.Point(Point{0, 0, 255}, 0, 2)
+	c.Assert((*grid)[0][2].Blue, Equals, 255)
+}
+
 func (s *MainSuite) TestGridLine(c *C) {
 	grid := NewGrid(5, 3)
 	c.Assert((*grid)[0][2].Red, Equals, 0)
