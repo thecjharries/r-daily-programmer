@@ -64,3 +64,13 @@ func (s *MainSuite) TestNewGrid(c *C) {
 	c.Assert(len(*grid), Equals, 1)
 	c.Assert((*grid)[0][0].Red, Equals, 0)
 }
+
+func (s *MainSuite) TestGridLine(c *C) {
+	grid := NewGrid(5, 3)
+	c.Assert((*grid)[0][2].Red, Equals, 0)
+	grid.Line(Point{100, 100, 100}, 0, 2, 2, 4)
+	c.Assert((*grid)[0][2].Red, Equals, 100)
+	c.Assert((*grid)[1][3].Green, Equals, 100)
+	c.Assert((*grid)[2][4].Blue, Equals, 100)
+
+}

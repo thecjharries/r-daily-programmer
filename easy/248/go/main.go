@@ -42,7 +42,7 @@ func NewGrid(columns, rows int) *Grid {
 
 func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
 	for xIndex := startX; xIndex <= endX; xIndex++ {
-		(*g)[(endY-startY)*xIndex/(endX-startX)+startY][xIndex] = color
+		(*g)[xIndex][(endY-startY)*xIndex/(endX-startX)+startY] = color
 	}
 }
 
