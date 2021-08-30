@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Point struct {
 	Red   int
@@ -38,6 +41,18 @@ func NewGrid(columns, rows int) *Grid {
 		}
 	}
 	return grid
+}
+
+func (g *Grid) String() string {
+	var output []string
+	for _, row := range *g {
+		var currentRow []string
+		for _, entry := range row {
+			currentRow = append(currentRow, entry.String())
+		}
+		output = append(output, strings.Join(currentRow, " "))
+	}
+	return strings.Join(output, "\n")
 }
 
 func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
