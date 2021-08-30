@@ -65,6 +65,14 @@ func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
 	}
 }
 
+func (g *Grid) Rect(color Point, upperLeftX, upperLeftY, bottomRightX, bottomRightY int) {
+	for xIndex := upperLeftX; xIndex <= bottomRightX; xIndex++ {
+		for yIndex := upperLeftY; yIndex <= bottomRightY; yIndex++ {
+			g.Point(color, xIndex, yIndex)
+		}
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
