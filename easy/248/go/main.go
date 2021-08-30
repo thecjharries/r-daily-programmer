@@ -40,6 +40,12 @@ func NewGrid(columns, rows int) *Grid {
 	return grid
 }
 
+func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
+	for xIndex := startX; xIndex <= endX; xIndex++ {
+		(*g)[(endY-startY)*xIndex/(endX-startX)+startY][xIndex] = color
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
