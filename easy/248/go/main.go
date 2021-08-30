@@ -65,9 +65,9 @@ func (g *Grid) Line(color Point, startX, startY, endX, endY int) {
 	}
 }
 
-func (g *Grid) Rect(color Point, upperLeftX, upperLeftY, bottomRightX, bottomRightY int) {
-	for xIndex := upperLeftX; xIndex <= bottomRightX; xIndex++ {
-		for yIndex := upperLeftY; yIndex <= bottomRightY; yIndex++ {
+func (g *Grid) Rect(color Point, startX, startY, width, height int) {
+	for xIndex := startX; xIndex <= width; xIndex++ {
+		for yIndex := startY; yIndex <= height; yIndex++ {
 			g.Point(color, xIndex, yIndex)
 		}
 	}
