@@ -21,3 +21,18 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findBestPrices(prices []float64) (low, high float64) {
+	bestPriceDifference := 0.0
+	for lowIndex := 0; lowIndex < len(prices)-1; lowIndex++ {
+		for highIndex := lowIndex + 1; highIndex < len(prices); highIndex++ {
+			currentPriceDifference := prices[highIndex] - prices[lowIndex]
+			if 0 < currentPriceDifference && bestPriceDifference < currentPriceDifference {
+				bestPriceDifference = currentPriceDifference
+				low = prices[lowIndex]
+				high = prices[highIndex]
+			}
+		}
+	}
+	return
+}
