@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindBestPrices(c *C) {
+	var prices []float64
+	var low, high float64
+	prices = []float64{19.35, 19.30, 18.88, 18.93, 18.95, 19.03, 19.00, 18.97, 18.97, 18.98}
+	low, high = findBestPrices(prices)
+	c.Assert(low, Equals, 18.88)
+	c.Assert(high, Equals, 19.03)
+}
