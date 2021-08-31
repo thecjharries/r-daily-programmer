@@ -24,8 +24,8 @@ func main() {
 
 func findBestPrices(prices []float64) (low, high float64) {
 	bestPriceDifference := 0.0
-	for lowIndex := 0; lowIndex < len(prices)-1; lowIndex++ {
-		for highIndex := lowIndex + 1; highIndex < len(prices); highIndex++ {
+	for lowIndex := 0; lowIndex < len(prices)-2; lowIndex++ {
+		for highIndex := lowIndex + 2; highIndex < len(prices); highIndex++ {
 			currentPriceDifference := prices[highIndex] - prices[lowIndex]
 			if 0 < currentPriceDifference && bestPriceDifference < currentPriceDifference {
 				bestPriceDifference = currentPriceDifference
