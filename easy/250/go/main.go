@@ -19,7 +19,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path"
+	"regexp"
+	"strconv"
 )
+
+var postTitlePattern = regexp.MustCompile(`.*Challenge #(\d+) \[(\w+)].*`)
 
 type RawPost struct {
 	Title     string                 `json:"title"`
@@ -34,6 +38,8 @@ type Post struct {
 	Number     int
 }
 
+type Posts []Post
+
 var zPrint = fmt.Println
 
 func main() {
@@ -45,4 +51,21 @@ func loadData() []RawPost {
 	var posts []RawPost
 	_ = json.Unmarshal(contents, &posts)
 	return posts
+}
+
+func parseRawPosts(posts []RawPost) (parsedPosts Posts) {
+	for _, post := range posts {
+		match := postTitlePattern.FindStringSubmatch(post.Title)
+		if "" != match[1] && "" != match[2] {
+			number, _ := strconv.Atoi(match[1])
+			parsedPosts = append(parsedPosts, Post{
+				Title:      post.Title,
+				Url:        post.Url,
+				Difficulty: match[2],
+				Number:     number,
+			})
+		}
+
+	}
+	return
 }
