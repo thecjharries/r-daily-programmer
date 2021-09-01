@@ -16,7 +16,11 @@ package main
 
 import "fmt"
 
-type
+type Post struct {
+	Title     string                 `json:"title"`
+	Url       string                 `json:"url"`
+	Remaining map[string]interface{} `json:"-"`
+}
 
 var zPrint = fmt.Println
 
