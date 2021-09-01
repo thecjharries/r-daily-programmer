@@ -58,3 +58,10 @@ func (s *MainSuite) TestLoadData(c *C) {
 	posts := loadData()
 	c.Assert(len(posts), Equals, 25)
 }
+
+func (s *MainSuite) TestParseRawPosts(c *C) {
+	raw := loadData()
+	parsed := parseRawPosts(raw)
+	c.Assert(parsed[0].Title, Equals, "[2021-07-12] Challenge #398 [Difficult] Matrix Sum")
+	c.Assert(parsed[0].Number, Equals, 398)
+}
