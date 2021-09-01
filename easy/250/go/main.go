@@ -21,7 +21,7 @@ import (
 	"path"
 )
 
-type Post struct {
+type RawPost struct {
 	Title     string                 `json:"title"`
 	Url       string                 `json:"url"`
 	Remaining map[string]interface{} `json:"-"`
@@ -33,9 +33,9 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func loadData() []Post {
+func loadData() []RawPost {
 	contents, _ := ioutil.ReadFile(path.Join("..", "simplified.json"))
-	var posts []Post
+	var posts []RawPost
 	_ = json.Unmarshal(contents, &posts)
 	return posts
 }
