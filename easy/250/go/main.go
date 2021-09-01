@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"path"
+)
 
 type Post struct {
 	Title     string                 `json:"title"`
@@ -26,4 +31,11 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func loadData() []Post {
+	contents, _ := ioutil.ReadFile(path.Join("..", "simplified.json"))
+	var posts []Post
+	_ = json.Unmarshal(contents, &posts)
+	return posts
 }
