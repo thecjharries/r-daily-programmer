@@ -27,6 +27,13 @@ type RawPost struct {
 	Remaining map[string]interface{} `json:"-"`
 }
 
+type Post struct {
+	Title      string
+	Url        string
+	Difficulty string
+	Number     int
+}
+
 var zPrint = fmt.Println
 
 func main() {
