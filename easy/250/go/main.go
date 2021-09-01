@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type
+
 var zPrint = fmt.Println
 
 func main() {

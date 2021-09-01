@@ -8,6 +8,11 @@
 
 For consistency, I used [this link](https://api.reddit.com/r/dailyprogrammer.json?count=25&after=t3_onfehl) whose contents are in this dir. Also I didn't want to mess with the API right now because that's not an easy challenge.
 
+Because I didn't feel like unmarshalling a bunch of stuff in Go, I ran this to create `simplified.json`:
+```shell
+cat dailyprogrammer.json | jq -r '[.data.children[].data]' > simplified.json
+```
+
 ## Prompt
 
 **Description**
