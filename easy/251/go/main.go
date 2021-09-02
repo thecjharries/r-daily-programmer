@@ -56,9 +56,36 @@ func parseNonogram(nonogram string) (rows, columns [][]int) {
 	}
 	if 0 < onCount {
 		currentRow = append(currentRow, onCount)
+		onCount = 0
 	}
 	if 0 < len(currentRow) {
 		rows = append(rows, currentRow)
+	}
+	currentColumn := make([]int, 0)
+	onCount = 0
+	for columnIndex := 0; columnIndex < length; columnIndex++ {
+		for rowIndex := 0; rowIndex < length; rowIndex++ {
+			character := exploded[rowIndex+length*columnIndex]
+			fmt.Printf("'%s'", character)
+			if "*" == character {
+				onCount++
+			}
+			if " " == character && 0 < onCount {
+				currentColumn = append(currentColumn, onCount)
+				onCount = 0
+			}
+		}
+		if 0 < onCount {
+			currentColumn = append(currentColumn, onCount)
+			onCount = 0
+		}
+		if 0 < len(currentColumn) {
+			fmt.Println(columnIndex)
+			columns = append(columns, currentColumn)
+		}
+		currentColumn = make([]int, 0)
+		fmt.Printf("q\n")
+		fmt.Println(columns)
 	}
 	return
 }
