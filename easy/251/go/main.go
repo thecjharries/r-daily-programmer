@@ -22,6 +22,6 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func parseNonogram(nonogram []rune) (rows, columns [][]int) {
+func parseNonogram(nonogram string) (rows, columns [][]int) {
 	return
 }

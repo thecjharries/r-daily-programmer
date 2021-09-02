@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseNonogram(c *C) {
+	var input string
+	var rows, desiredRows, columns, desiredColumns [][]int
+	input = "    *\n   **\n  * *\n *  *\n*****"
+	desiredRows = [][]int{{1}, {2}, {1, 1}, {1, 1}, {5}}
+	desiredColumns = [][]int{{1}, {2}, {1, 1}, {1, 1}, {5}}
+	rows, columns = parseNonogram(input)
+	c.Assert(rows, DeepEquals, desiredRows)
+	c.Assert(columns, DeepEquals, desiredColumns)
+}
