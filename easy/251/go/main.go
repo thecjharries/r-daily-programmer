@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +27,38 @@ func main() {
 }
 
 func parseNonogram(nonogram string) (rows, columns [][]int) {
+	exploded := strings.Split(strings.ReplaceAll(nonogram, "\n", ""), "")
+	fmt.Println(exploded)
+	length := int(math.Sqrt(float64(len(exploded))))
+	fmt.Println(length)
+	currentRow := make([]int, 0)
+	onCount := 0
+	for index, character := range exploded {
+		fmt.Printf("'%s'", character)
+		if "*" == character {
+			onCount++
+		}
+		if " " == character && 0 < onCount {
+			currentRow = append(currentRow, onCount)
+			onCount = 0
+		}
+		if 0 == (index+1)%length {
+			if 0 < onCount {
+				currentRow = append(currentRow, onCount)
+				onCount = 0
+			}
+			if 0 < len(currentRow) {
+				rows = append(rows, currentRow)
+			}
+			currentRow = make([]int, 0)
+			fmt.Printf("\n")
+		}
+	}
+	if 0 < onCount {
+		currentRow = append(currentRow, onCount)
+	}
+	if 0 < len(currentRow) {
+		rows = append(rows, currentRow)
+	}
 	return
 }
