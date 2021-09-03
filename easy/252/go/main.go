@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +25,16 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func determinePoolSize(sailorCount int) (poolSize int) {
-	return poolSize
+func determinePoolSize(sailorCount float64) float64 {
+	if 2 > sailorCount {
+		return 0
+	} else if 2 == sailorCount {
+		return 11
+	} else {
+		if 0 == int64(sailorCount)%2 {
+			return (sailorCount - 1) * (math.Pow(sailorCount, sailorCount) - 1)
+		} else {
+			return math.Pow(sailorCount, sailorCount) - sailorCount + 1
+		}
+	}
 }

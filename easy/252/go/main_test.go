@@ -55,5 +55,5 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestDeterminePoolSize(c *C) {
-	c.Assert(determinePoolSize(5), Equals, 3121)
+	c.Assert(determinePoolSize(5), Equals, 3121.0)
 }
