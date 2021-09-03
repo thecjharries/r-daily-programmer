@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDeterminePoolSize(c *C) {
+	c.Assert(determinePoolSize(5), Equals, 3121)
+}
