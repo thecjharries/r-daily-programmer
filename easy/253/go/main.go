@@ -38,3 +38,12 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func calculateLoanResults(input LoanConsiderations) LoanResults {
+	return LoanResults{
+		OverallLoansTaken:               0,
+		RepaymentsFromIncome:            0,
+		RepaymentsFromBenefitsClawbacks: 0,
+		EndingBalanceWithInterest:       0,
+	}
+}
