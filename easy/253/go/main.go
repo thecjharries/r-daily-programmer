@@ -26,6 +26,13 @@ type LoanConsiderations struct {
 	IncomeStreamThousands  []float64
 }
 
+type LoanResults struct {
+	OverallLoansTaken               float64
+	RepaymentsFromIncome            float64
+	RepaymentsFromBenefitsClawbacks float64
+	EndingBalanceWithInterest       float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
