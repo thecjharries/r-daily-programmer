@@ -53,3 +53,40 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateLoanResults(c *C) {
+	var input LoanConsiderations
+	var output LoanResults
+	input = LoanConsiderations{
+		InterestRate:           2,
+		AnnualLoanAmount:       15000,
+		StartAge:               18,
+		ClawbackBalanceTrigger: 100000,
+		RoyaltyRateUnder65:     20,
+		RoyaltyRateOver65:      40,
+		IncomeStreamThousands:  []float64{0, 0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	}
+	output = LoanResults{
+		OverallLoansTaken:               1080,
+		RepaymentsFromIncome:            280,
+		RepaymentsFromBenefitsClawbacks: 270,
+		EndingBalanceWithInterest:       1169.09,
+	}
+	c.Assert(calculateLoanResults(input), DeepEquals, output)
+	input = LoanConsiderations{
+		InterestRate:           2,
+		AnnualLoanAmount:       15000,
+		StartAge:               18,
+		ClawbackBalanceTrigger: 100000,
+		RoyaltyRateUnder65:     20,
+		RoyaltyRateOver65:      40,
+		IncomeStreamThousands:  []float64{0, 0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 100, 120, 140, 160, 200, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
+	}
+	output = LoanResults{
+		OverallLoansTaken:               1005,
+		RepaymentsFromIncome:            584,
+		RepaymentsFromBenefitsClawbacks: 237,
+		EndingBalanceWithInterest:       509.487,
+	}
+	c.Assert(calculateLoanResults(input), DeepEquals, output)
+}
