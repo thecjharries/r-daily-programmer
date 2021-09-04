@@ -16,6 +16,16 @@ package main
 
 import "fmt"
 
+type LoanConsiderations struct {
+	InterestRate           float64
+	AnnualLoanAmount       float64
+	StartAge               float64
+	ClawbackBalanceTrigger float64
+	RoyaltyRateUnder65     float64
+	RoyaltyRateOver65      float64
+	IncomeStreamThousands  []float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
