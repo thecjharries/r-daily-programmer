@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type LoanConsiderations struct {
 	InterestRate           float64
@@ -39,11 +42,27 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func calculateLoanResults(input LoanConsiderations) LoanResults {
-	return LoanResults{
-		OverallLoansTaken:               0,
-		RepaymentsFromIncome:            0,
-		RepaymentsFromBenefitsClawbacks: 0,
-		EndingBalanceWithInterest:       0,
+func calculateLoanResults(input LoanConsiderations) (output LoanResults) {
+	currentRoyaltyRate := input.RoyaltyRateUnder65
+	for ageIndex, income := range input.IncomeStreamThousands {
+		if 65 <= ageIndex+int(input.StartAge) {
+			currentRoyaltyRate = input.RoyaltyRateOver65
+		}
+		output.OverallLoansTaken += input.AnnualLoanAmount
+		output.EndingBalanceWithInterest = output.EndingBalanceWithInterest*(1+input.InterestRate/100) + input.AnnualLoanAmount
+		currentAnnualIncome := income * 1000
+		currentRoyalty := currentRoyaltyRate * currentAnnualIncome / 100
+		currentClawback := 0.0
+		if input.ClawbackBalanceTrigger <= output.EndingBalanceWithInterest {
+			currentClawback = currentRoyaltyRate * input.AnnualLoanAmount / 100
+		}
+		output.RepaymentsFromIncome += currentRoyalty
+		output.RepaymentsFromBenefitsClawbacks += currentClawback
+		output.EndingBalanceWithInterest = output.EndingBalanceWithInterest - currentRoyalty - currentClawback
 	}
+	output.OverallLoansTaken = math.Round(output.OverallLoansTaken / 1000)
+	output.RepaymentsFromIncome = math.Round(output.RepaymentsFromIncome / 1000)
+	output.RepaymentsFromBenefitsClawbacks = math.Round(output.RepaymentsFromBenefitsClawbacks / 1000)
+	output.EndingBalanceWithInterest = math.Round(output.EndingBalanceWithInterest / 1000)
+	return
 }
