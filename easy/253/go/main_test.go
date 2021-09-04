@@ -86,7 +86,7 @@ func (s *MainSuite) TestCalculateLoanResults(c *C) {
 		OverallLoansTaken:               1005,
 		RepaymentsFromIncome:            584,
 		RepaymentsFromBenefitsClawbacks: 237,
-		EndingBalanceWithInterest:       509.487,
+		EndingBalanceWithInterest:       509,
 	}
 	c.Assert(calculateLoanResults(input), DeepEquals, output)
 }
