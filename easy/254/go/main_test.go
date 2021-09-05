@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestEncode(c *C) {
+	c.Assert(encode("foobar"), Equals, "ullyzi")
+	c.Assert(encode("wizard"), Equals, "draziw")
+	c.Assert(encode("/r/dailyprogrammer"), Equals, "/i/wzrobkiltiznnvi")
+	c.Assert(encode("gsrh rh zm vcznkov lu gsv zgyzhs xrksvi"), Equals, "this is an example of the atbash cipher")
+}
