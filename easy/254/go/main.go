@@ -51,6 +51,15 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func encode(input string) (output string) {
-	return
+func encode(input string) string {
+	var output []rune
+	for _, character := range input {
+		replacement, exists := atbashCipher[character]
+		if exists {
+			output = append(output, replacement)
+		} else {
+			output = append(output, character)
+		}
+	}
+	return string(output)
 }
