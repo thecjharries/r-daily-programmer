@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type Switches map[int]bool
+
+func NewSwitches(count int) Switches {
+	return make(Switches, count)
+}
+
 var zPrint = fmt.Println
 
 func main() {
