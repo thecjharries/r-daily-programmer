@@ -61,8 +61,11 @@ func (s *MainSuite) TestNewSwitches(c *C) {
 func (s *MainSuite) TestSwitchesToggle(c *C) {
 	switches := NewSwitches(10)
 	c.Assert(switches[3], Equals, false)
-	switches.Toggle(3, 6)
+	switches.Toggle(3, 4)
 	c.Assert(switches[3], Equals, true)
+	c.Assert(switches[7], Equals, false)
+	switches.Toggle(7, 5)
+	c.Assert(switches[7], Equals, true)
 }
 
 func (s *MainSuite) TestSwitchesGetOnCount(c *C) {
