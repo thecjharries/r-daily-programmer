@@ -26,6 +26,12 @@ func NewSwitches(count int) (switches Switches) {
 	return switches
 }
 
+func (s *Switches) Toggle(min, max int) {
+	for index := min; index <= max; index++ {
+		(*s)[index] = !(*s)[index]
+	}
+}
+
 var zPrint = fmt.Println
 
 func main() {
