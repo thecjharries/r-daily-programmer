@@ -18,8 +18,12 @@ import "fmt"
 
 type Switches map[int]bool
 
-func NewSwitches(count int) Switches {
-	return make(Switches, count)
+func NewSwitches(count int) (switches Switches) {
+	switches = make(Switches, count)
+	for index := 0; index < count; index++ {
+		switches[index] = false
+	}
+	return switches
 }
 
 var zPrint = fmt.Println
