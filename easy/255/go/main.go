@@ -27,7 +27,11 @@ func NewSwitches(count int) (switches Switches) {
 }
 
 func (s *Switches) Toggle(min, max int) {
-	for index := min; index <= max; index++ {
+	left, right := min, max
+	if min > max {
+		left, right = max, min
+	}
+	for index := left; index <= right; index++ {
 		(*s)[index] = !(*s)[index]
 	}
 }
