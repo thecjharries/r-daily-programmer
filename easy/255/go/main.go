@@ -32,6 +32,15 @@ func (s *Switches) Toggle(min, max int) {
 	}
 }
 
+func (s *Switches) GetOnCount() (total int) {
+	for _, value := range *s {
+		if value {
+			total++
+		}
+	}
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
