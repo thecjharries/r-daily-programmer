@@ -64,3 +64,13 @@ func (s *MainSuite) TestSwitchesToggle(c *C) {
 	switches.Toggle(3, 6)
 	c.Assert(switches[3], Equals, true)
 }
+
+func (s *MainSuite) TestSwitchesGetOnCount(c *C) {
+	switches := NewSwitches(10)
+	c.Assert(switches.GetOnCount(), Equals, 0)
+	switches.Toggle(3, 6)
+	switches.Toggle(0, 4)
+	switches.Toggle(7, 3)
+	switches.Toggle(9, 9)
+	c.Assert(switches.GetOnCount(), Equals, 7)
+}
