@@ -57,3 +57,10 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestNewSwitches(c *C) {
 	c.Assert(len(NewSwitches(10)), Equals, 10)
 }
+
+func (s *MainSuite) TestSwitchesToggle(c *C) {
+	switches := NewSwitches(10)
+	c.Assert(switches[3], Equals, false)
+	switches.Toggle(3, 6)
+	c.Assert(switches[3], Equals, true)
+}
