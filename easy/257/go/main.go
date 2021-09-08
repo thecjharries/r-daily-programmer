@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
@@ -64,7 +65,7 @@ const input = `    George Washington,	Feb 22 1732,	Westmoreland Co. Va.,	Dec 14 
     George W. Bush,	July 6 1946,	New Haven Conn.,	,
     Barack Obama,	Aug 4 1961,	Honolulu Hawaii,	,`
 
-var yearSelectionRegex = regexp.MustCompile(`(?U).*(\d{4}).*(\d{4}).*`)
+var yearSelectionRegex = regexp.MustCompile(`(?U).*(\d{4}).*(\d{4}|,\s*,).*`)
 
 var zPrint = fmt.Println
 
@@ -75,8 +76,15 @@ func main() {
 func parseYears() (output [][]int) {
 	split := strings.Split(input, "\n")
 	for _, line := range split {
+		current := make([]int, 2)
 		matches := yearSelectionRegex.FindStringSubmatch(line)
-		fmt.Println(matches)
+		current[0], _ = strconv.Atoi(matches[1])
+		possibleDeath, err := strconv.Atoi(matches[2])
+		if nil != err {
+			possibleDeath = 2016
+		}
+		current[1] = possibleDeath
+		output = append(output, current)
 	}
 	return
 }
