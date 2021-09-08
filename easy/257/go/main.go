@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 const input = `    George Washington,	Feb 22 1732,	Westmoreland Co. Va.,	Dec 14 1799,	Mount Vernon Va.
@@ -69,4 +70,13 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func parseYears() (output [][]int) {
+	split := strings.Split(input, "\n")
+	for _, line := range split {
+		matches := yearSelectionRegex.FindStringSubmatch(line)
+		fmt.Println(matches)
+	}
+	return
 }
