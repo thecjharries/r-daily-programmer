@@ -88,3 +88,27 @@ func parseYears() (output [][]int) {
 	}
 	return
 }
+
+func determinePromptYears(years [][]int) (result []int) {
+	counts := make(map[int]int)
+	for _, president := range years {
+		for index := president[0]; index <= president[1]; index++ {
+			_, exists := counts[index]
+			if exists {
+				counts[index] += 1
+			} else {
+				counts[index] = 1
+			}
+		}
+	}
+	currentMax := 0
+	for year, count := range counts {
+		if currentMax < count {
+			currentMax = count
+			result = []int{year}
+		} else if currentMax == count {
+			result = append(result, year)
+		}
+	}
+	return
+}
