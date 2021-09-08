@@ -31,8 +31,8 @@ func oblique(input []int) (output string) {
 	size := int(math.Sqrt(float64(len(input))))
 	for diagonalRank := 0; diagonalRank < size; diagonalRank++ {
 		currentRow := make([]string, 0)
-		for columnIndex := 0; columnIndex <= diagonalRank; columnIndex++ {
-			currentRow = append(currentRow, strconv.Itoa(input[columnIndex+size*(diagonalRank-columnIndex)]))
+		for rowIndex := 0; rowIndex <= diagonalRank; rowIndex++ {
+			currentRow = append(currentRow, strconv.Itoa(input[diagonalRank-rowIndex+size*rowIndex]))
 		}
 		output += fmt.Sprintf("%s\n", strings.Join(currentRow, " "))
 	}
