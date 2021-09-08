@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
 
 const input = `    George Washington,	Feb 22 1732,	Westmoreland Co. Va.,	Dec 14 1799,	Mount Vernon Va.
     John Adams,	Oct 30 1735,	Quincy Mass.,	July 4 1826,	Quincy Mass.
@@ -59,6 +62,8 @@ const input = `    George Washington,	Feb 22 1732,	Westmoreland Co. Va.,	Dec 14 
     Bill Clinton,	Aug 19 1946,	Hope Arkansas,	,
     George W. Bush,	July 6 1946,	New Haven Conn.,	,
     Barack Obama,	Aug 4 1961,	Honolulu Hawaii,	,`
+
+var yearSelectionRegex = regexp.MustCompile(`(?U).*(\d{4}).*(\d{4}).*`)
 
 var zPrint = fmt.Println
 
