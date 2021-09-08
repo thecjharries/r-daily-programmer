@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -110,5 +111,6 @@ func determinePromptYears(years [][]int) (result []int) {
 			result = append(result, year)
 		}
 	}
+	sort.Ints(result)
 	return
 }
