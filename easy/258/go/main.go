@@ -14,10 +14,23 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func pingIrcNode() {
+	connection, _ := net.Dial("tcp", "chat.freenode.net:6667")
+	defer (func() { _ = connection.Close() })()
+	_, _ = connection.Write([]byte("NICK wotw_test"))
+	_, _ = connection.Write([]byte("USER wotw_test 0 :CJ"))
+	readBuffer := make([]byte, 2048)
+	count, _ := connection.Read(readBuffer)
+	fmt.Println(string(readBuffer[:count]))
 }
