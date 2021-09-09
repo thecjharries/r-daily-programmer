@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestPingIrcNode(c *C) {
+	result := pingIrcNode()
+	c.Assert(strings.Contains(result, "NOTICE * :*** Looking up your ident..."), Equals, true)
 }
