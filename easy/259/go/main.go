@@ -45,5 +45,5 @@ func determineIpDistance(ip string) (distance float64) {
 		current, _ := keyCoordinates[ip[index:index+1]]
 		distance += math.Sqrt(math.Pow(current[0]-previous[0], 2) + math.Pow(current[1]-previous[1], 2))
 	}
-	return
+	return math.Round(distance*100) / 100
 }
