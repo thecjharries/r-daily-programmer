@@ -14,9 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-var keyCoordinates = map[string][2]int{
+var keyCoordinates = map[string][2]float64{
 	"0": {0, 0},
 	"1": {1, 0},
 	"2": {2, 0},
@@ -34,4 +37,13 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func determineIpDistance(ip string) (distance float64) {
+	for index := 1; index < len(ip); index++ {
+		previous, _ := keyCoordinates[ip[index-1:index]]
+		current, _ := keyCoordinates[ip[index:index+1]]
+		distance += math.Sqrt(math.Pow(current[0]-previous[0], 2) + math.Pow(current[1]-previous[1], 2))
+	}
+	return
 }
