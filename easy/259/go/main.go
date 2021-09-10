@@ -16,6 +16,20 @@ package main
 
 import "fmt"
 
+var keyCoordinates = map[string][2]int{
+	"0": {0, 0},
+	"1": {1, 0},
+	"2": {2, 0},
+	"3": {0, 1},
+	"4": {1, 1},
+	"5": {2, 1},
+	"6": {0, 2},
+	"7": {1, 2},
+	"8": {2, 2},
+	".": {0, 3},
+	"9": {1, 3},
+}
+
 var zPrint = fmt.Println
 
 func main() {
