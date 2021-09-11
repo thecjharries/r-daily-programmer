@@ -16,6 +16,33 @@ package main
 
 import "fmt"
 
+var doorStateMap = map[string]map[string]string{
+	"closed": {
+		"button_clicked": "opening",
+		"cycle_complete": "closed",
+	},
+	"opening": {
+		"button_clicked": "stopped_while_opening",
+		"cycle_complete": "open",
+	},
+	"open": {
+		"button_clicked": "closing",
+		"cycle_complete": "open",
+	},
+	"closing": {
+		"button_clicked": "stopped_while_closing",
+		"cycle_complete": "closed",
+	},
+	"stopped_while_opening": {
+		"button_clicked": "closing",
+		"cycle_complete": "stopped_while_opening",
+	},
+	"stopped_while_closing": {
+		"button_clicked": "opening",
+		"cycle_complete": "stopped_while_opening",
+	},
+}
+
 var zPrint = fmt.Println
 
 func main() {
