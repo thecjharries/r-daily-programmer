@@ -43,6 +43,8 @@ var doorStateMap = map[string]map[string]string{
 	},
 }
 
+const startingState string = "closed"
+
 var zPrint = fmt.Println
 
 func main() {
