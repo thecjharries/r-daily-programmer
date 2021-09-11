@@ -56,5 +56,7 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestDetermineFinalState(c *C) {
 	inputs := []string{"button_clicked", "cycle_complete", "button_clicked", "button_clicked", "button_clicked", "button_clicked", "button_clicked", "cycle_complete"}
+	c.Assert(determineFinalState(inputs[:1]), Equals, "opening")
+	c.Assert(determineFinalState(inputs[:2]), Equals, "open")
 	c.Assert(determineFinalState(inputs), Equals, "closed")
 }
