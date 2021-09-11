@@ -52,5 +52,9 @@ func main() {
 }
 
 func determineFinalState(inputs []string) (finalState string) {
+	finalState = startingState
+	for _, input := range inputs {
+		finalState, _ = doorStateMap[finalState][input]
+	}
 	return
 }
