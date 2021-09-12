@@ -23,5 +23,20 @@ func main() {
 }
 
 func isMagicSquare(input []int) bool {
-	return false
+	firstDiagonalSum := 0
+	secondDiagonalSum := 0
+	for index := 0; index < 3; index++ {
+		firstDiagonalSum += input[2*(index+1)]
+		secondDiagonalSum += input[index*4]
+		rowSum := 0
+		columnSum := 0
+		for subIndex := 0; subIndex < 3; subIndex++ {
+			rowSum += input[subIndex+index*3]
+			columnSum += input[index+subIndex*3]
+		}
+		if 15 != rowSum || 15 != columnSum {
+			return false
+		}
+	}
+	return 15 == firstDiagonalSum && 15 == secondDiagonalSum
 }
