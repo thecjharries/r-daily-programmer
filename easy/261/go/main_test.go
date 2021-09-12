@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsMagicSquare(c *C) {
+	c.Assert(isMagicSquare([]int{8, 1, 6, 3, 5, 7, 4, 9, 2}), Equals, true)
+	c.Assert(isMagicSquare([]int{2, 7, 6, 9, 5, 1, 4, 3, 8}), Equals, true)
+	c.Assert(isMagicSquare([]int{3, 5, 7, 8, 1, 6, 4, 9, 2}), Equals, false)
+	c.Assert(isMagicSquare([]int{8, 1, 6, 7, 5, 3, 4, 9, 2}), Equals, false)
+}
