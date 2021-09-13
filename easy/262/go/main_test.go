@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseNumeric(c *C) {
+	c.Assert(parseNumeric("123").(int), Equals, 123)
+	c.Assert(parseNumeric("44.234").(float64), Equals, 44.234)
+	c.Assert(parseNumeric("0x123N").(string), Equals, "0x123N")
+}
