@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +25,16 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func parseNumeric(input string) (output interface{}) {
-	return
+func parseNumeric(input string) interface{} {
+	intResult, intErr := strconv.Atoi(input)
+	if nil != intErr {
+		floatResult, floatErr := strconv.ParseFloat(input, 64)
+		if nil != floatErr {
+			return input
+		} else {
+			return floatResult
+		}
+	} else {
+		return intResult
+	}
 }
