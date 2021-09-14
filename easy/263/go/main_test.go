@@ -55,8 +55,8 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestCalculateShannonEntropy(c *C) {
-	c.Assert(calculateShannonEntropy("122333444455555666666777777788888888"), Equals, 2.794208683)
-	c.Assert(calculateShannonEntropy("563881467447538846567288767728553786"), Equals, 2.794208683)
-	c.Assert(calculateShannonEntropy("https://www.reddit.com/r/dailyprogrammer"), Equals, 4.056198332)
-	c.Assert(calculateShannonEntropy("int main(int argc, char *argv[])"), Equals, 3.866729296)
+	c.Assert(calculateShannonEntropy("122333444455555666666777777788888888"), Equals, 2.794208684)
+	c.Assert(calculateShannonEntropy("563881467447538846567288767728553786"), Equals, 2.794208684)
+	c.Assert(calculateShannonEntropy("https://www.reddit.com/r/dailyprogrammer"), Equals, 4.056198333)
+	c.Assert(calculateShannonEntropy("int main(int argc, char *argv[])"), Equals, 3.866729297)
 }
