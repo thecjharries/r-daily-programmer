@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,17 @@ func main() {
 }
 
 func calculateShannonEntropy(input string) (entropy float64) {
+	frequencies := make(map[rune]float64)
+	for _, character := range input {
+		_, exists := frequencies[character]
+		if exists {
+			frequencies[character] += 1
+		} else {
+			frequencies[character] = 1
+		}
+	}
+	for _, frequency := range frequencies {
+		entropy += -1 * (frequency / float64(len(input))) * math.Log2(frequency/float64(len(input)))
+	}
 	return
 }
