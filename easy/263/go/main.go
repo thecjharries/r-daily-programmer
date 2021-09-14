@@ -38,5 +38,5 @@ func calculateShannonEntropy(input string) (entropy float64) {
 	for _, frequency := range frequencies {
 		entropy += -1 * (frequency / float64(len(input))) * math.Log2(frequency/float64(len(input)))
 	}
-	return
+	return math.Round(entropy*1000000000) / 1000000000
 }
