@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindAndSortByPrefix(c *C) {
+	input := []string{"    sum = i + sum;", "  {", "  }", "  int sum = 0", "  for (int i = 0; i <= 100; ++i)", "  std::cout << sum;", "  return 0;", "{", "}", "#include <iostream>", "int main()"}
+	desiredRemaining := []string{"  {", "  }", "  int sum = 0", "  for (int i = 0; i <= 100; ++i)", "  std::cout << sum;", "  return 0;", "{", "}", "#include <iostream>", "int main()"}
+	desiredSorted := []string{"    sum = i + sum;"}
+	remaining, sorted := findAndSortByPrefix(input, "    ")
+	c.Assert(remaining, DeepEquals, desiredRemaining)
+	c.Assert(sorted, DeepEquals, desiredSorted)
+}
