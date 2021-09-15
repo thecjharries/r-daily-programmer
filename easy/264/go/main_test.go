@@ -63,4 +63,8 @@ func (s *MainSuite) TestFindAndSortByPrefix(c *C) {
 	c.Assert(sorted, DeepEquals, desiredSorted)
 }
 
-func (s *MainSuite)
+func (s *MainSuite) TestSortCode(c *C) {
+	input := []string{"    sum = i + sum;", "  {", "  }", "  int sum = 0", "  for (int i = 0; i <= 100; ++i)", "  std::cout << sum;", "  return 0;", "{", "}", "#include <iostream>", "int main()"}
+	output := []string{"#include <iostream>", "{", "}", "int main()", "  {", "  }", "  int sum = 0", "  for (int i = 0; i <= 100; ++i)", "  std::cout << sum;", "  return 0;", "    sum = i + sum;"}
+	c.Assert(sortCode(input), DeepEquals, output)
+}
