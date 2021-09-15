@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,8 +26,12 @@ func main() {
 }
 
 func findAndSortByPrefix(input []string, prefix string) (remaining, sorted []string) {
-	//for _, line := input {
-	//
-	//}
+	for _, line := range input {
+		if strings.HasPrefix(line, prefix) {
+			sorted = append(sorted, line)
+		} else {
+			remaining = append(remaining, line)
+		}
+	}
 	return
 }
