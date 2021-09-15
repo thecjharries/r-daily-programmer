@@ -35,3 +35,15 @@ func findAndSortByPrefix(input []string, prefix string) (remaining, sorted []str
 	}
 	return
 }
+
+func sortCode(input []string) (sorted []string) {
+	var currentSort []string
+	remaining, headerSort := findAndSortByPrefix(input, "#")
+	remaining, currentSort = findAndSortByPrefix(remaining, "    ")
+	sorted = append(currentSort, sorted...)
+	remaining, currentSort = findAndSortByPrefix(remaining, "  ")
+	sorted = append(currentSort, sorted...)
+	sorted = append(remaining, sorted...)
+	sorted = append(headerSort, sorted...)
+	return
+}

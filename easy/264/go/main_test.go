@@ -62,3 +62,5 @@ func (s *MainSuite) TestFindAndSortByPrefix(c *C) {
 	c.Assert(remaining, DeepEquals, desiredRemaining)
 	c.Assert(sorted, DeepEquals, desiredSorted)
 }
+
+func (s *MainSuite)
