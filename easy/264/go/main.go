@@ -21,3 +21,10 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findAndSortByPrefix(input []string, prefix string) (remaining, sorted []string) {
+	//for _, line := input {
+	//
+	//}
+	return
+}
