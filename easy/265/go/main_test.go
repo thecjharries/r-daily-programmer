@@ -61,3 +61,7 @@ func (s *MainSuite) TestGeneratePermutations(c *C) {
 	output = [][]int{{0, 1, 2}, {1, 0, 2}, {2, 0, 1}, {0, 2, 1}, {1, 2, 0}, {2, 1, 0}}
 	c.Assert(generatePermutations(2), DeepEquals, output)
 }
+
+func (s *MainSuite) TestGetSpecificPerm(c *C) {
+	c.Assert(getSpecificPerm(2, 3), DeepEquals, []int{2, 0, 1})
+}
