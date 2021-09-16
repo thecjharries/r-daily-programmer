@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gitchander/permutation"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +26,16 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func generatePermutations(size int) (permutations [][]int) {
+func generatePermutations(max int) (permutations [][]int) {
+	var input []int
+	for index := 0; index <= max; index++ {
+		input = append(input, index)
+	}
+	perms := permutation.New(permutation.IntSlice(input))
+	for perms.Next() {
+		singlePerm := make([]int, len(input))
+		copy(singlePerm, input)
+		permutations = append(permutations, singlePerm)
+	}
 	return
 }
