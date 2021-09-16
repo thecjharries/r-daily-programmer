@@ -39,3 +39,7 @@ func generatePermutations(max int) (permutations [][]int) {
 	}
 	return
 }
+
+func getSpecificPerm(max, permNumber int) []int {
+	return generatePermutations(max)[permNumber-1]
+}
