@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGeneratePermutations(c *C) {
+	var output [][]int
+	output = [][]int{{0, 1}, {1, 0}}
+	c.Assert(generatePermutations(1), DeepEquals, output)
+	output = [][]int{{0, 1, 2}, {0, 2, 1}, {1, 0, 2}, {1, 2, 0}, {2, 0, 1}, {2, 1, 0}}
+	c.Assert(generatePermutations(2), DeepEquals, output)
+}
