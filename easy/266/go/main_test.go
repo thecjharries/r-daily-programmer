@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDetermineNodeDegrees(c *C) {
+	var input [][2]int
+	var output map[int]int
+	input = [][2]int{{1, 2}, {1, 3}}
+	output = map[int]int{
+		1: 2,
+		2: 1,
+		3: 1,
+	}
+	c.Assert(determineNodeDegrees(input), DeepEquals, output)
+}
