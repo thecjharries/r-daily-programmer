@@ -22,6 +22,17 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func determineNodeDegrees(input [][2]int) (degrees []int) {
+func determineNodeDegrees(input [][2]int) (degrees map[int]int) {
+	degrees = make(map[int]int)
+	for _, edge := range input {
+		for _, node := range edge {
+			_, exists := degrees[node]
+			if exists {
+				degrees[node] += 1
+			} else {
+				degrees[node] = 1
+			}
+		}
+	}
 	return
 }
