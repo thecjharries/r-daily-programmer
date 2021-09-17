@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func determineNodeDegrees(input [][2]int) (degrees []int) {
+	return
+}
