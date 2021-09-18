@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +26,23 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func buildPlacesNotWon(place int) (output string) {
-	return
+func buildPlacesNotWon(place int) string {
+	var placesNotWon []string
+	for index := 0; index < 101; index++ {
+		if place == index {
+			continue
+		}
+		placeNotWon := strconv.Itoa(index)
+		if strings.HasSuffix(placeNotWon, "1") {
+			placeNotWon += "st"
+		} else if strings.HasSuffix(placeNotWon, "3") {
+			placeNotWon += "rd"
+		} else if strings.HasSuffix(placeNotWon, "2") {
+			placeNotWon += "nd"
+		} else {
+			placeNotWon += "th"
+		}
+		placesNotWon = append(placesNotWon, placeNotWon)
+	}
+	return strings.Join(placesNotWon, ", ")
 }
