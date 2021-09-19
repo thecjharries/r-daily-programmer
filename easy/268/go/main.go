@@ -24,10 +24,15 @@ var zPrint = fmt.Println
 
 func main() {
 	engine := gin.Default()
-	engine.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	engine.GET("/ping", endpointPing)
 	_ = engine.Run()
+}
+
+func endpointPing(context *gin.Context) {
+	context.JSON(
+		200,
+		gin.H{
+			"message": "pong",
+		},
+	)
 }
