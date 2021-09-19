@@ -14,10 +14,20 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/gin-gonic/gin"
+)
 
 var zPrint = fmt.Println
 
 func main() {
-	_, _ = zPrint("hello world")
+	engine := gin.Default()
+	engine.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	_ = engine.Run()
 }
