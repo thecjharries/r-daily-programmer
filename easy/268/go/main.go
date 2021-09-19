@@ -23,9 +23,13 @@ import (
 var zPrint = fmt.Println
 
 func main() {
+	_ = bootstrapApp().Run()
+}
+
+func bootstrapApp() *gin.Engine {
 	engine := gin.Default()
 	engine.GET("/ping", endpointPing)
-	_ = engine.Run()
+	return engine
 }
 
 func endpointPing(context *gin.Context) {
