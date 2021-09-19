@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,7 +35,7 @@ func bootstrapApp() *gin.Engine {
 
 func endpointPing(context *gin.Context) {
 	context.JSON(
-		200,
+		http.StatusOK,
 		gin.H{
 			"message": "pong",
 		},
