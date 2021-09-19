@@ -45,11 +45,3 @@ func (s *MainSuite) SetUpTest(c *C) {
 func (s *MainSuite) TearDownTest(c *C) {
 	zPrint = fmt.Println
 }
-
-func (s *MainSuite) TestMain(c *C) {
-	c.Assert(printCallCount, Equals, 0)
-	c.Assert(printSpyContents, Equals, "")
-	main()
-	c.Assert(printCallCount, Equals, 1)
-	c.Assert(printSpyContents, Equals, "hello world")
-}
