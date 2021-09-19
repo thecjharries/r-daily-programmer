@@ -1,5 +1,5 @@
 test:
-	go test -v ./... -cover -race -coverprofile=.coverage.out
+	go test -v ./... -cover -race -coverprofile=.coverage.out -tags test
 
 coverage: test
 	go tool cover -func=.coverage.out

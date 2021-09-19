@@ -12,32 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//+build !test
+
 package main
 
 import (
 	"fmt"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_ = bootstrapApp().Run()
-}
-
-func bootstrapApp() *gin.Engine {
-	engine := gin.Default()
-	engine.GET("/ping", endpointPing)
-	return engine
-}
-
-func endpointPing(context *gin.Context) {
-	context.JSON(
-		http.StatusOK,
-		gin.H{
-			"message": "pong",
-		},
-	)
 }

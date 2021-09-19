@@ -30,25 +30,6 @@ type MainSuite struct{}
 
 var _ = Suite(&MainSuite{})
 
-var printCallCount int
-var printSpyContents string
-
-func printSpy(a ...interface{}) (n int, err error) {
-	printSpyContents = fmt.Sprint(a...)
-	printCallCount++
-	return
-}
-
-func (s *MainSuite) SetUpTest(c *C) {
-	printCallCount = 0
-	printSpyContents = ""
-	zPrint = printSpy
-}
-
-func (s *MainSuite) TearDownTest(c *C) {
-	zPrint = fmt.Println
-}
-
 func (s *MainSuite) TestPingRoute(c *C) {
 	server := httptest.NewServer(bootstrapApp())
 	defer server.Close()
