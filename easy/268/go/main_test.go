@@ -16,6 +16,9 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -44,4 +47,15 @@ func (s *MainSuite) SetUpTest(c *C) {
 
 func (s *MainSuite) TearDownTest(c *C) {
 	zPrint = fmt.Println
+}
+
+func (s *MainSuite) TestPingRoute(c *C) {
+	server := httptest.NewServer(bootstrapApp())
+	defer server.Close()
+	response, pingErr := http.Get(fmt.Sprintf("%s/ping", server.URL))
+	c.Assert(pingErr, IsNil)
+	c.Assert(response.StatusCode, Equals, http.StatusOK)
+	defer (func() { _ = response.Body.Close() })()
+	bodyContents, _ := ioutil.ReadAll(response.Body)
+	c.Assert(string(bodyContents), Equals, "{\"message\":\"pong\"}")
 }
