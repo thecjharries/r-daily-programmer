@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIndentProperly(c *C) {
+	c.Assert(indentProperly("VAR I\n·FOR I=1 TO 31\n»»»»IF !(I MOD 3) THEN\n··PRINT \"FIZZ\"\n··»»ENDIF\n»»»»····IF !(I MOD 5) THEN\n»»»»··PRINT \"BUZZ\"\n··»»»»»»ENDIF\n»»»»IF (I MOD 3) && (I MOD 5) THEN\n······PRINT \"FIZZBUZZ\"\n··»»ENDIF\n»»»»·NEXT", "····"), Equals, "VAR I\nFOR I=1 TO 31\n····IF !(I MOD 3) THEN\n········PRINT \"FIZZ\"\n····ENDIF\n····IF !(I MOD 5) THEN\n········PRINT \"BUZZ\"\n····ENDIF\n····IF (I MOD 3) && (I MOD 5) THEN\n········PRINT \"FIZZBUZZ\"\n····ENDIF\nNEXT")
+}
