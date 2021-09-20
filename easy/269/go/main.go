@@ -14,7 +14,13 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
+
+var notCapitalLetterPattern = regexp.MustCompile(`^[^A-Z]+`)
 
 var zPrint = fmt.Println
 
@@ -23,5 +29,19 @@ func main() {
 }
 
 func indentProperly(input, delimiter string) (output string) {
-	return
+	exploded := strings.Split(input, "\n")
+	var final []string
+	currentIndentation := 0
+	for _, line := range exploded {
+		correctedLine := notCapitalLetterPattern.ReplaceAllString(line, "")
+		if strings.HasPrefix(correctedLine, "ENDIF") || strings.HasPrefix(correctedLine, "NEXT") {
+			currentIndentation--
+		}
+		final = append(final, fmt.Sprintf("%s%s", strings.Repeat(delimiter, currentIndentation), correctedLine))
+		fmt.Println(correctedLine)
+		if strings.HasPrefix(correctedLine, "IF ") || strings.HasPrefix(correctedLine, "FOR ") {
+			currentIndentation++
+		}
+	}
+	return strings.Join(final, "\n")
 }
