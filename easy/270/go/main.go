@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,19 @@ func main() {
 }
 
 func transposeText(input string) string {
-	return ""
+	exploded := strings.Split(input, "\n")
+	var outputExploded []string
+	for lineIndex, line := range exploded {
+		for characterIndex, _ := range line {
+			if len(outputExploded) < characterIndex+1 {
+				outputExploded = append(outputExploded, "")
+			}
+			if len(outputExploded[characterIndex]) < lineIndex {
+				fmt.Println(line, characterIndex, line[characterIndex:characterIndex+1])
+				outputExploded[characterIndex] += strings.Repeat(" ", lineIndex-len(outputExploded[characterIndex]))
+			}
+			outputExploded[characterIndex] = strings.TrimRight(fmt.Sprintf("%s%s", outputExploded[characterIndex], line[characterIndex:characterIndex+1]), " ")
+		}
+	}
+	return strings.Join(outputExploded, "\n")
 }
