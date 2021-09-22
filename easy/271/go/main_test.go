@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateProbabilityOfSingleAttackKill(c *C) {
+	c.Assert(calculateProbabilityOfSingleAttackKill(4, 1), Equals, 1.0)
+	c.Assert(calculateProbabilityOfSingleAttackKill(4, 4), Equals, 0.25)
+	c.Assert(calculateProbabilityOfSingleAttackKill(4, 5), Equals, 0.25)
+	c.Assert(calculateProbabilityOfSingleAttackKill(4, 6), Equals, 0.1875)
+	c.Assert(calculateProbabilityOfSingleAttackKill(1, 10), Equals, 1.0)
+	c.Assert(calculateProbabilityOfSingleAttackKill(100, 200), Equals, 0.0001)
+	c.Assert(calculateProbabilityOfSingleAttackKill(8, 20), Equals, 0.009765625)
+}
