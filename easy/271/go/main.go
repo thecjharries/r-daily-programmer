@@ -23,5 +23,14 @@ func main() {
 }
 
 func calculateProbabilityOfSingleAttackKill(sides, health float64) float64 {
-	return 0
+	probability := 1.0
+	currentHealth := health
+	for currentHealth > sides {
+		probability *= 1 / sides
+		currentHealth -= sides
+	}
+	if 0 < currentHealth {
+		probability *= (1 + sides - currentHealth) / sides
+	}
+	return probability
 }
