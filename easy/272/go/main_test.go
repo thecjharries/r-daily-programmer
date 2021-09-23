@@ -73,6 +73,8 @@ func (s *MainSuite) TestScrabbleTilesRemoveManyTiles(c *C) {
 	c.Assert(tiles["A"], Equals, 8)
 }
 
-//func (s *MainSuite) TestScrableTilesPrintRemaining(c *C) {
-//	tiles := NewEnglishScrabbleTiles()
-//}
+func (s *MainSuite) TestScrableTilesPrintRemaining(c *C) {
+	tiles := NewEnglishScrabbleTiles()
+	tiles.RemoveManyTiles("AEERTYOXMCNB_S")
+	c.Assert(tiles.PrintRemaining(), Equals, "10: E\n9: I\n8: A\n7: O\n5: N, R, T\n4: D, L, U\n3: G, S\n2: F, H, P, V, W\n1: B, C, J, K, M, Q, Y, Z, _\n0: X")
+}
