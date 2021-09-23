@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type ScrabbleTiles map[string]int
+
 var zPrint = fmt.Println
 
 func main() {
