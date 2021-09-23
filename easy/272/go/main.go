@@ -67,6 +67,12 @@ func (t *ScrabbleTiles) RemoveTile(tile string) {
 	}
 }
 
+func (t *ScrabbleTiles) RemoveManyTiles(tiles string) {
+	for index := 0; index < len(tiles); index++ {
+		t.RemoveTile(tiles[index : index+1])
+	}
+}
+
 func (t *ScrabbleTiles) PrintRemaining() string {
 	tilesByCount := make(map[int][]string)
 	var counts []int

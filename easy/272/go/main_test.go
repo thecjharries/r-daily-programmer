@@ -65,3 +65,7 @@ func (s *MainSuite) TestScrabbleTilesRemoveTile(c *C) {
 	c.Assert(func() { tiles.RemoveTile("Z") }, Not(Panics), "")
 	c.Assert(func() { tiles.RemoveTile("Z") }, Panics, "There are no remaining tiles of that letter")
 }
+
+//func (s *MainSuite) TestScrableTilesPrintRemaining(c *C) {
+//	tiles := NewEnglishScrabbleTiles()
+//}
