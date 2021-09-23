@@ -58,3 +58,10 @@ func (s *MainSuite) TestNewEnglishScrabbleTiles(c *C) {
 	tiles := NewEnglishScrabbleTiles()
 	c.Assert(len(tiles), Equals, 27)
 }
+
+func (s *MainSuite) TestScrabbleTilesRemoveTile(c *C) {
+	tiles := NewEnglishScrabbleTiles()
+	c.Assert(func() { tiles.RemoveTile("1") }, Panics, "No such tile")
+	c.Assert(func() { tiles.RemoveTile("Z") }, Not(Panics), "")
+	c.Assert(func() { tiles.RemoveTile("Z") }, Panics, "There are no remaining tiles of that letter")
+}
