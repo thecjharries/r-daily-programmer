@@ -50,9 +50,18 @@ func NewEnglishScrabbleTiles() ScrabbleTiles {
 	}
 }
 
-//func (t *ScrabbleTiles) RemoveTile(tile string) {
-//
-//}
+func (t *ScrabbleTiles) RemoveTile(tile string) {
+	count, exists := (*t)[tile]
+	if exists {
+		if count > 0 {
+			(*t)[tile] -= 1
+		} else {
+			panic("There are no remaining tiles of that letter")
+		}
+	} else {
+		panic("No such tile")
+	}
+}
 
 var zPrint = fmt.Println
 
