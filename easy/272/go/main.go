@@ -85,7 +85,7 @@ func (t *ScrabbleTiles) PrintRemaining() string {
 			tilesByCount[value] = []string{key}
 		}
 	}
-	sort.Ints(counts)
+	sort.Sort(sort.Reverse(sort.IntSlice(counts)))
 	var exploded []string
 	for _, key := range counts {
 		sort.Strings(tilesByCount[key])
