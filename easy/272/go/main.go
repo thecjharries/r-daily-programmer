@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 type ScrabbleTiles map[string]int
 
@@ -61,6 +65,27 @@ func (t *ScrabbleTiles) RemoveTile(tile string) {
 	} else {
 		panic("No such tile")
 	}
+}
+
+func (t *ScrabbleTiles) PrintRemaining() string {
+	tilesByCount := make(map[int][]string)
+	var counts []int
+	for key, value := range *t {
+		_, exists := tilesByCount[value]
+		if exists {
+			tilesByCount[value] = append(tilesByCount[value], key)
+		} else {
+			counts = append(counts, value)
+			tilesByCount[value] = []string{key}
+		}
+	}
+	sort.Ints(counts)
+	var exploded []string
+	for _, key := range counts {
+		sort.Strings(tilesByCount[key])
+		exploded = append(exploded, fmt.Sprintf("%d: %s", key, strings.Join(tilesByCount[key], ", ")))
+	}
+	return strings.Join(exploded, "\n")
 }
 
 var zPrint = fmt.Println
