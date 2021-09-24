@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertInput(c *C) {
+	c.Assert(convertInput("3.1416rd"), Equals, "180d")
+	c.Assert(convertInput("90dr"), Equals, "1.57r")
+}
