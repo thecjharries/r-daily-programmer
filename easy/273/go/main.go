@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var inputPattern = regexp.MustCompile(`^(.*)(rd|dr)$`)
 
 var zPrint = fmt.Println
 
