@@ -55,6 +55,6 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestConvertInput(c *C) {
-	c.Assert(convertInput("3.1416rd"), Equals, "180d")
-	c.Assert(convertInput("90dr"), Equals, "1.57r")
+	c.Assert(convertInput("3.1416rd"), Equals, "180.000421d")
+	c.Assert(convertInput("90dr"), Equals, "1.570796r")
 }
