@@ -16,7 +16,9 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"regexp"
+	"strconv"
 )
 
 var inputPattern = regexp.MustCompile(`^(.*)(rd|dr)$`)
@@ -28,5 +30,12 @@ func main() {
 }
 
 func convertInput(input string) (output string) {
+	matches := inputPattern.FindStringSubmatch(input)
+	startingNumber, _ := strconv.ParseFloat(matches[1], 64)
+	if "rd" == matches[2] {
+		output = fmt.Sprintf("%fd", startingNumber*180/math.Pi)
+	} else {
+		output = fmt.Sprintf("%fr", startingNumber*math.Pi/180)
+	}
 	return
 }
