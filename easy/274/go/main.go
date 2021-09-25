@@ -27,11 +27,10 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func decrypt(cipherText []int) string {
+func decrypt(cipherText []int) (output string) {
 	exploded := strings.Split(keyText, " ")
-	var output []string
 	for _, element := range cipherText {
-		output = append(output, exploded[element-1])
+		output += exploded[element-1][0:1]
 	}
-	return strings.Join(output, " ")
+	return
 }
