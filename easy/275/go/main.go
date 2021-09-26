@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,16 @@ func main() {
 }
 
 func validateChemicalSymbol(element, symbol string) bool {
-	return false
+	sanitizedElement := strings.ToLower(element)
+	sanitizedSymbol := strings.ToLower(symbol)
+	symbolIndex := 0
+	for elementIndex, _ := range sanitizedElement {
+		if sanitizedElement[elementIndex:elementIndex+1] == sanitizedSymbol[symbolIndex:symbolIndex+1] {
+			symbolIndex++
+		}
+		if 1 < symbolIndex {
+			break
+		}
+	}
+	return 1 < symbolIndex
 }
