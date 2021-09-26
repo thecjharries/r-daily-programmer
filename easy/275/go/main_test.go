@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestValidateChemicalSymbol(c *C) {
+	c.Assert(validateChemicalSymbol("Spenglerium", "Ee"), Equals, true)
+	c.Assert(validateChemicalSymbol("Zeddemorium", "Zr"), Equals, true)
+	c.Assert(validateChemicalSymbol("Venkmine", "Kn"), Equals, true)
+	c.Assert(validateChemicalSymbol("Stantzon", "Zt"), Equals, false)
+	c.Assert(validateChemicalSymbol("Melintzum", "Nn"), Equals, false)
+	c.Assert(validateChemicalSymbol("Tullium", "Ty"), Equals, false)
+}
