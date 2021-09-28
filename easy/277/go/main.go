@@ -30,14 +30,20 @@ func NewFraction(numerator, denominator int) *Fraction {
 	}
 }
 
-func (f *Fraction) Reduce() {
+func (f *Fraction) Reduce() *Fraction {
 	a := f.Numerator
 	b := f.Denominator
-	for 0 == a%b {
+	if a < b {
+		a = f.Denominator
+		b = f.Numerator
+	}
+	for 0 < a%b {
+		fmt.Println(a, b, a%b)
 		a, b = b, a%b
 	}
 	f.Numerator /= b
 	f.Denominator /= b
+	return f
 }
 
 func main() {
