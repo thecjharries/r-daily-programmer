@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPrintWordRectangle(c *C) {
+	c.Assert(printWordRectangle("rekt", 1, 1), Equals, "rekt\ne  k\nk  e\ntker\n")
+	c.Assert(printWordRectangle("rekt", 2, 2), Equals, "rektker\ne  k  e\nk  e  k\ntkerekt\nk  e  k\ne  k  e\nrektker\n")
+}
