@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewFraction(c *C) {
+	fraction := NewFraction(1, 2)
+	c.Assert(fraction.Numerator, Equals, 1)
+	c.Assert(fraction.Denominator, Equals, 2)
+}

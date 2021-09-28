@@ -23,6 +23,13 @@ type Fraction struct {
 	Denominator int
 }
 
+func NewFraction(numerator, denominator int) *Fraction {
+	return &Fraction{
+		Numerator:   numerator,
+		Denominator: denominator,
+	}
+}
+
 func main() {
 	_, _ = zPrint("hello world")
 }
