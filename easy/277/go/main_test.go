@@ -59,3 +59,8 @@ func (s *MainSuite) TestNewFraction(c *C) {
 	c.Assert(fraction.Numerator, Equals, 1)
 	c.Assert(fraction.Denominator, Equals, 2)
 }
+
+func (s *MainSuite) TestFractionReduce(c *C) {
+	c.Assert(NewFraction(4, 8).Reduce(), DeepEquals, NewFraction(1, 2))
+	c.Assert(NewFraction(51478, 5536).Reduce(), DeepEquals, NewFraction(25739, 2768))
+}
