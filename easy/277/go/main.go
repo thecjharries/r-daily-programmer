@@ -18,6 +18,11 @@ import "fmt"
 
 var zPrint = fmt.Println
 
+type Fraction struct {
+	Numerator   int
+	Denominator int
+}
+
 func main() {
 	_, _ = zPrint("hello world")
 }
