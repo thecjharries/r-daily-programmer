@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func insertWeave(first, second []int) (woven []int) {
+	return
+}
