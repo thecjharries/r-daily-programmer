@@ -23,5 +23,12 @@ func main() {
 }
 
 func insertWeave(first, second []int) (woven []int) {
+	firstIndex := 0
+	for secondIndex := 0; secondIndex < len(second)-1; secondIndex++ {
+		woven = append(woven, second[secondIndex], first[firstIndex])
+		firstIndex++
+		firstIndex %= len(first)
+	}
+	woven = append(woven, second[len(second)-1])
 	return
 }
