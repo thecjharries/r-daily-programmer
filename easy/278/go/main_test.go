@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestInsertWeave(c *C) {
+	c.Assert(insertWeave([]int{11}, []int{0, 1, 2, 3}), DeepEquals, []int{0, 11, 1, 11, 2, 11, 3})
+	c.Assert(insertWeave([]int{11, 12}, []int{0, 1, 2, 3}), DeepEquals, []int{0, 11, 1, 12, 2, 11, 3})
+	c.Assert(insertWeave([]int{11, 12, 13}, []int{0, 1}), DeepEquals, []int{0, 11, 1})
+}
