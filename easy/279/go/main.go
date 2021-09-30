@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/tejainece/uu"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +27,12 @@ func main() {
 }
 
 func uuencode(input string) (output string) {
+	inputAsBytes := []byte(input)
+	index := 0
+	for index < len(inputAsBytes)-45 {
+		output += string(uu.EncodeLine(inputAsBytes[index : index+45]))
+		index += 45
+	}
+	output += string(uu.EncodeLine(inputAsBytes[index-45:]))
 	return
 }
