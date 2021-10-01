@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func convertHandCountingToSum(input string) int {
+	return -1
+}
