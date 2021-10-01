@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,23 @@ func main() {
 }
 
 func convertHandCountingToSum(input string) int {
-	return -1
+	ones, tens := "", ""
+	for index := 0; index < 5; index++ {
+		ones += input[len(input)-1-index : len(input)-index]
+		tens += input[index : index+1]
+	}
+	ones = strings.TrimLeft(ones, "0")
+	tens = strings.TrimLeft(tens, "0")
+	if strings.Contains(ones[:len(ones)-1], "0") || strings.Contains(tens[:len(tens)-1], "0") {
+		return -1
+	}
+	sum := strings.Count(ones, "1")
+	if "1" == ones[len(ones)-1:] {
+		sum += 4
+	}
+	sum += strings.Count(tens, "1") * 10
+	if "1" == tens[len(tens)-1:] {
+		sum += 40
+	}
+	return sum
 }
