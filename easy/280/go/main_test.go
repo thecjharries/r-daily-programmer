@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertHandCountingToSum(c *C) {
+	c.Assert(convertHandCountingToSum("0111011100"), Equals, 37)
+	c.Assert(convertHandCountingToSum("1010010000"), Equals, -1)
+	c.Assert(convertHandCountingToSum("0011101110"), Equals, 73)
+	c.Assert(convertHandCountingToSum("0000110000"), Equals, 55)
+	c.Assert(convertHandCountingToSum("1111110001"), Equals, -1)
+}
