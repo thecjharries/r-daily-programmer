@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -37,4 +38,10 @@ func findBaseUpTo16(input string) int {
 		return base + 1
 	}
 	return 16
+}
+
+func findLowestBaseAndBase10(input string) string {
+	base := findBaseUpTo16(input)
+	representation, _ := strconv.ParseInt(input, base, 0)
+	return fmt.Sprintf("base %d => %d", representation, base)
 }
