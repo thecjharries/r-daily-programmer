@@ -14,10 +14,27 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func findBaseUpTo16(input string) int {
+	currentMax := int32(-1)
+	for _, character := range input {
+		if currentMax < character {
+			currentMax = character
+		}
+	}
+	base := strings.Index("0123456789abcdef", string(currentMax))
+	if 0 < base {
+		return base + 1
+	}
+	return 16
 }
