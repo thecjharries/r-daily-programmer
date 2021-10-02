@@ -61,3 +61,10 @@ func (s *MainSuite) TestFindBaseUpTo16(c *C) {
 	c.Assert(findBaseUpTo16("ff"), Equals, 16)
 	c.Assert(findBaseUpTo16("z"), Equals, 16)
 }
+
+func (s *MainSuite) TestFindLowestBaseAndBase10(c *C) {
+	c.Assert(findLowestBaseAndBase10("1"), Equals, "base 2 => 1")
+	c.Assert(findLowestBaseAndBase10("21"), Equals, "base 3 => 7")
+	c.Assert(findLowestBaseAndBase10("ab3"), Equals, "base 12 => 1575")
+	c.Assert(findLowestBaseAndBase10("ff"), Equals, "base 16 => 255")
+}

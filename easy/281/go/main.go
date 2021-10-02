@@ -43,5 +43,5 @@ func findBaseUpTo16(input string) int {
 func findLowestBaseAndBase10(input string) string {
 	base := findBaseUpTo16(input)
 	representation, _ := strconv.ParseInt(input, base, 0)
-	return fmt.Sprintf("base %d => %d", representation, base)
+	return fmt.Sprintf("base %d => %d", base, representation)
 }
