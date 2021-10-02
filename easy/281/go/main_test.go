@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindBaseUpTo16(c *C) {
+	c.Assert(findBaseUpTo16("1"), Equals, 2)
+	c.Assert(findBaseUpTo16("21"), Equals, 3)
+	c.Assert(findBaseUpTo16("ab3"), Equals, 12)
+	c.Assert(findBaseUpTo16("ff"), Equals, 16)
+	c.Assert(findBaseUpTo16("z"), Equals, 16)
+}
