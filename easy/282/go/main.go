@@ -14,7 +14,9 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +24,19 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func convertFromBaseFibonacciToBase10(fibonacci string) int {
-	return 0
+func convertFromBaseFibonacciToBase10(fibonacci string) (base10 int) {
+	current, previous := 1, 1
+	if '1' == fibonacci[len(fibonacci)-1] {
+		base10 += 1
+	}
+	if 1 < len(fibonacci) && '1' == fibonacci[len(fibonacci)-2] {
+		base10 += 1
+	}
+	for index := len(fibonacci) - 3; index >= 0; index-- {
+		current, previous = current+previous, current
+		if '1' == fibonacci[index] {
+			base10 += current
+		}
+	}
+	return
 }
