@@ -42,5 +42,21 @@ func convertFromBaseFibonacciToBase10(fibonacci string) (base10 int) {
 }
 
 func convertFromBase10ToBaseFibonacci(base10 int) (fibonacci string) {
+	if 1 == base10 {
+		return "10"
+	}
+	fibonacciBits := []int{1, 1}
+	for base10 > fibonacciBits[len(fibonacciBits)-1] {
+		fibonacciBits = append(fibonacciBits, fibonacciBits[len(fibonacciBits)-1]+fibonacciBits[len(fibonacciBits)-2])
+	}
+	currentBase10 := base10
+	for index := len(fibonacciBits) - 2; index >= 0; index-- {
+		if currentBase10 >= fibonacciBits[index] {
+			currentBase10 -= fibonacciBits[index]
+			fibonacci += "1"
+		} else {
+			fibonacci += "0"
+		}
+	}
 	return
 }
