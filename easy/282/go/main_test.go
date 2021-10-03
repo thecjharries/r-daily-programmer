@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertFromBaseFibonacciToBase10(c *C) {
+	c.Assert(convertFromBaseFibonacciToBase10("1"), Equals, 1)
+	c.Assert(convertFromBaseFibonacciToBase10("10"), Equals, 1)
+	c.Assert(convertFromBaseFibonacciToBase10("111111"), Equals, 20)
+	c.Assert(convertFromBaseFibonacciToBase10("100000"), Equals, 8)
+	c.Assert(convertFromBaseFibonacciToBase10("10110110100111001"), Equals, 2868)
+}
