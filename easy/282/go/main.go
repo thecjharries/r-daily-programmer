@@ -40,3 +40,7 @@ func convertFromBaseFibonacciToBase10(fibonacci string) (base10 int) {
 	}
 	return
 }
+
+func convertFromBase10ToBaseFibonacci(base10 int) (fibonacci string) {
+	return
+}
