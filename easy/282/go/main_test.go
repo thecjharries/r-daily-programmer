@@ -66,4 +66,5 @@ func (s *MainSuite) TestConvertFromBase10ToBaseFibonacci(c *C) {
 	c.Assert(convertFromBase10ToBaseFibonacci(16), Equals, "1001000")
 	c.Assert(convertFromBase10ToBaseFibonacci(32), Equals, "10101000")
 	c.Assert(convertFromBase10ToBaseFibonacci(9024720), Equals, "1010100101010100000010001000010010")
+	c.Assert(convertFromBase10ToBaseFibonacci(1), Equals, "10")
 }
