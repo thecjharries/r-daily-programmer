@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCheckIfAnagram(c *C) {
+	c.Assert(checkIfAnagram("wisdom", "mid sow"), Equals, true)
+	c.Assert(checkIfAnagram("Seth Rogan", "Gathers No"), Equals, true)
+	c.Assert(checkIfAnagram("Reddit", "Eat Dirt"), Equals, false)
+	c.Assert(checkIfAnagram("Schoolmaster", "The classroom"), Equals, true)
+	c.Assert(checkIfAnagram("Astronomers", "Moon starer"), Equals, false)
+	c.Assert(checkIfAnagram("Vacation Times", "I'm Not as Active"), Equals, true)
+	c.Assert(checkIfAnagram("Dormitory", "Dirty Rooms"), Equals, false)
+}
