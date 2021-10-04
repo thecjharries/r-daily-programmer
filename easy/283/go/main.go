@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"sort"
+	"strings"
 )
 
 var notLettersPattern = regexp.MustCompile(`[^a-z]`)
@@ -28,5 +30,17 @@ func main() {
 }
 
 func checkIfAnagram(first, second string) bool {
-	return false
+	firstExploded := strings.Split(notLettersPattern.ReplaceAllString(strings.ToLower(first), ""), "")
+	secondExploded := strings.Split(notLettersPattern.ReplaceAllString(strings.ToLower(second), ""), "")
+	if len(firstExploded) != len(secondExploded) {
+		return false
+	}
+	sort.Strings(firstExploded)
+	sort.Strings(secondExploded)
+	for index := 0; index < len(firstExploded); index++ {
+		if firstExploded[index] != secondExploded[index] {
+			return false
+		}
+	}
+	return true
 }
