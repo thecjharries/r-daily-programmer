@@ -62,4 +62,5 @@ func (s *MainSuite) TestCheckIfAnagram(c *C) {
 	c.Assert(checkIfAnagram("Astronomers", "Moon starer"), Equals, false)
 	c.Assert(checkIfAnagram("Vacation Times", "I'm Not as Active"), Equals, true)
 	c.Assert(checkIfAnagram("Dormitory", "Dirty Rooms"), Equals, false)
+	c.Assert(checkIfAnagram("aaa", "bbb"), Equals, false)
 }
