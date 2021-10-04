@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var notLettersPattern = regexp.MustCompile(`[^a-z]`)
 
 var zPrint = fmt.Println
 
