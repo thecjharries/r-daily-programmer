@@ -14,10 +14,22 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func loadDictionary(filename string) []string {
+	byteContents, _ := ioutil.ReadFile(filename)
+	return strings.Split(
+		strings.Trim(string(byteContents), "\n"),
+		"\n",
+	)
 }
