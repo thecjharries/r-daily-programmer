@@ -57,3 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestLoadDictionary(c *C) {
 	c.Assert(loadDictionary("test_dictionary.txt"), DeepEquals, []string{"bee", "cab", "ghost"})
 }
+
+func (s *MainSuite) TestConvertToComparableSlice(c *C) {
+	c.Assert(convertToComparableSlice("input"), DeepEquals, []string{"i", "n", "p", "t", "u"})
+}
