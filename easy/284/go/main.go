@@ -47,14 +47,15 @@ func findPotentialWords(input string, dictionary []string) (possibleWords []stri
 			continue
 		}
 		currentInput := input
-		explodedWord := convertToComparableSlice(word)
 		possibleMatch := true
-		for index := 0; index < len(explodedWord); index++ {
-			if strings.Contains(currentInput, explodedWord[index]) {
-				currentInput = strings.Replace(currentInput, explodedWord[index], "", 1)
+		for wordIndex := 0; wordIndex < len(word); wordIndex++ {
+			inputIndex := strings.Index(currentInput, word[wordIndex:wordIndex+1])
+			if -1 < inputIndex {
+				currentInput = currentInput[inputIndex+1:]
 			} else {
 				possibleMatch = false
 				break
+
 			}
 		}
 		if possibleMatch {
