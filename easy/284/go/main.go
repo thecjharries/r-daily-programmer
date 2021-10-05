@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"sort"
 	"strings"
 )
 
@@ -32,4 +33,10 @@ func loadDictionary(filename string) []string {
 		strings.Trim(string(byteContents), "\n"),
 		"\n",
 	)
+}
+
+func convertToComparableSlice(word string) (exploded []string) {
+	exploded = strings.Split(strings.ToLower(word), "")
+	sort.Strings(exploded)
+	return
 }
