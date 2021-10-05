@@ -43,7 +43,7 @@ func convertToComparableSlice(word string) (exploded []string) {
 
 func findPotentialWords(input string, dictionary []string) (possibleWords []string) {
 	for _, word := range dictionary {
-		if 5 > len(word) {
+		if 5 > len(word) || input[0] != word[0] || input[len(input)-1] != word[len(word)-1] {
 			continue
 		}
 		currentInput := input
@@ -55,7 +55,6 @@ func findPotentialWords(input string, dictionary []string) (possibleWords []stri
 			} else {
 				possibleMatch = false
 				break
-
 			}
 		}
 		if possibleMatch {
