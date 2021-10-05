@@ -40,3 +40,26 @@ func convertToComparableSlice(word string) (exploded []string) {
 	sort.Strings(exploded)
 	return
 }
+
+func findPotentialWords(input string, dictionary []string) (possibleWords []string) {
+	for _, word := range dictionary {
+		if 4 < len(word) {
+			continue
+		}
+		currentInput := input
+		explodedWord := convertToComparableSlice(word)
+		possibleMatch := true
+		for index := 0; index < len(explodedWord); index++ {
+			if strings.Contains(currentInput, explodedWord[index]) {
+				currentInput = strings.Replace(currentInput, explodedWord[index], "", 1)
+			} else {
+				possibleMatch = false
+				break
+			}
+		}
+		if possibleMatch {
+			possibleWords = append(possibleWords, word)
+		}
+	}
+	return
+}
