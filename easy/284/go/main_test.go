@@ -61,3 +61,7 @@ func (s *MainSuite) TestLoadDictionary(c *C) {
 func (s *MainSuite) TestConvertToComparableSlice(c *C) {
 	c.Assert(convertToComparableSlice("input"), DeepEquals, []string{"i", "n", "p", "t", "u"})
 }
+
+func (s *MainSuite) TestFindPotentialWords(c *C) {
+	c.Assert(findPotentialWords("qwertyuytresdftyuioknn", loadDictionary("../enable1.txt")), DeepEquals, []string{"queen", "question"})
+}
