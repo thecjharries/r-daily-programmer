@@ -59,5 +59,5 @@ func (s *MainSuite) TestConvertIntSliceToVariableByteSlices(c *C) {
 	c.Assert(convertIntSliceToVariableByteSlices([]int{255}), DeepEquals, [][]int{{255, 0}})
 	c.Assert(convertIntSliceToVariableByteSlices([]int{256}), DeepEquals, [][]int{{255, 1}})
 	c.Assert(convertIntSliceToVariableByteSlices([]int{510}), DeepEquals, [][]int{{255, 255, 0}})
-	c.Assert(convertIntSliceToVariableByteSlices([]int{512, 44, 1024}), DeepEquals, [][]int{{255, 255, 0}, {44}, {255, 255, 255, 255, 4}})
+	c.Assert(convertIntSliceToVariableByteSlices([]int{512, 44, 1024}), DeepEquals, [][]int{{255, 255, 2}, {44}, {255, 255, 255, 255, 4}})
 }
