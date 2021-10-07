@@ -61,4 +61,5 @@ func (s *MainSuite) TestDetermineFactorial(c *C) {
 	c.Assert(determineFactorial(479001600), Equals, 12)
 	c.Assert(determineFactorial(6), Equals, 3)
 	c.Assert(determineFactorial(18), Equals, -1)
+	c.Assert(determineFactorial(9), Equals, -1)
 }
