@@ -23,5 +23,21 @@ func main() {
 }
 
 func convertIntSliceToVariableByteSlices(input []int) (output [][]int) {
+	for _, number := range input {
+		var byteSlice []int
+		for 0 < number {
+			if 255 < number {
+				byteSlice = append(byteSlice, 255)
+				number -= 255
+			} else if 255 > number {
+				byteSlice = append(byteSlice, number)
+				number -= number
+			} else {
+				byteSlice = append(byteSlice, 255, 0)
+				number -= 255
+			}
+		}
+		output = append(output, byteSlice)
+	}
 	return
 }
