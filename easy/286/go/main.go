@@ -23,5 +23,17 @@ func main() {
 }
 
 func determineFactorial(input int) (factorial int) {
-	return
+	if 0 == input%2 {
+		currentInput := input
+		for index := 2; index < input; index++ {
+			if currentInput < index {
+				return -1
+			} else if currentInput == index {
+				return index
+			} else {
+				currentInput /= index
+			}
+		}
+	}
+	return -1
 }
