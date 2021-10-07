@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDetermineFactorial(c *C) {
+	c.Assert(determineFactorial(120), Equals, 5)
+	c.Assert(determineFactorial(150), Equals, -1)
+	c.Assert(determineFactorial(3628800), Equals, 10)
+	c.Assert(determineFactorial(479001600), Equals, 12)
+	c.Assert(determineFactorial(6), Equals, 3)
+	c.Assert(determineFactorial(18), Equals, -1)
+}
