@@ -41,3 +41,7 @@ func sortDigits(input int, ascending bool) (output int) {
 	output, _ = strconv.Atoi(strings.Join(exploded, ""))
 	return
 }
+
+func kaprekarIterationCount(input int) (iterations int) {
+	return
+}
