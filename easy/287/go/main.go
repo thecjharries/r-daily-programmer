@@ -21,6 +21,8 @@ import (
 	"strings"
 )
 
+const KaprekarsNumber int = 6174
+
 var zPrint = fmt.Println
 
 func main() {
@@ -43,5 +45,24 @@ func sortDigits(input int, ascending bool) (output int) {
 }
 
 func kaprekarIterationCount(input int) (iterations int) {
+	inputAsString := strconv.Itoa(input)
+	if 4 != len(inputAsString) {
+		return -1
+	}
+	differentCharacters := make(map[rune]struct{})
+	for _, character := range inputAsString {
+		_, exists := differentCharacters[character]
+		if !exists {
+			differentCharacters[character] = struct{}{}
+		}
+	}
+	if 2 > len(differentCharacters) {
+		return -1
+	}
+	currentNumber := input
+	for KaprekarsNumber != currentNumber {
+		currentNumber = sortDigits(currentNumber, false) - sortDigits(currentNumber, true)
+		iterations++
+	}
 	return
 }
