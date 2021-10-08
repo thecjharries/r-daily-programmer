@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +27,17 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func sortDigits(input int, ascending bool) int {
-	return 0
+func sortDigits(input int, ascending bool) (output int) {
+	inputAsString := strconv.Itoa(input)
+	if 4 > len(inputAsString) {
+		inputAsString = strings.Repeat("0", 4-len(inputAsString)) + inputAsString
+	}
+	exploded := strings.Split(inputAsString, "")
+	if ascending {
+		sort.Strings(exploded)
+	} else {
+		sort.Sort(sort.Reverse(sort.StringSlice(exploded)))
+	}
+	output, _ = strconv.Atoi(strings.Join(exploded, ""))
+	return
 }
