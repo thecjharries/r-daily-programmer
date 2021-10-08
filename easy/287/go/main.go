@@ -22,6 +22,6 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func ascendingDigits(input int) int {
+func sortDigits(input int, ascending bool) int {
 	return 0
 }

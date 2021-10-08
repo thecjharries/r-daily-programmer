@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSortDigits(c *C) {
+	c.Assert(sortDigits(6589, true), Equals, 5689)
+	c.Assert(sortDigits(6589, false), Equals, 9865)
+	c.Assert(sortDigits(21, true), Equals, 12)
+	c.Assert(sortDigits(21, false), Equals, 2100)
+}
