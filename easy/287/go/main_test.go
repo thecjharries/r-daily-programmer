@@ -60,3 +60,11 @@ func (s *MainSuite) TestSortDigits(c *C) {
 	c.Assert(sortDigits(21, true), Equals, 12)
 	c.Assert(sortDigits(21, false), Equals, 2100)
 }
+
+func (s *MainSuite) TestKaprekarIterationCount(c *C) {
+	c.Assert(kaprekarIterationCount(6589), Equals, 2)
+	c.Assert(kaprekarIterationCount(5455), Equals, 5)
+	c.Assert(kaprekarIterationCount(6174), Equals, 0)
+	c.Assert(kaprekarIterationCount(10), Equals, -1)
+	c.Assert(kaprekarIterationCount(3333), Equals, -1)
+}
