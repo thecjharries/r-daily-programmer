@@ -55,7 +55,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestFindAlliterationGroups(c *C) {
-	c.Assert(findAlliterationGroups("Peter Piper Picked a Peck of Pickled Peppers"), Equals, [][]string{{"Peter", "Piper", "Picked", "Peck", "Pickled", "Peppers"}})
-	c.Assert(findAlliterationGroups("Bugs Bunny likes to dance the slow and simple shuffle"), Equals, [][]string{{"Bugs", "Bunny"}, {"slow", "simple", "shuffle"}})
-	c.Assert(findAlliterationGroups("You'll never put a better bit of butter on your knife"), Equals, [][]string{{"better", "bit", "butter"}})
+	c.Assert(findAlliterationGroups("Peter Piper Picked a Peck of Pickled Peppers"), DeepEquals, [][]string{{"Peter", "Piper", "Picked", "Peck", "Pickled", "Peppers"}})
+	c.Assert(findAlliterationGroups("Bugs Bunny likes to dance the slow and simple shuffle"), DeepEquals, [][]string{{"Bugs", "Bunny"}, {"slow", "simple", "shuffle"}})
+	c.Assert(findAlliterationGroups("You'll never put a better bit of butter on your knife"), DeepEquals, [][]string{{"better", "bit", "butter"}})
 }
