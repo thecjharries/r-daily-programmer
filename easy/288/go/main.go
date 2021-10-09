@@ -16,6 +16,40 @@ package main
 
 import "fmt"
 
+var stopWords = map[string]struct{}{
+	"i":     {},
+	"a":     {},
+	"about": {},
+	"an":    {},
+	"and":   {},
+	"are":   {},
+	"as":    {},
+	"at":    {},
+	"be":    {},
+	"by":    {},
+	"com":   {},
+	"for":   {},
+	"from":  {},
+	"how":   {},
+	"in":    {},
+	"is":    {},
+	"it":    {},
+	"of":    {},
+	"on":    {},
+	"or":    {},
+	"that":  {},
+	"the":   {},
+	"this":  {},
+	"to":    {},
+	"was":   {},
+	"what":  {},
+	"when":  {},
+	"where": {},
+	"who":   {},
+	"will":  {},
+	"with":  {},
+}
+
 var zPrint = fmt.Println
 
 func main() {
