@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var stopWords = map[string]struct{}{
 	"i":     {},
@@ -57,5 +60,36 @@ func main() {
 }
 
 func findAlliterationGroups(input string) (alliteration [][]string) {
+	exploded := strings.Split(input, " ")
+	index := 0
+	for index < len(exploded)-1 {
+		sanitizedCurrentWord := strings.ToLower(exploded[index])
+		_, isCurrentStopWord := stopWords[sanitizedCurrentWord]
+		if isCurrentStopWord {
+			index++
+			continue
+		}
+		currentAlliterationGroup := []string{exploded[index]}
+		fmt.Println(exploded[index])
+		nextIndex := index + 1
+		for nextIndex < len(exploded) {
+			sanitizedNextWord := strings.ToLower(exploded[nextIndex])
+			_, isNextStopWord := stopWords[sanitizedNextWord]
+			if isNextStopWord {
+				nextIndex++
+				continue
+			}
+			if sanitizedCurrentWord[0] == sanitizedNextWord[0] {
+				currentAlliterationGroup = append(currentAlliterationGroup, exploded[nextIndex])
+				nextIndex++
+			} else {
+				break
+			}
+		}
+		if 1 < len(currentAlliterationGroup) {
+			alliteration = append(alliteration, currentAlliterationGroup)
+		}
+		index = nextIndex
+	}
 	return
 }
