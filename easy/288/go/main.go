@@ -55,3 +55,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findAlliterationGroups(input string) (alliteration [][]string) {
+	return
+}
