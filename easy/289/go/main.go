@@ -16,6 +16,24 @@ package main
 
 import "fmt"
 
+var damageMultipliers = map[string]map[string]float64{
+	"fire": {
+		"grass": 2,
+		"rock":  0.5,
+	},
+	"fighting": {
+		"ice":  2,
+		"rock": 2,
+	},
+	"psychic": {
+		"poison": 2,
+		"dark":   0,
+	},
+	"water": {
+		"normal": 1,
+	},
+}
+
 var zPrint = fmt.Println
 
 func main() {
