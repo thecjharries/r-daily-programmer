@@ -42,5 +42,11 @@ func main() {
 
 func computeDamageMultiplier(attackType string, defendTypes []string) (multiplier float64) {
 	multiplier = 1
+	for _, defendType := range defendTypes {
+		typeMultiplier, exists := damageMultipliers[attackType][defendType]
+		if exists {
+			multiplier *= typeMultiplier
+		}
+	}
 	return
 }
