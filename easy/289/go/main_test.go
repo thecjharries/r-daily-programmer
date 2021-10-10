@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestComputeDamageMultiplier(c *C) {
+	c.Assert(computeDamageMultiplier("fire", []string{"grass"}), Equals, 2.0)
+	c.Assert(computeDamageMultiplier("fighting", []string{"ice", "rock"}), Equals, 4.0)
+	c.Assert(computeDamageMultiplier("psychic", []string{"poison", "dark"}), Equals, 0.0)
+	c.Assert(computeDamageMultiplier("water", []string{"normal"}), Equals, 1.0)
+	c.Assert(computeDamageMultiplier("fire", []string{"rock"}), Equals, 0.0)
+}
