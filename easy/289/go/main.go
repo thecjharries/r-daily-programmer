@@ -39,3 +39,8 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func computeDamageMultiplier(attackType string, defendTypes []string) (multiplier float64) {
+	multiplier = 1
+	return
+}
