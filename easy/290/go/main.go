@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,19 @@ func main() {
 }
 
 func findKaprekarNumbersInRange(start, end int) (numbers []int) {
+	if 1 == start {
+		numbers = append(numbers, start)
+	}
+	for possibleKaprekarNumber := start; possibleKaprekarNumber <= end; possibleKaprekarNumber++ {
+		squareString := strconv.Itoa(possibleKaprekarNumber * possibleKaprekarNumber)
+		for index := 1; index < len(squareString); index++ {
+			first, _ := strconv.Atoi(squareString[:index])
+			second, _ := strconv.Atoi(squareString[index:])
+			if 0 < second && possibleKaprekarNumber == first+second {
+				numbers = append(numbers, possibleKaprekarNumber)
+				break
+			}
+		}
+	}
 	return
 }
