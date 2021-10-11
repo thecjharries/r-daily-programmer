@@ -56,6 +56,6 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestFindKaprekarNumbersInRange(c *C) {
 	c.Assert(findKaprekarNumbersInRange(1, 50), DeepEquals, []int{1, 9, 45})
-	c.Assert(findKaprekarNumbersInRange(2, 100), DeepEquals, []int{1, 9, 45, 55, 99})
+	c.Assert(findKaprekarNumbersInRange(2, 100), DeepEquals, []int{9, 45, 55, 99})
 	c.Assert(findKaprekarNumbersInRange(101, 9000), DeepEquals, []int{297, 703, 999, 2223, 2728, 4879, 4950, 5050, 5292, 7272, 7777})
 }
