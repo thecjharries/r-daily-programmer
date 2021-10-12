@@ -53,3 +53,53 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDindPossibleChairs(c *C) {
+	var goldilocks Seat
+	var seats []Seat
+	goldilocks = Seat{100, 80}
+	seats = []Seat{
+		{30, 50},
+		{130, 75},
+		{90, 60},
+		{150, 85},
+		{120, 70},
+		{200, 200},
+		{110, 100},
+	}
+	c.Assert(findPossibleChairs(goldilocks, seats), DeepEquals, []int{1, 4})
+	goldilocks = Seat{100, 120}
+	seats = []Seat{
+		{297, 90},
+		{66, 110},
+		{257, 113},
+		{276, 191},
+		{280, 129},
+		{219, 163},
+		{254, 193},
+		{86, 153},
+		{206, 147},
+		{71, 137},
+		{104, 40},
+		{238, 127},
+		{52, 146},
+		{129, 197},
+		{144, 59},
+		{157, 124},
+		{210, 59},
+		{11, 54},
+		{268, 119},
+		{261, 121},
+		{12, 189},
+		{186, 108},
+		{174, 21},
+		{77, 18},
+		{54, 90},
+		{174, 52},
+		{16, 129},
+		{59, 181},
+		{290, 123},
+		{248, 132},
+	}
+	c.Assert(findPossibleChairs(goldilocks, seats), DeepEquals, []int{1, 3, 11, 15, 17, 19, 22, 23, 26})
+}
