@@ -16,6 +16,11 @@ package main
 
 import "fmt"
 
+type Seat struct {
+	MaxWeight    int
+	PorridgeTemp int
+}
+
 var zPrint = fmt.Println
 
 func main() {
