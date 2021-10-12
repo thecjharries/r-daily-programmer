@@ -101,5 +101,5 @@ func (s *MainSuite) TestDindPossibleChairs(c *C) {
 		{290, 123},
 		{248, 132},
 	}
-	c.Assert(findPossibleChairs(goldilocks, seats), DeepEquals, []int{1, 3, 11, 15, 17, 19, 22, 23, 26})
+	c.Assert(findPossibleChairs(goldilocks, seats), DeepEquals, []int{0, 2, 10, 14, 16, 18, 21, 22, 25})
 }
