@@ -28,5 +28,10 @@ func main() {
 }
 
 func findPossibleChairs(goldilocks Seat, chairs []Seat) (possibleChairIndices []int) {
+	for index, chair := range chairs {
+		if chair.MaxWeight >= goldilocks.MaxWeight && chair.PorridgeTemp <= goldilocks.PorridgeTemp {
+			possibleChairIndices = append(possibleChairIndices, index)
+		}
+	}
 	return
 }
