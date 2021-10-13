@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +27,64 @@ func main() {
 }
 
 func buildRange(input string) (output string) {
-	return
+	explodedInput := strings.Split(input, ",")
+	outputNumbers := make([]string, 0)
+	for _, chunk := range explodedInput {
+		_, parseErr := strconv.Atoi(chunk)
+		if nil == parseErr {
+			if 0 == len(outputNumbers) {
+				outputNumbers = append(outputNumbers, chunk)
+				continue
+			}
+			index, _ := strconv.Atoi(outputNumbers[len(outputNumbers)-1])
+			for !strings.HasSuffix(strconv.Itoa(index), chunk) {
+				index++
+			}
+			outputNumbers = append(outputNumbers, strconv.Itoa(index))
+		} else {
+			if strings.Contains(chunk, "-") {
+				rangeExploded := strings.Split(chunk, "-")
+				var start int
+				if 0 == len(outputNumbers) {
+					outputNumbers = append(outputNumbers, rangeExploded[0])
+					start, _ = strconv.Atoi(rangeExploded[0])
+					start++
+				} else {
+					start, _ = strconv.Atoi(outputNumbers[len(outputNumbers)-1])
+					for !strings.HasSuffix(strconv.Itoa(start), rangeExploded[0]) {
+						start++
+					}
+				}
+				index := start
+				for !strings.HasSuffix(strconv.Itoa(index), rangeExploded[1]) {
+					outputNumbers = append(outputNumbers, strconv.Itoa(index))
+					index++
+				}
+				outputNumbers = append(outputNumbers, strconv.Itoa(index))
+			} else if strings.Contains(chunk, ":") {
+				rangeExploded := strings.Split(chunk, ":")
+				increment, _ := strconv.Atoi(rangeExploded[2])
+				var start int
+				if 0 == len(outputNumbers) {
+					outputNumbers = append(outputNumbers, rangeExploded[0])
+					start, _ = strconv.Atoi(rangeExploded[0])
+					start += increment
+				} else {
+					start, _ = strconv.Atoi(outputNumbers[len(outputNumbers)-1])
+					for !strings.HasSuffix(strconv.Itoa(start), rangeExploded[0]) {
+						start++
+					}
+				}
+				index := start
+				fmt.Println(start, rangeExploded[1], increment)
+				for !strings.HasSuffix(strconv.Itoa(index), rangeExploded[1]) {
+					outputNumbers = append(outputNumbers, strconv.Itoa(index))
+
+					index += increment
+				}
+				outputNumbers = append(outputNumbers, strconv.Itoa(index))
+			}
+		}
+	}
+	return strings.Join(outputNumbers, " ")
 }
