@@ -76,7 +76,6 @@ func buildRange(input string) (output string) {
 					}
 				}
 				index := start
-				fmt.Println(start, rangeExploded[1], increment)
 				for !strings.HasSuffix(strconv.Itoa(index), rangeExploded[1]) {
 					outputNumbers = append(outputNumbers, strconv.Itoa(index))
 
