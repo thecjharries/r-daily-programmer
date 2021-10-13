@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestBuildRange(c *C) {
+	c.Assert(buildRange("1,3,7,2,4,1"), DeepEquals, "1 3 7 12 14 21")
+	c.Assert(buildRange("1-3,1-2"), DeepEquals, "1 2 3 11 12")
+	c.Assert(buildRange("1:5:2"), DeepEquals, "1 3 5")
+	c.Assert(buildRange("104-2"), DeepEquals, "104 105 106 107 108 109 110 111 112")
+}

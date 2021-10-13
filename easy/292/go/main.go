@@ -22,6 +22,6 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func buildRange(input string) (output []int) {
+func buildRange(input string) (output string) {
 	return
 }
