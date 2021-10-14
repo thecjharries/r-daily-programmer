@@ -24,8 +24,13 @@ var nextAllowedCables = map[string][]string{
 	"green":  {"orange", "white"},
 	"purple": {"red", "black"},
 }
+
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func wasBombDefused(wires []string) bool {
+	return true
 }
