@@ -32,5 +32,24 @@ func main() {
 }
 
 func wasBombDefused(wires []string) bool {
+	currentAllowedWires, exists := nextAllowedCables[wires[0]]
+	if !exists {
+		return false
+	}
+	for _, wire := range wires[1:] {
+		wireAllowed := false
+		for _, possibleWire := range currentAllowedWires {
+			if wire == possibleWire {
+				wireAllowed = true
+			}
+		}
+		if !wireAllowed {
+			return false
+		}
+		currentAllowedWires, exists = nextAllowedCables[wire]
+		if !exists {
+			return false
+		}
+	}
 	return true
 }
