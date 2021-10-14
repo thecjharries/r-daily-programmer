@@ -57,4 +57,6 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestWasBombDefused(c *C) {
 	c.Assert(wasBombDefused([]string{"white", "red", "green", "white"}), Equals, true)
 	c.Assert(wasBombDefused([]string{"white", "orange", "green", "white"}), Equals, false)
+	c.Assert(wasBombDefused([]string{"qqq", "white", "orange", "green", "white"}), Equals, false)
+	c.Assert(wasBombDefused([]string{"white", "qqq", "orange", "green", "white"}), Equals, false)
 }

@@ -17,7 +17,7 @@ package main
 import "fmt"
 
 var nextAllowedCables = map[string][]string{
-	"white":  {"red", "orange", "green", "purple"},
+	"white":  {"red", "orange", "green", "purple", "qqq"},
 	"red":    {"green"},
 	"black":  {"red", "purple", "black"},
 	"orange": {"red", "black"},
