@@ -16,6 +16,14 @@ package main
 
 import "fmt"
 
+var nextAllowedCables = map[string][]string{
+	"white":  {"red", "orange", "green", "purple"},
+	"red":    {"green"},
+	"black":  {"red", "purple"},
+	"orange": {"red", "black"},
+	"green":  {"orange", "white"},
+	"purple": {"red", "black"},
+}
 var zPrint = fmt.Println
 
 func main() {
