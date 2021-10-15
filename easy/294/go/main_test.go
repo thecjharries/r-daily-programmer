@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestScrabble(c *C) {
+	c.Assert(scrabble("ladilmy", "daily"), Equals, true)
+	c.Assert(scrabble("eerriin", "eerie"), Equals, false)
+	c.Assert(scrabble("orrpgma", "program"), Equals, true)
+	c.Assert(scrabble("orppgma", "program"), Equals, false)
+	c.Assert(scrabble("pizza??", "pizzazz"), Equals, true)
+	c.Assert(scrabble("piizza?", "pizzazz"), Equals, false)
+	c.Assert(scrabble("a??????", "program"), Equals, true)
+	c.Assert(scrabble("b??????", "program"), Equals, false)
+}
