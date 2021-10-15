@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,16 @@ func main() {
 }
 
 func scrabble(rack, word string) bool {
+	currentRack := rack
+	for index := 0; index < len(word); index++ {
+		rackIndex := strings.Index(currentRack, word[index:index+1])
+		if 0 > rackIndex {
+			rackIndex = strings.Index(currentRack, "?")
+			if 0 > rackIndex {
+				return false
+			}
+		}
+		currentRack = currentRack[:rackIndex] + currentRack[rackIndex+1:]
+	}
 	return true
 }
