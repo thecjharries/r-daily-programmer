@@ -53,3 +53,41 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertLetterByLetter(c *C) {
+	c.Assert(convertLetterByLetter("floor", "brake"), DeepEquals, []string{
+		"floor",
+		"bloor",
+		"broor",
+		"braor",
+		"brakr",
+		"brake",
+	})
+	c.Assert(convertLetterByLetter("wood", "book"), DeepEquals, []string{
+		"wood",
+		"bood",
+		"book",
+	})
+	c.Assert(convertLetterByLetter("a fall to the floor", "braking the door in"), DeepEquals, []string{
+		"a fall to the floor",
+		"b fall to the floor",
+		"brfall to the floor",
+		"braall to the floor",
+		"brakll to the floor",
+		"brakil to the floor",
+		"brakin to the floor",
+		"brakingto the floor",
+		"braking o the floor",
+		"braking t the floor",
+		"braking ththe floor",
+		"braking thehe floor",
+		"braking the e floor",
+		"braking the d floor",
+		"braking the dofloor",
+		"braking the dooloor",
+		"braking the dooroor",
+		"braking the door or",
+		"braking the door ir",
+		"braking the door in",
+	})
+}
