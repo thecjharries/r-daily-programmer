@@ -23,5 +23,14 @@ func main() {
 }
 
 func convertLetterByLetter(first, second string) (steps []string) {
+	steps = append(steps, first)
+	currentStep := first
+	for index := 0; index < len(second); index++ {
+		if currentStep[index] == second[index] {
+			continue
+		}
+		currentStep = second[:index+1] + currentStep[index+1:]
+		steps = append(steps, currentStep)
+	}
 	return
 }
