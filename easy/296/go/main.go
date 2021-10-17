@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var days = []string{
 	"first",
@@ -38,5 +41,19 @@ func main() {
 }
 
 func printTwelveDays(presents []string) (output string) {
-	return
+	for dayIndex, day := range days {
+		output += fmt.Sprintf("On the %s day of Christmas\nmy true love sent to me:\n", day)
+		if 0 == dayIndex {
+			output += fmt.Sprintf("1 %s\n\n", presents[0])
+			continue
+		}
+		for presentIndex := dayIndex; presentIndex >= 0; presentIndex-- {
+			if 0 == presentIndex {
+				output += "and "
+			}
+			output += fmt.Sprintf("%d %s\n", presentIndex+1, presents[presentIndex])
+		}
+		output += "\n"
+	}
+	return strings.TrimRight(output, "\n")
 }
