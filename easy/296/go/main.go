@@ -36,3 +36,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func printTwelveDays(presents []string) (output string) {
+	return
+}
