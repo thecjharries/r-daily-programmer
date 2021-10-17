@@ -16,6 +16,21 @@ package main
 
 import "fmt"
 
+var days = []string{
+	"first",
+	"second",
+	"third",
+	"fourth",
+	"fifth",
+	"sixth",
+	"seventh",
+	"eight",
+	"ninth",
+	"tenth",
+	"eleventh",
+	"twelfth",
+}
+
 var zPrint = fmt.Println
 
 func main() {
