@@ -53,3 +53,20 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPrintTwelveDays(c *C) {
+	c.Assert(printTwelveDays([]string{
+		"Partridge in a Pear Tree",
+		"Turtle Doves",
+		"French Hens",
+		"Calling Birds",
+		"Golden Rings",
+		"Geese a Laying",
+		"Swans a Swimming",
+		"Maids a Milking",
+		"Ladies Dancing",
+		"Lords a Leaping",
+		"Pipers Piping",
+		"Drummers Drumming",
+	}), Equals, "On the first day of Christmas\nmy true love sent to me:\n1 Partridge in a Pear Tree\n\nOn the second day of Christmas\nmy true love sent to me:\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the third day of Christmas\nmy true love sent to me:\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the fourth day of Christmas\nmy true love sent to me:\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the fifth day of Christmas\nmy true love sent to me:\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the sixth day of Christmas\nmy true love sent to me:\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the seventh day of Christmas\nmy true love sent to me:\n7 Swans a Swimming\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the eighth day of Christmas\nmy true love sent to me:\n8 Maids a Milking\n7 Swans a Swimming\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the ninth day of Christmas\nmy true love sent to me:\n9 Ladies Dancing\n8 Maids a Milking\n7 Swans a Swimming\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the tenth day of Christmas\nmy true love sent to me:\n10 Lords a Leaping\n9 Ladies Dancing\n8 Maids a Milking\n7 Swans a Swimming\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the eleventh day of Christmas\nmy true love sent to me:\n11 Pipers Piping\n10 Lords a Leaping\n9 Ladies Dancing\n8 Maids a Milking\n7 Swans a Swimming\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree\n\nOn the twelfth day of Christmas\nmy true love sent to me:\n12 Drummers Drumming\n11 Pipers Piping\n10 Lords a Leaping\n9 Ladies Dancing\n8 Maids a Milking\n7 Swans a Swimming\n6 Geese a Laying\n5 Golden Rings\n4 Calling Birds\n3 French Hens\n2 Turtle Doves\nand 1 Partridge in a Pear Tree")
+}
