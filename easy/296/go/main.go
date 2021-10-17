@@ -24,7 +24,7 @@ var days = []string{
 	"fifth",
 	"sixth",
 	"seventh",
-	"eight",
+	"eighth",
 	"ninth",
 	"tenth",
 	"eleventh",
