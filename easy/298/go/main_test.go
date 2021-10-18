@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestRemoveExtraneousParentheses(c *C) {
+	c.Assert(removeExtraneousParentheses("((a((bc)(de)))f)"), Equals, "((a((bc)(de)))f)")
+	c.Assert(removeExtraneousParentheses("(((zbcd)(((e)fg))))"), Equals, "((zbcd)((e)fg))")
+	c.Assert(removeExtraneousParentheses("ab((c))"), Equals, "ab(c)")
+	c.Assert(removeExtraneousParentheses("()"), Equals, "")
+	c.Assert(removeExtraneousParentheses("((fgh()()()))"), Equals, "(fgh)")
+	c.Assert(removeExtraneousParentheses("()(abc())"), Equals, "(abc)")
+}
