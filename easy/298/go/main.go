@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,29 @@ func main() {
 }
 
 func removeExtraneousParentheses(input string) (output string) {
-	return
+	var openIndices, removeIndices []int
+	previousOpen, previousClose := -3, -3
+	for index, character := range input {
+		if '(' == character {
+			openIndices = append(openIndices, index)
+			fmt.Println(openIndices)
+		} else if ')' == character {
+			if openIndices[len(openIndices)-1] == index-1 {
+				removeIndices = append(removeIndices, index, index-1)
+			} else if openIndices[len(openIndices)-1] == previousOpen-1 && index == previousClose+1 {
+				removeIndices = append(removeIndices, openIndices[len(openIndices)-1], index)
+			} else {
+				fmt.Println(openIndices[len(openIndices)-1], previousOpen, index, previousClose)
+			}
+			previousOpen = openIndices[len(openIndices)-1]
+			previousClose = index
+			openIndices = openIndices[:len(openIndices)-1]
+		}
+	}
+	fmt.Println(removeIndices)
+	output = input
+	for _, removeIndex := range removeIndices {
+		output = output[:removeIndex] + " " + output[removeIndex+1:]
+	}
+	return strings.ReplaceAll(output, " ", "")
 }
