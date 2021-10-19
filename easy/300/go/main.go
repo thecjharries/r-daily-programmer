@@ -14,10 +14,26 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"time"
+
+	"github.com/faiface/beep/speaker"
+
+	"github.com/faiface/beep/mp3"
+)
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+
+	f, _ := os.Open("1.mp3")
+
+	streamer, format, _ := mp3.Decode(f)
+	defer streamer.Close()
+	speaker.Init(format.SampleRate, format.SampleRate.N(time.Second/10))
+
+	speaker.Play(streamer)
 }
