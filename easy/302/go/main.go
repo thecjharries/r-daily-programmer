@@ -16,6 +16,13 @@ package main
 
 import "fmt"
 
+var elements = map[string]string{
+	"ge": "germanium",
+	"ni": "nickel",
+	"u":  "uranium",
+	"s":  "sulfur",
+}
+
 var zPrint = fmt.Println
 
 func main() {
