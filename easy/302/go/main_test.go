@@ -56,4 +56,5 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestSpellWithElements(c *C) {
 	c.Assert(spellWithElements("genius"), Equals, "GeNiUS (germanium nickel uranium sulfur)")
+	c.Assert(spellWithElements("zzz"), Equals, "")
 }
