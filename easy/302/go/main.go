@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var elements = map[string]string{
 	"ge": "germanium",
@@ -30,5 +33,27 @@ func main() {
 }
 
 func spellWithElements(input string) (output string) {
-	return
+	workingInput := input
+	foundElements := make([]string, 0)
+	for 0 < len(workingInput) {
+		twos, twosExists := "", false
+		if 1 < len(workingInput) {
+			twos, twosExists = elements[workingInput[:2]]
+		}
+		if twosExists {
+			output += strings.Title(workingInput[:2])
+			foundElements = append(foundElements, twos)
+			workingInput = workingInput[2:]
+		} else {
+			ones, onesExists := elements[workingInput[:1]]
+			if onesExists {
+				output += strings.ToUpper(workingInput[:1])
+				foundElements = append(foundElements, ones)
+				workingInput = workingInput[1:]
+			} else {
+				return ""
+			}
+		}
+	}
+	return fmt.Sprintf("%s (%s)", output, strings.Join(foundElements, " "))
 }
