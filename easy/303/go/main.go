@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func calculateRicochet(gridHeight, gridWidth, velocity int) (output string) {
+	return
+}
