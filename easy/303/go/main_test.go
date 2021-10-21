@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateRicochet(c *C) {
+	c.Assert(calculateRicochet(8, 3, 1), Equals, "LL 9 24")
+	c.Assert(calculateRicochet(15, 4, 2), Equals, "UR 17 30")
+}
