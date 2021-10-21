@@ -29,7 +29,19 @@ func gcd(a, b int) int {
 	return a
 }
 
+// https://old.reddit.com/r/dailyprogrammer/comments/5vb1wf/20170221_challenge_303_easy_ricochet/de2ia2f/
 func calculateRicochet(gridHeight, gridWidth, velocity int) (output string) {
-
-	return
+	path := gridHeight * gridWidth / gcd(gridHeight, gridWidth)
+	time := path / gcd(velocity, path)
+	numberOfRounds := velocity * time / path
+	vertical := "U"
+	if 1 == (velocity*time/gridHeight)%2 {
+		vertical = "L"
+	}
+	horizontal := "L"
+	if 1 == (velocity*time/gridWidth)%2 {
+		horizontal = "R"
+	}
+	numberOfBounces := (path/gridHeight+path/gridWidth-1)*numberOfRounds - 1
+	return fmt.Sprintf("%s%s %d %d", vertical, horizontal, numberOfBounces, time)
 }
