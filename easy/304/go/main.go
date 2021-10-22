@@ -37,7 +37,7 @@ func NewAccount(number int, args ...interface{}) Account {
 			Balance: args[0].(float64),
 		}
 	}
-	return Account{}
+	return Account{Number: number}
 }
 
 type Journal map[int]Account

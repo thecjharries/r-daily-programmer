@@ -60,8 +60,12 @@ func (s *MainSuite) TestNewAccount(c *C) {
 	c.Assert(account.Number, Equals, 10)
 	c.Assert(account.Name, Equals, "test")
 	c.Assert(account.Balance, Equals, 0.0)
-	account = NewAccount(20, "14.64")
+	account = NewAccount(20, 14.64)
 	c.Assert(account.Number, Equals, 20)
 	c.Assert(account.Name, Equals, "")
 	c.Assert(account.Balance, Equals, 14.64)
+	account = NewAccount(30, 5)
+	c.Assert(account.Number, Equals, 30)
+	c.Assert(account.Name, Equals, "")
+	c.Assert(account.Balance, Equals, 0.0)
 }
