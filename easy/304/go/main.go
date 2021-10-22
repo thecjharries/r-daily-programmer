@@ -16,6 +16,8 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"strings"
 )
 
 type Account struct {
@@ -41,6 +43,35 @@ func NewAccount(number int, args ...interface{}) Account {
 }
 
 type Journal map[int]Account
+
+func NewJournal(balanceInput, accountInput string) Journal {
+	journal := make(Journal, 0)
+	explodedBalances := strings.Split(balanceInput, "\n")
+	for _, line := range explodedBalances {
+		explodedLine := strings.Split(line, ";")
+		number, _ := strconv.Atoi(explodedLine[0])
+		debit, _ := strconv.ParseFloat(explodedLine[2], 64)
+		credit, _ := strconv.ParseFloat(explodedLine[3], 64)
+		account, exists := journal[number]
+		if exists {
+			account.Balance += debit - credit
+		} else {
+			journal[number] = NewAccount(number, debit-credit)
+		}
+	}
+	explodedAccounts := strings.Split(accountInput, "\n")
+	for _, line := range explodedAccounts {
+		explodedLine := strings.Split(line, ";")
+		number, _ := strconv.Atoi(explodedLine[0])
+		account, exists := journal[number]
+		if exists {
+			account.Name = explodedLine[1]
+		} else {
+			journal[number] = NewAccount(number, explodedLine[1])
+		}
+	}
+	return journal
+}
 
 var zPrint = fmt.Println
 
