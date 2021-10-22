@@ -16,6 +16,14 @@ package main
 
 import "fmt"
 
+type Account struct {
+	Name    string
+	Number  int
+	Balance float64
+}
+
+type Journal map[int]Account
+
 var zPrint = fmt.Println
 
 func main() {
