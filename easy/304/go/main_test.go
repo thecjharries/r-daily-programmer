@@ -53,3 +53,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNewAccount(c *C) {
+	var account Account
+	account = NewAccount(10, "test")
+	c.Assert(account.Number, Equals, 10)
+	c.Assert(account.Name, Equals, "test")
+	c.Assert(account.Balance, Equals, 0.0)
+	account = NewAccount(20, "14.64")
+	c.Assert(account.Number, Equals, 20)
+	c.Assert(account.Name, Equals, "")
+	c.Assert(account.Balance, Equals, 14.64)
+}
