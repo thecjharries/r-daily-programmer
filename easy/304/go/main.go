@@ -16,7 +16,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 type Account struct {
@@ -25,18 +24,20 @@ type Account struct {
 	Balance float64
 }
 
-func NewAccount(number int, args ...string) Account {
-	balance, err := strconv.ParseFloat(args[0], 64)
-	if nil != err {
+func NewAccount(number int, args ...interface{}) Account {
+	switch args[0].(type) {
+	case string:
 		return Account{
 			Number: number,
-			Name:   args[0],
+			Name:   args[0].(string),
+		}
+	case float64:
+		return Account{
+			Number:  number,
+			Balance: args[0].(float64),
 		}
 	}
-	return Account{
-		Number:  number,
-		Balance: balance,
-	}
+	return Account{}
 }
 
 type Journal map[int]Account
