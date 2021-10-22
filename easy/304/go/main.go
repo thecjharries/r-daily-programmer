@@ -14,12 +14,29 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type Account struct {
-	Name    string
 	Number  int
+	Name    string
 	Balance float64
+}
+
+func NewAccount(number int, args ...string) Account {
+	balance, err := strconv.ParseFloat(args[0], 64)
+	if nil != err {
+		return Account{
+			Number: number,
+			Name:   args[0],
+		}
+	}
+	return Account{
+		Number:  number,
+		Balance: balance,
+	}
 }
 
 type Journal map[int]Account
