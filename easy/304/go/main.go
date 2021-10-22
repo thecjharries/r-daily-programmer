@@ -55,6 +55,7 @@ func NewJournal(balanceInput, accountInput string) Journal {
 		account, exists := journal[number]
 		if exists {
 			account.Balance += debit - credit
+			journal[number] = account
 		} else {
 			journal[number] = NewAccount(number, debit-credit)
 		}
