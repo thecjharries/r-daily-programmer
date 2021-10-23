@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertIntToPermBase2(c *C) {
+	c.Assert(convertIntToPermBase2(19), Equals, "0101")
+	c.Assert(convertIntToPermBase2(54), Equals, "11000")
+	c.Assert(convertIntToPermBase2(965), Equals, "111000111")
+}
