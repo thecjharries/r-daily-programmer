@@ -59,3 +59,9 @@ func (s *MainSuite) TestConvertIntToPermBase2(c *C) {
 	c.Assert(convertIntToPermBase2(54), Equals, "11000")
 	c.Assert(convertIntToPermBase2(965), Equals, "111000111")
 }
+
+func (s *MainSuite) TestConvertPermBase2ToInt(c *C) {
+	c.Assert(convertPermBase2ToInt("0101"), Equals, 19)
+	c.Assert(convertPermBase2ToInt("11000"), Equals, 54)
+	c.Assert(convertPermBase2ToInt("111000111"), Equals, 965)
+}
