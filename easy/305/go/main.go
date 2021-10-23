@@ -25,7 +25,7 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func convertIntToPermBase2(input int) (output string) {
+func convertIntToPermBase2(input int) string {
 	inputAsFloat64 := float64(input)
 	power := 1.0
 	for math.Pow(2, power) <= inputAsFloat64 {
@@ -34,4 +34,8 @@ func convertIntToPermBase2(input int) (output string) {
 	}
 	fmt.Println(power)
 	return fmt.Sprintf(fmt.Sprintf("%%0%db", int64(power)), int64(inputAsFloat64))
+}
+
+func convertPermBase2ToInt(input string) (output int) {
+	return
 }
