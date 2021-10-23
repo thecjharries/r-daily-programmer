@@ -17,6 +17,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 var zPrint = fmt.Println
@@ -37,5 +38,6 @@ func convertIntToPermBase2(input int) string {
 }
 
 func convertPermBase2ToInt(input string) (output int) {
-	return
+	fromBinary, _ := strconv.ParseInt(input, 2, 0)
+	return int(fromBinary) + int(math.Pow(2, float64(len(input)))) - 2
 }
