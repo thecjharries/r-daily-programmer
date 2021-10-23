@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,12 @@ func main() {
 }
 
 func convertIntToPermBase2(input int) (output string) {
-	return
+	inputAsFloat64 := float64(input)
+	power := 1.0
+	for math.Pow(2, power) <= inputAsFloat64 {
+		inputAsFloat64 -= math.Pow(2, power)
+		power += 1
+	}
+	fmt.Println(power)
+	return fmt.Sprintf(fmt.Sprintf("%%0%db", int64(power)), int64(inputAsFloat64))
 }
