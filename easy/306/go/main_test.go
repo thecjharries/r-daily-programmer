@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestGenerateA105416(c *C) {
+	c.Assert(generateA105416(), Equals, []int{1444, 1446, 1464, 1466, 1644, 1646, 1664, 1666})
+}
