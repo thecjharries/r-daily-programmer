@@ -23,5 +23,12 @@ func main() {
 }
 
 func generateA105416() (sequence []int) {
+	for _, first := range []int{400, 600} {
+		for _, second := range []int{40, 60} {
+			for _, third := range []int{4, 6} {
+				sequence = append(sequence, 1000+first+second+third)
+			}
+		}
+	}
 	return
 }
