@@ -55,5 +55,5 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestGenerateA105416(c *C) {
-	c.Assert(generateA105416(), Equals, []int{1444, 1446, 1464, 1466, 1644, 1646, 1664, 1666})
+	c.Assert(generateA105416(), DeepEquals, []int{1444, 1446, 1464, 1466, 1644, 1646, 1664, 1666})
 }
