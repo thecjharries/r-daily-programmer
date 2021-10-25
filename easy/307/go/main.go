@@ -34,5 +34,10 @@ func encode(input string) (output string) {
 }
 
 func decode(input string) (output string) {
+	output = input
+	if strings.HasSuffix(output, "+") {
+		output = output[:len(output)-1]
+	}
+	output = strings.ReplaceAll(output, "++", "+")
 	return
 }
