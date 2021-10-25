@@ -59,3 +59,9 @@ func (s *MainSuite) TestEncode(c *C) {
 	c.Assert(encode("ghij"), Equals, "ghij+")
 	c.Assert(encode("klmno++p+"), Equals, "klmno++++p++")
 }
+
+func (s *MainSuite) TestDecode(c *C) {
+	c.Assert(decode("abc++def+"), Equals, "abc+def")
+	c.Assert(decode("ghij+"), Equals, "ghij")
+	c.Assert(decode("klmno++++p++"), Equals, "klmno++p+")
+}
