@@ -32,3 +32,7 @@ func encode(input string) (output string) {
 	}
 	return
 }
+
+func decode(input string) (output string) {
+	return
+}
