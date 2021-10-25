@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,9 @@ func main() {
 }
 
 func encode(input string) (output string) {
+	output = strings.ReplaceAll(input, "+", "++")
+	if !strings.HasSuffix(output, "+") {
+		output += "+"
+	}
 	return
 }
