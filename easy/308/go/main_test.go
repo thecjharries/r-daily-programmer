@@ -53,3 +53,20 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestMapAddSmoke(c *C) {
+	currentMap := Map{"#############/#", "#     |       #", "#     #       #", "#     #       #", "#######       #", "#     _       #", "###############"}
+	currentMap.AddSmoke(1, 1)
+	currentMap.AddSmoke(1, 2)
+	currentMap.AddSmoke(1, 3)
+	currentMap.AddSmoke(5, 6)
+	currentMap.AddSmoke(4, 2)
+	currentMap.AddSmoke(1, 1)
+	currentMap.AddSmoke(1, 2)
+	currentMap.AddSmoke(5, 5)
+	currentMap.AddSmoke(5, 5)
+	currentMap.AddSmoke(9, 1)
+	currentMap.AddSmoke(5, 7)
+	currentMap.AddSmoke(2, 2)
+	c.Assert(currentMap, DeepEquals, Map{"#############/#", "#F    |  S    #", "#FF   #       #", "#F    #       #", "#######       #", "#    F_F      #", "###############"})
+}
