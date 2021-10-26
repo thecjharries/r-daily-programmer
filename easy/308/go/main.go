@@ -24,7 +24,79 @@ var stateChanges = map[rune]rune{
 type Map []string
 
 func (m *Map) AddSmoke(x, y int) {
-	return
+	if len(*m) <= y || len((*m)[y]) <= x {
+		return
+	}
+	change, exists := stateChanges[rune((*m)[y][x])]
+	if exists {
+		(*m)[y] = (*m)[y][:x] + string(change) + (*m)[y][x+1:]
+		if 'S' == (*m)[y][x] {
+			for _, yChange := range []int{-1, 1} {
+				if len(*m) <= y+yChange {
+					continue
+				}
+				if '|' == (*m)[y+yChange][x] || '/' == (*m)[y+yChange][x] || '_' == (*m)[y+yChange][x] || '=' == (*m)[y+yChange][x] {
+					yChange *= 2
+				}
+				if len(*m) <= y+yChange {
+					continue
+				}
+				if 'F' == (*m)[y+yChange][x] {
+					(*m)[y] = (*m)[y][:x] + "F" + (*m)[y][x+1:]
+					break
+				}
+			}
+			for _, xChange := range []int{-1, 1} {
+				if len((*m)[y]) <= x+xChange {
+					continue
+				}
+				if '|' == (*m)[y][x+xChange] || '/' == (*m)[y][x+xChange] || '_' == (*m)[y][x+xChange] || '=' == (*m)[y][x+xChange] {
+					xChange *= 2
+				}
+				if len((*m)[y]) <= x+xChange {
+					continue
+				}
+				if 'F' == (*m)[y][x+xChange] {
+					(*m)[y] = (*m)[y][:x] + "F" + (*m)[y][x+1:]
+					break
+				}
+			}
+		}
+		for y, _ = range *m {
+			for x, _ = range (*m)[y] {
+				if 'F' == (*m)[y][x] {
+					for _, yChange := range []int{-1, 1} {
+						if len(*m) <= y+yChange {
+							continue
+						}
+						if '|' == (*m)[y+yChange][x] || '/' == (*m)[y+yChange][x] || '_' == (*m)[y+yChange][x] || '=' == (*m)[y+yChange][x] {
+							yChange *= 2
+						}
+						if len(*m) <= y+yChange {
+							continue
+						}
+						if 'S' == (*m)[y+yChange][x] {
+							(*m)[y+yChange] = (*m)[y+yChange][:x] + "F" + (*m)[y+yChange][x+1:]
+						}
+					}
+					for _, xChange := range []int{-1, 1} {
+						if len((*m)[y]) <= x+xChange {
+							continue
+						}
+						if '|' == (*m)[y][x+xChange] || '/' == (*m)[y][x+xChange] || '_' == (*m)[y][x+xChange] || '=' == (*m)[y][x+xChange] {
+							xChange *= 2
+						}
+						if len((*m)[y]) <= x+xChange {
+							continue
+						}
+						if 'S' == (*m)[y][x+xChange] {
+							(*m)[y] = (*m)[y][:x+xChange] + "F" + (*m)[y][x+xChange+1:]
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 var zPrint = fmt.Println
