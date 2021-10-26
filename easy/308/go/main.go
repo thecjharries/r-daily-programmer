@@ -23,6 +23,10 @@ var stateChanges = map[rune]rune{
 
 type Map []string
 
+func (m *Map) AddSmoke(x, y int) {
+	return
+}
+
 var zPrint = fmt.Println
 
 func main() {
