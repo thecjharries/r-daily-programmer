@@ -16,6 +16,11 @@ package main
 
 import "fmt"
 
+var stateChanges = map[rune]rune{
+	'S': 'F',
+	' ': 'S',
+}
+
 var zPrint = fmt.Println
 
 func main() {
