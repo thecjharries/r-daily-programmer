@@ -21,6 +21,8 @@ var stateChanges = map[rune]rune{
 	' ': 'S',
 }
 
+type Map []string
+
 var zPrint = fmt.Println
 
 func main() {
