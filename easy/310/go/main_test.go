@@ -60,13 +60,6 @@ func (s *MainSuite) TestCreateLottoLists(c *C) {
 	var names []string
 	var output map[string][]string
 	names = []string{"Rebbeca Gann", "Latosha Caraveo", "Jim Bench", "Carmelina Biles", "Oda Wilhite", "Arletha Eason"}
-	output = map[string][]string{
-		"Rebbeca Gann":    {},
-		"Latosha Caraveo": {},
-		"Jim Bench":       {},
-		"Carmelina Biles": {},
-		"Oda Wilhite":     {},
-		"Arletha Eason":   {},
-	}
+	output = map[string][]string{"Arletha Eason": []string{"Oda Wilhite", "Rebbeca Gann", "Latosha Caraveo"}, "Carmelina Biles": []string{"Carmelina Biles", "Rebbeca Gann", "Jim Bench"}, "Jim Bench": []string{"Oda Wilhite", "Rebbeca Gann", "Jim Bench"}, "Latosha Caraveo": []string{"Oda Wilhite", "Carmelina Biles", "Jim Bench"}, "Oda Wilhite": []string{"Oda Wilhite", "Carmelina Biles", "Latosha Caraveo"}, "Rebbeca Gann": []string{"Oda Wilhite", "Carmelina Biles", "Rebbeca Gann"}}
 	c.Assert(createLottoLists(names, 3), DeepEquals, output)
 }
