@@ -22,6 +22,23 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+func generateCombinationsOfSize(words []string, size int, currentCombinations [][]string) [][]string {
+	if 0 == len(words) || 0 == size || 0 == len(words)-size {
+		return currentCombinations
+	}
+	newCombinations := make([][]string, 0)
+	for index := 0; index < len(words)-size; index++ {
+		updatedCombinations := make([][]string, 0)
+		for _, combo := range currentCombinations {
+			updatedCombinations = append(updatedCombinations, append(combo, words[index]))
+		}
+		newCombinations = append(newCombinations, generateCombinationsOfSize(words[index+1:], size-1, updatedCombinations)...)
+	}
+	return newCombinations
+}
+
 func createLottoLists(names []string, sizeOfList int) (output map[string][]string) {
+	output = make(map[string][]string)
+
 	return
 }
