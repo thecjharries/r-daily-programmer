@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func createLottoLists(names []string, sizeOfList int) (output map[string][]string) {
+	return
+}
