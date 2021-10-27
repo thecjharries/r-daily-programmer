@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,4 +54,19 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestCreateLottoLists(c *C) {
+	var names []string
+	var output map[string][]string
+	names = []string{"Rebbeca Gann", "Latosha Caraveo", "Jim Bench", "Carmelina Biles", "Oda Wilhite", "Arletha Eason"}
+	output = map[string][]string{
+		"Rebbeca Gann":    {},
+		"Latosha Caraveo": {},
+		"Jim Bench":       {},
+		"Carmelina Biles": {},
+		"Oda Wilhite":     {},
+		"Arletha Eason":   {},
+	}
+	c.Assert(createLottoLists(names, 3), DeepEquals, output)
 }
