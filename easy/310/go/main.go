@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+
+	combinations "github.com/mxschmitt/golang-combinations"
+)
 
 var zPrint = fmt.Println
 
@@ -24,6 +29,12 @@ func main() {
 
 func createLottoLists(names []string, sizeOfList int) (output map[string][]string) {
 	output = make(map[string][]string)
-
+	shuffledNames := make([]string, len(names))
+	copy(shuffledNames, names)
+	rand.Shuffle(len(shuffledNames), func(i, j int) { shuffledNames[i], shuffledNames[j] = shuffledNames[j], shuffledNames[i] })
+	possibleLists := combinations.Combinations(shuffledNames, sizeOfList)
+	for index, name := range names {
+		output[name] = possibleLists[index]
+	}
 	return
 }
