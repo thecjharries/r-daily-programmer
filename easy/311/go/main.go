@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,26 @@ func main() {
 }
 
 func isJollyJumper(input []int) bool {
+	diffs := make(map[int]struct{})
+	for index := 1; index < len(input); index++ {
+		diff := input[index] - input[index-1]
+		if 0 > diff {
+			diff = -diff
+		}
+		if len(input) <= diff {
+			return false
+		}
+		diffs[diff] = struct{}{}
+	}
+	sortedDiffs := make([]int, 0, len(diffs))
+	for diff := range diffs {
+		sortedDiffs = append(sortedDiffs, diff)
+	}
+	sort.Ints(sortedDiffs)
+	for index := 1; index < len(input); index++ {
+		if index != sortedDiffs[index-1] {
+			return false
+		}
+	}
 	return true
 }
