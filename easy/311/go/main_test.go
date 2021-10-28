@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsJollyJumper(c *C) {
+	c.Assert(isJollyJumper([]int{4, 1, 3, 2}), Equals, true)
+	c.Assert(isJollyJumper([]int{8, 1, 6, -1, 8, 9, 5, 2, 7}), Equals, false)
+	c.Assert(isJollyJumper([]int{4, 1, 4, 2, 3}), Equals, true)
+	c.Assert(isJollyJumper([]int{5, 1, 4, 2, -1, 6}), Equals, false)
+	c.Assert(isJollyJumper([]int{4, 19, 22, 24, 21}), Equals, false)
+	c.Assert(isJollyJumper([]int{4, 19, 22, 24, 25}), Equals, true)
+	c.Assert(isJollyJumper([]int{4, 2, -1, 0, 2}), Equals, true)
+}
