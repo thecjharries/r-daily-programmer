@@ -16,6 +16,11 @@ package main
 
 import "fmt"
 
+type Code struct {
+	EncodeMap map[string]string
+	DecodeMap map[string]string
+}
+
 var zPrint = fmt.Println
 
 func main() {
