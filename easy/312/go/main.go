@@ -57,12 +57,17 @@ func main() {
 func translate(input string, dictionary map[string]string) (result string) {
 	currentInput := input
 	for 0 < len(currentInput) {
+		updated := false
 		for key, value := range dictionary {
-			if strings.HasPrefix(currentInput, key) {
+			if strings.HasPrefix(strings.ToUpper(currentInput), key) {
 				result += value
 				currentInput = currentInput[len(key):]
+				updated = true
 				break
 			}
+		}
+		if updated {
+			continue
 		}
 		result += currentInput[:1]
 		currentInput = currentInput[1:]
