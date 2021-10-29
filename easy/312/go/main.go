@@ -16,9 +16,33 @@ package main
 
 import "fmt"
 
-type Code struct {
-	EncodeMap map[string]string
-	DecodeMap map[string]string
+var englishToLeet = map[string]string{
+	"A": "4",
+	"B": "6",
+	"E": "3",
+	"I": "1",
+	"L": "1",
+	"M": "(V)",
+	"N": "(\\)",
+	"O": "0",
+	"S": "5",
+	"T": "7",
+	"V": "\\/",
+	"W": "`//",
+}
+
+var leetToEnglish = map[string]string{
+	"4":    "A",
+	"6":    "B",
+	"3":    "E",
+	"1":    "I",
+	"(V)":  "M",
+	"(\\)": "N",
+	"0":    "O",
+	"5":    "S",
+	"7":    "T",
+	"\\/":  "V",
+	"`//":  "W",
 }
 
 var zPrint = fmt.Println
