@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTranslate(c *C) {
+	c.Assert(translate("31337", leetToEnglish), Equals, "EIEET")
+	c.Assert(translate("eleet", englishToLeet), Equals, "31337")
+	c.Assert(translate("I am elite.", englishToLeet), Equals, "1 4(V) 31173.")
+}
