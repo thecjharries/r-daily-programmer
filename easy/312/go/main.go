@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var englishToLeet = map[string]string{
 	"A": "4",
@@ -49,4 +52,20 @@ var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func translate(input string, dictionary map[string]string) (result string) {
+	currentInput := input
+	for 0 < len(currentInput) {
+		for key, value := range dictionary {
+			if strings.HasPrefix(currentInput, key) {
+				result += value
+				currentInput = currentInput[len(key):]
+				break
+			}
+		}
+		result += currentInput[:1]
+		currentInput = currentInput[1:]
+	}
+	return
 }
