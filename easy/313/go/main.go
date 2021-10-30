@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,17 @@ func main() {
 }
 
 func checkForZeroSum(input []int) bool {
+	inputDictionary := make(map[int]int)
+	for _, value := range input {
+		_, exists := inputDictionary[int(math.Abs(float64(value)))]
+		if exists {
+			inputDictionary[int(math.Abs(float64(value)))] += value
+		} else {
+			inputDictionary[int(math.Abs(float64(value)))] = value
+		}
+		if 0 == inputDictionary[int(math.Abs(float64(value)))] {
+			return true
+		}
+	}
 	return false
 }
