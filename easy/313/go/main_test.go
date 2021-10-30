@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCheckForZeroSum(c *C) {
+	c.Assert(checkForZeroSum([]int{1, 2, 3}), Equals, false)
+	c.Assert(checkForZeroSum([]int{-97364, -71561, -69336, 19675, 71561, 97863}), Equals, true)
+}
