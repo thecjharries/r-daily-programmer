@@ -40,7 +40,3 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
-
-func findLargestConcatenation(input []int) (output int) {
-	return
-}
