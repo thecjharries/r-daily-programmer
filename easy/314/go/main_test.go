@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -73,9 +74,12 @@ func (s *MainSuite) TestIntConcatenationLess(c *C) {
 	c.Assert(input.Less(1, 2), Equals, true)
 }
 
-//func (s *MainSuite) TestFindLargestConcatenation(c *C) {
-//	c.Assert(findLargestConcatenation([]int{5, 56, 50}), Equals, 56550)
-//	c.Assert(findLargestConcatenation([]int{79, 82, 34, 83, 69}), Equals, 8382796934)
-//	c.Assert(findLargestConcatenation([]int{420, 34, 19, 71, 341}), Equals, 714203434119)
-//	c.Assert(findLargestConcatenation([]int{17, 32, 91, 7, 46}), Equals, 917463217)
-//}
+func (s *MainSuite) TestIntConcatenationSort(c *C) {
+	var input IntConcatenation
+	input = IntConcatenation{5, 56, 50}
+	sort.Sort(input)
+	c.Assert(input, DeepEquals, IntConcatenation{50, 5, 56})
+	input = IntConcatenation{79, 82, 34, 83, 69}
+	sort.Sort(sort.Reverse(input))
+	c.Assert(input, DeepEquals, IntConcatenation{83, 82, 79, 69, 34})
+}
