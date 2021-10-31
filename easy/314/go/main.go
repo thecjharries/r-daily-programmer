@@ -14,9 +14,26 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type IntConcatenation []int
+
+func (i *IntConcatenation) Len() int {
+	return len(*i)
+}
+
+func (i *IntConcatenation) Swap(j, k int) {
+	(*i)[j], (*i)[k] = (*i)[k], (*i)[j]
+}
+
+func (i *IntConcatenation) Less(j, k int) bool {
+	first, _ := strconv.Atoi(strconv.Itoa((*i)[j]) + strconv.Itoa((*i)[k]))
+	second, _ := strconv.Atoi(strconv.Itoa((*i)[k]) + strconv.Itoa((*i)[j]))
+	return first < second
+}
 
 var zPrint = fmt.Println
 
