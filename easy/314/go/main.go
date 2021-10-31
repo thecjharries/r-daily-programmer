@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type IntConcatenation []int
+
 var zPrint = fmt.Println
 
 func main() {
