@@ -66,6 +66,13 @@ func (s *MainSuite) TestIntConcatenationSwap(c *C) {
 	c.Assert(input, DeepEquals, IntConcatenation{3, 2, 1})
 }
 
+func (s *MainSuite) TestIntConcatenationLess(c *C) {
+	input := IntConcatenation{1, 2, 3}
+	c.Assert(input.Less(0, 1), Equals, true)
+	c.Assert(input.Less(0, 2), Equals, true)
+	c.Assert(input.Less(1, 2), Equals, true)
+}
+
 //func (s *MainSuite) TestFindLargestConcatenation(c *C) {
 //	c.Assert(findLargestConcatenation([]int{5, 56, 50}), Equals, 56550)
 //	c.Assert(findLargestConcatenation([]int{79, 82, 34, 83, 69}), Equals, 8382796934)
