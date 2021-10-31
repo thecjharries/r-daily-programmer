@@ -54,9 +54,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "hello world")
 }
 
-func (s *MainSuite) TestFindLargestConcatenation(c *C) {
-	c.Assert(findLargestConcatenation([]int{5, 56, 50}), Equals, 56550)
-	c.Assert(findLargestConcatenation([]int{79, 82, 34, 83, 69}), Equals, 8382796934)
-	c.Assert(findLargestConcatenation([]int{420, 34, 19, 71, 341}), Equals, 714203434119)
-	c.Assert(findLargestConcatenation([]int{17, 32, 91, 7, 46}), Equals, 917463217)
+func (s *MainSuite) TestIntConcatenationLen(c *C) {
+	input := IntConcatenation{1, 2, 3}
+	c.Assert(input.Len(), Equals, 3)
 }
+
+//func (s *MainSuite) TestFindLargestConcatenation(c *C) {
+//	c.Assert(findLargestConcatenation([]int{5, 56, 50}), Equals, 56550)
+//	c.Assert(findLargestConcatenation([]int{79, 82, 34, 83, 69}), Equals, 8382796934)
+//	c.Assert(findLargestConcatenation([]int{420, 34, 19, 71, 341}), Equals, 714203434119)
+//	c.Assert(findLargestConcatenation([]int{17, 32, 91, 7, 46}), Equals, 917463217)
+//}
