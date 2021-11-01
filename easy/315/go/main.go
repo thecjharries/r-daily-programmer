@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func xorMultiplication(first, second int) (result int) {
+	return 0
+}
