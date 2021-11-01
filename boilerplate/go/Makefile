@@ -23,3 +23,6 @@ git-prompt-runner:
 
 finish:
 	git flow feature finish
+
+stub:
+	git commit main.go -m 'Stub prompt fnc'
