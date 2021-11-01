@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,14 @@ func main() {
 }
 
 func xorMultiplication(first, second int) (result int) {
-	return 0
+	firstBinary := strconv.FormatInt(int64(first), 2)
+	secondBinary := strconv.FormatInt(int64(second), 2)
+	for index := len(secondBinary) - 1; index >= 0; index-- {
+		if "1" == secondBinary[index:index+1] {
+			current, _ := strconv.ParseInt(firstBinary, 2, 0)
+			result ^= int(current)
+		}
+		firstBinary = firstBinary + "0"
+	}
+	return
 }
