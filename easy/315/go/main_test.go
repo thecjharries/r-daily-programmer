@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestXorMultiplication(c *C) {
+	c.Assert(xorMultiplication(1, 2), Equals, 2)
+	c.Assert(xorMultiplication(9, 0), Equals, 0)
+	c.Assert(xorMultiplication(13, 11), Equals, 127)
+}
