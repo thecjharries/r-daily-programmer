@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +25,22 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+// https://old.reddit.com/r/dailyprogrammer/comments/6coqwk/20170522_challenge_316_easy_knights_metric/dhw8sdx/
 func determineNeededNumberOfKnightMoves(goalX, goalY int) (result int) {
-	return
+	x, y := goalX, goalY
+	if x > y {
+		x, y = y, x
+	}
+	additionalMove := 0.0
+	if 0 != (x+y)%3 {
+		additionalMove = 1.0
+		if 0 == (x+2+y-1)%3 {
+			x += 2
+			y -= 1
+		} else {
+			x += 1
+			y -= 2
+		}
+	}
+	return int(math.Abs(math.Floor(float64(2*y-x)/3)) + math.Abs(math.Floor(float64(2*x-y)/3)+additionalMove))
 }
