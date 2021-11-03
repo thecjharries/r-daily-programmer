@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+var tagMap = map[string]string{
+	"a": "bc",
+	"b": "a",
+	"c": "aaa",
+}
+
 var zPrint = fmt.Println
 
 func main() {
