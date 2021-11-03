@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDetermineNeededNumberOfKnightMoves(c *C) {
+	c.Assert(determineNeededNumberOfKnightMoves(3, 7), Equals, 4)
+	c.Assert(determineNeededNumberOfKnightMoves(-3, -3), Equals, 2)
+}
