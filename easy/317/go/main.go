@@ -29,5 +29,11 @@ func main() {
 }
 
 func processCollatzTag(input string, tagMap map[string]string) (result []string) {
+	current := input
+	for 1 < len(current) {
+		next, _ := tagMap[current[0:1]]
+		current = current[2:] + next
+		result = append(result, current)
+	}
 	return
 }

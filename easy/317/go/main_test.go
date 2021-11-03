@@ -55,7 +55,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestProcessCollatzTag(c *C) {
-	c.Assert(processCollatzTag("aaa", promptTagMap), Equals, []string{
+	c.Assert(processCollatzTag("aaa", promptTagMap), DeepEquals, []string{
 		"abc",
 		"cbc",
 		"caaa",
