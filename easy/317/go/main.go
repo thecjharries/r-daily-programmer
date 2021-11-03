@@ -16,7 +16,7 @@ package main
 
 import "fmt"
 
-var tagMap = map[string]string{
+var promptTagMap = map[string]string{
 	"a": "bc",
 	"b": "a",
 	"c": "aaa",
