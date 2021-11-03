@@ -56,5 +56,9 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestDetermineNeededNumberOfKnightMoves(c *C) {
 	c.Assert(determineNeededNumberOfKnightMoves(3, 7), Equals, 4)
+	c.Assert(determineNeededNumberOfKnightMoves(0, 0), Equals, 0)
+	c.Assert(determineNeededNumberOfKnightMoves(1, 0), Equals, 3)
 	c.Assert(determineNeededNumberOfKnightMoves(-3, -3), Equals, 2)
+	c.Assert(determineNeededNumberOfKnightMoves(0, -2), Equals, 2)
+	c.Assert(determineNeededNumberOfKnightMoves(1, 1), Equals, 4)
 }
