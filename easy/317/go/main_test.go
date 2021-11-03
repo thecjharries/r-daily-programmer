@@ -53,3 +53,32 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestProcessCollatzTag(c *C) {
+	c.Assert(processCollatzTag("aaa", promptTagMap), Equals, []string{
+		"abc",
+		"cbc",
+		"caaa",
+		"aaaaa",
+		"aaabc",
+		"abcbc",
+		"cbcbc",
+		"cbcaaa",
+		"caaaaaa",
+		"aaaaaaaa",
+		"aaaaaabc",
+		"aaaabcbc",
+		"aabcbcbc",
+		"bcbcbcbc",
+		"bcbcbca",
+		"bcbcaa",
+		"bcaaa",
+		"aaaa",
+		"aabc",
+		"bcbc",
+		"bca",
+		"aa",
+		"bc",
+		"a",
+	})
+}
