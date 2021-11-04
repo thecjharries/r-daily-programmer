@@ -24,10 +24,6 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func evaluate(input []string) bool {
-	return true
-}
-
 func countdown(input []int) (equation int) {
 	return
 }
