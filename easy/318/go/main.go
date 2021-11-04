@@ -16,10 +16,16 @@ package main
 
 import "fmt"
 
+var operators = []string{"+", "-", "*", "-"}
+
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func evaluate(input []string) bool {
+	return true
 }
 
 func countdown(input []int) (equation int) {
