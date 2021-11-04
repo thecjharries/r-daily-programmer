@@ -24,6 +24,20 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+func generateOperatorPossibilities(count int) [][]string {
+	if count == 0 {
+		return [][]string{[]string{}}
+	}
+	var result [][]string
+	for _, op := range operators {
+		for _, sub := range generateOperatorPossibilities(count - 1) {
+			result = append(result, append([]string{op}, sub...))
+		}
+	}
+	return result
+}
+
 func countdown(input []int) (equation int) {
+
 	return
 }
