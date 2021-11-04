@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCountdown(c *C) {
+	c.Assert(countdown([]int{1, 3, 7, 6, 8, 3, 250}), Equals, "3 + 8 * 7 + 6 * 3 + 1 = 250")
+	c.Assert(countdown([]int{25, 100, 9, 7, 3, 7, 881}), Equals, "7 * 3 + 100 * 7 + 25 + 9 = 881")
+	c.Assert(countdown([]int{6, 75, 3, 25, 50, 100, 952}), Equals, "100 + 6 * 3 * 75 - 50 / 25 = 952")
+}
