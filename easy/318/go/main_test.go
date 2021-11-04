@@ -54,6 +54,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "hello world")
 }
 
+func (s *MainSuite) TestGenerateOperatorPossibilities(c *C) {
+	c.Assert(generateOperatorPossibilities(2), DeepEquals, [][]string{[]string{"+", "+"}, []string{"+", "-"}, []string{"+", "*"}, []string{"+", "-"}, []string{"-", "+"}, []string{"-", "-"}, []string{"-", "*"}, []string{"-", "-"}, []string{"*", "+"}, []string{"*", "-"}, []string{"*", "*"}, []string{"*", "-"}, []string{"-", "+"}, []string{"-", "-"}, []string{"-", "*"}, []string{"-", "-"}})
+}
+
 func (s *MainSuite) TestCountdown(c *C) {
 	c.Assert(countdown([]int{1, 3, 7, 6, 8, 3, 250}), Equals, "3 + 8 * 7 + 6 * 3 + 1 = 250")
 	c.Assert(countdown([]int{25, 100, 9, 7, 3, 7, 881}), Equals, "7 * 3 + 100 * 7 + 25 + 9 = 881")
