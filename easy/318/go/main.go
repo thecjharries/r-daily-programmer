@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	prmt "github.com/gitchander/permutation"
+	"github.com/knetic/govaluate"
+)
 
 var operators = []string{"+", "-", "*", "-"}
 
@@ -37,7 +42,48 @@ func generateOperatorPossibilities(count int) [][]string {
 	return result
 }
 
-func countdown(input []int) (equation int) {
-
-	return
+func countdown(input []int) string {
+	possibleOps := generateOperatorPossibilities(5)
+	permInput := make([]int, len(input))
+	copy(permInput, input)
+	permutation := prmt.New(prmt.IntSlice(permInput))
+	for permutation.Next() {
+		for _, ops := range possibleOps {
+			equation := fmt.Sprintf(
+				"(((((%d %s %d) %s %d) %s %d) %s %d) %s %d) == %d",
+				permInput[0],
+				ops[0],
+				permInput[1],
+				ops[1],
+				permInput[2],
+				ops[2],
+				permInput[3],
+				ops[3],
+				permInput[4],
+				ops[4],
+				permInput[5],
+				permInput[6],
+			)
+			expression, _ := govaluate.NewEvaluableExpression(equation)
+			result, _ := expression.Evaluate(nil)
+			if result.(bool) {
+				return fmt.Sprintf(
+					"%d %s %d %s %d %s %d %s %d %s %d = %d",
+					permInput[0],
+					ops[0],
+					permInput[1],
+					ops[1],
+					permInput[2],
+					ops[2],
+					permInput[3],
+					ops[3],
+					permInput[4],
+					ops[4],
+					permInput[5],
+					permInput[6],
+				)
+			}
+		}
+	}
+	return ""
 }
