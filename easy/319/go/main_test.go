@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCondenseStrings(c *C) {
+	c.Assert(condenseStrings("I heard the pastor sing live verses easily."), Equals, "I heard the pastor sing liverses easily.")
+	c.Assert(condenseStrings("Deep episodes of Deep Space Nine came on the television only after the news."), Equals, "Deepisodes of Deep Space Nine came on the televisionly after the news.")
+	c.Assert(condenseStrings("Digital alarm clocks scare area children."), Equals, "Digitalarm clockscarea children.")
+}
