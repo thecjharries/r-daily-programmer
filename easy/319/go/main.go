@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +25,27 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func condenseStrings(input string) (result string) {
-	return
+func condenseStrings(input string) string {
+	output := make([]string, 1)
+	exploded := strings.Split(input, " ")
+	output[0] = exploded[0]
+	exploded = exploded[1:]
+	for 1 < len(exploded) {
+		currentWord := output[len(output)-1]
+		nextWord := exploded[0]
+		prefixIndex := 0
+		for index := 0; index < len(currentWord) && index < len(nextWord); index++ {
+			if strings.HasPrefix(nextWord, currentWord[len(currentWord)-1-index:]) {
+				prefixIndex = index + 1
+			}
+		}
+		if 0 < prefixIndex {
+			output[len(output)-1] = currentWord + nextWord[prefixIndex:]
+		} else {
+			output = append(output, nextWord)
+		}
+		exploded = exploded[1:]
+	}
+	output = append(output, exploded...)
+	return strings.Join(output, " ")
 }
