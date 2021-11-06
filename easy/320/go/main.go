@@ -23,5 +23,19 @@ func main() {
 }
 
 func buildNumberSpiral(number int) (spiral [][]int) {
+	spiral = make([][]int, number)
+	for i := range spiral {
+		spiral[i] = make([]int, number)
+	}
+	dx, dy := 1, 0
+	x, y := 0, 0
+	for index := 1; index <= number*number; index++ {
+		spiral[y][x] = index
+		if spiral[(y-dy+number)%number][(x+dx+number)%number] != 0 {
+			dx, dy = dy, -dx
+		}
+		x += dx
+		y -= dy
+	}
 	return
 }
