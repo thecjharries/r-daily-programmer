@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestTimeToWords(c *C) {
+	c.Assert(timeToWords("00:00"), Equals, "It's twelve am")
+	c.Assert(timeToWords("01:30"), Equals, "It's one thirty am")
+	c.Assert(timeToWords("12:05"), Equals, "It's twelve oh five pm")
+	c.Assert(timeToWords("14:01"), Equals, "It's two oh one pm")
+	c.Assert(timeToWords("20:29"), Equals, "It's eight twenty nine pm")
+	c.Assert(timeToWords("21:00"), Equals, "It's nine pm")
+}
