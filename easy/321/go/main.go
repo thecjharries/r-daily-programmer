@@ -14,10 +14,14 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var digits = []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
-var teens = []string{"eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}
+var teens = []string{"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}
 var tens = []string{"ten", "twenty", "thirty", "forty", "fifty"}
 
 var zPrint = fmt.Println
@@ -27,5 +31,32 @@ func main() {
 }
 
 func timeToWords(time string) (words string) {
-	return
+	exploded := strings.Split(time, ":")
+	hour, _ := strconv.Atoi(exploded[0])
+	ampm := "am"
+	if 11 < hour {
+		hour -= 12
+		ampm = "pm"
+	}
+	minute, _ := strconv.Atoi(exploded[1])
+	var minuteWord string
+	fmt.Println(hour, minute)
+	if 0 == minute {
+		minuteWord = ""
+	} else if 10 > minute {
+		minuteWord = fmt.Sprintf("oh %s ", digits[minute-1])
+	} else if 20 > minute {
+		minuteWord = fmt.Sprintf("%s ", teens[minute-10])
+	} else {
+		minuteWord = fmt.Sprintf("%s ", tens[minute/10-1])
+		if 0 != minute%10 {
+			minuteWord += fmt.Sprintf("%s ", digits[minute%10-1])
+		}
+	}
+	return fmt.Sprintf(
+		"It's %s %s%s",
+		append(append([]string{"twelve"}, digits...), teens...)[hour],
+		minuteWord,
+		ampm,
+	)
 }
