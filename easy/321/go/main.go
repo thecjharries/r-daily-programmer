@@ -16,6 +16,10 @@ package main
 
 import "fmt"
 
+var digits = []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
+var teens = []string{"eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"}
+var tens = []string{"ten", "twenty", "thirty", "forty", "fifty"}
+
 var zPrint = fmt.Println
 
 func main() {
