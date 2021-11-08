@@ -23,5 +23,9 @@ func main() {
 }
 
 func generateAllPairsWeak(input [][]string) (count int) {
+	count = 1
+	for _, set := range input {
+		count *= len(set)
+	}
 	return
 }
