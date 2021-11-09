@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,21 @@ func main() {
 }
 
 func threeSum(input []int) (results [][]int) {
+	sums := make(map[[3]int]struct{})
+	for firstIndex, first := range input[:len(input)-2] {
+		for secondIndex, second := range input[firstIndex : len(input)-1] {
+			for _, third := range input[secondIndex:] {
+				if first+second+third == 0 {
+					newSum := []int{first, second, third}
+					sort.Ints(newSum)
+					_, exists := sums[[3]int{newSum[0], newSum[1], newSum[2]}]
+					if !exists {
+						sums[[3]int{newSum[0], newSum[1], newSum[2]}] = struct{}{}
+						results = append(results, newSum)
+					}
+				}
+			}
+		}
+	}
 	return
 }
