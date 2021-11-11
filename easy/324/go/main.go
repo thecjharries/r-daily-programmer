@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func calculateSquareRoot(input float64, digitsOfPrecision int) (result string) {
+	return
+}
