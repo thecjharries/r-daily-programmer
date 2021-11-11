@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateSquareRoot(c *C) {
+	c.Assert(calculateSquareRoot(7720.17, 0), Equals, "86")
+	c.Assert(calculateSquareRoot(7720.17, 1), Equals, "86.8")
+	c.Assert(calculateSquareRoot(7720.17, 2), Equals, "86.86")
+}
