@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findPathThroughMazeFollowingSequence(sequence []string, maze [][]string) (path [][]int) {
+	return
+}
