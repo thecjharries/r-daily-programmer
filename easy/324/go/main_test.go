@@ -55,7 +55,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestCalculateSquareRoot(c *C) {
-	c.Assert(calculateSquareRoot(7720.17, 0), Equals, "86")
-	c.Assert(calculateSquareRoot(7720.17, 1), Equals, "86.8")
-	c.Assert(calculateSquareRoot(7720.17, 2), Equals, "86.86")
+	c.Assert(calculateSquareRoot(7720.17, 0), Equals, "88")
+	c.Assert(calculateSquareRoot(7720.17, 1), Equals, "87.9")
+	c.Assert(calculateSquareRoot(7720.17, 2), Equals, "87.86")
 }
