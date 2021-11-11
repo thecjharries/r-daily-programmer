@@ -23,5 +23,11 @@ func main() {
 }
 
 func calculateSquareRoot(input float64, digitsOfPrecision int) (result string) {
-	return
+	upper := 1.0
+	lower := 0.0
+	for lower != upper {
+		lower = upper
+		upper = (lower + input/lower) / 2
+	}
+	return fmt.Sprintf("%.*f", digitsOfPrecision, upper)
 }
