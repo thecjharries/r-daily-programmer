@@ -22,6 +22,38 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+// https://old.reddit.com/r/dailyprogrammer/comments/6qutez/20170801_challenge_325_easy_color_maze/dl0k0k1/
 func findPathThroughMazeFollowingSequence(sequence []string, maze [][]string) (path [][]int) {
+	row, column := len(maze)-1, len(maze[0])-1
+	sequenceIndex := 0
+	possible := make([][]int, 0)
+	for index := range maze[row] {
+		possible = append(possible, []int{row, index, sequenceIndex})
+	}
+	for 0 < row && sequence[sequenceIndex] != maze[row][column] {
+		row, column, sequenceIndex = possible[len(possible)-1][0], possible[len(possible)-1][1], possible[len(possible)-1][2]
+		possible = possible[:len(possible)-1]
+		if maze[row][column] == sequence[sequenceIndex] {
+			if 0 < len(path) {
+				for -1 > row+column-path[len(path)-1][0]-path[len(path)-1][1] || 1 < row+column-path[len(path)-1][0]-path[len(path)-1][1] {
+					path = path[:len(path)-1]
+				}
+			}
+			path = append(path, []int{row, column})
+			sequenceIndex = (sequenceIndex + 1) % len(sequence)
+			if len(maze)-1 > row {
+				possible = append(possible, []int{row + 1, column, sequenceIndex})
+			}
+			if 0 < column {
+				possible = append(possible, []int{row, column - 1, sequenceIndex})
+			}
+			if len(maze[row])-1 > column {
+				possible = append(possible, []int{row, column + 1, sequenceIndex})
+			}
+			if 0 < row {
+				possible = append(possible, []int{row - 1, column, sequenceIndex})
+			}
+		}
+	}
 	return
 }
