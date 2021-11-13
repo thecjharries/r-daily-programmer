@@ -53,3 +53,14 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsPrime(c *C) {
+	c.Assert(isPrime(1), Equals, false)
+	c.Assert(isPrime(2), Equals, true)
+	c.Assert(isPrime(3), Equals, true)
+	c.Assert(isPrime(4), Equals, false)
+	c.Assert(isPrime(5), Equals, true)
+	c.Assert(isPrime(6), Equals, false)
+	c.Assert(isPrime(10), Equals, false)
+	c.Assert(isPrime(15), Equals, false)
+}
