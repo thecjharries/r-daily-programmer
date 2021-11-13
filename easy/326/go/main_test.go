@@ -67,3 +67,10 @@ func (s *MainSuite) TestIsPrime(c *C) {
 	c.Assert(isPrime(10), Equals, false)
 	c.Assert(isPrime(15), Equals, false)
 }
+
+func (s *MainSuite) TestFindPrimeRange(c *C) {
+	c.Assert(findPrimeRange(270), DeepEquals, []int{269, 271})
+	c.Assert(findPrimeRange(541), DeepEquals, []int(nil))
+	c.Assert(findPrimeRange(993), DeepEquals, []int{991, 997})
+	c.Assert(findPrimeRange(649), DeepEquals, []int{647, 653})
+}
