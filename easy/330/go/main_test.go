@@ -57,5 +57,6 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestNewExtremeRectangle(c *C) {
 	rectangle := NewExtremeRectangle()
-	c.Assert(rectangle.BottomY, Equals, math.Inf(1))
+	c.Assert(rectangle.MinX, Equals, math.Inf(1))
+	c.Assert(rectangle.MinY, Equals, math.Inf(1))
 }

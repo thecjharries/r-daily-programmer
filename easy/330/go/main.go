@@ -26,18 +26,18 @@ type Circle struct {
 }
 
 type Rectangle struct {
-	LeftX   float64
-	RightX  float64
-	BottomY float64
-	TopY    float64
+	MinX float64
+	MaxX float64
+	MinY float64
+	MaxY float64
 }
 
 func NewExtremeRectangle() *Rectangle {
 	return &Rectangle{
-		LeftX:   math.Inf(1),
-		RightX:  math.Inf(-1),
-		BottomY: math.Inf(1),
-		TopY:    math.Inf(-1),
+		MinX: math.Inf(1),
+		MaxX: math.Inf(-1),
+		MinY: math.Inf(1),
+		MaxY: math.Inf(-1),
 	}
 }
 
