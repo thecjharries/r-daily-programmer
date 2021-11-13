@@ -36,6 +36,13 @@ type Rectangle struct {
 	MaxY float64
 }
 
+func (r *Rectangle) Cover(c *Circle) {
+	r.MinX = math.Min(r.MinX, c.CenterX-c.Radius)
+	r.MinY = math.Min(r.MinY, c.CenterY-c.Radius)
+	r.MaxX = math.Max(r.MaxX, c.CenterX+c.Radius)
+	r.MaxY = math.Max(r.MaxY, c.CenterY+c.Radius)
+}
+
 func NewRectangle(minX, minY, maxX, maxY float64) *Rectangle {
 	return &Rectangle{minX, minY, maxX, maxY}
 }
