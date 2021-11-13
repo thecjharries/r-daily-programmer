@@ -16,6 +16,12 @@ package main
 
 import "fmt"
 
+type Circle struct {
+	CenterX float64
+	CenterY float64
+	Radius  float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
