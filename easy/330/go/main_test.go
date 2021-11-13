@@ -64,6 +64,14 @@ func (s *MainSuite) TestCircleBoundingRectangle(c *C) {
 	c.Assert(maxY, Equals, 3.0)
 }
 
+func (s *MainSuite) TestNewRectangle(c *C) {
+	rect := NewRectangle(1, 2, 3, 4)
+	c.Assert(rect.MinX, Equals, 1.0)
+	c.Assert(rect.MinY, Equals, 2.0)
+	c.Assert(rect.MaxX, Equals, 3.0)
+	c.Assert(rect.MaxY, Equals, 4.0)
+}
+
 func (s *MainSuite) TestNewExtremeRectangle(c *C) {
 	rectangle := NewExtremeRectangle()
 	c.Assert(rectangle.MinX, Equals, math.Inf(1))
