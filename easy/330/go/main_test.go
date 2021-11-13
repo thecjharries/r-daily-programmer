@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestNewExtremeRectangle(c *C) {
+	rectangle := NewExtremeRectangle()
+	c.Assert(rectangle.BottomY, Equals, math.Inf(1))
 }
