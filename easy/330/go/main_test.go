@@ -55,6 +55,15 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printSpyContents, Equals, "hello world")
 }
 
+func (s *MainSuite) TestCircleBoundingRectangle(c *C) {
+	circle := Circle{1, 1, 2}
+	minX, minY, maxX, maxY := circle.BoundingRectangle()
+	c.Assert(minX, Equals, -1.0)
+	c.Assert(minY, Equals, -1.0)
+	c.Assert(maxX, Equals, 3.0)
+	c.Assert(maxY, Equals, 3.0)
+}
+
 func (s *MainSuite) TestNewExtremeRectangle(c *C) {
 	rectangle := NewExtremeRectangle()
 	c.Assert(rectangle.MinX, Equals, math.Inf(1))
