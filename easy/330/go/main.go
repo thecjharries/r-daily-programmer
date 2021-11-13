@@ -22,6 +22,13 @@ type Circle struct {
 	Radius  float64
 }
 
+type Rectangle struct {
+	LeftX   float64
+	RightX  float64
+	TopY    float64
+	BottomY float64
+}
+
 var zPrint = fmt.Println
 
 func main() {
