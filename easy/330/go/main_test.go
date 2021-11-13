@@ -77,3 +77,13 @@ func (s *MainSuite) TestNewExtremeRectangle(c *C) {
 	c.Assert(rectangle.MinX, Equals, math.Inf(1))
 	c.Assert(rectangle.MinY, Equals, math.Inf(1))
 }
+
+func (s *MainSuite) TestRectangleCover(c *C) {
+	circle := Circle{1, 1, 2}
+	rectangle := NewExtremeRectangle()
+	rectangle.Cover(&circle)
+	c.Assert(rectangle.MinX, Equals, -1.0)
+	c.Assert(rectangle.MinY, Equals, -1.0)
+	c.Assert(rectangle.MaxX, Equals, 3.0)
+	c.Assert(rectangle.MaxY, Equals, 3.0)
+}
