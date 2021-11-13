@@ -43,3 +43,20 @@ func isPrime(input int) bool {
 	}
 	return true
 }
+
+func findPrimeRange(input int) (result []int) {
+	current := input
+	if isPrime(input) {
+		return
+	}
+	for !isPrime(current) {
+		current--
+	}
+	result = append(result, current)
+	current = input
+	for !isPrime(current) {
+		current++
+	}
+	result = append(result, current)
+	return
+}
