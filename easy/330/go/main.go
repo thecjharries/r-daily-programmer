@@ -43,6 +43,10 @@ func (r *Rectangle) Cover(c *Circle) {
 	r.MaxY = math.Max(r.MaxY, c.CenterY+c.Radius)
 }
 
+func (r *Rectangle) String() string {
+	return fmt.Sprintf("[%f, %f, %f, %f]", r.MinX, r.MinY, r.MaxX, r.MaxY)
+}
+
 func NewRectangle(minX, minY, maxX, maxY float64) *Rectangle {
 	return &Rectangle{minX, minY, maxX, maxY}
 }
