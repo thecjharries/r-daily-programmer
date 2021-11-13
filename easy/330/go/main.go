@@ -25,10 +25,6 @@ type Circle struct {
 	Radius  float64
 }
 
-func (c *Circle) BoundingRectangle() (float64, float64, float64, float64) {
-	return c.CenterX - c.Radius, c.CenterY - c.Radius, c.CenterX + c.Radius, c.CenterY + c.Radius
-}
-
 type Rectangle struct {
 	MinX float64
 	MinY float64
