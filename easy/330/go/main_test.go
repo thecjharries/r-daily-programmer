@@ -92,3 +92,14 @@ func (s *MainSuite) TestRectangleString(c *C) {
 	rectangle := NewRectangle(1, 2, 3, 4)
 	c.Assert(rectangle.String(), Equals, "[1.000000, 2.000000, 3.000000, 4.000000]")
 }
+
+func (s *MainSuite) TestRectangleCoverAll(c *C) {
+	rectangle := NewExtremeRectangle()
+	rectangle.CoverAll([]*Circle{
+		{1, 1, 2},
+		{2, 2, 0.5},
+		{-1, -3, 2},
+		{5, 2, 1},
+	})
+	c.Assert(rectangle.String(), Equals, "[-3.000000, -5.000000, 6.000000, 3.000000]")
+}
