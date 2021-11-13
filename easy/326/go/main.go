@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,20 @@ func main() {
 }
 
 func isPrime(input int) bool {
-	return false
+	if input < 2 {
+		return false
+	} else if 2 == input {
+		return true
+	} else if 0 == input%2 {
+		return false
+	} else if 5 < input && 0 == input%5 {
+		return false
+	} else {
+		for index := 3; index < int(math.Sqrt(float64(input)))+1; index += 2 {
+			if 0 == input%index {
+				return false
+			}
+		}
+	}
+	return true
 }

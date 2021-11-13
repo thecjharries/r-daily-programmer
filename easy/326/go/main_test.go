@@ -61,6 +61,9 @@ func (s *MainSuite) TestIsPrime(c *C) {
 	c.Assert(isPrime(4), Equals, false)
 	c.Assert(isPrime(5), Equals, true)
 	c.Assert(isPrime(6), Equals, false)
+	c.Assert(isPrime(7), Equals, true)
+	c.Assert(isPrime(8), Equals, false)
+	c.Assert(isPrime(9), Equals, false)
 	c.Assert(isPrime(10), Equals, false)
 	c.Assert(isPrime(15), Equals, false)
 }
