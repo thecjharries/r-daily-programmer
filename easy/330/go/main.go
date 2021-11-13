@@ -36,6 +36,10 @@ type Rectangle struct {
 	MaxY float64
 }
 
+func NewRectangle(minX, minY, maxX, maxY float64) *Rectangle {
+	return &Rectangle{minX, minY, maxX, maxY}
+}
+
 func NewExtremeRectangle() *Rectangle {
 	return &Rectangle{
 		MinX: math.Inf(1),
