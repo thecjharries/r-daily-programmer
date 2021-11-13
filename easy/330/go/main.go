@@ -25,18 +25,22 @@ type Circle struct {
 	Radius  float64
 }
 
+func (c *Circle) BoundingRectangle() (float64, float64, float64, float64) {
+	return c.CenterX - c.Radius, c.CenterY - c.Radius, c.CenterX + c.Radius, c.CenterY + c.Radius
+}
+
 type Rectangle struct {
 	MinX float64
-	MaxX float64
 	MinY float64
+	MaxX float64
 	MaxY float64
 }
 
 func NewExtremeRectangle() *Rectangle {
 	return &Rectangle{
 		MinX: math.Inf(1),
-		MaxX: math.Inf(-1),
 		MinY: math.Inf(1),
+		MaxX: math.Inf(-1),
 		MaxY: math.Inf(-1),
 	}
 }
