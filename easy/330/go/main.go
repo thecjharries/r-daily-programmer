@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Circle struct {
 	CenterX float64
@@ -25,8 +28,17 @@ type Circle struct {
 type Rectangle struct {
 	LeftX   float64
 	RightX  float64
-	TopY    float64
 	BottomY float64
+	TopY    float64
+}
+
+func NewExtremeRectangle() *Rectangle {
+	return &Rectangle{
+		LeftX:   math.Inf(1),
+		RightX:  math.Inf(-1),
+		BottomY: math.Inf(1),
+		TopY:    math.Inf(-1),
+	}
 }
 
 var zPrint = fmt.Println
