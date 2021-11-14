@@ -14,7 +14,18 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
+
+var operators = map[string]func(a, b float64) float64{
+	"+": func(a, b float64) float64 { return a + b },
+	"-": func(a, b float64) float64 { return a - b },
+	"*": func(a, b float64) float64 { return a * b },
+	"/": func(a, b float64) float64 { return a / b },
+	"^": func(a, b float64) float64 { return math.Pow(a, b) },
+}
 
 var zPrint = fmt.Println
 
