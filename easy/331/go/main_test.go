@@ -58,3 +58,15 @@ func (s *MainSuite) TestIsInteger(c *C) {
 	c.Assert(isInteger(1.0), Equals, true)
 	c.Assert(isInteger(1.1), Equals, false)
 }
+
+func (s *MainSuite) TestCalculate(c *C) {
+	firstValue, firstError := calculate(1, 1, "*")
+	c.Assert(firstValue, Equals, 1)
+	c.Assert(firstError, IsNil)
+	secondValue, secondError := calculate(7, 3, "/")
+	c.Assert(secondValue, Equals, 0)
+	c.Assert(secondError, Not(IsNil))
+	thirdValue, thirdError := calculate(10, 0, "/")
+	c.Assert(thirdValue, Equals, 0)
+	c.Assert(thirdError, Not(IsNil))
+}
