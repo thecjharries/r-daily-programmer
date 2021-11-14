@@ -32,3 +32,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func isInteger(input float64) bool {
+	return input == float64(int(input))
+}
