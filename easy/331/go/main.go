@@ -36,3 +36,19 @@ func main() {
 func isInteger(input float64) bool {
 	return input == float64(int(input))
 }
+
+func calculate(a, b int, operator string) (int, error) {
+	var parentError error
+	defer func() {
+		if err := recover(); nil != err {
+			parentError = err.(error)
+		}
+	}()
+	value := operators[operator](float64(a), float64(b))
+	if isInteger(value) {
+		return int(value), nil
+	} else {
+		parentError = fmt.Errorf("%f is not an integer", value)
+	}
+	return 0, parentError
+}
