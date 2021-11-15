@@ -17,9 +17,11 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
+	"strings"
 )
 
-var packetPattern = regexp.MustCompile(`(\d+)\s+(\d+)\s+(\d+)\s+(.*?)`)
+var packetPattern = regexp.MustCompile(`^(\d+)\s+(\d+)\s+(\d+)\s*(.*)$`)
 
 var zPrint = fmt.Println
 
@@ -28,5 +30,23 @@ func main() {
 }
 
 func assemblePackets(packets []string) (messages map[int]string) {
+	rawMessages := make(map[int][]string)
+	for _, packet := range packets {
+		fmt.Println(packet)
+		matches := packetPattern.FindStringSubmatch(packet)
+		packetId, _ := strconv.Atoi(matches[1])
+		packetChunk, _ := strconv.Atoi(matches[2])
+		totalChunks, _ := strconv.Atoi(matches[3])
+		currentChunks, exists := rawMessages[packetId]
+		if !exists {
+			currentChunks = make([]string, totalChunks)
+		}
+		currentChunks[packetChunk] = matches[4]
+		rawMessages[packetId] = currentChunks
+	}
+	messages = make(map[int]string)
+	for packetId, packetChunks := range rawMessages {
+		messages[packetId] = strings.Join(packetChunks, "")
+	}
 	return
 }
