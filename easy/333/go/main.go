@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var packetPattern = regexp.MustCompile(`(\d+)\s+(\d+)\s+(\d+)\s+(.*?)`)
 
 var zPrint = fmt.Println
 
