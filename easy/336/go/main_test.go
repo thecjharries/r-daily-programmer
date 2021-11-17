@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCannibalizeNumbers(c *C) {
+	c.Assert(cannibalizeNumbers(10, []int{21, 9, 5, 8, 10, 1, 3}), Equals, 4)
+	c.Assert(cannibalizeNumbers(15, []int{21, 9, 5, 8, 10, 1, 3}), Equals, 2)
+	c.Assert(cannibalizeNumbers(4, []int{3, 3, 3, 2, 2, 2, 1, 1, 1}), Equals, 4)
+	c.Assert(cannibalizeNumbers(5, []int{1, 2, 3, 4, 5}), Equals, 2)
+}
