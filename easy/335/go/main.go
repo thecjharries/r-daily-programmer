@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,21 @@ func main() {
 }
 
 func calculateConsecutiveDistanceRating(input []int) (rating int) {
+	sortedInput := make([]int, len(input))
+	copy(sortedInput, input)
+	sort.Ints(sortedInput)
+	indexMap := make(map[int]int)
+	for index, value := range input {
+		indexMap[value] = index
+	}
+	for index := 1; index < len(sortedInput); index++ {
+		if sortedInput[index]-sortedInput[index-1] == 1 {
+			if indexMap[sortedInput[index]] > indexMap[sortedInput[index-1]] {
+				rating += indexMap[sortedInput[index]] - indexMap[sortedInput[index-1]]
+			} else {
+				rating += indexMap[sortedInput[index-1]] - indexMap[sortedInput[index]]
+			}
+		}
+	}
 	return
 }
