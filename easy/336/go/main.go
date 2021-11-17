@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 var zPrint = fmt.Println
@@ -25,6 +26,23 @@ func main() {
 }
 
 func cannibalizeNumbers(queryNumber int, numbers []int) (result int) {
-
+	sortedNumbers := make([]int, len(numbers))
+	copy(sortedNumbers, numbers)
+	sort.Ints(sortedNumbers)
+	bottomIndex, topIndex := 0, len(sortedNumbers)-1
+	for bottomIndex < topIndex {
+		if queryNumber <= sortedNumbers[topIndex] {
+			result++
+		} else {
+			for queryNumber > sortedNumbers[topIndex] && bottomIndex < topIndex {
+				bottomIndex++
+				sortedNumbers[topIndex]++
+			}
+			if queryNumber == sortedNumbers[topIndex] {
+				result++
+			}
+		}
+		topIndex--
+	}
 	return
 }
