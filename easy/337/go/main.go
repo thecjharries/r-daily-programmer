@@ -29,3 +29,7 @@ func main() {
 func problem1() float64 {
 	return 360 / math.Pi
 }
+
+func problem2(distanceFromTownA, distanceFromTownB, riverLength float64) float64 {
+	return distanceFromTownA * riverLength / (distanceFromTownA + distanceFromTownB)
+}
