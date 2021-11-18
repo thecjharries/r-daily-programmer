@@ -57,3 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestProblem1(c *C) {
 	c.Assert(problem1(), Equals, 114.59155902616465)
 }
+
+func (s *MainSuite) TestProblem2(c *C) {
+	c.Assert(problem2(20, 30, 100), Equals, 40.0)
+}
