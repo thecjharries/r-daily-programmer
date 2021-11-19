@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findDayOfWeek(year, month, day int) (dayOfWeek string) {
+	return
+}
