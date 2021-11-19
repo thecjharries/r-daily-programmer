@@ -56,4 +56,6 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestFindDayOfWeek(c *C) {
 	c.Assert(findDayOfWeek(2017, 10, 30), Equals, "Monday")
+	c.Assert(findDayOfWeek(2016, 2, 29), Equals, "Monday")
+	c.Assert(findDayOfWeek(2015, 2, 28), Equals, "Saturday")
 }
