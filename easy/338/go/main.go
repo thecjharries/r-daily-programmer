@@ -28,6 +28,5 @@ func main() {
 }
 
 func findDayOfWeek(year, month, day int) string {
-	givenDate, _ := time.Parse(dateFormat, fmt.Sprintf("%d-%d-%d", year, month, day))
-	return givenDate.Weekday().String()
+	return time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC).Weekday().String()
 }
