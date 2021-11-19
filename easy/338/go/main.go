@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+var dateFormat = "2006-01-02"
 
 var zPrint = fmt.Println
 
@@ -22,6 +27,7 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func findDayOfWeek(year, month, day int) (dayOfWeek string) {
-	return
+func findDayOfWeek(year, month, day int) string {
+	givenDate, _ := time.Parse(dateFormat, fmt.Sprintf("%d-%d-%d", year, month, day))
+	return givenDate.Weekday().String()
 }
