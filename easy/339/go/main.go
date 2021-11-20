@@ -20,6 +20,7 @@ import (
 )
 
 var infoPattern = regexp.MustCompile(`^([^:].{19})(\d{2})(\d{6})$`)
+var externsionPattern = regexp.MustCompile(`::EXT::(.{4})(.{17})`)
 
 var zPrint = fmt.Println
 
