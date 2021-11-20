@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strconv"
+	"strings"
 )
 
 var infoPattern = regexp.MustCompile(`^(?P<name>[^:].{19})(?P<age>\d{2})(?P<birthday>\d{6})$`)
@@ -29,5 +31,24 @@ func main() {
 }
 
 func findHighestSalary(input []string) (highest string) {
-	return
+	highestSalary := -1
+	highestSalaryOwner := ""
+	currentName := ""
+	for _, line := range input {
+		matches := extensionPattern.FindStringSubmatch(line)
+		if 0 == len(matches) {
+			matches = infoPattern.FindStringSubmatch(line)
+			currentName = strings.Trim(matches[1], " ")
+		} else {
+			extension := strings.Trim(matches[1], " ")
+			if "SAL" == extension {
+				salary, _ := strconv.Atoi(strings.Trim(matches[2], " "))
+				if highestSalary < salary {
+					highestSalary = salary
+					highestSalaryOwner = currentName
+				}
+			}
+		}
+	}
+	return fmt.Sprintf("%s, $%d", highestSalaryOwner, highestSalary)
 }
