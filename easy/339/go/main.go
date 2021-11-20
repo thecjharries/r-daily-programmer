@@ -27,3 +27,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findHighestSalary(input []string) (highest string) {
+	return
+}
