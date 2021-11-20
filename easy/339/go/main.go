@@ -19,8 +19,8 @@ import (
 	"regexp"
 )
 
-var infoPattern = regexp.MustCompile(`^([^:].{19})(\d{2})(\d{6})$`)
-var externsionPattern = regexp.MustCompile(`::EXT::(.{4})(.{17})`)
+var infoPattern = regexp.MustCompile(`^(?P<name>[^:].{19})(?P<age>\d{2})(?P<birthday>\d{6})$`)
+var extensionPattern = regexp.MustCompile(`::EXT::(?P<name>.{4})(?P<value>.{17})`)
 
 var zPrint = fmt.Println
 
