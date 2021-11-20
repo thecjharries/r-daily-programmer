@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var infoPattern = regexp.MustCompile(`^([^:].{19})(\d{2})(\d{6})$`)
 
 var zPrint = fmt.Println
 
