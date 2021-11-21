@@ -56,4 +56,5 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestFindFirstRepeatedCharacter(c *C) {
 	c.Assert(findFirstRepeatedCharacter("ABCDBE"), Equals, "B: 4")
+	c.Assert(findFirstRepeatedCharacter("ABCD"), Equals, "")
 }
