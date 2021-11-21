@@ -23,5 +23,14 @@ func main() {
 }
 
 func findFirstRepeatedCharacter(input string) string {
+	seen := make(map[rune]int)
+	for index, character := range input {
+		_, exists := seen[character]
+		if exists {
+			return fmt.Sprintf("%c: %d", character, index)
+		} else {
+			seen[character] = index
+		}
+	}
 	return ""
 }
