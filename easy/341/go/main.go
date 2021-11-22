@@ -14,7 +14,9 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +24,20 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func findRepeatedNumbers(input int) (repeated map[int]int) {
+func findRepeatedNumbers(input string) (repeated map[string]int) {
+	discovery := make(map[string]int)
+	repeated = make(map[string]int)
+	for length := len(input) - 2; length > 1; length-- {
+		for index := 0; index < len(input)-length; index++ {
+			currentNumber := input[index : index+length]
+			_, exists := discovery[currentNumber]
+			if exists {
+				discovery[currentNumber] += 1
+				repeated[currentNumber] = discovery[currentNumber]
+			} else {
+				discovery[currentNumber] = 1
+			}
+		}
+	}
 	return
 }
