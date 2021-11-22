@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindRepeatedNumbers(c *C) {
+	c.Assert(findRepeatedNumbers("11325992321982432123259"), DeepEquals, map[string]int{"21": 2, "23": 2, "232": 2, "25": 2, "32": 4, "321": 2, "325": 2})
+}
