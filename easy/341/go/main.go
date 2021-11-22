@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func findRepeatedNumbers(input int) (repeated map[int]int) {
+	return
+}
