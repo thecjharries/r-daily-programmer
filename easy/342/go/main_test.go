@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestPolynomialDegree(c *C) {
+	c.Assert((&Polynomial{1, 2, 3}).Degree(), Equals, 2)
+	c.Assert((&Polynomial{}).Degree(), Equals, 0)
+}
