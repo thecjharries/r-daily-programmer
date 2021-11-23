@@ -18,6 +18,15 @@ import "fmt"
 
 type Polynomial []float64
 
+func (p *Polynomial) Degree() int {
+	for index := len(*p) - 1; index >= 0; index-- {
+		if (*p)[index] != 0 {
+			return index
+		}
+	}
+	return 0
+}
+
 var zPrint = fmt.Println
 
 func main() {
