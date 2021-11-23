@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type Polynomial []float64
+
 var zPrint = fmt.Println
 
 func main() {
