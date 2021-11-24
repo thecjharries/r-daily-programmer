@@ -18,9 +18,9 @@ import "fmt"
 
 type Polynomial []float64
 
-func (p *Polynomial) Degree() int {
-	for index := len(*p) - 1; index >= 0; index-- {
-		if (*p)[index] != 0 {
+func (p Polynomial) Degree() int {
+	for index := len(p) - 1; index >= 0; index-- {
+		if (p)[index] != 0 {
 			return index
 		}
 	}
@@ -28,15 +28,16 @@ func (p *Polynomial) Degree() int {
 }
 
 // https://rosettacode.org/wiki/Polynomial_long_division#Go
-func (p *Polynomial) DivideBy(divisor *Polynomial) (*Polynomial, *Polynomial) {
-	quotient := Polynomial{}
-	remainder := Polynomial{}
-	copy(remainder, *p)
+func (p Polynomial) DivideBy(divisor Polynomial) (quotient, remainder Polynomial) {
+	remainder = make(Polynomial, len(p))
+	copy(remainder, p)
+	fmt.Println("remainder:", remainder)
 	if divisor.Degree() <= p.Degree() {
 		quotient = make(Polynomial, p.Degree()-divisor.Degree()+1)
 		for divisor.Degree() <= remainder.Degree() {
+			fmt.Println("remainder: ", remainder)
 			denominator := make(Polynomial, remainder.Degree()+1)
-			copy(denominator[remainder.Degree()-divisor.Degree():], *divisor)
+			copy(denominator[remainder.Degree()-divisor.Degree():], divisor)
 			quotient[remainder.Degree()-divisor.Degree()] = remainder[remainder.Degree()] / denominator[remainder.Degree()]
 			for index := range denominator {
 				denominator[index] *= quotient[remainder.Degree()-divisor.Degree()]
@@ -44,7 +45,7 @@ func (p *Polynomial) DivideBy(divisor *Polynomial) (*Polynomial, *Polynomial) {
 			}
 		}
 	}
-	return &quotient, &remainder
+	return
 }
 
 var zPrint = fmt.Println
