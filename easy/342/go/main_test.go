@@ -58,3 +58,12 @@ func (s *MainSuite) TestPolynomialDegree(c *C) {
 	c.Assert((&Polynomial{1, 2, 3}).Degree(), Equals, 2)
 	c.Assert((&Polynomial{}).Degree(), Equals, 0)
 }
+
+func (s *MainSuite) TestPolynomialDivideBy(c *C) {
+	var numerator, denominator, quotient, remainder *Polynomial
+	numerator = &Polynomial{4, 2, -6, 3}
+	denominator = &Polynomial{1, -3}
+	quotient, remainder = numerator.DivideBy(denominator)
+	c.Assert(quotient, DeepEquals, &Polynomial{4, 14, 36})
+	c.Assert(remainder, DeepEquals, &Polynomial{111})
+}
