@@ -16,6 +16,9 @@ package main
 
 import "fmt"
 
+var chromaticScale = []string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"}
+var solfegeScale = []string{"Do", "Re", "Mi", "Fa", "So", "La", "Ti"}
+
 var zPrint = fmt.Println
 
 func main() {
