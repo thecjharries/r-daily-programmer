@@ -27,6 +27,26 @@ func (p *Polynomial) Degree() int {
 	return 0
 }
 
+// https://rosettacode.org/wiki/Polynomial_long_division#Go
+func (p *Polynomial) DivideBy(divisor *Polynomial) (*Polynomial, *Polynomial) {
+	quotient := Polynomial{}
+	remainder := Polynomial{}
+	copy(remainder, *p)
+	if divisor.Degree() <= p.Degree() {
+		quotient = make(Polynomial, p.Degree()-divisor.Degree()+1)
+		for divisor.Degree() <= remainder.Degree() {
+			denominator := make(Polynomial, remainder.Degree()+1)
+			copy(denominator[remainder.Degree()-divisor.Degree():], *divisor)
+			quotient[remainder.Degree()-divisor.Degree()] = remainder[remainder.Degree()] / denominator[remainder.Degree()]
+			for index := range denominator {
+				denominator[index] *= quotient[remainder.Degree()-divisor.Degree()]
+				remainder[index] -= denominator[index]
+			}
+		}
+	}
+	return &quotient, &remainder
+}
+
 var zPrint = fmt.Println
 
 func main() {
