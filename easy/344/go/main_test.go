@@ -60,3 +60,7 @@ func (s *MainSuite) TestDetermineBaumTerm(c *C) {
 	c.Assert(determineBaumTerm(5), Equals, 0)
 	c.Assert(determineBaumTerm(19611206), Equals, 0)
 }
+
+func (s *MainSuite) TestBuildBaumSequence(c *C) {
+	c.Assert(buildBaumSequence(20), DeepEquals, []int{1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0})
+}
