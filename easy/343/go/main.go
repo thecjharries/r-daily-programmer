@@ -38,3 +38,8 @@ func buildMajorScale(note string) (notes []string) {
 	}
 	return
 }
+
+func note(scale, solfege string) (note string) {
+
+	return
+}
