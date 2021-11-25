@@ -24,3 +24,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func buildMajorScale(note string) (notes []string) {
+	return
+}
