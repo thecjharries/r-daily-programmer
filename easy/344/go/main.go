@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +25,18 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func determineBaumTerm(input int) (output int) {
-	return
+func determineBaumTerm(input int) int {
+	asBinary := strconv.FormatInt(int64(input), 2)
+	currentRunLength := 0
+	for _, character := range asBinary {
+		if character == '0' {
+			currentRunLength++
+		} else {
+			if 1 == currentRunLength%2 {
+				return 0
+			}
+			currentRunLength = 0
+		}
+	}
+	return 1
 }
