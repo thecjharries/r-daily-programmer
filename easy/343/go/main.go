@@ -40,6 +40,12 @@ func buildMajorScale(note string) (notes []string) {
 }
 
 func note(scale, solfege string) (note string) {
-
+	majorScale := buildMajorScale(scale)
+	for index, solfegeNote := range solfegeScale {
+		if solfege == solfegeNote {
+			note = majorScale[index]
+			break
+		}
+	}
 	return
 }

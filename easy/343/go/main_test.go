@@ -57,3 +57,11 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestBuildMajorScale(c *C) {
 	c.Assert(buildMajorScale("D"), DeepEquals, []string{"D", "E", "F#", "G", "A", "B", "C#"})
 }
+
+func (s *MainSuite) TestNote(c *C) {
+	c.Assert(note("C", "Do"), Equals, "C")
+	c.Assert(note("C", "Re"), Equals, "D")
+	c.Assert(note("C", "Mi"), Equals, "E")
+	c.Assert(note("D", "Mi"), Equals, "F#")
+	c.Assert(note("A#", "Fa"), Equals, "D#")
+}
