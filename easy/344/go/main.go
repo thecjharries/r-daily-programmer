@@ -40,3 +40,7 @@ func determineBaumTerm(input int) int {
 	}
 	return 1
 }
+
+func buildBaumSequence(max int) (sequence []int) {
+	return
+}
