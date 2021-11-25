@@ -41,9 +41,15 @@ func determineBaumTerm(input int) int {
 			currentRunLength = 0
 		}
 	}
+	if 1 == currentRunLength%2 {
+		return 0
+	}
 	return 1
 }
 
 func buildBaumSequence(max int) (sequence []int) {
+	for index := 0; index <= max; index++ {
+		sequence = append(sequence, determineBaumTerm(index))
+	}
 	return
 }
