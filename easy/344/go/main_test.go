@@ -55,7 +55,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestDetermineBaumTerm(c *C) {
-	c.Assert(determineBaumTerm(0), Equals, 0)
+	c.Assert(determineBaumTerm(0), Equals, 1)
 	c.Assert(determineBaumTerm(4), Equals, 1)
 	c.Assert(determineBaumTerm(5), Equals, 0)
 	c.Assert(determineBaumTerm(19611206), Equals, 0)
