@@ -26,5 +26,15 @@ func main() {
 }
 
 func buildMajorScale(note string) (notes []string) {
+	initialIndex := 0
+	for index, scaleNote := range chromaticScale {
+		if note == scaleNote {
+			initialIndex = index
+			break
+		}
+	}
+	for _, noteOffset := range []int{0, 2, 4, 5, 7, 9, 11} {
+		notes = append(notes, chromaticScale[(initialIndex+noteOffset)%len(chromaticScale)])
+	}
 	return
 }
