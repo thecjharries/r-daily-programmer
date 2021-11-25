@@ -26,6 +26,9 @@ func main() {
 }
 
 func determineBaumTerm(input int) int {
+	if 0 >= input {
+		return 1
+	}
 	asBinary := strconv.FormatInt(int64(input), 2)
 	currentRunLength := 0
 	for _, character := range asBinary {
