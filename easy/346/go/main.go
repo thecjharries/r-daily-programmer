@@ -28,3 +28,17 @@ func main() {
 func isValid(number string) bool {
 	return !strings.HasPrefix(number, "0")
 }
+
+func buildLetterSet(words []string) (uniqueLetters []string) {
+	letters := make(map[string]struct{})
+	for _, word := range words {
+		for index := 0; index < len(word); index++ {
+			_, exists := letters[string(word[index])]
+			if !exists {
+				letters[string(word[index])] = struct{}{}
+				uniqueLetters = append(uniqueLetters, string(word[index]))
+			}
+		}
+	}
+	return
+}
