@@ -64,15 +64,14 @@ func convertWordToNumber(word string, mapping map[string]string) int {
 }
 
 func isMappingValid(words []string, mapping map[string]string) bool {
-	if !isValid(words[len(words)-1]) {
-		return false
-	}
 	workingSum := 0
 	for _, word := range words[:len(words)-1] {
-		if !isValid(word) {
+		number := convertWordToNumber(word, mapping)
+		if number > 0 {
+			workingSum += convertWordToNumber(word, mapping)
+		} else {
 			return false
 		}
-		workingSum += convertWordToNumber(word, mapping)
 	}
 	return workingSum == convertWordToNumber(words[len(words)-1], mapping)
 }
