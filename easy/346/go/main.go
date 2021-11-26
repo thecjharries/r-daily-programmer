@@ -56,6 +56,9 @@ func convertWordToNumber(word string, mapping map[string]string) int {
 	wordNumber := strings.Map(func(r rune) rune {
 		return []rune(mapping[string(r)])[0]
 	}, word)
+	if !isValid(wordNumber) {
+		return -1
+	}
 	number, _ := strconv.Atoi(wordNumber)
 	return number
 }

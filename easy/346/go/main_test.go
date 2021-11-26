@@ -68,7 +68,7 @@ func (s *MainSuite) TestBuildLetterMapping(c *C) {
 }
 
 func (s *MainSuite) TestConvertWordToNumber(c *C) {
-	c.Assert(convertWordToNumber("SEND", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, 123)
+	c.Assert(convertWordToNumber("SEND", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, -1)
 	c.Assert(convertWordToNumber("MORE", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, 4561)
 }
 
