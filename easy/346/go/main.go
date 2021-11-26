@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	prmt "github.com/gitchander/permutation"
 )
 
 var zPrint = fmt.Println
@@ -74,4 +76,18 @@ func isMappingValid(words []string, mapping map[string]string) bool {
 		}
 	}
 	return workingSum == convertWordToNumber(words[len(words)-1], mapping)
+}
+
+func findWordMapping(words []string) map[string]string {
+	mapping := make(map[string]string)
+	letters := buildLetterSet(words)
+	numbers := []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
+	permutation := prmt.New(prmt.StringSlice(numbers))
+	for permutation.Next() {
+		mapping = buildLetterMapping(letters, numbers)
+		if isMappingValid(words, mapping) {
+			break
+		}
+	}
+	return mapping
 }
