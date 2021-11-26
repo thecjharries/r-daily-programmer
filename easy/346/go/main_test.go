@@ -58,3 +58,7 @@ func (s *MainSuite) TestIsValid(c *C) {
 	c.Assert(isValid("1000"), Equals, true)
 	c.Assert(isValid("0123456789"), Equals, false)
 }
+
+func (s *MainSuite) TestBuildLetterSet(c *C) {
+	c.Assert(buildLetterSet([]string{"SEND", "MORE", "MONEY"}), DeepEquals, []string{"S", "E", "N", "D", "M", "O", "R", "Y"})
+}
