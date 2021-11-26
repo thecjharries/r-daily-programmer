@@ -42,3 +42,11 @@ func buildLetterSet(words []string) (uniqueLetters []string) {
 	}
 	return
 }
+
+func buildLetterMapping(letters, values []string) map[string]string {
+	mapping := make(map[string]string)
+	for index, letter := range letters {
+		mapping[letter] = values[index]
+	}
+	return mapping
+}
