@@ -66,3 +66,8 @@ func (s *MainSuite) TestBuildLetterSet(c *C) {
 func (s *MainSuite) TestBuildLetterMapping(c *C) {
 	c.Assert(buildLetterMapping([]string{"S", "E", "N", "D", "M", "O", "R", "Y"}, []string{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}), DeepEquals, map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"})
 }
+
+func (s *MainSuite) TestConvertWordToNumber(c *C) {
+	c.Assert(convertWordToNumber("SEND", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, 123)
+	c.Assert(convertWordToNumber("MORE", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, 4561)
+}

@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -49,4 +50,12 @@ func buildLetterMapping(letters, values []string) map[string]string {
 		mapping[letter] = values[index]
 	}
 	return mapping
+}
+
+func convertWordToNumber(word string, mapping map[string]string) int {
+	wordNumber := strings.Map(func(r rune) rune {
+		return []rune(mapping[string(r)])[0]
+	}, word)
+	number, _ := strconv.Atoi(wordNumber)
+	return number
 }
