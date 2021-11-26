@@ -59,3 +59,17 @@ func convertWordToNumber(word string, mapping map[string]string) int {
 	number, _ := strconv.Atoi(wordNumber)
 	return number
 }
+
+func isMappingValid(words []string, mapping map[string]string) bool {
+	if !isValid(words[len(words)-1]) {
+		return false
+	}
+	workingSum := 0
+	for _, word := range words[:len(words)-1] {
+		if !isValid(word) {
+			return false
+		}
+		workingSum += convertWordToNumber(word, mapping)
+	}
+	return workingSum == convertWordToNumber(words[len(words)-1], mapping)
+}

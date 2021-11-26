@@ -71,3 +71,10 @@ func (s *MainSuite) TestConvertWordToNumber(c *C) {
 	c.Assert(convertWordToNumber("SEND", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, 123)
 	c.Assert(convertWordToNumber("MORE", map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, 4561)
 }
+
+func (s *MainSuite) TestIsMappingValid(c *C) {
+	c.Assert(isMappingValid([]string{"SEND", "MORE", "MONEY"}, map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, false)
+	c.Assert(isMappingValid([]string{"SEND", "MORE", "MONEY"}, map[string]string{"D": "7", "E": "5", "M": "1", "N": "6", "O": "0", "R": "8", "S": "9", "Y": "2"}), Equals, true)
+	c.Assert(isMappingValid([]string{"SEND", "MORE", "MONEY"}, map[string]string{"D": "3", "E": "1", "M": "0", "N": "2", "O": "5", "R": "6", "S": "4", "Y": "7"}), Equals, false)
+	c.Assert(isMappingValid([]string{"SEND", "MORE", "MONEY"}, map[string]string{"D": "3", "E": "1", "M": "4", "N": "2", "O": "5", "R": "6", "S": "0", "Y": "7"}), Equals, false)
+}
