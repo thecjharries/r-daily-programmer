@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestIsValid(c *C) {
+	c.Assert(isValid("1000"), Equals, true)
+	c.Assert(isValid("0123456789"), Equals, false)
+}
