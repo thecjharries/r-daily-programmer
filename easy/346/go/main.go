@@ -26,5 +26,5 @@ func main() {
 }
 
 func isValid(number string) bool {
-	return strings.HasPrefix(number, "0")
+	return !strings.HasPrefix(number, "0")
 }
