@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 type TimeRange [2]int
 
@@ -39,5 +42,20 @@ func main() {
 }
 
 func determineLightLength(lights []TimeRange) int {
-	return 0
+	sortedLights := make(TimeRanges, len(lights))
+	copy(sortedLights, lights)
+	sort.Sort(sortedLights)
+	min, max, total := -1, -1, 0
+	for _, timeRange := range sortedLights {
+		if max < timeRange[0] {
+			total += max - min
+			min = timeRange[0]
+			max = timeRange[1]
+		}
+		if timeRange[0] <= max && timeRange[1] > max {
+			max = timeRange[1]
+		}
+	}
+	total += max - min
+	return total
 }
