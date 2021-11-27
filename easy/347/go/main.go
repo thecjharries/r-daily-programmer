@@ -18,6 +18,20 @@ import "fmt"
 
 type TimeRange [2]int
 
+type TimeRanges []TimeRange
+
+func (t TimeRanges) Len() int {
+	return len(t)
+}
+
+func (t TimeRanges) Less(i, j int) bool {
+	return t[i][0] < t[j][0] || (t[i][0] == t[j][0] && t[i][1] < t[j][1])
+}
+
+func (t TimeRanges) Swap(i, j int) {
+	t[i], t[j] = t[j], t[i]
+}
+
 var zPrint = fmt.Println
 
 func main() {
