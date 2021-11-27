@@ -70,3 +70,24 @@ func (s *MainSuite) TestTimeRangesSort(c *C) {
 	sort.Sort(timeRanges)
 	c.Assert(timeRanges, DeepEquals, sortedTimeRanges)
 }
+
+func (s *MainSuite) TestDetermineLightLength(c *C) {
+	c.Assert(determineLightLength(TimeRanges{
+		{1, 3},
+		{2, 3},
+		{4, 5},
+	}), Equals, 3)
+	c.Assert(determineLightLength(TimeRanges{
+		{2, 4},
+		{3, 6},
+		{1, 3},
+		{6, 8},
+	}), Equals, 7)
+	c.Assert(determineLightLength(TimeRanges{
+		{6, 8},
+		{5, 8},
+		{8, 9},
+		{5, 7},
+		{4, 7},
+	}), Equals, 5)
+}
