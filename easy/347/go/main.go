@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+type TimeRange [2]int
+
 var zPrint = fmt.Println
 
 func main() {
