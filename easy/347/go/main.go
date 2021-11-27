@@ -37,3 +37,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func determineLightLength(lights []TimeRange) int {
+	return 0
+}
