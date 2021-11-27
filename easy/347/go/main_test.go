@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -52,4 +53,20 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestTimeRangesSort(c *C) {
+	var timeRanges, sortedTimeRanges TimeRanges
+	timeRanges = TimeRanges{
+		{4, 5},
+		{1, 3},
+		{2, 3},
+	}
+	sortedTimeRanges = TimeRanges{
+		{1, 3},
+		{2, 3},
+		{4, 5},
+	}
+	sort.Sort(timeRanges)
+	c.Assert(timeRanges, DeepEquals, sortedTimeRanges)
 }
