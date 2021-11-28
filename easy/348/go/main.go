@@ -21,3 +21,13 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func createRabbits() (male, female map[int]int) {
+	male = make(map[int]int)
+	female = make(map[int]int)
+	for index := 0; index < 96; index++ {
+		male[index] = 0
+		female[index] = 0
+	}
+	return
+}
