@@ -31,3 +31,11 @@ func createRabbits() (male, female map[int]int) {
 	}
 	return
 }
+
+func haveRabbitsTakenOver(male, female map[int]int, maxRabbits int) bool {
+	totalRabbits := 0
+	for index := range male {
+		totalRabbits += male[index] + female[index]
+	}
+	return maxRabbits <= totalRabbits
+}
