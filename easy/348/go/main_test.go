@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCreateRabbits(c *C) {
+	male, female := createRabbits()
+	c.Assert(len(male), Equals, 96)
+	c.Assert(len(female), Equals, 96)
+}
