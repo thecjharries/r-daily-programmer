@@ -59,3 +59,8 @@ func (s *MainSuite) TestCreateRabbits(c *C) {
 	c.Assert(len(male), Equals, 96)
 	c.Assert(len(female), Equals, 96)
 }
+
+func (s *MainSuite) TestHaveRabbitsTakenOver(c *C) {
+	male, female := createRabbits()
+	c.Assert(haveRabbitsTakenOver(male, female, 10), Equals, false)
+}
