@@ -41,5 +41,23 @@ func haveRabbitsTakenOver(male, female map[int]int, maxRabbits int) bool {
 }
 
 func determineMonthsNeededToTakeOver(initialMale, initialFemale, worldDomination int) (monthsNeeded int) {
+	male, female := createRabbits()
+	male[2] = initialMale
+	female[2] = initialFemale
+	for !haveRabbitsTakenOver(male, female, worldDomination) {
+		monthsNeeded++
+		newMales := 0
+		newFemales := 0
+		for index := 4; index < len(female); index++ {
+			newMales += female[index] * 5
+			newFemales += female[index] * 9
+		}
+		for index := len(male) - 2; index >= 0; index-- {
+			male[index+1] = male[index]
+			female[index+1] = female[index]
+		}
+		male[0] = newMales
+		female[0] = newFemales
+	}
 	return
 }
