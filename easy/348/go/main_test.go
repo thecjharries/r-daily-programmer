@@ -64,3 +64,8 @@ func (s *MainSuite) TestHaveRabbitsTakenOver(c *C) {
 	male, female := createRabbits()
 	c.Assert(haveRabbitsTakenOver(male, female, 10), Equals, false)
 }
+
+func (s *MainSuite) TestDetermineMonthsNeededToTakeOver(c *C) {
+	c.Assert(determineMonthsNeededToTakeOver(2, 4, 1000000000), Equals, 32)
+	c.Assert(determineMonthsNeededToTakeOver(2, 4, 15000000000), Equals, 36)
+}
