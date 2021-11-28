@@ -39,3 +39,7 @@ func haveRabbitsTakenOver(male, female map[int]int, maxRabbits int) bool {
 	}
 	return maxRabbits <= totalRabbits
 }
+
+func determineMonthsNeededToTakeOver(initialMale, initialFemale, worldDomination int) (monthsNeeded int) {
+	return
+}
