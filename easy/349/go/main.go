@@ -16,10 +16,20 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 var zPrint = fmt.Println
 
 func main() {
 	_, _ = zPrint("hello world")
+}
+
+func convertStringSliceToInt(input []string) []int {
+	var output []int
+	for _, v := range input {
+		i, _ := strconv.Atoi(v)
+		output = append(output, i)
+	}
+	return output
 }

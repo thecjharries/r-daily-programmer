@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertStringSliceToInt(c *C) {
+	c.Assert(convertStringSliceToInt([]string{"1", "2", "3"}), DeepEquals, []int{1, 2, 3})
+}
