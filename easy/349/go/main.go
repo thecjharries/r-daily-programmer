@@ -42,3 +42,10 @@ func convertIntSliceToString(input []int) []string {
 	}
 	return output
 }
+
+func sum(input []int) (sum int) {
+	for _, v := range input {
+		sum += v
+	}
+	return
+}
