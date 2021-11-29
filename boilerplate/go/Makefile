@@ -21,8 +21,11 @@ git-prompt-runner:
 	git add main.go main_test.go
 	git commit -m 'Add prompt runner to main'
 
-finish:
+finish: clean
 	git flow feature finish
 
 stub:
 	git commit main.go -m 'Stub prompt fnc'
+
+clean:
+	rm -rf .coverage.out
