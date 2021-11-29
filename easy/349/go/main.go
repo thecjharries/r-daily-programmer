@@ -33,3 +33,12 @@ func convertStringSliceToInt(input []string) []int {
 	}
 	return output
 }
+
+func convertIntSliceToString(input []int) []string {
+	var output []string
+	for _, v := range input {
+		s := strconv.Itoa(v)
+		output = append(output, s)
+	}
+	return output
+}

@@ -57,3 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 func (s *MainSuite) TestConvertStringSliceToInt(c *C) {
 	c.Assert(convertStringSliceToInt([]string{"1", "2", "3"}), DeepEquals, []int{1, 2, 3})
 }
+
+func (s *MainSuite) TestConvertIntSliceToString(c *C) {
+	c.Assert(convertIntSliceToString([]int{1, 2, 3}), DeepEquals, []string{"1", "2", "3"})
+}
