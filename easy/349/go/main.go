@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"strconv"
+
+	combinations "github.com/mxschmitt/golang-combinations"
 )
 
 var zPrint = fmt.Println
@@ -46,6 +48,22 @@ func convertIntSliceToString(input []int) []string {
 func sum(input []int) (sum int) {
 	for _, v := range input {
 		sum += v
+	}
+	return
+}
+
+func determineChange(target int, availableChange []int, maxCoinCount int) (output []int) {
+	availableChangeString := convertIntSliceToString(availableChange)
+	possibleCombinations := combinations.All(availableChangeString)
+	for _, combination := range possibleCombinations {
+		if len(combination) > maxCoinCount {
+			continue
+		}
+		combinationInt := convertStringSliceToInt(combination)
+		if sum(combinationInt) == target {
+			output = combinationInt
+			break
+		}
 	}
 	return
 }

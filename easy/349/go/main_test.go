@@ -65,3 +65,8 @@ func (s *MainSuite) TestConvertIntSliceToString(c *C) {
 func (s *MainSuite) TestSum(c *C) {
 	c.Assert(sum([]int{1, 2, 3}), Equals, 6)
 }
+
+func (s *MainSuite) TestDetermineChange(c *C) {
+	c.Assert(determineChange(10, []int{5, 5, 2, 2, 1}, 3), DeepEquals, []int{5, 5})
+	c.Assert(determineChange(10, []int{5, 5, 2, 2, 1}, 1), DeepEquals, []int(nil))
+}
