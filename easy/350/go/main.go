@@ -26,6 +26,14 @@ type BookShelf struct {
 	Books []Book
 }
 
+func (b BookShelf) AvailableWidth() (available int) {
+	available = b.Width
+	for _, book := range b.Books {
+		available -= book.Width
+	}
+	return
+}
+
 type BookShelves []BookShelf
 
 var zPrint = fmt.Println
