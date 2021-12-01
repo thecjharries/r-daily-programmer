@@ -34,6 +34,15 @@ func (b BookShelf) AvailableWidth() (available int) {
 	return
 }
 
+func (b *BookShelf) InsertBook(book Book) bool {
+	fmt.Println(b.AvailableWidth(), book.Title, book.Width)
+	if b.AvailableWidth() >= book.Width {
+		b.Books = append(b.Books, book)
+		return true
+	}
+	return false
+}
+
 type BookShelves []BookShelf
 
 var zPrint = fmt.Println

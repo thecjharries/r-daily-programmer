@@ -58,3 +58,9 @@ func (s *MainSuite) TestBookShelfAvailableWidth(c *C) {
 	shelf := BookShelf{10, make([]Book, 0)}
 	c.Assert(shelf.AvailableWidth(), Equals, 10)
 }
+
+func (s *MainSuite) TestBookShelfInsertBook(c *C) {
+	shelf := BookShelf{10, make([]Book, 0)}
+	c.Assert(shelf.InsertBook(Book{10, "shelf1"}), Equals, true)
+	c.Assert(shelf.InsertBook(Book{10, "shelf2"}), Equals, false)
+}
