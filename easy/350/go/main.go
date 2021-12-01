@@ -56,6 +56,14 @@ func (b *BookShelves) InsertBook(book Book) bool {
 	return false
 }
 
+func NewBookShelves(dimensions []int) BookShelves {
+	shelves := make(BookShelves, len(dimensions))
+	for i, width := range dimensions {
+		shelves[i] = BookShelf{Width: width, Books: make([]Book, 0)}
+	}
+	return shelves
+}
+
 var zPrint = fmt.Println
 
 func main() {
