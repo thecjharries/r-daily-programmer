@@ -53,3 +53,7 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseCricketScore(c *C) {
+	c.Assert(parseCricketScore("1.2wW6.2b34"), DeepEquals, []int{2, 7, 2, 9})
+}
