@@ -16,6 +16,18 @@ package main
 
 import "fmt"
 
+type Book struct {
+	Width int
+	Title string
+}
+
+type BookShelf struct {
+	Width int
+	Books []Book
+}
+
+type BookShelves []BookShelf
+
 var zPrint = fmt.Println
 
 func main() {
