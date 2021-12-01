@@ -45,6 +45,17 @@ func (b *BookShelf) InsertBook(book Book) bool {
 
 type BookShelves []BookShelf
 
+func (b *BookShelves) InsertBook(book Book) bool {
+	for index, _ := range *b {
+		shelf := (*b)[index]
+		if shelf.InsertBook(book) {
+			(*b)[index] = shelf
+			return true
+		}
+	}
+	return false
+}
+
 var zPrint = fmt.Println
 
 func main() {

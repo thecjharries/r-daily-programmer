@@ -64,3 +64,13 @@ func (s *MainSuite) TestBookShelfInsertBook(c *C) {
 	c.Assert(shelf.InsertBook(Book{10, "shelf1"}), Equals, true)
 	c.Assert(shelf.InsertBook(Book{10, "shelf2"}), Equals, false)
 }
+
+func (s *MainSuite) TestBookShelvesInsertBook(c *C) {
+	shelves := BookShelves{
+		{10, make([]Book, 0)},
+		{10, make([]Book, 0)},
+	}
+	c.Assert(shelves.InsertBook(Book{10, "shelves1"}), Equals, true)
+	c.Assert(shelves.InsertBook(Book{10, "shelves2"}), Equals, true)
+	c.Assert(shelves.InsertBook(Book{10, "shelves3"}), Equals, false)
+}
