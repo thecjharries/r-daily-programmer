@@ -69,3 +69,13 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func canStoreBooks(shelfDimensions []int, books []Book) bool {
+	shelves := NewBookShelves(shelfDimensions)
+	for _, book := range books {
+		if !shelves.InsertBook(book) {
+			return false
+		}
+	}
+	return true
+}

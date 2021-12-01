@@ -82,3 +82,24 @@ func (s *MainSuite) TestNewBookShelves(c *C) {
 	c.Assert(shelves[1].AvailableWidth(), Equals, 11)
 	c.Assert(shelves[2].AvailableWidth(), Equals, 12)
 }
+
+func (s *MainSuite) TestCanStoreBooks(c *C) {
+	c.Assert(canStoreBooks(
+		[]int{150, 150, 300, 150, 150},
+		[]Book{
+			{70, "A Game of Thrones"},
+			{76, "A Clash of Kings"},
+			{99, "A Storm of Swords"},
+			{75, "A Feasts for Crows"},
+			{105, "A Dance With Dragons"},
+		},
+	), Equals, true)
+	c.Assert(canStoreBooks(
+		[]int{500, 500, 500},
+		[]Book{
+			{1309, "Artamene"},
+			{303, "A la recherche du temps perdu"},
+			{399, "Mission Earth"},
+		},
+	), Equals, false)
+}
