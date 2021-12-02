@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 var zPrint = fmt.Println
 
@@ -22,6 +25,47 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
+// https://old.reddit.com/r/dailyprogrammer/comments/7x81yg/20180213_challenge_351_easy_cricket_scoring/du6ezb6/
 func parseCricketScore(input string) (scores []int) {
+	extrasIndex := 0
+	activeBatterIndex := 1
+	nextBatterIndex := 2
+	scores = make([]int, 12)
+	over := 0
+	wickets := 0
+	nextAtBatIndex := 3
+	for _, score := range input {
+		legalBall := true
+		number, err := strconv.Atoi(string(score))
+		if nil == err {
+			scores[activeBatterIndex] = scores[activeBatterIndex] + number
+			if 1 == number%2 {
+				activeBatterIndex, nextBatterIndex = nextBatterIndex, activeBatterIndex
+			}
+		} else {
+			if 'b' == score {
+				scores[extrasIndex] = scores[extrasIndex] + 1
+				activeBatterIndex, nextBatterIndex = nextBatterIndex, activeBatterIndex
+			} else if 'w' == score {
+				scores[extrasIndex] = scores[extrasIndex] + 1
+				legalBall = false
+			} else if 'W' == score {
+				wickets++
+				if 10 == wickets {
+					break
+				}
+				activeBatterIndex = nextAtBatIndex
+				nextAtBatIndex++
+			}
+		}
+		if legalBall {
+			over++
+		}
+		if 6 == over {
+			over = 0
+			activeBatterIndex, nextBatterIndex = nextBatterIndex, activeBatterIndex
+		}
+		fmt.Println(scores)
+	}
 	return
 }
