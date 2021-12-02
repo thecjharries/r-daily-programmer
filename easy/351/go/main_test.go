@@ -55,5 +55,5 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestParseCricketScore(c *C) {
-	c.Assert(parseCricketScore("1.2wW6.2b34"), DeepEquals, []int{2, 7, 2, 9})
+	c.Assert(parseCricketScore("1.2wW6.2b34"), DeepEquals, []int{2, 7, 2, 9, 0, 0, 0, 0, 0, 0, 0, 0})
 }
