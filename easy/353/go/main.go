@@ -30,3 +30,7 @@ func determineHammingDistance(first, second string) (distance int) {
 	}
 	return
 }
+
+func findClosestString(input []string) (output string) {
+	return
+}
