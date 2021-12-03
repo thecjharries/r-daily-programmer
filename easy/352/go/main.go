@@ -24,6 +24,10 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func convertToBase62(number int) (result string) {
+func convertToBase62(number int64) (result string) {
+	for number > 0 {
+		result += base62Alphabet[number%62]
+		number = number / 62
+	}
 	return
 }
