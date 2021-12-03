@@ -23,3 +23,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func convertToBase62(number int) (result string) {
+	return
+}
