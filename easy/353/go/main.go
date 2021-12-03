@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func determineHammingDistance(first, second string) (distance int) {
+	return
+}
