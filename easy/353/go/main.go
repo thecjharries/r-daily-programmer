@@ -23,5 +23,10 @@ func main() {
 }
 
 func determineHammingDistance(first, second string) (distance int) {
+	for i := 0; i < len(first); i++ {
+		if first[i] != second[i] {
+			distance++
+		}
+	}
 	return
 }
