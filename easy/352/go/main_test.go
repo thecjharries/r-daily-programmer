@@ -56,4 +56,9 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestConvertToBase62(c *C) {
 	c.Assert(convertToBase62(15674), Equals, "O44")
+	c.Assert(convertToBase62(7026425611433322325), Equals, "bDcRfbr63n8")
+	c.Assert(convertToBase62(187621), Equals, "9OM")
+	c.Assert(convertToBase62(237860461), Equals, "3n26g")
+	c.Assert(convertToBase62(2187521), Equals, "B4b9")
+	c.Assert(convertToBase62(18752), Equals, "sS4")
 }
