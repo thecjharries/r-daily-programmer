@@ -14,7 +14,9 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var zPrint = fmt.Println
 
@@ -32,5 +34,20 @@ func determineHammingDistance(first, second string) (distance int) {
 }
 
 func findClosestString(input []string) (output string) {
+	lowestDistance := 1<<31 - 1
+	for walkingIndex, walkingElement := range input {
+		currentDistance := 0
+		for innerIndex := 0; innerIndex < len(input); innerIndex++ {
+			if walkingIndex == innerIndex {
+				continue
+			}
+			currentDistance += determineHammingDistance(walkingElement, input[innerIndex])
+		}
+		fmt.Println(walkingElement, currentDistance)
+		if currentDistance < lowestDistance {
+			lowestDistance = currentDistance
+			output = walkingElement
+		}
+	}
 	return
 }
