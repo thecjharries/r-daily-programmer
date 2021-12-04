@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindSmallestDivisorSum(c *C) {
+	c.Assert(findSmallestDivisorSum(12), Equals, 7)
+	c.Assert(findSmallestDivisorSum(456), Equals, 43)
+	c.Assert(findSmallestDivisorSum(4567), Equals, 4568)
+	c.Assert(findSmallestDivisorSum(12345), Equals, 838)
+}
