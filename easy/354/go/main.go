@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,14 @@ func main() {
 }
 
 func findSmallestDivisorSum(input int) (output int) {
+	output = 1 + input
+	for index := 2; index <= int(math.Sqrt(float64(input)))+1; index++ {
+		if input%index == 0 {
+			possibleSum := index + input/index
+			if possibleSum < output {
+				output = possibleSum
+			}
+		}
+	}
 	return
 }
