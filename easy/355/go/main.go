@@ -64,7 +64,7 @@ func decodeLetter(key, letter rune) rune {
 func encode(key, message string) string {
 	encoded := make([]rune, len(message))
 	for index, letter := range message {
-		encoded = append(encoded, encodeLetter(rune(key[index%len(key)]), letter))
+		encoded[index] = encodeLetter(rune(key[index%len(key)]), letter)
 	}
 	return string(encoded)
 }
