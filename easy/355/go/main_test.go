@@ -70,3 +70,8 @@ func (s *MainSuite) TestEncode(c *C) {
 	c.Assert(encode("snitch", "thepackagehasbeendelivered"), Equals, "lumicjcnoxjhkomxpkwyqogywq")
 	c.Assert(encode("bond", "theredfoxtrotsquietlyatmidnight"), Equals, "uvrufrsryherugdxjsgozogpjralhvg")
 }
+
+func (s *MainSuite) TestDecode(c *C) {
+	c.Assert(decode("cloak", "klatrgafedvtssdwywcyty"), Equals, "iamtheprettiestunicorn")
+	c.Assert(decode("python", "pjphmfamhrcaifxifvvfmzwqtmyswst"), Equals, "alwayslookonthebrightsideoflife")
+}
