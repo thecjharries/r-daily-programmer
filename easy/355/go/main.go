@@ -68,3 +68,11 @@ func encode(key, message string) string {
 	}
 	return string(encoded)
 }
+
+func decode(key, ciphertext string) string {
+	decoded := make([]rune, len(ciphertext))
+	for index, letter := range ciphertext {
+		decoded[index] = decodeLetter(rune(key[index%len(key)]), letter)
+	}
+	return string(decoded)
+}
