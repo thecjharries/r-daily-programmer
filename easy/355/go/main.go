@@ -56,3 +56,7 @@ func main() {
 func encodeLetter(key, letter rune) rune {
 	return alphabet[(alphabetMap[letter]+alphabetMap[key])%26]
 }
+
+func decodeLetter(key, letter rune) rune {
+	return alphabet[(alphabetMap[letter]-alphabetMap[key]+26)%26]
+}
