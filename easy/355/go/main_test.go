@@ -53,3 +53,9 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestEncodeLetter(c *C) {
+	c.Assert(encodeLetter('s', 't'), Equals, 'l')
+	c.Assert(encodeLetter('n', 'h'), Equals, 'u')
+	c.Assert(encodeLetter('i', 'e'), Equals, 'm')
+}
