@@ -59,3 +59,9 @@ func (s *MainSuite) TestEncodeLetter(c *C) {
 	c.Assert(encodeLetter('n', 'h'), Equals, 'u')
 	c.Assert(encodeLetter('i', 'e'), Equals, 'm')
 }
+
+func (s *MainSuite) TestDecodeLetter(c *C) {
+	c.Assert(decodeLetter('c', 'k'), Equals, 'i')
+	c.Assert(decodeLetter('l', 'l'), Equals, 'a')
+	c.Assert(decodeLetter('o', 'a'), Equals, 'm')
+}
