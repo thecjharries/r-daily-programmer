@@ -52,3 +52,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func encodeLetter(key, letter rune) rune {
+	return alphabet[(alphabetMap[letter]+alphabetMap[key])%26]
+}
