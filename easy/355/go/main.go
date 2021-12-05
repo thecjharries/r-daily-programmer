@@ -60,3 +60,11 @@ func encodeLetter(key, letter rune) rune {
 func decodeLetter(key, letter rune) rune {
 	return alphabet[(alphabetMap[letter]-alphabetMap[key]+26)%26]
 }
+
+func encode(key, message string) string {
+	encoded := make([]rune, len(message))
+	for index, letter := range message {
+		encoded = append(encoded, encodeLetter(rune(key[index%len(key)]), letter))
+	}
+	return string(encoded)
+}
