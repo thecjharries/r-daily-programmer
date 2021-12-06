@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestConvertSevenSegmentToInt(c *C) {
+	c.Assert(convertSevenSegmentToInt("    _  _     _  _  _  _  _ \n  | _| _||_||_ |_   ||_||_|\n  ||_  _|  | _||_|  ||_| _|"), Equals, 123456789)
+	c.Assert(convertSevenSegmentToInt("    _  _  _  _  _  _  _  _ \n|_| _| _||_|| ||_ |_| _||_ \n  | _| _||_||_| _||_||_  _|"), Equals, 433805825)
+}
