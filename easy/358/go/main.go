@@ -35,5 +35,5 @@ func main() {
 }
 
 func convertSevenSegmentToInt(input string) int {
-
+	return -1
 }
