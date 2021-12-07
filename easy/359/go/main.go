@@ -30,3 +30,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func generateDragonCurveTerm(index int) (result string) {
+	return
+}
