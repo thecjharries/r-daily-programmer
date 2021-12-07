@@ -25,6 +25,10 @@ var conversionMap = map[string]string{
 	"00": "1000",
 }
 
+var cachedDragonSequenceTerms = map[int]string{
+	1: "1",
+}
+
 var zPrint = fmt.Println
 
 func main() {
