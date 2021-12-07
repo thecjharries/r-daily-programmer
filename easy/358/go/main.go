@@ -26,6 +26,7 @@ var sevenSegmentToDigit = map[string]string{
 	" _ \n  |\n  |": "7",
 	" _ \n|_|\n|_|": "8",
 	" _ \n|_|\n _|": "9",
+	" _ \n| |\n|_|": "0",
 }
 
 var zPrint = fmt.Println
