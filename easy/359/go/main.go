@@ -16,6 +16,15 @@ package main
 
 import "fmt"
 
+var conversionMap = map[string]string{
+	"1":  "110",
+	"0":  "100",
+	"11": "1101",
+	"01": "1001",
+	"10": "1100",
+	"00": "1000",
+}
+
 var zPrint = fmt.Println
 
 func main() {
