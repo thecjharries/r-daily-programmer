@@ -36,5 +36,18 @@ func main() {
 }
 
 func generateDragonCurveTerm(index int) (result string) {
+	if 1 > index {
+		return cachedDragonSequenceTerms[1]
+	}
+	term, exists := cachedDragonSequenceTerms[index]
+	if exists {
+		return term
+	}
+	previousTerm := generateDragonCurveTerm(index - 1)
+	for previousTermIndex := 0; previousTermIndex < len(previousTerm)/2; previousTermIndex++ {
+		result += conversionMap[previousTerm[2*previousTermIndex:2*previousTermIndex+2]]
+	}
+	result += conversionMap[previousTerm[len(previousTerm)-1:]]
+	cachedDragonSequenceTerms[index] = result
 	return
 }
