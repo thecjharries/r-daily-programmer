@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var sevenSegmentToDigit = map[string]string{
 	"   \n  |\n  |": "1",
@@ -35,6 +39,16 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func convertSevenSegmentToInt(input string) int {
-	return -1
+func convertSevenSegmentToInt(input string) (converted int) {
+	exploded := strings.Split(input, "\n")
+	output := ""
+	for characterIndex := 0; characterIndex < len(exploded[0]); characterIndex += 3 {
+		currentExploded := make([]string, len(exploded))
+		for rowIndex := 0; rowIndex < len(exploded); rowIndex++ {
+			currentExploded[rowIndex] = exploded[rowIndex][characterIndex : characterIndex+3]
+		}
+		output += sevenSegmentToDigit[strings.Join(currentExploded, "\n")]
+	}
+	converted, _ = strconv.Atoi(output)
+	return
 }
