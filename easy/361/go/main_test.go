@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestParseScore(c *C) {
+	c.Assert(parseScore("abcde"), DeepEquals, map[rune]int{'a': 1, 'b': 1, 'c': 1, 'd': 1, 'e': 1})
+	c.Assert(parseScore("dbbaCEDbdAacCEAadcB"), DeepEquals, map[rune]int{'a': 1, 'b': 2, 'c': 0, 'd': 2, 'e': -2})
+}
