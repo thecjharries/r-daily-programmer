@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCheck(c *C) {
+	c.Assert(check("a"), Equals, true)
+	c.Assert(check("zombie"), Equals, true)
+	c.Assert(check("transceiver"), Equals, true)
+	c.Assert(check("veil"), Equals, false)
+	c.Assert(check("icier"), Equals, false)
+}
