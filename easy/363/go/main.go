@@ -23,5 +23,13 @@ func main() {
 }
 
 func check(word string) bool {
+	for index := 1; index < len(word)-2; index++ {
+		if 'c' == word[index-1] && 'i' == word[index] && 'e' == word[index+1] {
+			return false
+		}
+		if 'c' != word[index-1] && 'e' == word[index] && 'i' == word[index+1] {
+			return false
+		}
+	}
 	return true
 }
