@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 var zPrint = fmt.Println
@@ -25,5 +26,19 @@ func main() {
 }
 
 func parseScore(score string) (scores map[rune]int) {
+	scores = make(map[rune]int)
+	for _, element := range score {
+		elementIndex := []rune(strings.ToLower(string(element)))[0]
+		scoreChange := 1
+		if string(element) == strings.ToUpper(string(element)) {
+			scoreChange = -1
+		}
+		_, exists := scores[elementIndex]
+		if exists {
+			scores[elementIndex] += scoreChange
+		} else {
+			scores[elementIndex] = scoreChange
+		}
+	}
 	return
 }
