@@ -23,3 +23,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func parseScore(score string) (scores map[rune]int) {
+	return
+}
