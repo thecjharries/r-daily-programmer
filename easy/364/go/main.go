@@ -14,7 +14,12 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
+
+var dicePattern = regexp.MustCompile(`(\d+)d(\d+)`)
 
 var zPrint = fmt.Println
 
