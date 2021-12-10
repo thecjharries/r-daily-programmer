@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 
 	. "gopkg.in/check.v1"
@@ -40,6 +41,7 @@ func (s *MainSuite) SetUpTest(c *C) {
 	printCallCount = 0
 	printSpyContents = ""
 	zPrint = printSpy
+	rand.Seed(0)
 }
 
 func (s *MainSuite) TearDownTest(c *C) {
@@ -52,4 +54,12 @@ func (s *MainSuite) TestMain(c *C) {
 	main()
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
+}
+
+func (s *MainSuite) TestRoll(c *C) {
+	c.Assert(roll("qqq"), Equals, 0)
+	c.Assert(roll("3d6"), Equals, 4)
+	c.Assert(roll("4d12"), Equals, 36)
+	c.Assert(roll("1d10"), Equals, 8)
+	c.Assert(roll("5d4"), Equals, 11)
 }
