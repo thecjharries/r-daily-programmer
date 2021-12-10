@@ -26,3 +26,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func rollDice(dice string) int {
+	return -1
+}
