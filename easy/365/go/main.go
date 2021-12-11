@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,10 @@ func main() {
 }
 
 func upArrow(a, b float64, arrowCount int) float64 {
-	return -1
+	if 1 == arrowCount {
+		return math.Pow(a, b)
+	} else if 0 == b {
+		return 1
+	}
+	return upArrow(a, upArrow(a, b-1, arrowCount), arrowCount-1)
 }
