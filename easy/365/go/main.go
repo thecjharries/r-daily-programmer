@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func upArrow(a, b float64, arrowCount int) float64 {
+	return -1
+}
