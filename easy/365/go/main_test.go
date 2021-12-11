@@ -53,3 +53,8 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestUpArrow(c *C) {
+	c.Assert(upArrow(2, 4, 1), Equals, 16.0)
+	c.Assert(upArrow(2, 4, 2), Equals, 65536.0)
+}
