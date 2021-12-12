@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFunnel(c *C) {
+	c.Assert(funnel("leave", "eave"), Equals, true)
+	c.Assert(funnel("reset", "rest"), Equals, true)
+	c.Assert(funnel("dragoon", "dragon"), Equals, true)
+	c.Assert(funnel("eave", "leave"), Equals, false)
+	c.Assert(funnel("sleet", "lets"), Equals, false)
+	c.Assert(funnel("skiff", "ski"), Equals, false)
+}
