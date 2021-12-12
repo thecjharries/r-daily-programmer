@@ -22,6 +22,20 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func funnel(word string) bool {
-	return false
+func funnel(first, second string) bool {
+	if len(first)-1 != len(second) {
+		return false
+	}
+	skipped := false
+	secondIndex := 0
+	for firstIndex := 0; firstIndex < len(first); firstIndex++ {
+		if first[firstIndex] == second[secondIndex] {
+			secondIndex++
+		} else if skipped {
+			return false
+		} else {
+			skipped = true
+		}
+	}
+	return true
 }
