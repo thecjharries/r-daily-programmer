@@ -23,5 +23,11 @@ func main() {
 }
 
 func derangement(n int) int {
-	return -1
+	if 0 == n {
+		return 1
+	} else if 1 == n {
+		return 0
+	} else {
+		return (n - 1) * (derangement(n-1) + derangement(n-2))
+	}
 }
