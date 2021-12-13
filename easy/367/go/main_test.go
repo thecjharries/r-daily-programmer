@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestDerangement(c *C) {
+	c.Assert(derangement(0), Equals, 1)
+	c.Assert(derangement(1), Equals, 0)
+	c.Assert(derangement(6), Equals, 265)
+	c.Assert(derangement(9), Equals, 133496)
+	c.Assert(derangement(14), Equals, 32071101049)
+}
