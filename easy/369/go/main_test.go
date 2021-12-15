@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestHexColor(c *C) {
+	c.Assert(hexColor(255, 99, 71), Equals, "#FF6347")
+	c.Assert(hexColor(184, 134, 11), Equals, "#B8860B")
+	c.Assert(hexColor(189, 183, 107), Equals, "#BDB76B")
+	c.Assert(hexColor(0, 0, 205), Equals, "#0000CD")
+}
