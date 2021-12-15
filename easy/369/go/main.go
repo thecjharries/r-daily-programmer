@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,5 @@ func main() {
 }
 
 func hexColor(red, green, blue int) string {
-	return ""
+	return strings.ToUpper(fmt.Sprintf("#%02x%02x%02x", red, green, blue))
 }
