@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFindCheckDigit(c *C) {
+	c.Assert(findCheckDigit(4210000526), Equals, 4)
+	c.Assert(findCheckDigit(3600029145), Equals, 2)
+	c.Assert(findCheckDigit(12345678910), Equals, 4)
+	c.Assert(findCheckDigit(1234567), Equals, 0)
+}
