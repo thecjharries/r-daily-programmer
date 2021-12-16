@@ -14,7 +14,11 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +27,22 @@ func main() {
 }
 
 func findCheckDigit(upc int) (checkDigit int) {
+	upcString := strconv.Itoa(upc)
+	if 11 != len(upcString) {
+		upcString = strings.Repeat("0", 11-len(upcString)) + upcString
+	}
+	evenSum := 0
+	oddSum := 0
+	for i := 0; i < len(upcString); i++ {
+		if i%2 == 0 {
+			evenSum += int(upcString[i] - '0')
+		} else {
+			oddSum += int(upcString[i] - '0')
+		}
+	}
+	checkDigit = ((evenSum * 3) + oddSum) % 10
+	if 0 != checkDigit {
+		checkDigit = 10 - checkDigit
+	}
 	return
 }
