@@ -16,6 +16,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 var zPrint = fmt.Println
@@ -25,5 +26,15 @@ func main() {
 }
 
 func qcheck(positions []int) bool {
+	for firstIndex := 0; firstIndex < len(positions); firstIndex++ {
+		for secondIndex := firstIndex + 1; secondIndex < len(positions); secondIndex++ {
+			if positions[firstIndex] == positions[secondIndex] {
+				return false
+			}
+			if 1.0 == math.Abs(float64(positions[secondIndex]-positions[firstIndex])/float64(secondIndex-firstIndex)) {
+				return false
+			}
+		}
+	}
 	return true
 }
