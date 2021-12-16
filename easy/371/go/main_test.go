@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestQcheck(c *C) {
+	c.Assert(qcheck([]int{4, 2, 7, 3, 6, 8, 5, 1}), Equals, true)
+	c.Assert(qcheck([]int{2, 5, 7, 4, 1, 8, 6, 3}), Equals, true)
+	c.Assert(qcheck([]int{5, 3, 1, 4, 2, 8, 6, 3}), Equals, false)
+	c.Assert(qcheck([]int{5, 8, 2, 4, 7, 1, 3, 6}), Equals, false)
+	c.Assert(qcheck([]int{4, 3, 1, 8, 1, 3, 5, 2}), Equals, false)
+}
