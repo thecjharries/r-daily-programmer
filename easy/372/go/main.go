@@ -23,5 +23,9 @@ func main() {
 }
 
 func balanced(word string) bool {
-	return true
+	letters := map[rune]int{}
+	for _, letter := range word {
+		letters[letter]++
+	}
+	return letters['x'] == letters['y']
 }
