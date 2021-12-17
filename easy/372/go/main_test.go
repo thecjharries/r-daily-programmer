@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestBalanced(c *C) {
+	c.Assert(balanced("xxxyyy"), Equals, true)
+	c.Assert(balanced("yyyxxx"), Equals, true)
+	c.Assert(balanced("xxxyyyy"), Equals, false)
+	c.Assert(balanced("yyxyxxyxxyyyyxxxyxyx"), Equals, true)
+	c.Assert(balanced("xyxxxxyyyxyxxyxxyy"), Equals, false)
+	c.Assert(balanced(""), Equals, true)
+	c.Assert(balanced("x"), Equals, false)
+}
