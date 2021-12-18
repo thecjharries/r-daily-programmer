@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,15 @@ func main() {
 }
 
 func calculateAdditivePersistence(input int) (steps int) {
+	currentNumber := float64(input)
+	for 1 <= math.Log10(currentNumber) {
+		nextNumber := 0.0
+		for 0 != currentNumber {
+			nextNumber += math.Mod(currentNumber, 10)
+			currentNumber = math.Floor(currentNumber / 10)
+		}
+		currentNumber = nextNumber
+		steps++
+	}
 	return
 }
