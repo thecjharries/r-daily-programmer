@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCalculateAdditivePersistence(c *C) {
+	c.Assert(calculateAdditivePersistence(13), Equals, 1)
+	c.Assert(calculateAdditivePersistence(1234), Equals, 2)
+	c.Assert(calculateAdditivePersistence(9876), Equals, 2)
+	c.Assert(calculateAdditivePersistence(199), Equals, 3)
+}
