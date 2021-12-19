@@ -23,5 +23,14 @@ func main() {
 }
 
 func bumpByOnes(input int) (output int) {
+	factor := 1
+	for input > 0 {
+		output += (input%10 + 1) * factor
+		if 10 == input%10+1 {
+			factor *= 10
+		}
+		input /= 10
+		factor *= 10
+	}
 	return
 }
