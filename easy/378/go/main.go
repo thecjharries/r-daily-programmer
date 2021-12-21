@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,23 @@ func main() {
 }
 
 func hh(input []int) bool {
-	return true
+	noZeroes := make([]int, 0)
+	for _, element := range input {
+		if 0 != element {
+			noZeroes = append(noZeroes, element)
+		}
+	}
+	if 0 == len(noZeroes) {
+		return true
+	}
+	sort.Sort(sort.Reverse(sort.IntSlice(noZeroes)))
+	largest := noZeroes[0]
+	noZeroes = noZeroes[1:]
+	if largest > len(noZeroes) {
+		return false
+	}
+	for index := 0; index < largest; index++ {
+		noZeroes[index] = noZeroes[index] - 1
+	}
+	return hh(noZeroes)
 }
