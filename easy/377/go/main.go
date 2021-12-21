@@ -23,5 +23,5 @@ func main() {
 }
 
 func fit1(crateWidth, crateHeight, boxWidth, boxHeight int) (count int) {
-	return
+	return (crateWidth / boxWidth) * (crateHeight / boxHeight)
 }
