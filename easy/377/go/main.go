@@ -22,6 +22,6 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func fit(crateWidth, crateHeight, boxWidth, boxHeight int) (count int) {
+func fit1(crateWidth, crateHeight, boxWidth, boxHeight int) (count int) {
 	return
 }

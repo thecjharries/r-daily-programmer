@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestFit1(c *C) {
+	c.Assert(fit1(25, 18, 6, 5), Equals, 12)
+	c.Assert(fit1(10, 10, 1, 1), Equals, 100)
+	c.Assert(fit1(12, 34, 5, 6), Equals, 10)
+	c.Assert(fit1(12345, 678910, 1112, 1314), Equals, 5676)
+	c.Assert(fit1(5, 100, 6, 1), Equals, 0)
+}
