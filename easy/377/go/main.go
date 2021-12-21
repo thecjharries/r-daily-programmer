@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func fit(crateWidth, crateHeight, boxWidth, boxHeight int) (count int) {
+	return
+}
