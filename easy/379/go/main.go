@@ -16,6 +16,9 @@ package main
 
 import "fmt"
 
+var brackets = []int{10000, 30000, 100000}
+var rates = []float64{0, 0.1, 0.25, 0.4}
+
 var zPrint = fmt.Println
 
 func main() {
