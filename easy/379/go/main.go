@@ -25,6 +25,6 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func tax(input int) (total int) {
+func tax(input float64) (total float64) {
 	return
 }

@@ -55,11 +55,11 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestTax(c *C) {
-	c.Assert(tax(0), Equals, 0)
-	c.Assert(tax(10000), Equals, 0)
-	c.Assert(tax(10009), Equals, 0)
-	c.Assert(tax(10010), Equals, 1)
-	c.Assert(tax(12000), Equals, 200)
-	c.Assert(tax(56789), Equals, 8697)
-	c.Assert(tax(1234567), Equals, 473326)
+	c.Assert(tax(0), Equals, 0.0)
+	c.Assert(tax(10000), Equals, 0.0)
+	c.Assert(tax(10009), Equals, 0.0)
+	c.Assert(tax(10010), Equals, 1.0)
+	c.Assert(tax(12000), Equals, 200.0)
+	c.Assert(tax(56789), Equals, 8697.0)
+	c.Assert(tax(1234567), Equals, 473326.0)
 }
