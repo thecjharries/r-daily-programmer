@@ -73,5 +73,8 @@ func main() {
 }
 
 func smorse(input string) (output string) {
+	for _, c := range input {
+		output += romanToMorse[string(c)]
+	}
 	return
 }
