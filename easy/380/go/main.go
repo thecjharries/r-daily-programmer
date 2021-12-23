@@ -71,3 +71,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func smorse(input string) (output string) {
+	return
+}
