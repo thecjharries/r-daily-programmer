@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 var zPrint = fmt.Println
 
@@ -25,6 +28,7 @@ func main() {
 func yahtzeeUpper(dice []int) (score int) {
 	sortedDice := make([]int, len(dice))
 	copy(sortedDice, dice)
+	sort.Ints(sortedDice)
 	currentNumber := 0
 	currentCount := 0
 	for _, die := range sortedDice {
