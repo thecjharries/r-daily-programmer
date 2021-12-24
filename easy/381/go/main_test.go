@@ -53,3 +53,11 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestYahtzeeUpper(c *C) {
+	c.Assert(yahtzeeUpper([]int{2, 3, 5, 5, 6}), Equals, 10)
+	c.Assert(yahtzeeUpper([]int{1, 1, 1, 1, 3}), Equals, 4)
+	c.Assert(yahtzeeUpper([]int{1, 1, 1, 3, 3}), Equals, 6)
+	c.Assert(yahtzeeUpper([]int{1, 2, 3, 4, 5}), Equals, 5)
+	c.Assert(yahtzeeUpper([]int{6, 6, 6, 6, 6}), Equals, 30)
+}
