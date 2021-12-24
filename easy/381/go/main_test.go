@@ -60,4 +60,5 @@ func (s *MainSuite) TestYahtzeeUpper(c *C) {
 	c.Assert(yahtzeeUpper([]int{1, 1, 1, 3, 3}), Equals, 6)
 	c.Assert(yahtzeeUpper([]int{1, 2, 3, 4, 5}), Equals, 5)
 	c.Assert(yahtzeeUpper([]int{6, 6, 6, 6, 6}), Equals, 30)
+	c.Assert(yahtzeeUpper([]int{1654, 1654, 50995, 30864, 1654, 50995, 22747, 1654, 1654, 1654, 1654, 1654, 30864, 4868, 1654, 4868, 1654, 30864, 4868, 30864}), Equals, 123456)
 }
