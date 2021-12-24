@@ -23,5 +23,20 @@ func main() {
 }
 
 func yahtzeeUpper(dice []int) (score int) {
+	sortedDice := make([]int, len(dice))
+	copy(sortedDice, dice)
+	currentNumber := 0
+	currentCount := 0
+	for _, die := range sortedDice {
+		if die == currentNumber {
+			currentCount++
+		} else {
+			currentNumber = die
+			currentCount = 1
+		}
+		if currentCount > 0 && score < currentCount*currentNumber {
+			score = currentCount * currentNumber
+		}
+	}
 	return
 }
