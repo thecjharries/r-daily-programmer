@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func yahtzeeUpper(dice []int) (score int) {
+	return
+}
