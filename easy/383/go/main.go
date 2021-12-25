@@ -23,5 +23,18 @@ func main() {
 }
 
 func sameNecklace(first, second string) bool {
+	if first == second {
+		return true
+	}
+	if len(first) != len(second) {
+		return false
+	}
+	workingFirst := first
+	for range second {
+		workingFirst = workingFirst[1:] + workingFirst[:1]
+		if workingFirst == second {
+			return true
+		}
+	}
 	return false
 }
