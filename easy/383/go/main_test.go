@@ -53,3 +53,17 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestSameNecklace(c *C) {
+	c.Assert(sameNecklace("nicole", "icolen"), Equals, true)
+	c.Assert(sameNecklace("nicole", "lenico"), Equals, true)
+	c.Assert(sameNecklace("nicole", "coneli"), Equals, false)
+	c.Assert(sameNecklace("aabaaaaabaab", "aabaabaabaaa"), Equals, true)
+	c.Assert(sameNecklace("abc", "cba"), Equals, false)
+	c.Assert(sameNecklace("xxyyy", "xxxyy"), Equals, false)
+	c.Assert(sameNecklace("xyxxz", "xxyxz"), Equals, false)
+	c.Assert(sameNecklace("x", "x"), Equals, true)
+	c.Assert(sameNecklace("x", "xx"), Equals, false)
+	c.Assert(sameNecklace("x", ""), Equals, false)
+	c.Assert(sameNecklace("", ""), Equals, true)
+}
