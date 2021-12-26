@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCaesar(c *C) {
+	c.Assert(caesar("a", 1), Equals, "b")
+	c.Assert(caesar("abcz", 1), Equals, "bcda")
+	c.Assert(caesar("irk", 13), Equals, "vex")
+	c.Assert(caesar("fusion", 6), Equals, "layout")
+	c.Assert(caesar("dailyprogrammer", 6), Equals, "jgorevxumxgsskx")
+	c.Assert(caesar("jgorevxumxgsskx", 20), Equals, "dailyprogrammer")
+	c.Assert(caesar("Daily Programmer!", 6), Equals, "Jgore Vxumxgsskx!")
+}
