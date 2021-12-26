@@ -22,6 +22,15 @@ func main() {
 	_, _ = zPrint("hello world")
 }
 
-func caesar(input string, shift int) (result string) {
+func caesar(input string, shift int32) (result string) {
+	for _, c := range input {
+		if c >= 'a' && c <= 'z' {
+			result += string((c+shift-'a')%26 + 'a')
+		} else if c >= 'A' && c <= 'Z' {
+			result += string((c+shift-'A')%26 + 'A')
+		} else {
+			result += string(c)
+		}
+	}
 	return
 }
