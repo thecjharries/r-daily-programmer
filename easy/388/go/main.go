@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 var zPrint = fmt.Println
 
@@ -23,5 +26,18 @@ func main() {
 }
 
 func simulate(count int, playerSwitches bool) (winCount int) {
+	for index := 0; index < count; index++ {
+		winningDoor := rand.Intn(3)
+		playerChoice := rand.Intn(3)
+		if playerSwitches {
+			if winningDoor != playerChoice {
+				winCount++
+			}
+		} else {
+			if winningDoor == playerChoice {
+				winCount++
+			}
+		}
+	}
 	return
 }
