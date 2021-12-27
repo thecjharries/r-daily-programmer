@@ -21,3 +21,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func simulate(count int, playerSwitches bool) (winCount int) {
+	return
+}
