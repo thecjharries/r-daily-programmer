@@ -55,8 +55,8 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestCreateAbacabaSequence(c *C) {
-	c.Assert(createAbacabaSequence(0), Equals, "a")
-	c.Assert(createAbacabaSequence(1), Equals, "aba")
-	c.Assert(createAbacabaSequence(2), Equals, "abacaba")
-	c.Assert(createAbacabaSequence(3), Equals, "abacabadabacaba")
+	c.Assert(createAbacabaSequence(1), Equals, "a")
+	c.Assert(createAbacabaSequence(2), Equals, "aba")
+	c.Assert(createAbacabaSequence(3), Equals, "abacaba")
+	c.Assert(createAbacabaSequence(4), Equals, "abacabadabacaba")
 }
