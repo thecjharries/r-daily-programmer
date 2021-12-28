@@ -53,3 +53,10 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestCreateAbacabaSequence(c *C) {
+	c.Assert(createAbacabaSequence(0), Equals, "a")
+	c.Assert(createAbacabaSequence(1), Equals, "aba")
+	c.Assert(createAbacabaSequence(2), Equals, "abacaba")
+	c.Assert(createAbacabaSequence(3), Equals, "abacabadabacaba")
+}
