@@ -23,5 +23,8 @@ func main() {
 }
 
 func createAbacabaSequence(iteration int) (sequence string) {
+	for index := 0; index < iteration; index++ {
+		sequence = sequence + string(rune(index)+'a') + sequence
+	}
 	return
 }
