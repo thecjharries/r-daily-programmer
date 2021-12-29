@@ -25,5 +25,11 @@ func main() {
 }
 
 func change(input int) (totalCoins int) {
+	for index := len(values) - 1; index >= 0; index-- {
+		if input >= values[index] {
+			totalCoins += input / values[index]
+			input = input % values[index]
+		}
+	}
 	return
 }
