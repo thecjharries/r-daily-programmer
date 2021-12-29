@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+var values = []int{1, 5, 10, 25, 100, 500}
+
 var zPrint = fmt.Println
 
 func main() {
