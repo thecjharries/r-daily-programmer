@@ -23,3 +23,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 }
+
+func change(input int) (totalCoins int) {
+	return
+}
