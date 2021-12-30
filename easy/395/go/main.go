@@ -23,5 +23,19 @@ func main() {
 }
 
 func nonogramRow(row []int) (counts []int) {
+	currentCount := 0
+	for _, element := range row {
+		if element == 1 {
+			currentCount++
+		} else {
+			if currentCount > 0 {
+				counts = append(counts, currentCount)
+				currentCount = 0
+			}
+		}
+	}
+	if currentCount > 0 {
+		counts = append(counts, currentCount)
+	}
 	return
 }
