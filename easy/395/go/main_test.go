@@ -53,3 +53,13 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNonogramRow(c *C) {
+	c.Assert(nonogramRow([]int{}), DeepEquals, []int(nil))
+	c.Assert(nonogramRow([]int{0, 0, 0, 0, 0}), DeepEquals, []int(nil))
+	c.Assert(nonogramRow([]int{1, 1, 1, 1, 1}), DeepEquals, []int{5})
+	c.Assert(nonogramRow([]int{0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1}), DeepEquals, []int{5, 4})
+	c.Assert(nonogramRow([]int{1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0}), DeepEquals, []int{2, 1, 3})
+	c.Assert(nonogramRow([]int{0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1}), DeepEquals, []int{2, 1, 3})
+	c.Assert(nonogramRow([]int{1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1}), DeepEquals, []int{1, 1, 1, 1, 1, 1, 1, 1})
+}
