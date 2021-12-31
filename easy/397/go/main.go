@@ -14,7 +14,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 var numberOrder = "MDCLXVI"
 
@@ -25,5 +28,22 @@ func main() {
 }
 
 func numcompare(first, second string) bool {
+	maxLength := len(first)
+	if len(second) > maxLength {
+		maxLength = len(second)
+	}
+	for index := 0; index < maxLength; index++ {
+		if len(first) <= index {
+			return true
+		}
+		if len(second) <= index {
+			return false
+		}
+		firstIndex := strings.Index(numberOrder, string(first[index]))
+		secondIndex := strings.Index(numberOrder, string(second[index]))
+		if firstIndex < secondIndex {
+			return false
+		}
+	}
 	return false
 }
