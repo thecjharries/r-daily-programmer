@@ -16,6 +16,8 @@ package main
 
 import "fmt"
 
+var numberOrder = "MDCLXVI"
+
 var zPrint = fmt.Println
 
 func main() {
