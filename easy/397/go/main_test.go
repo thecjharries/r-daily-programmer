@@ -53,3 +53,12 @@ func (s *MainSuite) TestMain(c *C) {
 	c.Assert(printCallCount, Equals, 1)
 	c.Assert(printSpyContents, Equals, "hello world")
 }
+
+func (s *MainSuite) TestNumcompare(c *C) {
+	c.Assert(numcompare("I", "I"), Equals, false)
+	c.Assert(numcompare("I", "II"), Equals, true)
+	c.Assert(numcompare("II", "I"), Equals, false)
+	c.Assert(numcompare("V", "IIII"), Equals, false)
+	c.Assert(numcompare("MDCLXV", "MDCLXVI"), Equals, true)
+	c.Assert(numcompare("MM", "MDCCCCLXXXXVIIII"), Equals, false)
+}
