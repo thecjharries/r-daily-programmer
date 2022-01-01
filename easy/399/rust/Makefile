@@ -9,3 +9,6 @@ main: clean
 
 clean:
 	rm -f main
+
+finish:
+	git flow feature finish
