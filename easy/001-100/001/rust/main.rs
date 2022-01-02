@@ -17,6 +17,6 @@ fn main() -> io::Result<()> {
     io::stdout().flush().unwrap();
     handle.read_line(&mut reddit_name)?;
 
-    println!("your name is {}, you are {} years old, and your username is {}", name, age, reddit_name);
+    println!("your name is {}, you are {} years old, and your username is {}", name.trim_end(), age.trim_end(), reddit_name.trim_end());
     Ok(())
 }
