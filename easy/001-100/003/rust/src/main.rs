@@ -47,4 +47,18 @@ mod tests {
         assert_eq!(encrypt_caesar("A", 9), "J");
         assert_eq!(encrypt_caesar("A", 10), "K");
     }
+
+    #[test]
+    fn test_decrypt_caesar() {
+        assert_eq!(decrypt_caesar("B", 1), "A");
+        assert_eq!(decrypt_caesar("C", 2), "A");
+        assert_eq!(decrypt_caesar("D", 3), "A");
+        assert_eq!(decrypt_caesar("E", 4), "A");
+        assert_eq!(decrypt_caesar("F", 5), "A");
+        assert_eq!(decrypt_caesar("G", 6), "A");
+        assert_eq!(decrypt_caesar("H", 7), "A");
+        assert_eq!(decrypt_caesar("I", 8), "A");
+        assert_eq!(decrypt_caesar("J", 9), "A");
+        assert_eq!(decrypt_caesar("K", 10), "A");
+    }
 }
