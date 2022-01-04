@@ -26,6 +26,10 @@ fn encrypt_caesar(input: &str, shift: u32) -> String {
     output
 }
 
+fn decrypt_caesar(input: &str, shift: u32) -> String {
+    encrypt_caesar(input, 26 - shift)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
