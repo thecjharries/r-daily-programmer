@@ -18,3 +18,6 @@ bootstrap-feature-branch:
 
 finish:
 	git flow feature finish
+
+stub:
+	git commit src/main.rs -m 'Stub prompt fnc'
