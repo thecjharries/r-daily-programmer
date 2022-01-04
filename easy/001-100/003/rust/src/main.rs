@@ -25,3 +25,22 @@ fn encrypt_caesar(input: &str, shift: u32) -> String {
     }
     output
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_encrypt_caesar() {
+        assert_eq!(encrypt_caesar("A", 1), "B");
+        assert_eq!(encrypt_caesar("A", 2), "C");
+        assert_eq!(encrypt_caesar("A", 3), "D");
+        assert_eq!(encrypt_caesar("A", 4), "E");
+        assert_eq!(encrypt_caesar("A", 5), "F");
+        assert_eq!(encrypt_caesar("A", 6), "G");
+        assert_eq!(encrypt_caesar("A", 7), "H");
+        assert_eq!(encrypt_caesar("A", 8), "I");
+        assert_eq!(encrypt_caesar("A", 9), "J");
+        assert_eq!(encrypt_caesar("A", 10), "K");
+    }
+}
