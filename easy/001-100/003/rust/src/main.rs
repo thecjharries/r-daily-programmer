@@ -21,6 +21,7 @@ fn encrypt_caesar(input: &str, shift: u32) -> String {
             }
             character = character_code as char;
         }
+        output.push(character);
     }
     output
 }
