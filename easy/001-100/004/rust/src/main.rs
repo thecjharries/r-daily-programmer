@@ -21,7 +21,9 @@ mod tests {
 
     #[test]
     fn test_random_password() {
-        let mut rng = Pcg64::from_seed(0);
-        assert_eq!(random_password(rng, 10), "qqq");
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(random_password(rng, 10), "1KDsyHVtHF");
+        rng = Pcg64::seed_from_u64(0);
+        assert_eq!(random_password(rng, 30), "1KDsyHVtHFHpJInAwXCUqgDpkqy8qD");
     }
 }
