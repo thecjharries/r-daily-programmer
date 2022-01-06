@@ -1,3 +1,3 @@
 fn password_protected(username: &str, password: &str) -> bool {
-    false
+    username == "AzureDiamond" && password == "hunter2"
 }
