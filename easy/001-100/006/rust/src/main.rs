@@ -15,3 +15,8 @@
 fn main() {
     println!("rad");
 }
+
+// https://www.craig-wood.com/nick/articles/pi-chudnovsky/
+fn chudnovsky(n: u64) -> f64 {
+    let mut k = 0;
+}
