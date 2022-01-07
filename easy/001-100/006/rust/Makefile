@@ -10,7 +10,7 @@ bootstrap-feature-branch:
 	git commit -m 'Add boilerplate'
 	git add ./src/main.rs
 	git commit -m 'Create empty Rust file'
-	echo '[package]\nname = "$(lastword $(subst /, ,$(realpath ../../../)))_$(lastword $(subst /, ,$(realpath ../)))"\nversion = "0.0.0"\nedition = "2018"' > ./Cargo.toml
+	echo '[package]\nname = "$(lastword $(subst /, ,$(realpath ../../../)))_$(lastword $(subst /, ,$(realpath ../)))"\nversion = "0.0.0"\nedition = "2018' > ./Cargo.toml
 	git add ./Cargo.toml
 	git commit -m 'Define Rust package'
 
