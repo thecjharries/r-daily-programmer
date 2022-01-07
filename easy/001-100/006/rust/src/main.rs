@@ -22,3 +22,13 @@ fn approximate_pi() -> f64 {
     let pi: f64 = format!("{:.30}", PI).parse().unwrap();
     pi
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_approximate_pi() {
+        assert_eq!(approximate_pi(), 3.141592653589793);
+    }
+}
