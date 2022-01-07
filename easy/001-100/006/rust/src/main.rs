@@ -15,10 +15,10 @@
 use std::f64::consts::PI;
 
 fn main() {
-    println!("{}", approximate_pi(30));
+    println!("{}", approximate_pi());
 }
 
-fn approximate_pi(digits: u32) -> f64 {
-    let pi: f64 = format!(format!("{{:.{}}}", digits), PI).parse().unwrap();
+fn approximate_pi() -> f64 {
+    let pi: f64 = format!("{:.30}", PI).parse().unwrap();
     pi
 }
