@@ -67,7 +67,18 @@ fn main() {
     println!("rad");
 }
 
-fn decode_morse(input: str) -> String {}
+fn decode_morse(input: str) -> String {
+    let mut output = String::new();
+    let mut split = input.split(" / ");
+    for word in split {
+        let mut split = word.split(" ");
+        for letter in split {
+            output.push_str(MORSE_CODE.get(letter).unwrap());
+        }
+        output.push_str(" ");
+    }
+    output.trim().to_string()
+}
 
 #[cfg(test)]
 mod tests {
