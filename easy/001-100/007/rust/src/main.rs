@@ -68,3 +68,15 @@ fn main() {
 }
 
 fn decode_morse(input: str) -> String {}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_decode_morse() {
+        assert_eq!(decode_morse(".... . -.-- / .--- ..- -.. ."), "hey jude");
+        assert_eq!(decode_morse("...---..."), "sos");
+        assert_eq!(decode_morse(".... . .-.. .-.. --- / -.. .- .. .-.. -.-- / .--. .-. --- --. .-. .- -- -- . .-. / --. --- --- -.. / .-.. ..- -.-. -.- / --- -. / - .... . / -.-. .... .- .-.. .-.. . -. --. . ... / - --- -.. .- -.--"), "hello daily programmer good luck on the challenges today");
+    }
+}
