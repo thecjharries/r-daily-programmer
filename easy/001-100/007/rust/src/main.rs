@@ -66,3 +66,5 @@ const MORSE_CODE: HashMap = HashMap::from([
 fn main() {
     println!("rad");
 }
+
+fn decode_morse(input: str) -> String {}
