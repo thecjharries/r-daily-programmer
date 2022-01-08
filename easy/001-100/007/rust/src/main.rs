@@ -12,56 +12,62 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::collection::HashMap;
+use lazy_static::lazy_static;
+use std::collections::HashMap;
 
-const MORSE_CODE: HashMap = HashMap::from([
-    ("-----", "0"),
-    (".----", "1"),
-    ("..---", "2"),
-    ("...--", "3"),
-    ("....-", "4"),
-    (".....", "5"),
-    ("-....", "6"),
-    ("--...", "7"),
-    ("---..", "8"),
-    ("----.", "9"),
-    (".-", "a"),
-    ("-...", "b"),
-    ("-.-.", "c"),
-    ("-..", "d"),
-    (".", "e"),
-    ("..-.", "f"),
-    ("--.", "g"),
-    ("....", "h"),
-    ("..", "i"),
-    (".---", "j"),
-    ("-.-", "k"),
-    (".-..", "l"),
-    ("--", "m"),
-    ("-.", "n"),
-    ("---", "o"),
-    (".--.", "p"),
-    ("--.-", "q"),
-    (".-.", "r"),
-    ("...", "s"),
-    ("-", "t"),
-    ("..-", "u"),
-    ("...-", "v"),
-    (".--", "w"),
-    ("-..-", "x"),
-    ("-.--", "y"),
-    ("--..", "z"),
-    (".-.-.-", "."),
-    ("--..--", ","),
-    ("..--..", "?"),
-    ("-.-.--", "!"),
-    ("-....-", "-"),
-    ("-..-.", "/"),
-    (".--.-.", "@"),
-    ("-.--.", "("),
-    ("-.--.-", ")"),
-    ("/", " "),
-]);
+lazy_static! {
+    static ref MORSE_CODE: HashMap<&'static str, &'static str> = {
+        let mut map = HashMap::new();
+        map.insert("-----", "0");
+        map.insert(".----", "1");
+        map.insert("..---", "2");
+        map.insert("...--", "3");
+        map.insert("....-", "4");
+        map.insert(".....", "5");
+        map.insert("-....", "6");
+        map.insert("--...", "7");
+        map.insert("---..", "8");
+        map.insert("----.", "9");
+        map.insert(".-", "a");
+        map.insert("-...", "b");
+        map.insert("-.-.", "c");
+        map.insert("-..", "d");
+        map.insert(".", "e");
+        map.insert("..-.", "f");
+        map.insert("--.", "g");
+        map.insert("....", "h");
+        map.insert("..", "i");
+        map.insert(".---", "j");
+        map.insert("-.-", "k");
+        map.insert(".-..", "l");
+        map.insert("--", "m");
+        map.insert("-.", "n");
+        map.insert("---", "o");
+        map.insert(".--.", "p");
+        map.insert("--.-", "q");
+        map.insert(".-.", "r");
+        map.insert("...", "s");
+        map.insert("-", "t");
+        map.insert("..-", "u");
+        map.insert("...-", "v");
+        map.insert(".--", "w");
+        map.insert("-..-", "x");
+        map.insert("-.--", "y");
+        map.insert("--..", "z");
+        map.insert(".-.-.-", ".");
+        map.insert("--..--", ",");
+        map.insert("..--..", "?");
+        map.insert("-.-.--", "!");
+        map.insert("-....-", "-");
+        map.insert("-..-.", "/");
+        map.insert(".--.-.", "@");
+        map.insert("-.--.", "(");
+        map.insert("-.--.-", ")");
+        map.insert("/", " ");
+        map
+    };
+}
+
 
 fn main() {
     println!("rad");
