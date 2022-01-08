@@ -75,10 +75,10 @@ fn main() {
 
 fn decode_morse(input: &str) -> String {
     let mut output = String::new();
-    let mut split = input.split(" / ");
+    let split = input.split(" / ");
     for word in split {
-        let mut split = word.split(" ");
-        for letter in split {
+        let word_split = word.split(" ");
+        for letter in word_split {
             output.push_str(MORSE_CODE.get(letter).unwrap());
         }
         output.push_str(" ");
