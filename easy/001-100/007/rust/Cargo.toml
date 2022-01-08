@@ -1,0 +1,4 @@
+[package]
+name = "easy_007"
+version = "0.0.0"
+edition = "2018"
