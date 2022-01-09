@@ -15,3 +15,17 @@
 fn main() {
     println!("rad");
 }
+
+fn generate_lyrics(bottles: i32) -> String {
+    let mut lyrics = String::new();
+    for i in (0..bottles).rev() {
+        if i == 0 {
+            lyrics.push_str("No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n");
+        } else if i == 1 {
+            lyrics.push_str(&format!("{} bottle of beer on the wall, {} bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n", i, i));
+        } else {
+            lyrics.push_str(&format!("{} bottles of beer on the wall, {} bottles of beer.\nTake one down and pass it around, {} bottles of beer on the wall.\n", i, i, i-1));
+        }
+    }
+    lyrics
+}
