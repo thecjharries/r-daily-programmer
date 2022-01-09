@@ -18,7 +18,7 @@ fn main() {
 
 fn generate_lyrics(bottles: i32) -> String {
     let mut lyrics = String::new();
-    for i in (0..bottles).rev() {
+    for i in (0..=bottles).rev() {
         if i == 0 {
             lyrics.push_str("No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n");
         } else if i == 1 {
