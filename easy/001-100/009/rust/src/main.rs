@@ -35,6 +35,6 @@ mod tests {
         input = vec!["1", "11", "10", "5"];
         result = sort_input(&input);
         assert_eq!(input, vec!["1", "11", "10", "5"]);
-        assert_eq!(result, vec!["1", "5", "10", "11"]);
+        assert_eq!(result, vec!["1", "10", "11", "5"]);
     }
 }
