@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use regex::Regex;
+
 fn main() {
     println!("rad");
 }
 
 fn is_valid_phone_number(input: &str) -> bool {
-    false
+    let phone_number_pattern : Regex = Regex::new(r"^(?:\d{10}|(?:\d{3}[.-])?\d{3}[.-]\d{4}|\(\d{3}\) ?\d{3}-\d{4})$").unwrap();
+    phone_number_pattern.is_match(input)
 }
 
 #[cfg(test)]
