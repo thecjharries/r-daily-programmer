@@ -16,8 +16,8 @@ fn main() {
     println!("rad");
 }
 
-fn sort_input(input: Vec<&str>) -> Vec<&str> {
-    let mut result = input;
+fn sort_input<'a>(input: &Vec<&'a str>) -> Vec<&'a str> {
+    let mut result = input.to_vec();
     result.sort();
     result
 }
@@ -29,7 +29,7 @@ mod tests {
     #[test]
     fn test_sort_input() {
         let mut input = vec!["c", "b", "a"];
-        let mut result = sort_input(input);
+        let mut result = sort_input(&input);
         assert_eq!(input, vec!["c", "b", "a"]);
         assert_eq!(result, vec!["a", "b", "c"]);
     }
