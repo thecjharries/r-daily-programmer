@@ -17,7 +17,9 @@ fn main() {
 }
 
 fn sort_input(input: Vec<&str>) -> Vec<&str> {
-
+    let mut result = input;
+    result.sort();
+    result
 }
 
 #[cfg(test)]
