@@ -19,3 +19,21 @@ fn main() {
 fn is_valid_phone_number(input: &str) -> bool {
     false
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_is_valid_phone_number() {
+        assert_eq!(is_valid_phone_number("1234567890"), true);
+        assert_eq!(is_valid_phone_number("123-456-7890"), true);
+        assert_eq!(is_valid_phone_number("123.456.7890"), true);
+        assert_eq!(is_valid_phone_number("(123)456-7890"), true);
+        assert_eq!(is_valid_phone_number("(123) 456-7890"), true);
+        assert_eq!(is_valid_phone_number("456-7890"), true);
+        assert_eq!(is_valid_phone_number("123-45-6789"), false);
+        assert_eq!(is_valid_phone_number("123:4567890"), false);
+        assert_eq!(is_valid_phone_number("123/456-7890"), false);
+    }
+}
