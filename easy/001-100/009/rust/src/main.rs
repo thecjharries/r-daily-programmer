@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn sort_input(input: Vec<&str>) -> Vec<&str> {
+
+}
