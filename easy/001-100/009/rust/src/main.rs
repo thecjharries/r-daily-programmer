@@ -19,3 +19,16 @@ fn main() {
 fn sort_input(input: Vec<&str>) -> Vec<&str> {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sort_input() {
+        let mut input = vec!["c", "b", "a"];
+        let mut result = sort_input(input);
+        assert_eq!(input, vec!["c", "b", "a"]);
+        assert_eq!(result, vec!["a", "b", "c"]);
+    }
+}
