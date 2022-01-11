@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn is_valid_phone_number(input: &str) -> bool {
+    false
+}
