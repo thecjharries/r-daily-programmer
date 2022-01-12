@@ -29,8 +29,9 @@ mod tests {
 
     #[test]
     fn test_get_day_of_week() {
-        assert_eq!(get_day_of_week(2020, 1, 1), Weekday::Mon);
-        assert_eq!(get_day_of_week(2020, 1, 2), Weekday::Tue);
-        assert_eq!(get_day_of_week(2020, 1, 3), Weekday::Wed);
+        assert_eq!(get_day_of_week(2022, 1, 12), Weekday::Wed);
+        assert_eq!(get_day_of_week(2022, 1, 13), Weekday::Thu);
+        assert_eq!(get_day_of_week(2022, 1, 14), Weekday::Fri);
+        assert_eq!(get_day_of_week(1970, 1,1), Weekday::Thu);
     }
 }
