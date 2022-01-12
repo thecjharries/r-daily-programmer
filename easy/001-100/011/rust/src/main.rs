@@ -12,14 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use chrono::{NaiveDate, Weekday};
+use chrono::{NaiveDate, Datelike, Weekday};
 
 fn main() {
     println!("rad");
 }
 
-fn get_day_of_week(year: i32, month: i32, day: i32) -> Weekday {
-
+fn get_day_of_week(year: i32, month: u32, day: u32) -> Weekday {
+    let date = NaiveDate::from_ymd(year, month, day);
+    date.weekday()
 }
 
 #[cfg(test)]
