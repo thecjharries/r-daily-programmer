@@ -21,3 +21,15 @@ fn main() {
 fn get_day_of_week(year: i32, month: i32, day: i32) -> Weekday {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_get_day_of_week() {
+        assert_eq!(get_day_of_week(2020, 1, 1), Weekday::Mon);
+        assert_eq!(get_day_of_week(2020, 1, 2), Weekday::Tue);
+        assert_eq!(get_day_of_week(2020, 1, 3), Weekday::Wed);
+    }
+}
