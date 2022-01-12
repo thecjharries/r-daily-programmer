@@ -12,6 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::{NaiveDate, Weekday};
+
 fn main() {
     println!("rad");
+}
+
+fn get_day_of_week(year: i32, month: i32, day: i32) -> Weekday {
+
 }
