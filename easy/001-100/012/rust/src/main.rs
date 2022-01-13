@@ -19,3 +19,13 @@ fn main() {
 fn find_string_permutations(input: &str) -> Vec<String> {
 
 }
+
+#cfg(test)
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_find_string_permutations() {
+        assert_eq!(find_string_permutations("rad"), vec!["rad", "adr", "ard", "adr"]);
+    }
+}
