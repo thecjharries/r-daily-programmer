@@ -12,12 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 fn main() {
     println!("rad");
 }
 
 fn find_string_permutations(input: &str) -> Vec<String> {
-
+    let mut permutations = Vec::new();
+    for permutation in input.chars().permutations(input.len()) {
+        permutations.push(permutation.into_iter().collect());
+    }
+    permutations
 }
 
 #cfg(test)
