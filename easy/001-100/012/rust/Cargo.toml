@@ -2,3 +2,6 @@
 name = "easy_012"
 version = "0.0.0"
 edition = "2018"
+
+[dependencies]
+itertools = "0.10.3"
