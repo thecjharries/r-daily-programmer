@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn find_string_permutations(input: &str) -> Vec<String> {
+
+}
