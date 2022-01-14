@@ -19,3 +19,16 @@ fn main() {
 fn calculate_day_of_year(year: u32, month: i32, day: i32) -> i32 {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_day_of_year() {
+        assert_eq!(calculate_day_of_year(2019, 1, 1), 1);
+        assert_eq!(calculate_day_of_year(2019, 3, 1), 60);
+        assert_eq!(calculate_day_of_year(2020, 1, 1), 1);
+        assert_eq!(calculate_day_of_year(2020, 3, 1), 61);
+    }
+}
