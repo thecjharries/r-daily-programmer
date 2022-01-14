@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn calculate_day_of_year(year: u32, month: i32, day: i32) -> i32 {
+
+}
