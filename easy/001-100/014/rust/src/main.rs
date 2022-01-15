@@ -12,12 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::cmp::min;
+
 fn main() {
     println!("rad");
 }
 
-fn reverse_by_block_size(input: vec<u32>, block_size: u32) -> vec<u32> {
-
+fn reverse_by_block_size(input: Vec<u32>, block_size: usize) -> Vec<u32> {
+    let mut output = Vec::new();
+    for right_index in (0..input.len()).step_by(block_size) {
+        for left_index in (right_index..min(right_index + block_size, input.len())).rev() {
+            output.push(input[left_index]);
+        }
+    }
+    output
 }
 
 #[cfg(test)]
