@@ -19,3 +19,14 @@ fn main() {
 fn reverse_by_block_size(input: vec<u32>, block_size: u32) -> vec<u32> {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_reverse_by_block_size() {
+        assert_eq!(reverse_by_block_size(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3), vec![3, 2, 1, 6, 5, 4, 9, 8, 7, 10]);
+        assert_eq!(reverse_by_block_size(vec![12, 24, 32, 44, 55, 66], 2), vec![24, 12, 44, 32, 66, 55])
+    }
+}
