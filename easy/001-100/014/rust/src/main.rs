@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn reverse_by_block_size(input: vec<u32>, block_size: u32) -> vec<u32> {
+
+}
