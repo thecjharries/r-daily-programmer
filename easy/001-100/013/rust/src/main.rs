@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::{NaiveDate, Datelike};
+
 fn main() {
     println!("rad");
 }
 
-fn calculate_day_of_year(year: u32, month: i32, day: i32) -> i32 {
-
+fn calculate_day_of_year(year: i32, month: u32, day: u32) -> u32 {
+    let date = NaiveDate::from_ymd(year, month, day);
+    date.ordinal()
 }
 
 #[cfg(test)]
