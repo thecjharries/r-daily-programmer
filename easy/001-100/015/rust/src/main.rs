@@ -68,4 +68,11 @@ mod tests {
         assert_eq!(left_justify(&vec!["a", " bb", "ccc", "dddd"]), vec!["a", "bb", "ccc", "dddd"]);
         assert_eq!(left_justify(&vec!["a", "bb", "  ccc", "dddd", "eeeee"]), vec!["a", "bb", "ccc", "dddd", "eeeee"]);
     }
+
+    #[test]
+    fn test_right_justify() {
+        assert_eq!(right_justify(&vec![" a ", " bb", "ccc"]), vec!["  a", " bb", "ccc"]);
+        assert_eq!(right_justify(&vec!["a", " bb", "ccc", "dddd"]), vec!["   a", "  bb", " ccc", "dddd"]);
+        assert_eq!(right_justify(&vec!["a  ", " bb ", "  ccc", "dddd ", "eeeee"]), vec!["    a", "   bb", "  ccc", " dddd", "eeeee"]);
+    }
 }
