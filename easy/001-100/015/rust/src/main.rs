@@ -47,6 +47,10 @@ fn left_justify(lines: &Vec<&str>) -> Vec<String> {
     result
 }
 
+fn right_justify(lines: &Vec<&str>) -> Vec<string> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
