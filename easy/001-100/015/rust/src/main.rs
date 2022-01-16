@@ -32,8 +32,19 @@ fn find_length_of_longest_line(lines: &Vec<&str>) -> usize {
         .unwrap()
 }
 
-fn left_justify(lines: &Vec<&str>) -> Vec<&str> {
-
+fn left_justify(lines: &Vec<&str>) -> Vec<String> {
+    let mut result = Vec::new();
+    for line in lines {
+        let mut justified_line = String::new();
+        match LINE_PATTERN.captures(line) {
+            Some(capture) => {
+                justified_line.push_str(&capture[1]);
+            },
+            None => unreachable!(),
+        }
+        result.push(justified_line);
+    }
+    result
 }
 
 #[cfg(test)]
