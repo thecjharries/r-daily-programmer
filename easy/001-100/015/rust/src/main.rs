@@ -32,6 +32,10 @@ fn find_length_of_longest_line(lines: &Vec<&str>) -> usize {
         .unwrap()
 }
 
+fn left_justify(lines: &Vec<&str>) -> Vec<&str> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
