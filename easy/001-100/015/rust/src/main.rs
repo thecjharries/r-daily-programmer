@@ -16,9 +16,8 @@ use lazy_static::lazy_static;
 use regex::Regex;
 
 lazy_static! {
-    static ref LINE_PATTERN: Regex = Regex::new(r"^\s*(.*)\s*$").unwrap();
+    static ref LINE_PATTERN: Regex = Regex::new(r"^\s*(.*?)\s*$").unwrap();
 }
-
 
 fn main() {
     println!("rad");
