@@ -17,7 +17,11 @@ fn main() {
 }
 
 fn find_length_of_longest_line(lines: &Vec<&str>) -> usize {
-
+    lines
+        .iter()
+        .map(|line| line.len())
+        .max()
+        .unwrap()
 }
 
 #[cfg(test)]
