@@ -47,8 +47,23 @@ fn left_justify(lines: &Vec<&str>) -> Vec<String> {
     result
 }
 
-fn right_justify(lines: &Vec<&str>) -> Vec<string> {
-
+fn right_justify(lines: &Vec<&str>) -> Vec<String> {
+    let max_length = find_length_of_longest_line(lines);
+    let mut result: Vec<String> = Vec::new();
+    for line in lines {
+        let mut justified_line = String::new();
+        match LINE_PATTERN.captures(line) {
+            Some(capture) => {
+                println!("'{}'", &capture[1]);
+                let line_length = capture[1].len();
+                justified_line.push_str(&" ".repeat(max_length - line_length));
+                justified_line.push_str(&capture[1]);
+            },
+            None => unreachable!(),
+        }
+        result.push(justified_line);
+    }
+    result
 }
 
 #[cfg(test)]
