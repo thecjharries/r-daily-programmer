@@ -46,4 +46,11 @@ mod tests {
         assert_eq!(find_length_of_longest_line(&vec!["a", "bb", "ccc", "dddd"]), 4);
         assert_eq!(find_length_of_longest_line(&vec!["a", "bb", "ccc", "dddd", "eeeee"]), 5);
     }
+
+    #[test]
+    fn test_left_justify() {
+        assert_eq!(left_justify(&vec!["  a", " bb", "ccc"]), vec!["a", "bb", "ccc"]);
+        assert_eq!(left_justify(&vec!["a", " bb", "ccc", "dddd"]), vec!["a", "bb", "ccc", "dddd"]);
+        assert_eq!(left_justify(&vec!["a", "bb", "  ccc", "dddd", "eeeee"]), vec!["a", "bb", "ccc", "dddd", "eeeee"]);
+    }
 }
