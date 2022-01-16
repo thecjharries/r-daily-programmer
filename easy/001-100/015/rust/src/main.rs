@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn find_length_of_longest_line(lines: &Vec<&str>) -> usize {
+
+}
