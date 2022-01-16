@@ -19,3 +19,15 @@ fn main() {
 fn find_length_of_longest_line(lines: &Vec<&str>) -> usize {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_find_length_of_longest_line() {
+        assert_eq!(find_length_of_longest_line(&vec!["a", "bb", "ccc"]), 3);
+        assert_eq!(find_length_of_longest_line(&vec!["a", "bb", "ccc", "dddd"]), 4);
+        assert_eq!(find_length_of_longest_line(&vec!["a", "bb", "ccc", "dddd", "eeeee"]), 5);
+    }
+}
