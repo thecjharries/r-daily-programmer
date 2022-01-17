@@ -19,3 +19,15 @@ fn main() {
 fn strip_from_first(first: &str, second: &str) -> String {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_strip_from_first() {
+        assert_eq!(strip_from_first("rad", "rad"), "".to_string());
+        assert_eq!(strip_from_first("radrad", "rad"), "".to_string());
+        assert_eq!(strip_from_first("Daily Programmer", "aeiou "), "DlyPrgrmmr".to_string());
+    }
+}
