@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn strip_from_first(first: &str, second: &str) -> String {
+
+}
