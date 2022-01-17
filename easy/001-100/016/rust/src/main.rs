@@ -17,7 +17,14 @@ fn main() {
 }
 
 fn strip_from_first(first: &str, second: &str) -> String {
-
+    let mut result = String::new();
+    for c in first.chars() {
+        if second.contains(c) {
+            continue;
+        }
+        result.push(c);
+    }
+    result
 }
 
 #[cfg(test)]
