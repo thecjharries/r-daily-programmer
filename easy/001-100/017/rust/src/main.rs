@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn create_triangle(height: usize, character: char) -> String {
+
+}
