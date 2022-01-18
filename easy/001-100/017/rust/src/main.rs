@@ -19,3 +19,16 @@ fn main() {
 fn create_triangle(height: usize, character: char) -> String {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_create_triangle() {
+        assert_eq!(create_triangle(1, '*'), "*");
+        assert_eq!(create_triangle(2, '*'), "*\n**");
+        assert_eq!(create_triangle(3, '*'), "*\n**\n****");
+        assert_eq!(create_triangle(4, '*'), "*\n**\n****\n********");
+    }
+}
