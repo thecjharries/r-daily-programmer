@@ -17,7 +17,11 @@ fn main() {
 }
 
 fn create_triangle(height: usize, character: char) -> String {
-
+    let mut triangle: Vec<String> = Vec::new();
+    for row in 0..height {
+        triangle.push(character.to_string().repeat(usize::pow(2, row as u32)));
+    }
+    triangle.join("\n")
 }
 
 #[cfg(test)]
