@@ -1,3 +1,6 @@
+DIFFICULTY = $(lastword $(subst /, ,$(realpath ../../../)))
+NUMBER = $(lastword $(subst /, ,$(realpath ../)))
+
 run:
 	cargo run
 
@@ -5,12 +8,12 @@ test:
 	cargo test
 
 bootstrap-feature-branch:
-	git flow feature start $(lastword $(subst /, ,$(realpath ../../../)))-$(lastword $(subst /, ,$(realpath ../)))
+	git flow feature start $(DIFFICULTY)-$(NUMBER)
 	git add ./Makefile
 	git commit -m 'Add boilerplate'
 	git add ./src/main.rs
 	git commit -m 'Create empty Rust file'
-	echo '[package]\nname = "$(lastword $(subst /, ,$(realpath ../../../)))_$(lastword $(subst /, ,$(realpath ../)))"\nversion = "0.0.0"\nedition = "2018"' > ./Cargo.toml
+	sed -i 's/&REPLACE_ME&/$(DIFFICULTY)_$(NUMBER)/g' ./Cargo.toml
 	git add ./Cargo.toml
 	git commit -m 'Define Rust package'
 
