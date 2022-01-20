@@ -22,3 +22,7 @@ lazy_static! {
 fn main() {
     println!("rad");
 }
+
+fn translate_number(input: &str) -> String {
+
+}
