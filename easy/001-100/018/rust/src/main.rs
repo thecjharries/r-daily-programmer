@@ -19,8 +19,8 @@ use regex::Regex;
 
 lazy_static! {
     static ref BAD_CHARACTER_PATTERN: Regex = Regex::new(r"[^0-9a-z]").unwrap();
-    static ref LETTER_TO_NUMBER_MAP: Hashmap<char, char> = {
-        let mut m = Hashmap::new();
+    static ref LETTER_TO_NUMBER_MAP: HashMap<char, char> = {
+        let mut m = HashMap::new();
         m.insert('a', '2');
         m.insert('b', '2');
         m.insert('c', '2');
@@ -56,13 +56,21 @@ fn main() {
 }
 
 fn translate_number(input: &str) -> String {
-
+    let mut output = String::new();
+    for c in input.to_lowercase().chars() {
+        match LETTER_TO_NUMBER_MAP.get(&c) {
+            Some(n) => output.push(*n),
+            None => output.push(c),
+        }
+    }
+    output
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
+    #[test]
     fn test_translate_number() {
         assert_eq!(translate_number("1-800-COMCAST"), "18002662278".to_string());
     }
