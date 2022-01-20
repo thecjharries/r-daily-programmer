@@ -12,11 +12,43 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 use lazy_static::lazy_static;
 use regex::Regex;
 
 lazy_static! {
     static ref BAD_CHARACTER_PATTERN: Regex = Regex::new(r"[^0-9a-z]").unwrap();
+    static ref LETTER_TO_NUMBER_MAP: Hashmap<char, char> = {
+        let mut m = Hashmap::new();
+        m.insert('a', '2');
+        m.insert('b', '2');
+        m.insert('c', '2');
+        m.insert('d', '3');
+        m.insert('e', '3');
+        m.insert('f', '3');
+        m.insert('g', '4');
+        m.insert('h', '4');
+        m.insert('i', '4');
+        m.insert('j', '5');
+        m.insert('k', '5');
+        m.insert('l', '5');
+        m.insert('m', '6');
+        m.insert('n', '6');
+        m.insert('o', '6');
+        m.insert('p', '7');
+        m.insert('q', '7');
+        m.insert('r', '7');
+        m.insert('s', '7');
+        m.insert('t', '8');
+        m.insert('u', '8');
+        m.insert('v', '8');
+        m.insert('w', '9');
+        m.insert('x', '9');
+        m.insert('y', '9');
+        m.insert('z', '9');
+        m
+    };
 }
 
 fn main() {
