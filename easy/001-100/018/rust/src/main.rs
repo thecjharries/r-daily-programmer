@@ -57,7 +57,7 @@ fn main() {
 
 fn translate_number(input: &str) -> String {
     let mut output = String::new();
-    for c in input.to_lowercase().chars() {
+    for c in BAD_CHARACTER_PATTERN.replace_all(&input.to_lowercase(), "").chars() {
         match LETTER_TO_NUMBER_MAP.get(&c) {
             Some(n) => output.push(*n),
             None => output.push(c),
