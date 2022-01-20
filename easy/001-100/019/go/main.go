@@ -21,7 +21,7 @@ import (
 	"regexp"
 )
 
-var pathToText string = path.Join(".", "project-gutenberg_the-adventures-of-sherlock-holmes.txt")
+var pathToText string = path.Join("..", "project-gutenberg_the-adventures-of-sherlock-holmes.txt")
 var headerPattern *regexp.Regexp = regexp.MustCompile(`(?ms).+?^\*\*\* START OF.+?$`)
 var footerPattern *regexp.Regexp = regexp.MustCompile(`(?ms)\*\*\* END OF.+`)
 var allowedCharactersPattern = regexp.MustCompile(`(?ims)[a-z0-9]`)
