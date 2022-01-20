@@ -26,3 +26,12 @@ fn main() {
 fn translate_number(input: &str) -> String {
 
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn test_translate_number() {
+        assert_eq!(translate_number("1-800-COMCAST"), "18002662278".to_string());
+    }
+}
