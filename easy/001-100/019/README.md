@@ -6,10 +6,6 @@ To make things easier, I've included a static grab of [The Adventures of Sherloc
 
 Either way, Project Gutenberg is very near and dear to my heart. If you can, you should [donate to preserving and sharing literature](https://www.gutenberg.org/donate/).
 
-## Note about solution
-
-For the character count, I'm only excluding the header and footer. If the purpose of the exercise is regex manipulation of text, I feel confident in my ability to do so (and adding more regex doesn't affect anything more than the time spent figuring out regex). If that's not the point, I've misunderstood the exercise.
-
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/qlwrc/372012_challenge_19_easy/) by [u/mattryan](https://old.reddit.com/user/mattryan)
