@@ -25,7 +25,7 @@ fn main() {
     println!("rad");
 }
 
-fn count_characters_in_shakespeare(input: &str) -> u64 {
+fn count_characters_in_sherlock(input: &str) -> u64 {
 
 }
 
@@ -34,7 +34,33 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_count_characters_in_sherlock() {
+        assert_eq!(count_characters_in_sherlock(""), 0);
+        assert_eq!(count_characters_in_sherlock("a"), 1);
+        assert_eq!(count_characters_in_sherlock("Project Gutenberg's The Adventures of Sherlock Holmes, by Arthur Conan Doyle
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+
+Title: The Adventures of Sherlock Holmes
+
+Author: Arthur Conan Doyle
+
+Posting Date: April 18, 2011 [EBook #1661]
+First Posted: November 29, 2002
+
+Language: English
+
+Character set encoding: ASCII
+
+*** START OF THIS PROJECT GUTENBERG EBOOK THE ADVENTURES OF SHERLOCK HOLMES ***"), 0);
+        assert_eq!(count_characters_in_sherlock("Arthur Conan Doyle
+
+*** END OF THIS PROJECT GUTENBERG EBOOK THE ADVENTURES OF SHERLOCK HOLMES ***
+
+***** This file should be named 1661.txt or 1661.zip *****"), 16);
     }
 }
