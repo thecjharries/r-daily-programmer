@@ -25,8 +25,11 @@ fn main() {
     println!("rad");
 }
 
-fn count_characters_in_sherlock(input: &str) -> u64 {
-
+fn count_characters_in_sherlock(input: &str) -> usize {
+    let mut cleaned: String = input.to_string();
+    cleaned = HEADER_PATTERN.replace_all(&cleaned, "").to_string();
+    cleaned = FOOTER_PATTERN.replace_all(&cleaned, "").to_string();
+    ALLOWED_PATTERN.find_iter(&cleaned).count()
 }
 
 #[cfg(test)]
