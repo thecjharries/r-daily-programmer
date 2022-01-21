@@ -25,6 +25,10 @@ fn main() {
     println!("rad");
 }
 
+fn count_characters_in_shakespeare(input: &str) -> u64 {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
