@@ -17,7 +17,7 @@ use regex::Regex;
 
 lazy_static! {
     static ref HEADER_PATTERN: Regex = Regex::new(r"(?ms).+?^\*\*\* START OF.+?$").unwrap();
-    static ref FOOTER_PATTERN: Regex = Regex::new(r"(?ms).+?^\*\*\* END OF.+?$").unwrap();
+    static ref FOOTER_PATTERN: Regex = Regex::new(r"(?ms)^\*\*\* END OF.+").unwrap();
     static ref ALLOWED_PATTERN: Regex = Regex::new(r"(?ims)[a-z0-9]").unwrap();
 }
 
