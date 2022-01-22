@@ -12,12 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 fn main() {
     println!("rad");
 }
 
-fn find_next_largest_permutation(input: u32) -> u32 {
-
+fn find_next_largest_permutation(input: u64) -> u64 {
+    let mut digits = input.to_string().chars().collect::<Vec<char>>();
+    let permutations = digits.iter().permutations(digits.len());
+    let mut next_highest = u64::MAX;
+    for permutation in permutations {
+        let number = permutation.into_iter().collect::<String>().parse::<u64>().unwrap();
+        if number > input && number < next_highest {
+            next_highest = number;
+        }
+    }
+    if next_highest == u64::MAX {
+        return input;
+    }
+    next_highest
 }
 
 #[cfg(test)]
