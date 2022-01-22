@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_next_highest_from_digits(input: u32) -> u32 {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
