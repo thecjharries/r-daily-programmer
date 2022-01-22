@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_primes_below() {
+        assert_eq!(find_primes_below(10), vec![2, 3, 5, 7]);
+        assert_eq!(find_primes_below(20), vec![2, 3, 5, 7, 11, 13, 17, 19]);
     }
 }
