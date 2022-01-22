@@ -13,7 +13,7 @@
 // limitations under the License.
 
 fn main() {
-    println!("rad");
+    println!("{:?}", find_primes_below(2000));
 }
 
 fn find_primes_below(max: u32) -> Vec<u32> {
