@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_next_highest_from_digits(input: u32) -> u32 {
+fn find_next_largest_permutation(input: u32) -> u32 {
 
 }
 
@@ -25,7 +25,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_next_largest_permutation() {
+        assert_eq!(find_next_largest_permutation(5), 5);
+        assert_eq!(find_next_largest_permutation(5987643), 6345789);
+        assert_eq!(find_next_largest_permutation(38276), 38627);
+        assert_eq!(find_next_largest_permutation(987654321), 987654321);
+        assert_eq!(find_next_largest_permutation(9376544321), 9412334567);
     }
 }
