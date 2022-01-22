@@ -22,3 +22,7 @@ finish:
 
 stub:
 	git commit src/main.rs -m 'Stub prompt fnc'
+
+git-prompt-runner:
+	git add src/main.rs
+	git commit -m 'Add prompt runner to main'
