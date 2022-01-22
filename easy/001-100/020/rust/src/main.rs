@@ -17,7 +17,20 @@ fn main() {
 }
 
 fn find_primes_below(max: u32) -> Vec<u32> {
-
+    let mut primes: Vec<u32> = vec![2];
+    for index in (3..max).step_by(2) {
+        let mut is_prime: bool = true;
+        for prime in &primes {
+            if index % prime == 0 {
+                is_prime = false;
+                break;
+            }
+        }
+        if is_prime {
+            primes.push(index);
+        }
+    }
+    primes
 }
 
 #[cfg(test)]
