@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_primes_below(max: u32) -> Vec<u32> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
