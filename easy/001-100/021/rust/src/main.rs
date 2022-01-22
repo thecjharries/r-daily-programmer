@@ -19,7 +19,7 @@ fn main() {
 }
 
 fn find_next_largest_permutation(input: u64) -> u64 {
-    let mut digits = input.to_string().chars().collect::<Vec<char>>();
+    let digits = input.to_string().chars().collect::<Vec<char>>();
     let permutations = digits.iter().permutations(digits.len());
     let mut next_highest = u64::MAX;
     for permutation in permutations {
