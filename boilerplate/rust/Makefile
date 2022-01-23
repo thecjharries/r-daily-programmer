@@ -1,28 +1,34 @@
+# Aliases for executables
+CARGO := cargo
+GIT := git
+SED := sed
+
+# Variables
 DIFFICULTY = $(lastword $(subst /, ,$(realpath ../../../)))
 NUMBER = $(lastword $(subst /, ,$(realpath ../)))
 
 run:
-	cargo run
+	$(CARGO) run
 
 test:
-	cargo test
+	$(CARGO) test
 
 bootstrap-feature-branch:
-	git flow feature start $(DIFFICULTY)-$(NUMBER)
-	git add ./Makefile
-	git commit -m 'Add boilerplate'
-	git add ./src/main.rs
-	git commit -m 'Create empty Rust file'
-	sed -i 's/&REPLACE_ME&/$(DIFFICULTY)_$(NUMBER)/g' ./Cargo.toml
-	git add ./Cargo.toml
-	git commit -m 'Define Rust package'
+	$(GIT) flow feature start $(DIFFICULTY)-$(NUMBER)
+	$(GIT) add ./Makefile
+	$(GIT) commit -m 'Add boilerplate'
+	$(GIT) add ./src/main.rs
+	$(GIT) commit -m 'Create empty Rust file'
+	$(SED) -i 's/&REPLACE_ME&/$(DIFFICULTY)_$(NUMBER)/g' ./Cargo.toml
+	$(GIT) add ./Cargo.toml
+	$(GIT) commit -m 'Define Rust package'
 
 finish:
-	git flow feature finish
+	$(GIT) flow feature finish
 
 stub:
-	git commit src/main.rs -m 'Stub prompt fnc'
+	$(GIT) commit src/main.rs -m 'Stub prompt fnc'
 
 git-prompt-runner:
-	git add src/main.rs
-	git commit -m 'Add prompt runner to main'
+	$(GIT) add src/main.rs
+	$(GIT) commit -m 'Add prompt runner to main'
