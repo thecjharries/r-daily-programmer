@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn union_vectors(first: Vec<&str>, second: Vec<&str>) -> Vec<&str> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
