@@ -19,7 +19,7 @@ fn main() {
 fn union_vectors<'a>(first: Vec<&'a str>, second: Vec<&'a str>) -> Vec<&'a str> {
     let mut result = first;
     for item in second {
-        if !result.contains(item) {
+        if !result.contains(&item) {
             result.push(item);
         }
     }
