@@ -25,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_union_vectors() {
+        assert_eq!(union_vectors(vec!["a", "b", "c"], vec!["c", "d", "e"]), vec!["a", "b", "c", "d", "e"]);
     }
 }
