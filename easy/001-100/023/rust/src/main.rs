@@ -16,10 +16,10 @@ fn main() {
     println!("rad");
 }
 
-fn split_in_half<T>(input: &[T]) -> (&[T], &[T]) {
+fn split_in_half_u32(input: &Vec<u32>) -> (Vec<u32>, Vec<u32>) {
     let len = input.len();
     let mid = len / 2;
-    (&input[..mid], &input[mid..])
+    (input[0..mid].to_vec(), input[mid..len].to_vec())
 }
 
 #[cfg(test)]
@@ -28,7 +28,6 @@ mod tests {
 
     #[test]
     fn test_split_in_half() {
-        assert_eq!(split_in_half(&[1, 2, 3, 4, 5]), (&[1, 2], &[3, 4, 5]));
-        assert_eq!(split_in_half(&["a", "b", "c"]), (&["a"], &["b", "c"]));
+        assert_eq!(split_in_half_u32(&vec![1, 2, 3, 4, 5]), (vec![1, 2], vec![3, 4, 5]));
     }
 }
