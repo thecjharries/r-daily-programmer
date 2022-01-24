@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_split_in_half() {
+        assert_eq!(split_in_half(&[1, 2, 3, 4, 5]), (&[1, 2], &[3, 4, 5]));
+        assert_eq!(split_in_half(&["a", "b", "c"]), (&["a"], &["b", "c"]));
     }
 }
