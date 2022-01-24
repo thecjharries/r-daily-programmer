@@ -17,7 +17,9 @@ fn main() {
 }
 
 fn split_in_half<T>(input: &[T]) -> (&[T], &[T]) {
-
+    let len = input.len();
+    let mid = len / 2;
+    (&input[..mid], &input[mid..])
 }
 
 #[cfg(test)]
