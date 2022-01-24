@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn split_in_half<T>(input: &[T]) -> (&[T], &[T]) {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
