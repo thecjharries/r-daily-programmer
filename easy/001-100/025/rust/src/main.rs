@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_majority_index() {
+        assert_eq!(find_majority_index(vec![1, 2, 4]), 2);
+        assert_eq!(find_majority_index(vec![1, 1, 1, 1, 1]), -1);
     }
 }
