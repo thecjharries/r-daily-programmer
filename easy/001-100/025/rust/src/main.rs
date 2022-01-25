@@ -16,8 +16,25 @@ fn main() {
     println!("rad");
 }
 
-fn find_majority_index(input: Vec<u32>) -> u32 {
-
+fn find_majority_index(input: Vec<u32>) -> i32 {
+    let sum = input.iter().sum::<u32>();
+    let mut necessary_majority = sum / 2;
+    if 0 == sum % 2 {
+        necessary_majority += 1;
+    }
+    let mut majority_index: i32 = -1;
+    for (index, value) in input.iter().enumerate() {
+        if &necessary_majority < value {
+            if -1 == majority_index {
+                majority_index = index as i32;
+            } else {
+                if &input[majority_index as usize] < value {
+                    majority_index = index as i32;
+                }
+            }
+        }
+    }
+    majority_index
 }
 
 #[cfg(test)]
