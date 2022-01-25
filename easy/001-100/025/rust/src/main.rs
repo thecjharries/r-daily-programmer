@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_majority_index(input: Vec<u32>) -> u32 {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
