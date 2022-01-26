@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn remove_consecutive_duplicates(input: &str) -> (String, String) {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
