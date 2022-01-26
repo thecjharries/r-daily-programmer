@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_remove_consecutive_duplicates() {
+        assert_eq!(remove_consecutive_duplicates("ddaaiillyypprrooggrraammeerr"), ("dailyprogramer", "dailyprogramer"));
+        assert_eq!(remove_consecutive_duplicates("aabbccddeded"), ("abcdeded", "abcd"));
+        assert_eq!(remove_consecutive_duplicates("flabby aapples"), ("flaby aples", "bap"));
+        assert_eq!(remove_consecutive_duplicates("aaaa"), ("a", "aaa"));
     }
 }
