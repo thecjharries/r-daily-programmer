@@ -1,0 +1,9 @@
+[package]
+name = "easy_027"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+time = "0.3.7"
+#lazy_static = "1.4.0"
+#regex = "1"
