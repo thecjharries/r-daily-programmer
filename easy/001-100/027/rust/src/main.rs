@@ -30,6 +30,6 @@ mod tests {
     fn test_determine_year_data() {
         assert_eq!(determine_year_data(2000), (20, true));
         assert_eq!(determine_year_data(1996), (20, true));
-        assert_eq!(determine_year_data(1900), (19, true));
+        assert_eq!(determine_year_data(1900), (19, false));
     }
 }
