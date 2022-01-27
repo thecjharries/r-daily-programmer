@@ -25,7 +25,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_year_data() {
+        assert_eq!(determine_year_data(2000), (20, true));
+        assert_eq!(determine_year_data(1996), (20, true));
+        assert_eq!(determine_year_data(1900), (19, true));
     }
 }
