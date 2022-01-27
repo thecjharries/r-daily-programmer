@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use time::util::is_leap_year;
+
 fn main() {
     println!("rad");
 }
 
 fn determine_year_data(year: i32) -> (i32, bool) {
-
+    (((year as f32 / 100.0).ceil() as i32), is_leap_year(year))
 }
 
 #[cfg(test)]
