@@ -17,7 +17,20 @@ fn main() {
 }
 
 fn remove_consecutive_duplicates(input: &str) -> (String, String) {
-
+    let mut remaining = String::new();
+    let mut duplicates = String::new();
+    let mut characters = input.chars();
+    let mut last_char = characters.next().unwrap();
+    remaining.push(last_char);
+    for c in characters {
+        if c == last_char {
+            duplicates.push(c);
+        } else {
+            remaining.push(c);
+            last_char = c;
+        }
+    }
+    (remaining, duplicates)
 }
 
 #[cfg(test)]
@@ -26,9 +39,9 @@ mod tests {
 
     #[test]
     fn test_remove_consecutive_duplicates() {
-        assert_eq!(remove_consecutive_duplicates("ddaaiillyypprrooggrraammeerr"), ("dailyprogramer", "dailyprogramer"));
-        assert_eq!(remove_consecutive_duplicates("aabbccddeded"), ("abcdeded", "abcd"));
-        assert_eq!(remove_consecutive_duplicates("flabby aapples"), ("flaby aples", "bap"));
-        assert_eq!(remove_consecutive_duplicates("aaaa"), ("a", "aaa"));
+        assert_eq!(remove_consecutive_duplicates("ddaaiillyypprrooggrraammeerr"), ("dailyprogramer".to_string(), "dailyprogramer".to_string()));
+        assert_eq!(remove_consecutive_duplicates("aabbccddeded"), ("abcdeded".to_string(), "abcd".to_string()));
+        assert_eq!(remove_consecutive_duplicates("flabby aapples"), ("flaby aples".to_string(), "bap".to_string()));
+        assert_eq!(remove_consecutive_duplicates("aaaa"), ("a".to_string(), "aaa".to_string()));
     }
 }
