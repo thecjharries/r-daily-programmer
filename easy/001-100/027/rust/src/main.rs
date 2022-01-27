@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_year_data(year: i32) -> (i32, bool) {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
