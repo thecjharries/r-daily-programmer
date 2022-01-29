@@ -17,7 +17,13 @@ fn main() {
 }
 
 fn is_palindrome(input: &str) -> bool {
-
+    let mut chars = input.chars();
+    for _ in 0..(input.len() / 2) {
+        if chars.next_back().unwrap() != chars.next().unwrap() {
+            return false;
+        }
+    }
+    true
 }
 
 #[cfg(test)]
