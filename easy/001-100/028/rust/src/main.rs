@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_duplicates(numbers: Vec<i32>) -> Vec<i32> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
