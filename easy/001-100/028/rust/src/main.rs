@@ -26,6 +26,12 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let mut input = (0..100000).collect::<Vec<i32>>();
+        input.push(10);
+        input.push(100);
+        input.push(1000);
+        input.push(10000);
+        input.push(100000);
+        assert_eq!(find_duplicates(input), vec![10, 100, 1000, 10000, 100000]);
     }
 }
