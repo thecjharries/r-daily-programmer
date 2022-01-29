@@ -16,8 +16,19 @@ fn main() {
     println!("rad");
 }
 
-fn find_duplicates(numbers: Vec<i32>) -> Vec<i32> {
-
+fn find_duplicates(input: Vec<i32>) -> Vec<i32> {
+    let mut numbers = input.clone();
+    numbers.sort();
+    let mut result = Vec::new();
+    let mut current = numbers[0];
+    for i in 1..numbers.len() {
+        if numbers[i] == current {
+            result.push(numbers[i]);
+        } else {
+            current = numbers[i];
+        }
+    }
+    result
 }
 
 #[cfg(test)]
