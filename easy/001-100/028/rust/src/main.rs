@@ -37,7 +37,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        let mut input = (0..100000).collect::<Vec<i32>>();
+        let mut input = (0..100001).collect::<Vec<i32>>();
         input.push(10);
         input.push(100);
         input.push(1000);
