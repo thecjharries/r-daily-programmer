@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn can_sum(target: i32, numbers: Vec<i32>) -> (i32, i32) {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
