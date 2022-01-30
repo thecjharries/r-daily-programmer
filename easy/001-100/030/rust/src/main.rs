@@ -22,7 +22,7 @@ fn can_sum(target: i32, numbers: Vec<i32>) -> (i32, i32) {
     for permutation in numbers.iter().permutations(2) {
         let sum = permutation[0] + permutation[1];
         if sum == target {
-            return (permutation[0], permutation[1]);
+            return (*permutation[0], *permutation[1]);
         }
     }
     (-1, -1)
