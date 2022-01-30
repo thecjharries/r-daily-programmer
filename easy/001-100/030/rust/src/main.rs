@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_can_sum() {
+        assert_eq!(can_sum(6, vec![1, 2, 3, 4, 5]), (1, 5));
+        assert_eq!(can_sum(10, vec![1, 2, 3, 4, 5]), (-1, -1));
     }
 }
