@@ -44,8 +44,10 @@ fn convert_u64_to_base26(input: u64) -> String {
     result.chars().rev().collect::<String>().to_uppercase()
 }
 
-fn multiply_base_26<'a>(first: &'a str, second: &'a str) -> &'a str {
-    "FNEUZJA"
+fn multiply_base_26(first: &str, second: &str) -> String {
+    let first_u64 = convert_base26_to_u64(first);
+    let second_u64 = convert_base26_to_u64(second);
+    convert_u64_to_base26(first_u64 * second_u64)
 }
 
 #[cfg(test)]
@@ -76,6 +78,6 @@ mod tests {
 
     #[test]
     fn test_multiply_base_26() {
-        assert_eq!(multiply_base_26("CSGHJ", "CBA"), "FNEUZJA");
+        assert_eq!(multiply_base_26("CSGHJ", "CBA"), "FNEUZJA".to_string());
     }
 }
