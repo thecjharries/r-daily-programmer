@@ -20,6 +20,10 @@ fn convert_char_to_u8(input: char) -> u8 {
     input as u8 - 'a' as u8
 }
 
+fn multiply_base_26<'a>(first: &'a str, second: &'a str) -> &'a str {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
