@@ -30,8 +30,18 @@ fn convert_base26_to_u64(input: &str) -> u64 {
     result
 }
 
-fn convert_u64_to_base26(input: u64) -> &str {
-
+fn convert_u64_to_base26(input: u64) -> String {
+    let mut result: String = String::new();
+    let mut remainder: u64 = input;
+    if remainder == 0 {
+        result.push('a');
+    }
+    while remainder > 0 {
+        let digit = remainder % 26;
+        result.push((digit + 'a' as u64) as u8 as char);
+        remainder /= 26;
+    }
+    result.chars().rev().collect::<String>().to_uppercase()
 }
 
 fn multiply_base_26<'a>(first: &'a str, second: &'a str) -> &'a str {
@@ -58,7 +68,7 @@ mod tests {
 
     #[test]
     fn test_convert_u64_to_base26() {
-        assert_eq!(convert_u64_to_base26(0), "a");
+        assert_eq!(convert_u64_to_base26(0), "A");
         assert_eq!(convert_u64_to_base26(1234567), "CSGHJ");
         assert_eq!(convert_u64_to_base26(1378), "CBA");
         assert_eq!(convert_u64_to_base26(1701233326), "FNEUZJA");
