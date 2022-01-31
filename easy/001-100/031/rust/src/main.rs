@@ -20,8 +20,12 @@ fn convert_char_to_u8(input: char) -> u8 {
     input as u8 - 'a' as u8
 }
 
-fn multiply_base_26<'a>(first: &'a str, second: &'a str) -> &'a str {
+fn convert_base26_to_i64(input: &str) -> i64 {
 
+}
+
+fn multiply_base_26<'a>(first: &'a str, second: &'a str) -> &'a str {
+    "FNEUZJA"
 }
 
 #[cfg(test)]
