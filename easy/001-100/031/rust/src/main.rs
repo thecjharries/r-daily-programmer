@@ -33,4 +33,9 @@ mod tests {
         assert_eq!(convert_char_to_u8('a'), 0);
         assert_eq!(convert_char_to_u8('z'), 25);
     }
+
+    #[test]
+    fn test_multiply_base_26() {
+        assert_eq!(multiply_base_26("CSGHJ", "CBA"), "FNEUZJA");
+    }
 }
