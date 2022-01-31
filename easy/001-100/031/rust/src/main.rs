@@ -30,6 +30,10 @@ fn convert_base26_to_u64(input: &str) -> u64 {
     result
 }
 
+fn convert_u64_to_base26(input: u64) -> &str {
+
+}
+
 fn multiply_base_26<'a>(first: &'a str, second: &'a str) -> &'a str {
     "FNEUZJA"
 }
