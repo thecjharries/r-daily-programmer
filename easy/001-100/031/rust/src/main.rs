@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_char_to_u8() {
+        assert_eq!(convert_char_to_u8('a'), 0);
+        assert_eq!(convert_char_to_u8('z'), 25);
     }
 }
