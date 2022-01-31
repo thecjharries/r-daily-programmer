@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_char_to_num(input: char) -> u8 {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
