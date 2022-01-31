@@ -16,10 +16,6 @@ fn main() {
     println!("rad");
 }
 
-fn convert_char_to_u8(input: char) -> u8 {
-    input as u8 - 'a' as u8
-}
-
 fn convert_base26_to_u64(input: &str) -> u64 {
     let mut result: u64 = 0;
     let mut multiplier: u64 = 1;
@@ -53,12 +49,6 @@ fn multiply_base_26(first: &str, second: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn test_convert_char_to_u8() {
-        assert_eq!(convert_char_to_u8('a'), 0);
-        assert_eq!(convert_char_to_u8('z'), 25);
-    }
 
     #[test]
     fn test_convert_base26_to_u64() {
