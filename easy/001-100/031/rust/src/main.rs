@@ -57,6 +57,14 @@ mod tests {
     }
 
     #[test]
+    fn test_convert_u64_to_base26() {
+        assert_eq!(convert_u64_to_base26(0), "a");
+        assert_eq!(convert_u64_to_base26(1234567), "CSGHJ");
+        assert_eq!(convert_u64_to_base26(1378), "CBA");
+        assert_eq!(convert_u64_to_base26(1701233326), "FNEUZJA");
+    }
+
+    #[test]
     fn test_multiply_base_26() {
         assert_eq!(multiply_base_26("CSGHJ", "CBA"), "FNEUZJA");
     }
