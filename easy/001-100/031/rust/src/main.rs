@@ -16,8 +16,8 @@ fn main() {
     println!("rad");
 }
 
-fn convert_char_to_num(input: char) -> u8 {
-
+fn convert_char_to_u8(input: char) -> u8 {
+    input as u8 - 'a' as u8
 }
 
 #[cfg(test)]
