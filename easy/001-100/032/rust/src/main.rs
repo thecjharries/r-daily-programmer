@@ -152,6 +152,29 @@ struct Bet {
     payout: String,
 }
 
+impl Bet {
+    pub fn check(&self, roll: &RouletteRoll) -> bool {
+        match self.modifier {
+            RollModifier::All => {
+                for possible_roll in &self.possible_rolls {
+                    if possible_roll != roll {
+                        return false;
+                    }
+                }
+                true
+            }
+            RollModifier::Any => {
+                for possible_roll in &self.possible_rolls {
+                    if possible_roll == roll {
+                        return true;
+                    }
+                }
+                false
+            }
+        }
+    }
+}
+
 struct Roulette;
 
 fn main() {
