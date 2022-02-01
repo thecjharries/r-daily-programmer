@@ -55,6 +55,7 @@ const ROULETTE_ROLLS: [&'static str; 38] = [
     "36",
 ];
 
+#[derive(PartialEq, Eq)]
 enum RouletteRoll {
     R00,
     R0,
@@ -188,5 +189,18 @@ mod tests {
     #[test]
     fn test_roulette_roll_to_string() {
         assert_eq!(RouletteRoll::R00.to_string(), "00");
+    }
+
+    #[test]
+    fn test_bet_check() {
+        let bet = Bet {
+            possible_rolls: vec![RouletteRoll::R1, RouletteRoll::R2, RouletteRoll::R3],
+            modifier: RollModifier::Any,
+            payout: "1".to_string(),
+        };
+        assert_eq!(bet.check(&RouletteRoll::R1), true);
+        assert_eq!(bet.check(&RouletteRoll::R2), true);
+        assert_eq!(bet.check(&RouletteRoll::R3), true);
+        assert_eq!(bet.check(&RouletteRoll::R4), false);
     }
 }
