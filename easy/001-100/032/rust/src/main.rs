@@ -57,7 +57,7 @@ const ROULETTE_ROLLS: [&'static str; 38] = [
     "36",
 ];
 
-#[derive(PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq)]
 enum RouletteRoll {
     R00,
     R0,
@@ -144,9 +144,9 @@ impl Display for RouletteRoll {
     }
 }
 
-impl Distribution<MyEnum> for Standard {
+impl Distribution<RouletteRoll> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> RouletteRoll {
-        match rng.gen_range(0,38) {
+        match rng.gen_range(0..=37) {
             0 => RouletteRoll::R00,
             1 => RouletteRoll::R0,
             2 => RouletteRoll::R1,
@@ -184,7 +184,7 @@ impl Distribution<MyEnum> for Standard {
             34 => RouletteRoll::R33,
             35 => RouletteRoll::R34,
             36 => RouletteRoll::R35,
-            37 => RouletteRoll::R36,
+            _ => RouletteRoll::R36,
         }
     }
 }
@@ -249,5 +249,11 @@ mod tests {
         assert_eq!(bet.check(&RouletteRoll::R2), true);
         assert_eq!(bet.check(&RouletteRoll::R3), true);
         assert_eq!(bet.check(&RouletteRoll::R4), false);
+    }
+
+    #[test]
+    fn test_roll() {
+        let roll: RouletteRoll = rand::random();
+        assert_eq!(roll, RouletteRoll::R0);
     }
 }
