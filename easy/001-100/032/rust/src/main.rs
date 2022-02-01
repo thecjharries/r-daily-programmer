@@ -57,6 +57,11 @@ enum RouletteRoll {
     R36,
 }
 
+enum RollModifier {
+    All,
+    Any,
+}
+
 lazy_static! {
     static ref ROLL_VALUES: HashMap<&'static RouletteRoll, &'static str> = {
         let mut map = HashMap::new();
