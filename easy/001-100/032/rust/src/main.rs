@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::distributions::{Distribution, Standard};
+use rand::Rng;
 use std::fmt::{Display, Formatter, Result};
 
 const ROULETTE_ROLLS: [&'static str; 38] = [
@@ -138,6 +140,51 @@ impl Display for RouletteRoll {
             RouletteRoll::R34 => write!(f, "34"),
             RouletteRoll::R35 => write!(f, "35"),
             RouletteRoll::R36 => write!(f, "36"),
+        }
+    }
+}
+
+impl Distribution<MyEnum> for Standard {
+    fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> RouletteRoll {
+        match rng.gen_range(0,38) {
+            0 => RouletteRoll::R00,
+            1 => RouletteRoll::R0,
+            2 => RouletteRoll::R1,
+            3 => RouletteRoll::R2,
+            4 => RouletteRoll::R3,
+            5 => RouletteRoll::R4,
+            6 => RouletteRoll::R5,
+            7 => RouletteRoll::R6,
+            8 => RouletteRoll::R7,
+            9 => RouletteRoll::R8,
+            10 => RouletteRoll::R9,
+            11 => RouletteRoll::R10,
+            12 => RouletteRoll::R11,
+            13 => RouletteRoll::R12,
+            14 => RouletteRoll::R13,
+            15 => RouletteRoll::R14,
+            16 => RouletteRoll::R15,
+            17 => RouletteRoll::R16,
+            18 => RouletteRoll::R17,
+            19 => RouletteRoll::R18,
+            20 => RouletteRoll::R19,
+            21 => RouletteRoll::R20,
+            22 => RouletteRoll::R21,
+            23 => RouletteRoll::R22,
+            24 => RouletteRoll::R23,
+            25 => RouletteRoll::R24,
+            26 => RouletteRoll::R25,
+            27 => RouletteRoll::R26,
+            28 => RouletteRoll::R27,
+            29 => RouletteRoll::R28,
+            30 => RouletteRoll::R29,
+            31 => RouletteRoll::R30,
+            32 => RouletteRoll::R31,
+            33 => RouletteRoll::R32,
+            34 => RouletteRoll::R33,
+            35 => RouletteRoll::R34,
+            36 => RouletteRoll::R35,
+            37 => RouletteRoll::R36,
         }
     }
 }
