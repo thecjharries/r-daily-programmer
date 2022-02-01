@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fmt::{Display, Formatter, Result};
+
 const ROULETTE_ROLLS: [&'static str; 38] = [
     "00",
     "0",
@@ -94,9 +96,48 @@ enum RouletteRoll {
     R36,
 }
 
-impl RouletteRoll {
-    pub fn to_string(&self) -> String {
-        POSSIBLE_ROULETTE_ROLLS[*self as usize].to_string()
+impl Display for RouletteRoll {
+    fn fmt(&self, f: &mut Formatter) -> Result {
+        match self {
+            RouletteRoll::R00 => write!(f, "00"),
+            RouletteRoll::R0 => write!(f, "0"),
+            RouletteRoll::R1 => write!(f, "1"),
+            RouletteRoll::R2 => write!(f, "2"),
+            RouletteRoll::R3 => write!(f, "3"),
+            RouletteRoll::R4 => write!(f, "4"),
+            RouletteRoll::R5 => write!(f, "5"),
+            RouletteRoll::R6 => write!(f, "6"),
+            RouletteRoll::R7 => write!(f, "7"),
+            RouletteRoll::R8 => write!(f, "8"),
+            RouletteRoll::R9 => write!(f, "9"),
+            RouletteRoll::R10 => write!(f, "10"),
+            RouletteRoll::R11 => write!(f, "11"),
+            RouletteRoll::R12 => write!(f, "12"),
+            RouletteRoll::R13 => write!(f, "13"),
+            RouletteRoll::R14 => write!(f, "14"),
+            RouletteRoll::R15 => write!(f, "15"),
+            RouletteRoll::R16 => write!(f, "16"),
+            RouletteRoll::R17 => write!(f, "17"),
+            RouletteRoll::R18 => write!(f, "18"),
+            RouletteRoll::R19 => write!(f, "19"),
+            RouletteRoll::R20 => write!(f, "20"),
+            RouletteRoll::R21 => write!(f, "21"),
+            RouletteRoll::R22 => write!(f, "22"),
+            RouletteRoll::R23 => write!(f, "23"),
+            RouletteRoll::R24 => write!(f, "24"),
+            RouletteRoll::R25 => write!(f, "25"),
+            RouletteRoll::R26 => write!(f, "26"),
+            RouletteRoll::R27 => write!(f, "27"),
+            RouletteRoll::R28 => write!(f, "28"),
+            RouletteRoll::R29 => write!(f, "29"),
+            RouletteRoll::R30 => write!(f, "30"),
+            RouletteRoll::R31 => write!(f, "31"),
+            RouletteRoll::R32 => write!(f, "32"),
+            RouletteRoll::R33 => write!(f, "33"),
+            RouletteRoll::R34 => write!(f, "34"),
+            RouletteRoll::R35 => write!(f, "35"),
+            RouletteRoll::R36 => write!(f, "36"),
+        }
     }
 }
 
@@ -122,7 +163,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_roulette_roll_to_string() {
+        assert_eq!(RouletteRoll::R00.to_string(), "00");
     }
 }
