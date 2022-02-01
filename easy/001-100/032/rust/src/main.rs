@@ -94,6 +94,12 @@ enum RouletteRoll {
     R36,
 }
 
+impl RouletteRoll {
+    pub fn to_string(&self) -> String {
+        POSSIBLE_ROULETTE_ROLLS[*self as usize].to_string()
+    }
+}
+
 enum RollModifier {
     All,
     Any,
