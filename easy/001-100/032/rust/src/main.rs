@@ -62,6 +62,14 @@ enum RollModifier {
     Any,
 }
 
+struct Bet {
+    possible_rolls: Vec<RouletteRoll>,
+    modifier: RollModifier,
+    payout: String,
+}
+
+struct Roulette;
+
 lazy_static! {
     static ref ROLL_VALUES: HashMap<&'static RouletteRoll, &'static str> = {
         let mut map = HashMap::new();
