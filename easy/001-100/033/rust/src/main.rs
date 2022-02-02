@@ -41,4 +41,11 @@ mod tests {
         assert_eq!(test.question, "What is the capital of France?".to_string());
         assert_eq!(test.answer, "Paris".to_string());
     }
+
+    #[test]
+    fn test_question_check() {
+        let test = Question::new("What is the capital of France?".to_string(), "Paris".to_string());
+        assert_eq!(test.check("Paris"), true);
+        assert_eq!(test.check("Pris"), false);
+    }
 }
