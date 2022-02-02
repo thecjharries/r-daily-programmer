@@ -21,6 +21,10 @@ impl Question {
     fn new(question: String, answer: String) -> Self {
         Question { question, answer }
     }
+
+    fn check(&self, guess: &str) -> bool {
+        self.answer == guess
+    }
 }
 
 fn main() {
