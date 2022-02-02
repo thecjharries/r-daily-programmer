@@ -17,6 +17,12 @@ struct Question {
     answer: String,
 }
 
+impl Question {
+    fn new(question: String, answer: String) -> Self {
+        Question { question, answer }
+    }
+}
+
 fn main() {
     println!("rad");
 }
