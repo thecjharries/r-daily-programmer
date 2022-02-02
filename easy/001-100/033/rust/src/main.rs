@@ -32,7 +32,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_question_ctor() {
+        let test = Question::new("What is the capital of France?".to_string(), "Paris".to_string());
+        assert_eq!(test.question, "What is the capital of France?".to_string());
+        assert_eq!(test.answer, "Paris".to_string());
     }
 }
