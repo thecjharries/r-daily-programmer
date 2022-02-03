@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_sum_of_squares_of_two_largest(first: i32, second: i32, third: i32) -> i32 {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
