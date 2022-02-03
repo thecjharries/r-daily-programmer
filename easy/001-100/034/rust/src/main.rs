@@ -25,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_sum_of_squares_of_two_largest() {
+        assert_eq!(calculate_sum_of_squares_of_two_largest(1, 2, 3), 13);
     }
 }
