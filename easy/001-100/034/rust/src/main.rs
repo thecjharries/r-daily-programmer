@@ -17,7 +17,9 @@ fn main() {
 }
 
 fn calculate_sum_of_squares_of_two_largest(first: i32, second: i32, third: i32) -> i32 {
-
+    let mut numbers = vec![first, second, third];
+    numbers.sort();
+    numbers[1].pow(2) + numbers[2].pow(2)
 }
 
 #[cfg(test)]
