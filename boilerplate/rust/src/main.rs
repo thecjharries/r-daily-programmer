@@ -15,13 +15,3 @@
 fn main() {
     println!("rad");
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
-    }
-}
