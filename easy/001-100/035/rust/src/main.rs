@@ -17,5 +17,16 @@ fn main() {
 }
 
 fn build_right_triangle_up_to(max: i32) -> Vec<Vec<i32>> {
-
+    let mut triangle = Vec::new();
+    let mut current_width = 1;
+    let mut current_row = Vec::new();
+    for i in 1..max + 1 {
+        current_row.push(i);
+        if current_row.len() == current_width {
+            triangle.push(current_row);
+            current_width += 1;
+            current_row = Vec::new();
+        }
+    }
+    triangle
 }
