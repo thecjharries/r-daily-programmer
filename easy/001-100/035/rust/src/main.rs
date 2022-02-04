@@ -30,3 +30,18 @@ fn build_right_triangle_up_to(max: i32) -> Vec<Vec<i32>> {
     }
     triangle
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_build_right_triangle_up_to() {
+        assert_eq!(build_right_triangle_up_to(1), vec![vec![1]]);
+        assert_eq!(build_right_triangle_up_to(2), vec![vec![1]]);
+        assert_eq!(build_right_triangle_up_to(3), vec![vec![1], vec![2,3]]);
+        assert_eq!(build_right_triangle_up_to(4), vec![vec![1], vec![2,3]]);
+        assert_eq!(build_right_triangle_up_to(5), vec![vec![1], vec![2,3]]);
+        assert_eq!(build_right_triangle_up_to(6), vec![vec![1], vec![2,3]], vec![4,5,6]);
+    }
+}
