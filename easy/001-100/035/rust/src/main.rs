@@ -15,3 +15,7 @@
 fn main() {
     println!("rad");
 }
+
+fn build_right_triangle_up_to(max: i32) -> Vec<Vec<i32>> {
+
+}
