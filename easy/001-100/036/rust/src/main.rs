@@ -16,8 +16,14 @@ fn main() {
     println!("rad");
 }
 
-fn open_lockers(max: i32) -> Vec<bool> {
-
+fn open_lockers(max: usize) -> Vec<bool> {
+    let mut lockers = vec![false; max];
+    for student in 1..max+1 {
+        for locker in (student..max+1).step_by(student) {
+            lockers[(locker-1)] = !lockers[(locker-1)];
+        }
+    }
+    lockers
 }
 
 #[cfg(test)]
@@ -26,7 +32,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        let open_lockers = vec![true, false, false, true, false, false, false, false, true];
-        assert_eq!(openLockers, open_lockers(openLockers.len()));
+        let lockers = vec![true, false, false, true, false, false, false, false, true];
+        assert_eq!(lockers, open_lockers(lockers.len()));
     }
 }
