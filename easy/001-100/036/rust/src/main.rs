@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn open_lockers(max: i32) -> Vec<bool> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
