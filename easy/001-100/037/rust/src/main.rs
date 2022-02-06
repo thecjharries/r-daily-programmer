@@ -12,14 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::io::{BufRead, BufReader};
+use std::fs::File;
 use std::path::Path;
 
 fn main() {
     println!("rad");
 }
 
-fn count_lines_in_file(file_path: Path) -> i32 {
-
+fn count_lines_in_file(file_path: &Path) -> i32 {
+    let file = BufReader::new(File::open(file_path).expect("Unable to open file"));
+    let mut count = 0;
+    for _ in file.lines() {
+        count += 1;
+    }
+    count
 }
 
 #[cfg(test)]
