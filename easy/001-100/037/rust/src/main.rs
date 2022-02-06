@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::path::Path;
+
 fn main() {
     println!("rad");
+}
+
+fn count_lines_in_file(file_path: Path) -> i32 {
+
 }
 
 #[cfg(test)]
