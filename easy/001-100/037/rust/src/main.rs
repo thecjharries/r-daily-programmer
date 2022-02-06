@@ -27,7 +27,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_count_lines_in_file() {
+        let file_path = Path::new("../../README.md");
+        assert_eq!(32, count_lines_in_file(file_path));
     }
 }
