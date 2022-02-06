@@ -35,7 +35,7 @@ mod tests {
 
     #[test]
     fn test_count_lines_in_file() {
-        let file_path = Path::new("../../README.md");
-        assert_eq!(32, count_lines_in_file(file_path));
+        let file_path = Path::new("../README.md");
+        assert_eq!(18, count_lines_in_file(file_path));
     }
 }
