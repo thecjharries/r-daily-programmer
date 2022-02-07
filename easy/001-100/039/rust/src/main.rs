@@ -18,8 +18,20 @@ fn main() {
     println!("rad");
 }
 
-fn fizz_buzz(max: i32, stdout: &mut Write) {
-
+fn fizz_buzz(max: i32, stdout: &mut dyn Write) {
+    for index in 1..max+1 {
+        let mut line = String::new();
+        if 0 == index%3 {
+            line.push_str("Fizz");
+        }
+        if 0 == index%5 {
+            line.push_str("Buzz");
+        }
+        if 0 == line.len() {
+            line.push_str(&index.to_string());
+        }
+        writeln!(stdout, "{}", line).unwrap();
+    }
 }
 
 #[cfg(test)]
