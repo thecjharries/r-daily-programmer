@@ -41,8 +41,8 @@ mod tests {
     #[test]
     fn test_fizz_buzz() {
         let mut stdout = Vec::new();
-        let max = 20;
+        let max = 16;
         fizz_buzz(max, &mut stdout);
-        assert_eq!(stdout, b"1\n2\nfizz\n4\nbuzz\n");
+        assert_eq!(stdout, b"1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n16\n");
     }
 }
