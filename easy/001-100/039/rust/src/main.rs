@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_fizz_buzz() {
+        let mut stdout = Vec::new();
+        let max = 20;
+        fizz_buzz(max, &mut stdout);
+        assert_eq!(stdout, b"1\n2\nfizz\n4\nbuzz\n");
     }
 }
