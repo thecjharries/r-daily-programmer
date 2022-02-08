@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn print_number(number: i32) {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
