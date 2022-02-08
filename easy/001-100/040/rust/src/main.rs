@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const MAX_NUMBER: i32 = 1000;
+
 fn main() {
     println!("rad");
 }
 
 fn print_number(number: i32) {
-
+    println!("{}", number);
+    let _ignored = 1 / (MAX_NUMBER - number);
+    print_number(number + 1);
 }
 
 #[cfg(test)]
