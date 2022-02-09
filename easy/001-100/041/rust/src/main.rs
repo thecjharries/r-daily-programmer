@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn wrap_in_banner(input: &str) -> Vec<String> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
