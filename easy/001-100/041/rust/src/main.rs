@@ -34,7 +34,7 @@ mod tests {
 
     #[test]
     fn test_wrap_in_banner() {
-        output = vec![
+        let output = vec![
             "*****************************************".to_string(),
             "*                                       *".to_string(),
             "*  So long and thanks for all the fish  *".to_string(),
