@@ -16,16 +16,21 @@ fn main() {
     println!("rad");
 }
 
-fn wrap_in_banner(input: &str) -> Vec<String> {
-
-}
+fn wrap_in_banner(input: &str) -> Vec<String> {}
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_wrap_in_banner() {
+        output = vec![
+            "*****************************************".to_string(),
+            "*                                       *".to_string(),
+            "*  So long and thanks for all the fish  *".to_string(),
+            "*                                       *".to_string(),
+            "*****************************************".to_string(),
+        ];
+        assert_eq!(output, wrap_in_banner("So long and thanks for all the fish"));
     }
 }
