@@ -12,11 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::iter::repeat;
+
 fn main() {
     println!("rad");
 }
 
-fn wrap_in_banner(input: &str) -> Vec<String> {}
+fn wrap_in_banner(input: &str) -> Vec<String> {
+    let mut output = Vec::new();
+    output.push(repeat("*").take(input.len()+6).collect::<String>());
+    output.push("*".to_owned() + &repeat(" ").take(input.len()+4).collect::<String>() + &"*".to_owned());
+    output.push("*  ".to_owned() + &input + &"  *".to_owned());
+    output.push("*".to_owned() + &repeat(" ").take(input.len()+4).collect::<String>() + &"*".to_owned());
+    output.push(repeat("*").take(input.len()+6).collect::<String>());
+    output
+}
 
 #[cfg(test)]
 mod tests {
