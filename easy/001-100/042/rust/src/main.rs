@@ -66,6 +66,28 @@ mod tests {
         generate_song(&mut stdout);
         assert_eq!(String::from_utf8(stdout).expect("Invalid"), "Old MACDONALD had a farm
 E-I-E-I-O
+And on his farm he had a T-Rexs
+E-I-E-I-O
+With a GAAAAARGHs GAAAAARGHs here
+And a GAAAAARGHs GAAAAARGHs there
+Here a GAAAAARGHs, there a GAAAAARGHs
+Everywhere a GAAAAARGHs GAAAAARGHs
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a chickens
+E-I-E-I-O
+With a clucks clucks here
+And a clucks clucks there
+Here a clucks, there a clucks
+Everywhere a clucks clucks
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
 And on his farm he had a cows
 E-I-E-I-O
 With a moos moos here
@@ -88,12 +110,12 @@ E-I-E-I-O
 
 Old MACDONALD had a farm
 E-I-E-I-O
-And on his farm he had a chickens
+And on his farm he had a kangaroos
 E-I-E-I-O
-With a clucks clucks here
-And a clucks clucks there
-Here a clucks, there a clucks
-Everywhere a clucks clucks
+With a g'day mates g'day mates here
+And a g'day mates g'day mates there
+Here a g'day mates, there a g'day mates
+Everywhere a g'day mates g'day mates
 Old MacDonald had a farm
 E-I-E-I-O
 
@@ -105,28 +127,6 @@ With a gobbles gobbles here
 And a gobbles gobbles there
 Here a gobbles, there a gobbles
 Everywhere a gobbles gobbles
-Old MacDonald had a farm
-E-I-E-I-O
-
-Old MACDONALD had a farm
-E-I-E-I-O
-And on his farm he had a T-Rexs
-E-I-E-I-O
-With a GAAAAARGHs GAAAAARGHs here
-And a GAAAAARGHs GAAAAARGHs there
-Here a GAAAAARGHs, there a GAAAAARGHs
-Everywhere a GAAAAARGHs GAAAAARGHs
-Old MacDonald had a farm
-E-I-E-I-O
-
-Old MACDONALD had a farm
-E-I-E-I-O
-And on his farm he had a kangaroos
-E-I-E-I-O
-With a g'day mates g'day mates here
-And a g'day mates g'day mates there
-Here a g'day mates, there a g'day mates
-Everywhere a g'day mates g'day mates
 Old MacDonald had a farm
 E-I-E-I-O
 
