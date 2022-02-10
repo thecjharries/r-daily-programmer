@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
 const SONG_BODY: String = "Old MACDONALD had a farm
 E-I-E-I-O
 And on his farm he had a {animal}s
@@ -24,6 +27,19 @@ Old MacDonald had a farm
 E-I-E-I-O
 
 ".to_string();
+
+lazy_static! {
+    static ref ANIMAL_TO_SOUND_MAP: HashMap<&'static str, &'static str> = {
+        let mut map = HashMap::new();
+        map.insert("cow",      "moo");
+	    map.insert("chicken",  "cluck");
+	    map.insert("turkey",   "gobble");
+	    map.insert("kangaroo", "g'day mate");
+	    map.insert("T-Rex",    "GAAAAARGH");
+	    map.insert("dog",      "bark");
+        map
+    };
+}
 
 fn main() {
     println!("rad");
