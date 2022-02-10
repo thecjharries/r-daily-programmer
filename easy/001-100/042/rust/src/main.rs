@@ -14,7 +14,7 @@
 
 use lazy_static::lazy_static;
 use std::collections::HashMap;
-use std::io::Write;
+use std::io;
 
 const SONG_BODY: &'static str = "Old MACDONALD had a farm
 E-I-E-I-O
@@ -43,10 +43,10 @@ lazy_static! {
 }
 
 fn main() {
-    println!("rad");
+    generate_song(&mut io::stdout());
 }
 
-fn generate_song(stdout: &mut dyn Write) {
+fn generate_song(stdout: &mut dyn io::Write) {
     for animal in ANIMAL_TO_SOUND_MAP.keys() {
         let mut song = SONG_BODY.clone().to_string();
         song = song.replace("{animal}", animal);
@@ -63,6 +63,72 @@ mod tests {
     fn test_generate_song() {
         let mut stdout = Vec::new();
         generate_song(&mut stdout);
-        // assert_eq!(Vec::new(), stdout);
+        assert_eq!(String::from_utf8(stdout).expect("Invalid"), "Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a cows
+E-I-E-I-O
+With a moos moos here
+And a moos moos there
+Here a moos, there a moos
+Everywhere a moos moos
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a dogs
+E-I-E-I-O
+With a barks barks here
+And a barks barks there
+Here a barks, there a barks
+Everywhere a barks barks
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a chickens
+E-I-E-I-O
+With a clucks clucks here
+And a clucks clucks there
+Here a clucks, there a clucks
+Everywhere a clucks clucks
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a turkeys
+E-I-E-I-O
+With a gobbles gobbles here
+And a gobbles gobbles there
+Here a gobbles, there a gobbles
+Everywhere a gobbles gobbles
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a T-Rexs
+E-I-E-I-O
+With a GAAAAARGHs GAAAAARGHs here
+And a GAAAAARGHs GAAAAARGHs there
+Here a GAAAAARGHs, there a GAAAAARGHs
+Everywhere a GAAAAARGHs GAAAAARGHs
+Old MacDonald had a farm
+E-I-E-I-O
+
+Old MACDONALD had a farm
+E-I-E-I-O
+And on his farm he had a kangaroos
+E-I-E-I-O
+With a g'day mates g'day mates here
+And a g'day mates g'day mates there
+Here a g'day mates, there a g'day mates
+Everywhere a g'day mates g'day mates
+Old MacDonald had a farm
+E-I-E-I-O
+
+".to_string());
     }
 }
