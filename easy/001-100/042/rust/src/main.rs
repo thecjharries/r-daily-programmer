@@ -46,7 +46,7 @@ fn main() {
     println!("rad");
 }
 
-fn generate_song(stdout: &mut Write) {
+fn generate_song(stdout: &mut dyn Write) {
 
 }
 
@@ -55,7 +55,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_song() {
+        let mut stdout = Vec::new();
+        generate_song(&mut stdout);
+        assert_eq!(Vec::new(), stdout);
     }
 }
