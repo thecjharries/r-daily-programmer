@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use std::collections::HashMap;
+use std::io::Write;
 
 const SONG_BODY: String = "Old MACDONALD had a farm
 E-I-E-I-O
@@ -43,6 +44,10 @@ lazy_static! {
 
 fn main() {
     println!("rad");
+}
+
+fn generate_song(stdout: &mut Write) {
+
 }
 
 #[cfg(test)]
