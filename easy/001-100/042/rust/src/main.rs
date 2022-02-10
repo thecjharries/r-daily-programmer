@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
 use lazy_static::lazy_static;
 use std::collections::HashMap;
 use std::io;
@@ -47,7 +48,7 @@ fn main() {
 }
 
 fn generate_song(stdout: &mut dyn io::Write) {
-    for animal in ANIMAL_TO_SOUND_MAP.keys() {
+    for animal in ANIMAL_TO_SOUND_MAP.keys().sorted() {
         let mut song = SONG_BODY.clone().to_string();
         song = song.replace("{animal}", animal);
         song = song.replace("{sound}", ANIMAL_TO_SOUND_MAP[animal]);
