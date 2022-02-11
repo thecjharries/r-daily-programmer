@@ -55,7 +55,22 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_binary_tree_lowest_common_ancestor() {
+        let mut tree = BinaryTree::new();
+        let root = BinaryNode::new(1, 0, None);
+        let left = BinaryNode::new(2, 1, Some(root));
+        let right = BinaryNode::new(3, 1, Some(root));
+        let left_left = BinaryNode::new(4, 2, Some(left));
+        let left_right = BinaryNode::new(5, 2, Some(left));
+        let right_left = BinaryNode::new(6, 2, Some(right));
+        let right_right = BinaryNode::new(7, 2, Some(right));
+        tree.root = Some(Box::new(root));
+        tree.root.as_mut().unwrap().left = Some(Box::new(left));
+        tree.root.as_mut().unwrap().right = Some(Box::new(right));
+        tree.root.as_mut().unwrap().left.as_mut().unwrap().left = Some(Box::new(left_left));
+        tree.root.as_mut().unwrap().left.as_mut().unwrap().right = Some(Box::new(left_right));
+        tree.root.as_mut().unwrap().right.as_mut().unwrap().left = Some(Box::new(right_left));
+        tree.root.as_mut().unwrap().right.as_mut().unwrap().right = Some(Box::new(right_right));
+
     }
 }
