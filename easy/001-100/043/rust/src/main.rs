@@ -20,8 +20,26 @@ struct BinaryNode {
     depth: i32,
 }
 
+impl BinaryNode {
+    pub fn new(value: i32, parent: Option<BinaryNode>) -> BinaryNode {
+        BinaryNode {
+            parent,
+            left: None,
+            right: None,
+            value,
+            depth: 0,
+        }
+    }
+}
+
 struct BinaryTree {
     root: Option<Box<BinaryNode>>,
+}
+
+impl BinaryTree {
+    pub fn new() -> Self {
+        BinaryTree { root: None }
+    }
 }
 
 fn main() {
