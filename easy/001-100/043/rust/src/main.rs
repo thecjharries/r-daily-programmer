@@ -20,6 +20,10 @@ struct BinaryNode {
     depth: i32,
 }
 
+struct BinaryTree {
+    root: Option<Box<BinaryNode>>,
+}
+
 fn main() {
     println!("rad");
 }
