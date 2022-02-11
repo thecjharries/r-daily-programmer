@@ -41,14 +41,14 @@ impl BinaryTree {
         BinaryTree { root: None }
     }
 
-    pub fn lowest_common_ancestor(first: BinaryNode, second: BinaryNode) -> Some(BinaryNode) {
+    pub fn lowest_common_ancestor(first: BinaryNode, second: BinaryNode) -> BinaryNode {
         if first.depth < second.depth {
             return BinaryTree::lowest_common_ancestor(first, second.parent);
         } else if first.depth > second.depth {
             return BinaryTree::lowest_common_ancestor(first.parent, second);
         }
         if first.parent == second.parent {
-            return Some(first.parent);
+            return first.parent;
         }
         BinaryTree::lowest_common_ancestor(first.parent, second.parent)
     }
@@ -79,6 +79,9 @@ mod tests {
         tree.root.as_mut().unwrap().left.as_mut().unwrap().right = Some(Box::new(left_right));
         tree.root.as_mut().unwrap().right.as_mut().unwrap().left = Some(Box::new(right_left));
         tree.root.as_mut().unwrap().right.as_mut().unwrap().right = Some(Box::new(right_right));
-
+        assert_eq!(
+            tree.lowest_common_ancestor(left_left, right_right),
+            Some(BinaryNode::new(1, 0, None))
+        );
     }
 }
