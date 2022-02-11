@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct BinaryNode {
+    parent: Option<Box<BinaryNode>>,
+    left: Option<Box<BinaryNode>>,
+    right: Option<Box<BinaryNode>>,
+    value: i32,
+    depth: i32,
+}
+
 fn main() {
     println!("rad");
 }
