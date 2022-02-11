@@ -21,13 +21,13 @@ struct BinaryNode {
 }
 
 impl BinaryNode {
-    pub fn new(value: i32, parent: Option<BinaryNode>) -> BinaryNode {
+    pub fn new(value: i32, depth: i32, parent: Option<BinaryNode>) -> BinaryNode {
         BinaryNode {
             parent,
             left: None,
             right: None,
             value,
-            depth: 0,
+            depth,
         }
     }
 }
