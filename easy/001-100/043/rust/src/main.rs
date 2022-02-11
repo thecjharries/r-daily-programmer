@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug,PartialEq,Eq)]
 struct BinaryNode {
     parent: Option<Box<BinaryNode>>,
     left: Option<Box<BinaryNode>>,
@@ -21,7 +22,7 @@ struct BinaryNode {
 }
 
 impl BinaryNode {
-    pub fn new(value: i32, depth: i32, parent: Option<BinaryNode>) -> BinaryNode {
+    pub fn new(value: i32, depth: i32, parent: Option<Box<BinaryNode>>) -> BinaryNode {
         BinaryNode {
             parent,
             left: None,
@@ -41,16 +42,16 @@ impl BinaryTree {
         BinaryTree { root: None }
     }
 
-    pub fn lowest_common_ancestor(first: BinaryNode, second: BinaryNode) -> BinaryNode {
+    pub fn lowest_common_ancestor(first: &BinaryNode, second: &BinaryNode) -> Option<Box<BinaryNode>> {
         if first.depth < second.depth {
-            return BinaryTree::lowest_common_ancestor(first, second.parent);
+            return BinaryTree::lowest_common_ancestor(first, &*second.parent.unwrap());
         } else if first.depth > second.depth {
-            return BinaryTree::lowest_common_ancestor(first.parent, second);
+            return BinaryTree::lowest_common_ancestor(&*first.parent.unwrap(), second);
         }
         if first.parent == second.parent {
             return first.parent;
         }
-        BinaryTree::lowest_common_ancestor(first.parent, second.parent)
+        BinaryTree::lowest_common_ancestor(&*first.parent.unwrap(), &*second.parent.unwrap())
     }
 }
 
@@ -66,12 +67,12 @@ mod tests {
     fn test_binary_tree_lowest_common_ancestor() {
         let mut tree = BinaryTree::new();
         let root = BinaryNode::new(1, 0, None);
-        let left = BinaryNode::new(2, 1, Some(root));
-        let right = BinaryNode::new(3, 1, Some(root));
-        let left_left = BinaryNode::new(4, 2, Some(left));
-        let left_right = BinaryNode::new(5, 2, Some(left));
-        let right_left = BinaryNode::new(6, 2, Some(right));
-        let right_right = BinaryNode::new(7, 2, Some(right));
+        let left = BinaryNode::new(2, 1, Some(Box::new(root)));
+        let right = BinaryNode::new(3, 1, Some(Box::new(root)));
+        let left_left = BinaryNode::new(4, 2, Some(Box::new(left)));
+        let left_right = BinaryNode::new(5, 2, Some(Box::new(left)));
+        let right_left = BinaryNode::new(6, 2, Some(Box::new(right)));
+        let right_right = BinaryNode::new(7, 2, Some(Box::new(right)));
         tree.root = Some(Box::new(root));
         tree.root.as_mut().unwrap().left = Some(Box::new(left));
         tree.root.as_mut().unwrap().right = Some(Box::new(right));
@@ -80,8 +81,8 @@ mod tests {
         tree.root.as_mut().unwrap().right.as_mut().unwrap().left = Some(Box::new(right_left));
         tree.root.as_mut().unwrap().right.as_mut().unwrap().right = Some(Box::new(right_right));
         assert_eq!(
-            tree.lowest_common_ancestor(left_left, right_right),
-            Some(BinaryNode::new(1, 0, None))
+            BinaryTree::lowest_common_ancestor(&left_left, &right_right),
+            Some(Box::new(BinaryNode::new(1, 0, None)))
         );
     }
 }
