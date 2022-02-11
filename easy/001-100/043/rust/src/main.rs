@@ -41,8 +41,16 @@ impl BinaryTree {
         BinaryTree { root: None }
     }
 
-    pub fn lowest_common_ancestor(first: BinaryNode, second: BinaryNode) {
-
+    pub fn lowest_common_ancestor(first: BinaryNode, second: BinaryNode) -> Some(BinaryNode) {
+        if first.depth < second.depth {
+            return BinaryTree::lowest_common_ancestor(first, second.parent);
+        } else if first.depth > second.depth {
+            return BinaryTree::lowest_common_ancestor(first.parent, second);
+        }
+        if first.parent == second.parent {
+            return Some(first.parent);
+        }
+        BinaryTree::lowest_common_ancestor(first.parent, second.parent)
     }
 }
 
