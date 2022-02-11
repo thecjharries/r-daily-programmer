@@ -40,6 +40,10 @@ impl BinaryTree {
     pub fn new() -> Self {
         BinaryTree { root: None }
     }
+
+    pub fn lowest_common_ancestor(first: BinaryNode, second: BinaryNode) {
+
+    }
 }
 
 fn main() {
