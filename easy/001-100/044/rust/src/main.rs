@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_longest_sentence(input: String) -> String {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
