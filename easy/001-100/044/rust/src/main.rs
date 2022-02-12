@@ -25,7 +25,18 @@ fn main() {
 }
 
 fn find_longest_sentence(input: String) -> String {
+    let mut longest_sentence = String::new();
+    let mut longest_sentence_length = 0;
 
+    for sentence in SENTENCE_END_PATTERN.split(&input) {
+        let sentence_length = WORD_PATTERN.find_iter(sentence).count();
+        if sentence_length > longest_sentence_length {
+            longest_sentence = sentence.to_string();
+            longest_sentence_length = sentence_length;
+        }
+    }
+
+    longest_sentence
 }
 
 #[cfg(test)]
