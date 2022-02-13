@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn make_checkerboard(width: u32, height: u32) -> Vec<String> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
