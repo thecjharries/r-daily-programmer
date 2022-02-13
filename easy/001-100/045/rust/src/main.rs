@@ -25,7 +25,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_make_checkerboard() {
+        let output = vec![
+            "   ###   ###   ".to_string(),
+            "   ###   ###   ".to_string(),
+            "   ###   ###   ".to_string(),
+            "###   ###   ###".to_string(),
+            "###   ###   ###".to_string(),
+            "###   ###   ###".to_string(),
+        ];
+        assert_eq!(make_checkerboard(5,2), output);
     }
 }
