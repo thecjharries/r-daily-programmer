@@ -17,7 +17,25 @@ fn main() {
 }
 
 fn make_checkerboard(width: u32, height: u32) -> Vec<String> {
-
+    let mut checkerboard = Vec::new();
+    for y in 0..height {
+        for _ in 0..3 {
+            let mut row = String::new();
+            for x in 0..width {
+                if x % 2 != y % 2 {
+                    row.push('#');
+                    row.push('#');
+                    row.push('#');
+                } else {
+                    row.push(' ');
+                    row.push(' ');
+                    row.push(' ');
+                }
+            }
+            checkerboard.push(row);
+        }
+    }
+    checkerboard
 }
 
 #[cfg(test)]
