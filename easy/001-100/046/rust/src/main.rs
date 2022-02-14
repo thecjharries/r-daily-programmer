@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_population_count(number: i32) -> i32 {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
