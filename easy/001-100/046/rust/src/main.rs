@@ -16,8 +16,8 @@ fn main() {
     println!("rad");
 }
 
-fn get_population_count(number: i32) -> i32 {
-
+fn get_population_count(number: i32) -> usize {
+    format!("{:b}", number).matches("1").count()
 }
 
 #[cfg(test)]
