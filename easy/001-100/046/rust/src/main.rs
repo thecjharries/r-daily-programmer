@@ -25,7 +25,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_population_count() {
+        assert_eq!(get_population_count(0), 0);
+        assert_eq!(get_population_count(1), 1);
+        assert_eq!(get_population_count(2), 1);
+        assert_eq!(get_population_count(3), 2);
+        assert_eq!(get_population_count(4), 1);
+        assert_eq!(get_population_count(23), 4);
     }
 }
