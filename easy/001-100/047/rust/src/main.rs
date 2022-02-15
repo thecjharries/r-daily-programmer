@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn encode_caesar(message: String, shift: i32) -> String {
+fn encrypt_caesar(message: String, shift: i32) -> String {
 
 }
 
@@ -25,7 +25,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_encrypt_caesar() {
+        assert_eq!(encrypt_caesar("rad".to_string(), 1), "sbe".to_string());
+        assert_eq!(encrypt_caesar("rad".to_string(), 2), "tcf".to_string());
+        assert_eq!(encrypt_caesar("Daily programmer".to_string(), 6), "Jgore vxumxgsskx".to_string());
     }
 }
