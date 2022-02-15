@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn encode_caesar(message: String, shift: i32) -> String {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
