@@ -16,8 +16,20 @@ fn main() {
     println!("rad");
 }
 
-fn move_even_before_odd(input: Vec<u32>) -> Vec<u32> {
-
+fn move_even_before_odd(input: &mut Vec<u32>) {
+    let mut right_index = 0;
+    let mut left_index = input.len() - 1;
+    while right_index < left_index {
+        if 0 == input[right_index] % 2 {
+            right_index += 1;
+        }
+        if 1 == input[left_index] % 2 {
+            left_index -= 1;
+        }
+        if right_index < left_index {
+            input.swap(right_index, left_index);
+        }
+    }
 }
 
 #[cfg(test)]
