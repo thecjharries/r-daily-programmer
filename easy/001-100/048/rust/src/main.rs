@@ -38,13 +38,16 @@ mod tests {
 
     #[test]
     fn test_move_even_before_odd() {
+        let mut input: Vec<u32> = vec![1, 2, 3, 4, 5];
+        move_even_before_odd(&mut input);
         assert_eq!(
-            vec![2, 4, 1, 3, 5],
-            move_even_before_odd(vec![1, 2, 3, 4, 5])
+            vec![4, 2, 3, 1, 5],
+            input
         );
+        move_even_before_odd(&mut input);
         assert_eq!(
-            vec![2, 4, 1, 3, 5],
-            move_even_before_odd(vec![2, 4, 1, 3, 5])
+            vec![4, 2, 3, 1, 5],
+            input
         );
     }
 }
