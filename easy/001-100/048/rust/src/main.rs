@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn move_even_before_odd(input: Vec<u32>) -> Vec<u32> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
