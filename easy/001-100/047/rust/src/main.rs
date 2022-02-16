@@ -16,8 +16,20 @@ fn main() {
     println!("rad");
 }
 
-fn encrypt_caesar(message: String, shift: i32) -> String {
-
+fn encrypt_caesar(message: String, shift: u8) -> String {
+    let mut result = String::new();
+    for character in message.chars() {
+        if character.is_alphabetic() {
+            if character.is_uppercase() {
+                result.push(((character as u8 - 'A' as u8 + shift) % 26 + 'A' as u8) as char);
+            } else {
+                result.push(((character as u8 - 'a' as u8 + shift) % 26 + 'a' as u8) as char);
+            }
+        } else {
+            result.push(character);
+        }
+    }
+    result
 }
 
 #[cfg(test)]
