@@ -12,8 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand_pcg::Pcg64;
+
 fn main() {
     println!("rad");
+}
+
+fn run_game_round(rng: Pcg64, player_switches: bool) -> bool {
+
 }
 
 #[cfg(test)]
