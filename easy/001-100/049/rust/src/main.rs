@@ -28,7 +28,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_run_game_round_player_stays() {
+        let rng = Pcg64::seed_from_u64(0);
+        assert_eq!(run_game_round(rng, false), true);
+        assert_eq!(run_game_round(rng, false), true);
+        assert_eq!(run_game_round(rng, false), true);
+    }
+
+    #[test]
+    fn test_run_game_round_player_switchess() {
+        let rng = Pcg64::seed_from_u64(0);
+        assert_eq!(run_game_round(rng, true), true);
+        assert_eq!(run_game_round(rng, true), true);
+        assert_eq!(run_game_round(rng, true), true);
     }
 }
