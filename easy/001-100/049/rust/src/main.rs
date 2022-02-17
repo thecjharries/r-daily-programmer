@@ -16,7 +16,21 @@ use rand::prelude::*;
 use rand_pcg::Pcg64;
 
 fn main() {
-    println!("rad");
+    let game_count: f64 = 100000.0;
+    let mut switch_wins: f64 = 0.0;
+    let mut stay_wins: f64 = 0.0;
+    for _ in 0..game_count as i64 {
+        let mut stay_rng = Pcg64::from_entropy();
+        if run_game_round(&mut stay_rng, false) {
+            stay_wins += 1.0;
+        }
+        let mut switch_rng = Pcg64::from_entropy();
+        if run_game_round(&mut switch_rng, true) {
+            switch_wins += 1.0;
+        }
+    }
+    println!("Stay wins: {:.2}%", stay_wins*100.0/game_count);
+    println!("Switch wins: {:.2}%", switch_wins*100.0/game_count);
 }
 
 fn run_game_round(rng: &mut Pcg64, player_switches: bool) -> bool {
