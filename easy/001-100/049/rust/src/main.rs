@@ -39,22 +39,16 @@ mod tests {
     #[test]
     fn test_run_game_round_player_stays() {
         let mut rng = Pcg64::seed_from_u64(0);
-        assert_eq!(run_game_round(&mut rng, false), true);
-        assert_eq!(run_game_round(&mut rng, false), true);
-        assert_eq!(run_game_round(&mut rng, false), true);
-        assert_eq!(run_game_round(&mut rng, false), true);
-        assert_eq!(run_game_round(&mut rng, false), true);
+        assert_eq!(run_game_round(&mut rng, false), false);
+        rng = Pcg64::seed_from_u64(3);
         assert_eq!(run_game_round(&mut rng, false), true);
     }
 
     #[test]
-    fn test_run_game_round_player_switchess() {
+    fn test_run_game_round_player_switches() {
         let mut rng = Pcg64::seed_from_u64(0);
         assert_eq!(run_game_round(&mut rng, true), true);
-        assert_eq!(run_game_round(&mut rng, true), true);
-        assert_eq!(run_game_round(&mut rng, true), true);
-        assert_eq!(run_game_round(&mut rng, true), true);
-        assert_eq!(run_game_round(&mut rng, true), true);
-        assert_eq!(run_game_round(&mut rng, true), true);
+        rng = Pcg64::seed_from_u64(3);
+        assert_eq!(run_game_round(&mut rng, true), false);
     }
 }
