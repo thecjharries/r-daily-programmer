@@ -19,8 +19,17 @@ fn main() {
     println!("rad");
 }
 
-fn run_game_round(rng: Pcg64, player_switches: bool) -> bool {
-
+fn run_game_round(rng: &mut Pcg64, player_switches: bool) -> bool {
+    let player_choice = rng.gen_range(0..3);
+    let winning_door = rng.gen_range(0..3);
+    let mut removed_door = rng.gen_range(0..3);
+    while player_choice == removed_door || winning_door == removed_door {
+        removed_door = rng.gen_range(0..3);
+    }
+    if player_switches {
+        return player_choice != winning_door;
+    }
+    return player_choice == winning_door;
 }
 
 #[cfg(test)]
