@@ -12,12 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 fn main() {
     println!("rad");
 }
 
 fn generate_combinations_of_size(input: Vec<i32>, size: usize) -> Vec<Vec<i32>> {
-
+    let mut result = Vec::new();
+    for combination in input.into_iter().combinations(size) {
+        result.push(combination.to_vec());
+    }
+    result
 }
 
 #[cfg(test)]
