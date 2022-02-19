@@ -17,7 +17,14 @@ fn main() {
 }
 
 fn find_indices_that_sum_to_target(target: i32, numbers: &Vec<i32>) -> Vec<usize> {
-
+    for (first_index, first_value) in numbers.iter().enumerate() {
+        for (second_index, second_value) in numbers[first_index+1..].iter().enumerate() {
+            if first_value + second_value == target {
+                return vec![first_index, first_index+1+second_index];
+            }
+        }
+    }
+    return Vec::new();
 }
 
 #[cfg(test)]
