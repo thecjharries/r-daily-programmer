@@ -33,6 +33,6 @@ mod tests {
     #[test]
     fn test_stub() {
         assert_eq!(generate_combinations_of_size(vec![1, 2, 3], 2), vec![vec![1, 2], vec![1, 3], vec![2, 3]]);
-        assert_eq!(generate_combinations_of_size(vec![1,2,3,4,5], 3), vec![vec![1,2,3],vec![1,2,4], vec![1,2,5],vec![2,3,4],vec![2,3,5],vec![2,4,5],vec![1,3,4],vec![1,3,5],vec![1,4,5],vec![3,4,5]]);
+        assert_eq!(generate_combinations_of_size(vec![1,2,3,4,5], 3), vec![vec![1,2,3],vec![1,2,4], vec![1,2,5],vec![1,3,4],vec![1,3,5],vec![1,4,5],vec![2,3,4],vec![2,3,5],vec![2,4,5],vec![3,4,5]]);
     }
 }
