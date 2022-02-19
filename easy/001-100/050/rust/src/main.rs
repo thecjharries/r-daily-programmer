@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_indices_that_sum_to_target(target: i32, numbers: &Vec<i32>) -> Vec<usize> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
