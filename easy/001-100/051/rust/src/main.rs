@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_combinations_of_size(input: Vec<i32>, size: usize) -> Vec<Vec<i32>> {
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
