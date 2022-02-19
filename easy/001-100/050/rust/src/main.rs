@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_indices_that_sum_to_target() {
+        assert_eq!(find_indices_that_sum_to_target(100, &vec![5, 75, 25]), vec![1,2]);
+        assert_eq!(find_indices_that_sum_to_target(200, vec![150, 24, 79, 50, 88, 345, 3]), vec![0, 3]);
+        assert_eq!(find_indices_that_sum_to_target(8, vec![2, 1, 9, 4, 4, 56, 90, 3]), vec![3, 4]);
+        assert_eq!(find_indices_that_sum_to_target(100, vec![1, 1, 1, 1]), vec![]);
     }
 }
