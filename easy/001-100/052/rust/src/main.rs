@@ -24,7 +24,15 @@ fn generate_word_score(word: &str) -> u32 {
     score
 }
 
-fn order_by_word_score(input: Vec<String>) -> Vec<String> {}
+fn order_by_word_score(input: Vec<&str>) -> Vec<&str> {
+    let mut words = input;
+    words.sort_by(|a, b| {
+        let a_score = generate_word_score(&a);
+        let b_score = generate_word_score(&b);
+        a_score.cmp(&b_score)
+    });
+    words
+}
 
 #[cfg(test)]
 mod tests {
