@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn generate_word_score(word: &str) -> u32 {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
