@@ -23,7 +23,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_word_score() {
+        assert_eq!(generate_word_score("Hat"), 29);
+        assert_eq!(generate_word_score("hat"), 29);
+        assert_eq!(generate_word_score("Shoe"), 47);
     }
 }
