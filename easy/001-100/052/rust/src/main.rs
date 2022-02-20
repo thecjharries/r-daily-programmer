@@ -36,4 +36,12 @@ mod tests {
         assert_eq!(generate_word_score("hat"), 29);
         assert_eq!(generate_word_score("Shoe"), 47);
     }
+
+    #[test]
+    fn test_order_by_word_score() {
+        assert_eq!(
+            order_by_word_score(vec!["Shoe", "hat"]),
+            vec!["Hat", "Shoe"]
+        );
+    }
 }
