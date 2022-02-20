@@ -24,6 +24,8 @@ fn generate_word_score(word: &str) -> u32 {
     score
 }
 
+fn order_by_word_score(input: Vec<String>) -> Vec<String> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
