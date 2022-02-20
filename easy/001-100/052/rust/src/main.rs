@@ -49,7 +49,7 @@ mod tests {
     fn test_order_by_word_score() {
         assert_eq!(
             order_by_word_score(vec!["Shoe", "hat"]),
-            vec!["Hat", "Shoe"]
+            vec!["hat", "Shoe"]
         );
     }
 }
