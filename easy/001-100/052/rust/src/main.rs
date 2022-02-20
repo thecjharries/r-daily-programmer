@@ -16,7 +16,13 @@ fn main() {
     println!("rad");
 }
 
-fn generate_word_score(word: &str) -> u32 {}
+fn generate_word_score(word: &str) -> u32 {
+    let mut score = 0;
+    for c in word.to_lowercase().chars() {
+        score += c as u32 - 'a' as u32 + 1;
+    }
+    score
+}
 
 #[cfg(test)]
 mod tests {
