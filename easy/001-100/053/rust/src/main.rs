@@ -23,7 +23,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_combine_two_sorted_vectors() {
+        assert_eq!(
+            combine_two_sorted_vectors(vec![1, 2, 3], vec![4, 5, 6]),
+            vec![1, 2, 3, 4, 5, 6]
+        );
+        assert_eq!(
+            combine_two_sorted_vectors(vec![1, 3, 5], vec![2, 4, 6]),
+            vec![1, 2, 3, 4, 5, 6]
+        );
     }
 }
