@@ -16,7 +16,29 @@ fn main() {
     println!("rad");
 }
 
-fn combine_two_sorted_vectors(first: Vec<i32>, second: Vec<i32>) -> Vec<i32> {}
+fn combine_two_sorted_vectors(first: Vec<i32>, second: Vec<i32>) -> Vec<i32> {
+    let mut result = Vec::new();
+    let mut first_index = 0;
+    let mut second_index = 0;
+    while first_index < first.len() && second_index < second.len() {
+        if first[first_index] < second[second_index] {
+            result.push(first[first_index]);
+            first_index += 1;
+        } else {
+            result.push(second[second_index]);
+            second_index += 1;
+        }
+    }
+    while first_index < first.len() {
+        result.push(first[first_index]);
+        first_index += 1;
+    }
+    while second_index < second.len() {
+        result.push(second[second_index]);
+        second_index += 1;
+    }
+    result
+}
 
 #[cfg(test)]
 mod tests {
