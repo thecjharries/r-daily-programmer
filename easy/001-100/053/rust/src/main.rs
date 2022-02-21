@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn combine_two_sorted_vectors(first: Vec<i32>, second: Vec<i32>) -> Vec<i32> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
