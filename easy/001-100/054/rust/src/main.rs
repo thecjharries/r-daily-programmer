@@ -23,7 +23,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_encode_matrix_cipher() {
+        assert_eq!(
+            encode_matrix_cipher("rad".to_string(), 2),
+            "rda".to_string()
+        );
+        assert_eq!(
+            encode_matrix_cipher("The cake is a lie!".to_string(), 3),
+            "T kiaihces eea  l!".to_string()
+        );
+        assert_eq!(
+            encode_matrix_cipher("The cake is a lie!".to_string(), 7),
+            "Telh ieie s!c vaamk z".to_string()
+        );
     }
 }
