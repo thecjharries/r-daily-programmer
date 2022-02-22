@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::distributions::Alphanumeric;
 use rand::prelude::*;
 use rand_pcg::Pcg64;
 
@@ -19,7 +20,22 @@ fn main() {
     println!("rad");
 }
 
-fn encode_matrix_cipher(message: String, columns: usize, rng: &mut Pcg64) -> String {}
+fn encode_matrix_cipher(message: String, columns: usize, rng: &mut Pcg64) -> String {
+    let desired_length = columns * ((message.len() as f64 / columns as f64).ceil() as usize);
+    let padding = rng
+        .sample_iter(&Alphanumeric)
+        .take(desired_length - message.len())
+        .map(char::from)
+        .collect::<String>();
+    let plaintext = message + &padding;
+    let mut ciphertext = String::new();
+    for i in 0..columns {
+        for j in 0..plaintext.len() / columns {
+            ciphertext.push(plaintext.chars().nth(i + j * columns).unwrap());
+        }
+    }
+    ciphertext
+}
 
 #[cfg(test)]
 mod tests {
