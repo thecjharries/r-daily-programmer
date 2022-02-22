@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn encode_matrix_cipher(message: String, columns: usize) -> String {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
