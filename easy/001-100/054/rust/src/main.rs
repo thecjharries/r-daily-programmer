@@ -46,7 +46,7 @@ mod tests {
         let mut rng = Pcg64::seed_from_u64(0);
         assert_eq!(
             encode_matrix_cipher("rad".to_string(), 2, &mut rng),
-            "rda".to_string()
+            "rda1".to_string()
         );
         assert_eq!(
             encode_matrix_cipher("The cake is a lie!".to_string(), 3, &mut rng),
@@ -54,7 +54,7 @@ mod tests {
         );
         assert_eq!(
             encode_matrix_cipher("The cake is a lie!".to_string(), 7, &mut rng),
-            "Telh ieie s!c vaamk z".to_string()
+            "Telh ieie s!c KaaDk s".to_string()
         );
     }
 }
