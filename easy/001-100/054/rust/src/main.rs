@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand_pcg::Pcg64;
+
 fn main() {
     println!("rad");
 }
 
-fn encode_matrix_cipher(message: String, columns: usize) -> String {}
+fn encode_matrix_cipher(message: String, columns: usize, rng: &mut Pcg64) -> String {}
 
 #[cfg(test)]
 mod tests {
@@ -24,16 +27,17 @@ mod tests {
 
     #[test]
     fn test_encode_matrix_cipher() {
+        let mut rng = Pcg64::seed_from_u64(0);
         assert_eq!(
-            encode_matrix_cipher("rad".to_string(), 2),
+            encode_matrix_cipher("rad".to_string(), 2, &mut rng),
             "rda".to_string()
         );
         assert_eq!(
-            encode_matrix_cipher("The cake is a lie!".to_string(), 3),
+            encode_matrix_cipher("The cake is a lie!".to_string(), 3, &mut rng),
             "T kiaihces eea  l!".to_string()
         );
         assert_eq!(
-            encode_matrix_cipher("The cake is a lie!".to_string(), 7),
+            encode_matrix_cipher("The cake is a lie!".to_string(), 7, &mut rng),
             "Telh ieie s!c vaamk z".to_string()
         );
     }
