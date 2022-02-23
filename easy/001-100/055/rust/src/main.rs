@@ -16,7 +16,22 @@ fn main() {
     println!("rad");
 }
 
-fn get_sliding_window_minimum(input: Vec<i32>, window_size: usize) -> Vec<i32> {}
+fn get_sliding_window_minimum(input: Vec<i32>, window_size: usize) -> Vec<i32> {
+    let mut minimums = Vec::new();
+    if window_size > input.len() {
+        return minimums;
+    }
+    for window_index in 0..input.len() - window_size + 1 {
+        let mut min = input[window_index];
+        for i in window_index..window_index + window_size {
+            if input[i] < min {
+                min = input[i];
+            }
+        }
+        minimums.push(min);
+    }
+    minimums
+}
 
 #[cfg(test)]
 mod tests {
