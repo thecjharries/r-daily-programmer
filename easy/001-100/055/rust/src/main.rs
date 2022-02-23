@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn get_sliding_window_minimum(input: Vec<i32>) -> Vec<i32> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
