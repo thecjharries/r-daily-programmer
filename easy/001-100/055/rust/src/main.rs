@@ -41,7 +41,7 @@ mod tests {
     fn test_get_sliding_window_minimum() {
         let mut input = vec![5, 2, 8, 6, 4, 7];
         let mut output = Vec::new();
-        let window_size = 20;
+        let mut window_size = 20;
         assert_eq!(get_sliding_window_minimum(input, window_size), output);
         input = vec![4, 3, 2, 1, 5, 7, 6, 8, 9];
         output = vec![2, 1, 1, 1, 5, 6, 6];
