@@ -16,14 +16,25 @@ fn main() {
     println!("rad");
 }
 
-fn get_sliding_window_minimum(input: Vec<i32>) -> Vec<i32> {}
+fn get_sliding_window_minimum(input: Vec<i32>, window_size: usize) -> Vec<i32> {}
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_sliding_window_minimum() {
+        let mut input = vec![5, 2, 8, 6, 4, 7];
+        let mut output = Vec::new();
+        let window_size = 20;
+        assert_eq!(get_sliding_window_minimum(input, window_size), output);
+        input = vec![4, 3, 2, 1, 5, 7, 6, 8, 9];
+        output = vec![2, 1, 1, 1, 5, 6, 6];
+        window_size = 3;
+        assert_eq!(get_sliding_window_minimum(input, window_size), output);
+        input = vec![5, 2, 8, 6, 4, 7];
+        output = vec![2, 2, 6, 4, 4];
+        window_size = 2;
+        assert_eq!(get_sliding_window_minimum(input, window_size), output);
     }
 }
