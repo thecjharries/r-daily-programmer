@@ -16,7 +16,26 @@ fn main() {
     println!("rad");
 }
 
-fn find_maximum_subarray(input: Vec<i32>) -> Vec<i32> {}
+fn find_maximum_subarray(input: Vec<i32>) -> Vec<i32> {
+    let mut max_subarray = Vec::new();
+    let mut current_subarray = Vec::new();
+    let mut max_sum = i32::MIN;
+    let mut current_sum = 0;
+    for number in input {
+        if current_sum <= 0 {
+            current_sum = number;
+            current_subarray = vec![number];
+        } else {
+            current_sum += number;
+            current_subarray.push(number);
+        }
+        if current_sum >= max_sum {
+            max_sum = current_sum;
+            max_subarray = current_subarray.clone();
+        }
+    }
+    max_subarray
+}
 
 #[cfg(test)]
 mod tests {
