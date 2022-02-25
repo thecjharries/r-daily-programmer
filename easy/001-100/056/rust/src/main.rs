@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn generate_abacaba_sequence(iteration: i32) -> String {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
