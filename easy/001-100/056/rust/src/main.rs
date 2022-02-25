@@ -23,7 +23,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_abacaba_sequence() {
+        assert_eq!(generate_abacaba_sequence(1), "a".to_string());
+        assert_eq!(generate_abacaba_sequence(2), "aba".to_string());
+        assert_eq!(generate_abacaba_sequence(3), "abacaba".to_string());
+        assert_eq!(generate_abacaba_sequence(4), "abacabadabacaba".to_string());
     }
 }
