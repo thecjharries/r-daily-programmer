@@ -16,7 +16,14 @@ fn main() {
     println!("rad");
 }
 
-fn generate_abacaba_sequence(iteration: i32) -> String {}
+fn generate_abacaba_sequence(iteration: u8) -> String {
+    let mut sequence = String::from("a");
+    for index in 1_u8..iteration {
+        let ending = ((index % 26 + 'a' as u8) as char).to_string() + &sequence;
+        sequence = sequence + &ending;
+    }
+    sequence
+}
 
 #[cfg(test)]
 mod tests {
