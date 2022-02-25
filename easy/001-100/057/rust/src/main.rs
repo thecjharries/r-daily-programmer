@@ -23,7 +23,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_maximum_subarray() {
+        let mut input = vec![31, -41, 59, 26, -53, 58, 97, -93, -23, 84];
+        let mut output = vec![59, 26, -53, 58, 97];
+        assert_eq!(find_maximum_subarray(input), output);
+        input = vec![-31, -41, -59, -26, -53, -58, -97, -93, -23, -84];
+        output = vec![-23];
+        assert_eq!(find_maximum_subarray(input), output);
+        input = vec![31, 41, 59, 26, 53, 58, 97, 93, 23, 84];
+        output = vec![31, 41, 59, 26, 53, 58, 97, 93, 23, 84];
+        assert_eq!(find_maximum_subarray(input), output);
     }
 }
