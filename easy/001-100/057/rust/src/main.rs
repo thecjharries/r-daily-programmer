@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn find_maximum_subarray(input: Vec<i32>) -> Vec<i32> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
