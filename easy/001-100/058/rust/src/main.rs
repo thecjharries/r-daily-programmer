@@ -25,7 +25,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_number_to_base() {
+        assert_eq!(convert_number_to_base(0, 2), "0");
+        assert_eq!(convert_number_to_base(1, 2), "1");
+        assert_eq!(convert_number_to_base(2, 2), "10");
+        assert_eq!(convert_number_to_base(10, 36), "A");
+        assert_eq!(convert_number_to_base(12345678, 23), "1L2FHE");
+        assert_eq!(convert_number_to_base(12345678, 19), "4IDHAA");
     }
 }
