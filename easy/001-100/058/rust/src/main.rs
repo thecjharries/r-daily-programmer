@@ -12,13 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const DIGITS: str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const DIGITS: &'static str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 fn main() {
     println!("rad");
 }
 
-fn convert_number_to_base(number: i32, base: usize) -> String {}
+fn convert_number_to_base(number: i32, base: i32) -> String {
+    if number == 0 {
+        return String::from("0");
+    }
+    let mut result = String::new();
+    let mut number = number;
+    while number > 0 {
+        result.push(
+            DIGITS
+                .chars()
+                .nth((number % base).try_into().unwrap())
+                .unwrap(),
+        );
+        number /= base;
+    }
+    result.chars().rev().collect()
+}
 
 #[cfg(test)]
 mod tests {
