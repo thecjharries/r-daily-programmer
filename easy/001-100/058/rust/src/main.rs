@@ -18,6 +18,8 @@ fn main() {
     println!("rad");
 }
 
+fn convert_number_to_base(number: i32, base: usize) -> String {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
