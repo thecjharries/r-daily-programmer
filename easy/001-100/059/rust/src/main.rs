@@ -25,7 +25,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_first_index_of() {
+        assert_eq!(find_first_index_of("rad", "rad"), 0);
+        assert_eq!(
+            find_first_index_of("il an", "Double, double, toil and trouble"),
+            18
+        );
+        assert_eq!(find_first_index_of("qqq", "rad"), -1);
     }
 }
