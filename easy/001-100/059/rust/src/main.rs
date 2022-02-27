@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_first_index_of(needle: &str, haystack: &str) -> usize {
+    return -1;
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
