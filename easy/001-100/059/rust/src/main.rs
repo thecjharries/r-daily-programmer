@@ -16,7 +16,15 @@ fn main() {
     println!("rad");
 }
 
-fn find_first_index_of(needle: &str, haystack: &str) -> usize {
+fn find_first_index_of(needle: &str, haystack: &str) -> i32 {
+    if needle.len() > haystack.len() {
+        return -1;
+    }
+    for i in 0..haystack.len() - needle.len() + 1 {
+        if &haystack[i..i + needle.len()] == needle {
+            return i as i32;
+        }
+    }
     return -1;
 }
 
