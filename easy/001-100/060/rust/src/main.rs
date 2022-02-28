@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn determine_politeness(number: u32) -> u32 {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
