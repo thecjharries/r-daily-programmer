@@ -24,6 +24,21 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(determine_politeness(0), 0);
+        assert_eq!(determine_politeness(1), 0);
+        assert_eq!(determine_politeness(2), 0);
+        assert_eq!(determine_politeness(3), 1);
+        assert_eq!(determine_politeness(4), 0);
+        assert_eq!(determine_politeness(5), 1);
+        assert_eq!(determine_politeness(7), 1);
+        assert_eq!(determine_politeness(8), 0);
+        assert_eq!(determine_politeness(9), 1);
+        assert_eq!(determine_politeness(10), 1);
+        assert_eq!(determine_politeness(11), 1);
+        assert_eq!(determine_politeness(12), 1);
+        assert_eq!(determine_politeness(13), 1);
+        assert_eq!(determine_politeness(14), 1);
+        assert_eq!(determine_politeness(15), 2);
+        assert_eq!(determine_politeness(16), 0);
     }
 }
