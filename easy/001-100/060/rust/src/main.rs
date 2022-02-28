@@ -16,7 +16,15 @@ fn main() {
     println!("rad");
 }
 
-fn determine_politeness(number: u32) -> u32 {}
+fn determine_politeness(number: u32) -> u32 {
+    let mut count = 0;
+    for divisor in (3..number + 1).step_by(2) {
+        if number % divisor == 0 {
+            count += 1;
+        }
+    }
+    count
+}
 
 #[cfg(test)]
 mod tests {
