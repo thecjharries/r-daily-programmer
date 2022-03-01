@@ -16,7 +16,21 @@ fn main() {
     println!("rad");
 }
 
-fn build_binary_rotation_sequence(number: i64) -> Vec<i64> {}
+fn build_binary_rotation_sequence(number: i64) -> Vec<i64> {
+    let mut result = vec![number];
+    let mut current = number;
+    loop {
+        let mut binary = format!("{:b}", current).trim_start_matches('0').to_string();
+        binary = binary[binary.len() - 1..].to_string() + &binary[..binary.len() - 1];
+        let next = i64::from_str_radix(&binary, 2).unwrap();
+        if current == next {
+            break;
+        }
+        result.push(next);
+        current = next;
+    }
+    result
+}
 
 #[cfg(test)]
 mod tests {
