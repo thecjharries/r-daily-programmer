@@ -23,7 +23,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_binary_rotation_sequence() {
+        assert_eq!(build_binary_rotation_sequence(7), vec![7]);
+        assert_eq!(build_binary_rotation_sequence(19), vec![19, 25, 28, 14, 7]);
+        assert_eq!(
+            build_binary_rotation_sequence(205),
+            vec![205, 230, 115, 121, 124, 62, 31]
+        );
+        assert_eq!(
+            build_binary_rotation_sequence(357),
+            vec![357, 434, 217, 236, 118, 59, 61, 62, 31]
+        );
     }
 }
