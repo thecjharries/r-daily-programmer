@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn build_binary_rotation_sequence(number: i64) -> Vec<i64> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
