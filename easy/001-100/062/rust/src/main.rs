@@ -56,5 +56,6 @@ mod tests {
             ),
             vec![]
         );
+        assert_eq!(check_ullman(vec![18.1, 55.1], 100.0, 3), vec![]);
     }
 }
