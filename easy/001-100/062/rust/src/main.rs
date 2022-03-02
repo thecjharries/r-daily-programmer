@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn check_ullman(numbers: Vec<f64>, target: f64, count: usize) -> Vec<f64> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
