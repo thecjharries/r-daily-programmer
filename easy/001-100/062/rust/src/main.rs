@@ -12,11 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 fn main() {
     println!("rad");
 }
 
-fn check_ullman(numbers: Vec<f64>, target: f64, count: usize) -> Vec<f64> {}
+fn check_ullman(numbers: Vec<f64>, target: f64, count: usize) -> Vec<f64> {
+    for possible_set in numbers.into_iter().combinations(count) {
+        let sum = possible_set.iter().sum::<f64>();
+        if sum <= target {
+            return possible_set;
+        }
+    }
+    vec![]
+}
 
 #[cfg(test)]
 mod tests {
