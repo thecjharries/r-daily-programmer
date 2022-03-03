@@ -23,7 +23,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_reverse() {
+        assert_eq!(reverse(1, vec![1, 2, 3, 4, 5]), vec![1, 2, 3, 4, 5]);
+        assert_eq!(reverse(2, vec![1, 2, 3, 4, 5]), vec![2, 1, 3, 4, 5]);
+        assert_eq!(reverse(3, vec![1, 2, 3, 4, 5]), vec![3, 2, 1, 4, 5]);
+        assert_eq!(reverse(4, vec![1, 2, 3, 4, 5]), vec![4, 3, 2, 1, 5]);
+        assert_eq!(reverse(5, vec![1, 2, 3, 4, 5]), vec![5, 4, 3, 2, 1]);
     }
 }
