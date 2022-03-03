@@ -16,7 +16,13 @@ fn main() {
     println!("rad");
 }
 
-fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {}
+fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {
+    let mut output = input.clone();
+    for i in 0..count {
+        output[i] = input[count - i - 1];
+    }
+    output
+}
 
 #[cfg(test)]
 mod tests {
