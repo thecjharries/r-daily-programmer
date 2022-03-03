@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
