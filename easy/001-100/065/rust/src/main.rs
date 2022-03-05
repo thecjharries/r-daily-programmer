@@ -16,14 +16,18 @@ fn main() {
     println!("rad");
 }
 
-fn convert_to_us_currency(amount: f64, denominations: Vec<f64>) -> Vec<f64> {}
+fn convert_to_us_currency(amount: f64, denominations: Vec<f64>) -> Vec<i64> {}
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_to_us_currency() {
+        let denominations = vec![100.00, 20.00, 10.00, 5.00, 1.00, 0.25, 0.10, 0.05, 0.01];
+        assert_eq!(
+            convert_to_us_currency(12.33, denominations),
+            vec![0, 0, 1, 0, 2, 1, 0, 1, 3]
+        );
     }
 }
