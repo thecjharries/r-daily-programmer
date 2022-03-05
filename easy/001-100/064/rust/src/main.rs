@@ -57,7 +57,7 @@ fn find_totatives(number: u64) -> Vec<u64> {
 }
 
 fn find_totient(number: u64) -> u64 {
-    0
+    find_totatives(number).len() as u64
 }
 
 #[cfg(test)]
