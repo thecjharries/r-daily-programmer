@@ -16,6 +16,16 @@ fn main() {
     println!("rad");
 }
 
+fn find_divisors(number: u64) -> Vec<u64> {}
+
+fn find_divisor_sum(number: u64) -> u64 {}
+
+fn find_divisor_count(number: u64) -> u64 {}
+
+fn find_totatives(number: u64) -> Vec<u64> {}
+
+fn find_totient(number: u64) -> u64 {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
