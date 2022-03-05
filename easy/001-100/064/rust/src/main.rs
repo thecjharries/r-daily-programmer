@@ -39,6 +39,17 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_gcd() {
+        assert_eq!(gcd(0, 0), 0);
+        assert_eq!(gcd(0, 1), 1);
+        assert_eq!(gcd(1, 0), 1);
+        assert_eq!(gcd(1, 1), 1);
+        assert_eq!(gcd(2, 2), 2);
+        assert_eq!(gcd(2, 4), 2);
+        assert_eq!(gcd(4, 2), 2);
+    }
+
+    #[test]
     fn test_find_divisors() {
         assert_eq!(
             find_divisors(60),
