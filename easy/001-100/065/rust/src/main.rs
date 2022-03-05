@@ -16,7 +16,16 @@ fn main() {
     println!("rad");
 }
 
-fn convert_to_us_currency(amount: f64, denominations: Vec<f64>) -> Vec<i64> {}
+fn convert_to_us_currency(amount: f64, denominations: Vec<f64>) -> Vec<i64> {
+    let mut result = vec![0; denominations.len()];
+    let mut remainder = amount;
+    for (index, denomination) in denominations.iter().enumerate() {
+        let count = (remainder / denomination).floor();
+        remainder -= count * denomination;
+        result[index] = count as i64;
+    }
+    result
+}
 
 #[cfg(test)]
 mod tests {
