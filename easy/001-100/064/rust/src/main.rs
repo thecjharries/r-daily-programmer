@@ -31,7 +31,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_divisors() {
+        assert_eq!(
+            find_divisors(60),
+            vec![1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60]
+        );
     }
 }
