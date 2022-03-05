@@ -55,4 +55,9 @@ mod tests {
     fn test_find_totatives() {
         assert_eq!(find_totatives(30), vec![1, 7, 11, 13, 17, 19, 23, 29]);
     }
+
+    #[test]
+    fn test_find_totient() {
+        assert_eq!(find_totient(30), 8);
+    }
 }
