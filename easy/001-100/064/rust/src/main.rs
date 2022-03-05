@@ -45,4 +45,9 @@ mod tests {
             1 + 2 + 3 + 4 + 5 + 6 + 10 + 12 + 15 + 20 + 30 + 60
         );
     }
+
+    #[test]
+    fn test_find_divisor_count() {
+        assert_eq!(find_divisor_count(60), 12);
+    }
 }
