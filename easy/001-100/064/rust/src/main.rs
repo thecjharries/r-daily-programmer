@@ -47,7 +47,13 @@ fn find_divisor_count(number: u64) -> u64 {
 }
 
 fn find_totatives(number: u64) -> Vec<u64> {
-    Vec::new()
+    let mut totatives = Vec::new();
+    for index in 1..number {
+        if gcd(number, index) == 1 {
+            totatives.push(index);
+        }
+    }
+    totatives
 }
 
 fn find_totient(number: u64) -> u64 {
