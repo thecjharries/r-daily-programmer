@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_us_currency(amount: f64, denominations: Vec<f64>) -> Vec<f64> {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
