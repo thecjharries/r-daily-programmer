@@ -24,15 +24,35 @@ fn gcd(a: u64, b: u64) -> u64 {
     }
 }
 
-fn find_divisors(number: u64) -> Vec<u64> {}
+fn find_divisors(number: u64) -> Vec<u64> {
+    let mut divisors = Vec::new();
+    for index in 1..((number as f64).sqrt() as u64 + 1) {
+        if number % index == 0 {
+            divisors.push(index);
+            if index != number / index {
+                divisors.push(number / index);
+            }
+        }
+    }
+    divisors.sort();
+    divisors
+}
 
-fn find_divisor_sum(number: u64) -> u64 {}
+fn find_divisor_sum(number: u64) -> u64 {
+    0
+}
 
-fn find_divisor_count(number: u64) -> u64 {}
+fn find_divisor_count(number: u64) -> u64 {
+    0
+}
 
-fn find_totatives(number: u64) -> Vec<u64> {}
+fn find_totatives(number: u64) -> Vec<u64> {
+    Vec::new()
+}
 
-fn find_totient(number: u64) -> u64 {}
+fn find_totient(number: u64) -> u64 {
+    0
+}
 
 #[cfg(test)]
 mod tests {
