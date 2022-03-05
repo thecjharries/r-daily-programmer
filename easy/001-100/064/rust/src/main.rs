@@ -50,4 +50,9 @@ mod tests {
     fn test_find_divisor_count() {
         assert_eq!(find_divisor_count(60), 12);
     }
+
+    #[test]
+    fn test_find_totatives() {
+        assert_eq!(find_totatives(30), vec![1, 7, 11, 13, 17, 19, 23, 29]);
+    }
 }
