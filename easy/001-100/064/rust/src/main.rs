@@ -43,7 +43,7 @@ fn find_divisor_sum(number: u64) -> u64 {
 }
 
 fn find_divisor_count(number: u64) -> u64 {
-    0
+    find_divisors(number).len() as u64
 }
 
 fn find_totatives(number: u64) -> Vec<u64> {
