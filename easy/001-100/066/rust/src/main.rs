@@ -35,9 +35,9 @@ fn convert_to_roman(input: i64) -> String {
         ("I", 1),
     ];
     for (roman, arabic) in roman_map.iter() {
-        while input >= arabic {
+        while input >= *arabic {
             result.push_str(roman);
-            input -= arabic;
+            input -= *arabic;
         }
     }
     result
