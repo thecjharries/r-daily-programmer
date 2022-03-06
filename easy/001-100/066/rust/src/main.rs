@@ -19,7 +19,7 @@ fn main() {
 fn convert_to_roman(input: i64) -> String {
     let mut result = String::new();
     let mut input = input;
-    let mut roman_map = [
+    let roman_map = [
         ("M", 1000),
         ("CM", 900),
         ("D", 500),
@@ -46,7 +46,7 @@ fn convert_to_roman(input: i64) -> String {
 fn convert_to_arabic(roman: &str) -> i64 {
     let mut result = 0;
     let mut roman = roman;
-    let mut roman_map = [
+    let roman_map = [
         ("M", 1000),
         ("CM", 900),
         ("D", 500),
