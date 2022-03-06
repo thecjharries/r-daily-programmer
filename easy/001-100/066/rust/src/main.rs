@@ -78,8 +78,11 @@ fn convert_to_arabic(roman: &str) -> i64 {
     result
 }
 
-fn subtract_roman_numeral<'a>(first: &'a str, second: &'a str) -> &'a str {
-    &""
+fn subtract_roman_numeral<'a>(first: &'a str, second: &'a str) -> String {
+    let first_arabic = convert_to_arabic(first);
+    let second_arabic = convert_to_arabic(second);
+    let result_arabic = first_arabic - second_arabic;
+    convert_to_roman(result_arabic)
 }
 
 #[cfg(test)]
@@ -100,5 +103,10 @@ mod tests {
         assert_eq!(convert_to_arabic("II"), 2);
         assert_eq!(convert_to_arabic("III"), 3);
         assert_eq!(convert_to_arabic("XIV"), 14);
+    }
+
+    #[test]
+    fn test_subtract_roman_numeral() {
+        assert_eq!(subtract_roman_numeral("X", "I"), "IX");
     }
 }
