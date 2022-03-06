@@ -12,14 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-fn main() {
-    println!("rad");
-}
+use lazy_static::lazy_static;
 
-fn convert_to_roman(input: i64) -> String {
-    let mut result = String::new();
-    let mut input = input;
-    let roman_map = [
+lazy_static! {
+    static ref ROMAN_NUMERALS: [(&'static str, i64); 13] = [
         ("M", 1000),
         ("CM", 900),
         ("D", 500),
@@ -34,7 +30,16 @@ fn convert_to_roman(input: i64) -> String {
         ("IV", 4),
         ("I", 1),
     ];
-    for (roman, arabic) in roman_map.iter() {
+}
+
+fn main() {
+    println!("rad");
+}
+
+fn convert_to_roman(input: i64) -> String {
+    let mut result = String::new();
+    let mut input = input;
+    for (roman, arabic) in ROMAN_NUMERALS.iter() {
         while input >= *arabic {
             result.push_str(roman);
             input -= *arabic;
@@ -46,24 +51,9 @@ fn convert_to_roman(input: i64) -> String {
 fn convert_to_arabic(roman: &str) -> i64 {
     let mut result = 0;
     let mut roman = roman;
-    let roman_map = [
-        ("M", 1000),
-        ("CM", 900),
-        ("D", 500),
-        ("CD", 400),
-        ("C", 100),
-        ("XC", 90),
-        ("L", 50),
-        ("XL", 40),
-        ("X", 10),
-        ("IX", 9),
-        ("V", 5),
-        ("IV", 4),
-        ("I", 1),
-    ];
     while roman.len() > 0 {
         let mut found = false;
-        for (roman_char, arabic) in roman_map.iter() {
+        for (roman_char, arabic) in ROMAN_NUMERALS.iter() {
             if roman.starts_with(roman_char) {
                 result += *arabic;
                 roman = &roman[roman_char.len()..];
