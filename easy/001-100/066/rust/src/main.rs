@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn subtract_roman_numeral<'a>(first: &'a str, second: &'a str) -> &'a str {
+    &""
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
