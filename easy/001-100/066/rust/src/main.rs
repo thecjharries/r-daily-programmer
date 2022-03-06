@@ -43,6 +43,41 @@ fn convert_to_roman(input: i64) -> String {
     result
 }
 
+fn convert_to_arabic(roman: &str) -> i64 {
+    let mut result = 0;
+    let mut roman = roman;
+    let mut roman_map = [
+        ("M", 1000),
+        ("CM", 900),
+        ("D", 500),
+        ("CD", 400),
+        ("C", 100),
+        ("XC", 90),
+        ("L", 50),
+        ("XL", 40),
+        ("X", 10),
+        ("IX", 9),
+        ("V", 5),
+        ("IV", 4),
+        ("I", 1),
+    ];
+    while roman.len() > 0 {
+        let mut found = false;
+        for (roman_char, arabic) in roman_map.iter() {
+            if roman.starts_with(roman_char) {
+                result += *arabic;
+                roman = &roman[roman_char.len()..];
+                found = true;
+                break;
+            }
+        }
+        if !found {
+            panic!("Invalid roman numeral: {}", roman);
+        }
+    }
+    result
+}
+
 fn subtract_roman_numeral<'a>(first: &'a str, second: &'a str) -> &'a str {
     &""
 }
@@ -57,5 +92,13 @@ mod tests {
         assert_eq!(convert_to_roman(2), "II");
         assert_eq!(convert_to_roman(3), "III");
         assert_eq!(convert_to_roman(14), "XIV");
+    }
+
+    #[test]
+    fn test_convert_to_arabic() {
+        assert_eq!(convert_to_arabic("I"), 1);
+        assert_eq!(convert_to_arabic("II"), 2);
+        assert_eq!(convert_to_arabic("III"), 3);
+        assert_eq!(convert_to_arabic("XIV"), 14);
     }
 }
