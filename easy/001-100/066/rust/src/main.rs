@@ -16,6 +16,33 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_roman(input: i64) -> String {
+    let mut result = String::new();
+    let mut input = input;
+    let mut roman_map = [
+        ("M", 1000),
+        ("CM", 900),
+        ("D", 500),
+        ("CD", 400),
+        ("C", 100),
+        ("XC", 90),
+        ("L", 50),
+        ("XL", 40),
+        ("X", 10),
+        ("IX", 9),
+        ("V", 5),
+        ("IV", 4),
+        ("I", 1),
+    ];
+    for (roman, arabic) in roman_map.iter() {
+        while input >= arabic {
+            result.push_str(roman);
+            input -= arabic;
+        }
+    }
+    result
+}
+
 fn subtract_roman_numeral<'a>(first: &'a str, second: &'a str) -> &'a str {
     &""
 }
@@ -25,7 +52,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_to_roman() {
+        assert_eq!(convert_to_roman(1), "I");
+        assert_eq!(convert_to_roman(2), "II");
+        assert_eq!(convert_to_roman(3), "III");
+        assert_eq!(convert_to_roman(14), "XIV");
     }
 }
