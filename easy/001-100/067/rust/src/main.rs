@@ -17,7 +17,8 @@ fn main() {
 }
 
 fn reverse_32_bit(input: u32) -> u32 {
-    0
+    let binary_reversed = format!("{:032b}", input).chars().rev().collect::<String>();
+    u32::from_str_radix(&binary_reversed, 2).unwrap()
 }
 
 #[cfg(test)]
