@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn reverse_32_bit(input: i32) -> i32 {
+fn reverse_32_bit(input: u32) -> u32 {
     0
 }
 
