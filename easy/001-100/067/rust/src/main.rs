@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn reverse_32_bit(input: i32) -> i32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
