@@ -25,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_reverse_32_bit() {
+        assert_eq!(reverse_32_bit(13), 2952790016);
     }
 }
