@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_emirps_below(number: i64) -> i64 {
+fn find_emirps_below(number: i64) -> Vec<i64> {
     0
 }
 
@@ -25,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_emirps_below() {
+        assert_eq!(find_emirps_below(100), vec![13, 17, 31, 37, 71, 73, 79, 97]);
     }
 }
