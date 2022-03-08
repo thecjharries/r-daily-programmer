@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_emirps_below(number: i64) -> i64 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
