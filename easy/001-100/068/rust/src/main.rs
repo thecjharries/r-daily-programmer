@@ -16,8 +16,8 @@ fn main() {
     println!("rad");
 }
 
-fn is_prime(number: i64, primes: Vec<i64>) -> bool {
-    for prime in &primes {
+fn is_prime(number: i64, primes: &Vec<i64>) -> bool {
+    for prime in primes {
         if number == *prime {
             return true;
         }
@@ -36,7 +36,11 @@ fn is_prime(number: i64, primes: Vec<i64>) -> bool {
 fn find_emirps_below(number: i64) -> Vec<i64> {
     let mut primes = vec![2, 3, 5, 7, 11, 13];
     let mut emirps = Vec::new();
-
+    for index in (13..number).step_by(2) {
+        if is_prime(index, &primes) {
+            primes.push(index);
+        }
+    }
     emirps
 }
 
@@ -51,9 +55,9 @@ mod tests {
 
     #[test]
     fn test_is_prime() {
-        assert_eq!(is_prime(2, vec![2]), true);
-        assert_eq!(is_prime(3, vec![2]), true);
-        assert_eq!(is_prime(4, vec![2]), false);
-        assert_eq!(is_prime(5, vec![2, 3]), true);
+        assert_eq!(is_prime(2, &vec![2]), true);
+        assert_eq!(is_prime(3, &vec![2]), true);
+        assert_eq!(is_prime(4, &vec![2]), false);
+        assert_eq!(is_prime(5, &vec![2, 3]), true);
     }
 }
