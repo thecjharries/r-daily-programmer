@@ -33,6 +33,11 @@ fn is_prime(number: i64, primes: &Vec<i64>) -> bool {
     true
 }
 
+fn is_palindrome(number: i64) -> bool {
+    let string_representation = format!("{}", number);
+    string_representation == string_representation.chars().rev().collect::<String>()
+}
+
 fn find_emirps_below(number: i64) -> Vec<i64> {
     let mut primes = vec![2, 3, 5, 7, 11, 13];
     let mut emirps = Vec::new();
@@ -59,5 +64,14 @@ mod tests {
         assert_eq!(is_prime(3, &vec![2]), true);
         assert_eq!(is_prime(4, &vec![2]), false);
         assert_eq!(is_prime(5, &vec![2, 3]), true);
+    }
+
+    #[test]
+    fn test_is_palindrome() {
+        assert_eq!(is_palindrome(1), true);
+        assert_eq!(is_palindrome(11), true);
+        assert_eq!(is_palindrome(12), false);
+        assert_eq!(is_palindrome(12321), true);
+        assert_eq!(is_palindrome(12322), false);
     }
 }
