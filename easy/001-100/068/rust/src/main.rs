@@ -64,6 +64,7 @@ mod tests {
     #[test]
     fn test_find_emirps_below() {
         assert_eq!(find_emirps_below(100), vec![13, 17, 31, 37, 71, 73, 79, 97]);
+        assert_eq!(find_emirps_below(10), vec![]);
     }
 
     #[test]
