@@ -39,11 +39,19 @@ fn is_palindrome(number: i64) -> bool {
 }
 
 fn find_emirps_below(number: i64) -> Vec<i64> {
-    let mut primes = vec![2, 3, 5, 7, 11, 13];
+    let mut primes = vec![2, 3, 5, 7, 11];
     let mut emirps = Vec::new();
     for index in (13..number).step_by(2) {
         if is_prime(index, &primes) {
             primes.push(index);
+        }
+    }
+    for prime in &primes {
+        if !is_palindrome(*prime) {
+            let reversed_string = format!("{}", prime).chars().rev().collect::<String>();
+            if is_prime(reversed_string.parse::<i64>().unwrap(), &primes) {
+                emirps.push(*prime);
+            }
         }
     }
     emirps
@@ -55,7 +63,7 @@ mod tests {
 
     #[test]
     fn test_find_emirps_below() {
-        // assert_eq!(find_emirps_below(100), vec![13, 17, 31, 37, 71, 73, 79, 97]);
+        assert_eq!(find_emirps_below(100), vec![13, 17, 31, 37, 71, 73, 79, 97]);
     }
 
     #[test]
