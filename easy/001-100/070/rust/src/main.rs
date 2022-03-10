@@ -23,6 +23,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_most_common_word(filename: &str, count: i32) -> HashMap<String, i32> {
+    HashMap::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
