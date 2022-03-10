@@ -25,8 +25,21 @@ fn main() {
     println!("rad");
 }
 
-fn find_most_common_word(filename: &str, count: i32) -> HashMap<String, i32> {
-    HashMap::new()
+fn find_most_common_words(filename: &str, count: usize) -> HashMap<String, i32> {
+    let mut word_counts = HashMap::new();
+    let contents = fs::read_to_string(filename).expect("Something went wrong reading the file");
+    for word in WORD_PATTERN.find_iter(&contents) {
+        let word = word.as_str().to_string();
+        let count = word_counts.entry(word).or_insert(0);
+        *count += 1;
+    }
+    let mut sorted = word_counts.iter().collect::<Vec<_>>();
+    sorted.sort_by(|a, b| b.1.cmp(a.1));
+    let mut result = HashMap::new();
+    for (word, count) in sorted.into_iter().take(count) {
+        result.insert(word.to_string(), *count as i32);
+    }
+    result
 }
 
 #[cfg(test)]
