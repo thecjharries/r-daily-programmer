@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_table(title: String, rows: Vec<String>) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
