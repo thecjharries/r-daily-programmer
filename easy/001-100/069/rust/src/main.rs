@@ -17,7 +17,33 @@ fn main() {
 }
 
 fn build_table(title: String, rows: Vec<String>) -> String {
-    "".to_string()
+    let mut max_length = title.len();
+    for row in &rows {
+        if row.len() > max_length {
+            max_length = row.len();
+        }
+    }
+    let mut table = String::new();
+    table.push_str("+");
+    table.push_str("-".repeat(max_length + 2).as_str());
+    table.push_str("+\n");
+    table.push_str("| ");
+    table.push_str(&title);
+    table.push_str(" ".repeat(max_length - title.len() + 1).as_str());
+    table.push_str("|\n");
+    table.push_str("+");
+    table.push_str("-".repeat(max_length + 2).as_str());
+    table.push_str("+\n");
+    for row in rows {
+        table.push_str("| ");
+        table.push_str(&row);
+        table.push_str(" ".repeat(max_length - row.len() + 1).as_str());
+        table.push_str("|\n");
+    }
+    table.push_str("+");
+    table.push_str("-".repeat(max_length + 2).as_str());
+    table.push_str("+");
+    table
 }
 
 #[cfg(test)]
