@@ -14,6 +14,8 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::HashMap;
+use std::fs;
 
 lazy_static! {
     static ref WORD_PATTERN: Regex = Regex::new(r"\w+").unwrap();
@@ -32,7 +34,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_most_common_words() {
+        assert_eq!(
+            find_most_common_words("../lorem_ipsum.txt", 4),
+            HashMap::from([
+                ("dolor".to_string(), 6),
+                ("dolore".to_string(), 6),
+                ("ut".to_string(), 6),
+                ("in".to_string(), 9)
+            ])
+        );
     }
 }
