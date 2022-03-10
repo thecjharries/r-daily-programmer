@@ -16,8 +16,8 @@ fn main() {
     println!("rad");
 }
 
-fn build_table(title: String, rows: Vec<String>) -> Vec<String> {
-    Vec::new()
+fn build_table(title: String, rows: Vec<String>) -> String {
+    "".to_string()
 }
 
 #[cfg(test)]
@@ -25,7 +25,29 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_table() {
+        assert_eq!(
+            build_table(
+                "Necessities".to_string(),
+                vec![
+                    "fairy".to_string(),
+                    "cakes".to_string(),
+                    "happy".to_string(),
+                    "fish".to_string(),
+                    "disgustipated".to_string(),
+                    "melon-balls".to_string()
+                ]
+            ),
+            "+---------------+
+|  Necessities  |
++---------------+
+| fairy         |
+| cakes         |
+| happy         |
+| fish          |
+| disgustipated |
+| melon-balls   |
++---------------+"
+        )
     }
 }
