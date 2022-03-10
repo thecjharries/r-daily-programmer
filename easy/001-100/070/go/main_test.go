@@ -32,7 +32,7 @@ func (s *MainSuite) TestMain(c *C) {
 }
 
 func (s *MainSuite) TestReadFileIntoString(c *C) {
-	c.Assert(len(readFileIntoString("lorem_ipsum.txt")) > 0, Equals, true)
+	c.Assert(len(readFileIntoString("../lorem_ipsum.txt")) > 0, Equals, true)
 }
 
 func (s *MainSuite) TestGenerateFrequencyMapFromString(c *C) {

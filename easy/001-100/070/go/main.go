@@ -43,7 +43,7 @@ func (w WordFrequencies) Less(i, j int) bool {
 var wordPattern = regexp.MustCompile(`\w+`)
 
 func main() {
-	filename := "lorem_ipsum.txt"
+	filename := "../lorem_ipsum.txt"
 	contents := readFileIntoString(filename)
 	frequencyMap := generateFrequencyMapFromString(contents)
 	frequencies := convertFrequencyMapToWordFrequencies(frequencyMap)
