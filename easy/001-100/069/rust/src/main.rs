@@ -65,7 +65,7 @@ mod tests {
                 ]
             ),
             "+---------------+
-|  Necessities  |
+| Necessities   |
 +---------------+
 | fairy         |
 | cakes         |
