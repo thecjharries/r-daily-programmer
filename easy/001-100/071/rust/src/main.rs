@@ -26,6 +26,23 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            find_pythagorean_triplets(240),
+            vec![
+                vec![15, 112, 113],
+                vec![40, 96, 104],
+                vec![48, 90, 102],
+                vec![60, 80, 100]
+            ]
+        );
+        assert_eq!(
+            find_pythagorean_triplets(504),
+            vec![
+                vec![15, 112, 113],
+                vec![40, 96, 104],
+                vec![48, 90, 102],
+                vec![60, 80, 100]
+            ]
+        );
     }
 }
