@@ -17,7 +17,16 @@ fn main() {
 }
 
 fn find_pythagorean_triplets(sum: i64) -> Vec<Vec<i64>> {
-    Vec::new()
+    let mut triplets = Vec::new();
+    for a in 1..sum - 2 {
+        for b in a..sum - a - 1 {
+            let c = sum - a - b;
+            if a * a + b * b == c * c {
+                triplets.push(vec![a, b, c]);
+            }
+        }
+    }
+    triplets
 }
 
 #[cfg(test)]
