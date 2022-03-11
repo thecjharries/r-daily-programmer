@@ -47,10 +47,10 @@ mod tests {
         assert_eq!(
             find_pythagorean_triplets(504),
             vec![
-                vec![15, 112, 113],
-                vec![40, 96, 104],
-                vec![48, 90, 102],
-                vec![60, 80, 100]
+                vec![63, 216, 225],
+                vec![72, 210, 222],
+                vec![112, 180, 212],
+                vec![126, 168, 210]
             ]
         );
     }
