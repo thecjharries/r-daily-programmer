@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_pythagorean_triplets(sum: i64) -> Vec<Vec<i64>> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
