@@ -6,7 +6,7 @@
 
 ## Prompt4
 
-The one-dimensional simple cellular automata [Rule 110] (http://en.wikipedia.org/wiki/Rule_110)
+The one-dimensional simple cellular automata [Rule 110](http://en.wikipedia.org/wiki/Rule_110)
 is the only such cellular automata currently known to be turing-complete, and many people say it is the simplest known turing-complete
 system.
 
