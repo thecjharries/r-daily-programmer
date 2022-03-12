@@ -37,6 +37,10 @@ fn construct_rules(number: i8) -> HashMap<String, String> {
     result
 }
 
+fn get_next_iteration(current: String, rules: HashMap<String, String>) -> String {
+    "".to_string()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
