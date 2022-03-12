@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::collection::HashMap;
+use std::collections::HashMap;
 
 fn main() {
     println!("rad");
@@ -27,7 +27,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_construct_rules() {
+        assert_eq!(
+            construct_rules(110),
+            HashMap::from([
+                ("111".to_string(), "0".to_string()),
+                ("110".to_string(), "1".to_string()),
+                ("101".to_string(), "1".to_string()),
+                ("100".to_string(), "0".to_string()),
+                ("011".to_string(), "1".to_string()),
+                ("010".to_string(), "1".to_string()),
+                ("001".to_string(), "1".to_string()),
+                ("000".to_string(), "0".to_string()),
+            ])
+        )
     }
 }
