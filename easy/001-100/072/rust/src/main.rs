@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collection::HashMap;
+
 fn main() {
     println!("rad");
+}
+
+fn construct_rules(number: i8) -> HashMap<String, String> {
+    HashMap::new()
 }
 
 #[cfg(test)]
