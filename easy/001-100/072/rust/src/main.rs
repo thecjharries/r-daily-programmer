@@ -38,7 +38,18 @@ fn construct_rules(number: i8) -> HashMap<String, String> {
 }
 
 fn get_next_iteration(current: String, rules: HashMap<String, String>) -> String {
-    "".to_string()
+    let mut result = String::new();
+    let current_chars = current.chars().collect::<Vec<char>>();
+    result.push(current_chars[0]);
+    for index in 1..current_chars.len() - 1 {
+        let mut key = String::new();
+        key.push(current_chars[index - 1]);
+        key.push(current_chars[index]);
+        key.push(current_chars[index + 1]);
+        result.push(rules[&key].clone().chars().next().unwrap());
+    }
+    result.push(current_chars[current_chars.len() - 1]);
+    result
 }
 
 #[cfg(test)]
