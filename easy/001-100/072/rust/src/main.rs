@@ -61,4 +61,24 @@ mod tests {
             ])
         )
     }
+
+    #[test]
+    fn test_get_next_iteration() {
+        assert_eq!(
+            get_next_iteration("000000100".to_string(), construct_rules(110)),
+            "000001100".to_string()
+        );
+        assert_eq!(
+            get_next_iteration("000001100".to_string(), construct_rules(110)),
+            "000011100".to_string()
+        );
+        assert_eq!(
+            get_next_iteration("000011100".to_string(), construct_rules(110)),
+            "000110100".to_string()
+        );
+        assert_eq!(
+            get_next_iteration("000110100".to_string(), construct_rules(110)),
+            "001111100".to_string()
+        );
+    }
 }
