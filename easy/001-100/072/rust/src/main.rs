@@ -19,7 +19,22 @@ fn main() {
 }
 
 fn construct_rules(number: i8) -> HashMap<String, String> {
-    HashMap::new()
+    let keys = vec![
+        "111".to_string(),
+        "110".to_string(),
+        "101".to_string(),
+        "100".to_string(),
+        "011".to_string(),
+        "010".to_string(),
+        "001".to_string(),
+        "000".to_string(),
+    ];
+    let value_chars = format!("{:08b}", number).chars().collect::<Vec<char>>();
+    let mut result = HashMap::new();
+    for index in 0..keys.len() {
+        result.insert(keys[index].clone(), value_chars[index].to_string());
+    }
+    result
 }
 
 #[cfg(test)]
