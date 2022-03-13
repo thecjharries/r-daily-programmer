@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_reverse_polish_notation() {
+        assert_eq!(
+            compute_reverse_polish_notation("3 4 * 6 2 - +".to_string()),
+            16
+        );
     }
 }
