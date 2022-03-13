@@ -17,7 +17,36 @@ fn main() {
 }
 
 fn compute_reverse_polish_notation(input: String) -> i64 {
-    0
+    let mut stack: Vec<i64> = Vec::new();
+    let mut input_iter = input.split_whitespace();
+    while let Some(token) = input_iter.next() {
+        match token {
+            "+" => {
+                let a = stack.pop().unwrap();
+                let b = stack.pop().unwrap();
+                stack.push(a + b);
+            }
+            "-" => {
+                let a = stack.pop().unwrap();
+                let b = stack.pop().unwrap();
+                stack.push(b - a);
+            }
+            "*" => {
+                let a = stack.pop().unwrap();
+                let b = stack.pop().unwrap();
+                stack.push(a * b);
+            }
+            "/" => {
+                let a = stack.pop().unwrap();
+                let b = stack.pop().unwrap();
+                stack.push(b / a);
+            }
+            _ => {
+                stack.push(token.parse::<i64>().unwrap());
+            }
+        }
+    }
+    stack.pop().unwrap()
 }
 
 #[cfg(test)]
