@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_reverse_polish_notation(input: String) -> i64 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
