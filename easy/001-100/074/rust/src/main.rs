@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_fibonacci_numbers_below() {
+        assert_eq!(
+            find_fibonacci_numbers_below(100),
+            vec![1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+        );
     }
 }
