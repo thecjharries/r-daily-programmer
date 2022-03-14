@@ -30,7 +30,17 @@ fn find_fibonacci_numbers_below(input: u64) -> Vec<u64> {
 }
 
 fn find_zeckendorf_number(input: u64) -> Vec<u64> {
-    Vec::new()
+    let mut fibonacci_numbers = find_fibonacci_numbers_below(input);
+    let mut zeckendorf_number = Vec::new();
+    let mut current_number = input;
+    while 0 < current_number {
+        let current_fibonacci_number = fibonacci_numbers.pop().unwrap();
+        if current_number >= current_fibonacci_number {
+            zeckendorf_number.push(current_fibonacci_number);
+            current_number -= current_fibonacci_number;
+        }
+    }
+    zeckendorf_number
 }
 
 #[cfg(test)]
