@@ -29,6 +29,10 @@ fn find_fibonacci_numbers_below(input: u64) -> Vec<u64> {
     fibonacci_numbers
 }
 
+fn find_zeckendorf_number(input: u64) -> Vec<u64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
