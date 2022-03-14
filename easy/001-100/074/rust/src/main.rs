@@ -16,8 +16,17 @@ fn main() {
     println!("rad");
 }
 
-fn find_fibonacci_numbers_below(n: u64) -> Vec<u64> {
-    Vec::new()
+fn find_fibonacci_numbers_below(input: u64) -> Vec<u64> {
+    let mut fibonacci_numbers = vec![1, 1];
+    let mut current_fibonacci_number = 1;
+    while current_fibonacci_number < input {
+        let next_fibonacci_number = fibonacci_numbers[fibonacci_numbers.len() - 1]
+            + fibonacci_numbers[fibonacci_numbers.len() - 2];
+        fibonacci_numbers.push(next_fibonacci_number);
+        current_fibonacci_number = next_fibonacci_number;
+    }
+    fibonacci_numbers.pop();
+    fibonacci_numbers
 }
 
 #[cfg(test)]
