@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_fibonacci_numbers_below(n: u64) -> Vec<u64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
