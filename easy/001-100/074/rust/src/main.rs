@@ -44,4 +44,13 @@ mod tests {
             vec![1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
         );
     }
+
+    #[test]
+    fn test_find_zeckendorf_number() {
+        assert_eq!(find_zeckendorf_number(100), vec![89, 8, 3]);
+        assert_eq!(
+            find_zeckendorf_number(14348907),
+            vec![9227465, 3524578, 1346269, 196418, 46368, 6765, 987, 55, 2]
+        );
+    }
 }
