@@ -26,6 +26,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            poorly_parse_c("L0(x,y)=abs(x)+abs(y)".to_string()),
+            "float L0(float x,float y)
+{
+    return fabsf(x)+fabsf(y);
+}"
+            .to_string()
+        );
     }
 }
