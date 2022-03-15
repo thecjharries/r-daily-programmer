@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn poorly_parse_c(input: String) -> String {
+    String::from("")
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
