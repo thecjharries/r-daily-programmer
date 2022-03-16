@@ -25,7 +25,26 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_titlecase() {
+        assert_eq!(
+            titlecase(
+                "the quick brown fox jumps over the lazy dog".to_string(),
+                vec!["jumps".to_string(), "the".to_string(), "over".to_string()]
+            ),
+            "The Quick Brown Fox jumps over the Lazy Dog".to_string()
+        );
+        assert_eq!(
+            titlecase(
+                "THE vitamins ARE IN my fresh CALIFORNIA raisins".to_string(),
+                vec![
+                    "are".to_string(),
+                    "is".to_string(),
+                    "in".to_string(),
+                    "your".to_string(),
+                    "my".to_string()
+                ],
+            ),
+            "The Vitamins are in my Fresh California Raisins".to_string()
+        )
     }
 }
