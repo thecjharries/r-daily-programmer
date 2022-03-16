@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn titlecase(input: String, exceptions: Vec<String>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
