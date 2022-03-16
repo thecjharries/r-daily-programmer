@@ -17,7 +17,20 @@ fn main() {
 }
 
 fn titlecase(input: String, exceptions: Vec<String>) -> String {
-    String::new()
+    let mut first = true;
+    input
+        .to_lowercase()
+        .split_whitespace()
+        .map(|word| {
+            if exceptions.contains(&word.to_string()) && !first {
+                word.to_string()
+            } else {
+                first = false;
+                word.chars().nth(0).unwrap().to_uppercase().to_string() + &word[1..]
+            }
+        })
+        .collect::<Vec<String>>()
+        .join(" ")
 }
 
 #[cfg(test)]
