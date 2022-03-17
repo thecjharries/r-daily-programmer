@@ -43,21 +43,21 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(morse(0), Vec::new());
+    fn test_morse() {
+        assert_eq!(morse(0), Vec::new() as Vec<String>);
         assert_eq!(morse(1), vec![".".to_string()]);
         assert_eq!(morse(2), vec!["..".to_string(), "-".to_string()]);
         assert_eq!(
             morse(3),
-            vec!["...".to_string(), ".-".to_string(), "-.".to_string()]
+            vec!["...".to_string(), "-.".to_string(), ".-".to_string()]
         );
         assert_eq!(
             morse(4),
             vec![
                 "....".to_string(),
-                "..-".to_string(),
-                ".-.".to_string(),
                 "-..".to_string(),
+                ".-.".to_string(),
+                "..-".to_string(),
                 "--".to_string()
             ]
         );
@@ -65,13 +65,13 @@ mod tests {
             morse(5),
             vec![
                 ".....".to_string(),
-                "...-".to_string(),
-                "..-.".to_string(),
-                ".-..".to_string(),
                 "-...".to_string(),
-                ".--".to_string(),
+                ".-..".to_string(),
+                "..-.".to_string(),
+                "--.".to_string(),
+                "...-".to_string(),
                 "-.-".to_string(),
-                "--.".to_string()
+                ".--".to_string()
             ]
         );
     }
