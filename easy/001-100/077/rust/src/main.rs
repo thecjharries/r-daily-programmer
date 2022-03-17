@@ -26,6 +26,35 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(morse(0), Vec::new());
+        assert_eq!(morse(1), vec![".".to_string()]);
+        assert_eq!(morse(2), vec!["..".to_string(), "-".to_string()]);
+        assert_eq!(
+            morse(3),
+            vec!["...".to_string(), ".-".to_string(), "-.".to_string()]
+        );
+        assert_eq!(
+            morse(4),
+            vec![
+                "....".to_string(),
+                "..-".to_string(),
+                ".-.".to_string(),
+                "-..".to_string(),
+                "--".to_string()
+            ]
+        );
+        assert_eq!(
+            morse(5),
+            vec![
+                ".....".to_string(),
+                "...-".to_string(),
+                "..-.".to_string(),
+                ".-..".to_string(),
+                "-...".to_string(),
+                ".--".to_string(),
+                "-.-".to_string(),
+                "--.".to_string()
+            ]
+        );
     }
 }
