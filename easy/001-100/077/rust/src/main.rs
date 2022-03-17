@@ -17,7 +17,25 @@ fn main() {
 }
 
 fn morse(size: usize) -> Vec<String> {
-    Vec::new()
+    if size <= 0 {
+        return Vec::new();
+    }
+    if size == 1 {
+        return vec![".".to_string()];
+    }
+    if size == 2 {
+        return vec!["..".to_string(), "-".to_string()];
+    }
+    let dots = morse(size - 1);
+    let mut result = Vec::new();
+    for dot in dots {
+        result.push(dot + ".");
+    }
+    let dashes = morse(size - 2);
+    for dash in dashes {
+        result.push(dash + "-");
+    }
+    result
 }
 
 #[cfg(test)]
