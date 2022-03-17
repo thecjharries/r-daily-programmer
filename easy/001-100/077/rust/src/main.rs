@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn morse(size: usize) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
