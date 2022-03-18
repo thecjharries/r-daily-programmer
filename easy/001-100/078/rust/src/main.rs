@@ -16,16 +16,16 @@ use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 lazy_static! {
-    static ref CAPS_MAP: HashMap<&'static char, &'static char> = {
+    static ref CAPS_MAP: HashMap<char, char> = {
         let mut m = HashMap::new();
         m.insert('a', 'A');
         m.insert('z', 'Z');
         m
     };
-    static ref SHIFT_MAP: HashMap<&'static char, &'static char> = {
+    static ref SHIFT_MAP: HashMap<char, char> = {
         let mut m = HashMap::new();
         m.insert('a', 'A');
-        m.insert('z', 'Z')
+        m.insert('z', 'Z');
         m.insert('0', ')');
         m
     };
