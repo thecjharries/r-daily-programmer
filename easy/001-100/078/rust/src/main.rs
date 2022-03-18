@@ -12,6 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref CAPS_MAP: HashMap<&'static char, &'static char> = {
+        let mut m = HashMap::new();
+        m.insert('a', 'A');
+        m.insert('z', 'Z');
+        m
+    };
+    static ref SHIFT_MAP: HashMap<&'static char, &'static char> = {
+        let mut m = HashMap::new();
+        m.insert('a', 'A');
+        m.insert('z', 'Z')
+        m.insert('0', ')');
+        m
+    };
+}
+
 fn main() {
     println!("rad");
 }
