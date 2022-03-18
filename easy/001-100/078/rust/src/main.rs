@@ -44,7 +44,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_key_to_char() {
+        assert_eq!(key_to_char('a', false, false), 'a');
+        assert_eq!(key_to_char('a', false, true), 'A');
+        assert_eq!(key_to_char('a', true, false), 'A');
+        assert_eq!(key_to_char('a', true, true), 'a');
+        assert_eq!(key_to_char('0', false, false), '0');
+        assert_eq!(key_to_char('0', false, true), '0');
+        assert_eq!(key_to_char('0', true, false), ')');
+        assert_eq!(key_to_char('0', true, true), ')');
     }
 }
