@@ -35,6 +35,10 @@ fn main() {
     println!("rad");
 }
 
+fn key_to_char(key: char, shift: bool, caps: bool) -> char {
+    'a'
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
