@@ -36,7 +36,21 @@ fn main() {
 }
 
 fn key_to_char(key: char, shift: bool, caps: bool) -> char {
-    'a'
+    if !shift && !caps {
+        key
+    } else if shift && !caps {
+        *SHIFT_MAP.get(&key).unwrap_or(&key)
+    } else if !shift && caps {
+        *CAPS_MAP.get(&key).unwrap_or(&key)
+    } else {
+        let caps_character = *CAPS_MAP.get(&key).unwrap_or(&key);
+        let shift_character = *SHIFT_MAP.get(&key).unwrap_or(&key);
+        if caps_character == shift_character && caps_character != key {
+            key
+        } else {
+            shift_character
+        }
+    }
 }
 
 #[cfg(test)]
