@@ -17,7 +17,11 @@ fn main() {
 }
 
 fn step_count(start: f64, end: f64, steps: i64) -> Vec<f64> {
-    Vec::new()
+    let mut output = vec![start];
+    for previous in 0..(steps - 1) {
+        output.push(output[previous as usize] + (end - start) / ((steps - 1) as f64));
+    }
+    output
 }
 
 #[cfg(test)]
