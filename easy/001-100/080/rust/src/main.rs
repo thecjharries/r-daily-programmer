@@ -23,6 +23,10 @@ fn load_dictionary(file_path: String) -> Vec<String> {
     contents.lines().map(|x| x.to_string()).collect()
 }
 
+fn find_anagrams(word: String, dictionary: Vec<String>) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
