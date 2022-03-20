@@ -28,7 +28,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_load_dictionary() {
+        assert_eq!(load_dictionary("../enable1.txt".to_string()).len(), 172820);
     }
 }
