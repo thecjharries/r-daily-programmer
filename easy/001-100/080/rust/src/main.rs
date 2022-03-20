@@ -20,7 +20,10 @@ fn main() {
 
 fn load_dictionary(file_path: String) -> Vec<String> {
     let contents = fs::read_to_string(file_path).expect("Something went wrong reading the file");
-    contents.lines().map(|x| x.to_string()).collect()
+    contents
+        .lines()
+        .map(|x| x.to_uppercase().to_string())
+        .collect()
 }
 
 fn find_anagrams(word: String, dictionary: Vec<String>) -> Vec<String> {
