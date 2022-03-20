@@ -38,4 +38,21 @@ mod tests {
     fn test_load_dictionary() {
         assert_eq!(load_dictionary("../enable1.txt".to_string()).len(), 172820);
     }
+
+    #[test]
+    fn test_find_anagrams() {
+        let dictionary = load_dictionary("../enable1.txt".to_string());
+        assert_eq!(
+            find_anagrams("RAD".to_string(), &dictionary),
+            vec!["RAD".to_string()]
+        );
+        assert_eq!(
+            find_anagrams("LEPROUS".to_string(), &dictionary),
+            vec![
+                "LEPROUS".to_string(),
+                "PELORUS".to_string(),
+                "SPORULE".to_string()
+            ]
+        );
+    }
 }
