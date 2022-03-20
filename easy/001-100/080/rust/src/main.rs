@@ -26,8 +26,20 @@ fn load_dictionary(file_path: String) -> Vec<String> {
         .collect()
 }
 
-fn find_anagrams(word: String, dictionary: Vec<String>) -> Vec<String> {
-    Vec::new()
+fn find_anagrams(word: String, dictionary: &Vec<String>) -> Vec<String> {
+    let mut anagrams = Vec::new();
+    let mut word_chars: Vec<char> = word.chars().collect();
+    word_chars.sort_by(|a, b| b.cmp(a));
+    for entry in dictionary {
+        if entry.len() == word.len() {
+            let mut entry_chars: Vec<char> = entry.chars().collect();
+            entry_chars.sort_by(|a, b| b.cmp(a));
+            if entry_chars == word_chars {
+                anagrams.push(entry.to_string());
+            }
+        }
+    }
+    anagrams
 }
 
 #[cfg(test)]
