@@ -12,8 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fs;
+
 fn main() {
     println!("rad");
+}
+
+fn load_dictionary(file_path: String) -> Vec<String> {
+    let contents = fs::read_to_string(file_path).expect("Something went wrong reading the file");
+    contents.lines().map(|x| x.to_string()).collect()
 }
 
 #[cfg(test)]
