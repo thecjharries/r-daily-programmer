@@ -34,7 +34,7 @@ mod tests {
     #[test]
     fn test_derivative() {
         assert_eq!(
-            derivate(-1.0, 1.0, vec![-1.0,-.5,0,.5,1.0]),
+            derivative(-1.0, 1.0, vec![-1.0, -0.5, 0.0, 0.5, 1.0]),
             vec![1.0, 1.0, 1.0]
         );
     }
