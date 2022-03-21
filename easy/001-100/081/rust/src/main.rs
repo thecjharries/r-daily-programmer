@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_derivative() {
+        assert_eq!(
+            derivate(-1.0, 1.0, vec![-1.0,-.5,0,.5,1.0]),
+            vec![1.0, 1.0, 1.0]
+        );
     }
 }
