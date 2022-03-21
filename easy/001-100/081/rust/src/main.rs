@@ -16,8 +16,15 @@ fn main() {
     println!("rad");
 }
 
+// Note that a derivative is not defined at an endpoint
+// This means we can have at most y_range.len() - 2 points
 fn derivative(x_min: f64, x_max: f64, y_range: Vec<f64>) -> Vec<f64> {
-    Vec::new()
+    let x_bump = (x_max - x_min) / (y_range.len() - 1) as f64;
+    let mut slopes = Vec::new();
+    for index in 1..y_range.len() - 1 {
+        slopes.push((y_range[index + 1] - y_range[index - 1]) / (2.0 * x_bump));
+    }
+    slopes
 }
 
 #[cfg(test)]
