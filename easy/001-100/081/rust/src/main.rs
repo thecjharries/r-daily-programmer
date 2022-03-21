@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn derivative(x_min: f64, x_max: f64, y_range: Vec<f64>) -> Vec<f64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
