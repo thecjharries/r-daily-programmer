@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 fn main() {
     println!("rad");
 }
@@ -23,7 +25,7 @@ fn find_unique_substrings(alphabet: String) -> Vec<String> {
             result.push(alphabet[starting_index..=ending_index].to_string());
         }
     }
-    result
+    result.into_iter().unique().collect()
 }
 
 #[cfg(test)]
