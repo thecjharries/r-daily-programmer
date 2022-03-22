@@ -44,7 +44,10 @@ mod tests {
         );
         assert_eq!(
             find_unique_substrings("hello".to_string()),
-            vec!["h", "he", "hel", "helo", "e", "el", "elo", "l", "lo", "o"]
+            vec![
+                "h", "he", "hel", "hell", "hello", "e", "el", "ell", "ello", "l", "ll", "llo",
+                "lo", "o"
+            ]
         )
     }
 }
