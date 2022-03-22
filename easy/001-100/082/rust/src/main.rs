@@ -17,7 +17,20 @@ fn main() {
 }
 
 fn find_unique_substrings(alphabet: String) -> Vec<String> {
-    Vec::new()
+    if 1 == alphabet.len() {
+        return vec![alphabet];
+    }
+    let mut unique_characters = alphabet.chars().collect::<Vec<char>>();
+    unique_characters.reverse();
+    let current = unique_characters.pop().unwrap();
+    let mut next = find_unique_substrings(unique_characters.iter().collect::<String>());
+    let mut result = Vec::new();
+    result.push(current.to_string());
+    for substring in &next {
+        result.push(format!("{}{}", current, substring));
+    }
+    result.append(&mut next);
+    result
 }
 
 #[cfg(test)]
