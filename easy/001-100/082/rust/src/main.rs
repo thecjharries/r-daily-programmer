@@ -25,7 +25,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_unique_substrings() {
+        assert_eq!(
+            find_unique_substrings("abc".to_string()),
+            vec!["a", "ab", "abc", "b", "bc", "c"]
+        );
+        assert_eq!(
+            find_unique_substrings("abcd".to_string()),
+            vec!["a", "ab", "abc", "abcd", "b", "bc", "bcd", "c", "cd", "d"]
+        );
+        assert_eq!(
+            find_unique_substrings("hello".to_string()),
+            vec!["h", "he", "hel", "helo", "e", "el", "elo", "l", "lo", "o"]
+        )
     }
 }
