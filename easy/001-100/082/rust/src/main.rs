@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_unique_substrings(alphabet: String) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
