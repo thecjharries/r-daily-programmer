@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_representation(number: u128) -> (String, String) {
+    (format!("{}", number), format!("{}", number))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
