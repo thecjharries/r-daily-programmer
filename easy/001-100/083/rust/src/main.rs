@@ -25,7 +25,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_representation() {
+        assert_eq!(
+            build_representation(1234567891111),
+            (
+                "1 trillion, 234 billion, 567 million, 891 thousand, and 111".to_string(),
+                "1 billion, 234 milliard, 567 million, 891 thousand, and 111".to_string()
+            )
+        )
     }
 }
