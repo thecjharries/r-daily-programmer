@@ -39,7 +39,25 @@ fn main() {
 }
 
 fn build_representation(number: u128) -> (String, String) {
-    (format!("{}", number), format!("{}", number))
+    let mut short = String::new();
+    let mut long = String::new();
+    let mut current = number;
+    let mut comma = "";
+    let mut non_zero_components = 0;
+    for index in 0..SCALE.len() {
+        let (divisor, short_name, long_name) = &SCALE[index];
+        if *divisor <= current {
+            let count = current / *divisor;
+            if 0 < count {
+                short.push_str(&format!("{}{} {}", comma, count, short_name));
+                long.push_str(&format!("{}{} {}", comma, count, long_name));
+                comma = ", ";
+                non_zero_components += 1;
+            }
+            current = current % *divisor;
+        }
+    }
+    (short, long)
 }
 
 #[cfg(test)]
