@@ -12,6 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref SCALE: Vec<(u128, String, String)> = vec![
+        (1000000000000000000, "quintillion".to_string(), "trillion".to_string()),
+        (1000000000000000, "quadrillion".to_string(), "billiard".to_string()),
+        (1000000000000, "trillion".to_string(), "billion".to_string()),
+        (1000000000, "billion",.to_string() "milliard".to_string()),
+        (1000000, "million".to_string(), "million".to_string()),
+        (1000, "thousand".to_string(), "thousand".to_string()),
+        (1, "".to_string(), "".to_string()),
+    ];
+}
+
 fn main() {
     println!("rad");
 }
