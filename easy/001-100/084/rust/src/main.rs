@@ -16,7 +16,24 @@ fn main() {
     println!("rad");
 }
 
-fn game_loop() {}
+fn game_loop() {
+    let mut north_south = 0;
+    let mut east_west = 0;
+    loop {
+        let mut input = String::new();
+        println!("Action? (n/s/e/w/q)");
+        std::io::stdin().read_line(&mut input).unwrap();
+        match input {
+            "n\n" => north_south += 1,
+            "s\n" => north_south -= 1,
+            "e\n" => east_west += 1,
+            "w\n" => east_west -= 1,
+            "q\n" => return,
+            _ => println!("Invalid input"),
+        }
+        println!("You are at {} {}", north_south, east_west);
+    }
+}
 
 #[cfg(test)]
 mod tests {
