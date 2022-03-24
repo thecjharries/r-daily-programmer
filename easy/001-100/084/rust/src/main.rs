@@ -13,7 +13,7 @@
 // limitations under the License.
 
 fn main() {
-    println!("rad");
+    game_loop();
 }
 
 fn game_loop() {
