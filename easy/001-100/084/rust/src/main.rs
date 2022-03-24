@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn game_loop() {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
