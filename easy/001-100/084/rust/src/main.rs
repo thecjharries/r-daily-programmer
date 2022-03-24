@@ -23,7 +23,7 @@ fn game_loop() {
         let mut input = String::new();
         println!("Action? (n/s/e/w/q)");
         std::io::stdin().read_line(&mut input).unwrap();
-        match input {
+        match input.as_str() {
             "n\n" => north_south += 1,
             "s\n" => north_south -= 1,
             "e\n" => east_west += 1,
