@@ -28,8 +28,8 @@ fn parse_matrix(input: &str) -> Vec<Vec<i64>> {
     matrix
 }
 
-fn find_sums_and_sort(matrix: Vec<Vec<i64>>) -> (i64, Vec<Vec<i64>>, i64, Vec<Vec<i64>>) {
-    (matrix[0][0], matrix, matrix[0][matrix[0].len() - 1], matrix)
+fn find_sums(matrix: Vec<Vec<i64>>) -> (Vec<i64>, Vec<i64>) {
+    (Vec::new(), Vec::new())
 }
 
 #[cfg(test)]
@@ -47,5 +47,17 @@ mod tests {
             ),
             vec![vec![10, 5, 4, 20], vec![9, 33, 27, 16], vec![11, 6, 55, 3]]
         );
+    }
+
+    #[test]
+    fn test_find_sums() {
+        assert_eq!(
+            find_sums(vec![
+                vec![10, 5, 4, 20],
+                vec![9, 33, 27, 16],
+                vec![11, 6, 55, 3]
+            ]),
+            (vec![39, 85, 75], vec![30, 44, 86, 39])
+        )
     }
 }
