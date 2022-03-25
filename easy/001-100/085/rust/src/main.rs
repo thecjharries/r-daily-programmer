@@ -29,7 +29,15 @@ fn parse_matrix(input: &str) -> Vec<Vec<i64>> {
 }
 
 fn find_sums(matrix: Vec<Vec<i64>>) -> (Vec<i64>, Vec<i64>) {
-    (Vec::new(), Vec::new())
+    let mut col_sums = vec![0; matrix[0].len()];
+    let mut row_sums = vec![0; matrix.len()];
+    for row_index in 0..matrix.len() {
+        for col_index in 0..matrix[0].len() {
+            col_sums[col_index] += matrix[row_index][col_index];
+            row_sums[row_index] += matrix[row_index][col_index];
+        }
+    }
+    (row_sums, col_sums)
 }
 
 #[cfg(test)]
