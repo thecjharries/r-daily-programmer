@@ -17,7 +17,15 @@ fn main() {
 }
 
 fn parse_matrix(input: &str) -> Vec<Vec<i64>> {
-    Vec::new()
+    let mut matrix = Vec::new();
+    for line in input.lines() {
+        let mut row = Vec::new();
+        for num in line.split_whitespace() {
+            row.push(num.parse().unwrap());
+        }
+        matrix.push(row);
+    }
+    matrix
 }
 
 #[cfg(test)]
