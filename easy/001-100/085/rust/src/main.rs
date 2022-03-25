@@ -25,7 +25,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_matrix() {
+        assert_eq!(
+            parse_matrix(
+                "    10 5 4 20
+    9 33 27 16
+    11 6 55 3
+"
+            ),
+            vec![vec![10, 5, 4, 20], vec![9, 33, 27, 16], vec![11, 6, 55, 3]]
+        );
     }
 }
