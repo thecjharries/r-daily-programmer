@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_matrix(input: &str) -> Vec<Vec<i64>> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
