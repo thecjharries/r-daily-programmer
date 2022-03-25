@@ -28,6 +28,10 @@ fn parse_matrix(input: &str) -> Vec<Vec<i64>> {
     matrix
 }
 
+fn find_sums_and_sort(matrix: Vec<Vec<i64>>) -> (i64, Vec<Vec<i64>>, i64, Vec<Vec<i64>>) {
+    (matrix[0][0], matrix, matrix[0][matrix[0].len() - 1], matrix)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
