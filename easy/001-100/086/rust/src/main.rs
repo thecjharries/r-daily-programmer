@@ -37,6 +37,10 @@ fn compress_run_length(input: &str) -> Vec<(i32, char)> {
     result
 }
 
+fn decompress_run_length(input: Vec<(i32, char)>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
