@@ -17,7 +17,24 @@ fn main() {
 }
 
 fn compress_run_length(input: &str) -> Vec<(i32, char)> {
-    Vec::new()
+    let mut result = Vec::new();
+    let mut count = 0;
+    let mut last_char = ' ';
+    for c in input.chars() {
+        if c == last_char {
+            count += 1;
+        } else {
+            if count > 0 {
+                result.push((count, last_char));
+            }
+            count = 1;
+            last_char = c;
+        }
+    }
+    if count > 0 {
+        result.push((count, last_char));
+    }
+    result
 }
 
 #[cfg(test)]
