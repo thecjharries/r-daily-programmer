@@ -38,7 +38,13 @@ fn compress_run_length(input: &str) -> Vec<(i32, char)> {
 }
 
 fn decompress_run_length(input: Vec<(i32, char)>) -> String {
-    String::new()
+    let mut result = String::new();
+    for (count, c) in input {
+        for _ in 0..count {
+            result.push(c);
+        }
+    }
+    result
 }
 
 #[cfg(test)]
