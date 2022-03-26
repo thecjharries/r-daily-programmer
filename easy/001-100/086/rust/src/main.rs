@@ -25,7 +25,20 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compress_run_length() {
+        assert_eq!(
+            compress_run_length("Heeeeelllllooooo nurse"),
+            vec![
+                (1, 'H'),
+                (5, 'e'),
+                (5, 'l'),
+                (5, 'o'),
+                (1, 'n'),
+                (1, 'u'),
+                (1, 'r'),
+                (1, 's'),
+                (1, 'e')
+            ]
+        )
     }
 }
