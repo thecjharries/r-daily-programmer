@@ -64,4 +64,24 @@ mod tests {
             ]
         )
     }
+
+    #[test]
+    fn test_decompress_run_length() {
+        assert_eq!(
+            decompress_run_length(vec![
+                (1, 'H'),
+                (5, 'e'),
+                (5, 'l'),
+                (5, 'o'),
+                (1, ' '),
+                (1, 'n'),
+                (1, 'u'),
+                (1, 'r'),
+                (1, 's'),
+                (1, 'e'),
+                (1, '!')
+            ]),
+            "Heeeeelllllooooo nurse!"
+        )
+    }
 }
