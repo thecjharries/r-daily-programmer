@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn compress_run_length(input: &str) -> Vec<(i32, char)> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
