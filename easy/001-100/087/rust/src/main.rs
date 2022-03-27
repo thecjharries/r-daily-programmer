@@ -24,9 +24,22 @@ trait Intersects {
 
 impl Intersects for Rectangle {
     fn intersects(&self, other: &Self) -> Self {
+        let mut top_left = (-1, -1);
+        let mut bottom_right = (-1, -1);
+        if self.top_left.0 < other.bottom_right.0 && self.bottom_right.0 > other.top_left.0 {
+            top_left.0 = self.top_left.0.max(other.top_left.0);
+            top_left.1 = self.top_left.1.max(other.top_left.1);
+            bottom_right.0 = self.bottom_right.0.min(other.bottom_right.0);
+            bottom_right.1 = self.bottom_right.1.min(other.bottom_right.1);
+        } else if other.top_left.0 < self.bottom_right.0 && other.bottom_right.0 > self.top_left.0 {
+            top_left.0 = other.top_left.0.max(self.top_left.0);
+            top_left.1 = other.top_left.1.max(self.top_left.1);
+            bottom_right.0 = other.bottom_right.0.min(self.bottom_right.0);
+            bottom_right.1 = other.bottom_right.1.min(self.bottom_right.1);
+        }
         Rectangle {
-            top_left: (-1, -1),
-            bottom_right: (-1, -1),
+            top_left,
+            bottom_right,
         }
     }
 }
