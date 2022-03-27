@@ -21,6 +21,15 @@ trait Intersects {
     fn intersects(&self, other: &Self) -> Self;
 }
 
+impl Intersects for Rectangle {
+    fn intersects(&self, other: &Self) -> Self {
+        Rectangle {
+            top_left: (-1, -1),
+            bottom_right: (-1, -1),
+        }
+    }
+}
+
 fn main() {
     println!("rad");
 }
