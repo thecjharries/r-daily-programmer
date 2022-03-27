@@ -1,4 +1,4 @@
-# [8/10/2012] Challenge #87 [easy] (Rectangle intersection)
+    # [8/10/2012] Challenge #87 [easy] (Rectangle intersection)
 
 ## Source
 
