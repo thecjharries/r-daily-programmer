@@ -39,7 +39,36 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_intersects_for_rectangle() {
+        let first = Rectangle {
+            top_left: (3, 3),
+            bottom_right: (10, 10),
+        };
+        let second = Rectangle {
+            top_left: (6, 6),
+            bottom_right: (12, 12),
+        };
+        assert_eq!(
+            first.intersects(&second),
+            Rectangle {
+                top_left: (6, 6),
+                bottom_right: (10, 10),
+            }
+        );
+        let third = Rectangle {
+            top_left: (4, 4),
+            bottom_right: (5, 5),
+        };
+        let fourth = Rectangle {
+            top_left: (6, 6),
+            bottom_right: (10, 10),
+        };
+        assert_eq!(
+            third.intersects(&fourth),
+            Rectangle {
+                top_left: (-1, -1),
+                bottom_right: (-1, -1),
+            }
+        );
     }
 }
