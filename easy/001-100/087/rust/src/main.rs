@@ -17,6 +17,10 @@ struct Rectangle {
     bottom_right: (i32, i32),
 }
 
+trait Intersects {
+    fn intersects(&self, other: &Self) -> Self;
+}
+
 fn main() {
     println!("rad");
 }
