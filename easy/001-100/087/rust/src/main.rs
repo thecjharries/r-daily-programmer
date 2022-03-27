@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq)]
 struct Rectangle {
     top_left: (i32, i32),
     bottom_right: (i32, i32),
