@@ -16,6 +16,14 @@ fn main() {
     println!("rad");
 }
 
+fn vignere_encode(plaintext: &str, key: &str) -> String {
+    String::new()
+}
+
+fn vignere_decode(ciphertext: &str, key: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
