@@ -17,7 +17,17 @@ fn main() {
 }
 
 fn vignere_encode(plaintext: &str, key: &str) -> String {
-    String::new()
+    let plaintext_chars: Vec<char> = plaintext.to_uppercase().chars().collect();
+    let key_chars: Vec<char> = key.to_uppercase().chars().collect();
+    let mut result: String = String::new();
+    for (i, c) in plaintext_chars.iter().enumerate() {
+        let key_char = key_chars[i % key_chars.len()];
+        let key_char_num = key_char as u8 - 65;
+        let c_num = (*c as u8) - 65;
+        let result_num = (c_num + key_char_num) % 26;
+        result.push((result_num as u8 + 65) as char);
+    }
+    result
 }
 
 fn vignere_decode(ciphertext: &str, key: &str) -> String {
