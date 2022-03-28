@@ -42,4 +42,9 @@ mod tests {
     fn test_vignere_encode() {
         assert_eq!(vignere_encode("THECAKEISALIE", "GLADOS"), "ZSEFOCKTSDZAK");
     }
+
+    #[test]
+    fn test_vignere_decode() {
+        assert_eq!(vignere_decode("ZSEFOCKTSDZAK", "GLADOS"), "THECAKEISALIE");
+    }
 }
