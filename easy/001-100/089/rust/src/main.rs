@@ -51,4 +51,10 @@ mod tests {
             ]
         );
     }
+
+    #[test]
+    fn test_get_stats() {
+        let data = load_data("../dataset.txt");
+        assert_eq!(get_stats(data), (0.33, 0.07, 0.26));
+    }
 }
