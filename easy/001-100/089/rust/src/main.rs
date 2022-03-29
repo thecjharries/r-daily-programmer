@@ -30,7 +30,21 @@ fn load_data(filename: &str) -> Vec<f64> {
 }
 
 fn get_stats(data: Vec<f64>) -> (f64, f64, f64) {
-    (0.0, 0.0, 0.0)
+    let mut mean = 0.0;
+    let mut variance = 0.0;
+    for x in &data {
+        mean += x;
+    }
+    mean /= data.len() as f64;
+    for x in &data {
+        variance += (x - mean).powi(2);
+    }
+    variance /= data.len() as f64;
+    (
+        (mean * 100.0).round() / 100.0,
+        (variance * 100.0).round() / 100.0,
+        (variance.sqrt() * 100.0).round() / 100.0,
+    )
 }
 
 #[cfg(test)]
