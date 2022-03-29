@@ -12,12 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fs::File;
+use std::io::{BufRead, BufReader};
+
 fn main() {
     println!("rad");
 }
 
 fn load_data(filename: &str) -> Vec<f64> {
-    Vec::new()
+    let file = File::open(filename).expect("file not found");
+    let reader = BufReader::new(file);
+    reader
+        .lines()
+        .map(|line| line.expect("error reading line"))
+        .map(|line| line.parse::<f64>().expect("error parsing number"))
+        .collect()
 }
 
 #[cfg(test)]
