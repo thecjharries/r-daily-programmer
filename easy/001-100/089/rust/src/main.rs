@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn load_data(filename: &str) -> Vec<f64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
