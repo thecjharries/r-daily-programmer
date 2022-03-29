@@ -22,7 +22,7 @@ import (
 	"strings"
 )
 
-const dataFilename string = "./dataset.txt"
+const dataFilename string = "../dataset.txt"
 
 var zPrint = fmt.Println
 
