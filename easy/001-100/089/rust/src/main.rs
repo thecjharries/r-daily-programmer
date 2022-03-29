@@ -29,6 +29,10 @@ fn load_data(filename: &str) -> Vec<f64> {
         .collect()
 }
 
+fn get_stats(data: Vec<f64>) -> (f64, f64, f64) {
+    (0.0, 0.0, 0.0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
