@@ -17,7 +17,30 @@ fn main() {
 }
 
 fn build_raster(width: i32, height: i32, contents: &str) -> Vec<u8> {
-    Vec::new()
+    let mut raster = vec![0; (width * height) as usize];
+    let mut x = 0;
+    let mut y = 0;
+    for c in contents.chars() {
+        match c {
+            'P' => {
+                raster[(y * width + x) as usize] = 1;
+            }
+            'N' => {
+                y -= 1;
+            }
+            'S' => {
+                y += 1;
+            }
+            'E' => {
+                x += 1;
+            }
+            'W' => {
+                x -= 1;
+            }
+            _ => {}
+        }
+    }
+    raster
 }
 
 #[cfg(test)]
