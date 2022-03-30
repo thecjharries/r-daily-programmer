@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_raster() {
+        assert_eq!(
+            build_raster(5, 5, "PESPESPESPESPNNNNPWSPWSPWSPWSP"),
+            vec![1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1]
+        );
     }
 }
