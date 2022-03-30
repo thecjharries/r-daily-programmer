@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_raster(width: i32, height: i32, contents: &str) -> Vec<u8> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
