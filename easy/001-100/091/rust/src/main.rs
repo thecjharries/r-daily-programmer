@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::time::{Duration, Instant};
+
 fn main() {
     println!("rad");
 }
@@ -25,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_sleep_sort() {
+        let total_duration = Duration::from_secs(10);
+        let now = Instant::now();
+        let result = sleep_sort(vec![5, 4, 3, 2, 6, 7, 8, 10, 9, 1]);
+        assert!(now.elapsed() >= total_duration);
+        assert_eq!(result, vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     }
 }
