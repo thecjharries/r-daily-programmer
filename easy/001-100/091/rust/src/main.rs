@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn sleep_sort(numbers: Vec<i32>) -> Vec<i32> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
