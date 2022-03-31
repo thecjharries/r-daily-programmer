@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::sync::{Arc, Mutex};
+use std::thread::{sleep, spawn};
 use std::time::{Duration, Instant};
 
 fn main() {
@@ -19,7 +21,21 @@ fn main() {
 }
 
 fn sleep_sort(numbers: Vec<i32>) -> Vec<i32> {
-    Vec::new()
+    let result = Arc::new(Mutex::new(Vec::new()));
+    let mut handles = Vec::new();
+    for number in numbers {
+        let result = Arc::clone(&result);
+        let handle = spawn(move || {
+            sleep(Duration::from_secs(number as u64));
+            let mut result = result.lock().unwrap();
+            result.push(number);
+        });
+        handles.push(handle);
+    }
+    for handle in handles {
+        handle.join().unwrap();
+    }
+    Arc::try_unwrap(result).unwrap().into_inner().unwrap()
 }
 
 #[cfg(test)]
