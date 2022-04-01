@@ -12,6 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+late_lazy_static! {
+    static ref CHARACTERS: HashMap<u8, Vec<'static str>> = {
+        let mut m = HashMap::new();
+        m.insert(0, vec!["+-+", "| |", "+ +", "| |", "+-+"]);
+        m.insert(1, vec!["  +", "  |", "  +", "  |", "  +"]);
+        m.insert(2, vec!["+-+", "  |", "+-+", "|  ", "+-+"]);
+        m.insert(3, vec!["+-+", "  |", "+-+", "  |", "+-+"]);
+        m.insert(4, vec!["+ +", "| |", "+-+", "  |", "  +"]);
+        m.insert(5, vec!["+-+", "|  ", "+-+", "  |", "+-+"]);
+        m.insert(6, vec!["+-+", "|  ", "+-+", "| |", "+-+"]);
+        m.insert(7, vec!["+-+", "  |", "  +", "  |", "  +"]);
+        m.insert(8, vec!["+-+", "| |", "+-+", "| |", "+-+"]);
+        m.insert(9, vec!["+-+", "| |", "  +", "  |", "+-+"]);
+        m
+    };
+}
+
 fn main() {
     println!("rad");
 }
