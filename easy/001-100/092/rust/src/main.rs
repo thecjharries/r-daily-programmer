@@ -45,7 +45,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_print_number() {
+        assert_eq!(
+            print_number(5362),
+            vec![
+                "+-+ +-+ +-+ +-+".to_string(),
+                "|     | |     |".to_string(),
+                "+-+ +-+ +-+ +-+".to_string(),
+                "  |   | | | |  ".to_string(),
+                "+-+ +-+ +-+ +-+".to_string()
+            ]
+        );
     }
 }
