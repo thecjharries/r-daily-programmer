@@ -59,11 +59,11 @@ mod tests {
         assert_eq!(
             print_number(5362),
             vec![
-                "+-+ +-+ +-+ +-+".to_string(),
-                "|     | |     |".to_string(),
-                "+-+ +-+ +-+ +-+".to_string(),
-                "  |   | | | |  ".to_string(),
-                "+-+ +-+ +-+ +-+".to_string()
+                "+-+ +-+ +-+ +-+ ".to_string(),
+                "|     | |     | ".to_string(),
+                "+-+ +-+ +-+ +-+ ".to_string(),
+                "  |   | | | |   ".to_string(),
+                "+-+ +-+ +-+ +-+ ".to_string()
             ]
         );
     }
