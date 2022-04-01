@@ -15,8 +15,8 @@
 use lazy_static::lazy_static;
 use std::collections::HashMap;
 
-late_lazy_static! {
-    static ref CHARACTERS: HashMap<u8, Vec<'static str>> = {
+lazy_static! {
+    static ref CHARACTERS: HashMap<u64, Vec<&'static str>> = {
         let mut m = HashMap::new();
         m.insert(0, vec!["+-+", "| |", "+ +", "| |", "+-+"]);
         m.insert(1, vec!["  +", "  |", "  +", "  |", "  +"]);
