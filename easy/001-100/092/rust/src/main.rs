@@ -36,6 +36,10 @@ fn main() {
     println!("rad");
 }
 
+fn print_number(number: u64) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
