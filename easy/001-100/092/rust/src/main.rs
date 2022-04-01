@@ -37,7 +37,17 @@ fn main() {
 }
 
 fn print_number(number: u64) -> Vec<String> {
-    Vec::new()
+    let mut result = vec!["".to_string(); 5];
+    let mut working_number = number;
+    while working_number > 0 {
+        let digit = working_number % 10;
+        let digit_characters = CHARACTERS.get(&digit).unwrap();
+        for (index, element) in digit_characters.iter().enumerate() {
+            result[index] = format!("{} {}", element, result[index]);
+        }
+        working_number /= 10;
+    }
+    result
 }
 
 #[cfg(test)]
