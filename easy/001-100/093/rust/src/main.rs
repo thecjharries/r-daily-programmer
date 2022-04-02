@@ -69,7 +69,7 @@ lazy_static! {
     static ref MORSE_TO_ROMAN: HashMap<&'static str, &'static str> = {
         let mut m = HashMap::new();
         for (k, v) in ROMAN_TO_MORSE.iter() {
-            m.insert(v, k);
+            m.insert(*v, *k);
         }
         m
     };
