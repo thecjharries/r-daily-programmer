@@ -13,9 +13,11 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use regex::Regex;
 use std::collections::HashMap;
 
 lazy_static! {
+    static ref RE: Regex = Regex::new(r"^[.\- ]+$").unwrap();
     static ref ROMAN_TO_MORSE: HashMap<&'static str, &'static str> = {
         let mut m = HashMap::new();
         m.insert("0", "-----");
