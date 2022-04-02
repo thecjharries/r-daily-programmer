@@ -82,7 +82,33 @@ fn main() {
 }
 
 fn translate(input: &str) -> String {
-    String::new()
+    let mut output = String::new();
+    if RE.is_match(input) {
+        let exploded = input.split("  ").collect::<Vec<&str>>();
+        for word in exploded {
+            let mut morse = String::new();
+            for letter in word.split(" ") {
+                morse.push_str(MORSE_TO_ROMAN[letter]);
+            }
+            output.push_str(&morse);
+            output.push_str(" ");
+        }
+        output.pop();
+    } else {
+        let exploded = input.split(" ").collect::<Vec<&str>>();
+        for word in exploded {
+            let mut roman = String::new();
+            for letter in word.chars() {
+                roman.push_str(ROMAN_TO_MORSE[letter.to_string().as_str()]);
+                roman.push_str(" ");
+            }
+            output.push_str(&roman);
+            output.push_str(" ");
+        }
+        output.pop();
+        output.pop();
+    }
+    output
 }
 
 #[cfg(test)]
