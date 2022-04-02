@@ -79,7 +79,7 @@ fn main() {
     println!("rad");
 }
 
-fn decode(input: &str) -> String {
+fn translate(input: &str) -> String {
     String::new()
 }
 
@@ -88,7 +88,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_translate() {
+        assert_eq!(translate(""), "");
+        assert_eq!(translate("sos"), "... --- ...");
+        assert_eq!(translate("... --- ..."), "sos");
+        assert_eq!(translate("hello daily programmer good luck on the challenges today"), ".... . .-.. .-.. ---  -.. .- .. .-.. -.--  .--. .-. --- --. .-. .- -- -- . .-.  --. --- --- -..  .-.. ..- -.-. -.-  --- -.  - .... .  -.-. .... .- .-.. .-.. . -. --. . ...  - --- -.. .- -.--");
+        assert_eq!(translate(".... . .-.. .-.. ---  -.. .- .. .-.. -.--  .--. .-. --- --. .-. .- -- -- . .-.  --. --- --- -..  .-.. ..- -.-. -.-  --- -.  - .... .  -.-. .... .- .-.. .-.. . -. --. . ...  - --- -.. .- -.--"), "hello daily programmer good luck on the challenges today");
     }
 }
