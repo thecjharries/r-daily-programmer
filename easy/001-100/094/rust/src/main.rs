@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref ELEMENTS_FOR_EXERCISE: Vec<&'static str> =
+        vec!["O", "P", "Y", "I", "Ra", "Pr", "Er", "Am"];
+}
+
 fn main() {
     println!("rad");
 }
