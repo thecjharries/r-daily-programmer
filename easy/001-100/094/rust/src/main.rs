@@ -24,7 +24,22 @@ fn main() {
 }
 
 fn highlight(input: &str) -> Vec<String> {
-    Vec::new()
+    let mut results = Vec::new();
+    for element in ELEMENTS_FOR_EXERCISE.iter() {
+        let possible_index = input.to_lowercase().find(element.to_lowercase().as_str());
+        match possible_index {
+            Some(index) => {
+                results.push(format!(
+                    "{}[{}]{}",
+                    &input[0..index],
+                    element,
+                    &input[index + element.len()..]
+                ));
+            }
+            None => {}
+        }
+    }
+    results
 }
 
 #[cfg(test)]
