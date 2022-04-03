@@ -23,6 +23,10 @@ fn main() {
     println!("rad");
 }
 
+fn highlight(input: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
