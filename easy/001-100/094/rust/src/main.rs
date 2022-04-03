@@ -32,7 +32,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_highlight() {
+        assert_eq!(
+            highlight("dailyprogrammer"),
+            vec![
+                "dailypr[O]grammer".to_string(),
+                "daily[P]rogrammer".to_string(),
+                "dail[Y]programmer".to_string(),
+                "da[I]lyprogrammer".to_string(),
+                "dailyprog[Ra]mmer".to_string(),
+                "daily[Pr]ogrammer".to_string(),
+                "dailyprogramm[Er]".to_string(),
+                "dailyprogr[Am]mer".to_string()
+            ]
+        );
     }
 }
