@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn reverse_text(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
