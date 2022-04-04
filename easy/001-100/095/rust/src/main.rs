@@ -17,7 +17,14 @@ fn main() {
 }
 
 fn reverse_text(input: &str) -> String {
-    String::new()
+    let mut output = String::new();
+    for line in input.split("\n") {
+        let mut words = line.split(" ").collect::<Vec<_>>();
+        words.reverse();
+        output = format!("{}\n{}", &words.join(" "), output);
+    }
+    output.pop();
+    output
 }
 
 #[cfg(test)]
