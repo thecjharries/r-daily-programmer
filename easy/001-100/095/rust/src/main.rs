@@ -25,7 +25,29 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_reverse_text() {
+        assert_eq!(reverse_text(""), "");
+        assert_eq!(
+            reverse_text(
+                "Tyger! Tyger! burning bright
+In the forests of the night,
+What immortal hand or eye
+Could frame thy fearful symmetry?
+
+In what distant deeps or skies
+Burnt the fire of thine eyes?
+On what wings dare he aspire?
+What the hand dare sieze the fire?"
+            ),
+            "fire? the sieze dare hand the What
+aspire? he dare wings what On
+eyes? thine of fire the Burnt
+skies or deeps distant what In
+
+symmetry? fearful thy frame Could
+eye or hand immortal What
+night, the of forests the In
+bright burning Tyger! Tyger!"
+        )
     }
 }
