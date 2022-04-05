@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_players_from_money() {
+        assert_eq!(players_from_money(10), 1);
+        assert_eq!(players_from_money(20), 2);
+        assert_eq!(players_from_money(60), 3);
+        assert_eq!(players_from_money(80), 4);
     }
 }
