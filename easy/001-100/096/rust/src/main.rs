@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn players_from_money(money: u64) -> u64 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
