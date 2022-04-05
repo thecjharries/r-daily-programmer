@@ -17,7 +17,13 @@ fn main() {
 }
 
 fn players_from_money(money: u64) -> u64 {
-    0
+    let mut additional_controller: u64 = 2;
+    if 20 > money % 72 {
+        additional_controller = 1;
+    } else if 52 <= money % 72 {
+        additional_controller = 3;
+    }
+    additional_controller + (money / 72) * 3
 }
 
 #[cfg(test)]
