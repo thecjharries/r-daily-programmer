@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn walk_directory_and_dump_txt_files(directory_path: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
