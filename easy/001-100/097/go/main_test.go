@@ -16,7 +16,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 	"testing"
 
@@ -58,8 +57,7 @@ func (s *MainSuite) TestMain(c *C) {
 
 func (s *MainSuite) TestFindTextFilesInDirectory(c *C) {
 	desired := []string{"abc.txt", "def.txt", "ghi.txt"}
-	pwd, _ := os.Getwd()
-	output := findTextFilesInDirectory(pwd)
+	output := findTextFilesInDirectory("..")
 	basenames := make([]string, len(output))
 	for index, filename := range output {
 		basenames[index] = filepath.Base(filename)
@@ -68,14 +66,12 @@ func (s *MainSuite) TestFindTextFilesInDirectory(c *C) {
 }
 
 func (s *MainSuite) TestDumpTextFile(c *C) {
-	pwd, _ := os.Getwd()
-	input := filepath.Join(pwd, "abc.txt")
+	input := filepath.Join("..", "abc.txt")
 	output := "=== abc.txt (4 bytes)\nabc\n"
 	c.Assert(dumpTextFile(input), Equals, output)
 }
 
 func (s *MainSuite) TestWalkAndDumpTextFiles(c *C) {
-	pwd, _ := os.Getwd()
 	output := "=== abc.txt (4 bytes)\nabc\n\n\n=== def.txt (4 bytes)\ndef\n\n\n=== ghi.txt (4 bytes)\nghi\n\n\n"
-	c.Assert(walkAndDumpTxtFiles(pwd), Equals, output)
+	c.Assert(walkAndDumpTxtFiles(".."), Equals, output)
 }
