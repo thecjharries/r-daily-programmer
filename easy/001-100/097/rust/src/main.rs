@@ -12,12 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use glob::glob;
+
 fn main() {
     println!("rad");
 }
 
 fn walk_directory_and_dump_txt_files(directory_path: &str) -> String {
-    String::new()
+    let mut result = String::new();
+    for entry in
+        glob(format!("{}/*.txt", directory_path).as_str()).expect("Failed to read glob pattern")
+    {
+        let path = match entry {
+            Ok(path) => path,
+            Err(_e) => {
+                continue;
+            }
+        };
+        result.push_str(
+            format!(
+                "=== {} ({} bytes)\n{}\n\n",
+                path.file_name().unwrap().to_str().unwrap(),
+                path.metadata().unwrap().len(),
+                &std::fs::read_to_string(path.to_str().unwrap()).expect("Failed to read file"),
+            )
+            .as_str(),
+        );
+    }
+    result
 }
 
 #[cfg(test)]
