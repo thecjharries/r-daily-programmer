@@ -25,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_walk_directory_and_dump_txt_files() {
+        assert_eq!(walk_directory_and_dump_txt_files(".."), "=== abc.txt (4 bytes)\nabc\n\n\n=== def.txt (4 bytes)\ndef\n\n\n=== ghi.txt (4 bytes)\nghi\n\n\n".to_string());
     }
 }
