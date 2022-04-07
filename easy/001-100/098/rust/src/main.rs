@@ -47,11 +47,11 @@ mod tests {
     fn test_build_op_table() {
         assert_eq!(
             build_op_table("+", 2),
-            "+ | 0 1 2\n---------\n0 | 0 1 2\n 1 | 1 2 3\n 2 | 2 3 4\n".to_string()
+            "+ | 0 1 2\n---------\n0 | 0 1 2\n1 | 1 2 3\n2 | 2 3 4\n".to_string()
         );
         assert_eq!(
             build_op_table("*", 2),
-            "* | 0 1 2\n---------\n0 | 0 0 0 \n 1 | 0 1 2\n 2 | 0 2 4\n".to_string()
+            "* | 0 1 2\n---------\n0 | 0 0 0\n1 | 0 1 2\n2 | 0 2 4\n".to_string()
         );
     }
 }
