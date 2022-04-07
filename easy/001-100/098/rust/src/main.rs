@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_op_table(op: &str, max: i32) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
