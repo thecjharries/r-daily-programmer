@@ -17,7 +17,26 @@ fn main() {
 }
 
 fn build_op_table(op: &str, max: i32) -> String {
-    String::new()
+    let mut table = String::new();
+    table.push_str(format!("{} |", op).as_str());
+    for index in 0..max + 1 {
+        table.push_str(format!(" {}", index).as_str());
+    }
+    table.push_str(format!("\n{}\n", "-".repeat((3 + 2 * (max + 1)) as usize)).as_str());
+    for index in 0..max + 1 {
+        table.push_str(format!("{} |", index).as_str());
+        for second in 0..max + 1 {
+            match op {
+                "+" => table.push_str(format!(" {}", index + second).as_str()),
+                "-" => table.push_str(format!(" {}", index - second).as_str()),
+                "*" => table.push_str(format!(" {}", index * second).as_str()),
+                "/" => table.push_str(format!(" {}", index / second).as_str()),
+                _ => { /* do nothing */ }
+            }
+        }
+        table.push_str("\n");
+    }
+    table
 }
 
 #[cfg(test)]
