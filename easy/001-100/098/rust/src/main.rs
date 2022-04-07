@@ -25,7 +25,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_op_table() {
+        assert_eq!(
+            build_op_table("+", 2),
+            "+ | 0 1 2\n---------\n0 | 0 1 2\n 1 | 1 2 3\n 2 | 2 3 4\n".to_string()
+        );
+        assert_eq!(
+            build_op_table("*", 2),
+            "* | 0 1 2\n---------\n0 | 0 0 0 \n 1 | 0 1 2\n 2 | 0 2 4\n".to_string()
+        );
     }
 }
