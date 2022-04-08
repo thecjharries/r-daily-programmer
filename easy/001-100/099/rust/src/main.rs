@@ -12,8 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fs::File;
+use std::io::{BufRead, BufReader};
+
 fn main() {
     println!("rad");
+}
+
+fn find_words_in_alphabetical_order(list_of_words: Vec<String>) -> Vec<String> {
+    vec!["".to_string()]
 }
 
 #[cfg(test)]
@@ -22,6 +29,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let lines = BufReader::new(File::open("../enable1.txt").unwrap())
+            .lines()
+            .map(|l| l.expect("Could not read line"))
+            .collect::<Vec<String>>();
+        assert_eq!(
+            find_words_in_alphabetical_order(lines),
+            vec!["".to_string()]
+        );
     }
 }
