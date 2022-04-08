@@ -20,7 +20,16 @@ fn main() {
 }
 
 fn find_words_in_alphabetical_order(list_of_words: Vec<String>) -> Vec<String> {
-    vec!["".to_string()]
+    let mut words_in_alphabetical_order: Vec<String> = Vec::new();
+    for word in list_of_words {
+        let mut chars: Vec<char> = word.chars().collect();
+        chars.sort();
+        let sorted_word = chars.iter().collect::<String>();
+        if sorted_word == word {
+            words_in_alphabetical_order.push(word);
+        }
+    }
+    words_in_alphabetical_order
 }
 
 #[cfg(test)]
