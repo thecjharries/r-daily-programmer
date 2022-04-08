@@ -33,9 +33,6 @@ mod tests {
             .lines()
             .map(|l| l.expect("Could not read line"))
             .collect::<Vec<String>>();
-        assert_eq!(
-            find_words_in_alphabetical_order(lines),
-            vec!["".to_string()]
-        );
+        assert_eq!(find_words_in_alphabetical_order(lines).len(), 638);
     }
 }
