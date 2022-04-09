@@ -12,14 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Duration, TimeZone, Utc};
 
 fn main() {
     println!("rad");
 }
 
 fn determine_sleep_start(sleep_end: DateTime<Utc>) -> Vec<DateTime<Utc>> {
-    Vec::new()
+    vec![
+        sleep_end - Duration::minutes(6 * 90),
+        sleep_end - Duration::minutes(5 * 90),
+        sleep_end - Duration::minutes(4 * 90),
+        sleep_end - Duration::minutes(3 * 90),
+    ]
 }
 
 #[cfg(test)]
