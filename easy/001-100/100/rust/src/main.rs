@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::DateTime;
+
 fn main() {
     println!("rad");
+}
+
+fn determine_sleep_start(sleep_end: DateTime<Utc>) -> DateTime<Utc> {
+    sleep_end
 }
 
 #[cfg(test)]
