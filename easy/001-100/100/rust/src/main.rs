@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use chrono::DateTime;
+use chrono::{DateTime, Utc};
 
 fn main() {
     println!("rad");
 }
 
-fn determine_sleep_start(sleep_end: DateTime<Utc>) -> DateTime<Utc> {
-    sleep_end
+fn determine_sleep_start(sleep_end: DateTime<Utc>) -> Vec<DateTime<Utc>> {
+    Vec::new()
 }
 
 #[cfg(test)]
@@ -27,7 +27,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_sleep_start() {
+        assert_eq!(
+            determine_sleep_start(Utc.ymd(2020, 1, 1).and_hms(6, 15, 0)),
+            vec![
+                Utc.ymd(2019, 12, 31).and_hms(9, 15, 0),
+                Utc.ymd(2019, 12, 31).and_hms(10, 45, 0),
+                Utc.ymd(2020, 1, 1).and_hms(0, 15, 0),
+                Utc.ymd(2020, 1, 1).and_hms(1, 45, 0)
+            ]
+        );
     }
 }
