@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_years_with_no_repeated_digits() {
+        assert_eq!(
+            find_years_with_no_repeated_digits(1980, 1987),
+            vec![1981, 1982, 1983, 1984, 1985, 1986, 1987]
+        );
     }
 }
