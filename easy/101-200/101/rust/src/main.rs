@@ -17,7 +17,16 @@ fn main() {
 }
 
 fn find_years_with_no_repeated_digits(start: u32, end: u32) -> Vec<u32> {
-    Vec::new()
+    let mut result = Vec::new();
+    for year in start..end + 1 {
+        let mut digits = format!("{}", year).chars().collect::<Vec<char>>();
+        digits.sort();
+        digits.dedup();
+        if digits.len() == 4 {
+            result.push(year);
+        }
+    }
+    result
 }
 
 #[cfg(test)]
@@ -28,7 +37,7 @@ mod tests {
     fn test_find_years_with_no_repeated_digits() {
         assert_eq!(
             find_years_with_no_repeated_digits(1980, 1987),
-            vec![1981, 1982, 1983, 1984, 1985, 1986, 1987]
+            vec![1980, 1982, 1983, 1984, 1985, 1986, 1987]
         );
     }
 }
