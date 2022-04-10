@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_years_with_no_repeated_digits(start: u32, end: u32) -> Vec<u32> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
