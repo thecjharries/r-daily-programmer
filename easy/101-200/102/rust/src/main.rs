@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
+lazy_static! {
+    static ref ROLL_PATTERN: Regex =
+        Regex::new(r"(?P<count>\d*)d(?P<sides>\d+)(?P<modifier>[+\-]\d+)?").unwrap();
+}
+
 fn main() {
     println!("rad");
 }
