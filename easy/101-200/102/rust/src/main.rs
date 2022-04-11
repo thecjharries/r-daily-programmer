@@ -36,8 +36,11 @@ mod tests {
 
     #[test]
     fn test_roll_from_notation() {
-        assert_eq!(roll_from_notation("d6", Pcg64::from_seed([0; 16])), 20);
-        assert_eq!(roll_from_notation("3d4-7", Pcg64::from_seed([0; 16])), 20);
-        assert_eq!(roll_from_notation("5d12+2", Pcg64::from_seed([0; 16])), 20);
+        assert_eq!(roll_from_notation("d6", &mut Pcg64::seed_from_u64(0)), 2);
+        assert_eq!(roll_from_notation("3d4-7", &mut Pcg64::seed_from_u64(0)), 2);
+        assert_eq!(
+            roll_from_notation("5d12+2", &mut Pcg64::seed_from_u64(0)),
+            27
+        );
     }
 }
