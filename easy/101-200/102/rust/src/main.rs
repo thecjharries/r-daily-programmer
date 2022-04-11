@@ -26,8 +26,30 @@ fn main() {
     println!("rad");
 }
 
-fn roll_from_notation(notation: &str, rng: Pcg64) -> u32 {
-    0
+fn roll_from_notation(notation: &str, rng: &mut Pcg64) -> u32 {
+    let notation_match = NOTATION_PATTERN.captures(notation).unwrap();
+    let count = notation_match
+        .name("count")
+        .map(|m| m.as_str().parse::<u32>().unwrap_or(1))
+        .unwrap_or(1);
+    let sides = notation_match
+        .name("sides")
+        .map(|m| m.as_str().parse::<u32>().unwrap())
+        .unwrap();
+    let modifier = notation_match
+        .name("modifier")
+        .map(|m| m.as_str().parse::<i32>().unwrap())
+        .unwrap_or(0);
+    let mut result = 0;
+    for _ in 0..count {
+        result += rng.gen_range(1..sides + 1);
+    }
+    if 0 > modifier {
+        result -= modifier.abs() as u32;
+    } else {
+        result += modifier as u32;
+    }
+    result
 }
 
 #[cfg(test)]
