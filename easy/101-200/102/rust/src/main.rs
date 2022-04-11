@@ -18,7 +18,7 @@ use rand_pcg::Pcg64;
 use regex::Regex;
 
 lazy_static! {
-    static ref ROLL_PATTERN: Regex =
+    static ref NOTATION_PATTERN: Regex =
         Regex::new(r"(?P<count>\d*)d(?P<sides>\d+)(?P<modifier>[+\-]\d+)?").unwrap();
 }
 
