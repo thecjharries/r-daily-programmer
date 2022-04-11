@@ -13,6 +13,8 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::prelude::*;
+use rand_pcg::Pcg64;
 use regex::Regex;
 
 lazy_static! {
@@ -22,6 +24,10 @@ lazy_static! {
 
 fn main() {
     println!("rad");
+}
+
+fn roll_from_notation(notation: &str, rng: Pcg64) -> u32 {
+    0
 }
 
 #[cfg(test)]
