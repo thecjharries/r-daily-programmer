@@ -35,7 +35,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_roll_from_notation() {
+        assert_eq!(roll_from_notation("d6", Pcg64::from_seed([0; 16])), 20);
+        assert_eq!(roll_from_notation("3d4-7", Pcg64::from_seed([0; 16])), 20);
+        assert_eq!(roll_from_notation("5d12+2", Pcg64::from_seed([0; 16])), 20);
     }
 }
