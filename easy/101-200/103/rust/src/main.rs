@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::prelude::*;
 use rand::Rng;
 use std::collections::HashMap;
 
@@ -111,8 +112,17 @@ fn main() {
     println!("rad");
 }
 
-fn translate_to_leet(input: &str, rng: &mut Rng) -> String {
-    String::new()
+fn translate_to_leet<R: Rng>(input: &str, rng: &mut R) -> String {
+    let mut output = String::new();
+    for c in input.to_uppercase().chars() {
+        if let Some(leets) = ENGLISH_TO_LEET.get(&c) {
+            let leet = leets.choose(rng).unwrap();
+            output.push_str(leet);
+        } else {
+            output.push(c);
+        }
+    }
+    output
 }
 
 #[cfg(test)]
