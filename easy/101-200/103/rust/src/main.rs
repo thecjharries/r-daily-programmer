@@ -15,6 +15,7 @@
 use lazy_static::lazy_static;
 use rand::prelude::*;
 use rand::Rng;
+use rand_pcg::Pcg64;
 use std::collections::HashMap;
 
 lazy_static! {
@@ -132,8 +133,8 @@ mod tests {
     #[test]
     fn test_translate_to_leet() {
         assert_eq!(
-            translate_to_leet("Hello, world!", &mut rand::thread_rng()),
-            "H3ll0, w0rld!"
+            translate_to_leet("Hello, world!", &mut Pcg64::seed_from_u64(0)),
+            ":-:3][|_{}, \\\\//\\\\//()|2|_|]!"
         );
     }
 }
