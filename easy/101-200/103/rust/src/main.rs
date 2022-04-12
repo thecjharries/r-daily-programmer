@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::Rng;
 use std::collections::HashMap;
 
 lazy_static! {
@@ -108,6 +109,10 @@ lazy_static! {
 
 fn main() {
     println!("rad");
+}
+
+fn translate_to_leet(input: &str, rng: &mut Rng) -> String {
+    String::new()
 }
 
 #[cfg(test)]
