@@ -120,7 +120,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_translate_to_leet() {
+        assert_eq!(
+            translate_to_leet("Hello, world!", &mut rand::thread_rng()),
+            "H3ll0, w0rld!"
+        );
     }
 }
