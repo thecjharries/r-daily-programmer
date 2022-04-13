@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_run_simulation() {
+        assert_eq!(run_simulation(10), 7);
+        assert_eq!(run_simulation(5991), 3675);
     }
 }
