@@ -17,7 +17,13 @@ fn main() {
 }
 
 fn run_simulation(total_days: u32) -> u32 {
-    0
+    let mut operational_days = 0;
+    for current_day in 1..total_days + 1 {
+        if 0 != current_day % 3 && 0 != current_day % 14 && 0 != current_day % 100 {
+            operational_days += 1;
+        }
+    }
+    operational_days
 }
 
 #[cfg(test)]
