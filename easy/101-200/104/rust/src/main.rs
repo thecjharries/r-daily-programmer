@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn run_simulation(total_days: u32) -> u32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
