@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn unscramble_words(scrambled_words: Vec<&str>, word_list: &str) -> Vec<String> {
+fn unscramble_words(scrambled_words: Vec<&str>, word_list: Vec<String>) -> Vec<String> {
     Vec::new()
 }
 
@@ -26,6 +26,16 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let words = BufReader::new(File::open("../enable1.txt").unwrap())
+            .lines()
+            .map(|l| l.expect("Could not read line"))
+            .collect::<Vec<String>>();
+        let scrambled_words = vec!["tac", "eeb", "ogd"];
+        let expected: HashMap<String, Vec<string>> = HashMap::from_iter(vec![
+            ("tac".to_string(), vec!["act", "cat"]),
+            ("eeb".to_string(), vec!["bee"]),
+            ("ogd".to_string(), vec!["dog", "god"]),
+        ]);
+        assert_eq!(unscramble_words(scrambled_words, words), expected);
     }
 }
