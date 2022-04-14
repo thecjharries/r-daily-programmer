@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn unscramble_words(scrambled_words: Vec<&str>, word_list: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
