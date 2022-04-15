@@ -19,7 +19,7 @@ use std::io::{BufRead, BufReader};
 
 lazy_static! {
     static ref PROMPT_PATTERN: Regex =
-        Regex::new(r#"[\".,:;!?()[\]{}]|[^".,:;!?()[\]{}\s]+"#).unwrap();
+        Regex::new(r#"[".,:;!?()\[\]{}]|[^".,:;!?()\[\]{}\s]+"#).unwrap();
 }
 
 fn main() {
