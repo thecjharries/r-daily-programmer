@@ -26,8 +26,21 @@ fn main() {
     println!("rad");
 }
 
-fn determine_top_ten_words(text: &str) -> Vec<String> {
-    Vec::new()
+fn determine_top_ten_words(text: String) -> Vec<(String, u32)> {
+    let words = PROMPT_PATTERN.find_iter(text.as_str());
+    let mut word_counts = std::collections::HashMap::new();
+    for word in words {
+        let word = word.as_str();
+        let count = word_counts.entry(word).or_insert(0);
+        *count += 1;
+    }
+    let mut top_ten = word_counts
+        .iter()
+        .map(|(word, count)| (word.to_string(), *count))
+        .collect::<Vec<_>>();
+    top_ten.sort_by(|a, b| b.1.cmp(&a.1));
+    top_ten.truncate(10);
+    top_ten
 }
 
 #[cfg(test)]
