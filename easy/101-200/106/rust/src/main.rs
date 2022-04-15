@@ -51,7 +51,18 @@ mod tests {
         let text = read_to_string("../pg5200.txt").unwrap();
         assert_eq!(
             determine_top_ten_words(text),
-            vec!["the", "and", "to", "of", "a", "in", "that", "have", "it", "for"]
+            vec![
+                (",".to_string(), 1443),
+                ("the".to_string(), 1264),
+                (".".to_string(), 959),
+                ("to".to_string(), 827),
+                ("and".to_string(), 680),
+                ("of".to_string(), 541),
+                ("his".to_string(), 524),
+                ("he".to_string(), 496),
+                ("was".to_string(), 408),
+                ("in".to_string(), 395)
+            ]
         );
     }
 }
