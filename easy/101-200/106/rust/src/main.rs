@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_top_ten_words(text: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
