@@ -14,6 +14,8 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 lazy_static! {
     static ref PROMPT_PATTERN: Regex =
@@ -33,7 +35,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_top_ten_words() {
+        let text = BufReader::new(File::open("../pg5200.txt").unwrap());
+        assert_eq!(
+            determine_top_ten_words(text),
+            vec!["the", "and", "to", "of", "a", "in", "that", "have", "it", "for"]
+        );
     }
 }
