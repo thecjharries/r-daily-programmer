@@ -16,8 +16,37 @@ fn main() {
     println!("rad");
 }
 
-fn unscramble_words(scrambled_words: Vec<&str>, word_list: Vec<String>) -> Vec<String> {
-    Vec::new()
+fn unscramble_words(
+    scrambled_words: Vec<&str>,
+    word_list: Vec<String>,
+) -> HashMap<String, Vec<String>> {
+    let sorted_scrambled = scrambled_words
+        .iter()
+        .map(|s| {
+            let mut sorted = s.chars().collect::<Vec<char>>();
+            sorted.sort();
+            sorted
+        })
+        .collect::<Vec<Vec<char>>>();
+    let mut unscrambled_words: HashMap<String, Vec<String>> = HashMap::new();
+    for word in word_list {
+        let mut sorted_word = word.chars().collect::<Vec<char>>();
+        sorted_word.sort();
+        for (index, scrambled) in sorted_scrambled.iter().enumerate() {
+            if sorted_word == *scrambled {
+                let key = scrambled_words[index].to_string();
+                if unscrambled_words.contains_key(&key) {
+                    unscrambled_words
+                        .get_mut(&key)
+                        .unwrap()
+                        .push(word.to_string());
+                } else {
+                    unscrambled_words.insert(key, vec![word.to_string()]);
+                }
+            }
+        }
+    }
+    unscrambled_words
 }
 
 #[cfg(test)]
