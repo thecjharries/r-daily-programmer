@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
+lazy_static! {
+    static ref PROMPT_PATTERN: Regex =
+        Regex::new(r#"[\".,:;!?()[\]{}]|[^".,:;!?()[\]{}\s]+"#).unwrap();
+}
+
 fn main() {
     println!("rad");
 }
