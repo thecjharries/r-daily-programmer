@@ -64,10 +64,16 @@ mod tests {
             .map(|l| l.expect("Could not read line"))
             .collect::<Vec<String>>();
         let scrambled_words = vec!["tac", "eeb", "ogd"];
-        let expected: HashMap<String, Vec<string>> = HashMap::from_iter(vec![
-            ("tac".to_string(), vec!["act", "cat"]),
-            ("eeb".to_string(), vec!["bee"]),
-            ("ogd".to_string(), vec!["dog", "god"]),
+        let expected: HashMap<String, Vec<String>> = HashMap::from_iter(vec![
+            (
+                "tac".to_string(),
+                vec!["act".to_string(), "cat".to_string()],
+            ),
+            ("eeb".to_string(), vec!["bee".to_string()]),
+            (
+                "ogd".to_string(),
+                vec!["dog".to_string(), "god".to_string()],
+            ),
         ]);
         assert_eq!(unscramble_words(scrambled_words, words), expected);
     }
