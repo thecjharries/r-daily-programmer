@@ -41,3 +41,6 @@ stub:
 git-prompt-runner:
 	$(GIT) add src/main.rs
 	$(GIT) commit -m 'Add prompt runner to main'
+
+patch:
+	$(GIT) add src --patch
