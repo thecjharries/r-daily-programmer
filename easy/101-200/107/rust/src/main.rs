@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_possible_decodes(number: u64) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
