@@ -25,7 +25,28 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_possible_decodes() {
+        assert_eq!(
+            find_possible_decodes(123),
+            vec!["abc".to_string(), "aw".to_string(), "lc".to_string()]
+        );
+        assert_eq!(
+            find_possible_decodes(85121215),
+            vec![
+                "heababae".to_string(),
+                "heababo".to_string(),
+                "heabaue".to_string(),
+                "heablae".to_string(),
+                "heablo".to_string(),
+                "heaubae".to_string(),
+                "heaubo".to_string(),
+                "heauue".to_string(),
+                "helabae".to_string(),
+                "helabo".to_string(),
+                "helaue".to_string(),
+                "hellae".to_string(),
+                "hello".to_string()
+            ]
+        );
     }
 }
