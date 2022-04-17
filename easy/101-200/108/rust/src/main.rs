@@ -17,7 +17,9 @@ fn main() {
 }
 
 fn convert_to_scientific(number: f64) -> String {
-    String::new()
+    let exponent = number.log10().floor();
+    let mantissa = number / 10f64.powf(exponent);
+    format!("{} x 10^{}", mantissa, exponent)
 }
 
 #[cfg(test)]
