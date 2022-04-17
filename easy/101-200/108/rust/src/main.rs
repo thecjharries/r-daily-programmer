@@ -25,7 +25,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_to_scientific() {
+        assert_eq!(
+            convert_to_scientific(239487.0),
+            "2.39487 x 10^5".to_string()
+        );
+        assert_eq!(convert_to_scientific(0.654), "6.54 x 10^-1".to_string());
     }
 }
