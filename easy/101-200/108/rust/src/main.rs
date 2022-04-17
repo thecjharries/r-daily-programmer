@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_scientific(number: f64) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
