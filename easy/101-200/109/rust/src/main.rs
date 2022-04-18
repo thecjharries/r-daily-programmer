@@ -24,7 +24,7 @@ fn main() {
 }
 
 fn is_only_numbers(input: &str) -> bool {
-    false
+    NUMBERS_ONLY_PATTERN.is_match(input)
 }
 
 #[cfg(test)]
