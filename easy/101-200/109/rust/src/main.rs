@@ -23,6 +23,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_only_numbers(input: &str) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
