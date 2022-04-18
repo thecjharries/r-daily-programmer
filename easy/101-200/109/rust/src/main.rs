@@ -32,7 +32,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_only_numbers() {
+        assert_eq!(is_only_numbers("123"), true);
+        assert_eq!(is_only_numbers("123.45"), false);
+        assert_eq!(is_only_numbers("abc"), false);
     }
 }
