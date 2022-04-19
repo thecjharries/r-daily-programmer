@@ -34,7 +34,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_decode_shifted() {
+        assert_eq!(decode_shifted("Jr;;p ept;f"), "Hello world".to_string());
+        assert_eq!(
+            decode_shifted("Lmiyj od ,u jrtp"),
+            "Knuth is my hero".to_string()
+        );
     }
 }
