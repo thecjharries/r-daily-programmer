@@ -26,7 +26,14 @@ fn main() {
 }
 
 fn decode_shifted(input: &str) -> String {
-    String::new()
+    let mut output = String::new();
+    for c in input.chars() {
+        match SHIFTED_ALPHABET.find(c) {
+            Some(i) => output.push(ALPHABET.chars().nth(i).unwrap()),
+            None => output.push(c),
+        }
+    }
+    output
 }
 
 #[cfg(test)]
