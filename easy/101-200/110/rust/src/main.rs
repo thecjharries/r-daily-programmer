@@ -12,6 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref SHIFTED_ALPHABET: String =
+        " snvfrghjokl;,mp[wtdyibcuxSNVFRGHJOKL:<MP{WTDYIBCUX".to_string();
+    static ref ALPHABET: String =
+        " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string();
+}
+
 fn main() {
     println!("rad");
 }
