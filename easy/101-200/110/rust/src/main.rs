@@ -16,7 +16,7 @@ use lazy_static::lazy_static;
 
 lazy_static! {
     static ref SHIFTED_ALPHABET: String =
-        " snvfrghjokl;,mp[wtdyibcuxSNVFRGHJOKL:<MP{WTDYIBCUX".to_string();
+        " snvfrghjokl;,mp[wtdyibecuxSNVFRGHJOKL:<MP{WTDYIBECUX".to_string();
     static ref ALPHABET: String =
         " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".to_string();
 }
