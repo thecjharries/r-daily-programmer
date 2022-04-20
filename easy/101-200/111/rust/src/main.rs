@@ -23,6 +23,10 @@ fn main() {
     println!("rad");
 }
 
+fn remove_per_prompt(input: &str) -> String {
+    PROMPT_PATTERN.replace_all(input, "").to_string()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
