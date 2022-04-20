@@ -32,7 +32,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_remove_per_prompt() {
+        assert_eq!(remove_per_prompt("adf*lp"), "adp".to_string());
+        assert_eq!(remove_per_prompt("a*o"), "".to_string());
+        assert_eq!(remove_per_prompt("*dech*"), "ec".to_string());
+        assert_eq!(remove_per_prompt("de**po"), "do".to_string());
+        assert_eq!(remove_per_prompt("sa*n*ti"), "si".to_string());
+        assert_eq!(remove_per_prompt("abc"), "abc".to_string());
     }
 }
