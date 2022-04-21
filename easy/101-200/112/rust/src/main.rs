@@ -25,7 +25,21 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_query_params() {
+        assert_eq!(
+            parse_query_params("http://en.wikipedia.org/w/index.php?title=Main_Page&action=edit"),
+            vec![
+                ("title".to_string(), "Main_Page".to_string()),
+                ("action".to_string(), "edit".to_string())
+            ]
+        );
+        assert_eq!(
+            parse_query_params("http://en.wikipedia.org/w/index.php"),
+            vec![]
+        );
+        assert_eq!(
+            parse_query_params("http:en.wikipedia.org/w/index.php"),
+            vec![]
+        );
     }
 }
