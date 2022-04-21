@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_query_params(url: &str) -> Vec<(&str, &str)> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
