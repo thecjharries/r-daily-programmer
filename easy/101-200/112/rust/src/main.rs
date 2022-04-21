@@ -12,12 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use url::Url;
+
 fn main() {
     println!("rad");
 }
 
-fn parse_query_params(url: &str) -> Vec<(&str, &str)> {
-    Vec::new()
+fn parse_query_params(url: &str) -> Vec<(String, String)> {
+    let result: Vec<(String, String)> = Vec::new();
+    let url = Url::parse(url);
+    match url {
+        Ok(url) => url
+            .query_pairs()
+            .into_owned()
+            .collect::<Vec<(String, String)>>(),
+        Err(_) => result,
+    }
 }
 
 #[cfg(test)]
