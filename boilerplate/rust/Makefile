@@ -28,7 +28,7 @@ bootstrap-feature-branch:
 
 # Shortcut to finish the exercise branch
 # Probably better as an alias; this works just fine
-finish:
+finish: test
 	$(GIT) flow feature finish
 
 # Convenience target for common commit
