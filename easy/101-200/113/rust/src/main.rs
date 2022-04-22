@@ -25,6 +25,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_input_type(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
