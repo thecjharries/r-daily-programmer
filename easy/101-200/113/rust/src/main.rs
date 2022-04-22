@@ -33,7 +33,15 @@ fn main() {
 }
 
 fn determine_input_type(input: &str) -> InputKind {
-    InputKind::Text
+    if INT_PATTERN.is_match(input) {
+        InputKind::Int
+    } else if FLOAT_PATTERN.is_match(input) {
+        InputKind::Float
+    } else if DATE_PATTERN.is_match(input) {
+        InputKind::Date
+    } else {
+        InputKind::Text
+    }
 }
 
 #[cfg(test)]
