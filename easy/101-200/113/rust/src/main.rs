@@ -21,12 +21,19 @@ lazy_static! {
     static ref DATE_PATTERN: Regex = Regex::new(r"^\d{2}-\d{2}-\d{4S}$").unwrap();
 }
 
+enum InputKind {
+    Int,
+    Float,
+    Date,
+    Text,
+}
+
 fn main() {
     println!("rad");
 }
 
-fn determine_input_type(input: &str) -> String {
-    String::new()
+fn determine_input_type(input: &str) -> InputKind {
+    InputKind::Text
 }
 
 #[cfg(test)]
