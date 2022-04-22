@@ -41,7 +41,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_input_type() {
+        assert_eq!(determine_input_type("123"), InputKind::Int);
+        assert_eq!(determine_input_type("+123"), InputKind::Int);
+        assert_eq!(determine_input_type("-123"), InputKind::Int);
+        assert_eq!(determine_input_type("123.456"), InputKind::Float);
+        assert_eq!(determine_input_type("20-11-2012"), InputKind::Date);
+        assert_eq!(determine_input_type("Hello, World!"), InputKind::Text);
+        assert_eq!(determine_input_type("Hello 123"), InputKind::Text);
     }
 }
