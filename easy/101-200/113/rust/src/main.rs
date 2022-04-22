@@ -21,6 +21,7 @@ lazy_static! {
     static ref DATE_PATTERN: Regex = Regex::new(r"^\d{2}-\d{2}-\d{4}$").unwrap();
 }
 
+#[derive(Debug, PartialEq)]
 enum InputKind {
     Int,
     Float,
