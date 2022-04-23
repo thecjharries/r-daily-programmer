@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fs::File;
+use std::io::{BufRead, BufReader};
+
 fn main() {
     println!("rad");
 }
@@ -25,7 +28,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_adjacent_words() {
+        let words = BufReader::new(File::open("../selected four-letter words.txt").unwrap())
+            .lines()
+            .map(|l| l.expect("Could not read line"))
+            .collect::<Vec<String>>();
     }
 }
