@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_adjacent_words(input: &str, dictionary: Vec<String>) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
