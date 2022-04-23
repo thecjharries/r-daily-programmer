@@ -19,7 +19,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_adjacent_words(input: &str, dictionary: Vec<String>) -> Vec<String> {
+fn find_adjacent_words(input: &str, dictionary: &Vec<String>) -> Vec<String> {
     let mut result: Vec<String> = Vec::new();
     for word in dictionary {
         if word.len() != input.len() {
@@ -35,7 +35,7 @@ fn find_adjacent_words(input: &str, dictionary: Vec<String>) -> Vec<String> {
             }
         }
         if difference_count == 1 {
-            result.push(word);
+            result.push(word.to_string());
         }
     }
     result
@@ -52,7 +52,7 @@ mod tests {
             .map(|l| l.expect("Could not read line"))
             .collect::<Vec<String>>();
         assert_eq!(
-            find_adjacent_words("puma", words),
+            find_adjacent_words("puma", &words),
             String::from("duma pima puja pula pump puna pupa")
                 .split_whitespace()
                 .map(|s| s.to_string())
