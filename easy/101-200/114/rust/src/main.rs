@@ -33,5 +33,12 @@ mod tests {
             .lines()
             .map(|l| l.expect("Could not read line"))
             .collect::<Vec<String>>();
+        assert_eq!(
+            find_adjacent_words("puma", words),
+            String::from("duma pima puja pula pump puna pupa")
+                .split_whitespace()
+                .map(|s| s.to_string())
+                .collect::<Vec<String>>()
+        );
     }
 }
