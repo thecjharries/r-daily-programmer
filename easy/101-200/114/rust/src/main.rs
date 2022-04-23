@@ -41,6 +41,15 @@ fn find_adjacent_words(input: &str, dictionary: &Vec<String>) -> Vec<String> {
     result
 }
 
+fn find_bonus_1(words: &Vec<String>) -> String {
+    for word in words {
+        if 33 == find_adjacent_words(word, words).len() {
+            return word.to_string();
+        }
+    }
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -65,5 +74,14 @@ mod tests {
                 "nest", "pest", "rest", "test", "vest", "west", "zest"
             ]
         );
+    }
+
+    #[test]
+    fn test_find_bonus_1() {
+        let words = BufReader::new(File::open("../selected four-letter words.txt").unwrap())
+            .lines()
+            .map(|l| l.expect("Could not read line"))
+            .collect::<Vec<String>>();
+        assert_eq!(find_bonus_1(&words), "care");
     }
 }
