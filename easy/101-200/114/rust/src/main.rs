@@ -20,7 +20,25 @@ fn main() {
 }
 
 fn find_adjacent_words(input: &str, dictionary: Vec<String>) -> Vec<String> {
-    Vec::new()
+    let mut result: Vec<String> = Vec::new();
+    for word in dictionary {
+        if word.len() != input.len() {
+            continue;
+        }
+        let mut difference_count = 0;
+        for (i, c) in input.chars().enumerate() {
+            if c != word.chars().nth(i).unwrap() {
+                difference_count += 1;
+            }
+            if difference_count > 1 {
+                break;
+            }
+        }
+        if difference_count == 1 {
+            result.push(word);
+        }
+    }
+    result
 }
 
 #[cfg(test)]
