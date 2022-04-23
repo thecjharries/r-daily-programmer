@@ -58,5 +58,12 @@ mod tests {
                 .map(|s| s.to_string())
                 .collect::<Vec<String>>()
         );
+        assert_eq!(
+            find_adjacent_words("best", &words),
+            vec![
+                "bast", "beat", "beet", "belt", "bent", "bust", "gest", "hest", "jest", "lest",
+                "nest", "pest", "rest", "test", "vest", "west", "zest"
+            ]
+        );
     }
 }
