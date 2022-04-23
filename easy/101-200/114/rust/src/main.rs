@@ -50,6 +50,20 @@ fn find_bonus_1(words: &Vec<String>) -> String {
     String::new()
 }
 
+fn find_bonus_2(words: &Vec<String>) -> usize {
+    let mut found_words: Vec<String> = find_adjacent_words("best", words);
+    for _ in 1..3 {
+        let mut new_found_words: Vec<String> = Vec::new();
+        for word in found_words {
+            new_found_words.append(&mut find_adjacent_words(&word, words));
+        }
+        new_found_words.sort();
+        new_found_words.dedup();
+        found_words = new_found_words;
+    }
+    found_words.len()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -83,5 +97,14 @@ mod tests {
             .map(|l| l.expect("Could not read line"))
             .collect::<Vec<String>>();
         assert_eq!(find_bonus_1(&words), "care");
+    }
+
+    #[test]
+    fn test_bonus_2() {
+        let words = BufReader::new(File::open("../selected four-letter words.txt").unwrap())
+            .lines()
+            .map(|l| l.expect("Could not read line"))
+            .collect::<Vec<String>>();
+        assert_eq!(find_bonus_2(&words), 575);
     }
 }
