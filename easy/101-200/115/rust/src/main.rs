@@ -12,18 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand_pcg::Pcg64;
+use std::io::{Error, Read, Write};
+
 fn main() {
     println!("rad");
 }
 
-fn play_guessing_game<R: Rng>(rng: &mut R) {}
+fn play_guessing_game<R: Rng>(rng: &mut R, input: &mut impl Read, output: &mut impl Write) {}
 
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_play_guessing_game() {
         assert_eq!(2 + 2, 4);
     }
 }
