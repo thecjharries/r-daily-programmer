@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn play_guessing_game() {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
