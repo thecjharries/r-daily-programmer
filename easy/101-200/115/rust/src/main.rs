@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn play_guessing_game() {}
+fn play_guessing_game<R: Rng>(rng: &mut R) {}
 
 #[cfg(test)]
 mod tests {
