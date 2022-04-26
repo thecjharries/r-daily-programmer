@@ -12,12 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 fn main() {
     println!("rad");
 }
 
 fn permute_string(input: &str) -> Vec<String> {
-    Vec::new()
+    let mut result = Vec::new();
+    let chars = input.chars().collect::<Vec<char>>();
+    for permutation in (0..chars.len()).permutations(chars.len()) {
+        let mut permutation_string = String::new();
+        for i in permutation {
+            permutation_string.push(chars[i]);
+        }
+        result.push(permutation_string);
+    }
+    result
 }
 
 #[cfg(test)]
