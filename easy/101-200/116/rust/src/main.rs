@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn permute_string(input: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
