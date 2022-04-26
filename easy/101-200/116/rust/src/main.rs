@@ -25,7 +25,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_permute_string() {
+        assert_eq!(permute_string("ab"), vec!["ab", "ba"]);
+        assert_eq!(
+            permute_string("abc"),
+            vec!["abc", "acb", "bac", "bca", "cab", "cba"]
+        );
     }
 }
