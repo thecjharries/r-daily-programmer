@@ -12,12 +12,45 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fs::File;
+use std::io::Read;
+
 fn main() {
     println!("rad");
 }
 
-fn hexdump(file_path: &str) -> Vec<String> {
-    Vec::new()
+fn hexdump(file_path: &str) -> String {
+    let mut result = String::new();
+    let mut file = File::open(file_path).unwrap();
+    let mut buffer = [0u8; 16];
+    let mut offset: usize = 0;
+    loop {
+        let bytes_read = file.read(&mut buffer).unwrap();
+        if bytes_read == 0 {
+            break;
+        }
+        result.push_str(&format!("{:08x}: ", offset));
+        for i in 0..bytes_read {
+            result.push_str(&format!("{:02x} ", buffer[i]));
+        }
+        for _ in bytes_read..16 {
+            result.push_str("   ");
+        }
+        result.push_str(" |");
+        for i in 0..bytes_read {
+            if buffer[i] < 32 || buffer[i] > 127 {
+                result.push_str(".");
+            } else {
+                result.push_str(&format!("{}", buffer[i] as char));
+            }
+        }
+        result.push_str(
+            "|
+",
+        );
+        offset += bytes_read;
+    }
+    result
 }
 
 #[cfg(test)]
