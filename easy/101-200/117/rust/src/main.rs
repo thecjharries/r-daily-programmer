@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn hexdump(file_path: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
