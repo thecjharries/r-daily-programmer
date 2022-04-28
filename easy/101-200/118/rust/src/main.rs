@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::DateTime;
+
 fn main() {
     println!("rad");
+}
+
+fn format_time(format: &str, time: DateTime) -> String {
+    String::new()
 }
 
 #[cfg(test)]
