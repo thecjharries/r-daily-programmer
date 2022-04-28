@@ -12,14 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use chrono::DateTime;
+use chrono::{DateTime, TimeZone};
+use std::fmt::Display;
 
 fn main() {
     println!("rad");
 }
 
-fn format_time(format: &str, time: DateTime) -> String {
-    String::new()
+fn format_time<Tz: TimeZone>(format: &str, time: DateTime<Tz>) -> String
+where
+    <Tz as TimeZone>::Offset: Display,
+{
+    let mut result = String::from(format);
+    result = result.replace(
+        "%l",
+        (&time.format("%f").to_string().parse::<i32>().unwrap() / 1000000)
+            .to_string()
+            .as_str(),
+    );
+    result = result.replace("%s", &time.format("%S").to_string());
+    result = result.replace("%m", &time.format("%M").to_string());
+    result = result.replace("%h", &time.format("%l").to_string());
+    result = result.replace("%H", &time.format("%H").to_string());
+    result = result.replace("%c", &time.format("%p").to_string());
+    result = result.replace("%d", &time.format("%e").to_string());
+    result = result.replace("%M", &time.format("%m").to_string());
+    result = result.replace("%y", &time.format("%Y").to_string());
+    result
 }
 
 #[cfg(test)]
