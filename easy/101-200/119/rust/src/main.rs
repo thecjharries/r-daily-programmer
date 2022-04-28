@@ -25,7 +25,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_to_change() {
+        assert_eq!(convert_to_change(4.17), vec![16, 1, 1, 2]);
     }
 }
