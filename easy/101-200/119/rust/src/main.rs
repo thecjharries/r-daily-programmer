@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_change(amount: f64) -> Vec<u32> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
