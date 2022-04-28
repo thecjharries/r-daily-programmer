@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_format_time() {
+        let datetime = DateTime::parse_from_rfc3339("2021-04-28T17:41:44.68072657-05:00").unwrap();
+        assert_eq!(
+            format_time("%Y-%m-%d %H:%M:%S", datetime),
+            "2021-04-28 17:41:44"
+        );
     }
 }
