@@ -16,8 +16,20 @@ fn main() {
     println!("rad");
 }
 
-fn convert_to_change(amount: f64) -> Vec<u32> {
-    Vec::new()
+fn convert_to_change(amount: f32) -> Vec<u32> {
+    let mut current_amount = amount;
+    let mut change = Vec::new();
+    let coins = vec![0.25, 0.10, 0.05, 0.01];
+    for coin in coins {
+        let mut coin_count = 0;
+        while current_amount >= coin {
+            coin_count += 1;
+            current_amount -= coin;
+        }
+        println!("{}", current_amount);
+        change.push(coin_count);
+    }
+    change
 }
 
 #[cfg(test)]
