@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::io::BufRead;
+
 fn main() {
     println!("rad");
+}
+
+fn count_lines_until<R: BufRead>(mut input: R, seconds: u64) -> u64 {
+    0
 }
 
 #[cfg(test)]
