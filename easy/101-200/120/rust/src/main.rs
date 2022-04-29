@@ -28,6 +28,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(count_lines_until(b"one\ntwo\nthree\n", 1), 3);
     }
 }
