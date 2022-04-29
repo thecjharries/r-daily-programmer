@@ -12,14 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::io::BufRead;
+use std::io::{BufRead, Read};
+use std::sync::mpsc::channel;
+use std::thread;
+use std::time::Duration;
 
 fn main() {
     println!("rad");
 }
 
-fn count_lines_until<R: BufRead>(mut input: R, seconds: u64) -> u64 {
-    0
+fn count_lines_duration(input: &mut (impl Read + BufRead), seconds: u64) -> u64 {
+    let (tx, rx) = channel();
+    thread::spawn(move || {
+        thread::sleep(Duration::from_secs(seconds));
+        tx.send(true).unwrap();
+    });
+    let mut count = 0;
+    for _ in input.lines() {
+        if let Ok(true) = rx.try_recv() {
+            break;
+        }
+        count += 1;
+    }
+    count
 }
 
 #[cfg(test)]
@@ -28,6 +43,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(count_lines_until(b"one\ntwo\nthree\n", 1), 3);
+        assert_eq!(
+            count_lines_duration(&mut "one\ntwo\nthree\n".as_bytes(), 1),
+            3
+        );
     }
 }
