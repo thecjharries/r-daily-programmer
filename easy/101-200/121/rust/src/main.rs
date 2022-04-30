@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn run_bytelandian_exchange(starting_value: u64) -> u64 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
