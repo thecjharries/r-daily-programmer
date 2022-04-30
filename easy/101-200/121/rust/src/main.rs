@@ -25,7 +25,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_run_bytelandian_exchange() {
+        assert_eq!(run_bytelandian_exchange(7), 15);
+        assert_eq!(run_bytelandian_exchange(1000), 3263);
     }
 }
