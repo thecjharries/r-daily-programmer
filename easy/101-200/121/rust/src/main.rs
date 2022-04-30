@@ -17,7 +17,19 @@ fn main() {
 }
 
 fn run_bytelandian_exchange(starting_value: u64) -> u64 {
-    0
+    let mut total_coins: u64 = 0;
+    let mut current_coins = vec![starting_value];
+    while current_coins.len() > 0 {
+        let current_coin = current_coins.pop().unwrap();
+        if 0 < current_coin {
+            current_coins.push(current_coin / 2);
+            current_coins.push(current_coin / 3);
+            current_coins.push(current_coin / 4);
+        } else {
+            total_coins += 1;
+        }
+    }
+    total_coins
 }
 
 #[cfg(test)]
