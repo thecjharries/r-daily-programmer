@@ -17,7 +17,16 @@ fn main() {
 }
 
 fn compute_digital_root(number: u64) -> u64 {
-    0
+    let mut current = number;
+    while current > 9 {
+        let mut sum = 0;
+        while current > 0 {
+            sum += current % 10;
+            current /= 10;
+        }
+        current = sum;
+    }
+    current
 }
 
 #[cfg(test)]
