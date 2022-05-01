@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_digital_root() {
+        assert_eq!(compute_digital_root(31337), 8);
+        assert_eq!(compute_digital_root(17), 8);
+        assert_eq!(compute_digital_root(0), 0);
+        assert_eq!(compute_digital_root(1073741824), 1);
     }
 }
