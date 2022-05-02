@@ -12,12 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use regex::Regex;
+
 fn main() {
     println!("rad");
 }
 
 fn enforce_newlines(input: &str, is_windows: bool) -> String {
-    input.to_string()
+    let newline_pattern = Regex::new(r"\r?\n").unwrap();
+    if is_windows {
+        newline_pattern.replace_all(input, "\r\n").into_owned()
+    } else {
+        newline_pattern.replace_all(input, "\n").into_owned()
+    }
 }
 
 #[cfg(test)]
@@ -31,7 +38,7 @@ mod tests {
             "test\none\ntwo"
         );
         assert_eq!(
-            enforce_newlines("test\r\none\ntwo", false),
+            enforce_newlines("test\r\none\ntwo", true),
             "test\r\none\r\ntwo"
         );
     }
