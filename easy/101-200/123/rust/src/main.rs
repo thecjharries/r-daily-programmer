@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn enforce_newlines(input: &str, is_windows: bool) -> String {
+    input.to_string()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
