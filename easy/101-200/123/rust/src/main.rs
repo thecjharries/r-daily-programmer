@@ -26,6 +26,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            enforce_newlines("test\r\none\ntwo", false),
+            "test\none\ntwo"
+        );
+        assert_eq!(
+            enforce_newlines("test\r\none\ntwo", false),
+            "test\r\none\r\ntwo"
+        );
     }
 }
