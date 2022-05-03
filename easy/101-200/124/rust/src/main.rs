@@ -41,6 +41,24 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_build_edge() {
+        assert_eq!(
+            build_edge(1, 2),
+            Edge {
+                first_node: 1,
+                second_node: 2
+            }
+        );
+        assert_eq!(
+            build_edge(2, 1),
+            Edge {
+                first_node: 1,
+                second_node: 2
+            }
+        );
+    }
+
+    #[test]
     fn test_stub() {
         assert_eq!(2 + 2, 4);
     }
