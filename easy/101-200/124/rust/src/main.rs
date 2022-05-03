@@ -36,6 +36,8 @@ fn main() {
     println!("rad");
 }
 
+fn sort_edges(edges: &mut Vec<Edge>) {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
