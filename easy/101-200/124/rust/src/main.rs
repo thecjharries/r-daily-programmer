@@ -36,7 +36,21 @@ fn main() {
     println!("rad");
 }
 
-fn sort_edges(edges: &mut Vec<Edge>) {}
+fn sort_edges(edges: &mut Vec<Edge>) {
+    edges.sort_by(|a, b| {
+        if a.first_node < b.first_node {
+            std::cmp::Ordering::Less
+        } else if a.first_node > b.first_node {
+            std::cmp::Ordering::Greater
+        } else if a.second_node < b.second_node {
+            std::cmp::Ordering::Less
+        } else if a.second_node > b.second_node {
+            std::cmp::Ordering::Greater
+        } else {
+            std::cmp::Ordering::Equal
+        }
+    });
+}
 
 #[cfg(test)]
 mod tests {
