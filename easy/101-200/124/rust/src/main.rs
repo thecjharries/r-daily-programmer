@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
 struct Edge {
     first_node: u32,
     second_node: u32,
