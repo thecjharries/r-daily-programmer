@@ -17,6 +17,20 @@ struct Edge {
     second_node: u32,
 }
 
+fn build_edge(first_node: u32, second_node: u32) -> Edge {
+    if first_node < second_node {
+        Edge {
+            first_node,
+            second_node,
+        }
+    } else {
+        Edge {
+            first_node: second_node,
+            second_node: first_node,
+        }
+    }
+}
+
 fn main() {
     println!("rad");
 }
