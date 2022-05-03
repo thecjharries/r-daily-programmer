@@ -61,7 +61,53 @@ mod tests {
     }
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_sort_edges() {
+        let mut edges = vec![
+            Edge {
+                first_node: 3,
+                second_node: 4,
+            },
+            Edge {
+                first_node: 4,
+                second_node: 5,
+            },
+            Edge {
+                first_node: 1,
+                second_node: 2,
+            },
+            Edge {
+                first_node: 2,
+                second_node: 3,
+            },
+        ];
+        sort_edges(&mut edges);
+        assert_eq!(
+            edges[0],
+            Edge {
+                first_node: 1,
+                second_node: 2,
+            }
+        );
+        assert_eq!(
+            edges[1],
+            Edge {
+                first_node: 2,
+                second_node: 3,
+            }
+        );
+        assert_eq!(
+            edges[2],
+            Edge {
+                first_node: 3,
+                second_node: 4,
+            }
+        );
+        assert_eq!(
+            edges[3],
+            Edge {
+                first_node: 4,
+                second_node: 5,
+            }
+        );
     }
 }
