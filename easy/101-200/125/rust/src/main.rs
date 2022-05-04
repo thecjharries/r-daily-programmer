@@ -24,7 +24,7 @@ fn main() {
 }
 
 fn count_letters(input: &str) -> usize {
-    0
+    LETTER_PATTERN.find_iter(input).count()
 }
 
 #[cfg(test)]
