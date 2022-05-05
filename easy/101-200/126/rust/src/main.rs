@@ -16,6 +16,8 @@ fn main() {
     println!("rad");
 }
 
+fn combine_sorted(unsorted: &[i32], sorted_with_space: &[i32]) {}
+
 #[cfg(test)]
 mod tests {
     use super::*;
