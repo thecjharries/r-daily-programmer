@@ -16,7 +16,21 @@ fn main() {
     println!("rad");
 }
 
-fn combine_sorted(unsorted: &[i32], sorted_with_space: &[i32]) {}
+fn combine_sorted(unsorted: &[i32], sorted_with_space: &mut [i32]) {
+    for unsorted_index in 0..unsorted.len() {
+        for sorted_with_space_index in 1..sorted_with_space.len() {
+            if 0 != sorted_with_space[sorted_with_space_index] {
+                if sorted_with_space[sorted_with_space_index] < unsorted[unsorted_index] {
+                    sorted_with_space[sorted_with_space_index - 1] =
+                        sorted_with_space[sorted_with_space_index];
+                } else {
+                    sorted_with_space[sorted_with_space_index - 1] = unsorted[unsorted_index];
+                    break;
+                }
+            }
+        }
+    }
+}
 
 #[cfg(test)]
 mod tests {
