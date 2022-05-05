@@ -23,7 +23,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_combine_sorted() {
+        let mut unsorted = vec![692, 1, 32];
+        let mut sorted_with_space = vec![0, 0, 0, 14, 15, 123, 2431];
+        combine_sorted(&unsorted, &sorted_with_space);
+        assert_eq!(sorted_with_space, vec![1, 14, 15, 32, 123, 692, 2431]);
     }
 }
