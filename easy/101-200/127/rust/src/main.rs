@@ -19,7 +19,28 @@ fn main() {
 }
 
 fn mcarthy_91(start: i32, output: &mut impl Write) -> i32 {
-    0
+    if 100 < start {
+        if 101 == start {
+            writeln!(output, "{} since {} is greater than 100", start - 10, start).unwrap();
+        } else {
+            writeln!(
+                output,
+                "M({}) since {} is greater than 100",
+                start - 10,
+                start
+            )
+            .unwrap();
+        }
+        return start - 10;
+    }
+    writeln!(
+        output,
+        "M(M({})) since {} is equal to or less than 100",
+        start + 11,
+        start
+    )
+    .unwrap();
+    return mcarthy_91(mcarthy_91(start + 11, output), output);
 }
 
 #[cfg(test)]
