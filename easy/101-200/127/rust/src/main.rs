@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::io::Write;
+
 fn main() {
     println!("rad");
+}
+
+fn mcarthy_91(start: i32, output: &mut impl Write) -> i32 {
+    0
 }
 
 #[cfg(test)]
