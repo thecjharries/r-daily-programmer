@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn sum_the_digits(input: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
