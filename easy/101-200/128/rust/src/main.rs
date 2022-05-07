@@ -17,7 +17,12 @@ fn main() {
 }
 
 fn sum_the_digits(input: &str) -> Vec<String> {
-    Vec::new()
+    let mut result = Vec::new();
+    let mut number = 0;
+    match input.parse::<i32>() {
+        Ok(n) => number = n,
+        Err(_) => return result,
+    };
 }
 
 #[cfg(test)]
@@ -27,8 +32,8 @@ mod tests {
     #[test]
     fn test_sum_the_digits() {
         assert_eq!(sum_the_digits("12345"), vec!["12345", "15", "6"]);
-        assert_eq!(sum_the_digits(""), vec![""]);
+        assert_eq!(sum_the_digits(""), Vec::new());
         assert_eq!(sum_the_digits("0"), vec!["0"]);
-        assert_eq!(sum_the_digits("rad"), vec![""]);
+        assert_eq!(sum_the_digits("rad"), Vec::new());
     }
 }
