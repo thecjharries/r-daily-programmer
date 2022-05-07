@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_sum_the_digits() {
+        assert_eq!(sum_the_digits("12345"), vec!["12345", "15", "6"]);
+        assert_eq!(sum_the_digits(""), vec![""]);
+        assert_eq!(sum_the_digits("0"), vec!["0"]);
+        assert_eq!(sum_the_digits("rad"), vec![""]);
     }
 }
