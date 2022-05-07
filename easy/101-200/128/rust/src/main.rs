@@ -18,11 +18,22 @@ fn main() {
 
 fn sum_the_digits(input: &str) -> Vec<String> {
     let mut result = Vec::new();
-    let mut number = 0;
+    let mut number: i32;
     match input.parse::<i32>() {
         Ok(n) => number = n,
         Err(_) => return result,
     };
+    result.push(input.to_string());
+    while 10 < number {
+        let mut sum = 0;
+        while number > 0 {
+            sum += number % 10;
+            number /= 10;
+        }
+        number = sum;
+        result.push(sum.to_string());
+    }
+    result
 }
 
 #[cfg(test)]
