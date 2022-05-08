@@ -13,7 +13,9 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::prelude::*;
 use rand::Rng;
+use rand_pcg::Pcg64;
 use regex::Regex;
 
 lazy_static! {
@@ -33,7 +35,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_roll() {
+        assert_eq!(roll("2d20", &mut Pcg64::seed_from_u64(0)), vec![4, 2]);
+        assert_eq!(roll("4d6", &mut Pcg64::seed_from_u64(0)), vec![2, 1, 5, 5]);
     }
 }
