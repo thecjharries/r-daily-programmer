@@ -27,7 +27,14 @@ fn main() {
 }
 
 fn roll<R: Rng>(input: &str, rng: &mut R) -> Vec<i32> {
-    Vec::new()
+    let captures = ROLL_PATTERN.captures(input).unwrap();
+    let count = captures["count"].parse::<i32>().unwrap();
+    let faces = captures["faces"].parse::<i32>().unwrap();
+    let mut results = Vec::with_capacity(count as usize);
+    for _ in 0..count {
+        results.push(rng.gen_range(1..faces + 1));
+    }
+    results
 }
 
 #[cfg(test)]
