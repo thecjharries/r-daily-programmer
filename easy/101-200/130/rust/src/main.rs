@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::Rng;
 use regex::Regex;
 
 lazy_static! {
@@ -21,6 +22,10 @@ lazy_static! {
 
 fn main() {
     println!("rad");
+}
+
+fn roll<R: Rng>(input: &str, rng: &mut R) -> Vec<i32> {
+    Vec::new()
 }
 
 #[cfg(test)]
