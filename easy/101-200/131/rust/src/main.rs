@@ -20,6 +20,10 @@ fn reverse(s: &str) -> String {
     s.chars().rev().collect::<String>()
 }
 
+fn capitalize(s: &str) -> String {
+    s.to_string().to_uppercase()
+}
+
 fn is_reversed(first: &str, second: &str) -> bool {
     first.chars().rev().collect::<String>() == second.to_string()
 }
@@ -29,15 +33,21 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_reverse() {
+        assert_eq!(reverse("rad"), "dar");
+        assert_eq!(reverse("Rad"), "daR");
+    }
+
+    #[test]
+    fn test_capitalize() {
+        assert_eq!(capitalize("rad"), "RAD");
+        assert_eq!(capitalize("Rad"), "RAD");
+    }
+
+    #[test]
     fn test_is_reversed() {
         assert_eq!(is_reversed("rad", "dar"), true);
         assert_eq!(is_reversed("rAd", "dar"), false);
         assert_eq!(is_reversed("Rad", "daR"), true);
-    }
-
-    #[test]
-    fn test_reverse() {
-        assert_eq!(reverse("rad"), "dar");
-        assert_eq!(reverse("Rad"), "daR");
     }
 }
