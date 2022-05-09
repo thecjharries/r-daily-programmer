@@ -50,4 +50,10 @@ mod tests {
         assert_eq!(is_reversed("rAd", "dar"), false);
         assert_eq!(is_reversed("Rad", "daR"), true);
     }
+
+    #[test]
+    fn test_is_capitalized() {
+        assert_eq!(is_capitalized("rad", "RAD"), true);
+        assert_eq!(is_capitalized("rad", "Rad"), false);
+    }
 }
