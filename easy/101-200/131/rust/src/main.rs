@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_reversed(first: &str, second: &str) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
