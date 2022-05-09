@@ -25,7 +25,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_reversed() {
+        assert_eq!(is_reversed("rad", "dar"), true);
+        assert_eq!(is_reversed("rAd", "dar"), false);
+        assert_eq!(is_reversed("Rad", "daR"), true);
     }
 }
