@@ -17,7 +17,7 @@ fn main() {
 }
 
 fn is_reversed(first: &str, second: &str) -> bool {
-    false
+    first.chars().rev().collect::<String>() == second.to_string()
 }
 
 #[cfg(test)]
