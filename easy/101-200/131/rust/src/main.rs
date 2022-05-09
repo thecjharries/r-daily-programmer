@@ -28,6 +28,10 @@ fn is_reversed(first: &str, second: &str) -> bool {
     first.chars().rev().collect::<String>() == second.to_string()
 }
 
+fn is_capitalized(first: &str, second: &str) -> bool {
+    first.to_string().to_uppercase() == second.to_string()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
