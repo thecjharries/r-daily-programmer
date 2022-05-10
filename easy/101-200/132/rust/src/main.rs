@@ -17,7 +17,11 @@ fn main() {
 }
 
 fn gcd(a: u64, b: u64) -> u64 {
-    0
+    if 0 == b {
+        a
+    } else {
+        gcd(b, a % b)
+    }
 }
 
 #[cfg(test)]
