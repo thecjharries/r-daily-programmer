@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn gcd(a: u64, b: u64) -> u64 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
