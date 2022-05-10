@@ -25,7 +25,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_gcd() {
+        assert_eq!(gcd(8, 12), 4);
+        assert_eq!(gcd(14, 15), 1);
+        assert_eq!(gcd(0, 0), 0);
+        assert_eq!(gcd(65535, 4294967295), 65535);
     }
 }
