@@ -59,10 +59,7 @@ mod tests {
         ];
         assert_eq!(
             process_room_log(log),
-            vec![
-                "Room 0, 20 minute average visit, 1 visitor(s) total",
-                "Room 1, 20 minute average visit, 1 visitor(s) total"
-            ]
+            vec!["Room 0, 20 minute average visit, 2 visitor(s) total",]
         );
         log = vec![
             (0, 11, 'I', 347),
@@ -105,20 +102,20 @@ mod tests {
         assert_eq!(
             process_room_log(log),
             vec![
-                "Room 1, 85 minute average visit, 1 visitor total",
-                "Room 2, 48 minute average visit, 2 visitors total",
-                "Room 6, 79 minute average visit, 1 visitor total",
-                "Room 7, 59 minute average visit, 1 visitor total",
-                "Room 9, 85 minute average visit, 1 visitor total",
-                "Room 11, 57 minute average visit, 2 visitors total",
-                "Room 12, 19 minute average visit, 1 visitor total",
-                "Room 13, 15 minute average visit, 1 visitor total",
-                "Room 15, 30 minute average visit, 2 visitors total",
-                "Room 18, 77 minute average visit, 1 visitor total",
-                "Room 19, 12 minute average visit, 2 visitors total",
-                "Room 26, 38 minute average visit, 1 visitor total",
-                "Room 28, 32 minute average visit, 1 visitor total",
-                "Room 32, 88 minute average visit, 1 visitor total",
+                "Room 1, 84 minute average visit, 1 visitor(s) total",
+                "Room 2, 47 minute average visit, 2 visitor(s) total",
+                "Room 6, 78 minute average visit, 1 visitor(s) total",
+                "Room 7, 58 minute average visit, 1 visitor(s) total",
+                "Room 9, 84 minute average visit, 1 visitor(s) total",
+                "Room 11, 56 minute average visit, 2 visitor(s) total",
+                "Room 12, 18 minute average visit, 1 visitor(s) total",
+                "Room 13, 14 minute average visit, 1 visitor(s) total",
+                "Room 15, 29 minute average visit, 2 visitor(s) total",
+                "Room 18, 76 minute average visit, 1 visitor(s) total",
+                "Room 19, 11 minute average visit, 2 visitor(s) total",
+                "Room 26, 37 minute average visit, 1 visitor(s) total",
+                "Room 28, 31 minute average visit, 1 visitor(s) total",
+                "Room 32, 87 minute average visit, 1 visitor(s) total",
             ],
         );
     }
