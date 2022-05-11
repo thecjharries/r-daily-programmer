@@ -12,12 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+use std::collections::HashMap;
+
 fn main() {
     println!("rad");
 }
 
 fn process_room_log(log: Vec<(i8, i16, char, i32)>) -> Vec<String> {
-    Vec::new()
+    let mut rooms: HashMap<i8, (i16, i32)> = HashMap::new();
+    for (room_id, _, entry, timestamp) in log {
+        if !rooms.contains_key(&room_id) {
+            rooms.insert(room_id, (0, 0));
+        }
+        if 'I' == entry {
+            (rooms.get_mut(&room_id).unwrap()).0 += 1;
+            (rooms.get_mut(&room_id).unwrap()).1 -= timestamp;
+        } else {
+            (rooms.get_mut(&room_id).unwrap()).1 += timestamp;
+        }
+    }
+    let mut result = Vec::new();
+    for key in rooms.keys().sorted() {
+        let (count, total) = rooms.get(key).unwrap();
+        result.push(format!(
+            "Room {}, {} minute average visit, {} visitor(s) total",
+            key,
+            total / *count as i32,
+            count
+        ));
+    }
+    result
 }
 
 #[cfg(test)]
