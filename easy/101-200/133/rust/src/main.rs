@@ -16,7 +16,7 @@ fn main() {
     println!("rad");
 }
 
-fn process_room_log(log: Vec<(i8, i16, i32, char)>) -> Vec<String> {
+fn process_room_log(log: Vec<(i8, i16, char, i32)>) -> Vec<String> {
     Vec::new()
 }
 
@@ -25,7 +25,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_process_room_log() {
+        let log = vec![
+            (0, 0, 'I', 540),
+            (1, 0, 'I', 540),
+            (0, 0, 'O', 560),
+            (1, 0, 'O', 560),
+        ];
+        assert_eq!(
+            process_room_log(log),
+            vec!["Room 0, 20 minute average visit, 2 visitor(s) total"]
+        );
     }
 }
