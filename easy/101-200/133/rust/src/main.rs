@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn process_room_log(log: Vec<(i8, i16, i32, char)>) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
