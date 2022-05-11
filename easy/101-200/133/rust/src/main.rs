@@ -59,7 +59,10 @@ mod tests {
         ];
         assert_eq!(
             process_room_log(log),
-            vec!["Room 0, 20 minute average visit, 2 visitor(s) total"]
+            vec![
+                "Room 0, 20 minute average visit, 1 visitor(s) total",
+                "Room 1, 20 minute average visit, 1 visitor(s) total"
+            ]
         );
     }
 }
