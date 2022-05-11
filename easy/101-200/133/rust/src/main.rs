@@ -19,9 +19,9 @@ fn main() {
     println!("rad");
 }
 
-fn process_room_log(log: Vec<(i8, i16, char, i32)>) -> Vec<String> {
+fn process_room_log(log: Vec<(i16, i8, char, i32)>) -> Vec<String> {
     let mut rooms: HashMap<i8, (i16, i32)> = HashMap::new();
-    for (room_id, _, entry, timestamp) in log {
+    for (_, room_id, entry, timestamp) in log {
         if !rooms.contains_key(&room_id) {
             rooms.insert(room_id, (0, 0));
         }
