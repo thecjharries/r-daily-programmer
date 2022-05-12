@@ -16,6 +16,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_largest_divisible_by(n: u8, m: u32) -> u128 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
