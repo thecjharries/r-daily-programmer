@@ -12,14 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::error::Error;
-
 fn main() {
     println!("rad");
 }
 
-fn find_largest_divisible_by(n: u8, m: u32) -> Result<u32, Error> {
-    0
+fn find_largest_divisible_by(n: u32, m: u32) -> Result<u128, String> {
+    let start = u128::pow(10, n) - 1;
+    if u128::from(m) > start {
+        return Err(format!("m must be less than {}", start));
+    }
+    let end = u128::pow(10, n - 1);
+    let mut current = start;
+    while current >= end {
+        if current % m as u128 == 0 {
+            return Ok(current);
+        }
+        current -= 1;
+    }
+    Err(format!("no divisible by {} found", m))
 }
 
 #[cfg(test)]
