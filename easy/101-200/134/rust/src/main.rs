@@ -28,6 +28,8 @@ mod tests {
 
     #[test]
     fn test_find_largest_divisible_by() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(find_largest_divisible_by(3, 2), Ok(998));
+        assert!(find_largest_divisible_by(2, 101).is_err());
+        assert_eq!(find_largest_divisible_by(7, 4241275), Ok(8482550));
     }
 }
