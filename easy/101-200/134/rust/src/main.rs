@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::error::Error;
+
 fn main() {
     println!("rad");
 }
 
-fn find_largest_divisible_by(n: u8, m: u32) -> u128 {
+fn find_largest_divisible_by(n: u8, m: u32) -> Result<u32, Error> {
     0
 }
 
@@ -25,7 +27,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_find_largest_divisible_by() {
         assert_eq!(2 + 2, 4);
     }
 }
