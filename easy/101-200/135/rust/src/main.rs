@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use meval::eval_str;
+
 fn main() {
     println!("rad");
+}
+
+fn eval(equation: &str) -> u64 {
+    0
 }
 
 #[cfg(test)]
