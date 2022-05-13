@@ -12,7 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
 use meval::eval_str;
+
+lazy_static! {
+    static ref OPERATIONS: Vec<'static str> = vec!["+", "-", "*", "/"];
+}
 
 fn main() {
     println!("rad");
