@@ -23,8 +23,8 @@ fn main() {
     println!("rad");
 }
 
-fn eval(equation: &str) -> u64 {
-    0
+fn build_equation(min: i32, max: i32) -> String {
+    String::new()
 }
 
 #[cfg(test)]
