@@ -14,6 +14,8 @@
 
 use lazy_static::lazy_static;
 use meval::eval_str;
+use rand::prelude::*;
+use rand::Rng;
 
 lazy_static! {
     static ref OPERATIONS: Vec<'static str> = vec!["+", "-", "*", "/"];
@@ -23,7 +25,7 @@ fn main() {
     println!("rad");
 }
 
-fn build_equation(min: i32, max: i32) -> String {
+fn build_equation<R: Rng>(min: i32, max: i32, rng: &mut R) -> String {
     String::new()
 }
 
