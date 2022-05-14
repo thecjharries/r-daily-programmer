@@ -44,6 +44,10 @@ fn build_equation<R: Rng>(min: i32, max: i32, rng: &mut R) -> String {
     )
 }
 
+fn validate_answer(equation: String, answer: i64) -> {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
