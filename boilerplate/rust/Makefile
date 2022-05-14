@@ -15,6 +15,10 @@ run:
 test:
 	$(CARGO) test
 
+# Get code coverage
+coverage:
+	$(CARGO) tarpaulin -v
+
 # Set up the daily exercise
 bootstrap-feature-branch:
 	$(GIT) flow feature start $(DIFFICULTY)-$(NUMBER)
