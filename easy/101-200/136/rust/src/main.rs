@@ -43,14 +43,15 @@ mod tests {
             ("JEREMY".to_string(), vec![15.0, 11.0, 10.0, 15.0, 16.0]),
             ("JESSE".to_string(), vec![19.0, 17.0, 20.0, 19.0, 18.0]),
         ]);
-        let (mut avg, mut grades) = compute_grades(input);
+        let (avg, mut grades) = compute_grades(input);
         assert_eq!(avg, 15.93);
+        grades.sort_by(|a, b| a.0.cmp(&b.0));
         assert_eq!(
             grades,
             vec![
-                ("JON".to_string(), 15.80),
                 ("JEREMY".to_string(), 13.40),
-                ("JESSE".to_string(), 18.60)
+                ("JESSE".to_string(), 18.60),
+                ("JON".to_string(), 15.80),
             ]
         );
         input = HashMap::from_iter(vec![
@@ -95,21 +96,22 @@ mod tests {
                 vec![12.0, 12.0, 19.0, 9.0, 4.0, 3.0, 0.0, 4.0, 13.0, 14.0],
             ),
         ]);
-        (avg, grades) = compute_grades(input);
+        let (avg, mut grades) = compute_grades(input);
         assert_eq!(avg, 9.50);
+        grades.sort_by(|a, b| a.0.cmp(&b.0));
         assert_eq!(
             grades,
             vec![
-                ("ABIGAIL".to_string(), 7.90),
-                ("ALEXANDER".to_string(), 7.30),
-                ("AVA".to_string(), 13.40),
-                ("ETHAN".to_string(), 7.20),
-                ("ISABELLA".to_string(), 8.30),
-                ("JACOB".to_string(), 10.30),
-                ("JAYDEN".to_string(), 11.30),
-                ("MADISON".to_string(), 11.30),
-                ("SOPHIA".to_string(), 9.00),
-                ("WILLIAM".to_string(), 9.00),
+                ("ABIGAIL".to_string(), 7.9),
+                ("ALEXANDER".to_string(), 7.3),
+                ("AVA".to_string(), 13.4),
+                ("ETHAN".to_string(), 7.2),
+                ("ISABELLA".to_string(), 8.3),
+                ("JACOB".to_string(), 10.3),
+                ("JAYDEN".to_string(), 11.3),
+                ("MADISON".to_string(), 11.3),
+                ("SOPHIA".to_string(), 9.0),
+                ("WILLIAM".to_string(), 9.0)
             ]
         );
     }
