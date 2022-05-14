@@ -34,7 +34,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_equation() {
+        assert_eq!(
+            build_equation(1, 10, &mut Pcg64::seed_from_u64(0)),
+            "9 - 1 + 2 * 2"
+        );
     }
 }
