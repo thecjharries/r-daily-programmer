@@ -18,8 +18,18 @@ fn main() {
     println!("rad");
 }
 
-fn compute_grades(grades: HashMap<String, Vec<f64>>) -> (f64, Vec<(String, f64)>) {
-    (0.0, Vec::new())
+fn compute_grades(grades: HashMap<String, Vec<f32>>) -> (f32, Vec<(String, f32)>) {
+    let mut sum = 0.0;
+    let mut count = 0;
+    let mut result = Vec::new();
+    for (name, student_grades) in &grades {
+        let mut grade = student_grades.iter().sum::<f32>();
+        sum += grade;
+        count += student_grades.len();
+        grade /= student_grades.len() as f32;
+        result.push((name.to_string(), (grade * 100.0).round() / 100.0));
+    }
+    (((sum / count as f32) * 100.0).round() / 100.0, result)
 }
 
 #[cfg(test)]
