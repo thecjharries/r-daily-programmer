@@ -44,8 +44,9 @@ fn build_equation<R: Rng>(min: i32, max: i32, rng: &mut R) -> String {
     )
 }
 
-fn validate_answer(equation: String, answer: i64) -> {
-    false
+fn validate_answer(equation: String, answer: i64) -> bool {
+    let result = eval_str(&equation).unwrap();
+    result as i64 == answer
 }
 
 #[cfg(test)]
@@ -58,5 +59,11 @@ mod tests {
             build_equation(1, 10, &mut Pcg64::seed_from_u64(0)),
             "9 - 1 + 2 * 2"
         );
+    }
+
+    #[test]
+    fn test_validate_answer() {
+        assert_eq!(validate_answer("1 * 5 * 9 + 8".to_string(), 10), false);
+        assert_eq!(validate_answer("1 * 5 * 9 + 8".to_string(), 53), true);
     }
 }
