@@ -16,9 +16,15 @@ use lazy_static::lazy_static;
 use meval::eval_str;
 use rand::prelude::*;
 use rand::Rng;
+use rand_pcg::Pcg64;
 
 lazy_static! {
-    static ref OPERATIONS: Vec<'static str> = vec!["+", "-", "*", "/"];
+    static ref OPERATIONS: Vec<String> = vec![
+        "+".to_string(),
+        "-".to_string(),
+        "*".to_string(),
+        "/".to_string()
+    ];
 }
 
 fn main() {
