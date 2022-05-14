@@ -32,7 +32,16 @@ fn main() {
 }
 
 fn build_equation<R: Rng>(min: i32, max: i32, rng: &mut R) -> String {
-    String::new()
+    let mut numbers: Vec<i32> = vec![];
+    let mut operations: Vec<&String> = vec![];
+    for _ in 0..4 {
+        numbers.push(rng.gen_range(min..max + 1) as i32);
+        operations.push(&OPERATIONS[rng.gen_range(0..OPERATIONS.len())]);
+    }
+    format!(
+        "{} {} {} {} {} {} {}",
+        numbers[0], operations[0], numbers[1], operations[1], numbers[2], operations[2], numbers[3]
+    )
 }
 
 #[cfg(test)]
