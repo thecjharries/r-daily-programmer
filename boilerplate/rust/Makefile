@@ -52,9 +52,11 @@ git-prompt-runner:
 	$(GIT) add src/main.rs
 	$(GIT) commit -m 'Add prompt runner to main'
 
+# Convenience target for making a patch commit on main.rs
 patch:
 	$(GIT) add src --patch
 
+# Remove any built artifacts
 clean:
 	$(RM) -rf target
 	$(RM) -rf Cargo.lock
