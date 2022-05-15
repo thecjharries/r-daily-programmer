@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn transpose_strings(input: Vec<String>) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
