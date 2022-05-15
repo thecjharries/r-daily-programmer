@@ -57,3 +57,4 @@ clean:
 	rm -rf target
 	rm -rf Cargo.lock
 	rm -rf tarpaulin-report.html
+	rm -rf main
