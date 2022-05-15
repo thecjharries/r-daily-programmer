@@ -47,8 +47,13 @@ mod tests {
     #[test]
     fn test_transpose_strings() {
         assert_eq!(
-            transpose_strings(vec![String::from("abc"), String::from("def")]),
-            vec![String::from("ad"), String::from("be"), String::from("cf")]
+            transpose_strings(vec![String::from("abcd"), String::from("efg")]),
+            vec![
+                String::from("ae"),
+                String::from("bf"),
+                String::from("cg"),
+                String::from("d ")
+            ]
         );
     }
 }
