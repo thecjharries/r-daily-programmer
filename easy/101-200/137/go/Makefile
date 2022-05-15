@@ -4,6 +4,12 @@ test:
 coverage: test
 	go tool cover -func=.coverage.out
 
+coverage-report: coverage
+	go tool cover -html=.coverage.out
+
+coverage-percentage: test
+	test "$(shell go tool cover -func=.coverage.out | grep total | awk '{ print substr($$3, 1, length($$3)-1); }')" = "100.0"
+
 run:
 	go run main.go
 
@@ -18,5 +24,8 @@ git-prompt-runner:
 	git add main.go main_test.go
 	git commit -m 'Add prompt runner to main'
 
-finish:
+clean:
+	rm -rf .coverage.out
+
+finish: coverage-percentage clean
 	git flow feature finish
