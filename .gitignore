@@ -3,6 +3,7 @@
 ###
 
 main
+tarpaulin-report*
 
 ###
 # Go
