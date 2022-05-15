@@ -19,6 +19,10 @@ test:
 coverage:
 	$(CARGO) tarpaulin -v --fail-under=100
 
+# Build coverage report
+coverage-report:
+	$(CARGO) tarpaulin -v --fail-under=100 --out HTML; xdg-open tarpaulin-report.html
+
 # Set up the daily exercise
 bootstrap-feature-branch:
 	$(GIT) flow feature start $(DIFFICULTY)-$(NUMBER)

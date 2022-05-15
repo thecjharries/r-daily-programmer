@@ -17,7 +17,11 @@ test:
 
 # Get code coverage
 coverage:
-	$(CARGO) tarpaulin -v
+	$(CARGO) tarpaulin -v --fail-under=100
+
+# Build coverage report
+coverage-report:
+	$(CARGO) tarpaulin -v --fail-under=100 --out HTML; xdg-open tarpaulin-report.html
 
 # Set up the daily exercise
 bootstrap-feature-branch:
@@ -32,7 +36,7 @@ bootstrap-feature-branch:
 
 # Shortcut to finish the exercise branch
 # Probably better as an alias; this works just fine
-finish: test
+finish: coverage
 	$(GIT) flow feature finish
 
 # Convenience target for common commit
