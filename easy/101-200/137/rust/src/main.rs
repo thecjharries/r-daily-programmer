@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn transpose_strings(input: Vec<String>) -> Vec<String> {
-    Vec::new()
+    let mut length = 0;
+    for s in &input {
+        if s.len() > length {
+            length = s.len();
+        }
+    }
+    let mut output = Vec::new();
+    for _ in 0..length {
+        output.push(String::new());
+    }
+    for string in &input {
+        for index in 0..length {
+            if index < string.len() {
+                output[index].push(string.chars().nth(index).unwrap());
+            } else {
+                output[index].push(' ');
+            }
+        }
+    }
+    output
 }
 
 #[cfg(test)]
