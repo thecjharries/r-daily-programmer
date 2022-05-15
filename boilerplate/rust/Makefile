@@ -36,7 +36,7 @@ bootstrap-feature-branch:
 
 # Shortcut to finish the exercise branch
 # Probably better as an alias; this works just fine
-finish: coverage
+finish: coverage clean
 	$(GIT) flow feature finish
 
 # Convenience target for common commit
@@ -52,3 +52,8 @@ git-prompt-runner:
 
 patch:
 	$(GIT) add src --patch
+
+clean:
+	rm -rf target
+	rm -rf Cargo.lock
+	rm -rf tarpaulin-report.html
