@@ -1,7 +1,7 @@
 # Aliases for executables
-CARGO := cargo
-GIT := git
-SED := sed
+CARGO ?= cargo
+GIT ?= git
+SED ?= sed
 
 # Variables
 DIFFICULTY = $(lastword $(subst /, ,$(realpath ../../../)))

@@ -1,3 +1,10 @@
+# Aliases for executables
+AWK ?= awk
+GIT ?= git
+GO ?= go
+GREP ?= grep
+RM ?= rm
+
 test:
 	go test -v ./... -cover -race -coverprofile=.coverage.out
 
