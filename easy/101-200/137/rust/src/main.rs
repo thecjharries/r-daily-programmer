@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_transpose_strings() {
+        assert_eq!(
+            transpose_strings(vec![String::from("abc"), String::from("def")]),
+            vec![String::from("ad"), String::from("be"), String::from("cf")]
+        );
     }
 }
