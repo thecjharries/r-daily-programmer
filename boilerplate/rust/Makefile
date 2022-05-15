@@ -2,6 +2,8 @@
 CARGO ?= cargo
 GIT ?= git
 SED ?= sed
+XDG_OPEN ?= xdg-open
+RM ?= rm
 
 # Variables
 DIFFICULTY = $(lastword $(subst /, ,$(realpath ../../../)))
@@ -21,7 +23,7 @@ coverage:
 
 # Build coverage report
 coverage-report:
-	$(CARGO) tarpaulin -v --fail-under=100 --out HTML; xdg-open tarpaulin-report.html
+	$(CARGO) tarpaulin -v --fail-under=100 --out HTML; $(XDG_OPEN) tarpaulin-report.html
 
 # Set up the daily exercise
 bootstrap-feature-branch:
@@ -54,7 +56,7 @@ patch:
 	$(GIT) add src --patch
 
 clean:
-	rm -rf target
-	rm -rf Cargo.lock
-	rm -rf tarpaulin-report.html
-	rm -rf main
+	$(RM) -rf target
+	$(RM) -rf Cargo.lock
+	$(RM) -rf tarpaulin-report.html
+	$(RM) -rf main
