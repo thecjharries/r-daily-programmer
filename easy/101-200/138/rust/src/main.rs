@@ -25,7 +25,7 @@ impl Particle {
     }
 
     fn repulsion_force_from(&self, other: &Particle) -> f64 {
-        0.0
+        ((self.mass * other.mass) / self.distance_from(other).powi(2) * 10000.0).round() / 10000.0
     }
 }
 
