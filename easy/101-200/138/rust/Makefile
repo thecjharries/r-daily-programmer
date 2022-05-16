@@ -44,8 +44,7 @@ bootstrap-feature-branch:
 # Shortcut to finish the exercise branch
 # Probably better as an alias; this works just fine
 .PHONY: finish
-finish: coverage clean
-	@echo "Exercise complete!"
+finish:
 	$(GIT) flow feature finish
 
 # Convenience target for common commit
