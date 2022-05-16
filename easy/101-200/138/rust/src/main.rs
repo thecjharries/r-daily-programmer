@@ -19,7 +19,9 @@ struct Particle {
 
 impl Particle {
     fn distance_from(&self, other: &Particle) -> f64 {
-        0.0
+        ((self.position.0 - other.position.0).powi(2)
+            + (self.position.1 - other.position.1).powi(2))
+        .sqrt()
     }
 }
 
@@ -42,6 +44,6 @@ mod tests {
             mass: 1.0,
             position: (2.0, 2.0),
         };
-        assert_eq!(p1.distance_from(&p2), 2.0.sqrt());
+        assert_eq!(p1.distance_from(&p2), 2.0_f64.sqrt());
     }
 }
