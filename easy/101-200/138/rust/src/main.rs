@@ -50,4 +50,26 @@ mod tests {
         };
         assert_eq!(p1.distance_from(&p2), 2.0_f64.sqrt());
     }
+
+    #[test]
+    fn test_particle_repulsion_force_from() {
+        let p1 = Particle {
+            mass: 1.0,
+            position: (-5.2, 3.8),
+        };
+        let p2 = Particle {
+            mass: 1.0,
+            position: (8.7, -4.1),
+        };
+        assert_eq!(p1.repulsion_force_from(&p2), 0.0039);
+        let p3 = Particle {
+            mass: 4.0,
+            position: (0.04, -0.02),
+        };
+        let p4 = Particle {
+            mass: 4.0,
+            position: (-0.02, -0.03),
+        };
+        assert_eq!(p3.repulsion_force_from(&p4), 4324.3279);
+    }
 }
