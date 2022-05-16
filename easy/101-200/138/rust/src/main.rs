@@ -18,7 +18,7 @@ struct Particle {
 }
 
 impl Particle {
-    fn distance(&self, other: &Particle) -> f64 {
+    fn distance_from(&self, other: &Particle) -> f64 {
         0.0
     }
 }
@@ -33,7 +33,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_particle_distance_from() {
+        let p1 = Particle {
+            mass: 1.0,
+            position: (1.0, 1.0),
+        };
+        let p2 = Particle {
+            mass: 1.0,
+            position: (2.0, 2.0),
+        };
+        assert_eq!(p1.distance_from(&p2), 2.0.sqrt());
     }
 }
