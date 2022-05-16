@@ -45,6 +45,7 @@ bootstrap-feature-branch:
 # Probably better as an alias; this works just fine
 .PHONY: finish
 finish: coverage clean
+	@echo "Exercise complete!"
 	$(GIT) flow feature finish
 
 # Convenience target for common commit
