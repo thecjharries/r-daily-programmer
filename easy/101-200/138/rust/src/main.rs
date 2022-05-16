@@ -17,6 +17,12 @@ struct Particle {
     position: (f64, f64),
 }
 
+impl Particle {
+    fn distance(&self, other: &Particle) -> f64 {
+        0.0
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
