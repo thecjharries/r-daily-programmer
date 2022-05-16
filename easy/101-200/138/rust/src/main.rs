@@ -23,6 +23,10 @@ impl Particle {
             + (self.position.1 - other.position.1).powi(2))
         .sqrt()
     }
+
+    fn repulsion_force_from(&self, other: &Particle) -> f64 {
+        0.0
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
