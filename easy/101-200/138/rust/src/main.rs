@@ -70,6 +70,6 @@ mod tests {
             mass: 4.0,
             position: (-0.02, -0.03),
         };
-        assert_eq!(p3.repulsion_force_from(&p4), 4324.3279);
+        assert_eq!(p3.repulsion_force_from(&p4), 4324.3243);
     }
 }
