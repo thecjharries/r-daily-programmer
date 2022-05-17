@@ -12,13 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn is_panagram(sentence: &str) -> bool {
-    false
+    let mut letters: BTreeMap<char, u8> = BTreeMap::new();
+    for c in sentence.to_lowercase().chars() {
+        if c.is_alphabetic() {
+            *letters.entry(c).or_insert(0) += 1;
+        }
+    }
+    26 == letters.len()
 }
 
 #[cfg(test)]
