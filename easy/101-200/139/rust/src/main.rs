@@ -20,12 +20,14 @@ fn main() {
 }
 
 fn is_panagram(sentence: &str) -> bool {
+    // Using a BTreeMap for the bonus which I did not do
     let mut letters: BTreeMap<char, u8> = BTreeMap::new();
     for c in sentence.to_lowercase().chars() {
         if c.is_alphabetic() {
             *letters.entry(c).or_insert(0) += 1;
         }
     }
+    // We could instead return a Result<String, String> for the bonus instead
     26 == letters.len()
 }
 
