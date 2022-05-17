@@ -27,6 +27,14 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            is_panagram("The quick brown fox jumps over the lazy dog."),
+            true
+        );
+        assert_eq!(is_panagram("Pack my box with five dozen liquor jugs"), true);
+        assert_eq!(
+            is_panagram("Saxophones quickly blew over my jazzy hair"),
+            false
+        );
     }
 }
