@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_panagram(sentence: &str) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
