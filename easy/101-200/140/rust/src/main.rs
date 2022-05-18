@@ -27,7 +27,7 @@ fn to_camel_case(input: &str) -> String {
             if capitalize_next {
                 result.push(c.to_ascii_uppercase());
             } else {
-                result.push(c);
+                result.push(c.to_ascii_lowercase());
             }
             capitalize_next = false;
         }
