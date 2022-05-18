@@ -17,6 +17,14 @@ fn main() {
     println!("rad");
 }
 
+fn to_camel_case(input: &str) -> String {
+    String::new()
+}
+
+fn to_snake_case(input: &str, upper: bool) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
