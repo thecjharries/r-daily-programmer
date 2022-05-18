@@ -18,7 +18,21 @@ fn main() {
 }
 
 fn to_camel_case(input: &str) -> String {
-    String::new()
+    let mut result = String::new();
+    let mut capitalize_next = false;
+    for c in input.chars() {
+        if '_' == c || ' ' == c {
+            capitalize_next = true;
+        } else {
+            if capitalize_next {
+                result.push(c.to_ascii_uppercase());
+            } else {
+                result.push(c);
+            }
+            capitalize_next = false;
+        }
+    }
+    result
 }
 
 fn to_snake_case(input: &str, upper: bool) -> String {
