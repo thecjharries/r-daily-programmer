@@ -32,5 +32,11 @@ mod tests {
     #[test]
     fn test_to_camel_case() {
         assert_eq!(to_camel_case("user id"), "userId");
-    }S
+    }
+
+    #[test]
+    fn test_to_snake_case() {
+        assert_eq!(to_snake_case("user id", true), "USER_ID");
+        assert_eq!(to_snake_case("user id", false), "user_id");
+    }
 }
