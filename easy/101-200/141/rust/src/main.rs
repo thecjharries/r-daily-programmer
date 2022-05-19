@@ -26,7 +26,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_fletcher16_checksum() {
+        assert_eq!(compute_fletcher16_checksum(b"Fletcher"), 0xD330);
+        assert_eq!(
+            compute_fletcher16_checksum(b"Sally sells seashells by the seashore."),
+            0xD23E
+        );
+        assert_eq!(
+            compute_fletcher16_checksum(
+                b"Les chaussettes de l'archi-duchesse, sont-elles seches ou archi-seches ?"
+            ),
+            0x404D
+        );
     }
 }
