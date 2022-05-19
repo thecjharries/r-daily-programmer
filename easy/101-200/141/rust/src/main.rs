@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn compute_fletcher16_checksum(data: &[u8]) -> u16 {
-    0
+    let mut sum1 = 0;
+    let mut sum2 = 0;
+    for byte in data {
+        sum1 = (sum1 + *byte as u16) % 255;
+        sum2 = (sum2 + sum1) % 255;
+    }
+    (sum2 << 8) | sum1
 }
 
 #[cfg(test)]
