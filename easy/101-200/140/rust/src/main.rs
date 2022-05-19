@@ -36,7 +36,12 @@ fn to_camel_case(input: &str) -> String {
 }
 
 fn to_snake_case(input: &str, upper: bool) -> String {
-    String::new()
+    let mut result = String::from(input);
+    result = result.to_ascii_lowercase().replace(" ", "_");
+    if upper {
+        return result.to_ascii_uppercase();
+    }
+    result
 }
 
 #[cfg(test)]
