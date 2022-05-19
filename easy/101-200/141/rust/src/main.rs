@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_fletcher16_checksum(data: &[u8]) -> u16 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
