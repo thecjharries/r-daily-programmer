@@ -27,6 +27,20 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let input: Vec<Vec<char>> = vec![
+            vec!['.', '.', '.', '.', '.'],
+            vec![' ', ' ', '#', ' ', ' '],
+            vec!['#', ' ', ' ', ' ', ' '],
+            vec![' ', ' ', ' ', ' ', ' '],
+            vec![' ', ' ', ' ', ' ', '.'],
+        ];
+        let output: Vec<Vec<char>> = vec![
+            vec![' ', ' ', '.', ' ', ' '],
+            vec!['.', ' ', '#', ' ', ' '],
+            vec!['#', ' ', ' ', ' ', ' '],
+            vec![' ', ' ', ' ', ' ', '.'],
+            vec![' ', '.', ' ', '.', '.'],
+        ];
+        assert_eq!(compute_falling_sand(input), output);
     }
 }
