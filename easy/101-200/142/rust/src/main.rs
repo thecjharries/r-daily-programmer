@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn compute_falling_sand(input: Vec<Vec<char>>) -> Vec<Vec<char>> {
-    Vec::new()
+    let mut output = input.clone();
+    for row_index in 0..output.len() - 1 {
+        for column_index in 0..output[row_index].len() {
+            if output[row_index][column_index] == '.' {
+                if output[row_index + 1][column_index] == ' ' {
+                    output[row_index][column_index] = ' ';
+                    output[row_index + 1][column_index] = '.';
+                }
+            }
+        }
+    }
+    output
 }
 
 #[cfg(test)]
