@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_falling_sand(input: Vec<Vec<char>>) -> Vec<Vec<char>> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
