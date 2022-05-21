@@ -51,6 +51,11 @@ fn main() {
     println!("rad");
 }
 
+fn convert_braille_to_roman(input: &str) -> String {
+    // String::from_iter(input.chars().filter_map(|c| BRAILLE_TO_ROMAN.get(&c.to_string())))
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
