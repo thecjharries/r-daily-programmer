@@ -16,7 +16,7 @@ use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 lazy_static! {
-    static ref BRAILLE_TO_ROMAN: HashMap<&'static str, &'static str> = HashMap::from_iter[
+    static ref BRAILLE_TO_ROMAN: HashMap<&'static str, &'static str> = HashMap::from_iter([
         ("O.....", "a"),
         ("O.O...", "b"),
         ("OO....", "c"),
@@ -43,7 +43,7 @@ lazy_static! {
         ("OO..OO", "x"),
         ("OO.OOO", "y"),
         ("O..OOO", "z"),
-    ];
+    ]);
 }
 
 #[cfg(not(tarpaulin_include))]
