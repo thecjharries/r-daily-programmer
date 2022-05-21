@@ -52,8 +52,27 @@ fn main() {
 }
 
 fn convert_braille_to_roman(input: &str) -> String {
-    // String::from_iter(input.chars().filter_map(|c| BRAILLE_TO_ROMAN.get(&c.to_string())))
-    String::new()
+    let exploded = input.split("\n").collect::<Vec<_>>();
+    let mut chars: Vec<String> = Vec::new();
+    for line in exploded {
+        let exploded_line = line.split(" ").collect::<Vec<_>>();
+        for (index, word) in exploded_line.into_iter().enumerate() {
+            match chars.get(index) {
+                Some(_) => {
+                    chars[index].push_str(word);
+                }
+                None => {
+                    chars.push(word.to_string());
+                }
+            }
+        }
+    }
+    let mut roman = String::new();
+    for char in chars {
+        let roman_char = BRAILLE_TO_ROMAN.get(char.as_str()).unwrap();
+        roman.push_str(roman_char);
+    }
+    roman
 }
 
 #[cfg(test)]
