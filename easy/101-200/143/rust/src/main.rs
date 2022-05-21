@@ -62,7 +62,7 @@ mod tests {
 
     #[test]
     fn test_convert_braille_to_roman() {
-        assert_eq(
+        assert_eq!(
             convert_braille_to_roman(
                 "O. O. O. O. O. .O O. O. O. OO
 OO .O O. O. .O OO .O OO O. .O
