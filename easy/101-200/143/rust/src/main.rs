@@ -61,7 +61,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_braille_to_roman() {
+        assert_eq(
+            convert_braille_to_roman(
+                "O. O. O. O. O. .O O. O. O. OO
+OO .O O. O. .O OO .O OO O. .O
+.. .. O. O. O. .O O. O. O. ..",
+            ),
+            "helloworld",
+        )
     }
 }
