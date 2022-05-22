@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::collection::HashMap;
+use std::collections::HashMap;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -23,7 +23,17 @@ fn compare_prices(
     first: HashMap<String, i32>,
     second: HashMap<String, i32>,
 ) -> HashMap<String, String> {
-    HashMap::new()
+    let mut result = HashMap::new();
+    for (key, value) in first {
+        if second.contains_key(&key) {
+            if value > second[&key] {
+                result.insert(key.clone(), (second[&key] - value).to_string());
+            } else if value < second[&key] {
+                result.insert(key.clone(), format!("+{}", second[&key] - value));
+            }
+        }
+    }
+    result
 }
 
 #[cfg(test)]
