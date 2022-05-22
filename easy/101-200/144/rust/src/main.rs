@@ -31,7 +31,44 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compare_prices() {
+        assert_eq!(
+            compare_prices(
+                HashMap::from_iter([
+                    ("CarriageBolt".to_string(), 45),
+                    ("Eyebolt".to_string(), 50),
+                    ("Washer".to_string(), 120),
+                    ("Rivet".to_string(), 10),
+                ]),
+                HashMap::from_iter([
+                    ("CarriageBolt".to_string(), 45),
+                    ("Eyebolt".to_string(), 45),
+                    ("Washer".to_string(), 140),
+                    ("Rivet".to_string(), 10),
+                ])
+            ),
+            HashMap::from_iter([
+                ("Eyebolt".to_string(), "-5".to_string()),
+                ("Washer".to_string(), "+20".to_string()),
+            ])
+        );
+        assert_eq!(
+            compare_prices(
+                HashMap::from_iter([
+                    ("2DNail".to_string(), 3),
+                    ("4DNail".to_string(), 5),
+                    ("8DNail".to_string(), 10),
+                ]),
+                HashMap::from_iter([
+                    ("8DNail".to_string(), 11),
+                    ("4DNail".to_string(), 5),
+                    ("2DNail".to_string(), 2),
+                ])
+            ),
+            HashMap::from_iter([
+                ("2DNail".to_string(), "-1".to_string()),
+                ("8DNail".to_string(), "+1".to_string()),
+            ])
+        );
     }
 }
