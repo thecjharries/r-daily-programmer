@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn draw_fir_tree(max_width: u16, base_char: char, tree_char: char) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
