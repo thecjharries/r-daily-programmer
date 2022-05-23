@@ -17,8 +17,24 @@ fn main() {
     println!("rad");
 }
 
-fn draw_fir_tree(max_width: u16, base_char: char, tree_char: char) -> String {
-    String::new()
+fn draw_fir_tree(max_width: usize, base_char: char, tree_char: char) -> String {
+    let width = if 0 == max_width % 2 {
+        max_width + 1
+    } else {
+        max_width
+    };
+    let mut result = String::new();
+    for leaf_count in (1..width + 1).step_by(2) {
+        result.push_str(" ".repeat((width - leaf_count) / 2).as_str());
+        result.push_str(format!("{}", tree_char).repeat(leaf_count).as_str());
+        result.push_str(" ".repeat((width - leaf_count) / 2).as_str());
+        result.push('\n');
+    }
+    result.push_str(" ".repeat((width - 3) / 2).as_str());
+    result.push_str(format!("{}", base_char).repeat(3).as_str());
+    result.push_str(" ".repeat((width - 3) / 2).as_str());
+    result.push('\n');
+    result
 }
 
 #[cfg(test)]
