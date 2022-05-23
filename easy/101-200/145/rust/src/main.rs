@@ -27,6 +27,14 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(draw_fir_tree(3, '#', '*'), " * \n***\n###\n".to_string());
+        assert_eq!(
+            draw_fir_tree(4, '#', '*'),
+            "  *  \n *** \n*****\n ### \n".to_string()
+        );
+        assert_eq!(
+            draw_fir_tree(5, '#', '*'),
+            "  *  \n *** \n*****\n ### \n".to_string()
+        );
     }
 }
