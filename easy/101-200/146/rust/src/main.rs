@@ -18,7 +18,12 @@ fn main() {
 }
 
 fn calculate_perimeter(number_of_sides: u32, circumradius: f32) -> f32 {
-    0.0
+    (2.0 * circumradius
+        * number_of_sides as f32
+        * (std::f32::consts::PI / number_of_sides as f32).sin()
+        * 1000.0)
+        .round()
+        / 1000.0
 }
 
 #[cfg(test)]
