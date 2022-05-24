@@ -26,7 +26,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_perimeter() {
+        assert_eq!(calculate_perimeter(5, 3.7), 21.748);
+        assert_eq!(calculate_perimeter(100, 1.0), 6.282);
     }
 }
