@@ -27,6 +27,14 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(is_american_football_score_valid(-1), false);
+        assert_eq!(is_american_football_score_valid(0), true);
+        assert_eq!(is_american_football_score_valid(1), false);
+        assert_eq!(is_american_football_score_valid(2), false);
+        assert_eq!(is_american_football_score_valid(3), true);
+        assert_eq!(is_american_football_score_valid(4), false);
+        assert_eq!(is_american_football_score_valid(5), false);
+        assert_eq!(is_american_football_score_valid(6), true);
+        assert_eq!(is_american_football_score_valid(35), true);
     }
 }
