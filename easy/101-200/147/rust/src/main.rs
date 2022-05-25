@@ -18,6 +18,9 @@ fn main() {
 }
 
 fn is_american_football_score_valid(score: i32) -> bool {
+    if 0 == score || 3 == score || 5 < score {
+        return true;
+    }
     false
 }
 
