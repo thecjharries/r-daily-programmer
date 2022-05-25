@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_american_football_score_valid(score: i32) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
