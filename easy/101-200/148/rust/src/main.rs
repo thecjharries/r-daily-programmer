@@ -23,7 +23,12 @@ fn count_rotation_increments(
     second_digit: i32,
     third_digit: i32,
 ) -> i32 {
-    0
+    let mut result = 2 * lock_size;
+    result += first_digit;
+    result += lock_size;
+    result += (first_digit - second_digit + lock_size) % lock_size;
+    result += (third_digit - second_digit + lock_size) % lock_size;
+    result
 }
 
 #[cfg(test)]
