@@ -31,7 +31,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_count_rotation_increments() {
+        assert_eq!(count_rotation_increments(5, 1, 2, 3), 21);
     }
 }
