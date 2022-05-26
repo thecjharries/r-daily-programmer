@@ -17,6 +17,15 @@ fn main() {
     println!("rad");
 }
 
+fn count_rotation_increments(
+    lock_size: i32,
+    first_digit: i32,
+    second_digit: i32,
+    third_digit: i32,
+) -> i32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
