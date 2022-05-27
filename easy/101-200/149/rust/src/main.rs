@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn disemvowel(input: &str) -> (String, String) {
-    (String::new(), String::new())
+    let mut consonants = String::new();
+    let mut vowels = String::new();
+    for char in input.to_lowercase().chars() {
+        match char {
+            'a' | 'e' | 'i' | 'o' | 'u' => vowels.push(char),
+            _ => {
+                if char.is_alphabetic() {
+                    consonants.push(char)
+                }
+            }
+        }
+    }
+    (consonants, vowels)
 }
 
 #[cfg(test)]
