@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn disemvowel(input: &str) -> (String, String) {
+    (String::new(), String::new())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
