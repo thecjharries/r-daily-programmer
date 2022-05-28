@@ -21,7 +21,10 @@ fn main() {
 
 #[cached]
 fn factorial(n: u64) -> u64 {
-    0
+    if n < 2 {
+        return 1;
+    }
+    n * factorial(n - 1)
 }
 
 #[cfg(test)]
