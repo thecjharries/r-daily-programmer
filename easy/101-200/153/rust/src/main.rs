@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use cached::proc_macro::cached;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+#[cached]
+fn factorial(n: u64) -> u64 {
+    0
 }
 
 #[cfg(test)]
