@@ -27,6 +27,10 @@ fn factorial(n: u64) -> u64 {
     n * factorial(n - 1)
 }
 
+fn generate_pascals_pyramid(layer: u64) -> Vec<Vec<u64>> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
