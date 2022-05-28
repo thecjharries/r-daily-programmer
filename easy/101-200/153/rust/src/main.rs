@@ -56,10 +56,9 @@ mod tests {
     #[test]
     fn test_generate_pascals_pyramid() {
         let result = generate_pascals_pyramid(14);
-        let last_row = result.last().unwrap();
         assert_eq!(
             vec![1, 14, 91, 364, 1001, 2002, 3003, 3432, 3003, 2002, 1001, 364, 91, 14, 1],
-            last_row
+            result[0]
         );
     }
 }
