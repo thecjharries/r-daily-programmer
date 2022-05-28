@@ -28,7 +28,17 @@ fn factorial(n: u64) -> u64 {
 }
 
 fn generate_pascals_pyramid(layer: u64) -> Vec<Vec<u64>> {
-    Vec::new()
+    let mut result = Vec::new();
+    for row in 0..=layer {
+        let mut result_row: Vec<u64> = Vec::new();
+        for a in (0..=layer - row).rev() {
+            let b = layer - row - a;
+            result_row.push(factorial(layer) / (factorial(row) * factorial(a) * factorial(b)));
+        }
+        println!("{:?}", result_row);
+        result.push(result_row)
+    }
+    result
 }
 
 #[cfg(test)]
