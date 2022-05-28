@@ -29,7 +29,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_factorial() {
+        assert_eq!(1, factorial(0));
+        assert_eq!(1, factorial(1));
+        assert_eq!(2, factorial(2));
+        assert_eq!(120, factorial(5))
     }
 }
