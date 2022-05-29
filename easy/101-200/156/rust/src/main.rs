@@ -18,7 +18,10 @@ fn main() {
 }
 
 fn decode_prompt(ciphertext: &str) -> String {
-    String::new()
+    ciphertext
+        .chars()
+        .map(|char| (char as u8 - 4) as char)
+        .collect::<String>()
 }
 
 #[cfg(test)]
