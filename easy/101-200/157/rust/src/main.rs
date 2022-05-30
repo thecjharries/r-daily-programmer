@@ -33,6 +33,20 @@ fn main() {
 }
 
 fn find_winning_move(board: Vec<char>, piece: char) -> Result<u8, String> {
+    for possible_solution in SOLUTIONS.iter() {
+        let mut found_count = 0;
+        let mut solution_index: u8 = 0;
+        for index in possible_solution.iter() {
+            if board[*index as usize] == piece {
+                found_count += 1;
+            } else {
+                solution_index = *index
+            }
+        }
+        if 2 == found_count {
+            return Ok(solution_index);
+        }
+    }
     Err("No winning move".to_string())
 }
 
