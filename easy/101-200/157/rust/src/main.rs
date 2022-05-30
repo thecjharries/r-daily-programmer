@@ -32,6 +32,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_winning_move(board: Vec<char>, piece: char) -> Result<u8, String> {
+    Err("No winning move".to_string())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
