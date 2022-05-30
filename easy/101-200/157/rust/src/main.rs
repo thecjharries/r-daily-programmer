@@ -41,7 +41,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_winning_move() {
+        let board: Vec<char> = vec!['-', 'O', 'O', 'X', 'X', '-', '-', '-', '-'];
+        assert_eq!(0, find_winning_move(board.clone(), 'O').unwrap());
+        assert_eq!(5, find_winning_move(board.clone(), 'X').unwrap());
+        assert!(find_winning_move(board.clone(), 'Y').is_err());
     }
 }
