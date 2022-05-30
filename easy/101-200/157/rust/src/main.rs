@@ -12,6 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref SOLUTIONS: Vec<Vec<u8>> = vec![
+        vec![0, 1, 2],
+        vec![3, 4, 5],
+        vec![6, 7, 8],
+        vec![0, 3, 6],
+        vec![1, 4, 7],
+        vec![2, 5, 8],
+        vec![0, 4, 8],
+        vec![2, 4, 6],
+    ];
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
