@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_torn_number(input: u32) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
