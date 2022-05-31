@@ -26,7 +26,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_torn_number() {
+        assert_eq!(false, is_torn_number(1111));
+        assert_eq!(false, is_torn_number(111));
+        assert_eq!(false, is_torn_number(11111));
+        assert_eq!(true, is_torn_number(3025));
+        assert_eq!(true, is_torn_number(9081));
     }
 }
