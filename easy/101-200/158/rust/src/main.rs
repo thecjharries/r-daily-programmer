@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -19,9 +21,18 @@ fn main() {
 
 fn is_torn_number(input: u32) -> bool {
     if input > 999 && input < 10000 {
-        let upper = input / 100;
-        let lower = input - upper * 100;
-        return input == (upper + lower) * (upper + lower);
+        let mut digits: Vec<u32> = Vec::new();
+        let mut number = input;
+        while 0 < number {
+            digits.push(number % 10);
+            number /= 10;
+        }
+        let unique_digits: Vec<u32> = digits.into_iter().unique().collect::<Vec<u32>>();
+        if 4 == unique_digits.len() {
+            let upper = unique_digits[0] * 10 + unique_digits[1];
+            let lower = unique_digits[2] * 10 + unique_digits[3];
+            return input == (upper + lower) * (upper + lower);
+        }
     }
     false
 }
