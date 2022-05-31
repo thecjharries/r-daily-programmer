@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn is_torn_number(input: u32) -> bool {
+    if input > 999 && input < 10000 {
+        let upper = input / 100;
+        let lower = input - upper * 100;
+        return input == (upper + lower) * (upper + lower);
+    }
     false
+}
+
+fn find_torn_numbers() -> Vec<u32> {
+    Vec::new()
 }
 
 #[cfg(test)]
@@ -32,5 +41,10 @@ mod tests {
         assert_eq!(false, is_torn_number(11111));
         assert_eq!(true, is_torn_number(3025));
         assert_eq!(true, is_torn_number(9801));
+    }
+
+    #[test]
+    fn test_find_torn_numbers() {
+        assert_eq!(vec![3025, 9801], find_torn_numbers());
     }
 }
