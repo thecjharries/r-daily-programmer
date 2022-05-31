@@ -31,6 +31,6 @@ mod tests {
         assert_eq!(false, is_torn_number(111));
         assert_eq!(false, is_torn_number(11111));
         assert_eq!(true, is_torn_number(3025));
-        assert_eq!(true, is_torn_number(9081));
+        assert_eq!(true, is_torn_number(9801));
     }
 }
