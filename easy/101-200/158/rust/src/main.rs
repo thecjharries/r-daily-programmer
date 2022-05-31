@@ -27,7 +27,13 @@ fn is_torn_number(input: u32) -> bool {
 }
 
 fn find_torn_numbers() -> Vec<u32> {
-    Vec::new()
+    let mut result: Vec<u32> = Vec::new();
+    for number in 1000..10000 {
+        if is_torn_number(number) {
+            result.push(number)
+        }
+    }
+    result
 }
 
 #[cfg(test)]
