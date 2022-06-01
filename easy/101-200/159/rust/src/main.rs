@@ -13,6 +13,9 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
 use std::collections::HashMap;
 
 lazy_static! {
@@ -55,7 +58,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_play_round() {
         assert_eq!(2 + 2, 4);
     }
 }
