@@ -59,6 +59,26 @@ mod tests {
 
     #[test]
     fn test_play_round() {
-        assert_eq!(2 + 2, 4);
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(
+            ("spock vaporizes rock; computer wins".to_string(), 0, 1),
+            play_round("rock", &mut rng)
+        );
+        assert_eq!(
+            ("lizard eats paper; computer wins".to_string(), 0, 1),
+            play_round("paper", &mut rng)
+        );
+        assert_eq!(
+            ("scissors ??? scissors; Neither wins".to_string(), 0, 0),
+            play_round("scissors", &mut rng)
+        );
+        assert_eq!(
+            ("lizard ??? lizard; Neither wins".to_string(), 0, 0),
+            play_round("lizard", &mut rng)
+        );
+        assert_eq!(
+            ("spock smashes scissors; human wins".to_string(), 1, 0),
+            play_round("spock", &mut rng)
+        );
     }
 }
