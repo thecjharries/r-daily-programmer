@@ -50,7 +50,56 @@ fn main() {
 }
 
 fn play_round<R: Rng>(human_move: &str, rng: &mut R) -> (String, i32, i32) {
-    (String::new(), 0, 0)
+    let mut human_score = 0;
+    let mut computer_score = 0;
+    let computer_move = MOVES.keys().choose(rng).unwrap();
+    let mut subject = human_move.to_string();
+    let mut object = computer_move.to_string();
+    let mut winner = "Neither".to_string();
+    let mut action = "???".to_string();
+    match MOVES.get(human_move) {
+        Some(map) => {
+            match map.get(computer_move) {
+                Some(response) => {
+                    winner = "human".to_string();
+                    action = response.to_string();
+                    human_score = 1;
+                    computer_score = 0;
+                }
+                None => {
+                    // do nothing
+                }
+            }
+        }
+        None => {
+            // do nothing
+        }
+    }
+    match MOVES.get(computer_move) {
+        Some(map) => {
+            match map.get(human_move) {
+                Some(response) => {
+                    subject = computer_move.to_string();
+                    object = human_move.to_string();
+                    winner = "computer".to_string();
+                    action = response.to_string();
+                    human_score = 0;
+                    computer_score = 1;
+                }
+                None => {
+                    // do nothing
+                }
+            }
+        }
+        None => {
+            // do nothing
+        }
+    }
+    (
+        format!("{} {} {}; {} wins", subject, action, object, winner),
+        human_score,
+        computer_score,
+    )
 }
 
 #[cfg(test)]
