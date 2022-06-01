@@ -58,19 +58,19 @@ fn play_round<R: Rng>(human_move: &str, rng: &mut R) -> (String, i32, i32) {
     let mut winner = "Neither".to_string();
     let mut action = "???".to_string();
     match MOVES.get(human_move) {
-        Some(map) => {
-            match map.get(computer_move) {
-                Some(response) => {
-                    winner = "human".to_string();
-                    action = response.to_string();
-                    human_score = 1;
-                    computer_score = 0;
-                }
-                None => {
-                    // do nothing
-                }
+        Some(map) => match map.get(computer_move) {
+            Some(response) => {
+                winner = "human".to_string();
+                action = response.to_string();
+                human_score = 1;
+                computer_score = 0;
             }
-        }
+            #[cfg(not(tarpaulin_include))]
+            None => {
+                // do nothing
+            }
+        },
+        #[cfg(not(tarpaulin_include))]
         None => {
             // do nothing
         }
@@ -86,11 +86,13 @@ fn play_round<R: Rng>(human_move: &str, rng: &mut R) -> (String, i32, i32) {
                     human_score = 0;
                     computer_score = 1;
                 }
+                #[cfg(not(tarpaulin_include))]
                 None => {
                     // do nothing
                 }
             }
         }
+        #[cfg(not(tarpaulin_include))]
         None => {
             // do nothing
         }
@@ -128,6 +130,10 @@ mod tests {
         assert_eq!(
             ("spock smashes scissors; human wins".to_string(), 1, 0),
             play_round("spock", &mut rng)
+        );
+        assert_eq!(
+            ("qqq ??? lizard; Neither wins".to_string(), 0, 0),
+            play_round("qqq", &mut rng)
         );
     }
 }
