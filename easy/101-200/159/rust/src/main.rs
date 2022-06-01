@@ -46,6 +46,10 @@ fn main() {
     println!("rad");
 }
 
+fn play_round(human_move: &str) -> (String, i32, i32) {
+    (String::new(), 0, 0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
