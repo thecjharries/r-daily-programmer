@@ -13,6 +13,33 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref HASHMAP: HashMap<&'static str, HashMap<&'static str, &'static str>> =
+        HashMap::from_iter(vec![
+            (
+                "rock",
+                HashMap::from_iter(vec![("scissors", "crushes"), ("lizard", "crushes")])
+            ),
+            (
+                "paper",
+                HashMap::from_iter(vec![("rock", "covers"), ("spock", "disproves")]),
+            ),
+            (
+                "scissors",
+                HashMap::from_iter(vec![("paper", "cuts"), ("lizard", "decapitates")]),
+            ),
+            (
+                "lizard",
+                HashMap::from_iter(vec![("paper", "eats"), ("spock", "poisons")]),
+            ),
+            (
+                "spock",
+                HashMap::from_iter(vec![("rock", "vaporizes"), ("scissors", "smashes")]),
+            ),
+        ]);
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
