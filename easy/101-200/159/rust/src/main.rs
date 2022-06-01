@@ -16,30 +16,30 @@ use lazy_static::lazy_static;
 use rand::prelude::*;
 use rand::Rng;
 use rand_pcg::Pcg64;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 lazy_static! {
-    static ref HASHMAP: HashMap<&'static str, HashMap<&'static str, &'static str>> =
-        HashMap::from_iter(vec![
+    static ref MOVES: BTreeMap<&'static str, BTreeMap<&'static str, &'static str>> =
+        BTreeMap::from_iter(vec![
             (
                 "rock",
-                HashMap::from_iter(vec![("scissors", "crushes"), ("lizard", "crushes")])
+                BTreeMap::from_iter(vec![("scissors", "crushes"), ("lizard", "crushes")])
             ),
             (
                 "paper",
-                HashMap::from_iter(vec![("rock", "covers"), ("spock", "disproves")]),
+                BTreeMap::from_iter(vec![("rock", "covers"), ("spock", "disproves")]),
             ),
             (
                 "scissors",
-                HashMap::from_iter(vec![("paper", "cuts"), ("lizard", "decapitates")]),
+                BTreeMap::from_iter(vec![("paper", "cuts"), ("lizard", "decapitates")]),
             ),
             (
                 "lizard",
-                HashMap::from_iter(vec![("paper", "eats"), ("spock", "poisons")]),
+                BTreeMap::from_iter(vec![("paper", "eats"), ("spock", "poisons")]),
             ),
             (
                 "spock",
-                HashMap::from_iter(vec![("rock", "vaporizes"), ("scissors", "smashes")]),
+                BTreeMap::from_iter(vec![("rock", "vaporizes"), ("scissors", "smashes")]),
             ),
         ]);
 }
