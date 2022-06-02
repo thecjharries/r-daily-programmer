@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_angles(a: f64, b: f64, c: f64) -> (f64, f64, f64) {
+    (0.0, 0.0, 0.0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
