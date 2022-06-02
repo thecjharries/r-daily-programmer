@@ -12,13 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::f64::consts::PI;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn compute_angles(a: f64, b: f64, c: f64) -> (f64, f64, f64) {
-    (0.0, 0.0, 0.0)
+    (
+        ((a / c).asin() * 180.0 / PI * 100.0).round() / 100.0,
+        ((b / c).asin() * 180.0 / PI * 100.0).round() / 100.0,
+        90.0,
+    )
 }
 
 #[cfg(test)]
