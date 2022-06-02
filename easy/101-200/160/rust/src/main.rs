@@ -26,7 +26,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_angles() {
+        assert_eq!((36.87, 53.13, 90.0), compute_angles(3.0, 4.0, 5.0));
     }
 }
