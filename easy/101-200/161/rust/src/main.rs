@@ -140,4 +140,28 @@ mod tests {
             deck.cards[0]
         );
     }
+
+    #[test]
+    fn test_deck_deal() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut deck = Deck::new(1, &mut rng);
+        assert_eq!(52, deck.cards.len());
+        assert_eq!(
+            deck.cards[51],
+            Card {
+                suit: CardSuit::Spades,
+                value: CardValue::Ace
+            }
+        );
+        let dealt = deck.deal(5);
+        assert_eq!(5, dealt.len());
+        assert_eq!(47, deck.cards.len());
+        assert_eq!(
+            Card {
+                suit: CardSuit::Spades,
+                value: CardValue::Nine
+            },
+            deck.cards[46]
+        );
+    }
 }
