@@ -40,6 +40,11 @@ struct Card {
     value: CardValue,
 }
 
+struct Deck {
+    cards: Vec<Card>,
+    rng: Rng,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
