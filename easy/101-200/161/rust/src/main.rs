@@ -86,6 +86,10 @@ impl<'a, R: Rng> Deck<'a, R> {
         }
         Deck { cards, rng }
     }
+
+    fn shuffle(&mut self) {
+        self.rng.shuffle(&mut self.cards);
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
