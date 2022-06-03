@@ -93,6 +93,14 @@ impl<'a, R: Rng> Deck<'a, R> {
             self.cards.swap(index, swap_index);
         }
     }
+
+    fn deal(&mut self, count: u8) -> Vec<Card> {
+        let mut dealt = Vec::new();
+        for _ in 0..count {
+            dealt.push(self.cards.pop().unwrap());
+        }
+        dealt
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
