@@ -95,7 +95,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_deck_new() {
+        let mut rng = Pcg64::from_entropy();
+        let deck = Deck::new(1, &mut rng);
+        assert_eq!(deck.cards.len(), 52);
     }
 }
