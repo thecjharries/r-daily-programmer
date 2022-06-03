@@ -56,6 +56,8 @@ impl<'a, R: Rng> Deck<'a, R> {
     fn new(deck_count: u8, rng: &'a mut R) -> Deck<'a, R> {
         let mut cards = Vec::new();
         for _ in 0..deck_count {
+            // Tarpaulin doesn't register coverage on the arrays
+            #[cfg(not(tarpaulin_include))]
             for suit in &[
                 CardSuit::Clubs,
                 CardSuit::Diamonds,
@@ -94,6 +96,8 @@ impl<'a, R: Rng> Deck<'a, R> {
         }
     }
 
+    // Tarpaulin doesn't register coverage on the return value
+    #[cfg(not(tarpaulin_include))]
     fn deal(&mut self, count: u8) -> Vec<Card> {
         let mut dealt = Vec::new();
         for _ in 0..count {
@@ -117,6 +121,13 @@ mod tests {
         let mut rng = Pcg64::from_entropy();
         let deck = Deck::new(1, &mut rng);
         assert_eq!(52, deck.cards.len());
+        assert_eq!(
+            Card {
+                suit: CardSuit::Clubs,
+                value: CardValue::Two
+            },
+            deck.cards[0]
+        );
     }
 
     #[test]
@@ -163,5 +174,14 @@ mod tests {
             },
             deck.cards[46]
         );
+        assert_eq!(
+            Card {
+                suit: CardSuit::Spades,
+                value: CardValue::Ace
+            },
+            dealt[0]
+        );
+        let empty = deck.deal(0);
+        assert_eq!(0, empty.len());
     }
 }
