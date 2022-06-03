@@ -16,6 +16,7 @@ use rand::prelude::*;
 use rand::Rng;
 use rand_pcg::Pcg64;
 
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 enum CardSuit {
     Clubs,
     Diamonds,
@@ -23,6 +24,7 @@ enum CardSuit {
     Spades,
 }
 
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 enum CardValue {
     Two,
     Three,
@@ -39,18 +41,19 @@ enum CardValue {
     Ace,
 }
 
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 struct Card {
     suit: CardSuit,
     value: CardValue,
 }
 
-struct Deck<R: Rng> {
+struct Deck<'a, R: Rng> {
     cards: Vec<Card>,
-    rng: &mut R,
+    rng: &'a mut R,
 }
 
-impl Deck {
-    fn new<R: Rng>(deck_count: u8, rng: &mut R) -> Deck {
+impl<'a, R: Rng> Deck<'a, R> {
+    fn new(deck_count: u8, rng: &'a mut R) -> Deck<'a, R> {
         let mut cards = Vec::new();
         for _ in 0..deck_count {
             for suit in &[
