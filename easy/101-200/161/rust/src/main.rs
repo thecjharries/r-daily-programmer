@@ -44,9 +44,45 @@ struct Card {
     value: CardValue,
 }
 
-struct Deck {
+struct Deck<R: Rng> {
     cards: Vec<Card>,
-    rng: Rng,
+    rng: &mut R,
+}
+
+impl Deck {
+    fn new<R: Rng>(deck_count: u8, rng: &mut R) -> Deck {
+        let mut cards = Vec::new();
+        for _ in 0..deck_count {
+            for suit in &[
+                CardSuit::Clubs,
+                CardSuit::Diamonds,
+                CardSuit::Hearts,
+                CardSuit::Spades,
+            ] {
+                for value in &[
+                    CardValue::Two,
+                    CardValue::Three,
+                    CardValue::Four,
+                    CardValue::Five,
+                    CardValue::Six,
+                    CardValue::Seven,
+                    CardValue::Eight,
+                    CardValue::Nine,
+                    CardValue::Ten,
+                    CardValue::Jack,
+                    CardValue::Queen,
+                    CardValue::King,
+                    CardValue::Ace,
+                ] {
+                    cards.push(Card {
+                        suit: *suit,
+                        value: *value,
+                    });
+                }
+            }
+        }
+        Deck { cards, rng }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
