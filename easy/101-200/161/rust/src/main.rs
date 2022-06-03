@@ -12,6 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+enum CardSuit {
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades,
+}
+
+enum CardValue {
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Jack,
+    Queen,
+    King,
+    Ace,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
