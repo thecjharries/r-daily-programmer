@@ -105,6 +105,28 @@ mod tests {
     fn test_deck_new() {
         let mut rng = Pcg64::from_entropy();
         let deck = Deck::new(1, &mut rng);
+        assert_eq!(52, deck.cards.len());
+    }
+
+    #[test]
+    fn test_deck_shuffle() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut deck = Deck::new(1, &mut rng);
         assert_eq!(deck.cards.len(), 52);
+        assert_eq!(
+            Card {
+                suit: CardSuit::Clubs,
+                value: CardValue::Two
+            },
+            deck.cards[0]
+        );
+        deck.shuffle();
+        assert_eq!(
+            Card {
+                suit: CardSuit::Clubs,
+                value: CardValue::Five
+            },
+            deck.cards[0]
+        );
     }
 }
