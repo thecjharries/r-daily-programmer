@@ -35,6 +35,11 @@ enum CardValue {
     Ace,
 }
 
+struct Card {
+    suit: CardSuit,
+    value: CardValue,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
