@@ -88,7 +88,10 @@ impl<'a, R: Rng> Deck<'a, R> {
     }
 
     fn shuffle(&mut self) {
-        self.rng.shuffle(&mut self.cards);
+        for index in 0..self.cards.len() - 1 {
+            let swap_index = self.rng.gen_range(index..self.cards.len());
+            self.cards.swap(index, swap_index);
+        }
     }
 }
 
@@ -123,8 +126,8 @@ mod tests {
         deck.shuffle();
         assert_eq!(
             Card {
-                suit: CardSuit::Clubs,
-                value: CardValue::Five
+                suit: CardSuit::Hearts,
+                value: CardValue::Ace
             },
             deck.cards[0]
         );
