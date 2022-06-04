@@ -72,5 +72,15 @@ mod tests {
                 vec!["is", "my", "hello", "name", "stan"]
             )
         );
+        assert_eq!(
+            "I do not like them, Sam-I-am.\n",
+            decompress_data(
+                "0^ 1 6 7 8 , 18^ - 0^ - 19 . R E",
+                vec![
+                    "i", "do", "house", "with", "mouse", "in", "not", "like", "them", "ham", "a",
+                    "anywhere", "green", "eggs", "and", "here", "or", "there", "sam", "am"
+                ]
+            )
+        )
     }
 }
