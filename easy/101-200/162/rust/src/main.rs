@@ -16,8 +16,8 @@ use lazy_static::lazy_static;
 use regex::Regex;
 
 lazy_static! {
-    static ref PUNCTUATION_PATTERN: Regex = Regex::new(r"[.,?!;:]").unwrap();
-    static ref WORD_PATTERN: Regex = Regex::new(r"(?P<word>\d+)(?P<style>^!)?").unwrap();
+    static ref PUNCTUATION_PATTERN: Regex = Regex::new(r"^[.,?!;:]$").unwrap();
+    static ref WORD_PATTERN: Regex = Regex::new(r"(?P<word>\d+)(?P<style>[!\^])?").unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
