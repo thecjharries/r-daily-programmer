@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn decompress_data(input: &str, dictionary: Vec<&str>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
