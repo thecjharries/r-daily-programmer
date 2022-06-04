@@ -39,7 +39,6 @@ fn decompress_data(input: &str, dictionary: Vec<&str>) -> String {
             result.pop();
             result.push_str(chunk.get(0).unwrap().as_str());
         } else if let Some(captures) = WORD_PATTERN.captures(chunk) {
-            println!("captures: {:?}", captures);
             let word_index = captures.name("word").unwrap().as_str();
             let mut word = dictionary[word_index.parse::<usize>().unwrap()].to_lowercase();
             match captures.name("style") {
