@@ -66,14 +66,14 @@ mod tests {
     #[test]
     fn test_decompress_data() {
         assert_eq!(
-            "HELLO!\nMy name is Stan.",
+            "HELLO! \nMy name is Stan. ",
             decompress_data(
                 "2! ! R 1^ 3 0 4^ . E",
                 vec!["is", "my", "hello", "name", "stan"]
             )
         );
         assert_eq!(
-            "I do not like them, Sam-I-am.\n",
+            "I do not like them, Sam-I-am. \n",
             decompress_data(
                 "0^ 1 6 7 8 , 18^ - 0^ - 19 . R E",
                 vec![
