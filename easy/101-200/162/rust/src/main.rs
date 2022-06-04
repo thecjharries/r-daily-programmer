@@ -38,6 +38,7 @@ fn decompress_data(input: &str, dictionary: Vec<&str>) -> String {
         } else if let Some(chunk) = PUNCTUATION_PATTERN.captures(chunk) {
             result.pop();
             result.push_str(chunk.get(0).unwrap().as_str());
+            result.push_str(" ");
         } else if let Some(captures) = WORD_PATTERN.captures(chunk) {
             let word_index = captures.name("word").unwrap().as_str();
             let mut word = dictionary[word_index.parse::<usize>().unwrap()].to_lowercase();
