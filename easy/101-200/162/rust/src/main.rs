@@ -12,14 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
+lazy_static! {
+    static ref PUNCTUATION_PATTERN: Regex = Regex::new(r"[.,?!;:]").unwrap();
+    static ref WORD_PATTERN: Regex = Regex::new(r"(?P<word>\d+)(?P<style>^!)?").unwrap();
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn decompress_data(input: &str, dictionary: Vec<&str>) -> String {
-    String::new()
-}
+fn decompress_data(input: &str, dictionary: Vec<&str>) -> String {}
 
 #[cfg(test)]
 mod tests {
