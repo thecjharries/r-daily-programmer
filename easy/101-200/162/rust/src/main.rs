@@ -26,7 +26,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_decompress_data() {
+        assert_eq!(
+            "HELLO!\nMy name is Stan.",
+            decompress_data(
+                "2! ! R 1^ 3 0 4^ . E",
+                vec!["is", "my", "hello", "name", "stan"]
+            )
+        );
     }
 }
