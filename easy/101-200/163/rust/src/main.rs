@@ -22,7 +22,21 @@ fn main() {
 }
 
 fn roll_and_build_stats<R: Rng>(count: u64, rng: &mut R) -> String {
-    String::new()
+    let mut rolls = vec![0; 6];
+    for _ in 0..count {
+        let roll = rng.gen_range(0..6);
+        rolls[roll as usize] += 1;
+    }
+    format!(
+        "{: <10} {:05.2}% {:05.2}% {:05.2}% {:05.2}% {:05.2}% {:05.2}%",
+        count,
+        (rolls[0] as f64 / count as f64) * 100.0,
+        (rolls[1] as f64 / count as f64) * 100.0,
+        (rolls[2] as f64 / count as f64) * 100.0,
+        (rolls[3] as f64 / count as f64) * 100.0,
+        (rolls[4] as f64 / count as f64) * 100.0,
+        (rolls[5] as f64 / count as f64) * 100.0,
+    )
 }
 
 #[cfg(test)]
