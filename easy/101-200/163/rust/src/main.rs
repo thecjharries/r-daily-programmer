@@ -21,6 +21,9 @@ fn main() {
     println!("rad");
 }
 
+// Ignore this for coverage
+// tarpaulin thinks the count in format! is not covered
+#[cfg(not(tarpaulin_include))]
 fn roll_and_build_stats<R: Rng>(count: u64, rng: &mut R) -> String {
     let mut rolls = vec![0; 6];
     for _ in 0..count {
