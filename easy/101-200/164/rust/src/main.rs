@@ -73,4 +73,9 @@ mod tests {
     fn test_strip_character() {
         assert_eq!("abcd", strip_character("abcde", 'e'));
     }
+
+    #[test]
+    fn test_sum_vec() {
+        assert_eq!(15, sum_vec(&vec![1, 2, 3, 4, 5]));
+    }
 }
