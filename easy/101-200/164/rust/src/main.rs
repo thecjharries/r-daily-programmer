@@ -54,4 +54,10 @@ mod tests {
             find_numbers_divisible_by_3_and_5(100)
         );
     }
+
+    #[test]
+    fn test_is_anagram() {
+        assert!(is_anagram("dog", "god"));
+        assert!(!is_anagram("dog", "cab"));
+    }
 }
