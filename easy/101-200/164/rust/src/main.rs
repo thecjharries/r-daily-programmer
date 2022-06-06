@@ -29,7 +29,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_print_hello_world() {
+        let mut output: Vec<u8> = Vec::new();
+        assert!(print_hello_world(&mut output).is_ok());
+        assert_eq!(output, b"Hello, world!");
     }
 }
