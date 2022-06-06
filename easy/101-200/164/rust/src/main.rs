@@ -25,7 +25,7 @@ fn print_hello_world(output: &mut impl Write) -> Result<(), Error> {
 }
 
 fn find_numbers_divisible_by_3_and_5(max: u32) -> Vec<u32> {
-    (1..max).filter(|n| n % 3 == 0 || n % 5 == 0).collect()
+    (1..max).filter(|n| n % 3 == 0 && n % 5 == 0).collect()
 }
 
 #[cfg(test)]
