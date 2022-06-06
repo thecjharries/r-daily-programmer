@@ -38,4 +38,12 @@ mod tests {
         assert!(print_hello_world(&mut output).is_ok());
         assert_eq!(output, b"Hello, world!");
     }
+
+    #[test]
+    fn test_find_numbers_divisible_by_3_and_5() {
+        assert_eq!(
+            vec![15, 30, 45, 60, 75, 90],
+            find_numbers_divisible_by_3_and_5(100)
+        );
+    }
 }
