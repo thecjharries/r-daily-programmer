@@ -40,6 +40,10 @@ fn strip_character(input: &str, character: char) -> String {
     input.chars().filter(|c| *c != character).collect()
 }
 
+fn sum_vec(vec: &Vec<i32>) -> i32 {
+    vec.iter().sum()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
