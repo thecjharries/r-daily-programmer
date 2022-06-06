@@ -28,6 +28,14 @@ fn find_numbers_divisible_by_3_and_5(max: u32) -> Vec<u32> {
     (1..max).filter(|n| n % 3 == 0 && n % 5 == 0).collect()
 }
 
+fn is_anagram(first: &str, second: &str) -> bool {
+    let mut first_chars = first.chars().collect::<Vec<char>>();
+    let mut second_chars = second.chars().collect::<Vec<char>>();
+    first_chars.sort();
+    second_chars.sort();
+    first_chars == second_chars
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
