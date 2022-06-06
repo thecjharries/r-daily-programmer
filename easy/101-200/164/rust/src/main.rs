@@ -36,6 +36,10 @@ fn are_anagrams(first: &str, second: &str) -> bool {
     first_chars == second_chars
 }
 
+fn strip_character(input: &str, character: char) -> String {
+    input.chars().filter(|c| *c != character).collect()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
