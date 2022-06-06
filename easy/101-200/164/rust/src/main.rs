@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::io::{Error, Read, Result, Write};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn print_hello_world(output: &mut impl Write) -> Result<(), Error> {
+    write!(output, "Hello, world!")?;
+    Ok(())
 }
 
 #[cfg(test)]
