@@ -64,4 +64,9 @@ mod tests {
         assert!(are_anagrams("dog", "god"));
         assert!(!are_anagrams("dog", "cab"));
     }
+
+    #[test]
+    fn test_strip_character() {
+        assert_eq!("abcd", strip_character("abcde", 'e'));
+    }
 }
