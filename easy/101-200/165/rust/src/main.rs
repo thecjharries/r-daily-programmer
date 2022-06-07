@@ -18,7 +18,38 @@ fn main() {
 }
 
 fn iterate_game_of_life(width: i32, height: i32, board: &str, iterations: i32) -> String {
-    String::new()
+    let mut current_board = board.replace("\n", "").to_string();
+    let mut new_board = String::new();
+    for _ in 0..iterations {
+        let board_chars: Vec<char> = current_board.chars().collect::<Vec<char>>();
+        for y in 0..height {
+            for x in 0..width {
+                let mut neighbours = 0;
+                for y_ in vec![(y - 1 + height) % height, y, (y + 1 + height) % height] {
+                    for x_ in vec![(x - 1 + width) % width, x, (x + 1 + width) % width] {
+                        if x == x_ && y == y_ {
+                            continue;
+                        }
+                        if '#' == board_chars[(y_ * width + x_) as usize] {
+                            neighbours += 1;
+                        }
+                    }
+                }
+                if 3 == neighbours && '.' == board_chars[(y * width + x) as usize] {
+                    new_board.push('#');
+                } else if (2 > neighbours || 3 < neighbours)
+                    && '#' == board_chars[(y * width + x) as usize]
+                {
+                    new_board.push('.');
+                } else {
+                    new_board.push(board_chars[(y * width + x) as usize]);
+                }
+            }
+        }
+        current_board = new_board.clone();
+        new_board.clear();
+    }
+    current_board
 }
 
 #[cfg(test)]
