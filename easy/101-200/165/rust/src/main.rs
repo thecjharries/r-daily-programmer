@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn iterate_game_of_life(board: &str, iterations: i32) -> String {
+fn iterate_game_of_life(width: i32, height: i32, board: &str, iterations: i32) -> String {
     String::new()
 }
 
@@ -27,6 +27,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("...........................................#..........##.......##...................................", iterate_game_of_life(10, 10,"......................#..........#.......###........................................................", 0));
     }
 }
