@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn iterate_game_of_life(board: &str, iterations: i32) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
