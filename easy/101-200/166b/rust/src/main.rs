@@ -26,7 +26,22 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_weight_on_planet() {
+        assert_eq!(
+            "Tantalus: 434.467",
+            calculate_weight_on_planet(100.0, "Tantalus", 3104500.0, 5009.0)
+        );
+        assert_eq!(
+            "Reach: 1059.536",
+            calculate_weight_on_planet(100.0, "Reach", 7636500.0, 4966.0)
+        );
+        assert_eq!(
+            "Circumstance: 476.441",
+            calculate_weight_on_planet(100.0, "Circumstance", 4127000.0, 4132.0)
+        );
+        assert_eq!(
+            "Tribute: 343.117",
+            calculate_weight_on_planet(100.0, "Tribute", 2818000.0, 4358.0)
+        );
     }
 }
