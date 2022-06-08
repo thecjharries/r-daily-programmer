@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::f64::consts::PI;
+
 const GRAVITATIONAL_CONSTANT: f64 = 6.67e-11;
 
 #[cfg(not(tarpaulin_include))]
@@ -20,7 +22,12 @@ fn main() {
 }
 
 fn calculate_weight_on_planet(mass: f64, name: &str, radius: f64, average_density: f64) -> String {
-    String::new()
+    format!(
+        "{}: {:.3}",
+        name,
+        mass * GRAVITATIONAL_CONSTANT * (4.0 * PI * radius.powi(3) / 3.0) * average_density
+            / (radius * radius)
+    )
 }
 
 #[cfg(test)]
