@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_weight_on_planet(mass: f64, name: &str, radius: f64, average_density: f64) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
