@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const GRAVITATIONAL_CONSTANT: f64 = 6.67e-11;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
