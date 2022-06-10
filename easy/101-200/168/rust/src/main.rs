@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_word(haystack: &str, position: usize) -> Result<String, String> {
+    Err(String::from("No word found"))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
