@@ -27,6 +27,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("<!DOCTYPE html><html><head><title></title></head><body><p>This is my paragraph entry</p></body></html>", build_html(vec!["This is my paragraph entry"]));
     }
 }
