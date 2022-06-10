@@ -12,13 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use handlebars::Handlebars;
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn build_html(paragraphs: Vec<&str>) -> String {
-    String::new()
+    let mut handlebars = Handlebars::new();
+    handlebars
+        .register_template_string("template", "<!DOCTYPE html><html><head><title></title></head><body>{{#each paragraphs}}<p>{{this}}</p>{{/each}}</body></html>")
+        .unwrap();
+    let mut data = HashMap::new();
+    data.insert("paragraphs", paragraphs);
+    handlebars.render("template", &data).unwrap()
 }
 
 #[cfg(test)]
