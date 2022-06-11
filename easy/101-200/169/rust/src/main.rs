@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn rotate_2d_array_90<T>(mut array: Vec<Vec<T>>) -> Vec<Vec<T>> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
