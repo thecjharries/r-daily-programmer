@@ -17,6 +17,8 @@ fn main() {
     println!("rad");
 }
 
+// Tarpaulin doesn't think the return value gets covered
+#[cfg(not(tarpaulin_include))]
 fn rotate_2d_array_90<T>(array: Vec<Vec<T>>) -> Vec<Vec<T>>
 where
     T: Copy,
