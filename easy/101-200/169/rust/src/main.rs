@@ -17,8 +17,20 @@ fn main() {
     println!("rad");
 }
 
-fn rotate_2d_array_90<T>(mut array: Vec<Vec<T>>) -> Vec<Vec<T>> {
-    Vec::new()
+fn rotate_2d_array_90<T>(array: Vec<Vec<T>>) -> Vec<Vec<T>>
+where
+    T: Copy,
+{
+    let mut result: Vec<Vec<T>> = Vec::new();
+    for _ in 0..array[0].len() {
+        result.push(Vec::new() as Vec<T>);
+    }
+    for row_index in (0..array.len()).rev() {
+        for (i, col) in array[row_index].iter().enumerate() {
+            result[i].push(*col);
+        }
+    }
+    result
 }
 
 #[cfg(test)]
