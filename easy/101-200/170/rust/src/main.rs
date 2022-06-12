@@ -85,7 +85,93 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_hand_score() {
+        assert_eq!(
+            21,
+            determine_hand_score(vec![
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Ace
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Ten
+                },
+            ])
+        );
+        assert_eq!(
+            22,
+            determine_hand_score(vec![
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Ace
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::King
+                },
+                Card {
+                    suit: CardSuit::Hearts,
+                    value: CardValue::Ace
+                },
+            ])
+        );
+        assert_eq!(
+            85,
+            determine_hand_score(vec![
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Two,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Three,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Four,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Five,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Six,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Seven,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Eight,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Nine,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Ten,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Jack,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Queen,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::King,
+                },
+                Card {
+                    suit: CardSuit::Clubs,
+                    value: CardValue::Ace,
+                },
+            ])
+        );
     }
 }
