@@ -43,14 +43,13 @@ struct Card {
     value: CardValue,
 }
 
-struct Deck<'a, R: Rng> {
-    cards: Vec<Card>,
-    rng: &'a mut R,
-}
-
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn determine_hand_score(hand: Vec<Card>) -> u8 {
+    0
 }
 
 #[cfg(test)]
