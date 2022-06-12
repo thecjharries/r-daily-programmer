@@ -49,7 +49,35 @@ fn main() {
 }
 
 fn determine_hand_score(hand: Vec<Card>) -> u8 {
-    0
+    let mut ace_count = 0;
+    let mut score = 0;
+    for card in hand.iter() {
+        match card.value {
+            CardValue::Two => score += 2,
+            CardValue::Three => score += 3,
+            CardValue::Four => score += 4,
+            CardValue::Five => score += 5,
+            CardValue::Six => score += 6,
+            CardValue::Seven => score += 7,
+            CardValue::Eight => score += 8,
+            CardValue::Nine => score += 9,
+            CardValue::Ten => score += 10,
+            CardValue::Jack => score += 10,
+            CardValue::Queen => score += 10,
+            CardValue::King => score += 10,
+            CardValue::Ace => {
+                ace_count += 1;
+            }
+        }
+    }
+    for _ in 0..ace_count {
+        if score + 11 > 21 {
+            score += 1;
+        } else {
+            score += 11;
+        }
+    }
+    score
 }
 
 #[cfg(test)]
