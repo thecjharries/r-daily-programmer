@@ -12,6 +12,42 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
+enum CardSuit {
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades,
+}
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
+enum CardValue {
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Jack,
+    Queen,
+    King,
+    Ace,
+}
+
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
+struct Card {
+    suit: CardSuit,
+    value: CardValue,
+}
+
+struct Deck<'a, R: Rng> {
+    cards: Vec<Card>,
+    rng: &'a mut R,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
