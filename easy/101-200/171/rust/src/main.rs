@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_hex_picture(hex: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
