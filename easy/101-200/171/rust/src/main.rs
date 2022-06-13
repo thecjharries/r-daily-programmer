@@ -12,13 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use hex;
+use std::iter::FromIterator;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn convert_to_hex_picture(hex: &str) -> String {
-    String::new()
+fn convert_to_hex_picture(input: &str) -> String {
+    let mut result = String::new();
+    let cleaned_hex = input.replace(" ", "").chars().collect::<Vec<char>>();
+    for index in (0..cleaned_hex.len()).step_by(2) {
+        result.push_str(
+            &format!(
+                "{:#010b}\n",
+                hex::decode(String::from_iter(&cleaned_hex[index..index + 2])).unwrap()[0]
+            )
+            .replace("0b", "")
+            .replace("0", " ")
+            .replace("1", "x"),
+        );
+    }
+    result
 }
 
 #[cfg(test)]
