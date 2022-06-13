@@ -44,7 +44,7 @@ mod tests {
     #[test]
     fn test_convert_to_hex_picture() {
         assert_eq!(
-            "   xx   \n  xxxx  \n xxxxxx \n xxxxxx \n   xx   \n   xx   \n   xx   \n   xx    \n",
+            "   xx   \n  xxxx  \n xxxxxx \n xxxxxx \n   xx   \n   xx   \n   xx   \n   xx   \n",
             convert_to_hex_picture("18 3C 7E 7E 18 18 18 18")
         );
     }
