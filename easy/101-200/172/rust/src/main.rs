@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn create_pbm_input(text: &str) -> Vec<u8> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
