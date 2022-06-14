@@ -12,6 +12,50 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref LETTER_TO_PBM: HashMap<char, Vec<Vec<u8>>> = HashMap::from_iter([
+        (
+            'a',
+            vec![
+                vec![0, 0, 1, 0, 0],
+                vec![0, 1, 0, 1, 0],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 1, 1, 1, 1],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 0, 0, 0, 1]
+            ]
+        ),
+        (
+            'b',
+            vec![
+                vec![1, 1, 1, 1, 0],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 1, 1, 1, 0],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 1, 1, 1, 0]
+            ]
+        ),
+        (
+            'c',
+            vec![
+                vec![0, 1, 1, 1, 0],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 0, 0, 0, 0],
+                vec![1, 0, 0, 0, 0],
+                vec![1, 0, 0, 0, 0],
+                vec![1, 0, 0, 0, 1],
+                vec![0, 1, 1, 1, 0]
+            ]
+        ),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
