@@ -26,7 +26,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_create_pbm_input() {
+        assert_eq!("".as_bytes(), create_pbm_input("abc"));
     }
 }
