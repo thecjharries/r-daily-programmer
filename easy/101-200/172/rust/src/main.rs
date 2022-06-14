@@ -62,7 +62,25 @@ fn main() {
 }
 
 fn create_pbm_input(text: &str) -> Vec<u8> {
-    Vec::new()
+    let mut result_lines: Vec<Vec<u8>> = Vec::new();
+    for _ in 0..LETTER_TO_PBM.get(&'a').unwrap().len() {
+        result_lines.push(Vec::new());
+    }
+    for letter in text.to_lowercase().chars() {
+        match LETTER_TO_PBM.get(&letter) {
+            Some(pbm_letter) => {
+                for (index, line) in pbm_letter.iter().enumerate() {
+                    result_lines[index].extend(line.iter().cloned());
+                }
+            }
+            None => {}
+        }
+    }
+    let mut result: Vec<u8> = Vec::new();
+    for line in result_lines {
+        result.extend(line);
+    }
+    result
 }
 
 #[cfg(test)]
