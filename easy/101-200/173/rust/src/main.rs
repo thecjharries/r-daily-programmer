@@ -78,7 +78,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_units() {
+        assert_eq!(
+            "3.000000 metres is 118.110000 inches",
+            convert_units("3 metres to inches")
+        );
+        assert_eq!(
+            "3.000000 metres cannot be converted to pounds",
+            convert_units("3 metres to pounds")
+        );
     }
 }
