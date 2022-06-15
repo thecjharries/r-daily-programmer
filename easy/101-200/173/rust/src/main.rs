@@ -69,6 +69,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_units(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
