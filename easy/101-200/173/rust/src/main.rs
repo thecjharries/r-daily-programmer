@@ -14,10 +14,54 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::HashMap;
 
 lazy_static! {
     static ref CONVERSION_PATTERN: Regex =
         Regex::new(r"\s*(?P<amount>[^ ]*) (?P<from>.*) to (?P<to>.*)\s*").unwrap();
+    static ref CONVERSION_MAP: HashMap<String, HashMap<String, f64>> = {
+        let mut map = HashMap::new();
+        map.insert(
+            "inches".to_string(),
+            HashMap::from_iter([
+                ("metres".to_string(), 1.0 / 39.37),
+                ("miles".to_string(), 1.0 / 63360.0),
+                ("attoparsecs".to_string(), 1.0 / 1.215),
+            ]),
+        );
+        map.insert(
+            "metres".to_string(),
+            HashMap::from_iter([
+                ("inches".to_string(), 39.37),
+                ("miles".to_string(), 1.0 / 1609.0),
+                ("attoparsecs".to_string(), 32.408),
+            ]),
+        );
+        map.insert(
+            "miles".to_string(),
+            HashMap::from_iter([
+                ("inches".to_string(), 63360.0),
+                ("metres".to_string(), 1609.0),
+                ("attoparsecs".to_string(), 52155.0),
+            ]),
+        );
+        map.insert(
+            "attoparsecs".to_string(),
+            HashMap::from_iter([
+                ("inches".to_string(), 1.0 / 1.215),
+                ("metres".to_string(), 1.0 / 32.408),
+                ("miles".to_string(), 1.0 / 52155.0),
+            ]),
+        );
+        map.insert(
+            "kilograms".to_string(),
+            HashMap::from_iter([
+                ("pounds".to_string(), 0.45359237),
+                ("ounces".to_string(), 28.349523125),
+            ]),
+        );
+        map
+    };
 }
 
 #[cfg(not(tarpaulin_include))]
