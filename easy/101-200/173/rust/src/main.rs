@@ -70,7 +70,28 @@ fn main() {
 }
 
 fn convert_units(input: &str) -> String {
-    String::new()
+    let captures = CONVERSION_PATTERN.captures(input).unwrap();
+    let amount = captures
+        .name("amount")
+        .unwrap()
+        .as_str()
+        .parse::<f64>()
+        .unwrap();
+    let from = captures.name("from").unwrap().as_str().to_string();
+    let to = captures.name("to").unwrap().as_str().to_string();
+    match CONVERSION_MAP.get(&from) {
+        Some(map) => match map.get(&to) {
+            Some(conversion) => format!(
+                "{} {} is {} {}",
+                amount,
+                from,
+                (conversion * amount * 100000.0).round() / 100000.0,
+                to
+            ),
+            None => format!("{} {} cannot be converted to {}", amount, from, to),
+        },
+        None => "error".to_string(),
+    }
 }
 
 #[cfg(test)]
