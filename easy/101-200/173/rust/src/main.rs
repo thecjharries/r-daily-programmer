@@ -101,12 +101,13 @@ mod tests {
     #[test]
     fn test_convert_units() {
         assert_eq!(
-            "3.000000 metres is 118.110000 inches",
+            "3 metres is 118.11 inches",
             convert_units("3 metres to inches")
         );
         assert_eq!(
-            "3.000000 metres cannot be converted to pounds",
+            "3 metres cannot be converted to pounds",
             convert_units("3 metres to pounds")
         );
+        assert_eq!("error", convert_units("3 qqq to pounds"));
     }
 }
