@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_thue_morse_sequence(order: i32) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
