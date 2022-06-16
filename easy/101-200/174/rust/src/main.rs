@@ -17,8 +17,19 @@ fn main() {
     println!("rad");
 }
 
-fn generate_thue_morse_sequence(order: i32) -> String {
-    String::new()
+fn generate_thue_morse_sequence(order: u8) -> String {
+    if 0 == order {
+        return "0".to_string();
+    }
+    let mut result = String::from("0");
+    for _ in 0..order {
+        let new = result
+            .chars()
+            .map(|char| if '0' == char { '1' } else { '0' })
+            .collect::<String>();
+        result.push_str(&new);
+    }
+    result
 }
 
 #[cfg(test)]
