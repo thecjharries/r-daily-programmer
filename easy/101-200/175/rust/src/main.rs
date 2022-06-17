@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::Rng;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn bogo_sort_iteration<R: Rng>(input: &str, desired: &str, rng: &mut R) -> u32 {
+    0
 }
 
 #[cfg(test)]
