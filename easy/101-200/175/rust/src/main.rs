@@ -24,6 +24,8 @@ fn main() {
 fn bogo_sort_iteration<R: Rng>(input: &str, desired: &str, rng: &mut R) -> u32 {
     let mut current = input.to_string();
     let mut count: u32 = 0;
+    // Tarpaulin doesn't register coverage on the "loop" or "return" lines
+    #[cfg(not(tarpaulin_include))]
     loop {
         if current == desired {
             return count;
