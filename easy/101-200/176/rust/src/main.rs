@@ -98,6 +98,7 @@ mod tests {
             HashSet::from_iter([(0, 1), (1, 1), (2, 1),]),
             build_cell_range("A2:C2")
         );
+        assert_eq!(HashSet::new(), build_cell_range("&*^"));
     }
 
     #[test]
