@@ -34,33 +34,34 @@ fn build_cell_range(input: &str) -> HashSet<(u32, u32)> {
             let start_col_str = caps.name("start_col").unwrap().as_str().to_lowercase();
             let mut start_col: u32 = 0;
             for (index, char) in start_col_str.chars().rev().enumerate() {
-                start_col += (char as u32 - 'a' as u32 + 1) * 26u32.pow(index as u32);
+                start_col += (char as u32 - 'a' as u32) * 26u32.pow(index as u32);
             }
             let start_row = caps
                 .name("start_row")
                 .unwrap()
                 .as_str()
                 .parse::<u32>()
-                .unwrap();
+                .unwrap()
+                - 1;
             let end_col = match caps.name("end_col") {
                 Some(end_col_str) => {
                     let end_col_str = end_col_str.as_str().to_lowercase();
                     let mut end_col: u32 = 0;
                     for (index, char) in end_col_str.chars().rev().enumerate() {
-                        end_col += (char as u32 - 'a' as u32 + 1) * 26u32.pow(index as u32);
+                        end_col += (char as u32 - 'a' as u32) * 26u32.pow(index as u32);
                     }
                     end_col
                 }
                 None => start_col,
             };
             let end_row = match caps.name("end_row") {
-                Some(end_row_str) => end_row_str.as_str().parse::<u32>().unwrap(),
+                Some(end_row_str) => end_row_str.as_str().parse::<u32>().unwrap() - 1,
                 None => start_row,
             };
             let mut cell_range = HashSet::new();
             for row in start_row..=end_row {
                 for col in start_col..=end_col {
-                    cell_range.insert((row, col));
+                    cell_range.insert((col, row));
                 }
             }
             cell_range
@@ -80,7 +81,7 @@ mod tests {
     #[test]
     fn test_build_cell_range() {
         assert_eq!(
-            HashSet::from_iter([(2, 1), (2, 2), (2, 3),]),
+            HashSet::from_iter([(0, 1), (1, 1), (2, 1),]),
             build_cell_range("A2:C2")
         );
     }
