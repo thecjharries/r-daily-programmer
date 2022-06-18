@@ -45,7 +45,7 @@ mod tests {
     #[test]
     fn test_bogo_sort_iteration() {
         assert_eq!(
-            100,
+            157,
             bogo_sort_iteration("olleh", "hello", &mut Pcg64::seed_from_u64(0))
         );
         assert_eq!(
