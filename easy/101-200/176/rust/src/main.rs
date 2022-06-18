@@ -17,8 +17,10 @@ use regex::Regex;
 use std::collections::HashSet;
 
 lazy_static! {
-    static ref CELL_PATTERN: Regex =
-        Regex::new(r"(?i)^(?<start>[a-z]+\d+)(?::(?<end>[a-z]+\d+))?$").unwrap();
+    static ref CELL_PATTERN: Regex = Regex::new(
+        r"(?i)^(?P<start_col>[a-z]+)(?P<start_row>\d+)(?::(?P<end_col>[a-z]+)(?P<end_row>\d+))?$"
+    )
+    .unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
