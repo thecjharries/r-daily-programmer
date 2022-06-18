@@ -32,10 +32,8 @@ fn build_cell_range(input: &str) -> HashSet<(u32, u32)> {
     match CELL_PATTERN.captures(input) {
         Some(caps) => {
             let start_col_str = caps.name("start_col").unwrap().as_str().to_lowercase();
-            println!("{}", start_col_str);
             let mut start_col: u32 = 0;
             for (index, char) in start_col_str.chars().rev().enumerate() {
-                println!("{} {}", index, char);
                 start_col += (char as u32 - 'a' as u32 + 1) * 26u32.pow(index as u32);
             }
             let start_row = caps
