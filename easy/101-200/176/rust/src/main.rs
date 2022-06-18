@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::HashSet;
 
 lazy_static! {
     static ref CELL_PATTERN: Regex =
@@ -23,6 +24,10 @@ lazy_static! {
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn determine_cells(input: &str) -> HashSet<(u32, u32)> {
+    HashSet::new()
 }
 
 #[cfg(test)]
