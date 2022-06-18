@@ -39,6 +39,14 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_build_cell_range() {
+        assert_eq!(
+            HashSet::from_iter([(2, 1), (2, 2), (2, 3),]),
+            build_cell_range("A2:C2")
+        );
+    }
+
+    #[test]
     fn test_determine_cells() {
         let cells = determine_cells("B1:B3&B4:E10&F1:G1&F4~C5:C8&B2");
         assert_eq!(29, cells.len());
