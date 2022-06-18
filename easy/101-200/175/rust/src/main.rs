@@ -22,7 +22,20 @@ fn main() {
 }
 
 fn bogo_sort_iteration<R: Rng>(input: &str, desired: &str, rng: &mut R) -> u32 {
-    0
+    let mut current = input.to_string();
+    let mut count: u32 = 0;
+    loop {
+        if current == desired {
+            return count;
+        }
+        count += 1;
+        let mut shuffled = current.chars().collect::<Vec<char>>();
+        for i in 0..shuffled.len() {
+            let j = rng.gen_range(0..shuffled.len());
+            shuffled.swap(i, j);
+        }
+        current = shuffled.iter().collect::<String>();
+    }
 }
 
 #[cfg(test)]
