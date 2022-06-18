@@ -29,7 +29,46 @@ fn main() {
 }
 
 fn build_cell_range(input: &str) -> HashSet<(u32, u32)> {
-    HashSet::new()
+    match CELL_PATTERN.captures(input) {
+        Some(caps) => {
+            let start_col_str = caps.name("start_col").unwrap().as_str().to_lowercase();
+            println!("{}", start_col_str);
+            let mut start_col: u32 = 0;
+            for (index, char) in start_col_str.chars().rev().enumerate() {
+                println!("{} {}", index, char);
+                start_col += (char as u32 - 'a' as u32 + 1) * 26u32.pow(index as u32);
+            }
+            let start_row = caps
+                .name("start_row")
+                .unwrap()
+                .as_str()
+                .parse::<u32>()
+                .unwrap();
+            let end_col = match caps.name("end_col") {
+                Some(end_col_str) => {
+                    let end_col_str = end_col_str.as_str().to_lowercase();
+                    let mut end_col: u32 = 0;
+                    for (index, char) in end_col_str.chars().rev().enumerate() {
+                        end_col += (char as u32 - 'a' as u32 + 1) * 26u32.pow(index as u32);
+                    }
+                    end_col
+                }
+                None => start_col,
+            };
+            let end_row = match caps.name("end_row") {
+                Some(end_row_str) => end_row_str.as_str().parse::<u32>().unwrap(),
+                None => start_row,
+            };
+            let mut cell_range = HashSet::new();
+            for row in start_row..=end_row {
+                for col in start_col..=end_col {
+                    cell_range.insert((row, col));
+                }
+            }
+            cell_range
+        }
+        None => HashSet::new(),
+    }
 }
 
 fn determine_cells(input: &str) -> HashSet<(u32, u32)> {
