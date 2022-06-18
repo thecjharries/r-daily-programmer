@@ -26,6 +26,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_cell_range(input: &str) -> HashSet<(u32, u32)> {
+    HashSet::new()
+}
+
 fn determine_cells(input: &str) -> HashSet<(u32, u32)> {
     HashSet::new()
 }
