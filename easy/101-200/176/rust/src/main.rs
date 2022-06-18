@@ -71,7 +71,21 @@ fn build_cell_range(input: &str) -> HashSet<(u32, u32)> {
 }
 
 fn determine_cells(input: &str) -> HashSet<(u32, u32)> {
-    HashSet::new()
+    let exploded = input.split('~').collect::<Vec<_>>();
+    let mut removed_cells = HashSet::new();
+    if 2 == exploded.len() {
+        let exploded_removed = exploded[1].split('&');
+        for removed in exploded_removed {
+            removed_cells.extend(build_cell_range(removed));
+        }
+    }
+    println!("{:?}", removed_cells);
+    let mut cell_range = HashSet::new();
+    for cell in exploded[0].split('&') {
+        cell_range.extend(build_cell_range(cell));
+    }
+    println!("{:?}", cell_range);
+    cell_range.difference(&removed_cells).cloned().collect()
 }
 
 #[cfg(test)]
