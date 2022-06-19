@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn quicksort<T: Copy + PartialEq + PartialOrd>(input: Vec<T>) -> Vec<T> {
+    input
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
