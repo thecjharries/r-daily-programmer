@@ -26,7 +26,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_quicksort() {
+        assert_eq!(vec![1, 2, 3], quicksort(vec![3, 2, 1]));
+        assert_eq!(vec![1.1, 2.2, 3.3], quicksort(vec![3.3, 2.2, 1.1]));
     }
 }
