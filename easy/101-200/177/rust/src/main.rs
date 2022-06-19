@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn quicksort<T: Copy + PartialEq + PartialOrd>(input: Vec<T>) -> Vec<T> {
-    input
+    if 1 >= input.len() {
+        return input;
+    }
+    let pivot_index = input.len() / 2;
+    let mut smaller: Vec<T> = Vec::new();
+    let mut larger: Vec<T> = Vec::new();
+    for i in 0..input.len() {
+        if i != pivot_index {
+            if input[i] < input[pivot_index] {
+                smaller.push(input[i]);
+            } else {
+                larger.push(input[i]);
+            }
+        }
+    }
+    let mut result: Vec<T> = Vec::new();
+    result.append(&mut quicksort(smaller));
+    result.push(input[pivot_index]);
+    result.append(&mut quicksort(larger));
+    result
 }
 
 #[cfg(test)]
