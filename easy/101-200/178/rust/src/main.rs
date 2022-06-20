@@ -22,6 +22,10 @@ fn main() {
     println!("rad");
 }
 
+fn new_point(x: f32, y: f32) -> &mut Point {
+    &mut Point { x, y }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
