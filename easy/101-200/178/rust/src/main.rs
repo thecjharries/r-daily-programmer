@@ -18,13 +18,15 @@ struct Point {
     y: f32,
 }
 
+impl Point {
+    fn new(x: f32, y: f32) -> Point {
+        Point { x, y }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
-}
-
-fn new_point(x: f32, y: f32) -> Point {
-    Point { x, y }
 }
 
 #[cfg(test)]
@@ -32,7 +34,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_new_point() {
-        assert_eq!(Point { x: 1.0, y: 2.0 }, new_point(1.0, 2.0));
+    fn test_point_new() {
+        assert_eq!(Point { x: 1.0, y: 2.0 }, Point::new(1.0, 2.0));
     }
 }
