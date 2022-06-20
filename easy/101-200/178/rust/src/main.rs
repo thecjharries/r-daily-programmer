@@ -121,4 +121,9 @@ mod tests {
             Point::new(2.0, 5.0).reflect(Axis::Y)
         );
     }
+
+    #[test]
+    fn test_point_display() {
+        assert_eq!("(2, 5)", format!("{}", Point::new(2.0, 5.0)));
+    }
 }
