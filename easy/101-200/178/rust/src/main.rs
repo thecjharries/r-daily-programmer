@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, Clone, Copy, PartialEq)]
 struct Point {
     x: f32,
     y: f32,
@@ -22,8 +23,8 @@ fn main() {
     println!("rad");
 }
 
-fn new_point(x: f32, y: f32) -> &mut Point {
-    &mut Point { x, y }
+fn new_point(x: f32, y: f32) -> Point {
+    Point { x, y }
 }
 
 #[cfg(test)]
@@ -31,7 +32,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_new_point() {
+        assert_eq!(Point { x: 1.0, y: 2.0 }, new_point(1.0, 2.0));
     }
 }
