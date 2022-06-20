@@ -50,6 +50,19 @@ impl Point {
             y: (self.x - x) * (-1.0 * angle).sin() + (self.y - y) * (-1.0 * angle).cos() + y,
         }
     }
+
+    fn reflect(&self, axis: Axis) -> Point {
+        match axis {
+            Axis::X => Point {
+                x: self.x * -1.0,
+                y: self.y,
+            },
+            Axis::Y => Point {
+                x: self.x,
+                y: self.y * -1.0,
+            },
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -88,5 +101,17 @@ mod tests {
             Point { x: 6.0, y: 3.0 },
             Point::new(2.0, 5.0).rotate(3.0, 2.0, PI / 2.0)
         )
+    }
+
+    #[test]
+    fn test_point_reflect() {
+        assert_eq!(
+            Point { x: -2.0, y: 5.0 },
+            Point::new(2.0, 5.0).reflect(Axis::X)
+        );
+        assert_eq!(
+            Point { x: 2.0, y: -5.0 },
+            Point::new(2.0, 5.0).reflect(Axis::Y)
+        );
     }
 }
