@@ -126,4 +126,16 @@ mod tests {
     fn test_point_display() {
         assert_eq!("(2, 5)", format!("{}", Point::new(2.0, 5.0)));
     }
+
+    #[test]
+    fn test_chain() {
+        assert_eq!(
+            Point { x: -6.0, y: 3.0 },
+            Point::new(0.0, 5.0)
+                .translate(3.0, 2.0)
+                .scale(1.0, 3.0, 0.5)
+                .rotate(3.0, 2.0, PI / 2.0)
+                .reflect(Axis::X)
+        );
+    }
 }
