@@ -29,6 +29,13 @@ impl Point {
             y: self.y + y,
         }
     }
+
+    fn scale(&self, x: f32, y: f32, factor: f32) -> Point {
+        Point {
+            x: (self.x - x) * factor + x,
+            y: (self.y - y) * factor + y,
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -51,5 +58,13 @@ mod tests {
             Point { x: 3.0, y: 7.0 },
             Point::new(0.0, 5.0).translate(3.0, 2.0)
         );
+    }
+
+    #[test]
+    fn test_point_scale() {
+        assert_eq!(
+            Point { x: 2.0, y: 5.0 },
+            Point::new(3.0, 7.0).scale(1.0, 3.0, 0.5)
+        )
     }
 }
