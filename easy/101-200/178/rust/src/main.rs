@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::f32::consts::PI;
+
 #[derive(Debug, Clone, Copy, PartialEq)]
 struct Point {
     x: f32,
@@ -34,6 +36,13 @@ impl Point {
         Point {
             x: (self.x - x) * factor + x,
             y: (self.y - y) * factor + y,
+        }
+    }
+
+    fn rotate(&self, x: f32, y: f32, angle: f32) -> Point {
+        Point {
+            x: (self.x - x) * (-1.0 * angle).cos() - (self.y - y) * (-1.0 * angle).sin() + x,
+            y: (self.x - x) * (-1.0 * angle).sin() + (self.y - y) * (-1.0 * angle).cos() + y,
         }
     }
 }
@@ -65,6 +74,14 @@ mod tests {
         assert_eq!(
             Point { x: 2.0, y: 5.0 },
             Point::new(3.0, 7.0).scale(1.0, 3.0, 0.5)
+        )
+    }
+
+    #[test]
+    fn test_point_rotate() {
+        assert_eq!(
+            Point { x: 6.0, y: 3.0 },
+            Point::new(2.0, 5.0).rotate(3.0, 2.0, PI / 2.0)
         )
     }
 }
