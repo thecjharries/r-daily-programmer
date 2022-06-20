@@ -20,6 +20,11 @@ struct Point {
     y: f32,
 }
 
+enum Axis {
+    X,
+    Y,
+}
+
 impl Point {
     fn new(x: f32, y: f32) -> Point {
         Point { x, y }
