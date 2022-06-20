@@ -22,6 +22,13 @@ impl Point {
     fn new(x: f32, y: f32) -> Point {
         Point { x, y }
     }
+
+    fn translate(&self, x: f32, y: f32) -> Point {
+        Point {
+            x: self.x + x,
+            y: self.y + y,
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
