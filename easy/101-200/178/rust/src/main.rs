@@ -42,14 +42,14 @@ mod tests {
 
     #[test]
     fn test_point_new() {
-        assert_eq!(Point { x: 1.0, y: 2.0 }, Point::new(1.0, 2.0));
+        assert_eq!(Point { x: 0.0, y: 5.0 }, Point::new(0.0, 5.0));
     }
 
     #[test]
     fn test_point_translate() {
         assert_eq!(
-            Point { x: 2.0, y: 3.0 },
-            Point::new(1.0, 2.0).translate(1.0, 1.0)
+            Point { x: 3.0, y: 7.0 },
+            Point::new(0.0, 5.0).translate(3.0, 2.0)
         );
     }
 }
