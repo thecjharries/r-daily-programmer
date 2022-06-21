@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn rgb_to_grayscale(red: u8, green: u8, blue: u8) -> u8 {
-    0
+    (0.3 * red as f32 + 0.59 * green as f32 + 0.11 * blue as f32) as u8
 }
 
 #[cfg(test)]
