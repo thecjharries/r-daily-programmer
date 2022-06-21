@@ -26,7 +26,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_rgb_to_grayscale() {
+        assert_eq!(0, rgb_to_grayscale(0, 0, 0));
+        assert_eq!(255, rgb_to_grayscale(255, 255, 255));
+        assert_eq!(76, rgb_to_grayscale(255, 0, 0));
+        assert_eq!(150, rgb_to_grayscale(0, 255, 0));
+        assert_eq!(28, rgb_to_grayscale(0, 0, 255));
     }
 }
