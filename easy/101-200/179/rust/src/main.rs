@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn rgb_to_grayscale(red: u8, green: u8, blue: u8) -> u8 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
