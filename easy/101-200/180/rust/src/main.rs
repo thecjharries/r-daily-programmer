@@ -17,8 +17,31 @@ fn main() {
     println!("rad");
 }
 
-fn get_first_n_look_and_say_iterations(iterations: u32, seed: u32) -> Vec<u32> {
-    Vec::new()
+fn get_first_n_look_and_say_iterations(iterations: usize, seed: u128) -> Vec<u128> {
+    let mut sequence = vec![seed];
+    while iterations > sequence.len() {
+        let previous = sequence
+            .last()
+            .unwrap()
+            .to_string()
+            .chars()
+            .collect::<Vec<_>>();
+        let mut next = String::new();
+        let mut current = previous[0];
+        let mut count = 1;
+        for i in 1..previous.len() {
+            if previous[i] == current {
+                count += 1;
+            } else {
+                next.push_str(&format!("{}{}", count, current));
+                current = previous[i];
+                count = 1;
+            }
+        }
+        next.push_str(&format!("{}{}", count, current));
+        sequence.push(next.parse::<u128>().unwrap());
+    }
+    sequence
 }
 
 #[cfg(test)]
