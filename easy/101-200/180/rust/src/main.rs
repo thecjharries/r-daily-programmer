@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn get_first_n_look_and_say_iterations(max_iterations: u32, seed: u32) -> Vec<u32> {
+fn get_first_n_look_and_say_iterations(iterations: u32, seed: u32) -> Vec<u32> {
     Vec::new()
 }
 
@@ -26,7 +26,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_first_n_look_and_say_iterations() {
+        assert_eq!(
+            vec![1, 11, 21, 1211, 111221, 312211, 13112221],
+            get_first_n_look_and_say_iterations(7, 1)
+        );
+        assert_eq!(
+            vec![22, 22, 22, 22, 22, 22, 22, 22],
+            get_first_n_look_and_say_iterations(8, 22)
+        )
     }
 }
