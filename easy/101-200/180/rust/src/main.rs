@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_first_n_look_and_say_iterations(max_iterations: u32, seed: u32) -> Vec<u32> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
