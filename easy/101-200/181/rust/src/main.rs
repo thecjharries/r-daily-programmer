@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_intersection(first: &str, second: &str) -> Result<(i32, i32)> {
+    Err(Error::new("Not implemented"))
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
