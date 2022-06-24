@@ -25,8 +25,46 @@ fn main() {
     println!("rad");
 }
 
-fn find_intersection(first: &str, second: &str) -> Result<(i32, i32)> {
-    Err(Error::new("Not implemented"))
+fn find_intersection(first: &str, second: &str) -> Result<(f32, f32), String> {
+    let first_slope: f32;
+    let first_intercept: f32;
+    let second_slope: f32;
+    let second_intercept: f32;
+    match SLOPE_INTERCEPT_PATTERN.captures(first) {
+        Some(captures) => {
+            first_slope = captures
+                .get(1)
+                .map(|m| m.as_str().parse::<f32>().unwrap_or(1.0))
+                .unwrap_or(0.0);
+            first_intercept = captures
+                .get(2)
+                .map(|m| m.as_str().parse::<f32>().unwrap_or(0.0))
+                .unwrap_or(0.0);
+        }
+        None => return Err(String::from("Invalid first line")),
+    }
+    match SLOPE_INTERCEPT_PATTERN.captures(second) {
+        Some(captures) => {
+            second_slope = captures
+                .get(1)
+                .map(|m| m.as_str().parse::<f32>().unwrap_or(1.0))
+                .unwrap_or(0.0);
+            second_intercept = captures
+                .get(2)
+                .map(|m| m.as_str().parse::<f32>().unwrap_or(0.0))
+                .unwrap_or(0.0);
+        }
+        None => return Err(String::from("Invalid second line")),
+    }
+    let x = (second_intercept - first_intercept) / (first_slope - second_slope);
+    if x.is_infinite() {
+        return Err(String::from("Lines are parallel"));
+    }
+    if x.is_nan() {
+        return Err(String::from("Lines are parallel"));
+    }
+    let y = first_slope * x + first_intercept;
+    Ok((x, y))
 }
 
 #[cfg(test)]
