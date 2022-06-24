@@ -23,7 +23,41 @@ fn format_in_columns(
     column_padding: usize,
     text: &str,
 ) -> String {
-    String::new()
+    let words = text.split_whitespace();
+    let mut lines = Vec::new();
+    let mut current_line = String::new();
+    for word in words {
+        if current_line.len() + word.len() >= width_of_columns {
+            current_line.push_str(" ".repeat(width_of_columns - current_line.len()).as_str());
+            lines.push(current_line);
+            current_line = String::new();
+        }
+        if !current_line.is_empty() {
+            current_line.push(' ');
+        }
+        current_line.push_str(word);
+    }
+    if !current_line.is_empty() {
+        current_line.push_str(" ".repeat(width_of_columns - current_line.len()).as_str());
+        lines.push(current_line);
+    }
+    println!("{:?}", lines);
+    let mut result = String::new();
+    let lines_per_column = (lines.len() as f32 / number_of_columns as f32).ceil() as usize;
+    for line_index in 0..lines_per_column {
+        let mut current_line = Vec::new();
+        for column_index in 0..number_of_columns {
+            if column_index * lines_per_column + line_index < lines.len() {
+                current_line.push(lines[column_index * lines_per_column + line_index].to_string());
+            } else {
+                current_line.push(" ".repeat(width_of_columns));
+            }
+        }
+        result.push_str(&current_line.join(" ".repeat(column_padding).as_str()));
+        result.push('\n');
+    }
+    result.pop();
+    result
 }
 
 #[cfg(test)]
