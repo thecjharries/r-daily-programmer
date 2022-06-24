@@ -31,7 +31,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_format_in_columns() {
+        assert_eq!(
+            "Lorem ipsum dolor sit         adipiscing elit. Ut at        sodales ipsum. Vivamus   \namet, consectetur             pharetra sapien, id                                    ",
+            format_in_columns(3, 25, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sodales ipsum. Vivamus amet, consectetur pharetra sapien, id")
+        );
     }
 }
