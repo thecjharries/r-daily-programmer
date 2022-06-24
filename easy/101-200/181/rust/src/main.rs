@@ -33,7 +33,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_intersection() {
+        assert!(find_intersection("y=0", "y=0").is_err());
+        assert!(find_intersection("y=x", "y=x+1").is_err());
+        assert!(find_intersection("qqq", "y=x+1").is_err());
+        assert!(find_intersection("y=x+1", "qqq").is_err());
+        assert_eq!(Ok((2.0, 6.0)), find_intersection("y=2x+2", "y=5x-4"));
+        assert_eq!(
+            Ok((-0.7894737, 0.90526307)),
+            find_intersection("y=0.5x+1.3", "y=-1.4x-0.2")
+        );
     }
 }
