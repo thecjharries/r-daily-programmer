@@ -68,7 +68,7 @@ mod tests {
     fn test_format_in_columns() {
         assert_eq!(
             "Lorem ipsum dolor sit         adipiscing elit. Ut at        sodales ipsum. Vivamus   \namet, consectetur             pharetra sapien, id                                    ",
-            format_in_columns(3, 25, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sodales ipsum. Vivamus amet, consectetur pharetra sapien, id")
+            format_in_columns(3, 25, 5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at pharetra sapien, id sodales ipsum. Vivamus")
         );
     }
 }
