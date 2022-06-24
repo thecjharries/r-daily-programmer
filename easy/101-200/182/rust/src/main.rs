@@ -17,6 +17,15 @@ fn main() {
     println!("rad");
 }
 
+fn format_in_columns(
+    number_of_columns: usize,
+    width_of_columns: usize,
+    column_padding: usize,
+    text: &str,
+) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
