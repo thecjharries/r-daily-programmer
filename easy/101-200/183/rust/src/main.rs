@@ -23,7 +23,7 @@ lazy_static! {
     .unwrap();
 }
 
-#[derive(Derivate, Debug, Clone, Copy, PartialEq, Eq, PartialOrd)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd)]
 struct SemVer {
     major: u32,
     minor: u32,
