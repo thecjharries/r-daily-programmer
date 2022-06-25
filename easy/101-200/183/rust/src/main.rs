@@ -111,6 +111,26 @@ mod tests {
 
     #[test]
     fn test_semver_ord() {
-        assert_eq!(2 + 2, 4);
+        let mut input = vec![
+            SemVer::new("2.0.11-alpha"),
+            SemVer::new("0.1.7+amd64"),
+            SemVer::new("0.10.7+20141005"),
+            SemVer::new("2.0.12+i386"),
+            SemVer::new("1.2.34"),
+            SemVer::new("2.0.11+i386"),
+            SemVer::new("20.1.1+i386"),
+        ];
+        let output = vec![
+            SemVer::new("0.1.7+amd64"),
+            SemVer::new("0.10.7+20141005"),
+            SemVer::new("1.2.34"),
+            SemVer::new("2.0.11-alpha"),
+            SemVer::new("2.0.11+i386"),
+            SemVer::new("2.0.12+i386"),
+            SemVer::new("20.1.1+i386"),
+        ];
+        assert_ne!(input, output);
+        input.sort();
+        assert_eq!(input, output);
     }
 }
