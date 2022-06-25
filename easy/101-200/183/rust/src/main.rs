@@ -23,7 +23,7 @@ lazy_static! {
     .unwrap();
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd)]
+#[derive(Debug, Clone, PartialEq, Eq, Ord)]
 struct SemVer {
     major: u32,
     minor: u32,
@@ -32,9 +32,26 @@ struct SemVer {
     metadata: Option<String>,
 }
 
-impl Ord for SemVer {
-    fn cmp(&self, other: &Self) -> Ordering {
-        Ordering::Equal
+impl PartialOrd for SemVer {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        if self.major != other.major {
+            return self.major.partial_cmp(&other.major);
+        }
+        if self.minor != other.minor {
+            return self.minor.partial_cmp(&other.minor);
+        }
+        if self.patch != other.patch {
+            return self.patch.partial_cmp(&other.patch);
+        }
+        if self.label.is_none() && other.label.is_none() {
+            Some(Ordering::Equal)
+        } else if self.label.is_none() && other.label.is_some() {
+            Some(Ordering::Greater)
+        } else if self.label.is_some() && other.label.is_none() {
+            Some(Ordering::Less)
+        } else {
+            Some(Ordering::Equal)
+        }
     }
 }
 
