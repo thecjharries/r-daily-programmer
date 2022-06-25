@@ -18,7 +18,7 @@ use std::cmp::Ordering;
 
 lazy_static! {
     static ref SEMVER_PATTERN: Regex = Regex::new(
-        r"(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)(?:-(?P<label>[^+]*))?(?:\+.*)?"
+        r"(?P<major>\d+)\.(?P<minor>\d+)\.(?P<patch>\d+)(?:-(?P<label>[^+]*))?(?:\+(?P<metadata>.*))?"
     )
     .unwrap();
 }
