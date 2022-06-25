@@ -54,6 +54,34 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_semver_new() {
+        let mut semver = SemVer::new("1.2.3");
+        assert_eq!(semver.major, 1);
+        assert_eq!(semver.minor, 2);
+        assert_eq!(semver.patch, 3);
+        assert_eq!(semver.label, None);
+        assert_eq!(semver.metadata, None);
+        semver = SemVer::new("1.2.3-alpha");
+        assert_eq!(semver.major, 1);
+        assert_eq!(semver.minor, 2);
+        assert_eq!(semver.patch, 3);
+        assert_eq!(semver.label, Some("alpha".to_string()));
+        assert_eq!(semver.metadata, None);
+        semver = SemVer::new("1.2.3+build.1.2.3");
+        assert_eq!(semver.major, 1);
+        assert_eq!(semver.minor, 2);
+        assert_eq!(semver.patch, 3);
+        assert_eq!(semver.label, None);
+        assert_eq!(semver.metadata, Some("build.1.2.3".to_string()));
+        semver = SemVer::new("1.2.3-alpha+build.1.2.3");
+        assert_eq!(semver.major, 1);
+        assert_eq!(semver.minor, 2);
+        assert_eq!(semver.patch, 3);
+        assert_eq!(semver.label, Some("alpha".to_string()));
+        assert_eq!(semver.metadata, Some("build.1.2.3".to_string()));
+    }
+
+    #[test]
     fn test_semver_ord() {
         assert_eq!(2 + 2, 4);
     }
