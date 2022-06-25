@@ -38,6 +38,12 @@ impl Ord for SemVer {
     }
 }
 
+impl SemVer {
+    fn new(input: &str) -> Self {
+        Semver {}
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -48,7 +54,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_semver_ord() {
         assert_eq!(2 + 2, 4);
     }
 }
