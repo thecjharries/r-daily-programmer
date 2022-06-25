@@ -77,7 +77,6 @@ impl SemVer {
             .parse::<u32>()
             .unwrap();
         let label = captures.name("label").map(|s| s.as_str().to_string());
-        println!("{:?}", captures);
         let metadata = captures.name("metadata").map(|s| s.as_str().to_string());
         Self {
             major,
