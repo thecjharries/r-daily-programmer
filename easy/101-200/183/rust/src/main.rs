@@ -40,7 +40,35 @@ impl Ord for SemVer {
 
 impl SemVer {
     fn new(input: &str) -> Self {
-        Semver {}
+        let captures = SEMVER_PATTERN.captures(input).unwrap();
+        let major = captures
+            .name("major")
+            .unwrap()
+            .as_str()
+            .parse::<u32>()
+            .unwrap();
+        let minor = captures
+            .name("minor")
+            .unwrap()
+            .as_str()
+            .parse::<u32>()
+            .unwrap();
+        let patch = captures
+            .name("patch")
+            .unwrap()
+            .as_str()
+            .parse::<u32>()
+            .unwrap();
+        let label = captures.name("label").map(|s| s.as_str().to_string());
+        println!("{:?}", captures);
+        let metadata = captures.name("metadata").map(|s| s.as_str().to_string());
+        Self {
+            major,
+            minor,
+            patch,
+            label,
+            metadata,
+        }
     }
 }
 
