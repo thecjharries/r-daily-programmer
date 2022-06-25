@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::cmp::Ordering;
 
 lazy_static! {
     static ref SEMVER_PATTERN: Regex = Regex::new(
@@ -29,6 +30,12 @@ struct SemVer {
     patch: u32,
     label: Option<String>,
     metadata: Option<String>,
+}
+
+impl Ord for SemVer {
+    fn cmp(&self, other: &Self) -> Ordering {
+        Ordering::Equal
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
