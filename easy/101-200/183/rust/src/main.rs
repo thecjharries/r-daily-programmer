@@ -22,6 +22,15 @@ lazy_static! {
     .unwrap();
 }
 
+#[derive(Derivate, Debug, Clone, Copy, PartialEq, Eq, PartialOrd)]
+struct SemVer {
+    major: u32,
+    minor: u32,
+    patch: u32,
+    label: Option<String>,
+    metadata: Option<String>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
