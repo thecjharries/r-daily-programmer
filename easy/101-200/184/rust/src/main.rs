@@ -65,4 +65,21 @@ mod tests {
         assert_eq!(vec![3, 2, 1, 4], stack.stack);
         assert_eq!(vec![1, 2, 3, 4], stack.ordered);
     }
+
+    #[test]
+    fn test_smartstack_pop() {
+        let mut stack = SmartStack {
+            stack: vec![3, 2, 1],
+            ordered: vec![1, 2, 3],
+        };
+        assert_eq!(1, stack.pop());
+        assert_eq!(vec![3, 2], stack.stack);
+        assert_eq!(vec![2, 3], stack.ordered);
+        assert_eq!(2, stack.pop());
+        assert_eq!(vec![3], stack.stack);
+        assert_eq!(vec![3], stack.ordered);
+        assert_eq!(3, stack.pop());
+        assert_eq!(vec![], stack.stack);
+        assert_eq!(vec![], stack.ordered);
+    }
 }
