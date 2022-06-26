@@ -84,8 +84,8 @@ mod tests {
         assert_eq!(vec![3], stack.stack);
         assert_eq!(vec![3], stack.ordered);
         assert_eq!(3, stack.pop());
-        assert_eq!(vec![], stack.stack);
-        assert_eq!(vec![], stack.ordered);
+        assert_eq!(vec![] as Vec<i32>, stack.stack);
+        assert_eq!(vec![] as Vec<i32>, stack.ordered);
     }
 
     #[test]
