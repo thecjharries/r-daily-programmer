@@ -87,4 +87,15 @@ mod tests {
         assert_eq!(vec![], stack.stack);
         assert_eq!(vec![], stack.ordered);
     }
+
+    #[test]
+    fn test_smartstack_remove_greater_than() {
+        let mut stack = SmartStack {
+            stack: vec![3, 2, 1],
+            ordered: vec![1, 2, 3],
+        };
+        stack.remove_greater_than(2);
+        assert_eq!(vec![2, 1], stack.stack);
+        assert_eq!(vec![1, 2], stack.ordered);
+    }
 }
