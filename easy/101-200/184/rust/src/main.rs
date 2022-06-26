@@ -17,6 +17,15 @@ struct SmartStack {
     ordered: Vec<i32>,
 }
 
+impl SmartStack {
+    fn new() -> SmartStack {
+        SmartStack {
+            stack: Vec::new(),
+            ordered: Vec::new(),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
