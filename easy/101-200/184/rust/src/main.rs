@@ -24,6 +24,12 @@ impl SmartStack {
             ordered: Vec::new(),
         }
     }
+
+    fn push(&mut self, value: i32) {
+        self.stack.push(value);
+        self.ordered.push(value);
+        self.ordered.sort();
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
