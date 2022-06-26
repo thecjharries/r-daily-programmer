@@ -36,7 +36,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_smartstack_new() {
+        let stack = SmartStack::new();
+        assert_eq!(stack.stack.len(), 0);
+        assert_eq!(stack.ordered.len(), 0);
     }
 }
