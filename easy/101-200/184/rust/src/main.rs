@@ -37,6 +37,11 @@ impl SmartStack {
         self.ordered.sort();
         value
     }
+
+    fn remove_greater_than(&mut self, value: i32) {
+        self.stack.retain(|&x| x <= value);
+        self.ordered.retain(|&x| x <= value);
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
