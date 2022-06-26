@@ -30,6 +30,13 @@ impl SmartStack {
         self.ordered.push(value);
         self.ordered.sort();
     }
+
+    fn pop(&mut self) -> i32 {
+        let value = self.stack.pop().unwrap();
+        self.ordered.retain(|&x| x != value);
+        self.ordered.sort();
+        value
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
