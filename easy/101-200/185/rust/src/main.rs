@@ -26,7 +26,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_at_handles() {
+        let words = vec![
+            "asynchrony",
+            "asyndeta",
+            "asyndetic",
+            "asyndetically",
+            "asyndeton",
+            "asyndetons",
+            "at",
+            "atabal",
+            "atabals",
+            "atactic",
+            "ataghan",
+            "ataghans",
+        ];
+        let expected = vec![
+            "atabals", "ataghan", "ataghans", "atactic", "ataghan", "ataghans",
+        ];
+        assert_eq!(expected, find_at_handles(words));
     }
 }
