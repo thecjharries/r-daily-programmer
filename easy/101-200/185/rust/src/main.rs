@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn find_at_handles(words: Vec<String>) -> Vec<String> {
-    Vec::new()
+    words
+        .iter()
+        .filter(|w| w.starts_with("at") && 2 < w.len())
+        .map(|w| w.to_string())
+        .collect()
 }
 
 #[cfg(test)]
