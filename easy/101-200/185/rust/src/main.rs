@@ -32,21 +32,25 @@ mod tests {
     #[test]
     fn test_find_at_handles() {
         let words = vec![
-            "asynchrony",
-            "asyndeta",
-            "asyndetic",
-            "asyndetically",
-            "asyndeton",
-            "asyndetons",
-            "at",
-            "atabal",
-            "atabals",
-            "atactic",
-            "ataghan",
-            "ataghans",
+            "asynchrony".to_string(),
+            "asyndeta".to_string(),
+            "asyndetic".to_string(),
+            "asyndetically".to_string(),
+            "asyndeton".to_string(),
+            "asyndetons".to_string(),
+            "at".to_string(),
+            "atabal".to_string(),
+            "atabals".to_string(),
+            "atactic".to_string(),
+            "ataghan".to_string(),
+            "ataghans".to_string(),
         ];
         let expected = vec![
-            "atabals", "ataghan", "ataghans", "atactic", "ataghan", "ataghans",
+            "atabal".to_string(),
+            "atabals".to_string(),
+            "atactic".to_string(),
+            "ataghan".to_string(),
+            "ataghans".to_string(),
         ];
         assert_eq!(expected, find_at_handles(words));
     }
