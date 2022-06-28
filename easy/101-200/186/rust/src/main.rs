@@ -12,13 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::process::Command;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn get_running_processes() -> Vec<String> {
-    Vec::new()
+    let output = Command::new("ps")
+        .arg("aux")
+        .output()
+        .expect("failed to execute process");
+    let mut processes = Vec::new();
+    for line in &String::from_utf8_lossy(&output.stdout)
+        .lines()
+        .collect::<Vec<_>>()[1..]
+    {
+        processes.push(line.to_string());
+    }
+    processes
 }
 
 #[cfg(test)]
