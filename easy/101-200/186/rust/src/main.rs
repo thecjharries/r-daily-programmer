@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_running_processes() -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
