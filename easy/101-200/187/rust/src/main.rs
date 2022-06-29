@@ -18,7 +18,24 @@ fn main() {
 }
 
 fn parse_flags(available_flags: Vec<&str>, input: &str) -> Vec<String> {
-    Vec::new()
+    let mut flags = Vec::new();
+    for chunk in input.split_whitespace() {
+        if chunk.starts_with("--") {
+            let flag = &chunk[2..];
+            flags.push(format!("flag: {}", flag.to_string()));
+        } else if chunk.starts_with("-") {
+            for char in chunk[1..].chars() {
+                let index = available_flags
+                    .iter()
+                    .position(|&x| x.to_string() == char.to_string())
+                    .unwrap();
+                flags.push(format!("flag: {}", available_flags[index + 1].to_string()));
+            }
+        } else {
+            flags.push(format!("parameter: {}", chunk.to_string()));
+        }
+    }
+    flags
 }
 
 #[cfg(test)]
