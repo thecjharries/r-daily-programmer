@@ -26,7 +26,25 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_flags() {
+        let available_flags = vec![
+            "a",
+            "all",
+            "f",
+            "force",
+            "n",
+            "networking",
+            "N",
+            "numerical-list",
+        ];
+        let input = "-aN 12 --verbose 192.168.0.44";
+        let expected = vec![
+            "flag: all",
+            "flag: numerical-list",
+            "parameter: 12",
+            "flag: verbose",
+            "parameter: 192.168.0.44",
+        ];
+        assert_eq!(expected, parse_flags(available_flags, input));
     }
 }
