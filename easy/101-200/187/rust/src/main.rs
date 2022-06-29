@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_flags(available_flags: Vec<&str>, input: &str) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
