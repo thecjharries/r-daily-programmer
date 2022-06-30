@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn correct_date_to_iso8601(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
