@@ -42,7 +42,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_correct_date_to_iso8601() {
         assert_eq!("2022-06-01", correct_date_to_iso8601("Jun 1, 22"));
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_correct_date_to_iso8601_panic() {
+        correct_date_to_iso8601("June 1, 2020");
     }
 }
