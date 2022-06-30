@@ -18,7 +18,14 @@ fn main() {
 }
 
 fn correct_date_to_iso8601(input: &str) -> String {
-    String::new()
+    let possible_formats = vec![
+        "%Y-%m-%d",
+        "%m/%d/%y",
+        "%m#%y#%d",
+        "%d\\*%m\\*%Y",
+        "%b %d, %y",
+        "%b %d, %Y",
+    ];
 }
 
 #[cfg(test)]
