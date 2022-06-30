@@ -27,6 +27,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("2022-06-01", correct_date_to_iso8601("Jun 1, 22"));
     }
 }
