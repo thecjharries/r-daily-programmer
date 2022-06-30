@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::NaiveDate;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -26,6 +28,13 @@ fn correct_date_to_iso8601(input: &str) -> String {
         "%b %d, %y",
         "%b %d, %Y",
     ];
+    for format in possible_formats {
+        let parsed = NaiveDate::parse_from_str(input, format);
+        if let Ok(date) = parsed {
+            return date.format("%Y-%m-%d").to_string();
+        }
+    }
+    panic!("Could not parse date: {}", input);
 }
 
 #[cfg(test)]
