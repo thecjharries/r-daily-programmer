@@ -19,6 +19,17 @@ struct HangMan {
     guesses_remaining: usize,
 }
 
+impl HangMan {
+    fn new(word: &str, guesses_remaining: usize) -> HangMan {
+        HangMan {
+            word: word.to_string(),
+            representation: String::new(),
+            guessed_letters: Vec::new(),
+            guesses_remaining,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
