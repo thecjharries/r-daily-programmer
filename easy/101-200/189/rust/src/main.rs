@@ -28,6 +28,10 @@ impl HangMan {
             guesses_remaining,
         }
     }
+
+    fn guess(self, letter: char) -> Self {
+        self
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
