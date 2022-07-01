@@ -23,7 +23,7 @@ impl HangMan {
     fn new(word: &str, guesses_remaining: usize) -> HangMan {
         HangMan {
             word: word.to_string(),
-            representation: String::new(),
+            representation: str::repeat("_", word.len()).to_string(),
             guessed_letters: Vec::new(),
             guesses_remaining,
         }
@@ -45,6 +45,6 @@ mod tests {
         assert_eq!("rad", game.word);
         assert_eq!("___", game.representation);
         assert_eq!(5, game.guesses_remaining);
-        assert_eq!(Vec::new(), game.guessed_letters);
+        assert_eq!(Vec::new() as Vec<char>, game.guessed_letters);
     }
 }
