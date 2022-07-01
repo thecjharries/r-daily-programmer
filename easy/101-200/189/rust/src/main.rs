@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct HangMan {
+    word: String,
+    representation: String,
+    guessed_letters: Vec<char>,
+    guesses_remaining: usize,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
