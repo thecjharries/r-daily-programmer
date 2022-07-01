@@ -30,6 +30,16 @@ impl HangMan {
     }
 
     fn guess(&mut self, letter: char) -> &mut Self {
+        if self.guessed_letters.contains(&letter) || 0 == self.guesses_remaining {
+            return self;
+        }
+        self.guessed_letters.push(letter);
+        for (i, c) in self.word.chars().enumerate() {
+            if c == letter {
+                self.representation.replace_range(i..i + 1, &c.to_string());
+            }
+        }
+        self.guesses_remaining -= 1;
         self
     }
 }
@@ -54,7 +64,7 @@ mod tests {
 
     #[test]
     fn test_hangman_guess_correct() {
-        let game = HangMan::new("rad", 5);
+        let mut game = HangMan::new("rad", 5);
         game.guess('a');
         assert_eq!("rad", game.word);
         assert_eq!("_a_", game.representation);
@@ -64,7 +74,7 @@ mod tests {
 
     #[test]
     fn test_hangman_guess_incorrect() {
-        let game = HangMan::new("rad", 5);
+        let mut game = HangMan::new("rad", 5);
         game.guess('b');
         assert_eq!("rad", game.word);
         assert_eq!("___", game.representation);
@@ -74,7 +84,7 @@ mod tests {
 
     #[test]
     fn test_hangman_guess_none_remaining() {
-        let game = HangMan::new("rad", 0);
+        let mut game = HangMan::new("rad", 0);
         game.guess('a');
         assert_eq!("rad", game.word);
         assert_eq!("___", game.representation);
