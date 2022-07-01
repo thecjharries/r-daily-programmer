@@ -40,7 +40,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_hangman_new() {
+        let game = HangMan::new("rad", 5);
+        assert_eq!("rad", game.word);
+        assert_eq!("___", game.representation);
+        assert_eq!(5, game.guesses_remaining);
+        assert_eq!(Vec::new(), game.guessed_letters);
     }
 }
