@@ -29,7 +29,7 @@ impl HangMan {
         }
     }
 
-    fn guess(self, letter: char) -> Self {
+    fn guess(&mut self, letter: char) -> &mut Self {
         self
     }
 }
@@ -49,6 +49,36 @@ mod tests {
         assert_eq!("rad", game.word);
         assert_eq!("___", game.representation);
         assert_eq!(5, game.guesses_remaining);
+        assert_eq!(Vec::new() as Vec<char>, game.guessed_letters);
+    }
+
+    #[test]
+    fn test_hangman_guess_correct() {
+        let game = HangMan::new("rad", 5);
+        game.guess('a');
+        assert_eq!("rad", game.word);
+        assert_eq!("_a_", game.representation);
+        assert_eq!(4, game.guesses_remaining);
+        assert_eq!(vec!['a'], game.guessed_letters);
+    }
+
+    #[test]
+    fn test_hangman_guess_incorrect() {
+        let game = HangMan::new("rad", 5);
+        game.guess('b');
+        assert_eq!("rad", game.word);
+        assert_eq!("___", game.representation);
+        assert_eq!(4, game.guesses_remaining);
+        assert_eq!(vec!['b'], game.guessed_letters);
+    }
+
+    #[test]
+    fn test_hangman_guess_none_remaining() {
+        let game = HangMan::new("rad", 0);
+        game.guess('a');
+        assert_eq!("rad", game.word);
+        assert_eq!("___", game.representation);
+        assert_eq!(0, game.guesses_remaining);
         assert_eq!(Vec::new() as Vec<char>, game.guessed_letters);
     }
 }
