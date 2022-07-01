@@ -91,4 +91,15 @@ mod tests {
         assert_eq!(0, game.guesses_remaining);
         assert_eq!(Vec::new() as Vec<char>, game.guessed_letters);
     }
+
+    #[test]
+    fn test_hangman_guess_already_guessed() {
+        let mut game = HangMan::new("rad", 5);
+        game.guess('a');
+        game.guess('a');
+        assert_eq!("rad", game.word);
+        assert_eq!("_a_", game.representation);
+        assert_eq!(4, game.guesses_remaining);
+        assert_eq!(vec!['a'], game.guessed_letters);
+    }
 }
