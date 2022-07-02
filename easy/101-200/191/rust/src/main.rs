@@ -20,7 +20,20 @@ fn main() {
 }
 
 fn build_word_frequency_map(text: &str) -> HashMap<String, usize> {
-    HashMap::new()
+    let mut word_frequency_map = HashMap::new();
+    let mut word = String::new();
+    for c in text.to_lowercase().chars() {
+        if c.is_alphabetic() {
+            word.push(c);
+        } else {
+            if word.len() > 0 {
+                *word_frequency_map.entry(word.clone()).or_insert(0) += 1;
+                word.clear();
+            }
+        }
+    }
+    println!("{:?}", word_frequency_map);
+    word_frequency_map
 }
 
 #[cfg(test)]
