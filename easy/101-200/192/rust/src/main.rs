@@ -18,7 +18,47 @@ fn main() {
 }
 
 fn carry_add(numbers: Vec<i32>) -> Vec<Vec<i32>> {
-    Vec::new()
+    let mut result: Vec<Vec<i32>> = Vec::new();
+    let mut max_len = 0;
+    for mut number in numbers {
+        let mut number_vec: Vec<i32> = Vec::new();
+        while number > 0 {
+            number_vec.push(number % 10);
+            number /= 10;
+        }
+        max_len = std::cmp::max(max_len, number_vec.len());
+        result.push(number_vec);
+    }
+    for index in 0..result.len() {
+        while result[index].len() < max_len {
+            result[index].push(0);
+        }
+    }
+    let mut sum: Vec<i32> = Vec::new();
+    let mut carry: Vec<i32> = vec![0];
+    let mut tens_index = 0;
+    let mut number_added = true;
+    while number_added {
+        number_added = false;
+        sum.push(carry[tens_index]);
+        for number in &result {
+            if number.len() > tens_index {
+                number_added = true;
+                sum[tens_index] += number[tens_index];
+            }
+        }
+        if number_added {
+            carry.push(sum[tens_index] / 10);
+            sum[tens_index] %= 10;
+            tens_index += 1;
+        }
+    }
+    result.push(sum);
+    result.push(carry);
+    for index in 0..result.len() {
+        result[index].reverse();
+    }
+    result
 }
 
 #[cfg(test)]
