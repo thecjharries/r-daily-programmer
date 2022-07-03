@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn carry_add(numbers: Vec<i32>) -> Vec<i32> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
