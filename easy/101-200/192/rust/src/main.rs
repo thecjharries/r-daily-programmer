@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn carry_add(numbers: Vec<i32>) -> Vec<i32> {
+fn carry_add(numbers: Vec<i32>) -> Vec<Vec<i32>> {
     Vec::new()
 }
 
@@ -26,7 +26,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_carry_add() {
+        let mut input = vec![23, 9, 66];
+        let mut output = vec![vec![2, 3], vec![0, 9], vec![6, 6], vec![9, 8], vec![1, 0]];
+        assert_eq!(carry_add(input), output);
+        input = vec![559, 447];
+        output = vec![
+            vec![5, 5, 9],
+            vec![4, 4, 7],
+            vec![1, 0, 0, 6],
+            vec![1, 1, 0],
+        ];
+        assert_eq!(carry_add(input), output);
     }
 }
