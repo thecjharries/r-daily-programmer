@@ -26,7 +26,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_from_volume() {
+        assert_eq!("Cube: 3.00m width, 3.00m, high, 3.00m tall\nCylinder: 3.00m tall, Diameter of 3.38m\nSphere: 1.86m Radius\nCone: 9.00m tall, 1.69m Radius", calculate_from_volume(27.0));
     }
 }
