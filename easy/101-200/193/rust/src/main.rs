@@ -37,6 +37,6 @@ mod tests {
 
     #[test]
     fn test_calculate_from_volume() {
-        assert_eq!("Cube: 3.00m width, 3.00m, high, 3.00m tall\nCylinder: 3.00m tall, Diameter of 3.38m\nSphere: 1.86m Radius\nCone: 9.00m tall, 1.69m Radius", calculate_from_volume(27.0));
+        assert_eq!("Cube: 3m width, 3m, high, 3m tall\nCylinder: 3m tall, Diameter of 3.3851376m\nSphere: 1.8610514m Radius\nCone: 9m tall, 1.6925688m Radius", calculate_from_volume(27.0));
     }
 }
