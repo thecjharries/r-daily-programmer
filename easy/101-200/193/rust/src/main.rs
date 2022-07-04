@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_from_volume(volume: f32) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
