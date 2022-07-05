@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn destringify(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
