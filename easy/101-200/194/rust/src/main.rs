@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn destringify(input: &str) -> String {
-    String::new()
+    input.to_string()
 }
 
 #[cfg(test)]
@@ -29,7 +29,7 @@ mod tests {
     fn test_destringify() {
         assert_eq!(
             "A random
-string\""
+string\\\""
                 .to_string(),
             destringify("A random\nstring\\\"")
         );
