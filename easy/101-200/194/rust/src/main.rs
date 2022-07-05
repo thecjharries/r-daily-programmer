@@ -26,7 +26,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_destringify() {
+        assert_eq!(
+            "A random
+string\""
+                .to_string(),
+            destringify("A random\nstring\\\"")
+        );
     }
 }
