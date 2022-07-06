@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn expand_symbolic_links(path: &str, links: Vec<(String, String)>) -> String {
-    String::new()
+    let mut path = path.to_string();
+    let mut found = true;
+    while found {
+        found = false;
+        for (from, to) in links.iter() {
+            if path.starts_with(from) {
+                path = path.replace(from, to);
+                found = true;
+            }
+        }
+    }
+    path
 }
 
 #[cfg(test)]
