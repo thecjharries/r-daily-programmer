@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn expand_symbolic_links(path: &str, links: Vec<(String, String)>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
