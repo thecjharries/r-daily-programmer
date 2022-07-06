@@ -39,19 +39,28 @@ mod tests {
     #[test]
     fn test_expand_symbolic_links() {
         let mut links = vec![
-            ("/bin/thing", "/bin/thing-3"),
-            ("/bin/thing-3", "/bin/thing-3.2"),
-            ("/bin/thing-3.2/include", "/usr/include"),
-            ("/usr/include/SDL", "/usr/local/include/SDL"),
+            ("/bin/thing".to_string(), "/bin/thing-3".to_string()),
+            ("/bin/thing-3".to_string(), "/bin/thing-3.2".to_string()),
+            (
+                "/bin/thing-3.2/include".to_string(),
+                "/usr/include".to_string(),
+            ),
+            (
+                "/usr/include/SDL".to_string(),
+                "/usr/local/include/SDL".to_string(),
+            ),
         ];
         assert_eq!(
             "/usr/local/include/SDL/stan",
             expand_symbolic_links("/bin/thing/include/SDL/stan", links)
         );
         links = vec![
-            ("/bin", "/usr/bin"),
-            ("/usr/bin", "/usr/local/bin/"),
-            ("/usr/local/bin/log", "/var/log-2014"),
+            ("/bin".to_string(), "/usr/bin".to_string()),
+            ("/usr/bin".to_string(), "/usr/local/bin".to_string()),
+            (
+                "/usr/local/bin/log".to_string(),
+                "/var/log-2014".to_string(),
+            ),
         ];
         assert_eq!(
             "/var/log-2014/rc",
