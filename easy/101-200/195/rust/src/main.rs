@@ -26,7 +26,25 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_expand_symbolic_links() {
+        let mut links = vec![
+            ("/bin/thing", "/bin/thing-3"),
+            ("/bin/thing-3", "/bin/thing-3.2"),
+            ("/bin/thing-3.2/include", "/usr/include"),
+            ("/usr/include/SDL", "/usr/local/include/SDL"),
+        ];
+        assert_eq!(
+            "/usr/local/include/SDL/stan",
+            expand_symbolic_links("/bin/thing/include/SDL/stan", links)
+        );
+        links = vec![
+            ("/bin", "/usr/bin"),
+            ("/usr/bin", "/usr/local/bin/"),
+            ("/usr/local/bin/log", "/var/log-2014"),
+        ];
+        assert_eq!(
+            "/var/log-2014/rc",
+            expand_symbolic_links("/bin/log/rc", links)
+        );
     }
 }
