@@ -38,6 +38,7 @@ mod tests {
         assert_eq!(false, is_valid_isbn("15688111"));
         assert_eq!(false, is_valid_isbn("15688111111"));
         assert_eq!(false, is_valid_isbn("5885250576"));
+        assert_eq!(false, is_valid_isbn("156881111A"));
         assert_eq!(true, is_valid_isbn("156881111X"));
         assert_eq!(true, is_valid_isbn("0-7475-3269-9"));
     }
