@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_valid_isbn(isbn: &str) -> bool {
+    false
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
