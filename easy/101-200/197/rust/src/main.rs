@@ -16,7 +16,7 @@ use lazy_static::lazy_static;
 use regex::Regex;
 
 lazy_static! {
-    static ref not_number_pattern: Regex = Regex::new(r"\D").unwrap();
+    static ref not_allowed_in_isbn_pattern: Regex = Regex::new(r"(?i)[\dx]").unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
