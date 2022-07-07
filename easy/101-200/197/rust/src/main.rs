@@ -25,7 +25,29 @@ fn main() {
 }
 
 fn is_valid_isbn(isbn: &str) -> bool {
-    false
+    let mut tidied_isbn = isbn.replace("-", "");
+    if 10 != tidied_isbn.len() {
+        return false;
+    }
+    tidied_isbn = NOT_ALLOWED_IN_ISBN_PATTERN
+        .replace_all(&tidied_isbn, "")
+        .to_string();
+    if 10 != tidied_isbn.len() {
+        return false;
+    }
+    let mut sum = 0;
+    for (i, c) in tidied_isbn.to_lowercase().chars().enumerate() {
+        match c {
+            '0'..='9' => {
+                sum += (c as u32 - '0' as u32) * (10 - i as u32);
+            }
+            'x' => {
+                sum += 10 * (10 - i as u32);
+            }
+            _ => return false,
+        }
+    }
+    0 == sum % 11
 }
 
 #[cfg(test)]
