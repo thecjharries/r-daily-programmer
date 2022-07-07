@@ -41,10 +41,9 @@ fn is_valid_isbn(isbn: &str) -> bool {
             '0'..='9' => {
                 sum += (c as u32 - '0' as u32) * (10 - i as u32);
             }
-            'x' => {
+            _ => {
                 sum += 10 * (10 - i as u32);
             }
-            _ => return false,
         }
     }
     0 == sum % 11
