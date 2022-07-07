@@ -26,7 +26,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_valid_isbn() {
+        assert_eq!(false, is_valid_isbn("156881111"));
+        assert_eq!(false, is_valid_isbn("15688111"));
+        assert_eq!(false, is_valid_isbn("15688111111"));
+        assert_eq!(false, is_valid_isbn("156881111X"));
+        assert_eq!(true, is_valid_isbn("0-7475-3269-9"));
     }
 }
