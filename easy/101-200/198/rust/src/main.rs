@@ -12,9 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+enum CollisionResult {
+    First,
+    Second,
+    Tie,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn determine_collision_winner(first: &str, second: &str) -> CollisionResult {
+    String::new()
 }
 
 #[cfg(test)]
