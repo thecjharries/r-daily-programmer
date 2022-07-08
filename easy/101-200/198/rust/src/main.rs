@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
 enum CollisionResult {
     First,
     Second,
@@ -24,7 +25,30 @@ fn main() {
 }
 
 fn determine_collision_winner(first: &str, second: &str) -> CollisionResult {
-    String::new()
+    let mut first_chars = first.chars().collect::<Vec<_>>();
+    let mut second_chars = second.chars().collect::<Vec<_>>();
+    let mut first_index = 0;
+    while first_index < first_chars.len() {
+        let mut not_found = true;
+        for second_index in 0..second_chars.len() {
+            if first_chars[first_index] == second_chars[second_index] {
+                not_found = false;
+                first_chars.remove(first_index);
+                second_chars.remove(second_index);
+                break;
+            }
+        }
+        if not_found {
+            first_index += 1;
+        }
+    }
+    if first_chars.len() > second_chars.len() {
+        CollisionResult::First
+    } else if first_chars.len() < second_chars.len() {
+        CollisionResult::Second
+    } else {
+        CollisionResult::Tie
+    }
 }
 
 #[cfg(test)]
