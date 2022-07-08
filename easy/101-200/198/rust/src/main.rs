@@ -33,6 +33,17 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            CollisionResult::First,
+            determine_collision_winner("because", "cause")
+        );
+        assert_eq!(
+            CollisionResult::Second,
+            determine_collision_winner("cause", "because")
+        );
+        assert_eq!(
+            CollisionResult::Tie,
+            determine_collision_winner("hello", "below")
+        );
     }
 }
