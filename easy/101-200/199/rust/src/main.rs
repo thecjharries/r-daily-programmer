@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn bannerize_numbers(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
