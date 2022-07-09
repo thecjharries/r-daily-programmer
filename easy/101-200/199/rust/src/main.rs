@@ -116,7 +116,15 @@ fn main() {
 }
 
 fn bannerize_numbers(input: &str) -> String {
-    String::new()
+    let mut result_exploded = vec![String::new(), String::new(), String::new(), String::new()];
+    for char in input.chars() {
+        if let Some(numbers) = HASHMAP.get(&char) {
+            for (i, number) in numbers.iter().enumerate() {
+                result_exploded[i].push_str(number.clone().as_str());
+            }
+        }
+    }
+    result_exploded.join("\n")
 }
 
 #[cfg(test)]
