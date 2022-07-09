@@ -95,6 +95,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("\n\n\n", bannerize_numbers("abc"));
+        assert_eq!(" _  _  _  _  _  _  _  _  _ \n| || || || || || || || || |\n|_||_||_||_||_||_||_||_||_|\n                           ", bannerize_numbers("000000000"));
     }
 }
