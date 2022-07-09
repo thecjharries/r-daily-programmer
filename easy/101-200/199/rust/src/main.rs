@@ -12,6 +12,74 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref HASHMAP: HashMap<char, Vec<String>> = HashMap::from_iter([
+        ('1': vec![
+            "   ".to_string(),
+            "  |".to_string(),
+            "  |".to_string(),
+            "   ".to_string()
+        ]),
+        ('2': vec![
+            " _ ".to_string(),
+            " _|".to_string(),
+            "|_ ".to_string(),
+            "   ".to_string()
+        ]),
+        ('3': vec![
+            " _ ".to_string(),
+            " _|".to_string(),
+            " _|".to_string(),
+            "   ".to_string()
+        ]),
+        ('4': vec![
+            "   ".to_string(),
+            "|_|".to_string(),
+            "  |".to_string(),
+            "   ".to_string()
+        ]),
+        ('5': vec![
+            " _ ".to_string(),
+            "|_ ".to_string(),
+            " _|".to_string(),
+            "   ".to_string()
+        ]),
+        ('6': vec![
+            " _ ".to_string(),
+            "|_ ".to_string(),
+            "|_|".to_string(),
+            "   ".to_string()
+        ]),
+        ('7': vec![
+            " _ ".to_string(),
+            "  |".to_string(),
+            "  |".to_string(),
+            "   ".to_string()
+        ]),
+        ('8': vec![
+            " _ ".to_string(),
+            "|_|".to_string(),
+            "|_|".to_string(),
+            "   ".to_string()
+        ]),
+        ('9': vec![
+            " _ ".to_string(),
+            "|_|".to_string(),
+            " _|".to_string(),
+            "   ".to_string()
+        ]),
+        ('0': vec![
+            " _ ".to_string(),
+            "| |".to_string(),
+            "|_|".to_string(),
+            "   ".to_string()
+        ]),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
