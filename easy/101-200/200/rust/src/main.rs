@@ -21,7 +21,27 @@ impl Grid {
         Grid { grid }
     }
 
-    fn fill(&mut self, start_x: usize, start_y: usize, fill_char: char) -> Self {
+    fn fill(&mut self, start_x: usize, start_y: usize, fill_char: char) -> &mut Self {
+        let char_to_replace = self.grid[start_y][start_x];
+        let mut coords = vec![(start_x, start_y)];
+        while !coords.is_empty() {
+            let (x, y) = coords.pop().unwrap();
+            if self.grid[y][x] == char_to_replace {
+                self.grid[y][x] = fill_char;
+                if x > 0 {
+                    coords.push((x - 1, y));
+                }
+                if x < self.grid[y].len() - 1 {
+                    coords.push((x + 1, y));
+                }
+                if y > 0 {
+                    coords.push((x, y - 1));
+                }
+                if y < self.grid.len() - 1 {
+                    coords.push((x, y + 1));
+                }
+            }
+        }
         self
     }
 }
