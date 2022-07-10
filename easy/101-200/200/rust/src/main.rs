@@ -52,4 +52,33 @@ mod tests {
             ]
         );
     }
+
+    #[test]
+    fn test_grid_fill() {
+        let grid = vec![
+            vec!['.', '.', '.'],
+            vec!['.', '.', '.'],
+            vec!['.', '.', '.'],
+        ];
+        let mut grid = Grid::new(grid);
+        grid.fill(0, 0, 'X');
+        assert_eq!(
+            grid.grid,
+            vec![
+                vec!['X', 'X', 'X'],
+                vec!['X', 'X', 'X'],
+                vec!['X', 'X', 'X']
+            ]
+        );
+        grid.grid[0][0] = '.';
+        grid.fill(1, 1, 'Y');
+        assert_eq!(
+            grid.grid,
+            vec![
+                vec!['.', 'Y', 'Y'],
+                vec!['Y', 'Y', 'Y'],
+                vec!['Y', 'Y', 'Y']
+            ]
+        );
+    }
 }
