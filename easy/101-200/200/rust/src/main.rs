@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Grid {
+    grid: Vec<Vec<char>>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
