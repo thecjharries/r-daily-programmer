@@ -20,6 +20,10 @@ impl Grid {
     fn new(grid: Vec<Vec<char>>) -> Self {
         Grid { grid }
     }
+
+    fn fill(&mut self, start_x: usize, start_y: usize, fill_char: char) -> Self {
+        self
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
