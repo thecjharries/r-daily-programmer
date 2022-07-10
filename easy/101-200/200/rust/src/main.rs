@@ -16,6 +16,12 @@ struct Grid {
     grid: Vec<Vec<char>>,
 }
 
+impl Grid {
+    fn new(grid: Vec<Vec<char>>) -> Self {
+        Grid { grid }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -26,7 +32,20 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_grid_new() {
+        let grid = vec![
+            vec!['.', '.', '.'],
+            vec!['.', '.', '.'],
+            vec!['.', '.', '.'],
+        ];
+        let grid = Grid::new(grid);
+        assert_eq!(
+            grid.grid,
+            vec![
+                vec!['.', '.', '.'],
+                vec!['.', '.', '.'],
+                vec!['.', '.', '.']
+            ]
+        );
     }
 }
