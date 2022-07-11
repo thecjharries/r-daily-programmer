@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn days_until(year: i32, month: i32, day: i32) -> i32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
