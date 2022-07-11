@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::{Duration, NaiveDate};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -26,7 +28,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_days_until() {
+        let now = NaiveDate::now();
+        assert_eq!(days_until(now.year(), now.month(), now.day()), 0);
+        let future = NaiveDate::from_ymd(now.year(), now.month(), now.days()) + Duration::days(60);
+        assert_eq!(days_until(future.year(), future.month(), future.day()), 60);
+        let past = NaiveDate::from_ymd(now.year(), now.month(), now.days()) - Duration::days(15);
+        assert_eq!(days_until(past.year(), past.month(), past.day()), -15);
     }
 }
