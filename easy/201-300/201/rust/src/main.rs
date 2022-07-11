@@ -12,15 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use chrono::{Duration, NaiveDate};
+use chrono::{Datelike, Duration, NaiveDate, Utc};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn days_until(year: i32, month: i32, day: i32) -> i32 {
-    0
+fn days_until(year: i32, month: u32, day: u32) -> i32 {
+    let now_datetime = Utc::now().naive_utc();
+    let now = NaiveDate::from_ymd(
+        now_datetime.year(),
+        now_datetime.month(),
+        now_datetime.day(),
+    );
+    let target = NaiveDate::from_ymd(year, month, day);
+    target.signed_duration_since(now).num_days() as i32
 }
 
 #[cfg(test)]
