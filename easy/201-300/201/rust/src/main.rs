@@ -29,11 +29,11 @@ mod tests {
 
     #[test]
     fn test_days_until() {
-        let now = NaiveDate::now();
+        let now = Utc::now().naive_utc();
         assert_eq!(days_until(now.year(), now.month(), now.day()), 0);
-        let future = NaiveDate::from_ymd(now.year(), now.month(), now.days()) + Duration::days(60);
+        let future = NaiveDate::from_ymd(now.year(), now.month(), now.day()) + Duration::days(60);
         assert_eq!(days_until(future.year(), future.month(), future.day()), 60);
-        let past = NaiveDate::from_ymd(now.year(), now.month(), now.days()) - Duration::days(15);
+        let past = NaiveDate::from_ymd(now.year(), now.month(), now.day()) - Duration::days(15);
         assert_eq!(days_until(past.year(), past.month(), past.day()), -15);
     }
 }
