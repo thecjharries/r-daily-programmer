@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_binary_to_ascii(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
