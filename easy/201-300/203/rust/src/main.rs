@@ -26,7 +26,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_square() {
+        assert_eq!("", build_square(0));
+        assert_eq!("■", build_square(1));
+        assert_eq!("■■\n■■", build_square(2));
+        assert_eq!("■■■\n■■■\n■■■", build_square(3));
+        assert_eq!("■■■■\n■■■■\n■■■■\n■■■■", build_square(4));
+        assert_eq!("■■■■■\n■■■■■\n■■■■■\n■■■■■\n■■■■■", build_square(5));
     }
 }
