@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_square(size: u32) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
