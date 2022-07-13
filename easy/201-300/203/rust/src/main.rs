@@ -17,8 +17,12 @@ fn main() {
     println!("rad");
 }
 
-fn build_square(size: u32) -> String {
-    String::new()
+fn build_square(size: usize) -> String {
+    let mut lines = Vec::new();
+    for _ in 0..size {
+        lines.push("■".repeat(size));
+    }
+    lines.join("\n")
 }
 
 #[cfg(test)]
