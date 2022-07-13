@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn convert_binary_to_ascii(input: &str) -> String {
-    String::new()
+    let cleaned = input.split_whitespace().collect::<Vec<_>>().join("");
+    let mut output = String::new();
+    for end_index in (8..=cleaned.len()).step_by(8) {
+        let number = u8::from_str_radix(&cleaned[end_index - 8..end_index], 2).unwrap();
+        output.push(number as char);
+    }
+    output
 }
 
 #[cfg(test)]
