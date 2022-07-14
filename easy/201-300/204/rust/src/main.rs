@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_line(line: &str) -> String {
+fn find_line(line: &str, haystack: &str) -> String {
     String::new()
 }
 
