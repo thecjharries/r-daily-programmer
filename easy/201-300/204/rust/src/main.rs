@@ -12,13 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use regex::Regex;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn find_line(line: &str, haystack: &str) -> String {
-    String::new()
+    let line_pattern =
+        Regex::new(format!("(?i)(?:    .*\n)+.*{}.*(?:\n    .*)+", line.to_lowercase()).as_str())
+            .unwrap();
+    let line_match = line_pattern.captures(haystack).unwrap();
+    line_match.get(0).unwrap().as_str().to_string()
 }
 
 #[cfg(test)]
