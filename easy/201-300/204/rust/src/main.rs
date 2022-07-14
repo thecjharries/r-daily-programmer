@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_line() {
+        assert_eq!(
+            "    Fillet of a fenny snake,\n    In the caldron boil and bake;\n    Eye of newt, and toe of frog,\n    Wool of bat, and tongue of dog,\n    Adder's fork, and blind-worm's sting,\n    Lizard's leg, and howlet's wing,\n    For a charm of powerful trouble,\n    Like a hell-broth boil and bubble.",
+            find_line("eye of newt", "\n  SECOND WITCH.\n    Fillet of a fenny snake,\n    In the caldron boil and bake;\n    Eye of newt, and toe of frog,\n    Wool of bat, and tongue of dog,\n    Adder's fork, and blind-worm's sting,\n    Lizard's leg, and howlet's wing,\n    For a charm of powerful trouble,\n    Like a hell-broth boil and bubble.\n\n  ALL.\n    Double, double, toil and trouble;\n    Fire, burn; and caldron, bubble.")
+        );
     }
 }
