@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::{DateLike, NaiveDate, Utc};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -26,7 +28,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_pretty_date_diff() {
+        let current_year = Utc::today().year();
+        let mut first = format!("{}-07-01", current_year);
+        let mut second = format!("{}-07-04", current_year);
+        let mut output = "July 1 - 4".to_string();
+        assert_eq!(output, build_pretty_date_diff(&first, &second));
+        first = format!("{}-07-01", current_year);
+        second = format!("{}-07-01", current_year);
+        output = format!("July 1, {}", current_year);
+        assert_eq!(output, build_pretty_date_diff(&first, &second));
     }
 }
