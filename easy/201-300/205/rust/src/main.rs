@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use chrono::{DateLike, NaiveDate, Utc};
+use chrono::{Datelike, NaiveDate, Utc};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -29,7 +29,7 @@ mod tests {
 
     #[test]
     fn test_build_pretty_date_diff() {
-        let current_year = Utc::today().year();
+        let current_year = Utc::now().year();
         let mut first = format!("{}-07-01", current_year);
         let mut second = format!("{}-07-04", current_year);
         let mut output = "July 1 - 4".to_string();
