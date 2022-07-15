@@ -20,7 +20,21 @@ fn main() {
 }
 
 fn build_pretty_date_diff(first: &str, second: &str) -> String {
-    String::new()
+    let first_date = NaiveDate::parse_from_str(first, "%Y-%m-%d").unwrap();
+    let second_date = NaiveDate::parse_from_str(second, "%Y-%m-%d").unwrap();
+    let diff = second_date.signed_duration_since(first_date);
+    if 0 == diff.num_days() {
+        return first_date
+            .format("%B %e, %Y")
+            .to_string()
+            .replace("  ", " ");
+    }
+    format!(
+        "{} - {}",
+        first_date.format("%B %e"),
+        second_date.format("%e")
+    )
+    .replace("  ", " ")
 }
 
 #[cfg(test)]
