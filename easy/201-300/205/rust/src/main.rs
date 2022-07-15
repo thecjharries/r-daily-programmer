@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_pretty_date_diff(first: &str, second: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
