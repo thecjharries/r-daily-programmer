@@ -26,7 +26,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_evaluate_recurrence_relation() {
+        assert_eq!(
+            vec![1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047],
+            evaluate_recurrence_relation("*2 +1", 1, 10)
+        );
+        assert_eq!(
+            vec![0, 1, 4, 13, 40, 121, 364, 1093, 3280, 9841, 29524],
+            evaluate_recurrence_relation("+2 *3 -5", 0, 10)
+        );
+        assert_eq!(
+            vec![1, -2, 4, -8],
+            evaluate_recurrence_relation("*(-2)", 1, 3)
+        );
     }
 }
