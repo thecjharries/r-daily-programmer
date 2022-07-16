@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn evaluate_recurrence_relation(relation: &str, start: i64, count: usize) -> Vec<i64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
