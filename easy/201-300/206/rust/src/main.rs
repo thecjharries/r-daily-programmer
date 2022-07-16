@@ -12,13 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use evalexpr::{eval_int_with_context, ContextWithMutableVariables, HashMapContext, Value};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn evaluate_recurrence_relation(relation: &str, start: i64, count: usize) -> Vec<i64> {
-    Vec::new()
+    let op_count = relation.matches(" ").count();
+    let mut expression = relation.replace(" ", ")");
+    expression = format!("{}x{}", "(".repeat(op_count), expression);
+    let mut result = vec![start];
+    let mut context = HashMapContext::new();
+    for _ in 0..count {
+        context.set_value("x".to_string(), Value::Int(result[result.len() - 1]));
+        result.push(eval_int_with_context(&expression, &context).unwrap());
+    }
+    result
 }
 
 #[cfg(test)]
