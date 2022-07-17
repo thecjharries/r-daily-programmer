@@ -26,7 +26,16 @@ fn main() {
 }
 
 fn generate_dna_sequence(base: &str) -> String {
-    String::new()
+    let mut dna_sequence = String::from(base);
+    dna_sequence.push('\n');
+    for c in base.chars() {
+        if let Some(c) = HASHMAP.get(&c) {
+            dna_sequence.push(*c);
+        } else {
+            dna_sequence.push(c);
+        }
+    }
+    dna_sequence
 }
 
 #[cfg(test)]
