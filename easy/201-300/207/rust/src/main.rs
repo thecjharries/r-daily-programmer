@@ -26,7 +26,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_dna_sequence() {
+        assert_eq!(
+            "A A T G C C T A T G G C\nT T A C G G A T A C C G",
+            generate_dna_sequence("A A T G C C T A T G G C")
+        );
+        assert_eq!(
+            "A T A A G C\nT A T T C G",
+            generate_dna_sequence("A T A A G C")
+        );
     }
 }
