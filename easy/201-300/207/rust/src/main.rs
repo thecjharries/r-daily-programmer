@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_dna_sequence(base: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
