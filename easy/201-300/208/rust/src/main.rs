@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn remove_duplicates(input: Vec<u32>) -> Vec<u32> {
+    input
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
