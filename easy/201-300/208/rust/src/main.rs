@@ -18,7 +18,12 @@ fn main() {
 }
 
 fn remove_duplicates(input: Vec<u32>) -> Vec<u32> {
-    input
+    input.into_iter().fold(Vec::new(), |mut acc, x| {
+        if !acc.contains(&x) {
+            acc.push(x);
+        }
+        acc
+    })
 }
 
 #[cfg(test)]
