@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::collections::HashMap;
+use std::collections::{BTreeMap, HashMap};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -20,7 +20,23 @@ fn main() {
 }
 
 fn build_flairs(user_time_map: HashMap<String, f32>) -> String {
-    String::new()
+    let sorted: BTreeMap<f32, Vec<String>> = BTreeMap::new();
+    for (user, time) in user_time_map {
+        sorted.entry(time).or_insert(Vec::new()).push(user);
+    }
+    let mut flairs = String::new();
+    let mut previous_value = 0.0;
+    for (time, users) in sorted {
+        for user in users {
+            flairs.push_str(&format!(
+                "{}: {}\n",
+                user,
+                (60.0 - (time - previous_value)).floor() as i32
+            ));
+        }
+        previous_value = time;
+    }
+    flairs
 }
 
 #[cfg(test)]
