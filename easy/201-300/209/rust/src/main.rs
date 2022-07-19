@@ -19,7 +19,7 @@ fn main() {
     println!("rad");
 }
 
-fn build_flairs(user_time_map: HashMap<String, f64>) -> String {
+fn build_flairs(user_time_map: HashMap<String, f32>) -> String {
     String::new()
 }
 
@@ -29,6 +29,18 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let input = HashMap::from_iter([
+            ("bholzer".to_string(), 101.09),
+            ("Cosmologicon".to_string(), 27.45),
+            ("nint22".to_string(), 13.76),
+            ("nooodl".to_string(), 7.29),
+            ("nottoobadguy".to_string(), 74.56),
+            ("oskar_s".to_string(), 39.90),
+            ("Steve132".to_string(), 61.82),
+        ]);
+        assert_eq!(
+            "nooodl: 52\nnint22: 53\nCosmologicon: 46\noskar_s: 47\nSteve132: 38\nnottoobadguy: 47\nbholzer: 33\n",
+            build_flairs(input)
+        );
     }
 }
