@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_compability(first: i32, second: i32) -> (f32, i32, i32) {
+    (0.0, 0, 0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
