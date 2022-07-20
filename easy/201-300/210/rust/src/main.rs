@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn build_compability(first: i32, second: i32) -> (f32, i32, i32) {
+fn build_compability(first: u32, second: u32) -> (f32, u32, u32) {
     (0.0, 0, 0)
 }
 
@@ -26,7 +26,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_compability() {
+        assert_eq!((50.0, 4294967275, 4294901780), build_compability(20, 65515));
     }
 }
