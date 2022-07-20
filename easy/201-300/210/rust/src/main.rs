@@ -18,7 +18,27 @@ fn main() {
 }
 
 fn build_compability(first: u32, second: u32) -> (f32, u32, u32) {
-    (0.0, 0, 0)
+    let first_binary = format!("{:032b}", first).chars().collect::<Vec<_>>();
+    let second_binary = format!("{:032b}", second).chars().collect::<Vec<_>>();
+    let mut compability_count = 0;
+    for index in 0..first_binary.len() {
+        if first_binary[index] == second_binary[index] {
+            compability_count += 1;
+        }
+    }
+    let first_complement_binary: String = first_binary
+        .iter()
+        .map(|x| if *x == '1' { '0' } else { '1' })
+        .collect();
+    let second_complement_binary: String = second_binary
+        .iter()
+        .map(|x| if *x == '1' { '0' } else { '1' })
+        .collect();
+    (
+        100.0 * (compability_count as f32 / first_binary.len() as f32),
+        u32::from_str_radix(&first_complement_binary, 2).unwrap(),
+        u32::from_str_radix(&second_complement_binary, 2).unwrap(),
+    )
 }
 
 #[cfg(test)]
