@@ -27,6 +27,19 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "Lincoln, Lincoln bo Bincoln,
+Bonana fanna fo Fincoln,
+Fee fy mo Mincoln,
+Lincoln!",
+            construct_rhyme("Lincoln")
+        );
+        assert_eq!(
+            "Nick, Nick bo Bick,
+Bonana fanna fo Fick,
+Fee fy mo Mick,
+Nick!",
+            construct_rhyme("Nick")
+        );
     }
 }
