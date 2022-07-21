@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn construct_rhyme(name: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
