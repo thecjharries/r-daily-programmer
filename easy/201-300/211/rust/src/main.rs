@@ -18,7 +18,15 @@ fn main() {
 }
 
 fn construct_rhyme(name: &str) -> String {
-    String::new()
+    let name = name.replace("!", "");
+    let mut short = name.clone();
+    short.remove(0);
+    format!(
+        "{name}, {name} bo B{short},
+Bonana fanna fo F{short},
+Fee fy mo M{short},
+{name}!"
+    )
 }
 
 #[cfg(test)]
