@@ -29,6 +29,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "Jojagog totalolaror Rorövovarorsospoproråkoketot!",
+            convert_to_robbers_language("Jag talar Rövarspråket!")
+        );
     }
 }
