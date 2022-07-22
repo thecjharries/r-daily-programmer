@@ -19,6 +19,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_robbers_language(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
