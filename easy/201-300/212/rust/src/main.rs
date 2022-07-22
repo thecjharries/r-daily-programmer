@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const VOWELS: &str = "aeiou";
+const CONSONANTS: &str = "bcdfghjklmnpqrtsvwxz";
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
