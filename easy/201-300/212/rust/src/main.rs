@@ -20,7 +20,17 @@ fn main() {
 }
 
 fn convert_to_robbers_language(input: &str) -> String {
-    String::new()
+    input
+        .chars()
+        .map(|c| {
+            if CONSONANTS.contains(c.to_ascii_lowercase()) {
+                format!("{}o{}", c, c.to_ascii_lowercase())
+            } else {
+                c.to_string()
+            }
+        })
+        .collect::<Vec<String>>()
+        .join("")
 }
 
 #[cfg(test)]
