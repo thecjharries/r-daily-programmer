@@ -58,7 +58,28 @@ fn main() {
 }
 
 fn convert_hex_to_words(input: &str) -> String {
-    String::new()
+    let mut output = String::new();
+    for (index, c) in input[2..].chars().enumerate() {
+        if 2 == index {
+            output.push_str(" bitey");
+        }
+        if index % 2 == 0 {
+            if let Some(high_order) = HIGH_ORDER_MAP.get(&c) {
+                if 0 < output.len() {
+                    output.push_str(" ");
+                }
+                output.push_str(high_order);
+            }
+        } else {
+            if let Some(low_order) = LOW_ORDER_MAP.get(&c) {
+                if 0 < output.len() {
+                    output.push_str(" ");
+                }
+                output.push_str(low_order);
+            }
+        }
+    }
+    output
 }
 
 #[cfg(test)]
