@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_standard_deviation(input: Vec<i32>) -> f32 {
+    0.0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
