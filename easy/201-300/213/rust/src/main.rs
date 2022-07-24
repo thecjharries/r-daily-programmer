@@ -57,6 +57,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_hex_to_words(input: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
