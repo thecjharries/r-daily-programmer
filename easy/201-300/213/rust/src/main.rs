@@ -66,7 +66,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_hex_to_words() {
+        assert_eq!("Fleventy Five", convert_hex_to_words("0xF5"));
+        assert_eq!(
+            "Bibbity Bee bitey Bibbity Bee",
+            convert_hex_to_words("0xBBBB")
+        );
     }
 }
