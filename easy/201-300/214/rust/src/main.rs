@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn calculate_standard_deviation(input: Vec<i32>) -> f32 {
-    0.0
+    let mut mean = 0.0;
+    for i in &input {
+        mean += *i as f32;
+    }
+    mean /= input.len() as f32;
+    let mut sum_of_squares = 0.0;
+    for i in &input {
+        sum_of_squares += (*i as f32 - mean).powi(2);
+    }
+    let variance = sum_of_squares / input.len() as f32;
+    (variance.sqrt() * 10000.0).round() / 10000.0
 }
 
 #[cfg(test)]
