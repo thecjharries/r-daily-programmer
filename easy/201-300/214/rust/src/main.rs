@@ -26,7 +26,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_standard_deviation() {
+        assert_eq!(9.7775, vec![5, 6, 11, 13, 19, 20, 25, 26, 28, 37]);
+        assert_eq!(
+            23.2908,
+            vec![37, 81, 86, 91, 97, 108, 109, 112, 112, 114, 115, 117, 121, 123, 141]
+        );
     }
 }
