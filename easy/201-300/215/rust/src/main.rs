@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_sad_cycle(base: u64, start: u64) -> Vec<u64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
