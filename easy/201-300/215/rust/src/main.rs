@@ -26,7 +26,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_sad_cycle() {
+        assert_eq!(
+            vec![383890, 1057187, 513069, 594452, 570947, 786460, 477201, 239459, 1083396, 841700],
+            find_sad_cycle(6, 2)
+        );
+        assert_eq!(
+            vec![5345158, 2350099, 9646378, 8282107, 5018104, 2191663],
+            find_sad_cycle(7, 7)
+        );
+        assert_eq!(vec![371], find_sad_cycle(3, 14));
+        assert_eq!(vec![89, 145, 42, 20, 4, 16, 37, 58], find_sad_cycle(2, 12));
     }
 }
