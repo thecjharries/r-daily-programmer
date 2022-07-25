@@ -17,8 +17,33 @@ fn main() {
     println!("rad");
 }
 
-fn find_sad_cycle(base: u64, start: u64) -> Vec<u64> {
-    Vec::new()
+fn find_sad_cycle(base: u32, start: u64) -> Vec<u64> {
+    let mut cycle = Vec::new();
+    let mut previous = 0;
+    let mut current = start;
+    let mut in_cycle = false;
+    loop {
+        let mut next = 0;
+        while current > 0 {
+            next += (current % 10).pow(base);
+            current /= 10;
+        }
+        if previous == next {
+            return vec![next];
+        }
+        previous = next;
+        current = next;
+        if cycle.contains(&next) {
+            if in_cycle {
+                let index = cycle.iter().position(|&x| x == next).unwrap();
+                return cycle[index - 1..].to_vec();
+            } else {
+                in_cycle = true;
+                continue;
+            }
+        }
+        cycle.push(next);
+    }
 }
 
 #[cfg(test)]
