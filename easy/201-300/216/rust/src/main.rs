@@ -113,7 +113,11 @@ fn main() {
 }
 
 fn deal_poker_hands<R: Rng>(deck: &mut Deck<R>, hands: u8) -> Vec<Vec<Card>> {
-    Vec::new()
+    let mut poker_hands = Vec::new();
+    for _ in 0..hands {
+        poker_hands.push(deck.deal(5));
+    }
+    poker_hands
 }
 
 #[cfg(test)]
