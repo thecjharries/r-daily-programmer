@@ -206,10 +206,10 @@ mod tests {
         assert_eq!(52 - 25, deck.cards.len());
         assert_eq!(
             Card {
-                suit: CardSuit::Spades,
-                value: CardValue::Nine
+                suit: CardSuit::Hearts,
+                value: CardValue::Two
             },
-            deck.cards[26]
+            deck.cards[deck.cards.len() - 1]
         );
         assert_eq!(
             Card {
