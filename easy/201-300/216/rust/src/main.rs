@@ -112,6 +112,10 @@ fn main() {
     println!("rad");
 }
 
+fn deal_poker_hands<R: Rng>(deck: &mut Deck<R>, hands: u8) -> Vec<Vec<Card>> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -183,5 +187,39 @@ mod tests {
         );
         let empty = deck.deal(0);
         assert_eq!(0, empty.len());
+    }
+
+    #[test]
+    fn test_deal_poker_hands() {
+        let mut rng = StdRng::seed_from_u64(0);
+        let mut deck = Deck::new(1, &mut rng);
+        assert_eq!(52, deck.cards.len());
+        assert_eq!(
+            deck.cards[51],
+            Card {
+                suit: CardSuit::Spades,
+                value: CardValue::Ace
+            }
+        );
+        let hands = deal_poker_hands(&mut deck, 5);
+        assert_eq!(5, hands.len());
+        assert_eq!(52 - 25, deck.cards.len());
+        assert_eq!(
+            Card {
+                suit: CardSuit::Spades,
+                value: CardValue::Nine
+            },
+            deck.cards[26]
+        );
+        assert_eq!(
+            Card {
+                suit: CardSuit::Spades,
+                value: CardValue::Ace
+            },
+            hands[0][0]
+        );
+        for index in 0..hands.len() {
+            assert_eq!(5, hands[index].len());
+        }
     }
 }
