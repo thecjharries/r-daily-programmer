@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn distribute_logs(new_logs: u32, log_piles: Vec<u32>) -> Vec<u32> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
