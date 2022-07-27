@@ -27,6 +27,10 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(vec![42], distribute_logs(41, vec![1]));
+        assert_eq!(
+            vec![3, 2, 2, 2, 2, 3, 2, 4, 2],
+            distribute_logs(7, vec![1, 1, 1, 2, 1, 3, 1, 4, 1])
+        );
     }
 }
