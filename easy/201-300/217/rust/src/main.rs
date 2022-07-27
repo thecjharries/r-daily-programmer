@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn distribute_logs(new_logs: u32, log_piles: Vec<u32>) -> Vec<u32> {
-    Vec::new()
+    let mut final_distribution = log_piles.clone();
+    let mut remaining_logs = new_logs;
+    let mut current_smallest_logs = 0;
+    while 0 < remaining_logs {
+        let mut next_smallest_logs = u32::MAX;
+        for index in 0..final_distribution.len() {
+            if current_smallest_logs == final_distribution[index] {
+                final_distribution[index] += 1;
+                remaining_logs -= 1;
+            }
+            if 0 == remaining_logs {
+                break;
+            }
+            if final_distribution[index] < next_smallest_logs {
+                next_smallest_logs = final_distribution[index];
+            }
+        }
+        current_smallest_logs = next_smallest_logs;
+    }
+    final_distribution
 }
 
 #[cfg(test)]
