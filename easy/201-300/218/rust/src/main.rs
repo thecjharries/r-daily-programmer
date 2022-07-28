@@ -21,8 +21,14 @@ impl ToDoList {
         Self { todos: Vec::new() }
     }
 
-    fn add(&mut self, todo: String) {
+    fn add(&mut self, todo: String) -> &mut Self {
         self.todos.push(todo);
+        self
+    }
+
+    fn remove(&mut self, item: &str) -> &mut Self {
+        self.todos.retain(|todo| todo != item);
+        self
     }
 }
 
