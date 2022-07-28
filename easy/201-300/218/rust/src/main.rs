@@ -16,6 +16,12 @@ struct ToDoList {
     todos: Vec<String>,
 }
 
+impl ToDoList {
+    fn new() -> Self {
+        Self { todos: Vec::new() }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
