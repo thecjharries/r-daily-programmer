@@ -54,4 +54,16 @@ mod tests {
         todos.add("Buy milk".to_string());
         assert_eq!(todos.todos.len(), 1);
     }
+
+    #[test]
+    fn test_todolist_remove() {
+        let mut todos = ToDoList::new();
+        assert_eq!(todos.todos.len(), 0);
+        todos
+            .add("Buy milk".to_string())
+            .add("Buy eggs".to_string())
+            .add("Buy bread".to_string())
+            .remove("Buy eggs");
+        assert_eq!(todos.todos.len(), 2);
+    }
 }
