@@ -20,6 +20,10 @@ impl ToDoList {
     fn new() -> Self {
         Self { todos: Vec::new() }
     }
+
+    fn add(&mut self, todo: String) {
+        self.todos.push(todo);
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
