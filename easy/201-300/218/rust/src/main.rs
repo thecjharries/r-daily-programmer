@@ -40,4 +40,12 @@ mod tests {
         let todos = ToDoList::new();
         assert_eq!(todos.todos.len(), 0);
     }
+
+    #[test]
+    fn test_todolist_add() {
+        let mut todos = ToDoList::new();
+        assert_eq!(todos.todos.len(), 0);
+        todos.add("Buy milk".to_string());
+        assert_eq!(todos.todos.len(), 1);
+    }
 }
