@@ -32,7 +32,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_todolist_new() {
+        let todos = ToDoList::new();
+        assert_eq!(todos.todos.len(), 0);
     }
 }
