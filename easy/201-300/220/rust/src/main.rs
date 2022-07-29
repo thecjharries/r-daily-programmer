@@ -12,13 +12,48 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn organize_sentence(input: &str) -> String {
-    String::new()
+    let exploded = input.split_whitespace().collect::<Vec<_>>();
+    let mut output: Vec<String> = Vec::new();
+    for word in exploded {
+        let chars = word.chars();
+        let mut punctuation: HashMap<usize, char> = HashMap::new();
+        let mut unsorted = Vec::new();
+        for (index, char) in chars.enumerate() {
+            if char.is_alphabetic() {
+                unsorted.push(char.to_ascii_lowercase());
+            } else {
+                punctuation.insert(index, char);
+            }
+        }
+        unsorted.sort_by(|a, b| b.cmp(a));
+        println!("{:?}", unsorted);
+        let mut sorted = String::new();
+        let mut index = 0;
+        while index < word.len() {
+            if let Some(punctuation_char) = punctuation.get(&index) {
+                sorted.push(*punctuation_char);
+            } else {
+                let char = unsorted.pop().unwrap();
+                println!("{:?}", char);
+                if word.chars().nth(index).unwrap().is_uppercase() {
+                    sorted.push(char.to_uppercase().next().unwrap());
+                } else {
+                    sorted.push(char);
+                }
+            }
+            index += 1;
+        }
+        output.push(sorted);
+    }
+    output.join(" ")
 }
 
 #[cfg(test)]
