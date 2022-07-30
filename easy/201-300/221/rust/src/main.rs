@@ -38,7 +38,7 @@ fn build_word_snake(words: Vec<String>) -> String {
         index += 1;
     }
     if 0 == index % 2 {
-        output.push(" ".repeat(current_spacing) + &last_word[last_word.len() - 2..].to_string());
+        output.push(" ".repeat(current_spacing) + &last_word[last_word.len() - 1..].to_string());
     }
     output.join("\n")
 }
@@ -60,6 +60,14 @@ mod tests {
                 "SALTY".to_string(),
                 "YOUNGSTER".to_string()
             ])
+        );
+        assert_eq!(
+            "SHENANIGANS
+          A
+          L
+          T
+          Y",
+            build_word_snake(vec!["SHENANIGANS".to_string(), "SALTY".to_string()])
         );
     }
 }
