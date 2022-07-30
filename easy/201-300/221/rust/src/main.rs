@@ -52,7 +52,7 @@ mod tests {
         assert_eq!(
             "SHENANIGANS
           A
-          A
+          L
           T
           YOUNGSTER",
             build_word_snake(vec![
