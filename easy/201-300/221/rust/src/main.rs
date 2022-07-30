@@ -27,6 +27,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "SHENANIGANS
+          A
+          A
+          T
+          YOUNGSTER",
+            build_word_snake(vec!["SHENANIGANS", "SALTY", "YOUNGSTER"])
+        );
     }
 }
