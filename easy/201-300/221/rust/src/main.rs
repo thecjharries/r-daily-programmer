@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_word_snake(words: Vec<String>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
