@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn balance_word(word: &str) -> (Vec<String>, u32) {
+    (Vec::new(), 0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
