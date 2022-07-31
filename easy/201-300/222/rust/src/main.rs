@@ -27,7 +27,13 @@ mod tests {
 
     #[test]
     fn test_balance_word() {
-        assert_eq!((vec!["s", "t", "ead"], 19), balance_word("stead"));
+        assert_eq!(
+            (
+                vec!["s".to_string(), "t".to_string(), "ead".to_string()],
+                19
+            ),
+            balance_word("stead")
+        );
         assert_eq!((vec![], 0), balance_word("SUPERGLUE"));
     }
 }
