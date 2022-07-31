@@ -26,7 +26,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_balance_word() {
+        assert_eq!((vec!["s", "t", "ead"], 19), balance_word("stead"));
+        assert_eq!((vec![], 0), balance_word("SUPERGLUE"));
     }
 }
