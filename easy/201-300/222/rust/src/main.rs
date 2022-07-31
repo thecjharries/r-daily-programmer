@@ -18,6 +18,34 @@ fn main() {
 }
 
 fn balance_word(word: &str) -> (Vec<String>, u32) {
+    let chars = word.to_lowercase().chars().collect::<Vec<_>>();
+    let mut left_sum = 0;
+    let mut left_index = 0;
+    let mut left_weight = 0;
+    let mut right_sum = 0;
+    let mut right_index = chars.len() - 1;
+    let mut right_weight = 0;
+    while left_index < right_index {
+        if left_sum < right_sum {
+            left_sum += chars[left_index] as u8 - b'a' + 1;
+            left_weight += left_sum as u32;
+            left_index += 1;
+        } else {
+            right_sum += chars[right_index] as u8 - b'a' + 1;
+            right_weight += right_sum as u32;
+            right_index -= 1;
+        }
+    }
+    if left_index == right_index && left_weight == right_weight {
+        return (
+            vec![
+                chars[0..left_index].iter().collect(),
+                chars[left_index..left_index + 1].iter().collect(),
+                chars[left_index + 1..].iter().collect(),
+            ],
+            left_weight,
+        );
+    }
     (Vec::new(), 0)
 }
 
