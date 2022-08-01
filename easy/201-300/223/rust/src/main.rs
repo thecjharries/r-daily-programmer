@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_garland() {
+        assert_eq!(0, garland("programmer"));
+        assert_eq!(1, garland("ceramic"));
+        assert_eq!(2, garland("onion"));
+        assert_eq!(4, garland("alfalfa"));
     }
 }
