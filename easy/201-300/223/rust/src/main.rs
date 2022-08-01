@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn garland(word: &str) -> u32 {
-    0
+    let mut degree: u32 = 0;
+    for index in 0..word.len() {
+        if word[..index] == word[word.len() - index..] {
+            degree = index as u32
+        }
+    }
+    degree
 }
 
 #[cfg(test)]
