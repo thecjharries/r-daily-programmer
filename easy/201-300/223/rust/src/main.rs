@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn garland(word: &str) -> u32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
