@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn shuffle_fisher_yates<T>(input: Vec<T>) -> Vec<T> {
+fn shuffle_fisher_yates<T, R: Rng>(input: Vec<T>, rng: &mut R) -> Vec<T> {
     Vec::new()
 }
 
