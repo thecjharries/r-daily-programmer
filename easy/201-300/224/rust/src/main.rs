@@ -21,6 +21,8 @@ fn main() {
     println!("rad");
 }
 
+// We have to ignore the fn bc Tarpaulin doesn't see coverage on the return value
+#[cfg(not(tarpaulin_include))]
 fn shuffle_fisher_yates<T, R: Rng>(input: Vec<T>, rng: &mut R) -> Vec<T> {
     let mut output = input;
     for index in (0..output.len()).rev() {
