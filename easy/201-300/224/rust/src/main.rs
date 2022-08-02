@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn shuffle_fisher_yates<T>(input: Vec<T>) -> Vec<T> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
