@@ -37,14 +37,21 @@ mod tests {
     #[test]
     fn test_stub() {
         let mut rng = Pcg64::seed_from_u64(0);
-        assert_eq!(vec![1, 2, 3], shuffle_fisher_yates(vec![1, 2, 3], &mut rng));
+        assert_eq!(vec![3, 2, 1], shuffle_fisher_yates(vec![1, 2, 3], &mut rng));
         assert_eq!(
-            vec!['a', 'b', 'c'],
+            vec!['b', 'a', 'c'],
             shuffle_fisher_yates(vec!['a', 'b', 'c'], &mut rng)
         );
         assert_eq!(
-            vec!["one", "two", "three"],
+            vec!["three", "one", "two"],
             shuffle_fisher_yates(vec!["one", "two", "three"], &mut rng)
+        );
+        assert_eq!(
+            vec!["three".to_string(), "one".to_string(), "two".to_string()],
+            shuffle_fisher_yates(
+                vec!["one".to_string(), "two".to_string(), "three".to_string()],
+                &mut rng
+            )
         );
     }
 }
