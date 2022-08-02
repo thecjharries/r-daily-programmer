@@ -22,7 +22,12 @@ fn main() {
 }
 
 fn shuffle_fisher_yates<T, R: Rng>(input: Vec<T>, rng: &mut R) -> Vec<T> {
-    Vec::new()
+    let mut output = input;
+    for index in (0..output.len()).rev() {
+        let swap_index = rng.gen_range(0..index + 1);
+        output.swap(index, swap_index);
+    }
+    output
 }
 
 #[cfg(test)]
