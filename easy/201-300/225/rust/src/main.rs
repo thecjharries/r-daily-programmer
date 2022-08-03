@@ -27,7 +27,19 @@ fn main() {
 }
 
 fn decolumnize_text(input: &str) -> String {
-    String::new()
+    let mut output = SIDEBAR_PATTERN.replace_all(input, "").to_string();
+    output = HYPHENATED_WORD_PATTERN.replace_all(&output, "").to_string();
+    output = MULTIPLE_SPACES_PATTERN
+        .replace_all(&output, " ")
+        .to_string();
+    output = output
+        .replace("\n", "  ")
+        .replace("    ", "\n\n")
+        .to_string();
+    output = MULTIPLE_SPACES_PATTERN
+        .replace_all(&output, " ")
+        .to_string();
+    output
 }
 
 #[cfg(test)]
