@@ -16,8 +16,9 @@ use lazy_static::lazy_static;
 use regex::Regex;
 
 lazy_static! {
-    static ref BOX_EDGE_PATTERN: Regex = Regex::new(r"\+-+\+").unwrap();
-    static ref BOX_MIDDLE_PATTERN: Regex = Regex::new(r"\|[^|]+\|").unwrap();
+    static ref SIDEBAR_PATTERN: Regex = Regex::new(r" *(\+-+\+|\|[^|]+\|) *").unwrap();
+    static ref MULTIPLE_SPACES_PATTERN: Regex = Regex::new(r" +").unwrap();
+    static ref HYPHENATED_WORD_PATTERN: Regex = Regex::new(r"-\n").unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
