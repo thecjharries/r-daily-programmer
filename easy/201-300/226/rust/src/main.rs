@@ -34,6 +34,14 @@ impl Fraction {
         let gcd = new_numerator.gcd(new_denominator);
         Fraction::new(new_numerator / gcd, new_denominator / gcd)
     }
+
+    fn sum(input: Vec<Fraction>) -> Fraction {
+        let mut sum = Fraction::new(0, 1);
+        for fraction in input {
+            sum = sum.add(&fraction);
+        }
+        sum
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
