@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Fraction {
+    numerator: u32,
+    denominator: u32,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
