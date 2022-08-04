@@ -50,4 +50,24 @@ mod tests {
         assert_eq!(2, Fraction::new(2, 1).numerator);
         assert_eq!(3, Fraction::new(1, 3).denominator);
     }
+
+    #[test]
+    fn test_fraction_add() {
+        assert_eq!(
+            Fraction::new(5, 6),
+            Fraction::new(1, 2).add(&Fraction::new(1, 3))
+        );
+        assert_eq!(
+            Fraction::new(1, 2),
+            Fraction::new(1, 2).add(&Fraction::new(0, 1))
+        );
+        assert_eq!(
+            Fraction::new(1, 2),
+            Fraction::new(0, 1).add(&Fraction::new(1, 2))
+        );
+        assert_eq!(
+            Fraction::new(7, 15),
+            Fraction::new(1, 6).add(&Fraction::new(3, 10))
+        );
+    }
 }
