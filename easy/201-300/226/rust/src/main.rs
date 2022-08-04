@@ -14,6 +14,7 @@
 
 use gcd::Gcd;
 
+#[derive(Debug, PartialEq, Eq)]
 struct Fraction {
     numerator: u32,
     denominator: u32,
