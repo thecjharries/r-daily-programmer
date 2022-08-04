@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use gcd::Gcd;
+
 struct Fraction {
     numerator: u32,
     denominator: u32,
@@ -23,6 +25,13 @@ impl Fraction {
             numerator: numerator,
             denominator: denominator,
         }
+    }
+
+    fn add(&self, other: &Fraction) -> Fraction {
+        let new_numerator = self.numerator * other.denominator + other.numerator * self.denominator;
+        let new_denominator = self.denominator * other.denominator;
+        let gcd = new_numerator.gcd(&new_denominator);
+        Fraction::new(new_numerator / gcd, new_denominator / gcd)
     }
 }
 
