@@ -12,13 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::cmp;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn find_spiral_point_from_number(spiral_size: u32, number: u32) -> (u32, u32) {
-    (0, 0)
+fn find_spiral_point_from_number(spiral_size: i32, number: i32) -> (i32, i32) {
+    let coefficient = 1 + ((((number - 1) as f32).sqrt().floor() - 1.0) / 2.0).floor() as i32;
+    (
+        1 + spiral_size / 2
+            + cmp::min(
+                coefficient,
+                cmp::max(
+                    -coefficient,
+                    (number - 4 * coefficient * coefficient - coefficient - 1).abs()
+                        - 2 * coefficient,
+                ),
+            ),
+        1 + spiral_size / 2
+            + cmp::min(
+                coefficient,
+                cmp::max(
+                    -coefficient,
+                    (number - 4 * coefficient * coefficient + coefficient - 1).abs()
+                        - 2 * coefficient,
+                ),
+            ),
+    )
 }
 
 #[cfg(test)]
