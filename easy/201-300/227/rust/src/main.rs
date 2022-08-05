@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_spiral_point_from_number(spiral_size: u32, number: u32) -> (u32, u32) {
+    (0, 0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
