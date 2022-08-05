@@ -26,7 +26,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_spiral_point_from_number() {
+        assert_eq!((2, 3), find_spiral_point_from_number(3, 8));
+        assert_eq!((1, 1), find_spiral_point_from_number(7, 37));
+        assert_eq!((6, 8), find_spiral_point_from_number(9, 47));
     }
 }
