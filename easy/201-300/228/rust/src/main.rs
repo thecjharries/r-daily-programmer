@@ -18,6 +18,14 @@ fn main() {
 }
 
 fn is_word_ordered(word: &str) -> bool {
+    let mut chars = word.chars();
+    let mut prev = chars.next().unwrap();
+    for c in chars {
+        if c < prev {
+            return false;
+        }
+        prev = c;
+    }
     true
 }
 
