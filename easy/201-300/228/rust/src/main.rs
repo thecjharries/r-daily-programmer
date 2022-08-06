@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_word_ordered(word: &str) -> bool {
+    true
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
