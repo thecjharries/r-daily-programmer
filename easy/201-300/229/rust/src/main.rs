@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_dottie_number() -> f32 {
+    0.0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
