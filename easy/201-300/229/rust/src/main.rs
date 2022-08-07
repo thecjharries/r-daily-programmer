@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn find_dottie_number() -> f32 {
-    0.0
+    let mut current_number: f32 = 0.0;
+    let mut next_number: f32 = 1.0;
+    while (current_number - next_number).abs() > f32::EPSILON {
+        current_number = next_number;
+        next_number = current_number.cos();
+    }
+    current_number
 }
 
 #[cfg(test)]
