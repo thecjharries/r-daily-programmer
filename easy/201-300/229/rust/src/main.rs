@@ -33,6 +33,6 @@ mod tests {
 
     #[test]
     fn test_find_dottie_number() {
-        assert_eq!(0.7390851332151606, find_dottie_number());
+        assert_eq!(0.7390852, find_dottie_number());
     }
 }
