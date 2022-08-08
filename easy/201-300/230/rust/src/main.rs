@@ -12,15 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use serde_json::{Result, Value};
+use serde_json::Value;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn find_string(raw_json: &str, value: &str) -> Result<String> {
-    Ok("".to_string())
+fn find_string(haystack: &str, needle: &str) -> String {
+    let json: Value = serde_json::from_str(haystack).unwrap();
+    for value in json.as_object().unwrap() {
+        let (key, val) = value;
+        match val.as_array() {
+            Some(vec) => {
+                for (k, v) in vec.iter().enumerate() {
+                    if v.as_str().unwrap() == needle {
+                        return format!("{} -> {}", key.to_string(), k);
+                    }
+                }
+            }
+            None => match val.as_str() {
+                Some(val) => {
+                    if val == needle {
+                        return key.to_string();
+                    }
+                }
+                None => {
+                    continue;
+                }
+            },
+        }
+    }
+    "".to_string()
 }
 
 #[cfg(test)]
@@ -30,7 +53,7 @@ mod tests {
     #[test]
     fn test_stub() {
         assert_eq!(
-            Ok("favoriteWebsites -> 1".to_string()),
+            "favoriteWebsites -> 1".to_string(),
             find_string(
                 r#"{"name": "William Shakespeare", "wife": {"birthYear": 1555, "deathYear":
 "Fun fact, she's a vampire", "name": "Anne Hathaway", "dead": false},
