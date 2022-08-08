@@ -29,6 +29,19 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            Ok("favoriteWebsites -> 1".to_string()),
+            find_string(
+                r#"{"name": "William Shakespeare", "wife": {"birthYear": 1555, "deathYear":
+"Fun fact, she's a vampire", "name": "Anne Hathaway", "dead": false},
+"favoriteWebsites": ["dailysonneter", "dailyprogrammer",
+"vine (he's way into 6-second cat videos)"], "dead": true, "birthYear": 1564,
+"facebookProfile": null, "selectedWorks": [{"written": 1606, "name":
+"The Tragedy of Macbeth", "isItAwesome": true}, {"written": 1608, "name":
+"Coriolanus", "isItAwesome": "It's alright, but kinda fascist-y"}], "deathYear":
+ 1616}"#,
+                "dailyprogrammer"
+            )
+        );
     }
 }
