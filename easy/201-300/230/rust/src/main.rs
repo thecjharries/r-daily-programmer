@@ -19,6 +19,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn find_string(haystack: &str, needle: &str) -> String {
     let json: Value = serde_json::from_str(haystack).unwrap();
     for value in json.as_object().unwrap() {
