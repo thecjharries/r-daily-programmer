@@ -33,6 +33,10 @@ fn main() {
     println!("rad");
 }
 
+fn rule_90(start: &str, iterations: u32) -> Vec<String> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
