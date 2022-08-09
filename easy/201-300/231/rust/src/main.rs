@@ -34,7 +34,16 @@ fn main() {
 }
 
 fn rule_90(start: &str, iterations: u32) -> Vec<String> {
-    Vec::new()
+    let mut result = vec![start.to_string()];
+    for _ in 0..iterations {
+        let current = format!("0{}0", result.last().unwrap());
+        let mut next = String::new();
+        for index in 3..=current.len() {
+            next.push(RULE_90[&current[index - 3..index]]);
+        }
+        result.push(next);
+    }
+    result
 }
 
 #[cfg(test)]
