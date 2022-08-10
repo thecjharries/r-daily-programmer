@@ -30,7 +30,6 @@ fn is_palindrome(input: &str) -> bool {
         .chars()
         .collect::<Vec<char>>();
     for index in 0..chars.len() / 2 {
-        println!("{} {}", chars[index], chars[chars.len() - index - 1]);
         if chars[index] != chars[chars.len() - index - 1] {
             return false;
         }
