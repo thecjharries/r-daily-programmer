@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_palindrome(input: &str) -> bool {
+    true
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
