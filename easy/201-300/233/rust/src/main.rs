@@ -18,7 +18,23 @@ fn main() {
 }
 
 fn build_house(input: &str) -> String {
-    String::new()
+    let rows = input.split("\n").collect::<Vec<&str>>();
+    let mut result: Vec<String> = vec!["".to_string(); rows.len() * 2];
+    for (index, row) in rows.iter().enumerate() {
+        for c in row.chars() {
+            match c {
+                '*' => {
+                    result[index * 2].push_str("+---+");
+                    result[index * 2 + 1].push_str("|   |");
+                }
+                _ => {
+                    result[2 * index].push_str("     ");
+                    result[2 * index + 1].push_str("     ");
+                }
+            }
+        }
+    }
+    result.join("\n")
 }
 
 #[cfg(test)]
