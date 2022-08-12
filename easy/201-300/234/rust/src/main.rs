@@ -12,13 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::hash_map::Entry;
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn discover_vampire_number(power: u32) -> Vec<(u32, u32, u32)> {
-    Vec::new()
+fn discover_vampire_number(power: u32) -> HashMap<u32, (u32, u32)> {
+    let mut discovered: HashMap<u32, (u32, u32)> = HashMap::new();
+    let min = 10u32.pow(power - 1);
+    let max = 10u32.pow(power);
+    for first in min..max {
+        for second in min..max {
+            let product = first * second;
+            if 2 * power == product.to_string().len() as u32 {
+                match discovered.entry(product) {
+                    Entry::Vacant(entry) => {
+                        entry.insert((first, second));
+                    }
+                    Entry::Occupied(entry) => {
+                        // do nothing
+                    }
+                };
+            }
+        }
+    }
+    discovered
 }
 
 #[cfg(test)]
