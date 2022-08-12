@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn discover_vampire_number(power: u32) -> Vec<(u32, u32, u32)> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
