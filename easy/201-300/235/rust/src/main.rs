@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn get_distinct_prime_factors(number: u64) -> Vec<u64> {
-    Vec::new()
+    let mut factors = Vec::new();
+    let mut current = number;
+    if 0 == current % 2 {
+        factors.push(2);
+        while 0 == current % 2 {
+            current /= 2;
+        }
+    }
+    for i in (3..current).step_by(2) {
+        if 0 == current % i {
+            factors.push(i);
+            while 0 == current % i {
+                current /= i;
+            }
+        }
+    }
+    if 2 < current {
+        factors.push(current);
+    }
+    factors
 }
 
 #[cfg(test)]
@@ -28,7 +47,7 @@ mod tests {
     #[test]
     fn test_get_distinct_prime_factors() {
         assert_eq!(vec![23], get_distinct_prime_factors(23));
-        assert_eq!(vec![2,3], get_distinct_prime_factors(24))
+        assert_eq!(vec![2, 3], get_distinct_prime_factors(24));
         assert_eq!(vec![2, 3, 7, 17], get_distinct_prime_factors(714));
         assert_eq!(vec![5, 11, 13], get_distinct_prime_factors(715));
     }
