@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_distinct_prime_factors(number: u64) -> Vec<u64> {
+    Vec::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
