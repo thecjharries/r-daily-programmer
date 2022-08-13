@@ -57,4 +57,13 @@ mod tests {
         assert_eq!(vec![2, 3, 7, 17], get_distinct_prime_factors(714));
         assert_eq!(vec![5, 11, 13], get_distinct_prime_factors(715));
     }
+
+    #[test]
+    fn test_is_ruth_aaron_pair() {
+        assert!(is_ruth_aaron_pair(714, 715));
+        assert!(is_ruth_aaron_pair(77, 78));
+        assert!(is_ruth_aaron_pair(5, 6));
+        assert!(!is_ruth_aaron_pair(20, 21));
+        assert!(!is_ruth_aaron_pair(128, 129));
+    }
 }
