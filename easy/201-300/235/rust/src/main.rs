@@ -40,6 +40,12 @@ fn get_distinct_prime_factors(number: u64) -> Vec<u64> {
     factors
 }
 
+fn is_ruth_aaron_pair(a: u64, b: u64) -> bool {
+    let a_factors = get_distinct_prime_factors(a);
+    let b_factors = get_distinct_prime_factors(b);
+    a_factors.sum::<u64>() == b_factors.sum::<u64>()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
