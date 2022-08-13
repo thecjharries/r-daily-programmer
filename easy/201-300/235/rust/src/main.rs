@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_distinct_prime_factors() {
+        assert_eq!(vec![23], get_distinct_prime_factors(23));
+        assert_eq!(vec![2,3], get_distinct_prime_factors(24))
+        assert_eq!(vec![2, 3, 7, 17], get_distinct_prime_factors(714));
+        assert_eq!(vec![5, 11, 13], get_distinct_prime_factors(715));
     }
 }
