@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_pieces() {
+        assert_eq!(
+            "SOIIZJTZOLIOJOTZOILIZZTLOJLJJOZJILZSTLOZTSZSLSLILI",
+            get_pieces(50, &mut Pcg64::seed_from_u64(0))
+        );
     }
 }
