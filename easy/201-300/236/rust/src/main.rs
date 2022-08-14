@@ -21,6 +21,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn get_pieces<R: Rng>(count: u32, rng: &mut R) -> String {
     let pool = "OISZLJT";
     let mut pieces = String::new();
