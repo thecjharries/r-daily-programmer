@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn get_pieces(count: u32) -> String {
+fn get_pieces<R: Rng>(count: u32, rng: &mut R) -> String {
     String::new()
 }
 
