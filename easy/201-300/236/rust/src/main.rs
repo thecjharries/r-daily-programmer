@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_pieces(count: u32) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
