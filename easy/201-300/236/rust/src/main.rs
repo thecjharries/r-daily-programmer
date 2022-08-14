@@ -12,13 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn get_pieces<R: Rng>(count: u32, rng: &mut R) -> String {
-    String::new()
+    let pool = "OISZLJT";
+    let mut pieces = String::new();
+    for _ in 0..count {
+        pieces.push(pool.chars().nth(rng.gen_range(0..pool.len())).unwrap());
+    }
+    pieces
 }
 
 #[cfg(test)]
