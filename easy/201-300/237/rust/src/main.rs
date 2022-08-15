@@ -27,6 +27,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "",
+            find_longest_word("xxxx", vec!["be", "bee", "ebb", "cab", "ghost"])
+        );
+        assert_eq!(
+            "bee",
+            find_longest_word("eb", vec!["be", "bee", "ebb", "cab", "ghost"])
+        );
     }
 }
