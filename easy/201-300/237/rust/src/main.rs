@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_longest_word(letters: &str, dictionary: Vec<String>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
