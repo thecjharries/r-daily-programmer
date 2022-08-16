@@ -12,6 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref CONSONANTS: [char; 21] = [
+        'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
+        'x', 'y', 'z',
+    ];
+    static ref VOWELS: [char; 5] = ['a', 'e', 'i', 'o', 'u',];
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
