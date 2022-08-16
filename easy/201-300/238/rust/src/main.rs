@@ -56,12 +56,12 @@ mod tests {
     #[test]
     fn test_randomly_fill() {
         assert_eq!(
-            "cvcvcc",
+            "kfgnwy",
             randomly_fill("cvcvcc", &mut Pcg64::seed_from_u64(0))
         );
-        assert_eq!("CcvV", randomly_fill("CcvV", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!("KfgN", randomly_fill("CcvV", &mut Pcg64::seed_from_u64(0)));
         assert_eq!(
-            "cvcvcvcvcvcvcvcvcvcv",
+            "kfgnwymbrgbltxpbgmns",
             randomly_fill("cvcvcvcvcvcvcvcvcvcv", &mut Pcg64::seed_from_u64(0))
         );
     }
