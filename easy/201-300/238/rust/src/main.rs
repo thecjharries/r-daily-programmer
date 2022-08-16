@@ -31,7 +31,22 @@ fn main() {
 }
 
 fn randomly_fill<R: Rng>(input: &str, rng: &mut R) -> String {
-    String::new()
+    let mut result = String::new();
+    for c in input.chars() {
+        let uppercase = c.is_uppercase();
+        let c = c.to_lowercase().next().unwrap();
+        let mut char: char;
+        if CONSONANTS.contains(&c) {
+            char = CONSONANTS[rng.gen_range(0..CONSONANTS.len())];
+        } else {
+            char = VOWELS[rng.gen_range(0..VOWELS.len())];
+        }
+        if uppercase {
+            char = char.to_uppercase().next().unwrap();
+        }
+        result.push(char);
+    }
+    result
 }
 
 #[cfg(test)]
