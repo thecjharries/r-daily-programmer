@@ -39,7 +39,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_randomly_fill() {
+        assert_eq!(
+            "cvcvcc",
+            randomly_fill("cvcvcc", &mut Pcg64::seed_from_u64(0))
+        );
+        assert_eq!("CcvV", randomly_fill("CcvV", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(
+            "cvcvcvcvcvcvcvcvcvcv",
+            randomly_fill("cvcvcvcvcvcvcvcvcvcv", &mut Pcg64::seed_from_u64(0))
+        );
     }
 }
