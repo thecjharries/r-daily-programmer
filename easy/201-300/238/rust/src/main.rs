@@ -30,6 +30,10 @@ fn main() {
     println!("rad");
 }
 
+fn randomly_fill<R: Rng>(input: &str, rng: &mut R) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
