@@ -13,6 +13,9 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
 
 lazy_static! {
     static ref CONSONANTS: [char; 21] = [
