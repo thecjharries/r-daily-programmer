@@ -18,7 +18,22 @@ fn main() {
 }
 
 fn play_game(start: i32) -> Vec<(i32, i32)> {
-    Vec::new()
+    let mut results = Vec::new();
+    let mut current = start;
+    while 1 != current {
+        if 0 == current % 3 {
+            results.push((current, 0));
+            current = current / 3;
+        } else if 0 == (current + 1) % 3 {
+            results.push((current, 1));
+            current = (current + 1) / 3;
+        } else if 0 == (current - 1) % 3 {
+            results.push((current, -1));
+            current = (current - 1) / 3;
+        }
+    }
+    results.push((1, 0));
+    results
 }
 
 #[cfg(test)]
