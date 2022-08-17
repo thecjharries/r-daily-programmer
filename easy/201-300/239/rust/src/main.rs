@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn play_game(start: u32) -> Vec<(u32, u32)> {
+fn play_game(start: i32) -> Vec<(i32, i32)> {
     Vec::new()
 }
 
@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_play_game() {
+        assert_eq!(
+            vec![(100, -1), (33, 0), (11, 1), (4, -1), (1, 0)],
+            play_game(100)
+        );
     }
 }
