@@ -22,7 +22,21 @@ fn main() {
 }
 
 fn typoglycemiate_word<R: Rng>(word: &str, rng: &mut R) -> String {
-    String::new()
+    if 3 >= word.len() {
+        return word.to_string();
+    }
+    let mut result = String::new();
+    let mut chars = word.chars().collect::<Vec<_>>();
+    result.push(chars[0]);
+    chars.remove(0);
+    chars.remove(chars.len() - 1);
+    while !chars.is_empty() {
+        let index = rng.gen_range(0..chars.len());
+        result.push(chars[index]);
+        chars.remove(index);
+    }
+    result.push(word[word.len() - 1..word.len()].chars().next().unwrap());
+    result
 }
 
 #[cfg(test)]
