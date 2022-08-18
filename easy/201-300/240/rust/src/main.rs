@@ -55,8 +55,8 @@ mod tests {
             typoglycemiate_word("rad", &mut Pcg64::seed_from_u64(0))
         );
         assert_eq!(
-            "therefore",
-            typoglycemiate_word("therefore", &mut Pcg64::seed_from_u64(1))
+            "trohreefe",
+            typoglycemiate_word("therefore", &mut Pcg64::seed_from_u64(0))
         );
     }
 }
