@@ -30,7 +30,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_typoglycemiate_word() {
+        assert_eq!("a", typoglycemiate_word("a", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(
+            "rd",
+            typoglycemiate_word("rd", &mut Pcg64::seed_from_u64(0))
+        );
+        assert_eq!(
+            "rad",
+            typoglycemiate_word("rad", &mut Pcg64::seed_from_u64(0))
+        );
+        assert_eq!(
+            "therefore",
+            typoglycemiate_word("therefore", &mut Pcg64::seed_from_u64(1))
+        );
     }
 }
