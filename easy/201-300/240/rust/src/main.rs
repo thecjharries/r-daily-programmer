@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn typoglycemiate_word(word: &str) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
