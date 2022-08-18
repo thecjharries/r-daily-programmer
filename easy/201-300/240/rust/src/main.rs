@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn typoglycemiate_word(word: &str) -> String {
+fn typoglycemiate_word<R: Rng>(word: &str, rng: &mut R) -> String {
     String::new()
 }
 
