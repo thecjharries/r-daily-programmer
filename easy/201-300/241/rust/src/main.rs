@@ -32,6 +32,6 @@ mod tests {
 
     #[test]
     fn test_build_chess_board() {
-        assert_eq!(" ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛\n ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛ \n ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛\n ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛ ".to_string(), build_chess_board());
+        assert_eq!(" ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛ \n ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛ \n ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛ \n ⬛ ⬛ ⬛ ⬛\n⬛ ⬛ ⬛ ⬛ ".to_string(), build_chess_board());
     }
 }
