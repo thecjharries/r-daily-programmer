@@ -18,7 +18,12 @@ fn main() {
 }
 
 fn build_chess_board() -> String {
-    String::new()
+    let mut board = Vec::new();
+    for _ in 0..4 {
+        board.push(" ⬛ ⬛ ⬛ ⬛".to_string());
+        board.push("⬛ ⬛ ⬛ ⬛ ".to_string());
+    }
+    board.join("\n")
 }
 
 #[cfg(test)]
