@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_chess_board() -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
