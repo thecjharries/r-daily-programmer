@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_weeks_necessary() {
+        assert_eq!(f64::INFINITY, calculate_weeks_necessary(250, 0));
+        assert_eq!(5.0, calculate_weeks_necessary(200, 15));
+        assert_eq!(14.0, calculate_weeks_necessary(50000, 1));
+        assert_eq!(9.0, calculate_weeks_necessary(150000, 250));
     }
 }
