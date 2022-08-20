@@ -17,8 +17,19 @@ fn main() {
     println!("rad");
 }
 
-fn calculate_weeks_necessary(people: u32, starting_plants: u32) -> u32 {
-    0
+fn calculate_weeks_necessary(people: u32, starting_plants: u32) -> f64 {
+    if 1 > starting_plants {
+        return f64::INFINITY;
+    }
+    let mut weeks = 1.0;
+    let mut current_plants = 0;
+    let mut growing_plants = starting_plants;
+    while current_plants < people {
+        current_plants += growing_plants;
+        growing_plants += current_plants;
+        weeks += 1.0;
+    }
+    weeks
 }
 
 #[cfg(test)]
