@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_weeks_necessary(people: u32, starting_plants: u32) -> u32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
