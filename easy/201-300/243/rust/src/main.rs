@@ -26,7 +26,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_abundance() {
+        assert_eq!(0, determine_abundance(28));
+        assert_eq!(-14, determine_abundance(27));
+        assert_eq!(3, determine_abundance(18));
     }
 }
