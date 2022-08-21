@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_abundance(number: i64) -> i64 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
