@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn determine_abundance(number: i64) -> i64 {
-    0
+    let mut factors = vec![1, number];
+    for factor in 2..(number / 2 + 1) {
+        if number % factor == 0 {
+            factors.push(factor);
+        }
+    }
+    factors.iter().sum::<i64>() - 2 * number
 }
 
 #[cfg(test)]
