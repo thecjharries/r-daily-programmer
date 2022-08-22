@@ -17,6 +17,17 @@ fn main() {
     println!("rad");
 }
 
+fn fork_fn(
+    first: &dyn Fn(Vec<u32>) -> u32,
+    second: &dyn Fn(Vec<u32>) -> u32,
+    remaining: Vec<&dyn Fn(Vec<u32>) -> u32>,
+) -> Fn(Vec<u32>) -> u32 {
+    fn inner(input: Vec<u32>) -> u32 {
+        first(input) + second(input)
+    }
+    inner
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
