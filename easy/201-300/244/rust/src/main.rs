@@ -22,10 +22,26 @@ fn fork_fn(
     second: &dyn Fn(Vec<u32>) -> u32,
     remaining: Vec<&dyn Fn(Vec<u32>) -> u32>,
 ) -> Fn(Vec<u32>) -> u32 {
-    fn inner(input: Vec<u32>) -> u32 {
-        first(input) + second(input)
+    if 1 == remaining.len() {
+        fn single(input: Vec<u32>) -> u32 {
+            second(vec![first(input), remaining[0](input)])
+        }
+        single
+    } else if 1 == remaining.len() % 2 {
+        fn multiple(input: Vec<u32>) -> u32 {
+            second(vec![
+                first(input),
+                fork_fn(remaining[0], remaining[1], remaining[2..].to_vec())(input),
+            ])
+        }
+        multiple
+    } else {
+        panic!("no functions to combine");
     }
-    inner
+    fn failure() -> u32 {
+        0
+    }
+    failure
 }
 
 #[cfg(test)]
