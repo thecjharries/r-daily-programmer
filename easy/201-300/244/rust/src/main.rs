@@ -34,6 +34,19 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        fn sum(input: Vec<u32>) -> u32 {
+            input.iter().sum()
+        }
+        fn count(input: Vec<u32>) -> u32 {
+            input.len() as u32
+        }
+        fn divide(input: Vec<u32>) -> u32 {
+            input[0] / input[1]
+        }
+        let first = fork_fn(&sum, &divide, vec![&count]);
+        assert_eq!(3, first(vec![1, 2, 3, 4, 5]));
+        let second = fork_fn(&sum, &divide, vec![&sum, &divide, &count]);
+        assert_eq!(5, second(vec![1, 2, 3, 4, 5]));
+        assert_eq!(0, fork_fn(&sum, &divide, vec![])(vec![1, 2, 3, 4, 5]));
     }
 }
