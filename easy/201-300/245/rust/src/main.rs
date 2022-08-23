@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
+lazy_static! {
+    static ref MONTH_DAY_YEAR_PATTERN: Regex =
+        Regex::new(r"^\s*(?P<month>\d{1,2})\D+(?P<day>\d{1,2})\D+(?P<year>\d{2}|\d{4})\s*$")
+            .unwrap();
+    static ref YEAR_MONTH_DAY_PATTERN: Regex =
+        Regex::new(r"^\s*(?P<year>\d{4})\D+(?P<month>\d{1,2})\D+(?P<day>\d{1,2})\s*$").unwrap();
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
