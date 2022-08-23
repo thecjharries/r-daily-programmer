@@ -23,6 +23,10 @@ lazy_static! {
         Regex::new(r"^\s*(?P<year>\d{4})\D+(?P<month>\d{1,2})\D+(?P<day>\d{1,2})\s*$").unwrap();
 }
 
+fn convert_date(input: str) -> String {
+    String::new()
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
