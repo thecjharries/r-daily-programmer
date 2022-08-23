@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::NaiveDate;
 use lazy_static::lazy_static;
 use regex::Regex;
 
@@ -23,8 +24,19 @@ lazy_static! {
         Regex::new(r"^\s*(?P<year>\d{4})\D+(?P<month>\d{1,2})\D+(?P<day>\d{1,2})\s*$").unwrap();
 }
 
-fn parse_date(input: str) -> String {
-    String::new()
+fn parse_date(input: &str) -> String {
+    let captures = match MONTH_DAY_YEAR_PATTERN.is_match(input) {
+        true => MONTH_DAY_YEAR_PATTERN.captures(input).unwrap(),
+        false => YEAR_MONTH_DAY_PATTERN.captures(input).unwrap(),
+    };
+    let month: u32 = captures.name("month").unwrap().as_str().parse().unwrap();
+    let day: u32 = captures.name("day").unwrap().as_str().parse().unwrap();
+    let mut year: i32 = captures.name("year").unwrap().as_str().parse().unwrap();
+    if 1900 > year {
+        year += 2000;
+    }
+    let date = NaiveDate::from_ymd(year, month, day);
+    date.format("%Y-%m-%d").to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
