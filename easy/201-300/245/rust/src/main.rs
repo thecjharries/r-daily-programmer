@@ -23,7 +23,7 @@ lazy_static! {
         Regex::new(r"^\s*(?P<year>\d{4})\D+(?P<month>\d{1,2})\D+(?P<day>\d{1,2})\s*$").unwrap();
 }
 
-fn convert_date(input: str) -> String {
+fn parse_date(input: str) -> String {
     String::new()
 }
 
@@ -37,7 +37,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_date() {
+        assert_eq!("2015-02-13".to_string(), parse_date("2/13/15"));
+        assert_eq!("2010-01-31".to_string(), parse_date("1-31-10"));
+        assert_eq!("2015-05-10".to_string(), parse_date("5 10 2015"));
+        assert_eq!("2012-03-17".to_string(), parse_date("2012 3 17"));
+        assert_eq!("2001-01-01".to_string(), parse_date("2001-01-01"));
+        assert_eq!("2008-01-07".to_string(), parse_date("2008/01/07"));
     }
 }
