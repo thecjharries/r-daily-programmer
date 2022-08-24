@@ -37,6 +37,17 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let battery = Battery {
+            voltage: 9.0,
+            milliamp_hours: 1200.0,
+        };
+        let led = Led {
+            voltage: 1.7,
+            milliamp_hours: 20.0,
+        };
+        assert_eq!(300.0, find_max_leds_for_runtime(1.0, &led, &battery));
+        assert_eq!(75.0, find_max_leds_for_runtime(4.0, &led, &battery));
+        assert_eq!(35.0, find_max_leds_for_runtime(8.0, &led, &battery));
+        assert_eq!(25.0, find_max_leds_for_runtime(12.0, &led, &battery));
     }
 }
