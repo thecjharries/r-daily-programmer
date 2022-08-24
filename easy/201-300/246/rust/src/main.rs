@@ -28,7 +28,11 @@ fn main() {
 }
 
 fn find_max_leds_for_runtime(hours: f32, led: &Led, battery: &Battery) -> f32 {
-    0.0
+    let max_leds_in_series = (battery.voltage / led.voltage).floor();
+    (((battery.milliamp_hours / hours / led.milliamp_hours) * max_leds_in_series).floor()
+        / max_leds_in_series)
+        .floor()
+        * max_leds_in_series
 }
 
 #[cfg(test)]
