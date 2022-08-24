@@ -27,6 +27,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_max_leds_for_runtime(hours: f32, led: &Led, battery: &Battery) -> f32 {
+    0.0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
