@@ -12,6 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Battery {
+    voltage: f32,
+    milliamp_hours: f32,
+}
+
+struct Led {
+    voltage: f32,
+    milliamp_hours: f32,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
