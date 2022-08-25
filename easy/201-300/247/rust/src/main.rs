@@ -21,12 +21,31 @@ fn main() {
     println!("rad");
 }
 
-fn build_ordering<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<(usize, usize)> {
-    Vec::new()
+fn build_ordering<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
+    let mut result = Vec::new();
+    for (family_index, family) in people.iter().enumerate() {
+        for (_, person) in family.iter().enumerate() {
+            let mut available = people
+                .clone()
+                .into_iter()
+                .enumerate()
+                .filter(|(index, _)| *index != family_index)
+                .flat_map(|(_, mapped_family)| mapped_family.into_iter())
+                .filter(|filtered_person| filtered_person != person)
+                .filter(|filtered_person| !result.contains(filtered_person))
+                .collect::<Vec<String>>();
+            if available.is_empty() {
+                return vec![];
+            }
+            let index = rng.gen_range(0..available.len());
+            result.push(available.remove(index));
+        }
+    }
+    result
 }
 
 fn build_secret_santa_list<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
-    String::new()
+    Vec::new()
 }
 
 #[cfg(test)]
