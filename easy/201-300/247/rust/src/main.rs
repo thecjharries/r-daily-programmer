@@ -55,7 +55,7 @@ mod tests {
     #[test]
     fn test_build_ordering() {
         assert_eq!(
-            vec![],
+            vec!["Joe", "Johnson", "Jerry", "Jeff"],
             build_ordering(
                 vec![
                     vec!["Jeff".to_string(), "Jerry".to_string()],
