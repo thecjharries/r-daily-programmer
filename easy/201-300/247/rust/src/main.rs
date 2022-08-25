@@ -82,7 +82,12 @@ mod tests {
     #[test]
     fn test_build_secret_santa_list() {
         assert_eq!(
-            vec![],
+            vec![
+                "Joe -> Johnson",
+                "Johnson -> Jerry",
+                "Jerry -> Jeff",
+                "Jeff -> Joe",
+            ],
             build_secret_santa_list(
                 vec![
                     vec!["Jeff".to_string(), "Jerry".to_string()],
