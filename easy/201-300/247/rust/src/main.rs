@@ -21,6 +21,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_ordering<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<(usize, usize)> {
+    Vec::new()
+}
+
 fn build_secret_santa_list<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
     String::new()
 }
