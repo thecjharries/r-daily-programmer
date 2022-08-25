@@ -34,7 +34,22 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_build_ordering() {
+        assert_eq!(
+            vec![],
+            build_ordering(
+                vec![
+                    vec!["Jeff".to_string(), "Jerry".to_string()],
+                    vec!["Joe".to_string()],
+                    vec!["Johnson".to_string()]
+                ],
+                &mut Pcg64::seed_from_u64(0)
+            )
+        )
+    }
+
+    #[test]
+    fn test_build_secret_santa_list() {
         assert_eq!(
             vec![],
             build_secret_santa_list(
