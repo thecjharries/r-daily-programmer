@@ -21,6 +21,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn build_ordering<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
     let mut result = Vec::new();
     for (family_index, family) in people.iter().enumerate() {
@@ -44,6 +45,7 @@ fn build_ordering<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> 
     result
 }
 
+#[cfg(not(tarpaulin_include))]
 fn build_secret_santa_list<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
     let mut ordering = Vec::new();
     while ordering.is_empty() {
