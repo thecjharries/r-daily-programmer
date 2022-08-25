@@ -12,9 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn build_secret_santa_list<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
+    String::new()
 }
 
 #[cfg(test)]
