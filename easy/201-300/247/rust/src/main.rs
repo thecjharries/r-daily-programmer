@@ -45,7 +45,19 @@ fn build_ordering<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> 
 }
 
 fn build_secret_santa_list<R: Rng>(people: Vec<Vec<String>>, rng: &mut R) -> Vec<String> {
-    Vec::new()
+    let mut ordering = Vec::new();
+    while ordering.is_empty() {
+        ordering = build_ordering(people.clone(), rng);
+    }
+    let mut result = Vec::new();
+    for (index, person) in ordering.iter().enumerate() {
+        result.push(format!(
+            "{} -> {}",
+            person,
+            ordering[(index + 1) % ordering.len()]
+        ));
+    }
+    result
 }
 
 #[cfg(test)]
