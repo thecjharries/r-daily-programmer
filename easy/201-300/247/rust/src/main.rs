@@ -31,6 +31,16 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            vec![],
+            build_secret_santa_list(
+                vec![
+                    vec!["Jeff".to_string(), "Jerry".to_string()],
+                    vec!["Joe".to_string()],
+                    vec!["Johnson".to_string()]
+                ],
+                &mut Pcg64::seed_from_u64(0)
+            )
+        )
     }
 }
