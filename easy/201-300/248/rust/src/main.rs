@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-struct Point {
+struct Color {
     red: u8,
     green: u8,
     blue: u8,
@@ -21,7 +21,13 @@ struct Point {
 struct Grid {
     width: u32,
     height: u32,
-    points: Vec<Point>,
+    points: Vec<Color>,
+}
+
+impl Grid {
+    fn point(&self, color: Color, x: u32, y: u32) -> Point {
+        self.points[(x + y * self.width) as usize] = color;
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
