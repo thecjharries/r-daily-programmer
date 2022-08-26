@@ -55,7 +55,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_grid_new() {
+        let grid = Grid::new(10, 10);
+        assert_eq!(10, grid.width);
+        assert_eq!(10, grid.height);
+        assert_eq!(100, grid.points.len());
     }
 }
