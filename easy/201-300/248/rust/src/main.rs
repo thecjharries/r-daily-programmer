@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq, Clone)]
 struct Color {
     red: u8,
     green: u8,
@@ -39,7 +40,7 @@ impl Grid {
             ],
         }
     }
-    fn point(&self, color: Color, x: u32, y: u32) -> Point {
+    fn point(&mut self, color: Color, x: u32, y: u32) {
         self.points[(x + y * self.width) as usize] = color;
     }
 }
