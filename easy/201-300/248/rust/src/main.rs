@@ -25,6 +25,20 @@ struct Grid {
 }
 
 impl Grid {
+    fn new(width: u32, height: u32) -> Grid {
+        Grid {
+            width,
+            height,
+            points: vec![
+                Color {
+                    red: 0,
+                    green: 0,
+                    blue: 0,
+                };
+                (width * height) as usize
+            ],
+        }
+    }
     fn point(&self, color: Color, x: u32, y: u32) -> Point {
         self.points[(x + y * self.width) as usize] = color;
     }
