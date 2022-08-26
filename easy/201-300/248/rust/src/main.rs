@@ -61,4 +61,34 @@ mod tests {
         assert_eq!(10, grid.height);
         assert_eq!(100, grid.points.len());
     }
+
+    #[test]
+    fn test_grid_point() {
+        let mut grid = Grid::new(10, 10);
+        assert_eq!(
+            Color {
+                red: 0,
+                green: 0,
+                blue: 0,
+            },
+            grid.points[5]
+        );
+        grid.point(
+            Color {
+                red: 255,
+                green: 255,
+                blue: 255,
+            },
+            5,
+            0,
+        );
+        assert_eq!(
+            Color {
+                red: 255,
+                green: 255,
+                blue: 255,
+            },
+            grid.points[5]
+        );
+    }
 }
