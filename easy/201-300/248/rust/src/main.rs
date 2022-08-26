@@ -12,6 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Point {
+    red: u8,
+    green: u8,
+    blue: u8,
+}
+
+struct Grid {
+    width: u32,
+    height: u32,
+    points: Vec<Point>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
