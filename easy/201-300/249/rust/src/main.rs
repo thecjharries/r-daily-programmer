@@ -18,7 +18,20 @@ fn main() {
 }
 
 fn find_best_trade(prices: Vec<f32>) -> (f32, f32) {
-    (0, 0)
+    let mut low = 0.0;
+    let mut high = 0.0;
+    let mut best_profit = 0.0;
+    for low_index in 0..prices.len() - 2 {
+        for high_index in low_index + 2..prices.len() {
+            let profit = prices[high_index] - prices[low_index];
+            if profit > best_profit {
+                best_profit = profit;
+                low = prices[low_index];
+                high = prices[high_index];
+            }
+        }
+    }
+    (low, high)
 }
 
 #[cfg(test)]
