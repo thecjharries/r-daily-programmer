@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_best_trade(prices: Vec<f32>) -> (f32, f32) {
+    (0, 0)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
