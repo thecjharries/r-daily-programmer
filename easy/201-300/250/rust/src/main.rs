@@ -37,7 +37,14 @@ mod tests {
 
     #[test]
     fn test_parse_raw_posts() {
-        let raw_posts = read_to_string("../simplified.json").unwrap();
-        assert_ne!("", raw_posts);
+        let raw_posts_body = read_to_string("../simplified.json").unwrap();
+        assert_ne!("", raw_posts_body);
+        let raw_posts = parse_raw_posts(&raw_posts_body).unwrap();
+        assert_eq!(25, raw_posts.len());
+        assert_eq!(
+            "[2021-07-12] Challenge #398 [Difficult] Matrix Sum",
+            raw_posts[0].title
+        );
+        assert_eq!("https://www.reddit.com/r/dailyprogrammer/comments/oirb5v/20210712_challenge_398_difficult_matrix_sum/", raw_posts[0].url);
     }
 }
