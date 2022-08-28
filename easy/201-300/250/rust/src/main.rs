@@ -26,6 +26,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_raw_posts(raw_posts: &str) -> Result<Vec<RawPost>> {
+    serde_json::from_str(raw_posts)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
