@@ -14,6 +14,7 @@
 
 use serde::{Deserialize, Serialize};
 use serde_json::Result;
+use std::fs::read_to_string;
 
 #[derive(Serialize, Deserialize)]
 struct RawPost {
@@ -35,7 +36,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_raw_posts() {
+        let raw_posts = read_to_string("../simplified.json").unwrap();
+        assert_ne!("", raw_posts);
     }
 }
