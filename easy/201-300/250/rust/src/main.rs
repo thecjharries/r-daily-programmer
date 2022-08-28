@@ -12,6 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use serde::{Deserialize, Serialize};
+use serde_json::Result;
+
+#[derive(Serialize, Deserialize)]
+struct RawPost {
+    title: String,
+    url: String,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
