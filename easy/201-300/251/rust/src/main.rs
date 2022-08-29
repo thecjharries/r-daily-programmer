@@ -18,7 +18,43 @@ fn main() {
 }
 
 fn parse_nonogram(input: &str) -> (Vec<Vec<u8>>, Vec<Vec<u8>>) {
-    (Vec::new(), Vec::new())
+    let exploded = input.replace("\n", "").chars().collect::<Vec<char>>();
+    let length = (exploded.len() as f32).sqrt() as usize;
+    let mut rows = Vec::new();
+    for i in 0..length {
+        let mut row = Vec::new();
+        let mut on = 0;
+        for j in 0..length {
+            if '*' == exploded[i * length + j] {
+                on += 1;
+            } else if 0 < on {
+                row.push(on);
+                on = 0;
+            }
+        }
+        if 0 < on {
+            row.push(on);
+        }
+        rows.push(row);
+    }
+    let mut cols = Vec::new();
+    for i in 0..length {
+        let mut col = Vec::new();
+        let mut on = 0;
+        for j in 0..length {
+            if '*' == exploded[j * length + i] {
+                on += 1;
+            } else if 0 < on {
+                col.push(on);
+                on = 0;
+            }
+        }
+        if 0 < on {
+            col.push(on);
+        }
+        cols.push(col);
+    }
+    (rows, cols)
 }
 
 #[cfg(test)]
