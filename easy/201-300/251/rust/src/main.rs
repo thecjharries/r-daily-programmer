@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_nonogram(input: &str) -> (Vec<Vec<u8>>, Vec<Vec<u8>>) {
+    (Vec::new(), Vec::new())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
