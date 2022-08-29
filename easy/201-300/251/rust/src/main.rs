@@ -26,7 +26,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_nonogram() {
+        let (rows, cols) = parse_nonogram("    *\n   **\n  * *\n *  *\n*****");
+        assert_eq!(
+            vec![vec![1], vec![2], vec![1, 1], vec![1, 1], vec![5]],
+            rows
+        );
+        assert_eq!(
+            vec![vec![1], vec![2], vec![1, 1], vec![1, 1], vec![5]],
+            cols
+        );
     }
 }
