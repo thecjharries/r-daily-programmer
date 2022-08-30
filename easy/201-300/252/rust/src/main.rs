@@ -17,8 +17,17 @@ fn main() {
     println!("rad");
 }
 
-fn determine_pool_size(sailors: i64) -> i64 {
-    0
+fn determine_pool_size(sailors: u32) -> u32 {
+    if 2 > sailors {
+        return 0;
+    } else if 2 == sailors {
+        return 11;
+    }
+    if 0 == sailors % 2 {
+        return (sailors - 1) * (sailors.pow(sailors) - 1);
+    } else {
+        return sailors.pow(sailors) - sailors + 1;
+    }
 }
 
 #[cfg(test)]
