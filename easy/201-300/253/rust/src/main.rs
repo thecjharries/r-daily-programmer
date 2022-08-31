@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(PartialEq, Debug)]
 struct LoanConsiderations {
     interest_rate: f64,
     annual_loan_amount: f64,
@@ -22,6 +23,7 @@ struct LoanConsiderations {
     income_stream_thousands: Vec<f64>,
 }
 
+#[derive(PartialEq, Debug)]
 struct LoanResults {
     overall_loans_taken: f64,
     repayments_from_income: f64,
