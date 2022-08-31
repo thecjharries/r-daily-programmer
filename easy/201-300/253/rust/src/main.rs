@@ -50,7 +50,50 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_loanresults_compute() {
+        let first_input = LoanConsiderations {
+            interest_rate: 2.0,
+            annual_loan_amount: 15000.0,
+            start_age: 18.0,
+            clawback_balance_trigger: 100000.0,
+            royalty_rate_under_65: 20.0,
+            royalty_rate_over_65: 40.0,
+            income_stream_thousands: vec![
+                0.0, 0.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 20.0, 30.0, 30.0,
+                30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0,
+                40.0, 40.0, 40.0, 40.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0,
+                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+            ],
+        };
+        let first_expected = LoanResults {
+            overall_loans_taken: 1080.0,
+            repayments_from_income: 280.0,
+            repayments_from_benefits_clawbacks: 270.0,
+            ending_balance_with_interest: 1169.0,
+        };
+        assert_eq!(first_expected, LoanResults::compute(first_input));
+        let second_input = LoanConsiderations {
+            interest_rate: 2.0,
+            annual_loan_amount: 15000.0,
+            start_age: 18.0,
+            clawback_balance_trigger: 100000.0,
+            royalty_rate_under_65: 20.0,
+            royalty_rate_over_65: 40.0,
+            income_stream_thousands: vec![
+                0.0, 0.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 30.0, 40.0, 40.0,
+                40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0,
+                50.0, 50.0, 50.0, 50.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0, 60.0,
+                100.0, 120.0, 140.0, 160.0, 200.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+                10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+            ],
+        };
+        let second_expected = LoanResults {
+            overall_loans_taken: 1005.0,
+            repayments_from_income: 584.0,
+            repayments_from_benefits_clawbacks: 237.0,
+            ending_balance_with_interest: 509.0,
+        };
+        assert_eq!(second_expected, LoanResults::compute(second_input));
     }
 }
