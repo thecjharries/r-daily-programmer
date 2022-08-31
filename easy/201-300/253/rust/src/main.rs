@@ -12,6 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct LoanConsiderations {
+    interest_rate: f64,
+    annual_loan_amount: f64,
+    start_age: f64,
+    clawback_balance_trigger: f64,
+    royalty_rate_under_65: f64,
+    royalty_rate_over_65: f64,
+    income_stream_thousands: Vec<f64>,
+}
+
+struct LoanResults {
+    overall_loans_taken: f64,
+    repayments_from_income: f64,
+    repayments_from_benefits_clawbacks: f64,
+    ending_balance_with_interest: f64,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
