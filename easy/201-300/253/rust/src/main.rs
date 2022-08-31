@@ -29,6 +29,17 @@ struct LoanResults {
     ending_balance_with_interest: f64,
 }
 
+impl LoanResults {
+    fn compute(input: LoanConsiderations) -> Self {
+        let mut results = LoanResults {
+            overall_loans_taken: 0.0,
+            repayments_from_income: 0.0,
+            repayments_from_benefits_clawbacks: 0.0,
+            ending_balance_with_interest: 0.0,
+        };
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
