@@ -39,6 +39,32 @@ impl LoanResults {
             repayments_from_benefits_clawbacks: 0.0,
             ending_balance_with_interest: 0.0,
         };
+        let mut current_royalty_rate = input.royalty_rate_under_65;
+        for (age_index, income) in input.income_stream_thousands.iter().enumerate() {
+            if 65.0 <= input.start_age + age_index as f64 {
+                current_royalty_rate = input.royalty_rate_over_65;
+            }
+            results.overall_loans_taken += input.annual_loan_amount;
+            results.ending_balance_with_interest = results.ending_balance_with_interest
+                * (1.0 + input.interest_rate / 100.0)
+                + input.annual_loan_amount;
+            let current_annual_income = income * 1000.0;
+            let current_royalty = current_annual_income * current_royalty_rate / 100.0;
+            let mut current_clawback = 0.0;
+            if input.clawback_balance_trigger <= results.ending_balance_with_interest {
+                current_clawback = current_royalty_rate * input.annual_loan_amount / 100.0;
+            }
+            results.repayments_from_income += current_royalty;
+            results.repayments_from_benefits_clawbacks += current_clawback;
+            results.ending_balance_with_interest -= current_royalty + current_clawback;
+        }
+        results.overall_loans_taken = (results.overall_loans_taken / 1000.0).round();
+        results.repayments_from_income = (results.repayments_from_income / 1000.0).round();
+        results.repayments_from_benefits_clawbacks =
+            (results.repayments_from_benefits_clawbacks / 1000.0).round();
+        results.ending_balance_with_interest =
+            (results.ending_balance_with_interest / 1000.0).round();
+        results
     }
 }
 
