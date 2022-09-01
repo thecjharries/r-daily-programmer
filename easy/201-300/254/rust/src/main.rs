@@ -37,7 +37,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_atbash_encode() {
+        assert_eq!("ullyzi".to_string(), atbash_encode("foobar"));
+        assert_eq!("draziw".to_string(), atbash_encode("wizard"));
+        assert_eq!(
+            "/i/wzrobkiltiznnvi".to_string(),
+            atbash_encode("/r/dailyprogrammer")
+        );
+        assert_eq!(
+            "this is an example of the atbash cipher".to_string(),
+            atbash_encode("gsrh rh zm vcznkov lu gsv zgyzhs xrksvi")
+        );
     }
 }
