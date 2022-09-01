@@ -29,7 +29,11 @@ fn main() {
 }
 
 fn atbash_encode(input: &str) -> String {
-    String::new()
+    input
+        .to_lowercase()
+        .chars()
+        .map(|character| ATBASH_MAP.get(&character).unwrap_or(&character).to_string())
+        .collect()
 }
 
 #[cfg(test)]
