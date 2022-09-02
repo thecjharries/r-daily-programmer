@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn run_switch_exercise(number_of_switches: usize, toggles: Vec<(usize, usize)>) -> usize {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
