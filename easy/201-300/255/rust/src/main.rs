@@ -32,7 +32,7 @@ mod tests {
             run_switch_exercise(10, vec![(3, 6), (0, 4), (7, 3), (9, 9),])
         );
         assert_eq!(
-            3,
+            423,
             run_switch_exercise(
                 1000,
                 vec![
