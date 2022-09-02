@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn run_switch_exercise(number_of_switches: usize, toggles: Vec<(usize, usize)>) -> usize {
-    0
+    let mut switches = vec![false; number_of_switches];
+    for (start, end) in toggles {
+        let mut first = start;
+        let mut last = end;
+        if first > last {
+            first = end;
+            last = start;
+        }
+        for index in first..=last {
+            switches[index] = !switches[index];
+        }
+    }
+    switches.iter().filter(|&switch| *switch).count()
 }
 
 #[cfg(test)]
