@@ -18,7 +18,39 @@ fn main() {
 }
 
 fn oblique(input: Vec<u32>) -> String {
-    String::new()
+    let max_size = (input.len() as f32).sqrt() as usize;
+    let mut result = String::new();
+    for rank in 0..max_size {
+        let mut current_row = Vec::new();
+        for index in 0..=rank {
+            current_row.push(input[rank - index + index * max_size]);
+        }
+        result.push_str(&format!(
+            "{}\n",
+            current_row
+                .iter()
+                .map(|x| (*x).to_string())
+                .collect::<Vec<_>>()
+                .join(" ")
+        ));
+    }
+    let mut offset = 0;
+    for rank in (1..=(max_size - 1)).rev() {
+        let mut current_row = Vec::new();
+        for index in max_size - rank..max_size {
+            current_row.push(input[max_size - index + offset + index * max_size]);
+        }
+        offset += 1;
+        result.push_str(&format!(
+            "{}\n",
+            current_row
+                .iter()
+                .map(|x| (*x).to_string())
+                .collect::<Vec<_>>()
+                .join(" ")
+        ));
+    }
+    result
 }
 
 #[cfg(test)]
