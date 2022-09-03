@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn oblique(input: Vec<u32>) -> String {
+    String::new()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
