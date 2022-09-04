@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::HashMap;
 
 lazy_static! {
     static ref YEAR_PATTERN: Regex = Regex::new(r"(?U).*(\d{4}).*(\d{4}|,\s*,).*").unwrap();
@@ -25,7 +26,32 @@ fn main() {
 }
 
 fn find_max_presidential_years(input: &str) -> Vec<u32> {
-    Vec::new()
+    let mut years: HashMap<u32, u32> = HashMap::new();
+    let mut max_count = 0;
+    for line in input.lines() {
+        if let Some(captures) = YEAR_PATTERN.captures(line) {
+            let start_year = captures.get(1).unwrap().as_str().parse::<u32>().unwrap();
+            let end_year = captures
+                .get(2)
+                .unwrap()
+                .as_str()
+                .parse::<u32>()
+                .unwrap_or(2016);
+            for year in start_year..=end_year {
+                *years.entry(year).or_insert(0) += 1;
+                if years[&year] > max_count {
+                    max_count = years[&year];
+                }
+            }
+        }
+    }
+    let mut result = years
+        .iter()
+        .filter(|(_, count)| *count == &max_count)
+        .map(|(year, _)| *year)
+        .collect::<Vec<u32>>();
+    result.sort();
+    result
 }
 
 #[cfg(test)]
