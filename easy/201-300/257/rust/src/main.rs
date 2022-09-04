@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_max_presidential_year(input: &str) -> u32 {
+    0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
