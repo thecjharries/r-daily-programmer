@@ -24,8 +24,8 @@ fn main() {
     println!("rad");
 }
 
-fn find_max_presidential_year(input: &str) -> u32 {
-    0
+fn find_max_presidential_years(input: &str) -> Vec<u32> {
+    Vec::new()
 }
 
 #[cfg(test)]
@@ -33,7 +33,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_find_max_presidential_years() {
         assert_eq!(2 + 2, 4);
     }
 }
