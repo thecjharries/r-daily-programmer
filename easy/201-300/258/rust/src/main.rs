@@ -20,7 +20,8 @@ fn main() {
     println!("rad");
 }
 
-fn ping_irc_node() -> irc::error::Result<()> {
+#[tokio::main]
+async fn ping_irc_node() -> irc::error::Result<()> {
     Ok(())
 }
 
