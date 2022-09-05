@@ -20,8 +20,23 @@ fn main() {
     println!("rad");
 }
 
-#[tokio::main]
 async fn ping_irc_node() -> irc::error::Result<()> {
+    let config = Config {
+        nickname: Some("wotw_test".to_owned()),
+        server: Some("chat.freenode.net:6667".to_owned()),
+        channels: Some(vec!["#test".to_owned()]),
+        ..Config::default()
+    };
+
+    let mut client = Client::from_config(config).await?;
+    client.identify()?;
+
+    let mut stream = client.stream()?;
+
+    while let Some(message) = stream.next().await.transpose()? {
+        print!("{}", message);
+    }
+
     Ok(())
 }
 
