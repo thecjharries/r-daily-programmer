@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use futures::prelude::*;
+use irc::prelude::*;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn ping_irc_node() -> irc::error::Result<()> {
+    Ok(())
 }
 
 #[cfg(test)]
