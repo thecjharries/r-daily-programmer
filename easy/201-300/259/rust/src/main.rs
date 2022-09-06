@@ -37,6 +37,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_ip_distance(ip: &str) -> f32 {
+    0.0
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
