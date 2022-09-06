@@ -38,7 +38,14 @@ fn main() {
 }
 
 fn calculate_ip_distance(ip: &str) -> f32 {
-    0.0
+    let mut distance = 0.0;
+    let chars = ip.chars().collect::<Vec<char>>();
+    for index in 1..chars.len() {
+        let (x1, y1) = LETTER_TO_NUMBER.get(&chars[index - 1]).unwrap();
+        let (x2, y2) = LETTER_TO_NUMBER.get(&chars[index]).unwrap();
+        distance += ((x1 - x2).powi(2) + (y1 - y2).powi(2)).sqrt();
+    }
+    (distance * 100.0).round() / 100.0
 }
 
 #[cfg(test)]
