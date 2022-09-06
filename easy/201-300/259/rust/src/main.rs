@@ -12,6 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref LETTER_TO_NUMBER: HashMap<char, (f32, f32)> = HashMap::from_iter([
+        ('1', (0.0, 0.0)),
+        ('2', (1.0, 0.0)),
+        ('3', (2.0, 0.0)),
+        ('4', (0.0, 1.0)),
+        ('5', (1.0, 1.0)),
+        ('6', (2.0, 1.0)),
+        ('7', (0.0, 2.0)),
+        ('8', (1.0, 2.0)),
+        ('9', (2.0, 2.0)),
+        ('.', (0.0, 3.0)),
+        ('0', (1.0, 3.0)),
+        ('#', (2.0, 3.0)),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
