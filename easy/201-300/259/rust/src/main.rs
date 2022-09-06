@@ -46,7 +46,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_ip_distance() {
+        assert_eq!(27.38, calculate_ip_distance("219.45.143.143"));
     }
 }
