@@ -49,7 +49,7 @@ fn main() {
     println!("rad");
 }
 
-fn determine_final_state(inputs: Vec<GarageDoorInput>) -> GarageDoorState {
+fn determine_final_state(inputs: Vec<&GarageDoorInput>) -> GarageDoorState {
     GarageDoorState::Closed
 }
 
@@ -58,7 +58,25 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_final_state() {
+        let inputs = vec![
+            &GarageDoorInput::ButtonClicked,
+            &GarageDoorInput::CycleComplete,
+            &GarageDoorInput::ButtonClicked,
+            &GarageDoorInput::ButtonClicked,
+            &GarageDoorInput::ButtonClicked,
+            &GarageDoorInput::ButtonClicked,
+            &GarageDoorInput::ButtonClicked,
+            &GarageDoorInput::CycleComplete,
+        ];
+        assert_eq!(
+            GarageDoorState::Opening,
+            determine_final_state(inputs[..1].to_vec())
+        );
+        assert_eq!(
+            GarageDoorState::Open,
+            determine_final_state(inputs[..2].to_vec())
+        );
+        assert_eq!(GarageDoorState::Closed, determine_final_state(inputs));
     }
 }
