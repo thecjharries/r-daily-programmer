@@ -49,6 +49,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_final_state(inputs: Vec<GarageDoorInput>) -> GarageDoorState {
+    GarageDoorState::Closed
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
