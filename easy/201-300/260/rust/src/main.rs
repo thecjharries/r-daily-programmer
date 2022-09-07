@@ -12,6 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rust_fsm::*;
+
+state_machine! {
+    derive(Debug)
+    GarageDoor(Closed)
+
+    Closed => {
+        ButtonClicked => Opening,
+        CycleComplete => Closed,
+    },
+    Opening => {
+        ButtonClicked => StoppedWhileOpening,
+        CycleComplete => Open,
+    },
+    Open => {
+        ButtonClicked => Closing,
+        CycleComplete => Open,
+    },
+    Closing => {
+        ButtonClicked => StoppedWhileClosing,
+        CycleComplete => Closed,
+    },
+    StoppedWhileOpening => {
+        ButtonClicked => Closing,
+        CycleComplete => StoppedWhileOpening,
+    },
+    StoppedWhileClosing => {
+        ButtonClicked => Opening,
+        CycleComplete => StoppedWhileOpening,
+    },
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
