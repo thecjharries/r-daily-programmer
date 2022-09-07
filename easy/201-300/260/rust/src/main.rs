@@ -15,7 +15,7 @@
 use rust_fsm::*;
 
 state_machine! {
-    derive(Debug)
+    derive(Debug, PartialEq)
     GarageDoor(Closed)
 
     Closed => {
@@ -49,8 +49,10 @@ fn main() {
     println!("rad");
 }
 
-fn determine_final_state(inputs: Vec<&GarageDoorInput>) -> GarageDoorState {
-    GarageDoorState::Closed
+fn determine_final_state(machine: &mut StateMachine<GarageDoor>, inputs: Vec<&GarageDoorInput>) {
+    for input in inputs {
+        let _ = machine.consume(input);
+    }
 }
 
 #[cfg(test)]
@@ -69,14 +71,14 @@ mod tests {
             &GarageDoorInput::ButtonClicked,
             &GarageDoorInput::CycleComplete,
         ];
-        assert_eq!(
-            GarageDoorState::Opening,
-            determine_final_state(inputs[..1].to_vec())
-        );
-        assert_eq!(
-            GarageDoorState::Open,
-            determine_final_state(inputs[..2].to_vec())
-        );
-        assert_eq!(GarageDoorState::Closed, determine_final_state(inputs));
+        let mut machine: StateMachine<GarageDoor> = StateMachine::new();
+        determine_final_state(&mut machine, inputs[..1].to_vec());
+        assert_eq!(&GarageDoorState::Opening, machine.state());
+        machine = StateMachine::new();
+        determine_final_state(&mut machine, inputs[..2].to_vec());
+        assert_eq!(&GarageDoorState::Open, machine.state());
+        machine = StateMachine::new();
+        determine_final_state(&mut machine, inputs);
+        assert_eq!(&GarageDoorState::Closed, machine.state());
     }
 }
