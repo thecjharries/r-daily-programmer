@@ -32,7 +32,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_input_type() {
+        assert_eq!(InputType::Number, determine_input_type("123"));
+        assert_eq!(InputType::Number, determine_input_type("44.234"));
+        assert_eq!(InputType::String, determine_input_type("0x123N"));
     }
 }
