@@ -12,13 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq)]
+enum InputType {
+    Number,
+    String,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn determine_input_type(input: &str) -> String {
-    "string".to_string()
+fn determine_input_type(input: &str) -> InputType {
+    InputType::String
 }
 
 #[cfg(test)]
