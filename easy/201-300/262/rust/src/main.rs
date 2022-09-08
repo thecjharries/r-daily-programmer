@@ -24,7 +24,15 @@ fn main() {
 }
 
 fn determine_input_type(input: &str) -> InputType {
-    InputType::String
+    if input.parse::<i32>().is_ok() {
+        InputType::Number
+    } else {
+        if input.parse::<f32>().is_ok() {
+            InputType::Number
+        } else {
+            InputType::String
+        }
+    }
 }
 
 #[cfg(test)]
