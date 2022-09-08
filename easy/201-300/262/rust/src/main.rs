@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_input_type(input: &str) -> String {
+    "string".to_string()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
