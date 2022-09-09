@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_magic_square(input: Vec<u32>) -> bool {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
