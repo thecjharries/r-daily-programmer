@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_magic_square() {
+        assert_eq!(true, is_magic_square(vec![8, 1, 6, 3, 5, 7, 4, 9, 2]));
+        assert_eq!(true, is_magic_square(vec![2, 7, 6, 9, 5, 1, 4, 3, 8]));
+        assert_eq!(false, is_magic_square(vec![3, 5, 7, 8, 1, 6, 4, 9, 2]));
+        assert_eq!(false, is_magic_square(vec![8, 1, 6, 7, 5, 3, 4, 9, 2]));
     }
 }
