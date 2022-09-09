@@ -18,7 +18,22 @@ fn main() {
 }
 
 fn is_magic_square(input: Vec<u32>) -> bool {
-    todo!()
+    let mut first_diagonal_sum = 0;
+    let mut second_diagonal_sum = 0;
+    for index in 0..3 {
+        let mut row_sum = 0;
+        let mut column_sum = 0;
+        for inner_index in 0..3 {
+            row_sum += input[index * 3 + inner_index];
+            column_sum += input[inner_index * 3 + index];
+        }
+        if 15 != row_sum || 15 != column_sum {
+            return false;
+        }
+        first_diagonal_sum += input[index * 3 + index];
+        second_diagonal_sum += input[index * 3 + 2 - index];
+    }
+    15 == first_diagonal_sum && 15 == second_diagonal_sum
 }
 
 #[cfg(test)]
