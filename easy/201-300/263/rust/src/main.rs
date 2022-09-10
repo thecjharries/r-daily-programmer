@@ -12,13 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn calculate_shannon_entropy(input: &str) -> f32 {
-    todo!()
+    let mut character_counts: HashMap<char, u32> = HashMap::new();
+    for character in input.chars() {
+        *character_counts.entry(character).or_insert(0) += 1;
+    }
+    let total_characters = input.chars().count() as f32;
+    let mut entropy = 0.0;
+    for character_count in character_counts.values() {
+        let probability = *character_count as f32 / total_characters;
+        entropy -= probability * probability.log2();
+    }
+    entropy
 }
 
 #[cfg(test)]
