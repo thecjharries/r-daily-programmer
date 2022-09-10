@@ -30,7 +30,7 @@ fn calculate_shannon_entropy(input: &str) -> f32 {
         let probability = *character_count as f32 / total_characters;
         entropy -= probability * probability.log2();
     }
-    entropy
+    (entropy * 1000000.0).round() / 1000000.0
 }
 
 #[cfg(test)]
@@ -40,19 +40,19 @@ mod tests {
     #[test]
     fn test_calculate_shannon_entropy() {
         assert_eq!(
-            2.794208688,
+            2.794209,
             calculate_shannon_entropy("122333444455555666666777777788888888")
         );
         assert_eq!(
-            2.794208684,
+            2.794209,
             calculate_shannon_entropy("563881467447538846567288767728553786")
         );
         assert_eq!(
-            4.0561986,
+            4.056199,
             calculate_shannon_entropy("https://www.reddit.com/r/dailyprogrammer")
         );
         assert_eq!(
-            3.866729297,
+            3.866729,
             calculate_shannon_entropy("int main(int argc, char *argv[])")
         );
     }
