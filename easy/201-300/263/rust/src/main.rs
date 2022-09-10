@@ -40,7 +40,7 @@ mod tests {
     #[test]
     fn test_calculate_shannon_entropy() {
         assert_eq!(
-            2.794208684,
+            2.794208688,
             calculate_shannon_entropy("122333444455555666666777777788888888")
         );
         assert_eq!(
@@ -48,7 +48,7 @@ mod tests {
             calculate_shannon_entropy("563881467447538846567288767728553786")
         );
         assert_eq!(
-            4.056198333,
+            4.0561986,
             calculate_shannon_entropy("https://www.reddit.com/r/dailyprogrammer")
         );
         assert_eq!(
