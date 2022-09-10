@@ -26,7 +26,22 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_shannon_entropy() {
+        assert_eq!(
+            2.794208684,
+            calculate_shannon_entropy("122333444455555666666777777788888888")
+        );
+        assert_eq!(
+            2.794208684,
+            calculate_shannon_entropy("563881467447538846567288767728553786")
+        );
+        assert_eq!(
+            4.056198333,
+            calculate_shannon_entropy("https://www.reddit.com/r/dailyprogrammer")
+        );
+        assert_eq!(
+            3.866729297,
+            calculate_shannon_entropy("int main(int argc, char *argv[])")
+        );
     }
 }
