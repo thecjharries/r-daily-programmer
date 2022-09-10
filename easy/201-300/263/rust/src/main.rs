@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_shannon_entropy(input: &str) -> f32 {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
