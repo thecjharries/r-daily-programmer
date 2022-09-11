@@ -27,6 +27,33 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            vec![
+                "#include <iostream>".to_string(),
+                "{".to_string(),
+                "}".to_string(),
+                "int main()".to_string(),
+                "  {".to_string(),
+                "  }".to_string(),
+                "  int sum = 0".to_string(),
+                "  for (int i = 0; i <= 100; ++i)".to_string(),
+                "  std::cout << sum;".to_string(),
+                "  return 0;".to_string(),
+                "    sum = i + sum;".to_string(),
+            ],
+            sorta_sort_prompt(vec![
+                "    sum = i + sum;".to_string(),
+                "  {".to_string(),
+                "  }".to_string(),
+                "  int sum = 0".to_string(),
+                "  for (int i = 0; i <= 100; ++i)".to_string(),
+                "  std::cout << sum;".to_string(),
+                "  return 0;".to_string(),
+                "{".to_string(),
+                "}".to_string(),
+                "#include <iostream>".to_string(),
+                "int main()".to_string(),
+            ])
+        );
     }
 }
