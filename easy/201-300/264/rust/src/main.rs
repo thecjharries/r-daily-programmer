@@ -18,7 +18,38 @@ fn main() {
 }
 
 fn sorta_sort_prompt(input: Vec<String>) -> Vec<String> {
-    todo!()
+    let mut output = Vec::new();
+    let mut remaining = Vec::new();
+    for item in input {
+        if item.starts_with("#") {
+            output.push(item);
+        } else {
+            remaining.push(item);
+        }
+    }
+    let mut temporary = Vec::new();
+    let mut quads = Vec::new();
+    for item in remaining {
+        if item.starts_with("    ") {
+            quads.push(item);
+        } else {
+            temporary.push(item);
+        }
+    }
+    remaining = temporary;
+    temporary = Vec::new();
+    let mut dubs = Vec::new();
+    for item in remaining {
+        if item.starts_with("  ") {
+            dubs.push(item);
+        } else {
+            temporary.push(item);
+        }
+    }
+    output.append(&mut temporary);
+    output.append(&mut dubs);
+    output.append(&mut quads);
+    output
 }
 
 #[cfg(test)]
