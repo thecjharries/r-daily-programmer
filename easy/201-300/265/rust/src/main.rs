@@ -12,13 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn get_nth_combination(size: u32, max: u32, n: u32) -> Vec<u32> {
-    todo!()
+fn get_nth_combination(size: usize, max: u32, n: usize) -> Vec<u32> {
+    let mut combinations = (0..max).combinations(size);
+    combinations.nth(n - 1).unwrap()
 }
 
 #[cfg(test)]
