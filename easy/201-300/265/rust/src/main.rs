@@ -26,7 +26,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_nth_combination() {
+        assert_eq!(vec![0, 1, 4], get_nth_combination(3, 6, 3));
+        assert_eq!(vec![1, 2, 5], get_nth_combination(3, 8, 24));
+        assert_eq!(vec![3, 4, 5, 6], get_nth_combination(4, 9, 112));
     }
 }
