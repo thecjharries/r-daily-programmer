@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_nth_combination(size: u32, max: u32, n: u32) -> Vec<u32> {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
