@@ -27,6 +27,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            vec![vec![0, 1, 0], vec![1, 0, 0], vec![1, 0, 0]],
+            create_adjacency_matrix(3, vec![(1, 2), (1, 3)])
+        );
     }
 }
