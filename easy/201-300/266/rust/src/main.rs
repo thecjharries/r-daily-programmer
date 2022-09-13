@@ -18,7 +18,12 @@ fn main() {
 }
 
 fn create_adjacency_matrix(vertex_count: usize, edges: Vec<(usize, usize)>) -> Vec<Vec<usize>> {
-    todo!()
+    let mut adjacency_matrix = vec![vec![0; vertex_count]; vertex_count];
+    for (first_vertex, second_vertex) in edges {
+        adjacency_matrix[first_vertex - 1][second_vertex - 1] += 1;
+        adjacency_matrix[second_vertex - 1][first_vertex - 1] += 1;
+    }
+    adjacency_matrix
 }
 
 #[cfg(test)]
