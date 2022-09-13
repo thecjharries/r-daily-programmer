@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn create_adjacency_matrix(vertex_count: usize, edges: Vec<(usize, usize)>) -> Vec<Vec<usize>> {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
