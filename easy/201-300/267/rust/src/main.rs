@@ -18,7 +18,22 @@ fn main() {
 }
 
 fn build_places_not_won(place_won: u32, number_of_places: u32) -> String {
-    todo!()
+    let mut places: Vec<String> = Vec::new();
+    for place in 0..=number_of_places {
+        if place != place_won {
+            let place_string = place.to_string();
+            if place_string.ends_with("1") {
+                places.push(format!("{}st", place_string));
+            } else if place_string.ends_with("2") {
+                places.push(format!("{}nd", place_string));
+            } else if place_string.ends_with("3") {
+                places.push(format!("{}rd", place_string));
+            } else {
+                places.push(format!("{}th", place_string));
+            }
+        }
+    }
+    places.join(", ")
 }
 
 #[cfg(test)]
