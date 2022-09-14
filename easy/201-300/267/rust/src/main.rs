@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_places_not_won(place_won: u32, number_of_places: u32) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
