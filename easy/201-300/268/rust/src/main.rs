@@ -16,16 +16,12 @@
 #[macro_use]
 extern crate rocket;
 
-#[cfg(not(tarpaulin_include))]
-fn main() {
-    println!("rad");
-}
-
 #[get("/ping")]
 fn ping() -> &'static str {
     "pong"
 }
 
+#[cfg(not(tarpaulin_include))]
 #[launch]
 fn rocket() -> _ {
     rocket::build().mount("/", routes![ping])
