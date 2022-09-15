@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// https://rocket.rs/v0.5-rc/guide/overview/#routing
+#[macro_use]
+extern crate rocket;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
