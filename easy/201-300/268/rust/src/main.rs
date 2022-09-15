@@ -21,6 +21,11 @@ fn main() {
     println!("rad");
 }
 
+#[get("/ping")]
+fn ping() -> &'static str {
+    "pong"
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
