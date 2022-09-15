@@ -30,9 +30,14 @@ fn rocket() -> _ {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rocket::http::Status;
+    use rocket::local::blocking::Client;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_ping() {
+        let client = Client::tracked(rocket()).expect("valid rocket instance");
+        let mut response = client.get(uri!(super::ping)).dispatch();
+        assert_eq!(Status::Ok, response.status());
+        assert_eq!("pong", response.into_string().unwrap());
     }
 }
