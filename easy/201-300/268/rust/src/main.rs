@@ -26,6 +26,11 @@ fn ping() -> &'static str {
     "pong"
 }
 
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![ping])
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
