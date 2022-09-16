@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn indent_properly(input: &str, delimiter: &str) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
