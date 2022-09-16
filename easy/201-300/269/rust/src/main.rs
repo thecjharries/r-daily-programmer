@@ -34,6 +34,12 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "VAR I\nFOR I=1 TO 31\n····IF !(I MOD 3) THEN\n········PRINT \"FIZZ\"\n····ENDIF\n····IF !(I MOD 5) THEN\n········PRINT \"BUZZ\"\n····ENDIF\n····IF (I MOD 3) && (I MOD 5) THEN\n········PRINT \"FIZZBUZZ\"\n····ENDIF\nNEXT".to_string(),
+            indent_properly(
+                "VAR I\n·FOR I=1 TO 31\n»»»»IF !(I MOD 3) THEN\n··PRINT \"FIZZ\"\n··»»ENDIF\n»»»»····IF !(I MOD 5) THEN\n»»»»··PRINT \"BUZZ\"\n··»»»»»»ENDIF\n»»»»IF (I MOD 3) && (I MOD 5) THEN\n······PRINT \"FIZZBUZZ\"\n··»»ENDIF\n»»»»·NEXT",
+                "····"
+            )
+        );
     }
 }
