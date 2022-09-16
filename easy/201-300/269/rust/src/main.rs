@@ -16,7 +16,7 @@ use lazy_static::lazy_static;
 use regex::Regex;
 
 lazy_static! {
-    static ref NOT_LEADING_CAPITAL_PATTERN: Regex = Regex::new(r"^[A-Z]+").unwrap();
+    static ref NOT_LEADING_CAPITAL_PATTERN: Regex = Regex::new(r"^[^A-Z]+").unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -25,7 +25,24 @@ fn main() {
 }
 
 fn indent_properly(input: &str, delimiter: &str) -> String {
-    todo!()
+    let mut indent: u32 = 0;
+    input
+        .split("\n")
+        .map(|line| {
+            let mut line = NOT_LEADING_CAPITAL_PATTERN.replace(line, "").to_string();
+            if line.starts_with("ENDIF") || line.starts_with("NEXT") {
+                indent -= 1;
+            }
+            if line.starts_with("IF ") || line.starts_with("FOR ") {
+                line = format!("{}{}", delimiter.repeat(indent as usize), line);
+                indent += 1;
+            } else {
+                line = format!("{}{}", delimiter.repeat(indent as usize), line);
+            }
+            line
+        })
+        .collect::<Vec<String>>()
+        .join("\n")
 }
 
 #[cfg(test)]
