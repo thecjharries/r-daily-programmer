@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn transpose_text(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
