@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn calculate_single_attack_kill_probability(dice_sides: usize, health: u32) -> f32 {
-    todo!()
+    let mut probability = 1.0;
+    let mut current_health = health;
+    while current_health > dice_sides as u32 {
+        probability *= 1.0 / dice_sides as f32;
+        current_health -= dice_sides as u32;
+    }
+    if 0 < current_health {
+        probability *= (1 + dice_sides - current_health as usize) as f32 / dice_sides as f32;
+    }
+    probability
 }
 
 #[cfg(test)]
