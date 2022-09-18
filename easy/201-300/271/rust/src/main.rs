@@ -12,12 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn calculate_single_attack_kill_probably(dice_sides: usize, health: u32) -> f32 {
+fn calculate_single_attack_kill_probably<R: Rng>(
+    dice_sides: usize,
+    health: u32,
+    rng: &mut R,
+) -> f32 {
     todo!()
 }
 
