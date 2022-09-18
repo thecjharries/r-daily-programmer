@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn calculate_single_attack_kill_probably(dice_sides: usize, health: u32) -> f32 {
+fn calculate_single_attack_kill_probability(dice_sides: usize, health: u32) -> f32 {
     todo!()
 }
 
@@ -26,7 +26,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_single_attack_kill_probability() {
+        assert_eq!(1.0, calculate_single_attack_kill_probability(4, 1));
+        assert_eq!(0.25, calculate_single_attack_kill_probability(4, 4));
+        assert_eq!(0.25, calculate_single_attack_kill_probability(4, 5));
+        assert_eq!(0.1875, calculate_single_attack_kill_probability(4, 6));
+        assert_eq!(1.0, calculate_single_attack_kill_probability(1, 10));
+        assert_eq!(0.0001, calculate_single_attack_kill_probability(100, 200));
+        assert_eq!(0.009765625, calculate_single_attack_kill_probability(8, 20));
     }
 }
