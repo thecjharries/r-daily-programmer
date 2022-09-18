@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_single_attack_kill_probably(dice_sides: usize, health: u32) -> f32 {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
