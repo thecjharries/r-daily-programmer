@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
 use lazy_static::lazy_static;
 use std::collections::HashMap;
 
@@ -53,7 +54,23 @@ fn main() {
 }
 
 fn determine_remaining_tiles(played_tiles: &str) -> String {
-    todo!()
+    let mut remaining_tiles = STARTING_SCRABBLE_TILES.clone();
+    for tile in played_tiles.chars() {
+        remaining_tiles.entry(tile).and_modify(|count| *count -= 1);
+    }
+    let by_count: HashMap<u8, Vec<char>> = remaining_tiles
+        .iter()
+        .map(|(key, value)| (*value, *key))
+        .fold(HashMap::new(), |mut map, (count, tile)| {
+            map.entry(count).or_insert_with(Vec::new).push(tile);
+            map
+        });
+    let mut output: Vec<String> = Vec::new();
+    for count in by_count.keys().sorted().rev() {
+        let tiles = by_count.get(count).unwrap();
+        output.push(format!("{}: {}", count, tiles.iter().sorted().join(", ")));
+    }
+    output.join("\n")
 }
 
 #[cfg(test)]
