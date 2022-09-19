@@ -52,6 +52,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_remaining_tiles(played_tiles: &str) -> HashMap<char, u8> {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
