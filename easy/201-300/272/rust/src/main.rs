@@ -52,7 +52,7 @@ fn main() {
     println!("rad");
 }
 
-fn determine_remaining_tiles(played_tiles: &str) -> HashMap<char, u8> {
+fn determine_remaining_tiles(played_tiles: &str) -> String {
     todo!()
 }
 
@@ -61,7 +61,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_remaining_tiles() {
+        assert_eq!(
+            "10: E\n9: I\n8: A\n7: O\n5: N, R, T\n4: D, L, U\n3: G, S\n2: F, H, P, V, W\n1: B, C, J, K, M, Q, Y, Z, _\n0: X".to_string(),
+            determine_remaining_tiles("AEERTYOXMCNB_S")
+        );
     }
 }
