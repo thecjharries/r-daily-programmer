@@ -27,7 +27,7 @@ mod tests {
 
     #[test]
     fn test_convert() {
-        assert_eq!("180.000421d", convert("3.1416rd"));
-        assert_eq!("1.570796r", convert("90dr"));
+        assert_eq!("180.0004209182994d", convert("3.1416rd"));
+        assert_eq!("1.5707963267948966r", convert("90dr"));
     }
 }
