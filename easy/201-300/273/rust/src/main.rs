@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
