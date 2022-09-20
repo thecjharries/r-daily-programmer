@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn convert(input: &str) -> String {
-    todo!()
+    let number = input
+        .replace("r", "")
+        .replace("d", "")
+        .parse::<f64>()
+        .unwrap();
+    if input.ends_with("d") {
+        format!("{}d", number * 180.0 / std::f64::consts::PI)
+    } else {
+        format!("{}r", number * std::f64::consts::PI / 180.0)
+    }
 }
 
 #[cfg(test)]
