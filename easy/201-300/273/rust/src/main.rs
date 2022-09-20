@@ -26,7 +26,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert() {
+        assert_eq!("180.000421d", convert("3.1416rd"));
+        assert_eq!("1.570796r", convert("90dr"));
     }
 }
