@@ -19,6 +19,10 @@ fn main() {
     println!("rad");
 }
 
+fn decode(input: Vec<usize>) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
