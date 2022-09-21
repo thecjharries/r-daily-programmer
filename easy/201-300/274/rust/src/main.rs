@@ -20,7 +20,15 @@ fn main() {
 }
 
 fn decode(input: Vec<usize>) -> String {
-    todo!()
+    let words = KEY_TEXT
+        .split_whitespace()
+        .map(|word| word.chars().collect::<Vec<char>>()[0])
+        .collect::<Vec<char>>();
+    let mut output = String::new();
+    for i in input {
+        output.push(words[i - 1 % words.len()]);
+    }
+    output
 }
 
 #[cfg(test)]
