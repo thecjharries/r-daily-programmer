@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn is_valid_symbol(element: &str, symbol: &str) -> bool {
-    todo!()
+    let symbol_chars: Vec<char> = symbol.to_lowercase().chars().collect();
+    if 2 != symbol_chars.len() {
+        return false;
+    }
+    let first_index = element
+        .to_lowercase()
+        .find(symbol_chars[0])
+        .unwrap_or(usize::MAX);
+    let last_index = element
+        .to_lowercase()
+        .rfind(symbol_chars[1])
+        .unwrap_or(usize::MIN);
+    first_index < last_index
 }
 
 #[cfg(test)]
