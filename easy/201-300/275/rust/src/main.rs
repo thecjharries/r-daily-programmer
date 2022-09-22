@@ -26,7 +26,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_valid_symbol() {
+        assert_eq!(true, is_valid_symbol("Spenglerium", "Ee"));
+        assert_eq!(true, is_valid_symbol("Zeddemorium", "Zr"));
+        assert_eq!(true, is_valid_symbol("Venkmine", "Kn"));
+        assert_eq!(false, is_valid_symbol("Stantzon", "Zt"));
+        assert_eq!(false, is_valid_symbol("Melintzum", "Nn"));
+        assert_eq!(false, is_valid_symbol("Tullium", "Ty"));
     }
 }
