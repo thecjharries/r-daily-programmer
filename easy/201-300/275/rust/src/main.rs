@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_valid_symbol(element: &str, symbol: &str) -> bool {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
