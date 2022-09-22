@@ -45,5 +45,7 @@ mod tests {
         assert_eq!(false, is_valid_symbol("Stantzon", "Zt"));
         assert_eq!(false, is_valid_symbol("Melintzum", "Nn"));
         assert_eq!(false, is_valid_symbol("Tullium", "Ty"));
+        assert_eq!(false, is_valid_symbol("Tullium", "T"));
+        assert_eq!(false, is_valid_symbol("Tullium", "Tul"));
     }
 }
