@@ -18,7 +18,29 @@ fn main() {
 }
 
 fn print_word_rectangle(word: &str, width: usize, height: usize) -> String {
-    todo!()
+    let end = word[1..word.len() - 1]
+        .to_string()
+        .chars()
+        .rev()
+        .collect::<String>();
+    let search_space = word.to_string() + end.as_str();
+    let mut output = String::new();
+    for y in 0..(word.len() - 1) * height + 1 {
+        for x in 0..(word.len() - 1) * width + 1 {
+            if 0 == x % (word.len() - 1) || 0 == y % (word.len() - 1) {
+                output.push(
+                    search_space
+                        .chars()
+                        .nth((x + y) % search_space.len())
+                        .unwrap(),
+                );
+            } else {
+                output.push(' ');
+            }
+        }
+        output.push('\n');
+    }
+    output
 }
 
 #[cfg(test)]
