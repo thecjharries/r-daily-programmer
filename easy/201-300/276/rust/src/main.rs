@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn print_word_rectangle(word: &str, width: usize, height: usize) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
