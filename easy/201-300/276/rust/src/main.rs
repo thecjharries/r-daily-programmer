@@ -26,7 +26,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_print_word_rectangle() {
+        assert_eq!(
+            "rekt\ne  k\nk  e\ntker\n",
+            print_word_rectangle("rekt", 1, 1)
+        );
+        assert_eq!(
+            "rektker\ne  k  e\nk  e  k\ntkerekt\nk  e  k\ne  k  e\nrektker\n",
+            print_word_rectangle("rekt", 2, 2)
+        );
     }
 }
