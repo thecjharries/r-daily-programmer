@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::ops::Rem;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn gcd<T: Rem>(a: T, b: T) -> T {
+fn gcd<T: Rem + Rem<Output = T> + PartialEq<T>>(a: T, b: T) -> T {
     if 0 == b {
         a
     } else {
@@ -30,7 +32,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_gcd() {
+        assert_eq!(1, gcd(1, 1));
+        assert_eq!(1, gcd(1, 2));
+        assert_eq!(1, gcd(2, 1));
+        assert_eq!(2, gcd(2, 2));
     }
 }
