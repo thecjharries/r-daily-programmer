@@ -46,4 +46,12 @@ mod tests {
         assert_eq!(1, gcd(2, 1));
         assert_eq!(2, gcd(2, 2));
     }
+
+    #[test]
+    fn test_reduce_fraction() {
+        assert_eq!((1, 1), reduce_fraction(1, 1));
+        assert_eq!((1, 2), reduce_fraction(1, 2));
+        assert_eq!((1, 2), reduce_fraction(2, 4));
+        assert_eq!((1, 2), reduce_fraction(3, 6));
+    }
 }
