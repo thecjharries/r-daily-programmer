@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::ops::Rem;
+use num::Integer;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn gcd<T: Rem + Rem<Output = T> + PartialEq<T>>(a: T, b: T) -> T {
-    if 0 == b {
+fn gcd<T: Integer + Copy>(a: T, b: T) -> T {
+    if T::zero() == b {
         a
     } else {
         gcd(b, a % b)
