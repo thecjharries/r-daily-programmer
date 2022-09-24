@@ -17,6 +17,14 @@ fn main() {
     println!("rad");
 }
 
+fn gcd<T: Rem>(a: T, b: T) -> T {
+    if 0 == b {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
