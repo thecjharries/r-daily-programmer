@@ -27,6 +27,14 @@ fn gcd<T: Integer + Copy>(a: T, b: T) -> T {
     }
 }
 
+fn reduce_fraction<T: Integer + Copy>(numerator: T, denominator: T) -> (T, T) {
+    let greatest_common_divisor = gcd(numerator, denominator);
+    (
+        numerator / greatest_common_divisor,
+        denominator / greatest_common_divisor,
+    )
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
