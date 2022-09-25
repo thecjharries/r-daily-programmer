@@ -17,8 +17,17 @@ fn main() {
     println!("rad");
 }
 
-fn insert_weave<T>(first: Vec<T>, second: Vec<T>) -> Vec<T> {
-    todo!()
+fn insert_weave<T: Clone>(first: Vec<T>, second: Vec<T>) -> Vec<T> {
+    let mut result = Vec::new();
+    let mut first_index = 0;
+    for second_index in 0..second.len() - 1 {
+        result.push(second[second_index].clone());
+        result.push(first[first_index].clone());
+        first_index += 1;
+        first_index %= first.len();
+    }
+    result.push(second[second.len() - 1].clone());
+    result
 }
 
 #[cfg(test)]
