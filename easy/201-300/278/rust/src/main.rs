@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn insert_weave<T>(first: Vec<T>, second: Vec<T>) -> Vec<T> {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
