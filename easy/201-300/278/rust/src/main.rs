@@ -17,6 +17,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn insert_weave<T: Clone>(first: Vec<T>, second: Vec<T>) -> Vec<T> {
     let mut result = Vec::new();
     let mut first_index = 0;
