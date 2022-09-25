@@ -26,7 +26,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_insert_weave() {
+        assert_eq!(
+            vec![0, 11, 1, 11, 2, 11, 3],
+            insert_weave(vec![11], vec![0, 1, 2, 3])
+        );
+        assert_eq!(
+            vec![0, 11, 1, 12, 2, 11, 3],
+            insert_weave(vec![11, 12], vec![0, 1, 2, 3])
+        );
+        assert_eq!(vec![0, 11, 1], insert_weave(vec![11, 12, 13], vec![0, 1]));
     }
 }
