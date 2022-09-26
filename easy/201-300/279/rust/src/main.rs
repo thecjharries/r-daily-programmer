@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn uuencode(input: &str) -> String {
-    todo!()
+    let mut output = String::new();
+    for line in input.as_bytes().chunks(45) {
+        for chunk in line.chunks(3) {
+            let chunk_string = format!("{:b}{:b}{:b}", chunk[0], chunk[1], chunk[2]);
+            for index in 0..4 {
+                let current = &chunk_string[index * 6..(index + 1) * 6].to_string();
+                let ascii_char = u8::from_str_radix(current, 2).unwrap() + 32;
+                println!("{}", ascii_char);
+            }
+        }
+    }
+    output
 }
 
 #[cfg(test)]
