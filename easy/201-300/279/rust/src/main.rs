@@ -26,7 +26,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_uuencode() {
+        assert_eq!("0V%T", uuencode("Cat"));
     }
 }
