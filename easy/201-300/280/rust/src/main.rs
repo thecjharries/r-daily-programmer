@@ -71,5 +71,13 @@ mod tests {
             InvalidHandError,
             convert_hand_to_base10("1111110001").unwrap_err()
         );
+        assert_eq!(
+            InvalidHandError,
+            convert_hand_to_base10("101001000").unwrap_err()
+        );
+        assert_eq!(
+            InvalidHandError,
+            convert_hand_to_base10("10100100000").unwrap_err()
+        );
     }
 }
