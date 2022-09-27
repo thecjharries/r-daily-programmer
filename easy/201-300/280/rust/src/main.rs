@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_hand_to_base10(input: &str) -> Result<u32> {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
