@@ -38,7 +38,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_hand_to_base10() {
+        assert_eq!(37, convert_hand_to_base10("0111011100").unwrap());
+        assert_eq!(
+            InvalidHandError,
+            convert_hand_to_base10("1010010000").unwrap_err()
+        );
+        assert_eq!(73, convert_hand_to_base10("0011101110").unwrap());
+        assert_eq!(55, convert_hand_to_base10("0000110000").unwrap());
+        assert_eq!(
+            InvalidHandError,
+            convert_hand_to_base10("1111110001").unwrap_err()
+        );
     }
 }
