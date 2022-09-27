@@ -14,7 +14,7 @@
 
 use std::fmt;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 struct InvalidHandError;
 
 #[cfg(not(tarpaulin_include))]
@@ -29,8 +29,29 @@ fn main() {
     println!("rad");
 }
 
-fn convert_hand_to_base10(input: &str) -> Result<u32, Error> {
-    todo!()
+fn convert_hand_to_base10(input: &str) -> Result<u32, InvalidHandError> {
+    if 10 != input.len() {
+        return Err(InvalidHandError);
+    }
+    let tens = input[0..5].to_string().trim_start_matches('0').to_string();
+    let ones = input[5..10]
+        .chars()
+        .rev()
+        .collect::<String>()
+        .trim_start_matches('0')
+        .to_string();
+    if ones[..ones.len() - 1].contains("0") || tens[..tens.len() - 1].contains("0") {
+        return Err(InvalidHandError);
+    }
+    let mut sum = ones.matches("1").count() as u32;
+    if '1' == ones.chars().last().unwrap() {
+        sum += 4;
+    }
+    sum += tens.matches("1").count() as u32 * 10;
+    if '1' == tens.chars().last().unwrap() {
+        sum += 40;
+    }
+    Ok(sum)
 }
 
 #[cfg(test)]
