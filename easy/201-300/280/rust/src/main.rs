@@ -12,12 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fmt;
+
+#[derive(Debug, Clone)]
+struct InvalidHandError;
+
+#[cfg(not(tarpaulin_include))]
+impl fmt::Display for InvalidHandError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "invalid scheme")
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn convert_hand_to_base10(input: &str) -> Result<u32> {
+fn convert_hand_to_base10(input: &str) -> Result<u32, Error> {
     todo!()
 }
 
