@@ -18,7 +18,21 @@ fn main() {
 }
 
 fn find_smallest_base(input: &str) -> String {
-    todo!()
+    let mut largest_character = '0';
+    for character in input.to_uppercase().chars() {
+        if character as u8 > largest_character as u8 {
+            largest_character = character;
+        }
+    }
+    let base: u32 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        .find(largest_character)
+        .unwrap() as u32
+        + 1;
+    format!(
+        "base {} => {}",
+        base,
+        u64::from_str_radix(input, base).unwrap()
+    )
 }
 
 #[cfg(test)]
