@@ -26,7 +26,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_smallest_base() {
+        assert_eq!("base 2 => 1", find_smallest_base("1"));
+        assert_eq!("base 3 => 7", find_smallest_base("21"));
+        assert_eq!("base 12 => 1575", find_smallest_base("ab3"));
+        assert_eq!("base 16 => 255", find_smallest_base("ff"));
     }
 }
