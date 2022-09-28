@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_smallest_base(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
