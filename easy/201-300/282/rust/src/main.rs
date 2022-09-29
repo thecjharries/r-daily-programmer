@@ -37,7 +37,24 @@ fn fibonacci_to_base10(input: &str) -> u32 {
 }
 
 fn base10_to_fibonacci(input: u32) -> String {
-    todo!()
+    if 1 == input {
+        return "10".to_string();
+    }
+    let mut fibonacci = vec![1, 1];
+    while fibonacci.last().unwrap() < &input {
+        fibonacci.push(fibonacci[fibonacci.len() - 1] + fibonacci[fibonacci.len() - 2]);
+    }
+    let mut current = input;
+    let mut output = String::new();
+    for number in fibonacci[..fibonacci.len() - 1].iter().rev() {
+        if current >= *number {
+            output.push('1');
+            current -= number;
+        } else {
+            output.push('0');
+        }
+    }
+    output
 }
 
 #[cfg(test)]
