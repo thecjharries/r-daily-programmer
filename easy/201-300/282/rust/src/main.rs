@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn fib_to_base10(input: &str) -> u32 {
+fn fibonacci_to_base10(input: &str) -> u32 {
     todo!()
 }
 
@@ -26,7 +26,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_fibonacci_to_base10() {
+        assert_eq!(1, fibonacci_to_base10("1"));
+        assert_eq!(1, fibonacci_to_base10("10"));
+        assert_eq!(20, fibonacci_to_base10("111111"));
+        assert_eq!(8, fibonacci_to_base10("100000"));
+        assert_eq!(2868, fibonacci_to_base10("10110110100111001"));
     }
 }
