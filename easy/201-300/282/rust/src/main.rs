@@ -36,6 +36,10 @@ fn fibonacci_to_base10(input: &str) -> u32 {
     base10
 }
 
+fn base10_to_fibonacci(input: u32) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
