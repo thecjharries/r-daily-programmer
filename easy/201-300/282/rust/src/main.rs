@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn fib_to_base10(input: &str) -> u32 {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
