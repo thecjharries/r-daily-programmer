@@ -52,4 +52,19 @@ mod tests {
         assert_eq!(8, fibonacci_to_base10("100000"));
         assert_eq!(2868, fibonacci_to_base10("10110110100111001"));
     }
+
+    #[test]
+    fn test_base10_to_fibonacci() {
+        // 	c.Assert(convertFromBase10ToBaseFibonacci(16), Equals, "1001000")
+        // 	c.Assert(convertFromBase10ToBaseFibonacci(32), Equals, "10101000")
+        // 	c.Assert(convertFromBase10ToBaseFibonacci(9024720), Equals, "1010100101010100000010001000010010")
+        // 	c.Assert(convertFromBase10ToBaseFibonacci(1), Equals, "10")
+        assert_eq!("1001000".to_string(), base10_to_fibonacci(16));
+        assert_eq!("10101000".to_string(), base10_to_fibonacci(32));
+        assert_eq!(
+            "1010100101010100000010001000010010".to_string(),
+            base10_to_fibonacci(9024720)
+        );
+        assert_eq!("10".to_string(), base10_to_fibonacci(1));
+    }
 }
