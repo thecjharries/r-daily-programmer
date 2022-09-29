@@ -18,7 +18,22 @@ fn main() {
 }
 
 fn fibonacci_to_base10(input: &str) -> u32 {
-    todo!()
+    let mut base10 = 0;
+    let mut current = 1;
+    let mut previous = 1;
+    if '1' == input.chars().last().unwrap() {
+        base10 += 1;
+    }
+    if 1 < input.len() && '1' == input.chars().nth(input.len() - 2).unwrap() {
+        base10 += 1;
+    }
+    for character in input.chars().rev().skip(2) {
+        (previous, current) = (current, previous + current);
+        if '1' == character {
+            base10 += current;
+        }
+    }
+    base10
 }
 
 #[cfg(test)]
