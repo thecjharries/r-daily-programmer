@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_anagram(first: &str, second: &str) -> String {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
