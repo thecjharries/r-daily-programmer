@@ -37,6 +37,7 @@ fn is_anagram(first: &str, second: &str) -> String {
     format!("\"{}\" is {}an anagram of \"{}\"", first, qualifier, second)
 }
 
+#[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
