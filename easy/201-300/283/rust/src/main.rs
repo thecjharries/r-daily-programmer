@@ -26,7 +26,34 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_anagram() {
+        assert_eq!(
+            "\"wisdom\" is an anagram of \"mid sow\"".to_string(),
+            is_anagram("wisdom", "mid sow")
+        );
+        assert_eq!(
+            "\"Seth Rogan\" is an anagram of \"Gathers No\"".to_string(),
+            is_anagram("Seth Rogan", "Gathers No")
+        );
+        assert_eq!(
+            "\"Reddit\" is NOT an anagram of \"Eat Dirt\"".to_string(),
+            is_anagram("Reddit", "Eat Dirt")
+        );
+        assert_eq!(
+            "\"Schoolmaster\" is an anagram of \"The classroom\"".to_string(),
+            is_anagram("Schoolmaster", "The classroom")
+        );
+        assert_eq!(
+            "\"Astronomers\" is NOT an anagram of \"Moon starer\"".to_string(),
+            is_anagram("Astronomers", "Moon starer")
+        );
+        assert_eq!(
+            "\"Vacation Times\" is an anagram of \"I'm Not as Active\"".to_string(),
+            is_anagram("Vacation Times", "I'm Not as Active")
+        );
+        assert_eq!(
+            "\"Dormitory\" is NOT an anagram of \"Dirty Rooms\"".to_string(),
+            is_anagram("Dormitory", "Dirty Rooms")
+        );
     }
 }
