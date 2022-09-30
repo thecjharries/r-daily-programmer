@@ -18,7 +18,23 @@ fn main() {
 }
 
 fn is_anagram(first: &str, second: &str) -> String {
-    todo!()
+    let mut first_chars = first
+        .to_lowercase()
+        .chars()
+        .filter(|char| char.is_alphabetic())
+        .collect::<Vec<char>>();
+    first_chars.sort();
+    let mut second_chars = second
+        .to_lowercase()
+        .chars()
+        .filter(|char| char.is_alphabetic())
+        .collect::<Vec<char>>();
+    second_chars.sort();
+    let mut qualifier = "NOT ";
+    if first_chars == second_chars {
+        qualifier = "";
+    }
+    format!("\"{}\" is {}an anagram of \"{}\"", first, qualifier, second)
 }
 
 #[cfg(test)]
