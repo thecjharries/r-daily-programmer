@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fs::{read_to_string, remove_file, File};
+use std::io::prelude::*;
+
 const DICTIONARY_PATH: &str = "/usr/share/dict/words";
 
 #[cfg(not(tarpaulin_include))]
@@ -20,8 +23,9 @@ fn main() {
 }
 
 fn load_dictionary(path: &str) -> Vec<String> {
-    std::fs::read_to_string(path)
+    read_to_string(path)
         .expect("Unable to read dictionary")
+        .trim()
         .split("\n")
         .map(|word| word.to_string())
         .collect()
@@ -33,7 +37,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_load_dictionary() {
+        let path = "test.txt";
+        let mut file = File::create(path).unwrap();
+        file.write_all(b"one\ntwo\nthree\n").unwrap();
+        assert_eq!(vec!["one", "two", "three"], load_dictionary(path));
+        remove_file(path).unwrap();
     }
 }
