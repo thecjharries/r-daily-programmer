@@ -31,6 +31,10 @@ fn load_dictionary(path: &str) -> Vec<String> {
         .collect()
 }
 
+fn find_swipe_words(letters: &str) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
