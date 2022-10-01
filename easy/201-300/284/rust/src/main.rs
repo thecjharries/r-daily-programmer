@@ -12,9 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const DICTIONARY_PATH: &str = "/usr/share/dict/words";
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn load_dictionary(path: &str) -> Vec<String> {
+    std::fs::read_to_string(path)
+        .expect("Unable to read dictionary")
+        .split("\n")
+        .map(|word| word.to_string())
+        .collect()
 }
 
 #[cfg(not(tarpaulin_include))]
