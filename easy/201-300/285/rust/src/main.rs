@@ -27,7 +27,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_part_two() {
+        assert_eq!(vec![vec![12]], part_two(vec![12]));
+        assert_eq!(vec![vec![255, 0]], part_two(vec![255]));
+        assert_eq!(vec![vec![255, 1]], part_two(vec![256]));
+        assert_eq!(vec![vec![255, 255, 0]], part_two(vec![510]));
+        assert_eq!(
+            vec![vec![255, 255, 2], vec![44], vec![255, 255, 255, 255, 4]],
+            part_two(vec![512, 44, 1024])
+        );
     }
 }
