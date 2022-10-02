@@ -18,7 +18,30 @@ fn main() {
 }
 
 fn part_two(input: Vec<u32>) -> Vec<Vec<u8>> {
-    todo!()
+    let mut output = Vec::new();
+    for number in input {
+        let mut number_output = Vec::new();
+        if 0 == number {
+            number_output.push(0);
+            continue;
+        }
+        let mut current_number = number;
+        while current_number > 0 {
+            if 255 < current_number {
+                number_output.push(255);
+                current_number -= 255;
+            } else if 255 == current_number {
+                number_output.push(255);
+                number_output.push(0);
+                current_number = 0;
+            } else {
+                number_output.push(current_number as u8);
+                current_number -= current_number;
+            }
+        }
+        output.push(number_output);
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
