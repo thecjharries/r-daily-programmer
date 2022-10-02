@@ -1,5 +1,9 @@
 # [2016-09-26] Challenge #285 [Easy] Cross Platform/Language Data Encoding part 1
 
+## Notes
+
+Like many of u/Godspiral's prompts, this is a dense CS theory prompt that isn't clearly defined. I'm only doing part 2 as 1, 3, and 4 aren't solid.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/54lu54/20160926_challenge_285_easy_cross/) by [u/Godspiral](https://old.reddit.com/user/Godspiral)
