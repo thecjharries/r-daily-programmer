@@ -23,6 +23,7 @@ fn part_two(input: Vec<u32>) -> Vec<Vec<u8>> {
         let mut number_output = Vec::new();
         if 0 == number {
             number_output.push(0);
+            output.push(number_output);
             continue;
         }
         let mut current_number = number;
@@ -59,5 +60,6 @@ mod tests {
             vec![vec![255, 255, 2], vec![44], vec![255, 255, 255, 255, 4]],
             part_two(vec![512, 44, 1024])
         );
+        assert_eq!(vec![vec![0]], part_two(vec![0]));
     }
 }
