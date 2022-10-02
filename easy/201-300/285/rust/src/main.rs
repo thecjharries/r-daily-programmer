@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn part_two(input: Vec<u32>) -> Vec<Vec<u8>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
