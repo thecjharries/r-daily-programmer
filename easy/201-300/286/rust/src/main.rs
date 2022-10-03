@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::error::Error;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn find_factorial(number: u128) -> Result<u128, Error> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
