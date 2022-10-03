@@ -19,8 +19,17 @@ fn main() {
     println!("rad");
 }
 
-fn find_factorial(number: u128) -> Result<u128, Error> {
-    todo!()
+fn find_factorial(number: u128) -> Result<u128, Box<dyn Error>> {
+    let mut factorial = 1;
+    let mut current_number = number;
+    while 0 == current_number % factorial {
+        current_number /= factorial;
+        factorial += 1;
+    }
+    if 1 == current_number {
+        return Ok(factorial - 1);
+    }
+    Err("No factorial found".into())
 }
 
 #[cfg(not(tarpaulin_include))]
