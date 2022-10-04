@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_largest_digit() {
+        assert_eq!(4, find_largest_digit(1234));
+        assert_eq!(5, find_largest_digit(3253));
+        assert_eq!(9, find_largest_digit(9800));
+        assert_eq!(3, find_largest_digit(3333));
+        assert_eq!(2, find_largest_digit(120));
     }
 }
