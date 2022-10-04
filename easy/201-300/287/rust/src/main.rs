@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn find_largest_digit(input: u64) -> u8 {
-    todo!()
+    format!("{:04}", input)
+        .chars()
+        .map(|character| character.to_digit(10).unwrap() as u8)
+        .max()
+        .unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
