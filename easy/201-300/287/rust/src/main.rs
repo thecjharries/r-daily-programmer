@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_largest_digit(input: u64) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
