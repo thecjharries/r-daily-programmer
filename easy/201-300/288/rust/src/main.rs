@@ -56,6 +56,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_alliterations(input: &str) -> Vec<Vec<String>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
