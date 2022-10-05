@@ -57,7 +57,34 @@ fn main() {
 }
 
 fn find_alliterations(input: &str) -> Vec<Vec<String>> {
-    todo!()
+    let mut alliterations: Vec<Vec<String>> = Vec::new();
+    let mut current_alliteration: Vec<String> = Vec::new();
+    for line in input.split('\n') {
+        for word in line.split_whitespace() {
+            let word: String = word
+                .to_lowercase()
+                .chars()
+                .filter(|character| character.is_alphabetic())
+                .collect();
+            if STOP_WORD_LIST.contains(&word) {
+                continue;
+            }
+            if current_alliteration.is_empty() {
+                current_alliteration.push(word);
+            } else if current_alliteration[0].starts_with(&word[0..1]) {
+                current_alliteration.push(word);
+            } else {
+                if 1 < current_alliteration.len() {
+                    alliterations.push(current_alliteration);
+                }
+                current_alliteration = vec![word];
+            }
+        }
+    }
+    if 1 < current_alliteration.len() {
+        alliterations.push(current_alliteration);
+    }
+    alliterations
 }
 
 #[cfg(not(tarpaulin_include))]
