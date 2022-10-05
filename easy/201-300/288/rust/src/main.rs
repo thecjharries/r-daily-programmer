@@ -66,7 +66,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_alliterations() {
+        assert_eq!(
+            vec![] as Vec<Vec<String>>,
+            find_alliterations("I do not like them in a house. I do not like them with a mouse.")
+        );
+        assert_eq!(vec![vec!["peter", "piper", "picked", "peck", "pickled", "peppers"], vec!["bugs", "bunny"], vec!["slow", "simple", "shuffle"], vec!["better", "bit", "butter"]], find_alliterations("Peter Piper Picked a Peck of Pickled Peppers\nBugs Bunny likes to dance the slow and simple shuffle\nYou'll never put a better bit of butter on your knife"));
+        assert_eq!(vec![vec!["daily", "diary"], vec!["sky", "sea", "sea", "sky"], vec!["grey", "geese", "green"], vec!["grazing", "grey"], vec!["geese", "green", "grazing"], vec!["but", "better", "butter"], vec!["batter", "better"], vec!["soul", "swooned", "slowly"], vec!["he", "heard"], vec!["falling", "faintly"], vec!["faintly", "falling"], vec!["whisper", "words", "wisdom"], vec!["paved", "paradise", "put"], vec!["dessert", "disaster"]], find_alliterations("The daily diary of the American dream\nFor the sky and the sea, and the sea and the sky\nThree grey geese in a green field grazing, Grey were the geese and green was the grazing.\nBut a better butter makes a batter better.\n\"His soul swooned slowly as he heard the snow falling faintly through the universe and faintly falling, like the descent of their last end, upon all the living and the dead.\"\nWhisper words of wisdom, let it be.\nThey paved paradise and put up a parking lot.\nSo what we gonna have, dessert or disaster?"));
     }
 }
