@@ -12,6 +12,45 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref STOP_WORD_LIST: Vec<String> = vec![
+        "I".to_string(),
+        "a".to_string(),
+        "about".to_string(),
+        "an".to_string(),
+        "and".to_string(),
+        "are".to_string(),
+        "as".to_string(),
+        "at".to_string(),
+        "be".to_string(),
+        "by".to_string(),
+        "com".to_string(),
+        "for".to_string(),
+        "from".to_string(),
+        "how".to_string(),
+        "in".to_string(),
+        "is".to_string(),
+        "it".to_string(),
+        "of".to_string(),
+        "on".to_string(),
+        "or".to_string(),
+        "that".to_string(),
+        "the".to_string(),
+        "this".to_string(),
+        "to".to_string(),
+        "was".to_string(),
+        "what".to_string(),
+        "when".to_string(),
+        "where".to_string(),
+        "who".to_string(),
+        "will".to_string(),
+        "with".to_string(),
+        "the".to_string(),
+    ];
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
