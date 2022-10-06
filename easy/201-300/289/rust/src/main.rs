@@ -41,14 +41,29 @@ fn main() {
     println!("rad");
 }
 
-#[tokio::main]
 async fn determine_damage_multipler(attack_type: &str, defender_types: Vec<&str>) -> Result<f32, Error> {
-    let request_url = format!("https://pokeapi.co/api/v2/type/{}", "fire");
-    println!("{}", request_url);
-    let response = reqwest::get(&request_url).await?;
-    let users: PokemonTypeQuery = response.json().await?;
-    println!("{:?}", users);
-    Ok(0.0)
+    let mut damage_multiplier = 1.0;
+    for defender_type in defender_types {
+        let request_url = format!("https://pokeapi.co/api/v2/type/{}", defender_type);
+        let response = reqwest::get(&request_url).await?;
+        let users: PokemonTypeQuery = response.json().await?;
+        for no_damage_from in &users.damage_relations.no_damage_from {
+            if attack_type == no_damage_from.name {
+                return Ok(0.0);
+            }
+        }
+        for double_damage_from in &users.damage_relations.double_damage_from {
+            if attack_type == double_damage_from.name {
+                damage_multiplier *= 2.0;
+            }
+        }
+        for half_damage_from in &users.damage_relations.half_damage_from {
+            if attack_type == half_damage_from.name {
+                damage_multiplier /= 2.0;
+            }
+        }
+    }
+    Ok(damage_multiplier)
 }
 
 #[cfg(not(tarpaulin_include))]
