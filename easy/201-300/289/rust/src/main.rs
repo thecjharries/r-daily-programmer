@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_damage_multipler(attacker_type: &str, defender_type: &str) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
