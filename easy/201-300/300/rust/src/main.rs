@@ -29,7 +29,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_play_mp3() {
+        assert!(play_mp3("../1.mp3").is_ok());
     }
 }
