@@ -29,7 +29,7 @@ var zPrint = fmt.Println
 func main() {
 	_, _ = zPrint("hello world")
 
-	f, _ := os.Open("1.mp3")
+	f, _ := os.Open("../1.mp3")
 
 	streamer, format, _ := mp3.Decode(f)
 	defer streamer.Close()
