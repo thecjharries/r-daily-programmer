@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::error::Error;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn play_mp3(path: &str) -> Result<(), dyn Error> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
