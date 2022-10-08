@@ -27,7 +27,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_kaprekar_numbers() {
+        assert_eq!(vec![1, 9, 45], find_kaprekar_numbers(1, 50));
+        assert_eq!(vec![9, 45, 55, 99], find_kaprekar_numbers(2, 100));
+        assert_eq!(
+            vec![297, 703, 999, 2223, 2728, 4879, 4950, 5050, 5292, 7272, 7777],
+            find_kaprekar_numbers(101, 9000)
+        );
     }
 }
