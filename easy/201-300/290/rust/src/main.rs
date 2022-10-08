@@ -29,7 +29,7 @@ fn find_kaprekar_numbers(min: u32, max: u32) -> Vec<u32> {
         for split_index in 1..square_length {
             let left = square_string[..split_index].parse::<u32>().unwrap();
             let right = square_string[split_index..].parse::<u32>().unwrap();
-            if number == left + right {
+            if 0 < right && number == left + right {
                 result.push(number);
                 break;
             }
