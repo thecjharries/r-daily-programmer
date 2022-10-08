@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_kaprekar_numbers(min: u32, max: u32) -> Vec<u32> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
