@@ -18,7 +18,24 @@ fn main() {
 }
 
 fn find_kaprekar_numbers(min: u32, max: u32) -> Vec<u32> {
-    todo!()
+    let mut result = Vec::new();
+    if 1 == min {
+        result.push(1);
+    }
+    for number in min..=max {
+        let square = number.pow(2);
+        let square_string = square.to_string();
+        let square_length = square_string.len();
+        for split_index in 1..square_length {
+            let left = square_string[..split_index].parse::<u32>().unwrap();
+            let right = square_string[split_index..].parse::<u32>().unwrap();
+            if number == left + right {
+                result.push(number);
+                break;
+            }
+        }
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
