@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_seats(weight: u32, temp: u32, seats: Vec<(u32, u32)>) -> Vec<usize> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
