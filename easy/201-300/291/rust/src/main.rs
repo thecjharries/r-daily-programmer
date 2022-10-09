@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn find_seats(weight: u32, temp: u32, seats: Vec<(u32, u32)>) -> Vec<usize> {
-    todo!()
+    let mut possible_seats = Vec::new();
+    for (index, (seat_weight, seat_temp)) in seats.iter().enumerate() {
+        if weight <= *seat_weight && temp >= *seat_temp {
+            possible_seats.push(index);
+        }
+    }
+    possible_seats
 }
 
 #[cfg(not(tarpaulin_include))]
