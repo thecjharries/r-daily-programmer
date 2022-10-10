@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("1 3 7 12 14 21", build_range("1,3,7,2,4,1"));
+        assert_eq!("1 2 3 11 12", build_range("1-3,1-2"));
+        assert_eq!("1 3 5 10 11 12 13 14", build_range("1:5:2,10:4:1"));
+        assert_eq!("104 105 106 107 108 109 110 111 112", build_range("104-2"));
     }
 }
