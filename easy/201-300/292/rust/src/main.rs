@@ -18,7 +18,56 @@ fn main() {
 }
 
 fn build_range(input: &str) -> String {
-    todo!()
+    let mut numbers: Vec<String> = Vec::new();
+    for chunk in input.split(",") {
+        if let number @ Some(_) = chunk.parse::<u32>().ok() {
+            if 0 == numbers.len() {
+                numbers.push(number.unwrap().to_string());
+                continue;
+            }
+            let mut possible = numbers[numbers.len() - 1].parse::<u32>().unwrap() + 1;
+            while !possible.to_string().ends_with(chunk) {
+                possible += 1;
+            }
+            numbers.push(possible.to_string());
+        } else if chunk.contains("-") {
+            let range = chunk.split("-").collect::<Vec<&str>>();
+            let mut current = range[0].parse::<u32>().unwrap();
+            if 0 == numbers.len() {
+                numbers.push(current.to_string());
+                current += 1;
+            } else {
+                current = numbers[numbers.len() - 1].parse::<u32>().unwrap() + 1;
+                while !current.to_string().ends_with(range[0]) {
+                    current += 1;
+                }
+            }
+            while !current.to_string().ends_with(range[1]) {
+                numbers.push(current.to_string());
+                current += 1;
+            }
+            numbers.push(current.to_string());
+        } else {
+            let sequence = chunk.split(":").collect::<Vec<&str>>();
+            let increment = sequence[2].parse::<u32>().unwrap();
+            let mut current = sequence[0].parse::<u32>().unwrap();
+            if 0 == numbers.len() {
+                numbers.push(current.to_string());
+                current += increment;
+            } else {
+                current = numbers[numbers.len() - 1].parse::<u32>().unwrap() + 1;
+                while !current.to_string().ends_with(sequence[0]) {
+                    current += increment;
+                }
+            }
+            while !current.to_string().ends_with(sequence[1]) {
+                numbers.push(current.to_string());
+                current += increment;
+            }
+            numbers.push(current.to_string());
+        }
+    }
+    numbers.join(" ")
 }
 
 #[cfg(not(tarpaulin_include))]
