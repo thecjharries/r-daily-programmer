@@ -44,7 +44,44 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_did_bomb_explode() {
+        assert_eq!(
+            false,
+            did_bomb_explode(vec![
+                "white".to_string(),
+                "red".to_string(),
+                "green".to_string(),
+                "white".to_string()
+            ])
+        );
+        assert_eq!(
+            true,
+            did_bomb_explode(vec![
+                "white".to_string(),
+                "orange".to_string(),
+                "green".to_string(),
+                "white".to_string()
+            ])
+        );
+        assert_eq!(
+            true,
+            did_bomb_explode(vec![
+                "qqq".to_string(),
+                "white".to_string(),
+                "orange".to_string(),
+                "green".to_string(),
+                "white".to_string()
+            ])
+        );
+        assert_eq!(
+            true,
+            did_bomb_explode(vec![
+                "white".to_string(),
+                "qqq".to_string(),
+                "orange".to_string(),
+                "green".to_string(),
+                "white".to_string()
+            ])
+        );
     }
 }
