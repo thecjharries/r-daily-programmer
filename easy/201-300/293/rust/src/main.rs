@@ -52,7 +52,16 @@ fn main() {
 }
 
 fn did_bomb_explode(cuts: Vec<String>) -> bool {
-    todo!()
+    for index in 0..cuts.len() - 1 {
+        if let Some(next_allowed_cuts) = NEXT_ALLOWED_CUT.get(&cuts[index]) {
+            if !next_allowed_cuts.contains(&cuts[index + 1]) {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+    false
 }
 
 #[cfg(not(tarpaulin_include))]
