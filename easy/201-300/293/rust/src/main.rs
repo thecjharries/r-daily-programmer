@@ -19,13 +19,30 @@ lazy_static! {
     static ref NEXT_ALLOWED_CUT: HashMap<String, Vec<String>> = HashMap::from_iter([
         (
             "white".to_string(),
-            vec!["red", "orange", "green", "purple"]
+            vec![
+                "red".to_string(),
+                "orange".to_string(),
+                "green".to_string(),
+                "purple".to_string()
+            ]
         ),
-        ("red".to_string(), vec!["green"]),
-        ("black".to_string(), vec!["red", "purple", "black"]),
-        ("orange".to_string(), vec!["red", "black"]),
-        ("green".to_string(), vec!["orange", "white"]),
-        ("purple".to_string(), vec!["red", "black"]),
+        ("red".to_string(), vec!["green".to_string()]),
+        (
+            "black".to_string(),
+            vec!["red".to_string(), "purple".to_string(), "black".to_string()]
+        ),
+        (
+            "orange".to_string(),
+            vec!["red".to_string(), "black".to_string()]
+        ),
+        (
+            "green".to_string(),
+            vec!["orange".to_string(), "white".to_string()]
+        ),
+        (
+            "purple".to_string(),
+            vec!["red".to_string(), "black".to_string()]
+        ),
     ]);
 }
 
