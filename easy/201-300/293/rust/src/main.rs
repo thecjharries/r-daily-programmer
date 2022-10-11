@@ -12,9 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref NEXT_ALLOWED_CUT: HashMap<String, Vec<String>> = HashMap::from_iter([
+        (
+            "white".to_string(),
+            vec!["red", "orange", "green", "purple"]
+        ),
+        ("red".to_string(), vec!["green"]),
+        ("black".to_string(), vec!["red", "purple", "black"]),
+        ("orange".to_string(), vec!["red", "black"]),
+        ("green".to_string(), vec!["orange", "white"]),
+        ("purple".to_string(), vec!["red", "black"]),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn did_bomb_explode(cuts: Vec<String>) -> bool {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
