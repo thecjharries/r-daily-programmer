@@ -18,7 +18,15 @@ fn main() {
 }
 
 fn scrabble(letters: &str, word: &str) -> bool {
-    todo!()
+    let mut bank = letters.to_lowercase().chars().collect::<Vec<char>>();
+    for letter in word.to_lowercase().chars() {
+        if let Some(index) = bank.iter().position(|&x| x == letter) {
+            bank.remove(index);
+        } else {
+            return false;
+        }
+    }
+    return true;
 }
 
 #[cfg(not(tarpaulin_include))]
