@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(true, scrabble("ladilmy", "daily"));
+        assert_eq!(false, scrabble("eerriin", "eerie"));
+        assert_eq!(true, scrabble("orrpgma", "program"));
+        assert_eq!(false, scrabble("orppgma", "program"));
     }
 }
