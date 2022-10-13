@@ -17,8 +17,23 @@ fn main() {
     println!("rad");
 }
 
-fn convert_first_to_second(first: &str, second: &str) -> String {
-    todo!()
+fn convert_first_to_second(first: &str, second: &str) -> Vec<String> {
+    let mut result = Vec::new();
+    let mut index = 0;
+    result.push(first.to_string());
+    while first.len() > index {
+        let mut current = String::new();
+        current.push_str(&second[..index]);
+        while first.len() > index && first[index..index + 1] == second[index..index + 1] {
+            current.push_str(&first[index..index + 1]);
+            index += 1;
+        }
+        current.push_str(&second[index..index + 1]);
+        current.push_str(&first[index + 1..]);
+        result.push(current);
+        index += 1;
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
