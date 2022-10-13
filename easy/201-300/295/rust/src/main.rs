@@ -28,6 +28,38 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            vec!["floor", "bloor", "broor", "braor", "brakr", "brake"],
+            convert_first_to_second("floor", "brake")
+        );
+        assert_eq!(
+            vec!["wood", "bood", "book"],
+            convert_first_to_second("wood", "book")
+        );
+        assert_eq!(
+            vec![
+                "a fall to the floor",
+                "b fall to the floor",
+                "brfall to the floor",
+                "braall to the floor",
+                "brakll to the floor",
+                "brakil to the floor",
+                "brakin to the floor",
+                "brakingto the floor",
+                "braking o the floor",
+                "braking t the floor",
+                "braking ththe floor",
+                "braking thehe floor",
+                "braking the e floor",
+                "braking the d floor",
+                "braking the dofloor",
+                "braking the dooloor",
+                "braking the dooroor",
+                "braking the door or",
+                "braking the door ir",
+                "braking the door in",
+            ],
+            convert_first_to_second("a fall to the floor", "braking the door in")
+        );
     }
 }
