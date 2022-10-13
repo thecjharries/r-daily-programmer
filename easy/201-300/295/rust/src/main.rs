@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_first_to_second(first: &str, second: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
