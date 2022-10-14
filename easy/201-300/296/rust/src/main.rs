@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_presents_song(presents: Vec<String>) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
