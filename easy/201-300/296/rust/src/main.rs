@@ -12,25 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use num_ordinal::{Ordinal, Osize};
-
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn build_presents_song(presents: Vec<String>) -> String {
+    let days = vec![
+        "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth",
+        "tenth", "eleventh", "twelfth",
+    ];
     let mut result = String::new();
-    for day_index in 1..=presents.len() {
+    for (day_index, day) in days.iter().enumerate() {
         result.push_str(&format!(
-            "On the {} day of Christmas\nmy true love gave to me:\n",
-            Osize::from1(day_index).to_string()
+            "On the {} day of Christmas\nmy true love sent to me:\n",
+            day
         ));
-        if 1 == day_index {
+        if 0 == day_index {
             result.push_str(&format!("1 {}\n\n", presents[0]));
             continue;
         }
-        for present_index in (0..day_index).rev() {
+        for present_index in (0..=day_index).rev() {
             if 0 == present_index {
                 result.push_str("and ")
             }
