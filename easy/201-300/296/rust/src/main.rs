@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use ordinal::Ordinal;
+use num_ordinal::{Ordinal, Osize};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -24,7 +24,7 @@ fn build_presents_song(presents: Vec<String>) -> String {
     for day_index in 1..=presents.len() {
         result.push_str(&format!(
             "On the {} day of Christmas\nmy true love gave to me:\n",
-            Ordinal(day_index).to_string()
+            Osize::from1(day_index).to_string()
         ));
         if 1 == day_index {
             result.push_str(&format!("1 {}\n\n", presents[0]));
