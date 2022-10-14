@@ -12,13 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use ordinal::Ordinal;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn build_presents_song(presents: Vec<String>) -> String {
-    todo!()
+    let mut result = String::new();
+    for day_index in 1..=presents.len() {
+        result.push_str(&format!(
+            "On the {} day of Christmas\nmy true love gave to me:\n",
+            Ordinal(day_index).to_string()
+        ));
+        if 1 == day_index {
+            result.push_str(&format!("1 {}\n\n", presents[0]));
+            continue;
+        }
+        for present_index in (0..day_index).rev() {
+            if 0 == present_index {
+                result.push_str("and ")
+            }
+            result.push_str(&format!(
+                "{} {}\n",
+                present_index + 1,
+                presents[present_index]
+            ))
+        }
+        result.push('\n')
+    }
+    result.trim().to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
