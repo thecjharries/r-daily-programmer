@@ -18,7 +18,35 @@ fn main() {
 }
 
 fn reduce_parentheses(input: &str) -> String {
-    todo!()
+    let mut output = String::from(input);
+    let mut open_parentheses = Vec::new();
+    let mut remove_indices: Vec<usize> = Vec::new();
+    let mut previous_open: i32 = -1;
+    let mut previous_close: i32 = -1;
+    for (index, character) in input.chars().enumerate() {
+        if '(' == character {
+            open_parentheses.push(index);
+        }
+        if ')' == character {
+            if let Some(open_parenthesis) = open_parentheses.last() {
+                if 1 == index - open_parenthesis {
+                    remove_indices.push(*open_parenthesis);
+                    remove_indices.push(index);
+                } else if *open_parenthesis == previous_open as usize - 1
+                    && 1 == index - previous_close as usize
+                {
+                    remove_indices.push(*open_parenthesis);
+                    remove_indices.push(index);
+                }
+                previous_close = index as i32;
+                previous_open = open_parentheses.pop().unwrap_or(0) as i32;
+            }
+        }
+    }
+    for index in remove_indices {
+        output.replace_range(index..index + 1, " ");
+    }
+    output.replace(" ", "")
 }
 
 #[cfg(not(tarpaulin_include))]
