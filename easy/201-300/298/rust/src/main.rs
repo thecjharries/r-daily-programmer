@@ -28,6 +28,11 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("((a((bc)(de)))f)", reduce_parentheses("((a((bc)(de)))f)"));
+        assert_eq!("((zbcd)((e)fg))", reduce_parentheses("(((zbcd)(((e)fg))))"));
+        assert_eq!("ab(c)", reduce_parentheses("ab((c))"));
+        assert_eq!("", reduce_parentheses("()"));
+        assert_eq!("(fgh)", reduce_parentheses("((fgh()()()))"));
+        assert_eq!("(abc)", reduce_parentheses("()(abc())"));
     }
 }
