@@ -39,7 +39,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_word_in_elements() {
+        assert_eq!("GeNiUS (germanium nickel uranium sulfur)", word_in_elements("genius"));
+        assert_eq!("", word_in_elements("zzz"));
     }
 }
