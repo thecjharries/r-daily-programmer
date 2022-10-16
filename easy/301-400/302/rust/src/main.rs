@@ -30,7 +30,37 @@ fn main() {
 }
 
 fn word_in_elements(word: &str) -> String {
-    todo!()
+    let mut output: String = String::new();
+    let mut elements: Vec<String> = Vec::new();
+    let mut index = 0;
+    let chars = word.chars().collect::<Vec<char>>();
+    while index < chars.len() {
+        let mut element = String::new();
+        for offset in 0..2 {
+            if index + offset < chars.len() {
+                element.push(chars[index + offset]);
+            }
+        }
+        if let Some(full_element) = ELEMENTS.get(&element) {
+            output.push(element.chars().nth(0).unwrap().to_ascii_uppercase());
+            if 2 == element.len() {
+                output.push(element.chars().nth(1).unwrap().to_ascii_lowercase());
+            }
+            index += element.len();
+            elements.push(full_element.to_string());
+        } else {
+            element.pop();
+            if let Some(full_element) = ELEMENTS.get(&element)  {
+                output.push(element.chars().nth(0).unwrap().to_ascii_uppercase());
+                elements.push(full_element.to_string());
+                index += 1;
+            } else {
+                return String::new();
+            }
+        }
+    }
+
+    format!("{} ({})", output, elements.join(" "))
 }
 
 #[cfg(not(tarpaulin_include))]
