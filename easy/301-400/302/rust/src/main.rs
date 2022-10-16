@@ -12,6 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref ELEMENTS: HashMap<String, String> = HashMap::from_iter([
+        ("ge".to_string(), "germanium".to_string()),
+        ("ni".to_string(), "nickel".to_string()),
+        ("u".to_string(),  "uranium".to_string()),
+        ("s".to_string(),  "sulfur".to_string()),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
