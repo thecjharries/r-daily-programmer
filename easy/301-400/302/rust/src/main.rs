@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn word_in_elements(word: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
