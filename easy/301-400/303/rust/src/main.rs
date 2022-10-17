@@ -55,6 +55,7 @@ mod tests {
     #[test]
     fn test_stub() {
         assert_eq!((Corner::LL, 9, 24), determine_end(8, 3, 1));
-        assert_eq!((Corner::UR, 17, 30), determine_end(15, 4, 2))
+        assert_eq!((Corner::UR, 17, 30), determine_end(15, 4, 2));
+        assert_eq!((Corner::LR, 6, 30), determine_end(10, 6, 1));
     }
 }
