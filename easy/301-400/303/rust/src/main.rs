@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use gcd::Gcd;
+
+#[derive(Debug, PartialEq)]
 enum Corner {
     UL,
     UR,
@@ -25,7 +28,23 @@ fn main() {
 }
 
 fn determine_end(height: u32, width: u32, velocity: u32) -> (Corner, u32, u32) {
-    todo!()
+    let path = height * width / height.gcd(width);
+    let time = path / velocity.gcd(path);
+    let rounds = velocity * time / path;
+    let mut corner: Corner = Corner::UL;
+    if 1 == (velocity * time / height) % 2 {
+        if 1 == (velocity * time / width) % 2 {
+            corner = Corner::LR;
+        } else {
+            corner = Corner::LL;
+        }
+    } else {
+        if 1 == (velocity * time / width) % 2 {
+            corner = Corner::UR;
+        }
+    }
+    let bounces = (path / height + path / width - 1) * rounds - 1;
+    (corner, bounces, time)
 }
 
 #[cfg(not(tarpaulin_include))]
