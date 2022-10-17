@@ -24,6 +24,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_end(height: u32, width: u32, velocity: u32) -> (Corner, u32, u32) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
