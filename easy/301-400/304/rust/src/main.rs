@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const ACCOUNT_INDEX: usize = 0;
+const DEBIT_INDEX: usize = 2;
+const CREDIT_INDEX: usize = 3;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
