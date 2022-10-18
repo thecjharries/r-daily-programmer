@@ -23,8 +23,18 @@ fn main() {
     println!("rad");
 }
 
-fn build_journal(input: &str) -> HashMap<String, u64> {
-    todo!()
+fn build_journal(input: &str) -> HashMap<String, i64> {
+    let mut journal = HashMap::new();
+    for line in input.lines() {
+        let exploded = line.split(';').collect::<Vec<&str>>();
+        let account = exploded[ACCOUNT_INDEX].to_string();
+        let debit = exploded[DEBIT_INDEX].parse::<i64>().unwrap_or(0);
+        let credit = exploded[CREDIT_INDEX].parse::<i64>().unwrap_or(0);
+        let balance = journal.entry(account).or_insert(0);
+        *balance += debit;
+        *balance -= credit;
+    }
+    journal
 }
 
 #[cfg(not(tarpaulin_include))]
