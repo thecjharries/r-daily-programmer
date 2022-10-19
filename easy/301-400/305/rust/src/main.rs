@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn int_to_permbase2(input: u64) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
