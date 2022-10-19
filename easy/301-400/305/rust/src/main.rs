@@ -27,7 +27,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_int_to_permbase2() {
+        assert_eq!("0101", int_to_permbase2(19));
+        assert_eq!("11000", int_to_permbase2(54));
+        assert_eq!("111000111", int_to_permbase2(965));
     }
 }
