@@ -18,7 +18,14 @@ fn main() {
 }
 
 fn int_to_permbase2(input: u64) -> String {
-    todo!()
+    let mut current = input;
+    let mut power = 1;
+    while 2_u64.pow(power) <= current {
+        current -= 2_u64.pow(power);
+        power += 1
+    }
+    let representation = format!("{:b}", current);
+    "0".repeat(power as usize - representation.len()) + &representation
 }
 
 #[cfg(not(tarpaulin_include))]
