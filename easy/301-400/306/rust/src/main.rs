@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_A105416() {
+        assert_eq!(
+            vec![1444, 1446, 1464, 1466, 1644, 1646, 1664, 1666],
+            generate_A105416()
+        );
     }
 }
