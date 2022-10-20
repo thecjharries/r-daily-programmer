@@ -18,7 +18,15 @@ fn main() {
 }
 
 fn generate_A105416() -> Vec<u32> {
-    todo!()
+    let mut output = Vec::new();
+    for hundreds in vec![400, 600] {
+        for tens in vec![40, 60] {
+            for ones in vec![4, 6] {
+                output.push(1000 + hundreds + tens + ones);
+            }
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
