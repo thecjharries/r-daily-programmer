@@ -27,7 +27,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_encode() {
+        assert_eq!("abc++def+", encode("abc+def"));
+        assert_eq!("ghij+", encode("ghij"));
+        assert_eq!("klmno++++p++", encode("klmno++p+"));
     }
 }
