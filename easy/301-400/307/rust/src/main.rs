@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn encode(input: &str) -> String {
-    todo!()
+    let mut output: String = input.replace("+", "++");
+    if !output.ends_with("+") {
+        output = output + &"+";
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
