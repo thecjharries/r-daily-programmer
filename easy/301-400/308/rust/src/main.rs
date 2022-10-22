@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn spread_fire(map: &mut Vec<String>, smoke: Vec<(usize, usize)>) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
