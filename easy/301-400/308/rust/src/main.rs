@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn spread_fire(map: &mut Vec<Vec<char>>, smoke: Vec<(usize, usize)>) {
-    todo!()
+    for point in smoke {
+        if map.len() <= point.1 || map[point.1].len() <= point.0 {
+            continue;
+        }
+        if ' ' == map[point.1][point.0] {
+            map[point.1][point.0] = 'S';
+        }
+        if 'S' == map[point.1][point.0] {
+            map[point.1][point.0] = 'F';
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -53,13 +63,27 @@ mod tests {
         ];
         spread_fire(&mut map, smoke);
         let output: Vec<Vec<char>> = vec![
-            "#############/#".chars().collect(),
-            "#F    |  S    #".chars().collect(),
-            "#FF   #       #".chars().collect(),
-            "#F    #       #".chars().collect(),
-            "#######       #".chars().collect(),
-            "#    F_       #".chars().collect(),
-            "###############".chars().collect(),
+            vec![
+                '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '/', '#',
+            ],
+            vec![
+                '#', 'F', ' ', ' ', ' ', ' ', '|', ' ', ' ', 'F', ' ', ' ', ' ', ' ', '#',
+            ],
+            vec![
+                '#', 'F', 'F', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
+            ],
+            vec![
+                '#', 'F', ' ', ' ', ' ', ' ', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
+            ],
+            vec![
+                '#', '#', '#', '#', '#', '#', '#', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
+            ],
+            vec![
+                '#', ' ', ' ', ' ', ' ', 'F', '_', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '#',
+            ],
+            vec![
+                '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#',
+            ],
         ];
         assert_eq!(output, map);
     }
