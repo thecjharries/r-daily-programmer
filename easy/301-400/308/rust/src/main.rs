@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn spread_fire(map: &mut Vec<String>, smoke: Vec<(usize, usize)>) -> Vec<String> {
+fn spread_fire(map: &mut Vec<Vec<char>>, smoke: Vec<(usize, usize)>) {
     todo!()
 }
 
@@ -27,7 +27,40 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_spread_fire() {
+        let mut map: Vec<Vec<char>> = vec![
+            "#############/#".chars().collect(),
+            "#     |       #".chars().collect(),
+            "#     #       #".chars().collect(),
+            "#     #       #".chars().collect(),
+            "#######       #".chars().collect(),
+            "#     _       #".chars().collect(),
+            "###############".chars().collect(),
+        ];
+        let smoke = vec![
+            (1, 1),
+            (1, 2),
+            (1, 3),
+            (5, 6),
+            (6, 2),
+            (1, 1),
+            (1, 2),
+            (5, 5),
+            (5, 5),
+            (9, 1),
+            (5, 7),
+            (2, 2),
+        ];
+        spread_fire(&mut map, smoke);
+        let output: Vec<Vec<char>> = vec![
+            "#############/#".chars().collect(),
+            "#F    |  S    #".chars().collect(),
+            "#FF   #       #".chars().collect(),
+            "#F    #       #".chars().collect(),
+            "#######       #".chars().collect(),
+            "#    F_       #".chars().collect(),
+            "###############".chars().collect(),
+        ];
+        assert_eq!(output, map);
     }
 }
