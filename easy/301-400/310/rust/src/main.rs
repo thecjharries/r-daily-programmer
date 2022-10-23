@@ -22,6 +22,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn generate_lotto_list<R: Rng>(
     names: Vec<String>,
     length: usize,
