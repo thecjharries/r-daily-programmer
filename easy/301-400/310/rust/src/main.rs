@@ -22,8 +22,37 @@ fn main() {
     println!("rad");
 }
 
-fn generate_lotto_list<R: Rng>(names: Vec<String>, rng: &mut R) -> HashMap<String, Vec<String>> {
-    todo!()
+fn generate_lotto_list<R: Rng>(
+    names: Vec<String>,
+    length: usize,
+    rng: &mut R,
+) -> HashMap<String, Vec<String>> {
+    let mut result = HashMap::new();
+    let outer_names = names.clone();
+    for name in outer_names.into_iter() {
+        let mut not_unique = true;
+        let current_name = name.clone();
+        while not_unique {
+            let key_name = name.clone();
+            not_unique = false;
+            let mut lotto_list = names.clone();
+            lotto_list.retain(|other_name| other_name != &current_name);
+            lotto_list.shuffle(rng);
+            lotto_list.truncate(length);
+            for name in names.clone() {
+                if let Some(other_lotto_list) = result.get(&name) {
+                    if other_lotto_list == &lotto_list {
+                        not_unique = true;
+                        break;
+                    }
+                }
+            }
+            if !not_unique {
+                result.insert(key_name, lotto_list);
+            }
+        }
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
