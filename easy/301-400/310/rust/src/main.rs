@@ -32,7 +32,66 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_lotto_list() {
+        let names = vec![
+            "Rebbeca Gann".to_string(),
+            "Latosha Caraveo".to_string(),
+            "Jim Bench".to_string(),
+            "Carmelina Biles".to_string(),
+            "Oda Wilhite".to_string(),
+            "Arletha Eason".to_string(),
+        ];
+        let output: HashMap<String, Vec<String>> = HashMap::from_iter(vec![
+            (
+                "Latosha Caraveo".to_string(),
+                vec![
+                    "Jim Bench".to_string(),
+                    "Carmelina Biles".to_string(),
+                    "Arletha Eason".to_string(),
+                ],
+            ),
+            (
+                "Carmelina Biles".to_string(),
+                vec![
+                    "Oda Wilhite".to_string(),
+                    "Arletha Eason".to_string(),
+                    "Rebbeca Gann".to_string(),
+                ],
+            ),
+            (
+                "Oda Wilhite".to_string(),
+                vec![
+                    "Latosha Caraveo".to_string(),
+                    "Jim Bench".to_string(),
+                    "Rebbeca Gann".to_string(),
+                ],
+            ),
+            (
+                "Rebbeca Gann".to_string(),
+                vec![
+                    "Jim Bench".to_string(),
+                    "Oda Wilhite".to_string(),
+                    "Carmelina Biles".to_string(),
+                ],
+            ),
+            (
+                "Arletha Eason".to_string(),
+                vec![
+                    "Jim Bench".to_string(),
+                    "Oda Wilhite".to_string(),
+                    "Latosha Caraveo".to_string(),
+                ],
+            ),
+            (
+                "Jim Bench".to_string(),
+                vec![
+                    "Latosha Caraveo".to_string(),
+                    "Arletha Eason".to_string(),
+                    "Rebbeca Gann".to_string(),
+                ],
+            ),
+        ]);
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(output, generate_lotto_list(names, 3, &mut rng));
     }
 }
