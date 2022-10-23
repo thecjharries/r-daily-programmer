@@ -12,9 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn generate_lotto_list<R: Rng>(names: Vec<String>, rng: &mut R) -> HashMap<String, Vec<String>> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
