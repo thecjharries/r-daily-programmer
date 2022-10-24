@@ -17,8 +17,16 @@ fn main() {
     println!("rad");
 }
 
-fn is_jolly_jumper(sequence: Vec<u32>) -> bool {
-    todo!()
+fn is_jolly_jumper(sequence: Vec<i32>) -> bool {
+    let mut differences = Vec::new();
+    for (index, number) in sequence.iter().enumerate() {
+        if index + 1 < sequence.len() {
+            differences.push((number - sequence[index + 1]).abs());
+        }
+    }
+    differences.sort();
+    differences.dedup();
+    differences.len() == sequence.len() - 1
 }
 
 #[cfg(not(tarpaulin_include))]
