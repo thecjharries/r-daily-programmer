@@ -27,7 +27,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_jolly_jumper() {
+        assert_eq!(false, is_jolly_jumper(vec![1, 6, -1, 8, 9, 5, 2, 7]));
+        assert_eq!(true, is_jolly_jumper(vec![1, 4, 2, 3]));
+        assert_eq!(false, is_jolly_jumper(vec![1, 4, 2, -1, 6]));
+        assert_eq!(false, is_jolly_jumper(vec![19, 22, 24, 21]));
+        assert_eq!(true, is_jolly_jumper(vec![19, 22, 24, 25]));
+        assert_eq!(true, is_jolly_jumper(vec![2, -1, 0, 2]));
     }
 }
