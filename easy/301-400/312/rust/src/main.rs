@@ -17,18 +17,18 @@ use std::collections::HashMap;
 
 lazy_static! {
     static ref ENGLISH_TO_LEET: HashMap<char, String> = HashMap::from([
-        ("A", "4".to_string()),
-        ("B", "6".to_string()),
-        ("E", "3".to_string()),
-        ("I", "1".to_string()),
-        ("L", "1".to_string()),
-        ("M", "(V)".to_string()),
-        ("N", "(\\)".to_string()),
-        ("O", "0".to_string()),
-        ("S", "5".to_string()),
-        ("T", "7".to_string()),
-        ("V", "\\/".to_string()),
-        ("W", "`//".to_string()),
+        ('A', "4".to_string()),
+        ('B', "6".to_string()),
+        ('E', "3".to_string()),
+        ('I', "1".to_string()),
+        ('L', "1".to_string()),
+        ('M', "(V)".to_string()),
+        ('N', "(\\)".to_string()),
+        ('O', "0".to_string()),
+        ('S', "5".to_string()),
+        ('T', "7".to_string()),
+        ('V', "\\/".to_string()),
+        ('W', "`//".to_string()),
     ]);
 }
 
@@ -38,7 +38,16 @@ fn main() {
 }
 
 fn translate(input: &str) -> String {
-    todo!()
+    input
+        .to_uppercase()
+        .chars()
+        .map(|character| {
+            ENGLISH_TO_LEET
+                .get(&character.to_ascii_uppercase())
+                .unwrap_or(&character.to_string())
+                .to_string()
+        })
+        .collect()
 }
 
 #[cfg(not(tarpaulin_include))]
