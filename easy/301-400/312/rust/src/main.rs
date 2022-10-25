@@ -37,6 +37,10 @@ fn main() {
     println!("rad");
 }
 
+fn translate(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
