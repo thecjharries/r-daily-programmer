@@ -12,6 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref ENGLISH_TO_LEET: HashMap<char, String> = HashMap::from([
+        ("A", "4".to_string()),
+        ("B", "6".to_string()),
+        ("E", "3".to_string()),
+        ("I", "1".to_string()),
+        ("L", "1".to_string()),
+        ("M", "(V)".to_string()),
+        ("N", "(\\)".to_string()),
+        ("O", "0".to_string()),
+        ("S", "5".to_string()),
+        ("T", "7".to_string()),
+        ("V", "\\/".to_string()),
+        ("W", "`//".to_string()),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
