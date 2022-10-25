@@ -48,6 +48,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("31337", translate("eleet"));
+        assert_eq!("1 4(V) 31173.", translate("I am elite."));
     }
 }
