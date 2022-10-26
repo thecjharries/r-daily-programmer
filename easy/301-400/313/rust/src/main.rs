@@ -12,13 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn has_zero_permutation(input: Vec<i32>) -> bool {
-    todo!()
+    if input.contains(&0) {
+        return true;
+    }
+    for length in 2..=input.len() {
+        for combination in input.iter().combinations(length).unique() {
+            if combination.into_iter().sum::<i32>() == 0 {
+                return true;
+            }
+        }
+    }
+    false
 }
 
 #[cfg(not(tarpaulin_include))]
