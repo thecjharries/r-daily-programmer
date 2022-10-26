@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn has_zero_permutation(input: Vec<i32>) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
