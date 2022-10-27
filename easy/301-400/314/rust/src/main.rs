@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_min_max(input: Vec<u32>) -> (String, String) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
