@@ -18,7 +18,25 @@ fn main() {
 }
 
 fn build_min_max(input: Vec<u32>) -> (String, String) {
-    todo!()
+    let sorted_input = {
+        let mut sorted_input = input.clone();
+        sorted_input.sort_by(|a, b| {
+            let first = format!("{}{}", a, b).parse::<u128>().unwrap();
+            let second = format!("{}{}", b, a).parse::<u128>().unwrap();
+            second.cmp(&first)
+        });
+        sorted_input
+    };
+    let max = sorted_input
+        .iter()
+        .map(|number| number.to_string())
+        .collect::<String>();
+    let min = sorted_input
+        .iter()
+        .rev()
+        .map(|number| number.to_string())
+        .collect::<String>();
+    (min, max)
 }
 
 #[cfg(not(tarpaulin_include))]
