@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn xor_multiplication(first: u32, second: u32) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
