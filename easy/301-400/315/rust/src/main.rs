@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn xor_multiplication(first: u32, second: u32) -> u32 {
-    todo!()
+    let mut result = 0;
+    let mut first_binary = format!("{:b}", first);
+    let second_binary = format!("{:b}", second).chars().rev().collect::<Vec<char>>();
+    for character in second_binary {
+        if '1' == character {
+            result ^= u32::from_str_radix(&first_binary, 2).unwrap();
+        }
+        first_binary.push('0');
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
