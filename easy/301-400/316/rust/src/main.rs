@@ -17,8 +17,27 @@ fn main() {
     println!("rad");
 }
 
-fn total_knight_moves(x: i32, y: i32) -> i32 {
-    todo!()
+// https://old.reddit.com/r/dailyprogrammer/comments/6coqwk/20170522_challenge_316_easy_knights_metric/dhw8sdx/
+fn total_knight_moves(goal_x: i32, goal_y: i32) -> i32 {
+    let mut x = goal_x;
+    let mut y = goal_y;
+    if x > y {
+        std::mem::swap(&mut x, &mut y);
+    }
+    let mut additional_move = 0;
+    if 0 != (x + y) % 3 {
+        additional_move = 1;
+        if 0 == (x + 2 + y - 1) % 3 {
+            x += 2;
+            y -= 1;
+        } else {
+            x += 1;
+            y -= 2;
+        }
+    }
+    let first = (2 * y - x) / 3;
+    let second = (2 * x - y) / 3 + additional_move;
+    first.abs() + second.abs()
 }
 
 #[cfg(not(tarpaulin_include))]
