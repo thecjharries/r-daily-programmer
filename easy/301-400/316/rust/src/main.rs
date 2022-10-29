@@ -28,6 +28,11 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(4, total_knight_moves(3, 7));
+        assert_eq!(0, total_knight_moves(0, 0));
+        assert_eq!(3, total_knight_moves(1, 0));
+        assert_eq!(2, total_knight_moves(-3, -3));
+        assert_eq!(2, total_knight_moves(0, -2));
+        assert_eq!(4, total_knight_moves(1, 1));
     }
 }
