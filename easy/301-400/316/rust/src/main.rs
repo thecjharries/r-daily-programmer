@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn total_knight_moves(x: i32, y: i32) -> i32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
