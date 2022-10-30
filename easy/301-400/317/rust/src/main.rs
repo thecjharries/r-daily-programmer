@@ -20,7 +20,16 @@ fn main() {
 }
 
 fn compute_2_tag(start: &str, rules: HashMap<char, &str>) -> Vec<String> {
-    todo!()
+    let mut result = Vec::new();
+    let mut current = start.to_string();
+    while 1 < current.len() {
+        let mut next = String::new();
+        next.push_str(&current[2..]);
+        next.push_str(rules.get(&current.chars().nth(0).unwrap()).unwrap());
+        result.push(next.clone());
+        current = next;
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -32,9 +41,30 @@ mod tests {
     fn test_compute_2_tag() {
         let rules = HashMap::from_iter([('a', "bc"), ('b', "a"), ('c', "aaa")]);
         let output: Vec<String> = vec![
-            "abc", "cbc", "caaa", "aaaaa", "aaabc", "abcbc", "cbcbc", "cbcaaa", "caaaaaa",
-            "aaaaaaaa", "aaaaaabc", "aaaabcbc", "aabcbcbc", "bcbcbcbc", "bcbcbca", "bcbcaa",
-            "bcaaa", "aaaa", "aabc", "bcbc", "bca", "aa", "bc", "a",
+            "abc".to_string(),
+            "cbc".to_string(),
+            "caaa".to_string(),
+            "aaaaa".to_string(),
+            "aaabc".to_string(),
+            "abcbc".to_string(),
+            "cbcbc".to_string(),
+            "cbcaaa".to_string(),
+            "caaaaaa".to_string(),
+            "aaaaaaaa".to_string(),
+            "aaaaaabc".to_string(),
+            "aaaabcbc".to_string(),
+            "aabcbcbc".to_string(),
+            "bcbcbcbc".to_string(),
+            "bcbcbca".to_string(),
+            "bcbcaa".to_string(),
+            "bcaaa".to_string(),
+            "aaaa".to_string(),
+            "aabc".to_string(),
+            "bcbc".to_string(),
+            "bca".to_string(),
+            "aa".to_string(),
+            "bc".to_string(),
+            "a".to_string(),
         ];
         assert_eq!(output, compute_2_tag("aaa", rules));
     }
