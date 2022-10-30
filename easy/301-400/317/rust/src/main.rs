@@ -29,7 +29,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_2_tag() {
+        let rules = HashMap::from_iter([('a', "bc"), ('b', "a"), ('c', "aaa")]);
+        let output: Vec<String> = vec![
+            "abc", "cbc", "caaa", "aaaaa", "aaabc", "abcbc", "cbcbc", "cbcaaa", "caaaaaa",
+            "aaaaaaaa", "aaaaaabc", "aaaabcbc", "aabcbcbc", "bcbcbcbc", "bcbcbca", "bcbcaa",
+            "bcaaa", "aaaa", "aabc", "bcbc", "bca", "aa", "bc", "a",
+        ];
+        assert_eq!(output, compute_2_tag("aaa", rules));
     }
 }
