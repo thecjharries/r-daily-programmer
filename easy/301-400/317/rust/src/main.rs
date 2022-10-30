@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn compute_2_tag(start: &str, rules: HashMap<char, &str>) -> Vec<String> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
