@@ -28,6 +28,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "25 - 9 * 7 * 7 + 100 - 3 = 881",
+            countdown(vec![25, 100, 9, 7, 3, 7], 881)
+        );
+        assert_eq!(
+            "3 + 3 * 7 + 1 * 6 - 8 = 250",
+            countdown(vec![1, 3, 7, 6, 8, 3], 250)
+        );
     }
 }
