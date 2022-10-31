@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn countdown(numbers: Vec<u32>, result: u32) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
