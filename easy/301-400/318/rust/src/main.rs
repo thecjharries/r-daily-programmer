@@ -62,6 +62,7 @@ mod tests {
         //     "3 + 3 * 7 + 1 * 6 - 8 = 250",
         //     countdown(vec![1, 3, 7, 6, 8, 3, 250])
         // );
-        assert_eq!("5 + 5 = 10", countdown(vec![5, 5, 10]))
+        assert_eq!("5 + 5 = 10", countdown(vec![5, 5, 10]));
+        assert_eq!("", countdown(vec![5, 5, 5]));
     }
 }
