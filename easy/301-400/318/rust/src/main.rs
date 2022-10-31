@@ -12,13 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use evalexpr::eval_int;
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn countdown(numbers: Vec<u32>, result: u32) -> String {
-    todo!()
+fn countdown(numbers: Vec<u32>) -> String {
+    let operations = vec!["+", "-", "*", "/"];
+    let mut operation_permutations = Vec::new();
+    for permutation in (0..numbers.len())
+        .map(|_| operations.iter())
+        .multi_cartesian_product()
+    {
+        operation_permutations.push(permutation);
+    }
+    for operation_permutation in operation_permutations {
+        for number_permutation in numbers.iter().permutations(numbers.len()) {
+            let expression = number_permutation[0..numbers.len() - 2]
+                .iter()
+                .zip(operation_permutation.iter())
+                .map(|(number, operator)| format!("{} {} ", number, operator))
+                .join("")
+                + &number_permutation[number_permutation.len() - 2].to_string();
+            if let Ok(result) = eval_int(&expression) {
+                if result as u32 == *number_permutation[number_permutation.len() - 1] {
+                    return format!("{} = {}", expression, result);
+                }
+            }
+        }
+    }
+    String::new()
 }
 
 #[cfg(not(tarpaulin_include))]
