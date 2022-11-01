@@ -27,7 +27,20 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_condense_sentence() {
+        assert_eq!(
+            "I heard the pastor sing liverses easily.",
+            condense_sentence("I heard the pastor sing live verses easily.")
+        );
+        assert_eq!(
+            "Deepisodes of Deep Space Nine came on the televisionly after the news.",
+            condense_sentence(
+                "Deep episodes of Deep Space Nine came on the television only after the news."
+            )
+        );
+        assert_eq!(
+            "Digitalarm clockscarea children.",
+            condense_sentence("Digital alarm clocks scare area children.")
+        );
     }
 }
