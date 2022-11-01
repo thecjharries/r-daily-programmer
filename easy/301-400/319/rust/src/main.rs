@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn condense_sentence(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
