@@ -12,13 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::cmp::min;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn condense_sentence(input: &str) -> String {
-    todo!()
+    let mut exploded = input.split_whitespace().rev().collect::<Vec<&str>>();
+    let mut current_word = exploded.pop().unwrap().to_string();
+    let mut condensed = Vec::new();
+    while 0 < exploded.len() {
+        let next = exploded.pop().unwrap().to_string();
+        let max_length = min(current_word.len(), next.len());
+        let mut max_common = 0;
+        for length in 1..=max_length {
+            if current_word.ends_with(&next[..length]) {
+                max_common = length;
+            }
+        }
+        if 0 < max_common {
+            current_word = current_word + &next[max_common..];
+        } else {
+            condensed.push(current_word);
+            current_word = next;
+        }
+    }
+    condensed.push(current_word);
+    condensed.join(" ")
 }
 
 #[cfg(not(tarpaulin_include))]
