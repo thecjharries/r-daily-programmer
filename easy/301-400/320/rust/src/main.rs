@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_number_spiral(size: usize) -> Vec<Vec<u32>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
