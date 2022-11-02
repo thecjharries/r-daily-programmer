@@ -18,7 +18,24 @@ fn main() {
 }
 
 fn build_number_spiral(size: usize) -> Vec<Vec<u32>> {
-    todo!()
+    let mut spiral = vec![vec![0; size]; size];
+    let mut x: i32 = 0;
+    let mut dx: i32 = 1;
+    let mut y: i32 = 0;
+    let mut dy: i32 = 0;
+    for number in 1..=size * size {
+        spiral[y as usize][x as usize] = number as u32;
+        if spiral[(y - dy + size as i32) as usize % size][(x + dx + size as i32) as usize % size]
+            != 0
+        {
+            let temp = dy;
+            dy = -dx;
+            dx = temp;
+        }
+        x += dx;
+        y -= dy;
+    }
+    spiral
 }
 
 #[cfg(not(tarpaulin_include))]
