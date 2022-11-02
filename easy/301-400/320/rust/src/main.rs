@@ -28,6 +28,25 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(vec![vec![1]], build_number_spiral(1));
+        assert_eq!(
+            vec![
+                vec![1, 2, 3, 4, 5],
+                vec![16, 17, 18, 19, 6],
+                vec![15, 24, 25, 20, 7],
+                vec![14, 23, 22, 21, 8],
+                vec![13, 12, 11, 10, 9],
+            ],
+            build_number_spiral(5)
+        );
+        assert_eq!(
+            vec![
+                vec![1, 2, 3, 4],
+                vec![12, 13, 14, 5],
+                vec![11, 16, 15, 6],
+                vec![10, 9, 8, 7],
+            ],
+            build_number_spiral(4)
+        );
     }
 }
