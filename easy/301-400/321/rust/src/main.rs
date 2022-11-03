@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn print_time(time: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
