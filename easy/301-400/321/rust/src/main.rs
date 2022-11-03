@@ -12,6 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+static DIGITS: [&str; 9] = [
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+];
+static TEENS: [&str; 10] = [
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+];
+static TENS: [&str; 5] = ["ten", "twenty", "thirty", "forty", "fifty"];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
