@@ -45,8 +45,8 @@ fn print_time(time: &str) -> String {
     let mut hour_word = "twelve".to_string();
     if 0 < hour && 10 > hour {
         hour_word = DIGITS[hour - 1].to_string();
-    } else if 10 < hour {
-        hour_word = TENS[hour - 11].to_string();
+    } else if 9 < hour {
+        hour_word = TEENS[hour - 10].to_string();
     }
     let minute = exploded_time[1].parse::<usize>().unwrap();
     let mut minute_word;
@@ -78,5 +78,6 @@ mod tests {
         assert_eq!("It's two oh one pm".to_string(), print_time("14:01"));
         assert_eq!("It's eight twenty nine pm".to_string(), print_time("20:29"));
         assert_eq!("It's nine pm".to_string(), print_time("21:00"));
+        assert_eq!("It's eleven nineteen am".to_string(), print_time("11:19"));
     }
 }
