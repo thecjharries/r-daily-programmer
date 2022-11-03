@@ -35,7 +35,34 @@ fn main() {
 }
 
 fn print_time(time: &str) -> String {
-    todo!()
+    let exploded_time: Vec<&str> = time.split(":").collect();
+    let mut hour = exploded_time[0].parse::<usize>().unwrap();
+    let mut ampm = "am";
+    if 11 < hour {
+        ampm = "pm";
+        hour -= 12;
+    }
+    let mut hour_word = "twelve".to_string();
+    if 0 < hour && 10 > hour {
+        hour_word = DIGITS[hour - 1].to_string();
+    } else if 10 < hour {
+        hour_word = TENS[hour - 11].to_string();
+    }
+    let minute = exploded_time[1].parse::<usize>().unwrap();
+    let mut minute_word;
+    if 0 == minute {
+        minute_word = "".to_string();
+    } else if 10 > minute {
+        minute_word = format!("oh {} ", DIGITS[minute - 1]);
+    } else if 20 > minute {
+        minute_word = format!("{} ", TEENS[minute - 10]);
+    } else {
+        minute_word = format!("{} ", TENS[minute / 10 - 1]);
+        if 0 != minute % 10 {
+            minute_word = format!("{}{} ", minute_word, DIGITS[minute % 10 - 1]);
+        }
+    }
+    format!("It's {} {}{}", hour_word, minute_word, ampm)
 }
 
 #[cfg(not(tarpaulin_include))]
