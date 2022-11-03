@@ -28,6 +28,11 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("It's twelve am".to_string(), print_time("00:00"));
+        assert_eq!("It's one thirty am".to_string(), print_time("01:30"));
+        assert_eq!("It's twelve oh five pm".to_string(), print_time("12:05"));
+        assert_eq!("It's two oh one pm".to_string(), print_time("14:01"));
+        assert_eq!("It's eight twenty nine pm".to_string(), print_time("20:29"));
+        assert_eq!("It's nine pm".to_string(), print_time("21:00"));
     }
 }
