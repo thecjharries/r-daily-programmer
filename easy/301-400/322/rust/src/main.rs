@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_least_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
