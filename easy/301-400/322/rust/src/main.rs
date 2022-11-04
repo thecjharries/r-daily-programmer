@@ -12,12 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn find_all_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {}
+fn find_all_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {
+    let mut result = Vec::new();
+    for item in lists.iter().multi_cartesian_product() {
+        result.push(item.into_iter().map(|x| *x).collect());
+    }
+    result
+}
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
