@@ -28,6 +28,33 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            12,
+            find_least_pairs(vec![
+                vec!['0', '1'],
+                vec!['A', 'B', 'C'],
+                vec!['D', 'E', 'F', 'G']
+            ])
+            .len()
+        );
+        assert_eq!(
+            34,
+            find_least_pairs(vec![
+                vec!['0', '1', '2', '3'],
+                vec!['A', 'B', 'C', 'D'],
+                vec!['E', 'F', 'G', 'H', 'I']
+            ])
+            .len()
+        );
+        assert_eq!(
+            62,
+            find_least_pairs(vec![
+                vec!['0', '1', '2', '3', '4'],
+                vec!['A', 'B', 'C', 'D', 'E'],
+                vec!['F', 'G', 'H', 'I'],
+                vec!['J', 'K', 'L']
+            ])
+            .len()
+        );
     }
 }
