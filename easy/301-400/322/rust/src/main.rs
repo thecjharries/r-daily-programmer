@@ -17,9 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_all_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {
-    todo!()
-}
+fn find_all_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {}
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
