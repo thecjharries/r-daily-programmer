@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_least_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {
+fn find_all_pairs(lists: Vec<Vec<char>>) -> Vec<Vec<char>> {
     todo!()
 }
 
@@ -30,7 +30,7 @@ mod tests {
     fn test_stub() {
         assert_eq!(
             12,
-            find_least_pairs(vec![
+            find_all_pairs(vec![
                 vec!['0', '1'],
                 vec!['A', 'B', 'C'],
                 vec!['D', 'E', 'F', 'G']
@@ -39,7 +39,7 @@ mod tests {
         );
         assert_eq!(
             34,
-            find_least_pairs(vec![
+            find_all_pairs(vec![
                 vec!['0', '1', '2', '3'],
                 vec!['A', 'B', 'C', 'D'],
                 vec!['E', 'F', 'G', 'H', 'I']
@@ -48,7 +48,7 @@ mod tests {
         );
         assert_eq!(
             62,
-            find_least_pairs(vec![
+            find_all_pairs(vec![
                 vec!['0', '1', '2', '3', '4'],
                 vec!['A', 'B', 'C', 'D', 'E'],
                 vec!['F', 'G', 'H', 'I'],
