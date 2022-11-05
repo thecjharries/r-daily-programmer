@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_zero_sum_triplets(input: Vec<i32>) -> Vec<Vec<i32>> {
+    todo!();
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
