@@ -29,9 +29,6 @@ fn find_zero_sum_triplets(input: Vec<i32>) -> Vec<Vec<i32>> {
                 {
                     let mut triplet = vec![*item, *item2, *item3];
                     triplet.sort();
-                    if vec![-8, 4, 4] == triplet {
-                        println!("{} {} {}", index, index2, index3);
-                    }
                     if !result.contains(&triplet) {
                         result.push(triplet);
                     }
