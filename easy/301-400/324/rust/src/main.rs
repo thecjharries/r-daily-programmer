@@ -20,7 +20,13 @@ fn main() {
 }
 
 fn approximate_sqrt(input: f64, digits: u32) -> Decimal {
-    todo!()
+    let mut upper = 1.0;
+    let mut lower = 0.0;
+    while lower != upper {
+        lower = upper;
+        upper = (lower + input / lower) / 2.0;
+    }
+    Decimal::from_f64(upper).unwrap().round_dp(digits)
 }
 
 #[cfg(not(tarpaulin_include))]
