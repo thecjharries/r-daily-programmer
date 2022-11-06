@@ -30,6 +30,8 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(Decimal::new(88, 0), approximate_sqrt(7720.17, 0));
+        assert_eq!(Decimal::new(879, 1), approximate_sqrt(7720.17, 1));
+        assert_eq!(Decimal::new(8786, 2), approximate_sqrt(7720.17, 2));
     }
 }
