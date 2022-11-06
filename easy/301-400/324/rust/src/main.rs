@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rust_decimal::prelude::*;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn approximate_sqrt(input: f64, digits: u32) -> Decimal {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
