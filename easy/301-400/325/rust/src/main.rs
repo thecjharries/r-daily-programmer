@@ -18,7 +18,49 @@ fn main() {
 }
 
 fn find_sequence_path(sequence: Vec<char>, maze: Vec<Vec<char>>) -> Vec<(usize, usize)> {
-    todo!()
+    let mut row = maze.len() - 1;
+    let mut column = maze[row].len() - 1;
+    let mut sequence_index = 0;
+    let mut path: Vec<(usize, usize)> = Vec::new();
+    let mut possible = Vec::new();
+    for column_index in 0..maze[row].len() {
+        possible.push((row, column_index, sequence_index));
+    }
+    while 0 < possible.len() && 0 < row && sequence[sequence_index] != maze[row][column] {
+        row = possible[possible.len() - 1].0;
+        column = possible[possible.len() - 1].1;
+        sequence_index = possible[possible.len() - 1].2;
+        possible.pop();
+        if sequence[sequence_index] == maze[row][column] {
+            if 0 < path.len() {
+                while -1
+                    > row as i32 + column as i32
+                        - path[path.len() - 1].0 as i32
+                        - path[path.len() - 1].1 as i32
+                    || 1 < row as i32 + column as i32
+                        - path[path.len() - 1].0 as i32
+                        - path[path.len() - 1].1 as i32
+                {
+                    path.pop();
+                }
+            }
+            path.push((row, column));
+            sequence_index = (sequence_index + 1) % sequence.len();
+            if maze.len() - 1 > row {
+                possible.push((row + 1, column, sequence_index));
+            }
+            if 0 < column {
+                possible.push((row, column - 1, sequence_index));
+            }
+            if maze[row].len() - 1 > column {
+                possible.push((row, column + 1, sequence_index));
+            }
+            if 0 < row {
+                possible.push((row - 1, column, sequence_index));
+            }
+        }
+    }
+    path
 }
 
 #[cfg(not(tarpaulin_include))]
