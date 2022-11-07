@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_sequence_path(sequence: Vec<char>, maze: Vec<Vec<char>>) -> Vec<(usize, usize)> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
