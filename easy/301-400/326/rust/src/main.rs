@@ -34,7 +34,15 @@ fn is_prime(number: u32) -> bool {
 }
 
 fn find_prime_range(number: u32) -> (u32, u32) {
-    todo!()
+    let mut lower = number;
+    let mut upper = number;
+    while !is_prime(lower) {
+        lower -= 1;
+    }
+    while !is_prime(upper) {
+        upper += 1;
+    }
+    (lower, upper)
 }
 
 #[cfg(not(tarpaulin_include))]
