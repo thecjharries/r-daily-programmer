@@ -25,7 +25,7 @@ fn is_prime(number: u32) -> bool {
     } else if 0 == number % 2 {
         return false;
     }
-    for divisor in 3..((number as f32).sqrt() as u32 + 1).step_by(2) {
+    for divisor in (3..(number as f32).sqrt() as u32 + 1).step_by(2) {
         if 0 == number % divisor {
             return false;
         }
@@ -39,7 +39,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_prime() {
+        assert_eq!(false, is_prime(1));
+        assert_eq!(true, is_prime(2));
+        assert_eq!(true, is_prime(3));
+        assert_eq!(false, is_prime(4));
+        assert_eq!(true, is_prime(5));
+        assert_eq!(false, is_prime(6));
+        assert_eq!(true, is_prime(7));
+        assert_eq!(false, is_prime(8));
+        assert_eq!(false, is_prime(9));
+        assert_eq!(false, is_prime(10));
     }
 }
