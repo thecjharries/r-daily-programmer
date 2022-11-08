@@ -33,6 +33,10 @@ fn is_prime(number: u32) -> bool {
     true
 }
 
+fn find_prime_range(number: u32) -> (u32, u32) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
