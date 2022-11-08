@@ -55,4 +55,12 @@ mod tests {
         assert_eq!(false, is_prime(9));
         assert_eq!(false, is_prime(10));
     }
+
+    #[test]
+    fn test_find_prime_range() {
+        assert_eq!((269, 271), find_prime_range(270));
+        assert_eq!((541, 541), find_prime_range(541));
+        assert_eq!((991, 997), find_prime_range(993));
+        assert_eq!((647, 653), find_prime_range(649));
+    }
 }
