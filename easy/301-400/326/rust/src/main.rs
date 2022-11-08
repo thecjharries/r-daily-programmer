@@ -17,6 +17,22 @@ fn main() {
     println!("rad");
 }
 
+fn is_prime(number: u32) -> bool {
+    if number < 2 {
+        return false;
+    } else if number == 2 {
+        return true;
+    } else if 0 == number % 2 {
+        return false;
+    }
+    for divisor in 3..((number as f32).sqrt() as u32 + 1).step_by(2) {
+        if 0 == number % divisor {
+            return false;
+        }
+    }
+    true
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
