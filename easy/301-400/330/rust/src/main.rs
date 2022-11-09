@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_bounding_rectangle(circles: Vec<(i32, i32, u32)>) -> (i32, i32, i32, i32) {
+fn find_bounding_rectangle(circles: Vec<(f32, f32, f32)>) -> (f32, f32, f32, f32) {
     todo!()
 }
 
@@ -28,6 +28,14 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            (-3.0, -5.0, 6.0, 3.0),
+            find_bounding_rectangle(vec![
+                (1.0, 1.0, 2.0),
+                (2.0, 2.0, 0.5),
+                (-1.0, -3.0, 2.0),
+                (5.0, 2.0, 1.0)
+            ])
+        );
     }
 }
