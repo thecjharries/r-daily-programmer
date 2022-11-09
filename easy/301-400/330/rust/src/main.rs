@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_bounding_rectangle(circles: Vec<(i32, i32, u32)>) -> (i32, i32, i32, i32) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
