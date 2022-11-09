@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn find_bounding_rectangle(circles: Vec<(f32, f32, f32)>) -> (f32, f32, f32, f32) {
-    todo!()
+    let mut min_x = std::f32::MAX;
+    let mut min_y = std::f32::MAX;
+    let mut max_x = std::f32::MIN;
+    let mut max_y = std::f32::MIN;
+    for (x, y, radius) in circles {
+        min_x = min_x.min(x - radius);
+        min_y = min_y.min(y - radius);
+        max_x = max_x.max(x + radius);
+        max_y = max_y.max(y + radius);
+    }
+    (min_x, min_y, max_x, max_y)
 }
 
 #[cfg(not(tarpaulin_include))]
