@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn execute_operation(a: f32, b: f32, operator: char) -> Result<f32, String> {
-    todo!()
+    match operator {
+        '+' => Ok(a + b),
+        '-' => Ok(a - b),
+        '*' => Ok(a * b),
+        '/' => {
+            if 0.0 == b {
+                Err("Cannot divide by zero".to_string())
+            } else {
+                Ok(a / b)
+            }
+        }
+        '^' => {
+            let mut result = a;
+            for _ in 1..b as usize {
+                result *= a;
+            }
+            Ok(result)
+        }
+        _ => Err(format!("Invalid operator '{}'", operator)),
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -33,10 +52,13 @@ mod tests {
         assert_eq!(Ok(2.0), execute_operation(1.0, 2.0, '*'));
         assert_eq!(Ok(0.5), execute_operation(1.0, 2.0, '/'));
         assert_eq!(
-            Err("Invalid operator".to_string()),
+            Err("Invalid operator 'a'".to_string()),
             execute_operation(1.0, 2.0, 'a')
         );
-        assert_eq!(Err("".to_string()), execute_operation(1.0, 0.0, '/'));
+        assert_eq!(
+            Err("Cannot divide by zero".to_string()),
+            execute_operation(1.0, 0.0, '/')
+        );
         assert_eq!(Ok(8.0), execute_operation(2.0, 3.0, '^'));
     }
 }
