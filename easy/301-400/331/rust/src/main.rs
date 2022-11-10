@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn execute_operation(a: f32, b: f32, operator: char) -> Result<f32, String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
