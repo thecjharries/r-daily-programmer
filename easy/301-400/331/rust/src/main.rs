@@ -27,7 +27,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_execute_operation() {
+        assert_eq!(Ok(3.0), execute_operation(1.0, 2.0, '+'));
+        assert_eq!(Ok(-1.0), execute_operation(1.0, 2.0, '-'));
+        assert_eq!(Ok(2.0), execute_operation(1.0, 2.0, '*'));
+        assert_eq!(Ok(0.5), execute_operation(1.0, 2.0, '/'));
+        assert_eq!(
+            Err("Invalid operator".to_string()),
+            execute_operation(1.0, 2.0, 'a')
+        );
+        assert_eq!(Err("".to_string()), execute_operation(1.0, 0.0, '/'));
+        assert_eq!(Ok(8.0), execute_operation(2.0, 3.0, '^'));
     }
 }
