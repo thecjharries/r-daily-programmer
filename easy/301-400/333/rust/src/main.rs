@@ -12,7 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
 use std::collections::HashMap;
+
+lazy_static! {
+    static ref REGEX: Regex = Regex::new(r"^(\d+)\s+(\d+)\s+(\d+)\s*(.*)$").unwrap();
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
