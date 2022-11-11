@@ -26,7 +26,23 @@ fn main() {
 }
 
 fn assemble_packets(data: &str) -> HashMap<u32, String> {
-    todo!()
+    let mut raw_packets: HashMap<u32, Vec<&str>> = HashMap::new();
+    for line in data.lines() {
+        let captures = REGEX.captures(line).unwrap();
+        let packet_id = captures.get(1).unwrap().as_str().parse::<u32>().unwrap();
+        let packet_index = captures.get(2).unwrap().as_str().parse::<u32>().unwrap();
+        let packet_count = captures.get(3).unwrap().as_str().parse::<u32>().unwrap();
+        let packet_data = captures.get(4).unwrap().as_str();
+        let packet = raw_packets
+            .entry(packet_id)
+            .or_insert_with(|| vec![""; packet_count as usize]);
+        packet[packet_index as usize] = packet_data;
+    }
+    let mut packets: HashMap<u32, String> = HashMap::new();
+    for (packet_id, packet) in raw_packets {
+        packets.insert(packet_id, packet.join(""));
+    }
+    packets
 }
 
 #[cfg(not(tarpaulin_include))]
