@@ -32,9 +32,8 @@ mod tests {
     fn test_stub() {
         assert_eq!(
             HashMap::from_iter(vec![
-                (1, "Hello".to_string()),
-                (2, "World".to_string()),
-                (3, "Hello World".to_string()),
+                (5181, "I've seen things you people wouldn'tbelieve. Attack ships on fire off theshoulder of Orion. I watched C-beamsglitter in the dark near the TannhäuserGate. All those moments will be lostin time, like tears in rain. Time to die.".to_string()),
+                (6220, "We have to chase him.Because he's the hero Gotham deserves, but not the one it needs right now.So we'll hunt him. Because he can take it.Because he's not a hero. He's a silent guardian. A watchful protector.A Dark Knight.".to_string()),
             ]),
             assemble_packets(
                 "6220	1	10	Because he's the hero Gotham deserves,
