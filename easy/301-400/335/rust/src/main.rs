@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_consecutive_distance_rating(input: Vec<u32>) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
