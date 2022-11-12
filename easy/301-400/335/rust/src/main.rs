@@ -12,13 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn calculate_consecutive_distance_rating(input: Vec<u32>) -> u32 {
-    todo!()
+    let mut sorted = input.clone();
+    sorted.sort();
+    let values: HashMap<&u32, u32> = HashMap::from_iter(
+        input
+            .iter()
+            .enumerate()
+            .map(|(index, value)| (value, index as u32)),
+    );
+    let mut rating: u32 = 0;
+    for index in 1..sorted.len() {
+        if 1 == sorted[index] - sorted[index - 1] {
+            let first_index = *values.get(&sorted[index - 1]).unwrap();
+            let second_index = *values.get(&sorted[index]).unwrap();
+            if first_index < second_index {
+                rating += second_index - first_index;
+            } else {
+                rating += first_index - second_index;
+            }
+        }
+    }
+    rating
 }
 
 #[cfg(not(tarpaulin_include))]
