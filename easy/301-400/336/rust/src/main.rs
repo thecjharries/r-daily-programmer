@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn cannibalize_numbers(query: u32, numbers: Vec<u32>) -> u32 {
-    todo!()
+    let mut sorted = numbers.clone();
+    sorted.sort();
+    let mut bottom = 0;
+    let mut top = sorted.len() - 1;
+    let mut result = 0;
+    while bottom < top {
+        if query <= sorted[top] {
+            result += 1;
+        } else {
+            while query > sorted[top] && bottom < top {
+                bottom += 1;
+                sorted[top] += 1;
+            }
+            if query == sorted[top] {
+                result += 1;
+            }
+        }
+        top -= 1;
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
