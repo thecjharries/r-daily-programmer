@@ -31,7 +31,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_problem1() {
+        assert_eq!(114.6, problem1());
     }
 }
