@@ -22,7 +22,7 @@ fn problem1() -> f32 {
 }
 
 fn problem2(distance_a: f32, distance_b: f32, river_length: f32) -> f32 {
-    todo!()
+    distance_a * river_length / (distance_a + distance_b)
 }
 
 #[cfg(not(tarpaulin_include))]
