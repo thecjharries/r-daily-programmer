@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn problem1() -> f32 {
-    todo!()
+    360.0 / std::f32::consts::PI
 }
 
 fn problem2(distance_a: f32, distance_b: f32, river_length: f32) -> f32 {
@@ -32,7 +32,7 @@ mod tests {
 
     #[test]
     fn test_problem1() {
-        assert_eq!(114.6, problem1());
+        assert_eq!(114.59155, problem1());
     }
 
     #[test]
