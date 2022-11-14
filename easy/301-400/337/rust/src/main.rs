@@ -34,4 +34,9 @@ mod tests {
     fn test_problem1() {
         assert_eq!(114.6, problem1());
     }
+
+    #[test]
+    fn test_problem2() {
+        assert_eq!(40.0, problem2(20.0, 30.0, 100.0));
+    }
 }
