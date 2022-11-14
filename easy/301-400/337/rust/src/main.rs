@@ -17,6 +17,14 @@ fn main() {
     println!("rad");
 }
 
+fn problem1() -> f32 {
+    todo!()
+}
+
+fn problem2(distance_a: f32, distance_b: f32, river_length: f32) -> f32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
