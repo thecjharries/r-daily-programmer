@@ -30,6 +30,8 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("Monday", determine_day_of_week(2017, 10, 30));
+        assert_eq!("Monday", determine_day_of_week(2016, 2, 29));
+        assert_eq!("Saturday", determine_day_of_week(2015, 2, 28));
     }
 }
