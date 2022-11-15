@@ -20,7 +20,8 @@ fn main() {
 }
 
 fn determine_day_of_week(year: i32, month: u32, day: u32) -> String {
-    todo!()
+    let date = NaiveDate::from_ymd_opt(year, month, day).unwrap();
+    date.format("%A").to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
