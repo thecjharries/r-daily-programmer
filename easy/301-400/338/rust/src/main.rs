@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::NaiveDate;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn determine_day_of_week(year: i32, month: u32, day: u32) -> String {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
