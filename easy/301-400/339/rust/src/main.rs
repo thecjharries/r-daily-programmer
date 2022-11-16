@@ -28,7 +28,27 @@ fn main() {
 }
 
 fn find_highest_salary(input: &str) -> String {
-    todo!()
+    let mut highest_salary = 0;
+    let mut current_name = String::new();
+    let mut highest_salary_name = String::new();
+    for line in input.lines() {
+        if let Some(info) = INFO_PATTERN.captures(line) {
+            current_name = info.name("name").unwrap().as_str().trim().to_string();
+        } else if let Some(extension) = EXTENSION_PATTERN.captures(line) {
+            let current_salary = extension
+                .name("value")
+                .unwrap()
+                .as_str()
+                .trim()
+                .parse::<u32>()
+                .unwrap();
+            if current_salary > highest_salary {
+                highest_salary = current_salary;
+                highest_salary_name = current_name.clone();
+            }
+        }
+    }
+    format!("{}, ${}", highest_salary_name, highest_salary)
 }
 
 #[cfg(not(tarpaulin_include))]
