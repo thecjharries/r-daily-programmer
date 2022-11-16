@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn find_highest_salary(input: &str) -> f32 {
+fn find_highest_salary(input: &str) -> String {
     todo!()
 }
 
@@ -27,7 +27,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_highest_salary() {
+        assert_eq!(
+            "Marcelo Candela, $47706".to_string(),
+            find_highest_salary(
+                "Boyce Calles        83460319
+::EXT::SAL 00000000000044722
+Marcelo Candela     29040821
+::EXT::JOB loser
+::EXT::SAL 00000000000047706
+Milton Camper       32541106"
+            )
+        );
     }
 }
