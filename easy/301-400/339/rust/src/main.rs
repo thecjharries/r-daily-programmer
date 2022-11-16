@@ -12,6 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
+lazy_static! {
+    static ref INFO_PATTERN: Regex =
+        Regex::new(r"^(?P<name>[^:].{19})(?P<age>\d{2})(?P<birthday>\d{6})$").unwrap();
+    static ref EXTENSION_PATTERN: Regex =
+        Regex::new(r"::EXT::(?P<name>.{4})(?P<value>.{17})").unwrap();
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
