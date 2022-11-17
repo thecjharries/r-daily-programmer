@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_first_repeated_character(input: &str) -> Result<(char, usize), String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
