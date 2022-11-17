@@ -27,7 +27,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_first_repeated_character() {
+        assert_eq!(Ok(('B', 4)), find_first_repeated_character("ABCDBE"));
+        assert_eq!(Err(String::from("")), find_first_repeated_character("ABCD"));
     }
 }
