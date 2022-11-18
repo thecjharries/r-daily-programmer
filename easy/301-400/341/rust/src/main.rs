@@ -30,6 +30,17 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            HashMap::from([
+                ("21", 2),
+                ("23", 2),
+                ("232", 2),
+                ("25", 2),
+                ("32", 4),
+                ("321", 2),
+                ("325", 2)
+            ]),
+            find_repeated_numbers("11325992321982432123259")
+        );
     }
 }
