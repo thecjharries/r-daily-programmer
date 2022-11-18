@@ -20,7 +20,23 @@ fn main() {
 }
 
 fn find_repeated_numbers(input: &str) -> HashMap<String, u32> {
-    todo!()
+    let mut repeated: HashMap<String, u32> = HashMap::new();
+    for length in 2..input.len() {
+        for index in 0..input.len() - length {
+            let number = input[index..index + length].to_string();
+            repeated
+                .entry(number)
+                .and_modify(|count| *count += 1)
+                .or_insert(1);
+        }
+    }
+    let mut output: HashMap<String, u32> = HashMap::new();
+    for (number, count) in repeated.iter_mut() {
+        if 1 < *count {
+            output.insert(number.to_string(), *count);
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -32,13 +48,13 @@ mod tests {
     fn test_stub() {
         assert_eq!(
             HashMap::from([
-                ("21", 2),
-                ("23", 2),
-                ("232", 2),
-                ("25", 2),
-                ("32", 4),
-                ("321", 2),
-                ("325", 2)
+                ("21".to_string(), 2),
+                ("23".to_string(), 2),
+                ("232".to_string(), 2),
+                ("25".to_string(), 2),
+                ("32".to_string(), 4),
+                ("321".to_string(), 2),
+                ("325".to_string(), 2)
             ]),
             find_repeated_numbers("11325992321982432123259")
         );
