@@ -12,6 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Polynomial {
+    coefficients: Vec<f32>,
+}
+
+impl Polynomial {
+    fn new(coefficients: Vec<f32>) -> Polynomial {
+        Polynomial { coefficients }
+    }
+
+    fn degree(&self) -> usize {
+        for (index, coefficient) in self.coefficients.iter().enumerate().rev() {
+            if 0.0 != *coefficient {
+                return index;
+            }
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
