@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Clone)]
 struct Polynomial {
     coefficients: Vec<f32>,
 }
@@ -27,23 +28,33 @@ impl Polynomial {
                 return index;
             }
         }
+        0
     }
 
     fn divide(&self, divisor: &Polynomial) -> (Polynomial, Polynomial) {
-        let mut quotient = Polynomial::new(vec![0.0; self.degree() - divisor.degree() + 1]);
         let mut remainder = self.clone();
-        while remainder.degree() >= divisor.degree() {
-            let degree_difference = remainder.degree() - divisor.degree();
-            let coefficient =
-                remainder.coefficients[remainder.degree()] / divisor.coefficients[divisor.degree()];
-            quotient.coefficients[degree_difference] = coefficient;
-            let mut new_remainder = Polynomial::new(vec![0.0; degree_difference]);
-            for (index, coefficient) in divisor.coefficients.iter().enumerate() {
-                new_remainder.coefficients[index] = coefficient * coefficient;
-            }
-            remainder = remainder - new_remainder;
+        if divisor.degree() > self.degree() {
+            return (Polynomial::new(vec![0.0]), remainder);
         }
-        (quotient, remainder)
+        let mut quotient = Polynomial::new(vec![0.0; self.degree() - divisor.degree() + 1]);
+        while remainder.degree() >= divisor.degree() {
+            let mut denominator = Polynomial::new(vec![0.0; remainder.degree() + 1]);
+            for (index, coefficient) in divisor.coefficients
+                [remainder.degree() - divisor.degree()..]
+                .iter()
+                .enumerate()
+            {
+                denominator.coefficients[index] = *coefficient;
+            }
+            quotient.coefficients[remainder.degree() - divisor.degree()] =
+                remainder.coefficients[remainder.degree()] / denominator.coefficients[0];
+            for index in 0..denominator.degree() {
+                denominator.coefficients[index] *=
+                    quotient.coefficients[remainder.degree() - divisor.degree()];
+                remainder.coefficients[index] -= denominator.coefficients[index];
+            }
+        }
+        (quotient, remainder.clone())
     }
 }
 
@@ -53,7 +64,10 @@ fn main() {
 }
 
 fn divide_polynomials(numerator: Vec<f32>, denominator: Vec<f32>) -> (Vec<f32>, Vec<f32>) {
-    todo!()
+    let numerator_polynomial = Polynomial::new(numerator);
+    let denominator_polynomial = Polynomial::new(denominator);
+    let (quotient, remainder) = numerator_polynomial.divide(&denominator_polynomial);
+    (quotient.coefficients, remainder.coefficients)
 }
 
 #[cfg(not(tarpaulin_include))]
