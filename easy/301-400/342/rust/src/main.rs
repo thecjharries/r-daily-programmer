@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use polynomen::Poly;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn divide(first: Vec<f32>, second: Vec<f32>) -> (Poly, Poly) {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
