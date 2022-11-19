@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn divide_polynomials(numerator: Vec<f32>, denominator: Vec<f32>) -> (Vec<f32>, Vec<f32>) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
