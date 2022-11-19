@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_divide() {
-        assert_eq!(2, 2);
+        assert_eq!(
+            divide_polynomials(vec![3., -6., 2., 4.], vec![-3., 1.]),
+            (vec![36., 14., 4.], vec![111.]),
+        );
     }
 }
