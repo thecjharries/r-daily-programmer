@@ -28,6 +28,23 @@ impl Polynomial {
             }
         }
     }
+
+    fn divide(&self, divisor: &Polynomial) -> (Polynomial, Polynomial) {
+        let mut quotient = Polynomial::new(vec![0.0; self.degree() - divisor.degree() + 1]);
+        let mut remainder = self.clone();
+        while remainder.degree() >= divisor.degree() {
+            let degree_difference = remainder.degree() - divisor.degree();
+            let coefficient =
+                remainder.coefficients[remainder.degree()] / divisor.coefficients[divisor.degree()];
+            quotient.coefficients[degree_difference] = coefficient;
+            let mut new_remainder = Polynomial::new(vec![0.0; degree_difference]);
+            for (index, coefficient) in divisor.coefficients.iter().enumerate() {
+                new_remainder.coefficients[index] = coefficient * coefficient;
+            }
+            remainder = remainder - new_remainder;
+        }
+        (quotient, remainder)
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
