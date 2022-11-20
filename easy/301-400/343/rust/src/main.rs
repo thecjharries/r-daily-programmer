@@ -31,6 +31,14 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_build_major_scale() {
+        assert_eq!(
+            vec!["D", "E", "F#", "G", "A", "B", "C#"],
+            build_major_scale("D")
+        );
+    }
+
+    #[test]
     fn test_note() {
         assert_eq!("C".to_string(), note('C', "Do"));
         assert_eq!("D".to_string(), note('C', "Re"));
