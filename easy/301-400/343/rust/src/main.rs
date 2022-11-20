@@ -58,10 +58,10 @@ mod tests {
 
     #[test]
     fn test_note() {
-        assert_eq!("C".to_string(), note('C', "Do"));
-        assert_eq!("D".to_string(), note('C', "Re"));
-        assert_eq!("E".to_string(), note('C', "Mi"));
-        assert_eq!("F#".to_string(), note('D', "Mi"));
-        assert_eq!("D#".to_string(), note('A', "Fa"));
+        assert_eq!("C".to_string(), note("C", "Do"));
+        assert_eq!("D".to_string(), note("C", "Re"));
+        assert_eq!("E".to_string(), note("C", "Mi"));
+        assert_eq!("F#".to_string(), note("D", "Mi"));
+        assert_eq!("D#".to_string(), note("A#", "Fa"));
     }
 }
