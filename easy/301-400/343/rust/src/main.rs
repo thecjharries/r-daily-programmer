@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const CHROMATIC_SCALE: [&'static str; 12] = [
+    "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",
+];
+const SOLFEGE_SCALE: [&'static str; 7] = ["Do", "Re", "Mi", "Fa", "Sol", "La", "Ti"];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
