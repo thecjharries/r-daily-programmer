@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_major_scale(root: &str) -> Vec<String> {
+    todo!()
+}
+
 fn note(scale: char, solfege: &str) -> String {
     todo!()
 }
