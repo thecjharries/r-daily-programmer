@@ -23,7 +23,15 @@ fn main() {
 }
 
 fn build_major_scale(root: &str) -> Vec<String> {
-    todo!()
+    let mut scale = Vec::new();
+    let root_index = CHROMATIC_SCALE
+        .iter()
+        .position(|&note| note == root)
+        .unwrap();
+    for index in vec![0, 2, 4, 5, 7, 9, 11] {
+        scale.push(CHROMATIC_SCALE[(root_index + index) % 12].to_string());
+    }
+    scale
 }
 
 fn note(scale: char, solfege: &str) -> String {
