@@ -34,8 +34,13 @@ fn build_major_scale(root: &str) -> Vec<String> {
     scale
 }
 
-fn note(scale: char, solfege: &str) -> String {
-    todo!()
+fn note(scale: &str, solfege: &str) -> String {
+    let major_scale = build_major_scale(scale);
+    let solfege_index = SOLFEGE_SCALE
+        .iter()
+        .position(|&note| note == solfege)
+        .unwrap();
+    major_scale[solfege_index].to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
