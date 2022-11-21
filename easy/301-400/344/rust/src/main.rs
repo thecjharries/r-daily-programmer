@@ -18,7 +18,25 @@ fn main() {
 }
 
 fn determine_baum_term(number: u128) -> u8 {
-    todo!()
+    if 0 == number {
+        return 1;
+    }
+    let number_binary = format!("{:b}", number);
+    let mut current_zero_count = 0;
+    for character in number_binary.chars() {
+        if '0' == character {
+            current_zero_count += 1;
+        } else {
+            if 1 == current_zero_count {
+                return 0;
+            }
+            current_zero_count = 0;
+        }
+    }
+    if 1 == current_zero_count {
+        return 0;
+    }
+    1
 }
 
 #[cfg(not(tarpaulin_include))]

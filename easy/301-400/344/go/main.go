@@ -32,7 +32,7 @@ func determineBaumTerm(input int) int {
 	asBinary := strconv.FormatInt(int64(input), 2)
 	currentRunLength := 0
 	for _, character := range asBinary {
-		if character == '0' {
+		if '0' == character {
 			currentRunLength++
 		} else {
 			if 1 == currentRunLength%2 {
