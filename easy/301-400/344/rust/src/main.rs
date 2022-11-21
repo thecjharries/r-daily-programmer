@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_determine_baum_term() {
+        assert_eq!(1, determine_baum_term(0));
+        assert_eq!(1, determine_baum_term(4));
+        assert_eq!(0, determine_baum_term(5));
+        assert_eq!(0, determine_baum_term(19611206));
     }
 }
