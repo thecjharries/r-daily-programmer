@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_baum_term(number: u128) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
