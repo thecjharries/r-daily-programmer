@@ -29,7 +29,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_word_mapping() {
+        assert_eq!(
+            HashMap::from_iter(vec![
+                ('D', 7),
+                ('E', 5),
+                ('M', 1),
+                ('N', 6),
+                ('O', 0),
+                ('R', 8),
+                ('S', 9),
+                ('Y', 2),
+            ]),
+            find_word_mapping(vec!["SEND", "MORE", "MONEY"])
+        );
     }
 }
