@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn find_word_mapping(words: Vec<&str>) -> HashMap<char, usize> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
