@@ -17,6 +17,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn determine_baum_term(number: u128) -> u8 {
     if 0 == number {
         return 1;
