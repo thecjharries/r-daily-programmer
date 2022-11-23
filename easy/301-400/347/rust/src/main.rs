@@ -28,6 +28,11 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(3, compute_light_time(vec![(1, 3), (2, 3), (4, 5)]));
+        assert_eq!(7, compute_light_time(vec![(2, 4), (3, 6), (1, 3), (6, 8)]));
+        assert_eq!(
+            5,
+            compute_light_time(vec![(6, 8), (5, 8), (8, 9), (5, 7), (4, 7)])
+        );
     }
 }
