@@ -18,7 +18,21 @@ fn main() {
 }
 
 fn compute_light_time(visitor_times: Vec<(u8, u8)>) -> u8 {
-    todo!()
+    let mut visitor_times = visitor_times;
+    visitor_times.sort_by(|a, b| a.0.cmp(&b.0).then_with(|| a.1.cmp(&b.1)));
+    let mut min = 0;
+    let mut max = 0;
+    let mut total = 0;
+    for (arrival, departure) in visitor_times {
+        if arrival > max {
+            total += max - min;
+            min = arrival;
+            max = departure;
+        } else if departure > max {
+            max = departure;
+        }
+    }
+    total + max - min
 }
 
 #[cfg(not(tarpaulin_include))]
