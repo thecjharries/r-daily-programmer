@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_light_time(visitor_times: Vec<(u8, u8)>) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
