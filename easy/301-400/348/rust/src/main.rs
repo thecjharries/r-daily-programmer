@@ -31,7 +31,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_months_to_take_over() {
+        assert_eq!(32, compute_months_to_take_over(2, 4, 1000000000));
+        assert_eq!(36, compute_months_to_take_over(2, 4, 15000000000));
     }
 }
