@@ -22,7 +22,21 @@ fn compute_months_to_take_over(
     initial_female: u128,
     world_domination: u128,
 ) -> usize {
-    todo!()
+    let mut males: Vec<u128> = vec![0; 96];
+    males[2] = initial_male;
+    let mut females: Vec<u128> = vec![0; 96];
+    females[2] = initial_female;
+    let mut months_needed: usize = 0;
+    while world_domination > males.iter().sum::<u128>() + females.iter().sum::<u128>() {
+        months_needed += 1;
+        let new_males = females[4..].iter().map(|&x| x * 5).sum();
+        let new_females = females[4..].iter().map(|&x| x * 9).sum();
+        males.rotate_right(1);
+        males[0] = new_males;
+        females.rotate_right(1);
+        females[0] = new_females;
+    }
+    months_needed
 }
 
 #[cfg(not(tarpaulin_include))]
