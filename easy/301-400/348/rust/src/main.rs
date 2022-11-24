@@ -17,6 +17,14 @@ fn main() {
     println!("rad");
 }
 
+fn compute_months_to_take_over(
+    initial_male: u128,
+    initial_female: u128,
+    world_domination: u128,
+) -> usize {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
