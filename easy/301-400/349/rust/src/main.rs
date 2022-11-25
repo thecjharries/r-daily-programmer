@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_change(needed: u32, available: Vec<u32>, max_coins: usize) -> Vec<u32> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
