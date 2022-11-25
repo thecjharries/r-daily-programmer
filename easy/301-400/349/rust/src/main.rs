@@ -12,13 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn determine_change(needed: u32, available: Vec<u32>, max_coins: usize) -> Vec<u32> {
-    todo!()
+    let mut result = Vec::new();
+    for size in 1..=max_coins {
+        for combination in available.iter().combinations(size) {
+            if combination.iter().map(|&x| *x).sum::<u32>() == needed {
+                result = combination.iter().map(|&x| *x).collect();
+                break;
+            }
+        }
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
