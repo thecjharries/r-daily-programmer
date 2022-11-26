@@ -18,9 +18,9 @@ fn main() {
 }
 
 fn shelve_books(shelves: Vec<u32>, books: Vec<(u32, &str)>) -> Result<u32, String> {
-    for book in books {
+    for book in books.iter() {
         let mut found_shelf = false;
-        for (index, shelf) in shelves.iter().enumerate() {
+        for shelf in shelves.iter() {
             if book.0 <= *shelf {
                 found_shelf = true;
                 break;
@@ -29,6 +29,11 @@ fn shelve_books(shelves: Vec<u32>, books: Vec<(u32, &str)>) -> Result<u32, Strin
         if !found_shelf {
             return Err("Not enough space".to_string());
         }
+    }
+    let total_space = shelves.iter().sum::<u32>();
+    let total_book_space = books.iter().map(|book| book.0).sum::<u32>();
+    if total_book_space > total_space {
+        return Err("Not enough space".to_string());
     }
     Ok(2)
 }
@@ -53,6 +58,20 @@ mod tests {
                 vec![500, 500, 500],
                 vec![(1309, "a"), (303, "b"), (399, "c")]
             )
-        )
+        );
+        assert_eq!(
+            Err("Not enough space".to_string()),
+            shelve_books(
+                vec![100, 100],
+                vec![
+                    (50, "a"),
+                    (50, "b"),
+                    (50, "c"),
+                    (50, "d"),
+                    (50, "e"),
+                    (50, "f")
+                ]
+            )
+        );
     }
 }
