@@ -27,7 +27,20 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_shelve_books() {
+        assert_eq!(
+            Ok(2),
+            shelve_books(
+                vec![150, 150, 300, 150, 150],
+                vec![(70, "a"), (76, "b"), (99, "c"), (75, "d"), (105, "e")]
+            )
+        );
+        assert_eq!(
+            Err("Not enough space".to_string()),
+            shelve_books(
+                vec![500, 500, 500],
+                vec![(1309, "a"), (303, "b"), (399, "c")]
+            )
+        )
     }
 }
