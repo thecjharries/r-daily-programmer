@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn shelve_books(shelves: Vec<u32>, books: Vec<(u32, &str)>) -> Result<u32, String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
