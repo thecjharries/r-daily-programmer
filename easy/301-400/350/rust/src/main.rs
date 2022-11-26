@@ -94,5 +94,9 @@ mod tests {
                 ]
             )
         );
+        assert_eq!(
+            Err("Not enough space".to_string()),
+            shelve_books(vec![100, 100], vec![(60, "a"), (60, "b"), (41, "c")])
+        );
     }
 }
