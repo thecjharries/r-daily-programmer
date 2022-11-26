@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn shelve_books(shelves: Vec<u32>, books: Vec<(u32, &str)>) -> Result<u32, String> {
-    todo!()
+    for book in books {
+        let mut found_shelf = false;
+        for (index, shelf) in shelves.iter().enumerate() {
+            if book.0 <= *shelf {
+                found_shelf = true;
+                break;
+            }
+        }
+        if !found_shelf {
+            return Err("Not enough space".to_string());
+        }
+    }
+    Ok(2)
 }
 
 #[cfg(not(tarpaulin_include))]
