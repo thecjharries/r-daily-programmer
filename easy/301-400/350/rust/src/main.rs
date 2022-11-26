@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -35,7 +37,26 @@ fn shelve_books(shelves: Vec<u32>, books: Vec<(u32, &str)>) -> Result<u32, Strin
     if total_book_space > total_space {
         return Err("Not enough space".to_string());
     }
-    Ok(2)
+    for combination in shelves.iter().combinations(shelves.len()) {
+        let mut book_index = 0;
+        let mut shelf_index = 0;
+        let mut current_shelf_size = *combination[shelf_index];
+        while book_index < books.len() && shelf_index < combination.len() {
+            if books[book_index].0 <= current_shelf_size {
+                current_shelf_size -= books[book_index].0;
+                book_index += 1;
+            } else {
+                shelf_index += 1;
+                if shelf_index < combination.len() {
+                    current_shelf_size = *combination[shelf_index];
+                }
+            }
+            if book_index == books.len() {
+                return Ok(shelf_index as u32 + 1);
+            }
+        }
+    }
+    Err("Not enough space".to_string())
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -46,7 +67,7 @@ mod tests {
     #[test]
     fn test_shelve_books() {
         assert_eq!(
-            Ok(2),
+            Ok(3),
             shelve_books(
                 vec![150, 150, 300, 150, 150],
                 vec![(70, "a"), (76, "b"), (99, "c"), (75, "d"), (105, "e")]
