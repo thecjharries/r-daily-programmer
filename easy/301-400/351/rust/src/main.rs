@@ -29,7 +29,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_score_cricket_inning() {
+        assert_eq!(
+            [
+                ("P1".to_string(), 7),
+                ("P2".to_string(), 2),
+                ("P3".to_string(), 9),
+                ("Extras".to_string(), 2)
+            ]
+            .iter()
+            .cloned()
+            .collect(),
+            score_cricket_inning("1.2wW6.2b34")
+        )
     }
 }
