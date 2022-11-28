@@ -29,7 +29,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_to_base_62() {
+        assert_eq!("O44", convert_to_base_62(15674));
+        assert_eq!("bDcRfbr63n8", convert_to_base_62(7026425611433322325));
+        assert_eq!("9OM", convert_to_base_62(187621));
+        assert_eq!("3n26g", convert_to_base_62(237860461));
+        assert_eq!("B4b9", convert_to_base_62(2187521));
+        assert_eq!("sS4", convert_to_base_62(18752));
     }
 }
