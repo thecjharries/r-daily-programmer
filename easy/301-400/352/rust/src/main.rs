@@ -20,7 +20,18 @@ fn main() {
 }
 
 fn convert_to_base_62(number: u128) -> String {
-    todo!()
+    let mut result = String::new();
+    let mut remainder = number;
+    while remainder > 0 {
+        result.push(
+            BASE_62_ALPHABET
+                .chars()
+                .nth((remainder % 62) as usize)
+                .unwrap(),
+        );
+        remainder /= 62;
+    }
+    result.chars().collect()
 }
 
 #[cfg(not(tarpaulin_include))]
