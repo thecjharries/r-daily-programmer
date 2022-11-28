@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_base_62(number: u128) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
