@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn determine_hamming_distance(first: &str, second: &str) -> u32 {
-    todo!()
+    first
+        .chars()
+        .zip(second.chars())
+        .filter(|(first_char, second_char)| first_char != second_char)
+        .count() as u32
 }
 
 #[cfg(not(tarpaulin_include))]
