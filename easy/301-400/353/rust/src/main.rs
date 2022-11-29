@@ -25,6 +25,10 @@ fn determine_hamming_distance(first: &str, second: &str) -> u32 {
         .count() as u32
 }
 
+fn find_center_word(words: Vec<&str>) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
