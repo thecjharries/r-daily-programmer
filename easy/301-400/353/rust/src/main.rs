@@ -26,7 +26,22 @@ fn determine_hamming_distance(first: &str, second: &str) -> u32 {
 }
 
 fn find_center_word(words: Vec<&str>) -> String {
-    todo!()
+    let mut minimum_distance = u32::MAX;
+    let mut center_word = String::new();
+    for (index, word) in words.iter().enumerate() {
+        let mut distance = 0;
+        for (other_index, other_word) in words.iter().enumerate() {
+            if index == other_index {
+                continue;
+            }
+            distance += determine_hamming_distance(word, other_word);
+        }
+        if distance < minimum_distance {
+            minimum_distance = distance;
+            center_word = word.to_string();
+        }
+    }
+    center_word
 }
 
 #[cfg(not(tarpaulin_include))]
