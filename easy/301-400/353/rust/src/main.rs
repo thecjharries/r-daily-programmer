@@ -38,4 +38,70 @@ mod tests {
     fn test_determine_hamming_distance() {
         assert_eq!(8, determine_hamming_distance("CTCCATCACAC", "AATATCTACAT"))
     }
+
+    #[test]
+    fn test_find_center_word() {
+        assert_eq!(
+            "ATTAAATAACT",
+            find_center_word(vec![
+                "ATCAATATCAA",
+                "ATTAAATAACT",
+                "AATCCTTAAAC",
+                "CTACTTTCTTT",
+                "TCCCATCCTTT",
+                "ACTTCAATATA",
+            ])
+        );
+        assert_eq!(
+            "AATATCTACAT",
+            find_center_word(vec![
+                "CTCCATCACAC",
+                "AATATCTACAT",
+                "ACATTCTCCAT",
+                "CCTCCCCACTC",
+            ])
+        );
+        assert_eq!(
+            "ATTCTACAACT",
+            find_center_word(vec![
+                "AACACCCTATA",
+                "CTTCATCCACA",
+                "TTTCAATTTTC",
+                "ACAATCAAACC",
+                "ATTCTACAACT",
+                "ATTCCTTATTC",
+                "ACTTCTCTATT",
+                "TAAAACTCACC",
+                "CTTTTCCCACC",
+                "ACCTTTTCTCA",
+                "TACCACTACTT",
+            ])
+        );
+        assert_eq!(
+            "TTAACTCCCATTATATATTATTAATTTACCC",
+            find_center_word(vec![
+                "ACAAAATCCTATCAAAAACTACCATACCAAT",
+                "ACTATACTTCTAATATCATTCATTACACTTT",
+                "TTAACTCCCATTATATATTATTAATTTACCC",
+                "CCAACATACTAAACTTATTTTTTAACTACCA",
+                "TTCTAAACATTACTCCTACACCTACATACCT",
+                "ATCATCAATTACCTAATAATTCCCAATTTAT",
+                "TCCCTAATCATACCATTTTACACTCAAAAAC",
+                "AATTCAAACTTTACACACCCCTCTCATCATC",
+                "CTCCATCTTATCATATAATAAACCAAATTTA",
+                "AAAAATCCATCATTTTTTAATTCCATTCCTT",
+                "CCACTCCAAACACAAAATTATTACAATAACA",
+                "ATATTTACTCACACAAACAATTACCATCACA",
+                "TTCAAATACAAATCTCAAAATCACCTTATTT",
+                "TCCTTTAACAACTTCCCTTATCTATCTATTC",
+                "CATCCATCCCAAAACTCTCACACATAACAAC",
+                "ATTACTTATACAAAATAACTACTCCCCAATA",
+                "TATATTTTAACCACTTACCAAAATCTCTACT",
+                "TCTTTTATATCCATAAATCCAACAACTCCTA",
+                "CTCTCAAACATATATTTCTATAACTCTTATC",
+                "ACAAATAATAAAACATCCATTTCATTCATAA",
+                "CACCACCAAACCTTATAATCCCCAACCACAC",
+            ])
+        );
+    }
 }
