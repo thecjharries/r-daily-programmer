@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn determine_hamming_distance(first: &str, second: &str) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
