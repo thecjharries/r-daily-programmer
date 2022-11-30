@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_smallest_divisor_sum() {
+        assert_eq!(7, find_smallest_divisor_sum(12));
+        assert_eq!(43, find_smallest_divisor_sum(456));
+        assert_eq!(4568, find_smallest_divisor_sum(4567));
+        assert_eq!(838, find_smallest_divisor_sum(12345));
     }
 }
