@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_smallest_divisor_sum(input: u32) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
