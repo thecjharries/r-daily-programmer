@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn find_smallest_divisor_sum(input: u32) -> u32 {
-    todo!()
+    let mut output = 1 + input;
+    for divisor in 2..((input as f32).sqrt() as u32 + 1) {
+        if 0 == input % divisor {
+            let possible_sum = divisor + input / divisor;
+            if possible_sum < output {
+                output = possible_sum;
+            }
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
