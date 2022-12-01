@@ -12,13 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const ALPHABET: &str = "abcdefghijklmnopqrstuvwxyz";
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn encrypt_alphabet_cipher(keyword: &str, plaintext: &str) -> String {
-    todo!()
+    let mut ciphertext = String::new();
+    let mut keyword_index = 0;
+    for character in plaintext.chars() {
+        let keyword_character = keyword.chars().nth(keyword_index).unwrap();
+        let keyword_character_index = ALPHABET.find(keyword_character).unwrap();
+        let character_index = ALPHABET.find(character).unwrap();
+        let encrypted_character = ALPHABET
+            .chars()
+            .nth((character_index + keyword_character_index) % 26)
+            .unwrap();
+        ciphertext.push(encrypted_character);
+        keyword_index = (keyword_index + 1) % keyword.len();
+    }
+    ciphertext
 }
 
 #[cfg(not(tarpaulin_include))]
