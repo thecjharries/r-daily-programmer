@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn encrypt_alphabet_cipher(keyword: &str, plaintext: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
