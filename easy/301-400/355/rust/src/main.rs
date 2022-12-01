@@ -27,7 +27,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_encrypt_alphabet_cipher() {
+        assert_eq!(
+            "uvrufrsryherugdxjsgozogpjralhvg".to_string(),
+            encrypt_alphabet_cipher("bond", "theredfoxtrotsquietlyatmidnight")
+        );
+        assert_eq!(
+            "flrlrkfnbuxfrqrgkefckvsa".to_string(),
+            encrypt_alphabet_cipher("train", "murderontheorientexpress")
+        );
+        assert_eq!(
+            "zhvpsyksjqypqiewsgnexdvqkncdwgtixkx".to_string(),
+            encrypt_alphabet_cipher("garden", "themolessnuckintothegardenlastnight")
+        );
     }
 }
