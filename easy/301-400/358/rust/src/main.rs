@@ -12,6 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref SEVEN_DIGIT_TO_NUMBER: HashMap<String, char> = HashMap::from_iter([
+        ("   \n  |\n  |".to_string(), '1'),
+        (" _ \n _|\n|_ ".to_string(), '2'),
+        (" _ \n _|\n _|".to_string(), '3'),
+        ("   \n|_|\n  |".to_string(), '4'),
+        (" _ \n|_ \n _|".to_string(), '5'),
+        (" _ \n|_ \n|_|".to_string(), '6'),
+        (" _ \n  |\n  |".to_string(), '7'),
+        (" _ \n|_|\n|_|".to_string(), '8'),
+        (" _ \n|_|\n _|".to_string(), '9'),
+        (" _ \n| |\n|_|".to_string(), '0'),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
