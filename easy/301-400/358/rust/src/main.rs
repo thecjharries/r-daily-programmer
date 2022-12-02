@@ -35,7 +35,7 @@ fn main() {
     println!("rad");
 }
 
-fn convert_seven_digit_to_number(seven_digit: &str) -> char {
+fn convert_seven_digit_to_number(seven_digit: &str) -> String {
     todo!()
 }
 
@@ -45,7 +45,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_convert_seven_digit_to_number() {
+        assert_eq!("123456789".to_string(), convert_seven_digit_to_number("    _  _     _  _  _  _  _ \n  | _| _||_||_ |_   ||_||_|\n  ||_  _|  | _||_|  ||_| _|"));
+        assert_eq!("433805825".to_string(), convert_seven_digit_to_number("    _  _  _  _  _  _  _  _ \n|_| _| _||_|| ||_ |_| _||_ \n  | _| _||_||_| _||_||_  _|"));
     }
 }
