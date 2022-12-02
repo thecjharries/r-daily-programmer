@@ -36,7 +36,19 @@ fn main() {
 }
 
 fn convert_seven_digit_to_number(seven_digit: &str) -> String {
-    todo!()
+    let mut output = String::new();
+    let exploded = seven_digit
+        .split("\n")
+        .map(|line| line.chars().collect::<Vec<char>>())
+        .collect::<Vec<Vec<char>>>();
+    for index in 0..(exploded[0].len() / 3) {
+        let mut seven_digit: Vec<String> = Vec::new();
+        for line in &exploded {
+            seven_digit.push(line[index * 3..(index + 1) * 3].iter().collect());
+        }
+        output.push(*SEVEN_DIGIT_TO_NUMBER.get(&seven_digit.join("\n")).unwrap());
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
