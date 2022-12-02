@@ -35,6 +35,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_seven_digit_to_number(seven_digit: &str) -> char {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
