@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_dragon_curve_term(term: usize) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
