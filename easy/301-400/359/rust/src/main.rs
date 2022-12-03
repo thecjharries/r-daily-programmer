@@ -12,13 +12,43 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use memoize::memoize;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref CONVERSION_MAP: HashMap<&'static str, &'static str> = HashMap::from_iter([
+        ("1", "110"),
+        ("0", "100"),
+        ("11", "1101"),
+        ("01", "1001"),
+        ("10", "1100"),
+        ("00", "1000"),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
+#[memoize]
 fn get_dragon_curve_term(term: usize) -> String {
-    todo!()
+    if 1 >= term {
+        return "1".to_string();
+    }
+    let mut output = String::new();
+    let previous = get_dragon_curve_term(term - 1);
+    println!("{}", previous.len() / 2);
+    for index in 0..previous.len() / 2 {
+        output.push_str(
+            CONVERSION_MAP
+                .get(&previous[2 * index..2 * index + 2])
+                .unwrap(),
+        );
+    }
+    output.push_str(CONVERSION_MAP.get(&previous[previous.len() - 1..]).unwrap());
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -28,7 +58,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!("1".to_string(), get_dragon_curve_term(-1));
         assert_eq!("1".to_string(), get_dragon_curve_term(1));
         assert_eq!("110", get_dragon_curve_term(2));
         assert_eq!("1101100".to_string(), get_dragon_curve_term(3));
