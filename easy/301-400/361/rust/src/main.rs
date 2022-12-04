@@ -30,6 +30,19 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            build_score("abcde"),
+            [('a', 1), ('b', 1), ('c', 1), ('d', 1), ('e', 1)]
+                .iter()
+                .cloned()
+                .collect()
+        );
+        assert_eq!(
+            build_score("dbbaCEDbdAacCEAadcB"),
+            [('a', 1), ('b', 2), ('c', 0), ('d', 2), ('e', -2)]
+                .iter()
+                .cloned()
+                .collect()
+        );
     }
 }
