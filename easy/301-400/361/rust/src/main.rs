@@ -20,7 +20,17 @@ fn main() {
 }
 
 fn build_score(input: &str) -> HashMap<char, i32> {
-    todo!()
+    let mut scores: HashMap<char, i32> = HashMap::new();
+    for character in input.chars() {
+        let mut score = 0;
+        if character.is_uppercase() {
+            score -= 1;
+        } else {
+            score += 1;
+        }
+        scores.entry(character.to_ascii_lowercase()).and_modify(|value| *value += score).or_insert(score);
+    }
+    scores
 }
 
 #[cfg(not(tarpaulin_include))]
