@@ -18,7 +18,21 @@ fn main() {
 }
 
 fn check_rule(word: &str) -> bool {
-    todo!()
+    if word.len() < 3 {
+        return true;
+    }
+    let characters = word.chars().collect::<Vec<char>>();
+    for index in 0..characters.len() - 2 {
+        if 'c' == characters[index] && 'i' == characters[index + 1] && 'e' == characters[index + 2]
+        {
+            return false;
+        }
+        if 'c' != characters[index] && 'e' == characters[index + 1] && 'i' == characters[index + 2]
+        {
+            return false;
+        }
+    }
+    true
 }
 
 #[cfg(not(tarpaulin_include))]
