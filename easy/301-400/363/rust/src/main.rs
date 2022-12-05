@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn check_rule(word: &str) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
