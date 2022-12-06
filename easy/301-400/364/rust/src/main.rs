@@ -28,7 +28,24 @@ fn main() {
 }
 
 fn roll_dice<R: Rng>(dice: &str, rng: &mut R) -> u32 {
-    todo!()
+    let captures = DICE_PATTERN.captures(dice).unwrap();
+    let count = captures
+        .name("count")
+        .unwrap()
+        .as_str()
+        .parse::<u32>()
+        .unwrap();
+    let sides = captures
+        .name("sides")
+        .unwrap()
+        .as_str()
+        .parse::<u32>()
+        .unwrap();
+    let mut output = 0;
+    for _ in 0..count {
+        output += rng.gen_range(1..=sides);
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
