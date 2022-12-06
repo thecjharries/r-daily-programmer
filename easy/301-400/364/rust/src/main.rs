@@ -27,6 +27,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn roll_dice<R: Rng>(dice: &str, rng: &mut R) -> u32 {
     let captures = DICE_PATTERN.captures(dice).unwrap();
     let count = captures
