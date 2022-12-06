@@ -13,6 +13,8 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
+use rand::prelude::*;
+use rand::Rng;
 use regex::Regex;
 
 lazy_static! {
@@ -22,6 +24,10 @@ lazy_static! {
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn roll_dice<R: Rng>(dice: &str, rng: &mut R) -> u32 {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
