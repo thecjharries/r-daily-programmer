@@ -55,12 +55,12 @@ mod tests {
 
     #[test]
     fn test_roll_dice() {
-        assert_eq!(0, roll_dice("5d12", &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(0, roll_dice("6d4", &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(0, roll_dice("1d2", &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(0, roll_dice("1d8", &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(0, roll_dice("3d6", &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(0, roll_dice("4d20", &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(0, roll_dice("100d100", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(25, roll_dice("5d12", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(13, roll_dice("6d4", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(1, roll_dice("1d2", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(2, roll_dice("1d8", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(8, roll_dice("3d6", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(24, roll_dice("4d20", &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(4852, roll_dice("100d100", &mut Pcg64::seed_from_u64(0)));
     }
 }
