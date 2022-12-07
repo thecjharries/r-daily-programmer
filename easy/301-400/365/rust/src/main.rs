@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn up_arrow(a: f32, b: f32, count: usize) -> f32 {
-    todo!()
+    if 1 == count {
+        return a.powf(b);
+    }
+    if 0.0 == b {
+        return 1.0;
+    }
+    up_arrow(a, up_arrow(a, b - 1.0, count), count - 1)
 }
 
 #[cfg(not(tarpaulin_include))]
