@@ -28,6 +28,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(up_arrow(2.0, 4.0, 1), 16.0);
+        assert_eq!(up_arrow(2.0, 4.0, 2), 65536.0);
     }
 }
