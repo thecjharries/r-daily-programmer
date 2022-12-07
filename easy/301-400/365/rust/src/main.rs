@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn up_arrow(a: f32, b: f32, count: usize) -> f32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
