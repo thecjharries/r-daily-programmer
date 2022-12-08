@@ -18,7 +18,15 @@ fn main() {
 }
 
 fn funnel(first: &str, second: &str) -> bool {
-    todo!()
+    if first.len() != second.len() + 1 {
+        return false;
+    }
+    for index in 0..first.len() {
+        if first[..index].to_string() + &first[index + 1..] == second {
+            return true;
+        }
+    }
+    false
 }
 
 #[cfg(not(tarpaulin_include))]
