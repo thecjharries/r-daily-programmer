@@ -28,6 +28,11 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(true, funnel("leave", "eave"));
+        assert_eq!(true, funnel("reset", "rest"));
+        assert_eq!(true, funnel("dragoon", "dragon"));
+        assert_eq!(false, funnel("eave", "leave"));
+        assert_eq!(false, funnel("sleet", "lets"));
+        assert_eq!(false, funnel("skiff", "ski"));
     }
 }
