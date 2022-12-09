@@ -28,6 +28,10 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(1, get_derangement_count(0));
+        assert_eq!(0, get_derangement_count(1));
+        assert_eq!(265, get_derangement_count(6));
+        assert_eq!(133496, get_derangement_count(9));
+        assert_eq!(32071101049, get_derangement_count(14));
     }
 }
