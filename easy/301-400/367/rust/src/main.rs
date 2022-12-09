@@ -17,8 +17,14 @@ fn main() {
     println!("rad");
 }
 
-fn get_derangement_count(size: usize) -> u128 {
-    todo!()
+fn get_derangement_count(size: u128) -> u128 {
+    if 0 == size {
+        return 1;
+    }
+    if 1 == size {
+        return 0;
+    }
+    (size - 1) * (get_derangement_count(size - 1) + get_derangement_count(size - 2))
 }
 
 #[cfg(not(tarpaulin_include))]
