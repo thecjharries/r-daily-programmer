@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(convert_to_hex(255, 99, 71), "#FF6347");
+        assert_eq!(convert_to_hex(184, 134, 11), "#B8860B");
+        assert_eq!(convert_to_hex(189, 183, 107), "#BDB76B");
+        assert_eq!(convert_to_hex(0, 0, 205), "#0000CD");
     }
 }
