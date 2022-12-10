@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn convert_to_hex(red: u8, green: u8, blue: u8) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
