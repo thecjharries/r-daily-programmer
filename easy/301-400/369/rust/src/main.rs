@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn convert_to_hex(red: u8, green: u8, blue: u8) -> String {
-    todo!()
+    format!("#{:02X}{:02X}{:02X}", red, green, blue)
 }
 
 #[cfg(not(tarpaulin_include))]
