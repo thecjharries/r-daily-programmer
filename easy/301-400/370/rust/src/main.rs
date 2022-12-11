@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(4, find_upc_check_digit("4210000526"));
+        assert_eq!(2, find_upc_check_digit("3600029145"));
+        assert_eq!(4, find_upc_check_digit("12345678910"));
+        assert_eq!(0, find_upc_check_digit("1234567"));
     }
 }
