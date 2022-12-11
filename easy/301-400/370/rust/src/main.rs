@@ -17,6 +17,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn find_upc_check_digit(upc: &str) -> u8 {
     if 11 != upc.len() {
         return 0;
