@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_upc_check_digit(upc: &str) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
