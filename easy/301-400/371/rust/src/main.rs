@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn qcheck(places: Vec<u8>) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
