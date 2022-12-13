@@ -12,13 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn balanced_bonus(input: &str) -> bool {
-    todo!()
+    if input.is_empty() {
+        return true;
+    }
+    let mut character_counts = HashMap::new();
+    for character in input.chars() {
+        *character_counts.entry(character).or_insert(0) += 1;
+    }
+    let mut character_counts = character_counts.values().collect::<Vec<&usize>>();
+    character_counts.sort();
+    let first_count = character_counts[0];
+    for count in character_counts {
+        if count != first_count {
+            return false;
+        }
+    }
+    true
 }
 
 #[cfg(not(tarpaulin_include))]
