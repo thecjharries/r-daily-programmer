@@ -28,6 +28,14 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(true, balanced_bonus("xxxyyyzzz"));
+        assert_eq!(true, balanced_bonus("abccbaabccba"));
+        assert_eq!(false, balanced_bonus("xxxyyyzzzz"));
+        assert_eq!(true, balanced_bonus("abcdefghijklmnopqrstuvwxyz"));
+        assert_eq!(false, balanced_bonus("pqq"));
+        assert_eq!(false, balanced_bonus("fdedfdeffeddefeeeefddf"));
+        assert_eq!(true, balanced_bonus("www"));
+        assert_eq!(true, balanced_bonus("x"));
+        assert_eq!(true, balanced_bonus(""));
     }
 }
