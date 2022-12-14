@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(1, calc_additive_persistence(13));
+        assert_eq!(2, calc_additive_persistence(1234));
+        assert_eq!(2, calc_additive_persistence(9876));
+        assert_eq!(3, calc_additive_persistence(199));
     }
 }
