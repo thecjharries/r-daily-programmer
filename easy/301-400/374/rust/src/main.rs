@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn calc_additive_persistence(number: u64) -> u8 {
-    todo!()
+    let mut steps = 0;
+    let mut current_number = number;
+    while 9 < current_number {
+        let mut next_number = 0;
+        while 0 < current_number {
+            next_number += current_number % 10;
+            current_number /= 10;
+        }
+        current_number = next_number;
+        steps += 1;
+    }
+    steps
 }
 
 #[cfg(not(tarpaulin_include))]
