@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calc_additive_persistence(number: u64) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
