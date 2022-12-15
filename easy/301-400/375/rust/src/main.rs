@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn bump_by_ones(input: u64) -> u64 {
-    todo!()
+    let mut output = 0;
+    let mut current_number = input;
+    let mut factor = 1;
+    while 0 < current_number {
+        output += (current_number % 10 + 1) * factor;
+        if 9 == current_number % 10 {
+            factor *= 10;
+        }
+        current_number /= 10;
+        factor *= 10;
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
