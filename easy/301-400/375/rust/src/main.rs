@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn bump_by_ones(input: u64) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
