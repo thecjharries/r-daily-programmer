@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn fit1(crate_width: u64, crate_height: u64, box_width: u64, box_height: u64) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
