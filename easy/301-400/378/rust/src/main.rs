@@ -18,7 +18,20 @@ fn main() {
 }
 
 fn havel_hakimi(input: Vec<u32>) -> bool {
-    todo!()
+    let mut numbers = input.into_iter().filter(|&x| x > 0).collect::<Vec<u32>>();
+    if numbers.is_empty() {
+        return true;
+    }
+    numbers.sort();
+    numbers.reverse();
+    let largest = numbers.pop().unwrap();
+    if largest > numbers.len() as u32 {
+        return false;
+    }
+    for index in 0..largest {
+        numbers[index as usize] -= 1;
+    }
+    havel_hakimi(numbers)
 }
 
 #[cfg(not(tarpaulin_include))]
