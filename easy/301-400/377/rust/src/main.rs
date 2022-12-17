@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn fit1(crate_width: u64, crate_height: u64, box_width: u64, box_height: u64) -> u64 {
-    todo!()
+    (crate_width / box_width) * (crate_height / box_height)
 }
 
 #[cfg(not(tarpaulin_include))]
