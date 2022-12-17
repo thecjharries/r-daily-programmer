@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn havel_hakimi(input: Vec<u32>) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
