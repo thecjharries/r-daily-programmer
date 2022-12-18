@@ -31,6 +31,12 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(tax(0.0), 0.0);
+        assert_eq!(tax(10000.0), 0.0);
+        assert_eq!(tax(10009.0), 0.0);
+        assert_eq!(tax(10010.0), 1.0);
+        assert_eq!(tax(12000.0), 200.0);
+        assert_eq!(tax(56789.0), 8697.0);
+        assert_eq!(tax(1234567.0), 473326.0);
     }
 }
