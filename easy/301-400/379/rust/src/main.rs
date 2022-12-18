@@ -20,6 +20,10 @@ fn main() {
     println!("rad");
 }
 
+fn tax(amount: f64) -> f64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
