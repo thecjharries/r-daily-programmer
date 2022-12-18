@@ -21,7 +21,22 @@ fn main() {
 }
 
 fn tax(amount: f64) -> f64 {
-    todo!()
+    let mut tax = 0.0;
+    let mut remaining = amount;
+    if remaining > CAPS[2] {
+        tax += (remaining - CAPS[2]) * RATES[3];
+        remaining = CAPS[2];
+    }
+    for index in (1..CAPS.len()).rev() {
+        if remaining >= CAPS[index - 1] {
+            tax += (remaining - CAPS[index - 1]) * RATES[index];
+            remaining = CAPS[index - 1];
+        }
+    }
+    if remaining > 0.0 {
+        tax += remaining * RATES[0];
+    }
+    tax.floor()
 }
 
 #[cfg(not(tarpaulin_include))]
