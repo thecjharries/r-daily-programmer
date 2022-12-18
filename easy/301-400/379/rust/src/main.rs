@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+static CAPS: [f64; 3] = [1000, 10000, 100000];
+static RATES: [f64; 4] = [0.0, 0.1, 0.25, 0.4];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
