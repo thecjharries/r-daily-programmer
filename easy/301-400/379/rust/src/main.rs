@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-static CAPS: [f64; 3] = [1000, 10000, 100000];
+static CAPS: [f64; 3] = [10000.0, 30000.0, 100000.0];
 static RATES: [f64; 4] = [0.0, 0.1, 0.25, 0.4];
 
 #[cfg(not(tarpaulin_include))]
