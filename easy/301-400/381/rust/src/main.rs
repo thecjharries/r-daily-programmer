@@ -28,6 +28,17 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(10, yahtzee_upper(vec![2, 3, 5, 5, 6]));
+        assert_eq!(4, yahtzee_upper(vec![1, 1, 1, 1, 3]));
+        assert_eq!(6, yahtzee_upper(vec![1, 1, 1, 3, 3]));
+        assert_eq!(5, yahtzee_upper(vec![1, 2, 3, 4, 5]));
+        assert_eq!(30, yahtzee_upper(vec![6, 6, 6, 6, 6]));
+        assert_eq!(
+            123456,
+            yahtzee_upper(vec![
+                1654, 1654, 50995, 30864, 1654, 50995, 22747, 1654, 1654, 1654, 1654, 1654, 30864,
+                4868, 1654, 4868, 1654, 30864, 4868, 30864
+            ])
+        );
     }
 }
