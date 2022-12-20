@@ -18,7 +18,23 @@ fn main() {
 }
 
 fn yahtzee_upper(numbers: Vec<u32>) -> u32 {
-    todo!()
+    let mut sorted = numbers.clone();
+    sorted.sort();
+    let mut max_score = 0;
+    let mut current_score = 0;
+    let mut current_count = 0;
+    for number in sorted {
+        if number == current_score {
+            current_count += 1;
+        } else {
+            current_score = number;
+            current_count = 1;
+        }
+        if current_count * current_score > max_score {
+            max_score = current_count * current_score;
+        }
+    }
+    max_score
 }
 
 #[cfg(not(tarpaulin_include))]
