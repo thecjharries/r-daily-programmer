@@ -17,7 +17,24 @@ fn main() {
     println!("rad");
 }
 
-fn same_necklace(first: &str, second: &str) -> bool {}
+fn same_necklace(first: &str, second: &str) -> bool {
+    if first.len() != second.len() {
+        return false;
+    }
+    if first == second {
+        return true;
+    }
+    let mut first_chars = first.chars().collect::<Vec<char>>();
+    let second_chars = second.chars().collect::<Vec<char>>();
+    for _ in 0..first_chars.len() {
+        let first_char = first_chars.remove(0);
+        first_chars.push(first_char);
+        if first_chars == second_chars {
+            return true;
+        }
+    }
+    false
+}
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
