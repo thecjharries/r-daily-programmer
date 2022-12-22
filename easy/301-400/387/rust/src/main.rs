@@ -28,6 +28,15 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("b".to_string(), caesar("a", 1));
+        assert_eq!("bcda".to_string(), caesar("abcz", 1));
+        assert_eq!("vex".to_string(), caesar("irk", 13));
+        assert_eq!("layout".to_string(), caesar("fusion", 6));
+        assert_eq!("jgorevxumxgsskx".to_string(), caesar("dailyprogrammer", 6));
+        assert_eq!("dailyprogrammer".to_string(), caesar("jgorevxumxgsskx", 20));
+        assert_eq!(
+            "Jgore Vxumxgsskx!".to_string(),
+            caesar("Daily Programmer!", 6)
+        );
     }
 }
