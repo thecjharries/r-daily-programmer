@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn caesar(plaintext: &str, shift: u8) -> String {
-    todo!()
+    let mut output = String::new();
+    for character in plaintext.chars() {
+        if character.is_ascii_uppercase() {
+            output.push(('A' as u8 + (character as u8 - 'A' as u8 + shift) % 26) as char);
+        } else if character.is_ascii_lowercase() {
+            output.push(('a' as u8 + (character as u8 - 'a' as u8 + shift) % 26) as char);
+        } else {
+            output.push(character);
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
