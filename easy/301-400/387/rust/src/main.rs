@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn caesar(plaintext: &str, shift: u8) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
