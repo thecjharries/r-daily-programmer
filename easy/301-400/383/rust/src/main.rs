@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn same_necklace(first: &str, second: &str) -> bool {
-    todo!()
+    assert_eq!(true, same_necklace("nicole", "icolen"));
+    assert_eq!(true, same_necklace("nicole", "lenico"));
+    assert_eq!(false, same_necklace("nicole", "coneli"));
+    assert_eq!(true, same_necklace("aabaaaaabaab", "aabaabaabaaa"));
+    assert_eq!(false, same_necklace("abc", "cba"));
+    assert_eq!(false, same_necklace("xxyyy", "xxxyy"));
+    assert_eq!(false, same_necklace("xyxxz", "xxyxz"));
+    assert_eq!(true, same_necklace("x", "x"));
+    assert_eq!(false, same_necklace("x", "xx"));
+    assert_eq!(false, same_necklace("x", ""));
+    assert_eq!(true, same_necklace("", ""));
 }
 
 #[cfg(not(tarpaulin_include))]
