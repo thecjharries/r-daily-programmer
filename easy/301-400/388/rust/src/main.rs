@@ -21,7 +21,21 @@ fn main() {
 }
 
 fn simulate<R: Rng>(count: u32, switch: bool, rng: &mut R) -> u32 {
-    todo!()
+    let mut wins = 0;
+    for _ in 0..count {
+        let mut player_choice = rng.gen_range(0..3);
+        let winning_choice = rng.gen_range(0..3);
+        if switch {
+            if player_choice != winning_choice {
+                wins += 1;
+            }
+        } else {
+            if player_choice == winning_choice {
+                wins += 1;
+            }
+        }
+    }
+    wins
 }
 
 #[cfg(not(tarpaulin_include))]
