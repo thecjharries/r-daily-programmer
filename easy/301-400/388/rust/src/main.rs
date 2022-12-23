@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn simulate<R: Rng>(count: u32, switch: bool, rng: &mut R) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
