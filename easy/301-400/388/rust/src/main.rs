@@ -20,6 +20,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn simulate<R: Rng>(count: u32, switch: bool, rng: &mut R) -> u32 {
     let mut wins = 0;
     for _ in 0..count {
