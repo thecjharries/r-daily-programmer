@@ -45,7 +45,7 @@ mod tests {
 
     #[test]
     fn test_simulate() {
-        assert_eq!(666, simulate(1000, true, &mut Pcg64::seed_from_u64(0)));
-        assert_eq!(333, simulate(1000, false, &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(678, simulate(1000, true, &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(322, simulate(1000, false, &mut Pcg64::seed_from_u64(0)));
     }
 }
