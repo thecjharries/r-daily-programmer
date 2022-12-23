@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -27,7 +30,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_simulate() {
+        assert_eq!(666, simulate(1000, true, &mut Pcg64::seed_from_u64(0)));
+        assert_eq!(333, simulate(1000, false, &mut Pcg64::seed_from_u64(0)));
     }
 }
