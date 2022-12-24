@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn create_abacaba_sequence(iteration: usize) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
