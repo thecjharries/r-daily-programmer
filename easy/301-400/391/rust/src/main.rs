@@ -18,7 +18,14 @@ fn main() {
 }
 
 fn create_abacaba_sequence(iteration: usize) -> String {
-    todo!()
+    let mut sequence = String::new();
+    for index in 0..iteration {
+        let mut next = sequence.clone();
+        next.push((97 + index) as u8 as char);
+        next.push_str(&sequence);
+        sequence = next;
+    }
+    sequence
 }
 
 #[cfg(not(tarpaulin_include))]
