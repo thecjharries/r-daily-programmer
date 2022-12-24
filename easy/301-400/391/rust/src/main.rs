@@ -28,6 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("a".to_string(), create_abacaba_sequence(1));
+        assert_eq!("aba".to_string(), create_abacaba_sequence(2));
+        assert_eq!("abacaba".to_string(), create_abacaba_sequence(3));
+        assert_eq!("abacabadabacaba".to_string(), create_abacaba_sequence(4));
     }
 }
