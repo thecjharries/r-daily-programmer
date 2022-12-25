@@ -49,6 +49,16 @@ impl<T: PartialEq + Clone + Ord> GenericSet<T> {
         }
         Self { items }
     }
+
+    fn intersection(&self, other: &Self) -> Self {
+        let mut items = BTreeMap::new();
+        for (key, _) in self.items.iter() {
+            if other.items.contains_key(key) {
+                items.insert(key.clone(), true);
+            }
+        }
+        Self { items }
+    }
 }
 
 impl<T: fmt::Debug> fmt::Display for GenericSet<T> {
@@ -110,6 +120,21 @@ mod tests {
             vec![1, 2, 3, 4, 5],
             set_a
                 .union(&set_b)
+                .items
+                .keys()
+                .cloned()
+                .collect::<Vec<u32>>()
+        );
+    }
+
+    #[test]
+    fn test_intersection() {
+        let set_a = GenericSet::from_slice(&[1, 2, 3]);
+        let set_b = GenericSet::from_slice(&[3, 4, 5]);
+        assert_eq!(
+            vec![3],
+            set_a
+                .intersection(&set_b)
                 .items
                 .keys()
                 .cloned()
