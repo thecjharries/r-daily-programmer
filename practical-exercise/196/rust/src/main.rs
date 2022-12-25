@@ -14,6 +14,7 @@
 
 use std::cmp::Ord;
 use std::collections::BTreeMap;
+use std::fmt;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Hash)]
 struct GenericSet<T> {
@@ -39,6 +40,12 @@ impl<T: PartialEq + Clone + Ord> GenericSet<T> {
         for item in item {
             self.items.insert(item, true);
         }
+    }
+}
+
+impl<T: fmt::Debug> fmt::Display for GenericSet<T> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{:?}", self.items.keys().collect::<Vec<&T>>())
     }
 }
 
@@ -76,6 +83,14 @@ mod tests {
         assert_eq!(
             vec![1, 2, 3, 4, 5, 6],
             set.items.keys().cloned().collect::<Vec<u32>>()
+        );
+    }
+
+    #[test]
+    fn test_display() {
+        assert_eq!(
+            "[1, 2, 3]",
+            format!("{}", GenericSet::from_slice(&[1, 2, 3]))
         );
     }
 }
