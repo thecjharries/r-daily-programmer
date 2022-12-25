@@ -41,6 +41,14 @@ impl<T: PartialEq + Clone + Ord> GenericSet<T> {
             self.items.insert(item, true);
         }
     }
+
+    fn union(&self, other: &Self) -> Self {
+        let mut items = self.items.clone();
+        for (key, _) in other.items.iter() {
+            items.insert(key.clone(), true);
+        }
+        Self { items }
+    }
 }
 
 impl<T: fmt::Debug> fmt::Display for GenericSet<T> {
