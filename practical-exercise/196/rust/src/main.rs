@@ -34,6 +34,12 @@ impl<T: PartialEq + Clone + Ord> GenericSet<T> {
         }
         Self { items }
     }
+
+    fn add(&mut self, item: Vec<T>) {
+        for item in item {
+            self.items.insert(item, true);
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
