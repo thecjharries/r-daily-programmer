@@ -14,8 +14,17 @@
 
 use std::collections::BTreeMap;
 
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Hash)]
 struct GenericSet<T> {
     items: BTreeMap<T, bool>,
+}
+
+impl<T: PartialEq + Clone> GenericSet<T> {
+    fn new() -> Self {
+        Self {
+            items: BTreeMap::new(),
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -29,7 +38,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_new() {
+        assert_eq!(0, GenericSet::<u32>::new().items.len());
     }
 }
