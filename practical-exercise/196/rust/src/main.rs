@@ -141,4 +141,11 @@ mod tests {
                 .collect::<Vec<u32>>()
         );
     }
+
+    #[test]
+    fn test_equality() {
+        let set_a = GenericSet::from_slice(&[1, 2, 3]);
+        let set_b = GenericSet::from_slice(&[3, 2, 1]);
+        assert_eq!(set_a, set_b);
+    }
 }
