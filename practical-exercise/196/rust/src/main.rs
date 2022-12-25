@@ -25,6 +25,14 @@ impl<T: PartialEq + Clone> GenericSet<T> {
             items: BTreeMap::new(),
         }
     }
+
+    fn from_slice(slice: &[T]) -> Self {
+        let mut items = BTreeMap::new();
+        for item in slice {
+            items.insert(item.clone(), true);
+        }
+        Self { items }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
