@@ -101,4 +101,19 @@ mod tests {
             format!("{}", GenericSet::from_slice(&[1, 2, 3]))
         );
     }
+
+    #[test]
+    fn test_union() {
+        let set_a = GenericSet::from_slice(&[1, 2, 3]);
+        let set_b = GenericSet::from_slice(&[3, 4, 5]);
+        assert_eq!(
+            vec![1, 2, 3, 4, 5],
+            set_a
+                .union(&set_b)
+                .items
+                .keys()
+                .cloned()
+                .collect::<Vec<u32>>()
+        );
+    }
 }
