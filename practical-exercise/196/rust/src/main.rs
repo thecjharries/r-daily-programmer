@@ -68,4 +68,14 @@ mod tests {
                 .collect::<Vec<u32>>()
         )
     }
+
+    #[test]
+    fn test_add() {
+        let mut set = GenericSet::from_slice(&[1, 2, 3]);
+        set.add(vec![4, 5, 6]);
+        assert_eq!(
+            vec![1, 2, 3, 4, 5, 6],
+            set.items.keys().cloned().collect::<Vec<u32>>()
+        );
+    }
 }
