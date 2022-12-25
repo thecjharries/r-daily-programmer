@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::cmp::Ord;
 use std::collections::BTreeMap;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Hash)]
@@ -19,7 +20,7 @@ struct GenericSet<T> {
     items: BTreeMap<T, bool>,
 }
 
-impl<T: PartialEq + Clone> GenericSet<T> {
+impl<T: PartialEq + Clone + Ord> GenericSet<T> {
     fn new() -> Self {
         Self {
             items: BTreeMap::new(),
@@ -48,5 +49,17 @@ mod tests {
     #[test]
     fn test_new() {
         assert_eq!(0, GenericSet::<u32>::new().items.len());
+    }
+
+    #[test]
+    fn test_from_slice() {
+        assert_eq!(
+            vec![1, 2, 3],
+            GenericSet::from_slice(&[1, 2, 3])
+                .items
+                .keys()
+                .cloned()
+                .collect::<Vec<u32>>()
+        )
     }
 }
