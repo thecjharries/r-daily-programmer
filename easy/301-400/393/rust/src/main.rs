@@ -20,7 +20,18 @@ fn main() {
 }
 
 fn change(amount: u32) -> u32 {
-    todo!()
+    let mut remaining_amount = amount;
+    let mut coin_index = COINS.len() - 1;
+    let mut coin_count = 0;
+    while remaining_amount > 0 {
+        if remaining_amount >= COINS[coin_index] {
+            coin_count += remaining_amount / COINS[coin_index];
+            remaining_amount %= COINS[coin_index];
+        } else {
+            coin_index -= 1;
+        }
+    }
+    coin_count
 }
 
 #[cfg(not(tarpaulin_include))]
