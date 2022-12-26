@@ -19,6 +19,10 @@ fn main() {
     println!("rad");
 }
 
+fn change(amount: u32) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
