@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+static COINS: [u32; 6] = [1, 5, 10, 25, 100, 500];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
