@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn nonogram_row(row: Vec<u8>) -> Vec<u8> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
