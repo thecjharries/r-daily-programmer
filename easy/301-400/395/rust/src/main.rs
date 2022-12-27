@@ -28,6 +28,24 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(vec![], nonogram_row(vec![]));
+        assert_eq!(vec![], nonogram_row(vec![0, 0, 0, 0, 0]));
+        assert_eq!(vec![5], nonogram_row(vec![1, 1, 1, 1, 1]));
+        assert_eq!(
+            vec![5, 4],
+            nonogram_row(vec![0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1])
+        );
+        assert_eq!(
+            vec![2, 1, 3],
+            nonogram_row(vec![1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0])
+        );
+        assert_eq!(
+            vec![2, 1, 3],
+            nonogram_row(vec![0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1])
+        );
+        assert_eq!(
+            vec![1, 1, 1, 1, 1, 1, 1, 1],
+            nonogram_row(vec![1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1])
+        );
     }
 }
