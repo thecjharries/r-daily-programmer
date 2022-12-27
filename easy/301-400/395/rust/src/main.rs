@@ -18,7 +18,22 @@ fn main() {
 }
 
 fn nonogram_row(row: Vec<u8>) -> Vec<u8> {
-    todo!()
+    let mut result = Vec::new();
+    let mut current_count = 0;
+    for cell in row {
+        if 0 == cell {
+            if 0 < current_count {
+                result.push(current_count);
+                current_count = 0;
+            }
+        } else {
+            current_count += 1;
+        }
+    }
+    if 0 < current_count {
+        result.push(current_count);
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -28,8 +43,8 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(vec![], nonogram_row(vec![]));
-        assert_eq!(vec![], nonogram_row(vec![0, 0, 0, 0, 0]));
+        assert_eq!(vec![] as Vec<u8>, nonogram_row(vec![]));
+        assert_eq!(vec![] as Vec<u8>, nonogram_row(vec![0, 0, 0, 0, 0]));
         assert_eq!(vec![5], nonogram_row(vec![1, 1, 1, 1, 1]));
         assert_eq!(
             vec![5, 4],
