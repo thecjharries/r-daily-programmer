@@ -28,6 +28,11 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(false, numcompare("I", "I"));
+        assert_eq!(true, numcompare("I", "II"));
+        assert_eq!(false, numcompare("II", "I"));
+        assert_eq!(false, numcompare("V", "IIII"));
+        assert_eq!(true, numcompare("MDCLXV", "MDCLXVI"));
+        assert_eq!(false, numcompare("MM", "MDCCCCLXXXXVIIII"));
     }
 }
