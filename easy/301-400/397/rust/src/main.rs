@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn numcompare(first: &str, second: &str) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
