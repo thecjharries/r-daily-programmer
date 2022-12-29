@@ -12,13 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+static NUMERAL_ORDER: &str = "MDCLXVI";
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn numcompare(first: &str, second: &str) -> bool {
-    todo!()
+    let max_length = first.len().max(second.len());
+    for index in 0..max_length {
+        if first.len() <= index {
+            return true;
+        }
+        if second.len() <= index {
+            return false;
+        }
+        let first_value = NUMERAL_ORDER
+            .find(first.chars().nth(index).unwrap())
+            .unwrap();
+        let second_value = NUMERAL_ORDER
+            .find(second.chars().nth(index).unwrap())
+            .unwrap();
+        if first_value < second_value {
+            return false;
+        }
+    }
+    false
 }
 
 #[cfg(not(tarpaulin_include))]
