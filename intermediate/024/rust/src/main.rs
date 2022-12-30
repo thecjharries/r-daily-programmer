@@ -27,7 +27,8 @@ fn continued_fraction(n: u32, m: u32) -> (u32, u32) {
 }
 
 fn pi(precision: u32) -> (u32, u32) {
-    todo!()
+    let (numerator, denominator) = continued_fraction(1, precision);
+    (4 * denominator, numerator)
 }
 
 #[cfg(not(tarpaulin_include))]
