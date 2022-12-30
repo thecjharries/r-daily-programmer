@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn pi(precision: u32) -> f64 {
+fn pi(precision: u32) -> (u32, u32) {
     todo!()
 }
 
