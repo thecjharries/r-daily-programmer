@@ -17,6 +17,15 @@ fn main() {
     println!("rad");
 }
 
+fn continued_fraction(n: u32, m: u32) -> (u32, u32) {
+    if n < m {
+        let (denominator, b) = continued_fraction(n + 1, m);
+        let numerator = (2 * n - 1) * denominator + n.pow(2) * b;
+        return (numerator, denominator);
+    }
+    (1, 1)
+}
+
 fn pi(precision: u32) -> (u32, u32) {
     todo!()
 }
@@ -25,6 +34,13 @@ fn pi(precision: u32) -> (u32, u32) {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_continued_fraction() {
+        assert_eq!((1, 1), continued_fraction(1, 1));
+        assert_eq!((1, 1), continued_fraction(10, 1));
+        assert_eq!((2, 1), continued_fraction(1, 2));
+    }
 
     #[test]
     fn test_stub() {
