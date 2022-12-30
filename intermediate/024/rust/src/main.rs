@@ -17,14 +17,6 @@ fn main() {
     println!("rad");
 }
 
-fn gcd(a: u32, b: u32) -> u32 {
-    if 0 == b {
-        a
-    } else {
-        gcd(b, a % b)
-    }
-}
-
 fn pi(precision: u32) -> (u32, u32) {
     todo!()
 }
@@ -36,22 +28,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!((3, 1), pi(1));
-        assert_eq!((22, 7), pi(2));
-        assert_eq!((333, 106), pi(3));
-        assert_eq!((355, 113), pi(4));
-        assert_eq!((103993, 33102), pi(5));
-    }
-
-    #[test]
-    fn test_gcd() {
-        assert_eq!(1, gcd(1, 1));
-        assert_eq!(1, gcd(1, 2));
-        assert_eq!(1, gcd(2, 1));
-        assert_eq!(2, gcd(2, 2));
-        assert_eq!(1, gcd(3, 2));
-        assert_eq!(1, gcd(2, 3));
-        assert_eq!(2, gcd(4, 2));
-        assert_eq!(2, gcd(2, 4));
+        assert_eq!((4, 1), pi(1));
+        assert_eq!((4, 2), pi(2));
+        assert_eq!((28, 8), pi(3));
+        assert_eq!((184, 60), pi(4));
     }
 }
