@@ -17,6 +17,14 @@ fn main() {
     println!("rad");
 }
 
+fn gcd(a: u32, b: u32) -> u32 {
+    if 0 == b {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
+
 fn pi(precision: u32) -> (u32, u32) {
     todo!()
 }
