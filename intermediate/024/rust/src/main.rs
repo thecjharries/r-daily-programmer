@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn pi(precision: u32) -> f64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
