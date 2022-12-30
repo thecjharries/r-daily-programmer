@@ -28,6 +28,10 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!((3, 1), pi(1));
+        assert_eq!((22, 7), pi(2));
+        assert_eq!((333, 106), pi(3));
+        assert_eq!((355, 113), pi(4));
+        assert_eq!((103993, 33102), pi(5));
     }
 }
