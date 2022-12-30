@@ -12,13 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::NaiveDate;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn get_st_pats_day_of_week_from_year(year: u32) -> String {
-    todo!()
+fn get_st_pats_day_of_week_from_year(year: i32) -> String {
+    let date = NaiveDate::from_ymd_opt(year, 3, 17).unwrap();
+    date.format("%A").to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
