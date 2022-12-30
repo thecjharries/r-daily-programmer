@@ -42,4 +42,16 @@ mod tests {
         assert_eq!((355, 113), pi(4));
         assert_eq!((103993, 33102), pi(5));
     }
+
+    #[test]
+    fn test_gcd() {
+        assert_eq!(1, gcd(1, 1));
+        assert_eq!(1, gcd(1, 2));
+        assert_eq!(1, gcd(2, 1));
+        assert_eq!(2, gcd(2, 2));
+        assert_eq!(1, gcd(3, 2));
+        assert_eq!(1, gcd(2, 3));
+        assert_eq!(2, gcd(4, 2));
+        assert_eq!(2, gcd(2, 4));
+    }
 }
