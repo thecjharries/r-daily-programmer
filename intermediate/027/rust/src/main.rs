@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn get_st_pats_day_of_week_from_year(year: u32) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
@@ -24,6 +28,21 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "Wednesday".to_string(),
+            get_st_pats_day_of_week_from_year(2021)
+        );
+        assert_eq!(
+            "Tuesday".to_string(),
+            get_st_pats_day_of_week_from_year(2020)
+        );
+        assert_eq!(
+            "Friday".to_string(),
+            get_st_pats_day_of_week_from_year(2000)
+        );
+        assert_eq!(
+            "Saturday".to_string(),
+            get_st_pats_day_of_week_from_year(1900)
+        );
     }
 }
