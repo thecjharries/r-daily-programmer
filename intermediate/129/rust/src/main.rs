@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-type RealVector = Vec<f64>;
+struct RealVector(Vec<f64>);
 
 impl RealVector {
     pub fn round_to_five_places(input: f64) -> f64 {
-        todo!()
+        (input * 100000.0).round() / 100000.0
     }
 }
 
@@ -33,6 +33,6 @@ mod tests {
     #[test]
     fn test_round_to_five_places() {
         assert_eq!(0.0, RealVector::round_to_five_places(0.0));
-        assert_eq!(1.0005, RealVector::round_to_five_places(1.00009));
+        assert_eq!(1.00001, RealVector::round_to_five_places(1.000009));
     }
 }
