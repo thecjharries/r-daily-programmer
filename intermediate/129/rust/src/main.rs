@@ -15,7 +15,7 @@
 type RealVector = Vec<f64>;
 
 impl RealVector {
-    pub fn round_to_five_places() -> f64 {
+    pub fn round_to_five_places(input: f64) -> f64 {
         todo!()
     }
 }
@@ -31,7 +31,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_round_to_five_places() {
+        assert_eq!(0.0, RealVector::round_to_five_places(0.0));
+        assert_eq!(1.0005, RealVector::round_to_five_places(1.00009));
     }
 }
