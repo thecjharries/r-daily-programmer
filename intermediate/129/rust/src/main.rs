@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
 struct RealVector(Vec<f64>);
 
 impl RealVector {
@@ -25,6 +26,20 @@ impl RealVector {
                 .iter()
                 .fold(0.0, |accumulator, value| accumulator + value.powi(2))
                 .sqrt(),
+        )
+    }
+
+    pub fn normalize(&self) -> RealVector {
+        let length = self
+            .0
+            .iter()
+            .fold(0.0, |accumulator, value| accumulator + value.powi(2))
+            .sqrt();
+        RealVector(
+            self.0
+                .iter()
+                .map(|value| RealVector::round_to_five_places(value / length))
+                .collect(),
         )
     }
 }
@@ -49,5 +64,12 @@ mod tests {
     fn test_length() {
         let test_vector = RealVector(vec![1.0, 1.0]);
         assert_eq!(1.41421, test_vector.length());
+    }
+
+    #[test]
+    fn test_normalize() {
+        let input = RealVector(vec![1.2, 3.4]);
+        let output = RealVector(vec![0.33282, 0.94299]);
+        assert_eq!(output, input.normalize());
     }
 }
