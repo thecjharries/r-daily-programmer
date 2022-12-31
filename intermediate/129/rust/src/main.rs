@@ -18,6 +18,15 @@ impl RealVector {
     pub fn round_to_five_places(input: f64) -> f64 {
         (input * 100000.0).round() / 100000.0
     }
+
+    pub fn length(&self) -> f64 {
+        RealVector::round_to_five_places(
+            self.0
+                .iter()
+                .fold(0.0, |accumulator, value| accumulator + value.powi(2))
+                .sqrt(),
+        )
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -34,5 +43,11 @@ mod tests {
     fn test_round_to_five_places() {
         assert_eq!(0.0, RealVector::round_to_five_places(0.0));
         assert_eq!(1.00001, RealVector::round_to_five_places(1.000009));
+    }
+
+    #[test]
+    fn test_length() {
+        let test_vector = RealVector(vec![1.0, 1.0]);
+        assert_eq!(1.41421, test_vector.length());
     }
 }
