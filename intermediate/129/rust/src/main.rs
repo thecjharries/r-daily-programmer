@@ -42,6 +42,13 @@ impl RealVector {
                 .collect(),
         )
     }
+
+    pub fn dot_product(&self, other: &RealVector) -> f64 {
+        self.0
+            .iter()
+            .zip(other.0.iter())
+            .fold(0.0, |accumulator, (left, right)| accumulator + left * right)
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -71,5 +78,12 @@ mod tests {
         let input = RealVector(vec![1.2, 3.4]);
         let output = RealVector(vec![0.33282, 0.94299]);
         assert_eq!(output, input.normalize());
+    }
+
+    #[test]
+    fn test_dot_product() {
+        let left = RealVector(vec![1.0, 2.0]);
+        let right = RealVector(vec![3.0, 4.0]);
+        assert_eq!(11.0, left.dot_product(&right));
     }
 }
