@@ -14,6 +14,12 @@
 
 type RealVector = Vec<f64>;
 
+impl RealVector {
+    pub fn round_to_five_places() -> f64 {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
