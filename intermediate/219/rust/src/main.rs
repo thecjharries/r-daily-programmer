@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fmt::Display;
+
 #[derive(Debug, PartialEq, Clone)]
 struct TodoList {
     items: Vec<String>,
@@ -39,6 +41,16 @@ impl TodoList {
             }
         });
         self
+    }
+}
+
+impl Display for TodoList {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut output = String::new();
+        for (_, item) in self.items.iter().enumerate() {
+            output.push_str(&format!("{}\n", item));
+        }
+        write!(f, "{}", output)
     }
 }
 
@@ -92,5 +104,15 @@ mod tests {
             .update("test5".to_string(), "test5.5".to_string());
         assert_eq!(4, todo_list.items.len());
         assert_ne!("test2".to_string(), todo_list.items[1]);
+    }
+
+    #[test]
+    fn test_display() {
+        let mut todo_list = TodoList::new();
+        todo_list
+            .add("test".to_string())
+            .add("test2".to_string())
+            .add("test3".to_string());
+        assert_eq!("test\ntest2\ntest3\n".to_string(), format!("{}", todo_list));
     }
 }
