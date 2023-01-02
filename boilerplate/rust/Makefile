@@ -31,8 +31,8 @@ coverage-report:
 
 .PHONY: add-exercise
 add-exercise:
-	git add ..
-	git commit -m 'Define $(DIFFICULTY) #$(NUMBER)'
+	$(GIT) add ..
+	$(GIT) commit -m 'Define $(DIFFICULTY) #$(NUMBER)'
 
 # Set up the daily exercise
 .PHONY: bootstrap-feature-branch
