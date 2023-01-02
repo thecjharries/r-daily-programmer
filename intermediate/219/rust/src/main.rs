@@ -31,6 +31,15 @@ impl TodoList {
         self.items.retain(|current_item| current_item != &item);
         self
     }
+
+    fn update(&mut self, old_item: String, new_item: String) -> &mut Self {
+        self.items.iter_mut().for_each(|current_item| {
+            if current_item == &old_item {
+                *current_item = new_item.clone();
+            }
+        });
+        self
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -69,5 +78,19 @@ mod tests {
             .add("test4".to_string())
             .del("test5".to_string());
         assert_eq!(3, todo_list.items.len());
+    }
+
+    #[test]
+    fn test_update() {
+        let mut todo_list = TodoList::new();
+        todo_list
+            .add("test".to_string())
+            .add("test2".to_string())
+            .add("test3".to_string())
+            .update("test2".to_string(), "test2.5".to_string())
+            .add("test4".to_string())
+            .update("test5".to_string(), "test5.5".to_string());
+        assert_eq!(4, todo_list.items.len());
+        assert_ne!("test2".to_string(), todo_list.items[1]);
     }
 }
