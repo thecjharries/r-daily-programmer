@@ -26,6 +26,11 @@ impl TodoList {
         self.items.push(item);
         self
     }
+
+    fn del(&mut self, item: String) -> &mut Self {
+        self.items.retain(|current_item| current_item != &item);
+        self
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -50,6 +55,19 @@ mod tests {
             .add("test".to_string())
             .add("test2".to_string())
             .add("test3".to_string());
+        assert_eq!(3, todo_list.items.len());
+    }
+
+    #[test]
+    fn test_del() {
+        let mut todo_list = TodoList::new();
+        todo_list
+            .add("test".to_string())
+            .add("test2".to_string())
+            .add("test3".to_string())
+            .del("test2".to_string())
+            .add("test4".to_string())
+            .del("test5".to_string());
         assert_eq!(3, todo_list.items.len());
     }
 }
