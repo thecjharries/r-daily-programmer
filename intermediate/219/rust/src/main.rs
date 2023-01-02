@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Clone)]
 struct TodoList {
     items: Vec<String>,
 }
@@ -19,6 +20,11 @@ struct TodoList {
 impl TodoList {
     fn new() -> TodoList {
         TodoList { items: Vec::new() }
+    }
+
+    fn add(&mut self, item: String) -> &mut Self {
+        self.items.push(item);
+        self
     }
 }
 
@@ -35,5 +41,15 @@ mod tests {
     #[test]
     fn test_new() {
         assert_eq!(0, TodoList::new().items.len());
+    }
+
+    #[test]
+    fn test_add() {
+        let mut todo_list = TodoList::new();
+        todo_list
+            .add("test".to_string())
+            .add("test2".to_string())
+            .add("test3".to_string());
+        assert_eq!(3, todo_list.items.len());
     }
 }
