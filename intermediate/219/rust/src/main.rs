@@ -16,6 +16,12 @@ struct TodoList {
     items: Vec<String>,
 }
 
+impl TodoList {
+    fn new() -> TodoList {
+        TodoList { items: Vec::new() }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -27,7 +33,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_new() {
+        assert_eq!(0, TodoList::new().items.len());
     }
 }
