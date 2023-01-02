@@ -29,6 +29,11 @@ coverage:
 coverage-report:
 	$(CARGO) tarpaulin -v --fail-under=100 --out HTML; $(XDG_OPEN) tarpaulin-report.html
 
+.PHONY: add-exercise
+add-exercise:
+	git add ..
+	git commit -m 'Define $(DIFFICULTY) #$(NUMBER)'
+
 # Set up the daily exercise
 .PHONY: bootstrap-feature-branch
 bootstrap-feature-branch:
