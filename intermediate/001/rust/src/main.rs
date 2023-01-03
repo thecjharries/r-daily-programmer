@@ -16,6 +16,12 @@ use std::collections::HashMap;
 
 struct EventCalendar(HashMap<String, Vec<String>>);
 
+impl EventCalendar {
+    fn new() -> Self {
+        Self(HashMap::new())
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -27,7 +33,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_new() {
+        let calendar = EventCalendar::new();
+        assert_eq!(0, calendar.0.len());
     }
 }
