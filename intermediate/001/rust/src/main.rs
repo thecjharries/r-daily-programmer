@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
+struct EventCalendar(HashMap<String, Vec<String>>);
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
