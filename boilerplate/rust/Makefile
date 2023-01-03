@@ -6,7 +6,7 @@ XDG_OPEN ?= xdg-open
 RM ?= rm
 
 # Variables
-DIFFICULTY = $(lastword $(subst /, ,$(realpath ../../../)))
+DIFFICULTY = $(lastword $(subst /, ,$(realpath .../../)))
 NUMBER = $(lastword $(subst /, ,$(realpath ../)))
 
 # Run the program
