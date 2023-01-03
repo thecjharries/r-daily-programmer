@@ -33,6 +33,20 @@ impl EventCalendar {
             .or_insert(Vec::new())
             .push((start, event));
     }
+
+    fn delete_event(&mut self, start: NaiveDateTime) {
+        let at_hour: NaiveDateTime =
+            NaiveDate::from_ymd_opt(start.year(), start.month(), start.day())
+                .unwrap()
+                .and_hms_opt(start.hour(), 0, 0)
+                .unwrap();
+        if let Some(events) = self.0.get_mut(&at_hour) {
+            events.retain(|(event_start, _)| start != *event_start);
+            if events.is_empty() {
+                self.0.remove(&at_hour);
+            }
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -64,5 +78,18 @@ mod tests {
         assert_eq!(1, calendar.0[&start].len());
         assert_eq!(start, calendar.0[&start][0].0);
         assert_eq!(event, calendar.0[&start][0].1);
+    }
+
+    #[test]
+    fn test_delete_event() {
+        let mut calendar = EventCalendar::new();
+        let start: NaiveDateTime = NaiveDate::from_ymd_opt(2022, 1, 1)
+            .unwrap()
+            .and_hms_opt(0, 0, 0)
+            .unwrap();
+        let event = "Test Event".to_string();
+        calendar.add_event(start, event.clone());
+        calendar.delete_event(start);
+        assert_eq!(0, calendar.0.len());
     }
 }
