@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::NaiveDateTime;
 use std::collections::HashMap;
 
-struct EventCalendar(HashMap<String, Vec<String>>);
+struct EventCalendar(HashMap<NaiveDateTime, Vec<(NaiveDateTime, String)>>);
 
 impl EventCalendar {
     fn new() -> Self {
