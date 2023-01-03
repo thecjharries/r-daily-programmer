@@ -31,7 +31,7 @@ coverage-report:
 
 .PHONY: add-exercise
 add-exercise:
-	$(GIT) add ..
+	$(GIT) add ../README.md
 	$(GIT) commit -m 'Define $(DIFFICULTY) #$(NUMBER)'
 
 # Set up the daily exercise
