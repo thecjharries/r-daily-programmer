@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+enum Direction {
+    North,
+    South,
+    East,
+    West,
+}
+
 struct Position {
     x: i32,
     y: i32,
