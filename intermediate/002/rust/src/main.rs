@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Player {
+    name: String,
+    position: {
+        x: i32,
+        y: i32,
+    },
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
