@@ -12,12 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Position {
+    x: i32,
+    y: i32,
+}
+
 struct Player {
     name: String,
-    position: {
-        x: i32,
-        y: i32,
-    },
+    position: Position,
+}
+
+impl Player {
+    fn new(name: String) -> Player {
+        Player {
+            name,
+            position: Position { x: 0, y: 0 },
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -31,7 +42,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_player_new() {
+        let player = Player::new(String::from("CJ"));
+        assert_eq!(String::from("CJ"), player.name);
+        assert_eq!(0, player.position.x);
+        assert_eq!(0, player.position.y);
     }
 }
