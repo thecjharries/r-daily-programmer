@@ -30,11 +30,21 @@ struct Player {
 }
 
 impl Player {
-    fn new(name: String) -> Player {
+    fn new(name: String) -> Self {
         Player {
             name,
             position: Position { x: 0, y: 0 },
         }
+    }
+
+    fn move_player(&mut self, direction: Direction) -> &mut Self {
+        match direction {
+            Direction::North => self.position.y += 1,
+            Direction::South => self.position.y -= 1,
+            Direction::East => self.position.x += 1,
+            Direction::West => self.position.x -= 1,
+        }
+        self
     }
 }
 
@@ -52,6 +62,18 @@ mod tests {
     fn test_player_new() {
         let player = Player::new(String::from("CJ"));
         assert_eq!(String::from("CJ"), player.name);
+        assert_eq!(0, player.position.x);
+        assert_eq!(0, player.position.y);
+    }
+
+    #[test]
+    fn test_player_move() {
+        let mut player = Player::new(String::from("CJ"));
+        player
+            .move_player(Direction::North)
+            .move_player(Direction::East)
+            .move_player(Direction::South)
+            .move_player(Direction::West);
         assert_eq!(0, player.position.x);
         assert_eq!(0, player.position.y);
     }
