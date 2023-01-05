@@ -27,7 +27,20 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_ascii_caesar_encode() {
+        assert_eq!("", ascii_caesar_encode("", 10));
+        assert_eq!("", ascii_caesar_encode("", 0));
+        assert_eq!("", ascii_caesar_encode("", -10));
+        assert_eq!("a", ascii_caesar_encode("a", 0));
+        assert_eq!("b", ascii_caesar_encode("a", 1));
+        assert_eq!("`", ascii_caesar_encode("a", -1));
+        assert_eq!(
+            "6$>1(#$> 3># 6-?",
+            ascii_caesar_encode("we ride at dawn!", 30)
+        );
+        assert_eq!(
+            "we ride at dawn!",
+            ascii_caesar_encode("6$>1(#$> 3># 6-?", -30)
+        );
     }
 }
