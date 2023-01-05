@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn ascii_caesar_encode(plaintext: &str, shift: i8) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
