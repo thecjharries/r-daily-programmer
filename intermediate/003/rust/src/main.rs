@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn ascii_caesar_encode(plaintext: &str, shift: i8) -> String {
-    todo!()
+    plaintext
+        .chars()
+        .map(|character| {
+            let ascii_shift: u8 = if shift < 0 {
+                (127 - 32) - (shift.abs() as u8 % (127 - 32))
+            } else {
+                shift as u8 % 127
+            };
+            ((character as u8 - 32 + ascii_shift) % (127 - 32) + 32) as char
+        })
+        .collect()
 }
 
 #[cfg(not(tarpaulin_include))]
