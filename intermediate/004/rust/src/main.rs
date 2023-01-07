@@ -19,8 +19,8 @@ fn main() {
     println!("rad");
 }
 
-fn calculate(equation: &str) -> f32 {
-    todo!()
+fn calculate(equation: &str) -> f64 {
+    eval(equation).unwrap().as_f64().unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
