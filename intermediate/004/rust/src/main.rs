@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate(equation: &str) -> f32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
