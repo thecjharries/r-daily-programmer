@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use eval::{eval, to_value};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -28,6 +30,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(to_value(6.0), calculate("1 + 2 + 3"));
+        assert_eq!(to_value(7.0), calculate("2 * 2 + 3"));
+        assert_eq!(to_value(4.0), calculate("2 / 2 + 3"));
+        assert_eq!(to_value(2.0), calculate("2 / 2 + 3 / 3"));
     }
 }
