@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_anagrams(words: Vec<&str>) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
