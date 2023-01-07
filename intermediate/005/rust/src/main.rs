@@ -12,13 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn find_anagrams(words: Vec<&str>) -> u64 {
-    todo!()
+    let mut anagrams: HashMap<String, u64> = HashMap::new();
+    for word in words {
+        let mut sorted_word = word.chars().collect::<Vec<char>>();
+        sorted_word.sort();
+        let sorted_word = sorted_word.iter().collect::<String>();
+        if anagrams.contains_key(&sorted_word) {
+            anagrams.insert(sorted_word.clone(), anagrams[&sorted_word] + 1);
+        } else {
+            anagrams.insert(sorted_word, 0);
+        }
+    }
+    anagrams.values().sum()
 }
 
 #[cfg(not(tarpaulin_include))]
