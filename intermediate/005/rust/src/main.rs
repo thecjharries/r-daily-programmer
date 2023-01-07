@@ -28,6 +28,10 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let words = vec![
+            "pans", "snap", "pots", "skate", "stake", "word", "test", "cat", "act", "cruel",
+            "lucre", "ulcer",
+        ];
+        assert_eq!(5, find_anagrams(words));
     }
 }
