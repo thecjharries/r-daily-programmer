@@ -18,7 +18,28 @@ fn main() {
 }
 
 fn remove_repeated_substrings(input: &str) -> String {
-    todo!()
+    let mut output = String::new();
+    let mut remaining = input.to_string();
+    while 7 < remaining.len() {
+        let mut split = remaining.len() / 2;
+        let mut found = false;
+        while 3 < split {
+            let first = &remaining[..split];
+            let second = &remaining[split..];
+            if second.contains(first) {
+                output.push_str(first);
+                remaining = second.to_string().replace(first, "");
+                found = true;
+                break;
+            }
+            split -= 1;
+        }
+        if !found {
+            output.push_str(&remaining[..split]);
+            remaining = remaining[split..].to_string();
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
