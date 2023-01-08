@@ -28,6 +28,25 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(
+            "aaatestBlaBla".to_string(),
+            remove_repeated_substrings("aaatestBlaBlatestBlaBla")
+        );
+        assert_eq!(
+            "aaathisBlaBla".to_string(),
+            remove_repeated_substrings("aaathisBlaBlathisBlaBla")
+        );
+        assert_eq!(
+            "aaathatBlaBla".to_string(),
+            remove_repeated_substrings("aaathatBlaBlathatBlaBla")
+        );
+        assert_eq!(
+            "aaagoodBlaBla".to_string(),
+            remove_repeated_substrings("aaagoodBlaBlagoodBlaBla")
+        );
+        assert_eq!(
+            "aaagood1BlaBla123".to_string(),
+            remove_repeated_substrings("aaagood1BlaBla123good1BlaBla123")
+        );
     }
 }
