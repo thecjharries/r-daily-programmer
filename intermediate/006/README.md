@@ -1,5 +1,9 @@
 # [2/14/2012] Challenge #6 [intermediate]
 
+## Notes
+
+Even with the updates, this exercise is _very_ poorly defined. The examples added are also inconsistent. I'm going to remove any repeated substrings of length four or more. We'll see if that matches the examples.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/pp81n/2142012_challenge_6_intermediate/) by [u/]()
