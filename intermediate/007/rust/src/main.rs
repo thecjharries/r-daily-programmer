@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn draw_sierpinksi_gasket(iteration: u8) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
