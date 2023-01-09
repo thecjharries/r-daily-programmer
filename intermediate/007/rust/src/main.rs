@@ -28,6 +28,50 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("XXX\nX X\nXXX".to_string(), draw_sierpinksi_gasket(0));
+        assert_eq!(
+            "XXXXXXXXX
+X XX XX X
+XXXXXXXXX
+XXX   XXX
+X X   X X
+XXX   XXX
+XXXXXXXXX
+X XX XX X
+XXXXXXXXX"
+                .to_string(),
+            draw_sierpinksi_gasket(1)
+        );
+        assert_eq!(
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXX
+X XX XX XX XX XX XX XX XX X
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXX   XXXXXX   XXXXXX   XXX
+X X   X XX X   X XX X   X X
+XXX   XXXXXX   XXXXXX   XXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
+X XX XX XX XX XX XX XX XX X
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXX         XXXXXXXXX
+X XX XX X         X XX XX X
+XXXXXXXXX         XXXXXXXXX
+XXX   XXX         XXX   XXX
+X X   X X         X X   X X
+XXX   XXX         XXX   XXX
+XXXXXXXXX         XXXXXXXXX
+X XX XX X         X XX XX X
+XXXXXXXXX         XXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
+X XX XX XX XX XX XX XX XX X
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXX   XXXXXX   XXXXXX   XXX
+X X   X XX X   X XX X   X X
+XXX   XXXXXX   XXXXXX   XXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
+X XX XX XX XX XX XX XX XX X
+XXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                .to_string(),
+            draw_sierpinksi_gasket(2)
+        )
     }
 }
