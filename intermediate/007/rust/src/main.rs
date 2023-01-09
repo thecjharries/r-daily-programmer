@@ -18,7 +18,32 @@ fn main() {
 }
 
 fn draw_sierpinksi_gasket(iteration: u8) -> String {
-    todo!()
+    if 0 == iteration {
+        return String::from("XXX\nX X\nXXX");
+    }
+    let mut output = String::new();
+    let previous = draw_sierpinksi_gasket(iteration - 1);
+    let previous_lines: Vec<&str> = previous.split("\n").collect();
+    let previous_line_length = previous_lines[0].len();
+    for line in previous_lines.iter() {
+        output.push_str(&line);
+        output.push_str(&line);
+        output.push_str(&line);
+        output.push('\n');
+    }
+    for line in previous_lines.iter() {
+        output.push_str(&line);
+        output.push_str(&" ".repeat(previous_line_length));
+        output.push_str(&line);
+        output.push('\n');
+    }
+    for line in previous_lines.iter() {
+        output.push_str(&line);
+        output.push_str(&line);
+        output.push_str(&line);
+        output.push('\n');
+    }
+    output.trim().to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
