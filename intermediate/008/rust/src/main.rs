@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use num_to_words::integer_to_en_us;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn number_to_word(input: i64 -> String {
-    todo!()
+fn number_to_word(input: i64) -> String {
+    integer_to_en_us(input).unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
