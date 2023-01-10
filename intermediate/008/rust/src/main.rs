@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn number_to_word(input: i64 -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
