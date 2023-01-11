@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn replace_all_instances(needle: &str, replacement: &str, haystack: &str) -> String {
-    todo!()
+    haystack.replace(needle, replacement)
 }
 
 #[cfg(not(tarpaulin_include))]
