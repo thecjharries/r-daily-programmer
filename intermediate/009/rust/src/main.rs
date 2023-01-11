@@ -28,6 +28,12 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("Write a program that will take a string (\"I quite enjoy chocolate milk. hrmmm. yes.\"), and allow the user to scan a text file for strings that match. after this, allow them to replaces all instances of the string with another (\"I quite enjoy chocolate milk. hrmmm. yes.\")".to_string(),
+        replace_all_instances(
+            "I LIEK CHOCOLATE MILK",
+            "I quite enjoy chocolate milk. hrmmm. yes.",
+            "Write a program that will take a string (\"I LIEK CHOCOLATE MILK\"), and allow the user to scan a text file for strings that match. after this, allow them to replaces all instances of the string with another (\"I quite enjoy chocolate milk. hrmmm. yes.\")"
+        )
+    )
     }
 }
