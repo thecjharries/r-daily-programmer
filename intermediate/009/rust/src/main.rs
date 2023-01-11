@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn replace_all_instances(needle: &str, replacement: &str, haystack: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
