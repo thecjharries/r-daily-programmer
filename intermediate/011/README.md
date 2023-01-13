@@ -1,5 +1,9 @@
 # [2/19/2012] Challenge #11 [intermediate]
 
+## Notes
+
+I'm skipping the brute force calculation.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/pwox3/2192012_challenge_11_intermediate/)
