@@ -12,6 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref NUMBER_MAP: HashMap<char, char> = {
+        let mut map = HashMap::new();
+        map.insert('0', '0');
+        map.insert('1', '1');
+        map.insert('2', '5');
+        map.insert('5', '2');
+        map.insert('6', '9');
+        map.insert('8', '8');
+        map.insert('9', '6');
+        map
+    };
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
