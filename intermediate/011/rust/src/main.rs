@@ -20,8 +20,8 @@ lazy_static! {
         let mut map = HashMap::new();
         map.insert('0', '0');
         map.insert('1', '1');
-        map.insert('2', '5');
-        map.insert('5', '2');
+        map.insert('2', '2');
+        map.insert('5', '5');
         map.insert('6', '9');
         map.insert('8', '8');
         map.insert('9', '6');
