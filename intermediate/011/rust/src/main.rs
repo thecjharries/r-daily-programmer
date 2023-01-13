@@ -27,7 +27,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_upside_down_number() {
+        assert_eq!(true, is_upside_down_number(69));
+        assert_eq!(true, is_upside_down_number(96));
+        assert_eq!(true, is_upside_down_number(101));
+        assert_eq!(true, is_upside_down_number(111));
+        assert_eq!(true, is_upside_down_number(181));
+        assert_eq!(true, is_upside_down_number(609));
+        assert_eq!(true, is_upside_down_number(1961));
+        assert_eq!(false, is_upside_down_number(12));
     }
 }
