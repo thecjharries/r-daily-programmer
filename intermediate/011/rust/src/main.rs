@@ -35,7 +35,17 @@ fn main() {
 }
 
 fn is_upside_down_number(number: u32) -> bool {
-    todo!()
+    let number_chars = number.to_string().chars().collect::<Vec<char>>();
+    let mut flipped: Vec<char> = Vec::new();
+    for number_char in number_chars {
+        if !NUMBER_MAP.contains_key(&number_char) {
+            return false;
+        }
+        flipped.push(NUMBER_MAP[&number_char]);
+    }
+    flipped.reverse();
+    let flipped_string = flipped.iter().collect::<String>();
+    flipped_string == number.to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
