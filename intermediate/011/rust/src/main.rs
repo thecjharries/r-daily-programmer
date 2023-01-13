@@ -63,5 +63,6 @@ mod tests {
         assert_eq!(true, is_upside_down_number(609));
         assert_eq!(true, is_upside_down_number(1961));
         assert_eq!(false, is_upside_down_number(12));
+        assert_eq!(false, is_upside_down_number(27));
     }
 }
