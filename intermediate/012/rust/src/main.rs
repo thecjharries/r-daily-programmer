@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn factor(number: u32) -> Vec<u32> {
-    todo!()
+    let mut factors: Vec<u32> = vec![1];
+    let mut current_number = number;
+    let mut current_factor = 2;
+    while current_number > 1 {
+        if 0 == current_number % current_factor {
+            factors.push(current_factor);
+            current_number /= current_factor;
+        } else {
+            current_factor += 1;
+        }
+    }
+    factors
 }
 
 #[cfg(not(tarpaulin_include))]
