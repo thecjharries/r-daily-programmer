@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn reverse_string(input: &str) -> String {
-    todo!()
+    input.chars().rev().collect()
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -29,6 +29,6 @@ mod tests {
     #[test]
     fn test_stub() {
         assert_eq!("!olleh", reverse_string("hello!"));
-        assert_eq!("!dlrow ,olleh", reverse_string("hello world!"));
+        assert_eq!("!dlrow ,olleh", reverse_string("hello, world!"));
     }
 }
