@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn sieve_of_sundaram(max: u32) -> Vec<u32> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
