@@ -18,7 +18,25 @@ fn main() {
 }
 
 fn sieve_of_sundaram(max: u32) -> Vec<u32> {
-    todo!()
+    if 2 >= max {
+        return vec![];
+    }
+    let loop_max = (max - 2) / 2;
+    let mut sieve = vec![true; (loop_max + 1) as usize];
+    for i in 1..loop_max + 1 {
+        let mut j = i;
+        while i + j + 2 * i * j <= loop_max {
+            sieve[(i + j + 2 * i * j) as usize] = false;
+            j += 1;
+        }
+    }
+    let mut primes = vec![2];
+    for (index, is_prime) in sieve[1..].iter().enumerate() {
+        if *is_prime {
+            primes.push(2 * index as u32 + 3);
+        }
+    }
+    primes
 }
 
 #[cfg(not(tarpaulin_include))]
