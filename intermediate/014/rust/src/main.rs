@@ -46,6 +46,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
+        assert_eq!(0, sieve_of_sundaram(1).len());
         assert_eq!(vec![2, 3, 5, 7], sieve_of_sundaram(10));
         assert_eq!(
             vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
