@@ -89,7 +89,12 @@ impl Simulation {
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
-    println!("rad");
+    let mut open_count = 0;
+    for _ in 0..100 {
+        let mut simulation = Simulation::new();
+        open_count += simulation.run();
+    }
+    println!("{:.6}", open_count as f32 / 100.0);
 }
 
 #[cfg(not(tarpaulin_include))]
