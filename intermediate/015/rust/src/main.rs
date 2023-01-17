@@ -17,6 +17,7 @@ use rand::thread_rng;
 
 const MIN: usize = 0;
 const MAX: usize = 29;
+const BELLS: usize = 50;
 
 struct Flea {
     x: usize,
@@ -49,6 +50,22 @@ impl Flea {
     }
 }
 
+struct Simulation {
+    fleas: Vec<Flea>,
+}
+
+impl Simulation {
+    fn new() -> Simulation {
+        let mut fleas = Vec::new();
+        for x in MIN..=MAX {
+            for y in MIN..=MAX {
+                fleas.push(Flea::new(x, y));
+            }
+        }
+        Simulation { fleas }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -76,5 +93,11 @@ mod tests {
         flea.jump();
         assert!(flea.x >= MIN && flea.x < MAX);
         assert!(flea.y >= MIN && flea.y < MAX);
+    }
+
+    #[test]
+    fn test_simulation_new() {
+        let simulation = Simulation::new();
+        assert_eq!(simulation.fleas.len(), (MAX - MIN + 1) * (MAX - MIN + 1));
     }
 }
