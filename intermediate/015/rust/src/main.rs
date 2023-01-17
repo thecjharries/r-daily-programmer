@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const MIN: usize = 0;
+const MAX: usize = 29;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
