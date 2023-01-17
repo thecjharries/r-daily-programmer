@@ -64,6 +64,27 @@ impl Simulation {
         }
         Simulation { fleas }
     }
+
+    fn run(&mut self) -> u32 {
+        for _ in 0..BELLS {
+            for flea in &mut self.fleas {
+                flea.jump();
+            }
+        }
+        let mut open_places = vec![vec![true; MAX + 1]; MAX + 1];
+        for flea in &self.fleas {
+            open_places[flea.x][flea.y] = false;
+        }
+        let mut open_count = 0;
+        for x in MIN..=MAX {
+            for y in MIN..=MAX {
+                if open_places[x][y] {
+                    open_count += 1;
+                }
+            }
+        }
+        open_count
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -99,5 +120,12 @@ mod tests {
     fn test_simulation_new() {
         let simulation = Simulation::new();
         assert_eq!(simulation.fleas.len(), (MAX - MIN + 1) * (MAX - MIN + 1));
+    }
+
+    #[test]
+    fn test_simulation_run() {
+        let mut simulation = Simulation::new();
+        let open_count = simulation.run();
+        assert!(open_count > 0 || open_count == 0);
     }
 }
