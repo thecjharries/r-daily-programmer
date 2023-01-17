@@ -15,6 +15,11 @@
 const MIN: usize = 0;
 const MAX: usize = 29;
 
+struct Flea {
+    x: usize,
+    y: usize,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
