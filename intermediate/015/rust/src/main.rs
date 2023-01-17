@@ -20,6 +20,12 @@ struct Flea {
     y: usize,
 }
 
+impl Flea {
+    fn new(x: usize, y: usize) -> Flea {
+        Flea { x, y }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -31,7 +37,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_flea_new() {
+        let flea = Flea::new(0, 0);
+        assert_eq!(flea.x, 0);
+        assert_eq!(flea.y, 0);
     }
 }
