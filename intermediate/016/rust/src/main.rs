@@ -61,6 +61,12 @@ impl CrapsGame<'_> {
         self.rolls.push(roll);
         roll
     }
+
+    fn play(&mut self) {
+        while CrapsGameStatus::Point(self.point) == self.status {
+            self.roll();
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -108,5 +114,14 @@ mod tests {
         game3.roll();
         assert_eq!(CrapsGameStatus::Win, game3.status);
         assert_eq!(2, game3.rolls.len());
+    }
+
+    #[test]
+    fn test_crapsgame_play() {
+        let mut rng0 = Pcg64::seed_from_u64(0);
+        let mut game0 = CrapsGame::new(&mut rng0);
+        game0.play();
+        assert_eq!(CrapsGameStatus::Win, game0.status);
+        assert_eq!(1, game0.rolls.len());
     }
 }
