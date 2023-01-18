@@ -12,6 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rng::Rng;
+
+enum CrapsGameStatus {
+    Point(u8),
+    Win,
+    Loss,
+}
+
+struct CrapsGame {
+    rng: Rng,
+    rolls: Vec<u8>,
+    point: u8,
+    status: CrapsGameStatus,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
