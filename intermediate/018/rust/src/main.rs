@@ -13,8 +13,21 @@
 // limitations under the License.
 
 use std::collections::HashMap;
+use std::str::FromStr;
 
-struct PromptCollection(HashMap<char, String>);
+
+struct PromptCollection {
+    name: String,
+    collection: HashMap<char, String>,
+}
+
+impl FromStr on PromptCollection {
+    type Err = ();
+
+    fn from_str(input: &str) -> Result<Self, Self::Err> {
+        todo!()
+    }
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
