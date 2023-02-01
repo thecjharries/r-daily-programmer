@@ -59,6 +59,12 @@ impl FromStr for PromptCollection {
     }
 }
 
+impl PromptCollection {
+    fn to_html(&mut self) -> String {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
