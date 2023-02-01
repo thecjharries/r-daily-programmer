@@ -61,7 +61,25 @@ impl FromStr for PromptCollection {
 
 impl PromptCollection {
     fn to_html(&mut self) -> String {
-        todo!()
+        let mut result = String::new();
+        result.push_str(&format!("{}:\n", self.name));
+        if 0 < self.collection.len() {
+            for (key, value) in self.collection.iter() {
+                result.push_str(&format!(
+                    r#"<input type="radio" name="{}" value="{}"/> {}
+"#,
+                    self.name.to_ascii_lowercase(),
+                    key,
+                    value
+                ));
+            }
+        } else {
+            result.push_str(&format!(
+                r#"<input type="text" name="{}"/>"#,
+                self.name.to_ascii_lowercase()
+            ));
+        }
+        result.trim().to_string()
     }
 }
 
@@ -79,7 +97,7 @@ mod tests {
     fn test_prompt_collection_from_str() {
         let expected = PromptCollection {
             name: "Gender".to_string(),
-            collection: vec![('m', "Male".to_string()), ('f', "Female".to_string())]
+            collection: vec![('f', "Female".to_string()), ('m', "Male".to_string())]
                 .into_iter()
                 .collect(),
         };
@@ -96,7 +114,7 @@ mod tests {
 
     #[test]
     fn test_prompt_collection_to_html_one() {
-        let collection = PromptCollection {
+        let mut collection = PromptCollection {
             name: "Name".to_string(),
             collection: HashMap::new(),
         };
@@ -106,8 +124,8 @@ mod tests {
     }
 
     #[test]
-    fn_test_prompt_collection_to_html_less_than_five() {
-        let collection = PromptCollection {
+    fn test_prompt_collection_to_html_less_than_five() {
+        let mut collection = PromptCollection {
             name: "Gender".to_string(),
             collection: vec![('m', "Male".to_string()), ('f', "Female".to_string())]
                 .into_iter()
