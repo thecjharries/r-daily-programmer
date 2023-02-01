@@ -81,5 +81,10 @@ mod tests {
             expected,
             PromptCollection::from_str("Gender ([M]ale, [F]emale):").unwrap()
         );
+        let expected = PromptCollection {
+            name: "Name".to_string(),
+            collection: HashMap::new(),
+        };
+        assert_eq!(expected, PromptCollection::from_str("Name:").unwrap());
     }
 }
