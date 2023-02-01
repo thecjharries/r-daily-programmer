@@ -14,6 +14,13 @@
 
 use std::collections::HashMap;
 use std::str::FromStr;
+use regex::Regex;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref LINE_PATTERN: Regex = Regex::new(r"(?P<name>\w+)\s+\((?P<collection>[^)]+)\).*").unwrap();
+    static ref VALUE_PATTERN: Regex = Regex::new(r"\[(?P<key>\w)\](?P<value>.*)").unwrap();
+}
 
 
 struct PromptCollection {
