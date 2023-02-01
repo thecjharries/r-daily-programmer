@@ -93,4 +93,29 @@ mod tests {
         };
         assert_eq!(expected, PromptCollection::from_str("Name:").unwrap());
     }
+
+    #[test]
+    fn test_prompt_collection_to_html_one() {
+        let collection = PromptCollection {
+            name: "Name".to_string(),
+            collection: HashMap::new(),
+        };
+        let result = r#"Name:
+<input type="text" name="name"/>"#;
+        assert_eq!(result, collection.to_html());
+    }
+
+    #[test]
+    fn_test_prompt_collection_to_html_less_than_five() {
+        let collection = PromptCollection {
+            name: "Gender".to_string(),
+            collection: vec![('m', "Male".to_string()), ('f', "Female".to_string())]
+                .into_iter()
+                .collect(),
+        };
+        let result = r#"Gender:
+<input type="radio" name="gender" value="m"/> Male
+<input type="radio" name="gender" value="f"/> Female"#;
+        assert_eq!(result, collection.to_html());
+    }
 }
