@@ -18,7 +18,7 @@ use regex::Regex;
 use lazy_static::lazy_static;
 
 lazy_static! {
-    static ref LINE_PATTERN: Regex = Regex::new(r"(?P<name>\w+)\s+\((?P<collection>[^)]+)\).*").unwrap();
+    static ref LINE_PATTERN: Regex = Regex::new(r"(?P<name>\w+)(?:\s+\((?P<collection>[^)]+)\))?.*").unwrap();
     static ref VALUE_PATTERN: Regex = Regex::new(r"\[(?P<key>\w)\](?P<value>.*)").unwrap();
 }
 
@@ -47,7 +47,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_prompt_collection_from_str() {
+        let expected = PromptCollection {
+            name: "Gender".to_string(),
+            collection: vec![('m', "Male".to_string()), ('f', "Female".to_string())].into_iter().collect(),
+        };
+        assert_eq!(expected, PromptCollection::from_str("Gender ([M]ale, [F]emale):"));
     }
 }
