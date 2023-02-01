@@ -12,27 +12,50 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
 use std::collections::HashMap;
 use std::str::FromStr;
-use regex::Regex;
-use lazy_static::lazy_static;
 
 lazy_static! {
-    static ref LINE_PATTERN: Regex = Regex::new(r"(?P<name>\w+)(?:\s+\((?P<collection>[^)]+)\))?.*").unwrap();
+    static ref LINE_PATTERN: Regex =
+        Regex::new(r"(?P<name>\w+)(?:\s+\((?P<collection>[^)]+)\))?.*").unwrap();
     static ref VALUE_PATTERN: Regex = Regex::new(r"\[(?P<key>\w)\](?P<value>.*)").unwrap();
 }
 
-
+#[derive(Debug, PartialEq)]
 struct PromptCollection {
     name: String,
     collection: HashMap<char, String>,
 }
 
-impl FromStr on PromptCollection {
+impl FromStr for PromptCollection {
     type Err = ();
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
-        todo!()
+        let mut name = String::new();
+        let mut collection = HashMap::new();
+        if let Some(captures) = LINE_PATTERN.captures(input) {
+            name = captures.name("name").unwrap().as_str().to_string();
+            if let Some(collection_string) = captures.name("collection") {
+                for value in collection_string.as_str().split(",") {
+                    if let Some(captures) = VALUE_PATTERN.captures(value) {
+                        let key = captures
+                            .name("key")
+                            .unwrap()
+                            .as_str()
+                            .chars()
+                            .next()
+                            .unwrap();
+                        let mut value = String::new();
+                        value.push(key);
+                        value.push_str(captures.name("value").unwrap().as_str().trim());
+                        collection.insert(key.to_ascii_lowercase(), value);
+                    }
+                }
+            }
+        }
+        Ok(PromptCollection { name, collection })
     }
 }
 
@@ -50,8 +73,13 @@ mod tests {
     fn test_prompt_collection_from_str() {
         let expected = PromptCollection {
             name: "Gender".to_string(),
-            collection: vec![('m', "Male".to_string()), ('f', "Female".to_string())].into_iter().collect(),
+            collection: vec![('m', "Male".to_string()), ('f', "Female".to_string())]
+                .into_iter()
+                .collect(),
         };
-        assert_eq!(expected, PromptCollection::from_str("Gender ([M]ale, [F]emale):"));
+        assert_eq!(
+            expected,
+            PromptCollection::from_str("Gender ([M]ale, [F]emale):").unwrap()
+        );
     }
 }
