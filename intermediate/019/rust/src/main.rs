@@ -17,7 +17,7 @@ use regex::Regex;
 
 lazy_static! {
     static ref TITLE_LINE_PATTERN: Regex =
-        Regex::new(r"(?:ADVENTURE\s+)?[XVI]+.\s+(?P<title>.*)").unwrap();
+        Regex::new(r"^\s*(?:ADVENTURE\s+)?[XVI]+.\s+(?P<title>.*)").unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
