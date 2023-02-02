@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::HashMap;
 
 lazy_static! {
     static ref TITLE_LINE_PATTERN: Regex =
@@ -30,7 +31,28 @@ fn is_title_line(input: &str) -> bool {
 }
 
 fn get_story_word_count(input: &str) -> HashMap<String, usize> {
-    todo!()
+    let mut story_word_count = HashMap::new();
+    let mut current_story = String::new();
+    for line in input.lines() {
+        if is_title_line(line) {
+            current_story = TITLE_LINE_PATTERN
+                .captures(line)
+                .unwrap()
+                .name("title")
+                .unwrap()
+                .as_str()
+                .to_string();
+        } else {
+            if current_story.is_empty() {
+                continue;
+            }
+            story_word_count
+                .entry(current_story.clone())
+                .and_modify(|count| *count += line.trim().split_whitespace().count())
+                .or_insert(line.split_whitespace().count());
+        }
+    }
+    story_word_count
 }
 
 #[cfg(not(tarpaulin_include))]
