@@ -35,7 +35,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_title_line() {
+        assert_eq!(
+            false,
+            is_title_line("On glancing over my notes of the seventy odd cases in which I")
+        );
+        assert_eq!(true, is_title_line("ADVENTURE I. A SCANDAL IN BOHEMIA"));
+        assert_eq!(true, is_title_line("X. THE NORWOOD BUILDER"));
     }
 }
