@@ -29,6 +29,10 @@ fn is_title_line(input: &str) -> bool {
     TITLE_LINE_PATTERN.is_match(input)
 }
 
+fn get_story_word_count(input: &str) -> HashMap<String, usize> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
