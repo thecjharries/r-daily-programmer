@@ -47,4 +47,39 @@ mod tests {
         assert_eq!(true, is_title_line("ADVENTURE I. A SCANDAL IN BOHEMIA"));
         assert_eq!(true, is_title_line("X. THE NORWOOD BUILDER"));
     }
+
+    #[test]
+    fn test_get_story_word_count() {
+        let input = r#"
+
+        had gone. You heard him yourselves to-night. Well, he has always
+        answered me like that. My sister thinks that I am going mad.
+        Sometimes I think that I am myself. And now--and now I am myself
+        a branded thief, without ever having touched the wealth for which
+        I sold my character. God help me! God help me!" He burst into
+        convulsive sobbing, with his face buried in his hands.
+
+        ADVENTURE I. A SCANDAL IN BOHEMIA
+
+        possible that I am saving a soul. This fellow will not go wrong
+        again; he is too terribly frightened. Send him to gaol now, and
+        you make him a gaol-bird for life. Besides, it is the season of
+        forgiveness. Chance has put in our way a most singular and
+        whimsical problem, and its solution is its own reward. If you
+        will have the goodness to touch the bell, Doctor, we will begin
+        another investigation, in which, also a bird will be the chief
+        feature."
+
+
+
+        VIII. THE ADVENTURE OF THE SPECKLED BAND
+
+        On glancing over my notes of the seventy odd cases in which I
+        have during the last eight years studied the methods of my friend
+        Sherlock Holmes, I find many tragic, some comic, a large number"#;
+        let mut expected = HashMap::new();
+        expected.insert("A SCANDAL IN BOHEMIA".to_string(), 84);
+        expected.insert("THE ADVENTURE OF THE SPECKLED BAND".to_string(), 36);
+        assert_eq!(expected, get_story_word_count(input));
+    }
 }
