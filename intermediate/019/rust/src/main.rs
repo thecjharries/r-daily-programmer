@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use regex::Regex;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref TITLE_LINE_PATTERN: Regex = Regex::new(r"(?:ADVENTURE\s+)?[XVI]+.\s+(?P<title>.*)").unwrap();
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
