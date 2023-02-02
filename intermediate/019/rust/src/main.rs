@@ -26,7 +26,7 @@ fn main() {
 }
 
 fn is_title_line(input: &str) -> bool {
-    todo!()
+    TITLE_LINE_PATTERN.is_match(input)
 }
 
 #[cfg(not(tarpaulin_include))]
