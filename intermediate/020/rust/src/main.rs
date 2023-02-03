@@ -12,12 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::Duration;
+use chrono::NaiveDateTime;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-
+fn time_since(date: NaiveDateTime, unit: Duration) -> i64 {
+    todo!()
+}
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
