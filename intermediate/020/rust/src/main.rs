@@ -21,7 +21,9 @@ fn main() {
 }
 
 fn time_since(date: NaiveDateTime, unit: Duration) -> i64 {
-    todo!()
+    let now = chrono::Local::now().naive_local();
+    let difference = now - date;
+    difference.num_seconds() / unit.num_seconds()
 }
 
 #[cfg(not(tarpaulin_include))]
