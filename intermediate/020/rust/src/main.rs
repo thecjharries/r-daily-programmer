@@ -30,7 +30,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_time_since() {
+        let date =
+            NaiveDateTime::parse_from_str("2000-01-01 00:00:00", "%Y-%m-%d %H:%M:%S").unwrap();
+        let unit = Duration::minutes(1);
+        assert!(12088800 <= time_since(date, unit));
+        let unit = Duration::hours(1);
+        assert!(201480 <= time_since(date, unit));
+        let unit = Duration::days(1);
+        assert!(8395 <= time_since(date, unit));
+        let unit = Duration::days(30);
+        assert!(276 <= time_since(date, unit));
+        let unit = Duration::days(365);
+        assert!(23 <= time_since(date, unit));
     }
 }
