@@ -17,6 +17,9 @@ fn main() {
     println!("rad");
 }
 
+#[derive(Debug, PartialEq)]
+struct Grid(Vec<Vec<char>>);
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
