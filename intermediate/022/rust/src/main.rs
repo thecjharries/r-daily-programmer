@@ -49,6 +49,12 @@ struct Player {
     grid: Grid,
 }
 
+impl Player {
+    fn move(direction: Direction) {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
