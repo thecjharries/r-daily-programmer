@@ -18,7 +18,14 @@ fn main() {
 }
 
 fn haar_transform(input: &[f64]) -> Vec<f64> {
-    todo!()
+    let mut output = Vec::new();
+    let mut index = 0;
+    while index < input.len() {
+        output.push((input[index] + input[index + 1]) / 2.0);
+        output.push((input[index] - input[index + 1]) / 2.0);
+        index += 2;
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
