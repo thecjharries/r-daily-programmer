@@ -27,7 +27,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_haar_transform() {
+        assert_eq!(
+            vec![1.0, 0.0, 2.0, 0.0],
+            haar_transform(&[1.0, 1.0, 2.0, 2.0])
+        );
+        assert_eq!(
+            vec![1.0, 0.0, 2.0, 0.0, 3.0, 0.0, 4.0, 0.0],
+            haar_transform(&[1.0, 1.0, 2.0, 2.0, 3.0, 3.0, 4.0, 4.0])
+        );
     }
 }
