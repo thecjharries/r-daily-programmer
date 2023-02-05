@@ -19,7 +19,7 @@ fn main() {
     println!("rad");
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct Grid(Vec<Vec<char>>);
 
 impl FromStr for Grid {
@@ -50,8 +50,17 @@ struct Player {
 }
 
 impl Player {
-    fn move(direction: Direction) {
-        todo!()
+    fn move_player(&mut self, direction: Direction) {
+        let (x, y) = match direction {
+            Direction::Up => (self.x, self.y - 1),
+            Direction::Down => (self.x, self.y + 1),
+            Direction::Left => (self.x - 1, self.y),
+            Direction::Right => (self.x + 1, self.y),
+        };
+        if '.' == self.grid.0[y][x] {
+            self.x = x;
+            self.y = y;
+        }
     }
 }
 
@@ -73,25 +82,85 @@ mod tests {
     }
 
     #[test]
-    fn test_player_move() {
+    fn test_player_move_player() {
         let input = "####\n#...#\n#..#\n####";
         let grid = input.parse::<Grid>().unwrap();
-        let mut player = Player { x: 2, y: 2, grid };
-        player.move(Direction::Up);
-        assert_eq!(Player { x: 2, y: 1, grid }, player);
-        player.move(Direction::Up);
-        assert_eq!(Player { x: 2, y: 1, grid }, player);
-        player.move(Direction::Down);
-        assert_eq!(Player { x: 2, y: 2, grid }, player);
-        player.move(Direction::Down);
-        assert_eq!(Player { x: 2, y: 2, grid }, player);
-        player.move(Direction::Left);
-        assert_eq!(Player { x: 1, y: 2, grid }, player);
-        player.move(Direction::Left);
-        assert_eq!(Player { x: 1, y: 2, grid }, player);
-        player.move(Direction::Right);
-        assert_eq!(Player { x: 2, y: 2, grid }, player);
-        player.move(Direction::Right);
-        assert_eq!(Player { x: 2, y: 2, grid }, player);
+        let mut player = Player {
+            x: 2,
+            y: 2,
+            grid: grid.clone(),
+        };
+        player.move_player(Direction::Up);
+        assert_eq!(
+            Player {
+                x: 2,
+                y: 1,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Up);
+        assert_eq!(
+            Player {
+                x: 2,
+                y: 1,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Down);
+        assert_eq!(
+            Player {
+                x: 2,
+                y: 2,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Down);
+        assert_eq!(
+            Player {
+                x: 2,
+                y: 2,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Left);
+        assert_eq!(
+            Player {
+                x: 1,
+                y: 2,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Left);
+        assert_eq!(
+            Player {
+                x: 1,
+                y: 2,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Right);
+        assert_eq!(
+            Player {
+                x: 2,
+                y: 2,
+                grid: grid.clone()
+            },
+            player
+        );
+        player.move_player(Direction::Right);
+        assert_eq!(
+            Player {
+                x: 2,
+                y: 2,
+                grid: grid.clone()
+            },
+            player
+        );
     }
 }
