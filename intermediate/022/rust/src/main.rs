@@ -34,6 +34,14 @@ impl FromStr for Grid {
     }
 }
 
+#[derive(Debug, PartialEq)]
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
