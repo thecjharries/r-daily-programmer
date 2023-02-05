@@ -67,7 +67,7 @@ git-prompt-runner:
 
 # Convenience target to push the feature branch
 .PHONY: push
-push:
+push: coverage clean
 	$(GIT) push -u origin feat/$(DIFFICULTY)-$(NUMBER)
 
 # Convenience target for making a patch commit on main.rs
