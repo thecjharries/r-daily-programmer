@@ -65,6 +65,11 @@ git-prompt-runner:
 	$(GIT) add src/main.rs
 	$(GIT) commit -m 'Add prompt runner to main'
 
+# Convenience target to push the feature branch
+.PHONY: push
+push:
+	$(GIT) push -u origin feat/$(DIFFICULTY)-$(NUMBER)
+
 # Convenience target for making a patch commit on main.rs
 .PHONY: patch
 patch:
