@@ -42,6 +42,13 @@ enum Direction {
     Right,
 }
 
+#[derive(Debug, PartialEq)]
+struct Player {
+    x: usize,
+    y: usize,
+    grid: Grid,
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
