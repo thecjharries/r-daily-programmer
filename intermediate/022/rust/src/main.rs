@@ -71,4 +71,27 @@ mod tests {
         assert_eq!(expected, input.parse::<Grid>().unwrap());
         assert_eq!(expected, Grid::from_str(input).unwrap());
     }
+
+    #[test]
+    fn test_player_move() {
+        let input = "####\n#...#\n#..#\n####";
+        let grid = input.parse::<Grid>().unwrap();
+        let mut player = Player { x: 2, y: 2, grid };
+        player.move(Direction::Up);
+        assert_eq!(Player { x: 2, y: 1, grid }, player);
+        player.move(Direction::Up);
+        assert_eq!(Player { x: 2, y: 1, grid }, player);
+        player.move(Direction::Down);
+        assert_eq!(Player { x: 2, y: 2, grid }, player);
+        player.move(Direction::Down);
+        assert_eq!(Player { x: 2, y: 2, grid }, player);
+        player.move(Direction::Left);
+        assert_eq!(Player { x: 1, y: 2, grid }, player);
+        player.move(Direction::Left);
+        assert_eq!(Player { x: 1, y: 2, grid }, player);
+        player.move(Direction::Right);
+        assert_eq!(Player { x: 2, y: 2, grid }, player);
+        player.move(Direction::Right);
+        assert_eq!(Player { x: 2, y: 2, grid }, player);
+    }
 }
