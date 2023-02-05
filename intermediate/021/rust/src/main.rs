@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn haar_transform(input: &[f64]) -> Vec<f64> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
