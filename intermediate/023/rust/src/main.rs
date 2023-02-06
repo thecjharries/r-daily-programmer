@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_non_mcnugget_numbers() {
+        assert_eq!(
+            vec![1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 22, 23, 25, 28, 31, 34, 37, 43],
+            generate_non_mcnugget_numbers()
+        );
     }
 }
