@@ -12,13 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashSet;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn generate_non_mcnugget_numbers() -> Vec<u32> {
-    todo!()
+    let threes = (6..44).step_by(3).collect::<HashSet<u32>>();
+    let twenties = (20..44).step_by(20).collect::<HashSet<u32>>();
+    let offset = (26..44).step_by(3).collect::<HashSet<u32>>();
+    let complete = (1..44).collect::<HashSet<u32>>();
+    let mut result: Vec<u32> = complete
+        .difference(&threes)
+        .map(|&value| value.clone())
+        .collect::<HashSet<u32>>()
+        .difference(&twenties)
+        .map(|&value| value.clone())
+        .collect::<HashSet<u32>>()
+        .difference(&offset)
+        .map(|&value| value.clone())
+        .collect();
+    result.sort();
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
