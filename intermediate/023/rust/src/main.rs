@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_non_mcnugget_numbers() -> Vec<u32> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
