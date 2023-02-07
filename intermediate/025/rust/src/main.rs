@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn decimal_to_binary(decimal: u32) -> String {
-    todo!()
+    if 0 == decimal {
+        return "0".to_string();
+    }
+    let mut binary = String::new();
+    let mut remainder = decimal;
+    while 0 < remainder {
+        binary = format!("{}{}", remainder % 2, binary);
+        remainder /= 2;
+    }
+    binary
 }
 
 #[cfg(not(tarpaulin_include))]
