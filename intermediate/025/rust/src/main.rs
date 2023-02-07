@@ -27,7 +27,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_decimal_to_binary() {
+        assert_eq!("0", decimal_to_binary(0));
+        assert_eq!("1", decimal_to_binary(1));
+        assert_eq!("10", decimal_to_binary(2));
+        assert_eq!("11", decimal_to_binary(3));
+        assert_eq!("100", decimal_to_binary(4));
+        assert_eq!("101", decimal_to_binary(5));
+        assert_eq!("110", decimal_to_binary(6));
+        assert_eq!("111", decimal_to_binary(7));
+        assert_eq!("1000", decimal_to_binary(8));
     }
 }
