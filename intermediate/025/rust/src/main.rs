@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn decimal_to_binary(decimal: u32) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
