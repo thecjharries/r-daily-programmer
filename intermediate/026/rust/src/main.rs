@@ -39,7 +39,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_employee_from_str() {
+        let input = "New Years Baby, 1, $12.00 per hour";
+        let expected = Employee {
+            name: "New Years Baby".to_string(),
+            age: 1,
+            salary: 12.00,
+        };
+        assert_eq!(expected, Employee::from_str(input).unwrap());
+        assert_eq!("Invalid input", Employee::from_str("Invalid input").unwrap_err());
     }
 }
