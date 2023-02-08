@@ -14,17 +14,31 @@
 
 use std::str::FromStr;
 
+#[derive(Debug, PartialEq)]
 struct Employee {
-    name String,
-    age u32,
-    salary f32,
+    name: String,
+    age: u32,
+    salary: f32,
 }
 
 impl FromStr for Employee {
     type Err = String;
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
-        todo!()
+        let mut parts = input.split(", ");
+        if 3 != parts.clone().count() {
+            return Err("Invalid input".to_string());
+        }
+        let name = parts.next().unwrap().to_string();
+        let age = parts.next().unwrap().parse::<u32>().unwrap();
+        let salary = parts
+            .next()
+            .unwrap()
+            .replace("$", "")
+            .replace(" per hour", "")
+            .parse::<f32>()
+            .unwrap();
+        Ok(Employee { name, age, salary })
     }
 }
 
@@ -47,6 +61,9 @@ mod tests {
             salary: 12.00,
         };
         assert_eq!(expected, Employee::from_str(input).unwrap());
-        assert_eq!("Invalid input", Employee::from_str("Invalid input").unwrap_err());
+        assert_eq!(
+            "Invalid input",
+            Employee::from_str("Invalid input").unwrap_err()
+        );
     }
 }
