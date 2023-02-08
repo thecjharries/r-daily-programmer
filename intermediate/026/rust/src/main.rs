@@ -12,10 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
 struct Employee {
     name String,
     age u32,
     salary f32,
+}
+
+impl FromStr for Employee {
+    type Err = String;
+
+    fn from_str(input: &str) -> Result<Self, Self::Err> {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
