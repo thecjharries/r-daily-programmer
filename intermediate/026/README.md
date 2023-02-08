@@ -1,5 +1,9 @@
 # [3/16/2012] Challenge #26 [intermediate]
 
+## Notes
+
+This exercise is not defined _at all_.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/qzip3/3162012_challenge_26_intermediate/)
