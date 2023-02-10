@@ -62,4 +62,19 @@ mod tests {
             read_to_string("files/index.html").unwrap()
         );
     }
+
+    #[test]
+    fn test_post_index() {
+        let client = Client::tracked(rocket()).expect("valid rocket instance");
+        let response: LocalResponse = client
+            .post("/")
+            .body("text=hello")
+            .header(rocket::http::ContentType::Form)
+            .dispatch();
+        assert_eq!(response.status(), rocket::http::Status::Ok);
+        assert_eq!(
+            response.into_string().unwrap(),
+            "You sent: hello".to_string()
+        );
+    }
 }
