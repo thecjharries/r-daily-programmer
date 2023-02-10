@@ -12,18 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[cfg(not(tarpaulin_include))]
-fn main() {
-    println!("rad");
+use rocket::fs::NamedFile;
+use rocket::{build, get, launch, routes};
+use std::io::Result;
+
+#[get("/")]
+async fn index() -> Result<NamedFile> {
+    NamedFile::open("files/index.html").await
 }
+
+#[launch]
+fn rocket() -> _ {
+    build()
+        .mount("/", routes![index])
+}
+
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
+    use rocket::local::blocking::{Client, LocalResponse};
+    use std::fs::read_to_string;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_index() {
+        let client = Client::tracked(rocket()).expect("valid rocket instance");
+        let response: LocalResponse = client.get("/").dispatch();
+        assert_eq!(response.status(), rocket::http::Status::Ok);
+        assert_eq!(
+            response.content_type(),
+            Some(rocket::http::ContentType::HTML)
+        );
+        assert_eq!(
+            response.into_string().unwrap(),
+            read_to_string("files/index.html").unwrap()
+        );
     }
 }
