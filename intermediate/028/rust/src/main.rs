@@ -12,13 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rgsl::polynomials::cubic_equations::poly_solve_cubic;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn find_tetrahedral_number(input: u64) -> u64 {
-    todo!()
+    if 0 == input {
+        return 0;
+    }
+    if 1 == input {
+        return 1;
+    }
+    let (_, x_0, _, _) = poly_solve_cubic(3.0, 2.0, -6.0 * (input as f64));
+    if x_0.ceil() == x_0.floor() {
+        return ((x_0 * (x_0 + 1.0) * (x_0 + 2.0) / 6.0) - ((x_0 - 1.0) * x_0 * (x_0 + 1.0) / 6.0))
+            as u64;
+    }
+    ((x_0.ceil() * (x_0.ceil() + 1.0) * (x_0.ceil() + 2.0) / 6.0)
+        - (x_0.floor() * (x_0.floor() + 1.0) * (x_0.floor() + 2.0) / 6.0)) as u64
 }
 
 #[cfg(not(tarpaulin_include))]
