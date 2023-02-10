@@ -13,12 +13,13 @@
 // limitations under the License.
 
 use rocket::fs::NamedFile;
-use rocket::{build, get, launch, routes};
+use rocket::{build, FromForm, get, launch, post, routes};
 use rocket::serde::{Deserialize, Serialize};
 use rocket::form::Form;
 use std::io::Result;
 
 #[derive(FromForm, Serialize, Deserialize)]
+#[serde(crate = "rocket::serde")]
 struct Data<'r> {
     text: &'r str,
 }
@@ -28,10 +29,15 @@ async fn get_index() -> Result<NamedFile> {
     NamedFile::open("files/index.html").await
 }
 
+#[post("/", data = "<data>")]
+async fn post_index(data: Form<Data<'_>>) -> String {
+    format!("You sent: {}", data.text)
+}
+
 #[launch]
 fn rocket() -> _ {
     build()
-        .mount("/", routes![get_index])
+        .mount("/", routes![get_index, post_index])
 }
 
 
