@@ -14,7 +14,14 @@
 
 use rocket::fs::NamedFile;
 use rocket::{build, get, launch, routes};
+use rocket::serde::{Deserialize, Serialize};
+use rocket::form::Form;
 use std::io::Result;
+
+#[derive(FromForm, Serialize, Deserialize)]
+struct Data<'r> {
+    text: &'r str,
+}
 
 #[get("/")]
 async fn get_index() -> Result<NamedFile> {
