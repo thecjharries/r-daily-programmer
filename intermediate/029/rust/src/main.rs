@@ -17,14 +17,14 @@ use rocket::{build, get, launch, routes};
 use std::io::Result;
 
 #[get("/")]
-async fn index() -> Result<NamedFile> {
+async fn get_index() -> Result<NamedFile> {
     NamedFile::open("files/index.html").await
 }
 
 #[launch]
 fn rocket() -> _ {
     build()
-        .mount("/", routes![index])
+        .mount("/", routes![get_index])
 }
 
 
