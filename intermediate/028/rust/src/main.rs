@@ -17,13 +17,17 @@ fn main() {
     println!("rad");
 }
 
+fn find_tetrahedral_number(input: u64) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_tetrahedral_number() {
+        assert_eq!(505013002500, find_tetrahedral_number(169179692512835000));
     }
 }
