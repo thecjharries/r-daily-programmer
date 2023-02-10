@@ -28,6 +28,15 @@ mod tests {
 
     #[test]
     fn test_find_tetrahedral_number() {
-        assert_eq!(505013002500, find_tetrahedral_number(169179692512835000));
+        assert_eq!(0, find_tetrahedral_number(0));
+        assert_eq!(1, find_tetrahedral_number(1));
+        assert_eq!(3, find_tetrahedral_number(2));
+        assert_eq!(3, find_tetrahedral_number(3));
+        assert_eq!(3, find_tetrahedral_number(4));
+        assert_eq!(6, find_tetrahedral_number(5));
+        assert_eq!(6, find_tetrahedral_number(6));
+        assert_eq!(6, find_tetrahedral_number(7));
+        assert_eq!(6, find_tetrahedral_number(8));
+        assert_eq!(505013002528, find_tetrahedral_number(169179692512835000));
     }
 }
