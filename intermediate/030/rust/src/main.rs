@@ -27,7 +27,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_valid_luhn() {
+        assert_eq!(true, is_valid_luhn("79927398713"));
+        assert_eq!(true, is_valid_luhn("49927398716"));
+        assert_eq!(false, is_valid_luhn("79927398714"));
     }
 }
