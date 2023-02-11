@@ -18,7 +18,23 @@ fn main() {
 }
 
 fn is_valid_luhn(number: &str) -> bool {
-    todo!()
+    let mut sum = 0;
+    let mut is_odd = true;
+    for character in number.chars().rev() {
+        let digit = character.to_digit(10).unwrap();
+        sum += if is_odd {
+            digit
+        } else {
+            let doubled_digit = digit * 2;
+            if doubled_digit > 9 {
+                doubled_digit - 9
+            } else {
+                doubled_digit
+            }
+        };
+        is_odd = !is_odd;
+    }
+    0 == sum % 10
 }
 
 #[cfg(not(tarpaulin_include))]
