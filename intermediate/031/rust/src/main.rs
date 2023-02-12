@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_complexity(n: u32) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
