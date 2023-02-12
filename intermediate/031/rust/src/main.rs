@@ -21,7 +21,19 @@ fn main() {
 
 #[memoize]
 fn find_complexity(n: u32) -> u32 {
-    todo!()
+    if n < 2 {
+        return 1;
+    }
+    let mut complexity = find_complexity(n - 1) + 1;
+    for index in 2..((n as f32).sqrt().floor() as u32 + 1) {
+        if 0 == n % index {
+            let possible = find_complexity(index) + find_complexity(n / index);
+            if possible < complexity {
+                complexity = possible;
+            }
+        }
+    }
+    complexity
 }
 
 #[cfg(not(tarpaulin_include))]
