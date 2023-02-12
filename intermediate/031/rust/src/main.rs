@@ -56,5 +56,6 @@ mod tests {
         assert_eq!(8, find_complexity(11));
         assert_eq!(7, find_complexity(12));
         assert_eq!(27, find_complexity(6161));
+        assert_eq!(28, find_complexity(10000));
     }
 }
