@@ -12,11 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use memoize::memoize;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
+#[memoize]
 fn find_complexity(n: u32) -> u32 {
     todo!()
 }
