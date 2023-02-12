@@ -9,6 +9,16 @@ RM ?= rm
 DIFFICULTY = $(lastword $(subst /, ,$(realpath ../../)))
 NUMBER = $(lastword $(subst /, ,$(realpath ../)))
 
+# Dump variables
+.PHONY: debug
+debug:
+	@echo "Exercise is $(DIFFICULTY)-$(NUMBER)"
+	@echo "CARGO is $(CARGO)"
+	@echo "GIT is $(GIT)"
+	@echo "SED is $(SED)"
+	@echo "XDG_OPEN is $(XDG_OPEN)"
+	@echo "RM is $(RM)"
+
 # Run the program
 .PHONY: run
 run:
