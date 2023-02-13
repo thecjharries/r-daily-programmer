@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_hanoi_moves(disk_count: u32) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
