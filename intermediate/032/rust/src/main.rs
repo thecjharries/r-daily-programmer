@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_hanoi_moves() {
+        assert_eq!(1, compute_hanoi_moves(1));
+        assert_eq!(3, compute_hanoi_moves(2));
+        assert_eq!(7, compute_hanoi_moves(3));
+        assert_eq!(15, compute_hanoi_moves(4));
+        assert_eq!(31, compute_hanoi_moves(5));
     }
 }
