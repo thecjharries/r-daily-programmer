@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn compute_hanoi_moves(disk_count: u32) -> u32 {
-    todo!()
+    2_u32.pow(disk_count) - 1
 }
 
 #[cfg(not(tarpaulin_include))]
