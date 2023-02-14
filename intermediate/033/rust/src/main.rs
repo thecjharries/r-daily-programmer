@@ -85,10 +85,6 @@ fn main() {
     println!("rad");
 }
 
-fn parse_card(input: &str) -> Card {
-    todo!()
-}
-
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
