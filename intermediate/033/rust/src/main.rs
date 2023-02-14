@@ -49,7 +49,34 @@ impl FromStr for Card {
     type Err = ();
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
-        todo!()
+        let mut chars = input.trim().chars();
+        if 2 != input.len() {
+            return Err(());
+        }
+        let value = match chars.next() {
+            Some('A') => Value::Ace,
+            Some('2') => Value::Two,
+            Some('3') => Value::Three,
+            Some('4') => Value::Four,
+            Some('5') => Value::Five,
+            Some('6') => Value::Six,
+            Some('7') => Value::Seven,
+            Some('8') => Value::Eight,
+            Some('9') => Value::Nine,
+            Some('T') => Value::Ten,
+            Some('J') => Value::Jack,
+            Some('Q') => Value::Queen,
+            Some('K') => Value::King,
+            _ => return Err(()),
+        };
+        let suit = match chars.next() {
+            Some('C') => Suit::Clubs,
+            Some('D') => Suit::Diamonds,
+            Some('H') => Suit::Hearts,
+            Some('S') => Suit::Spades,
+            _ => return Err(()),
+        };
+        Ok(Card { suit, value })
     }
 }
 
