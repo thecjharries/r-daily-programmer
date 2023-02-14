@@ -184,6 +184,7 @@ mod tests {
             Card::from_str("KC").unwrap()
         );
         assert!(Card::from_str("BQ").is_err());
+        assert!(Card::from_str("QZ").is_err());
         assert!(Card::from_str("Q").is_err());
     }
 }
