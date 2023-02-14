@@ -14,6 +14,7 @@
 
 use std::str::FromStr;
 
+#[derive(Debug, PartialEq)]
 enum Suit {
     Clubs,
     Diamonds,
@@ -21,6 +22,7 @@ enum Suit {
     Spades,
 }
 
+#[derive(Debug, PartialEq)]
 enum Value {
     Ace,
     Two,
@@ -37,6 +39,7 @@ enum Value {
     King,
 }
 
+#[derive(Debug, PartialEq)]
 struct Card {
     suit: Suit,
     value: Value,
@@ -65,7 +68,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_card_fromstr() {
+        assert_eq!(
+            Card {
+                suit: Suit::Clubs,
+                value: Value::Ace
+            },
+            Card::from_str("AC").unwrap()
+        );
     }
 }
