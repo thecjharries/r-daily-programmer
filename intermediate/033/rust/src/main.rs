@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
 enum Suit {
     Clubs,
     Diamonds,
@@ -38,6 +40,14 @@ enum Value {
 struct Card {
     suit: Suit,
     value: Value,
+}
+
+impl FromStr for Card {
+    type Err = ();
+
+    fn from_str(input: &str) -> Result<Self, Self::Err> {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
