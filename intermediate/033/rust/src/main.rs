@@ -99,5 +99,91 @@ mod tests {
             },
             Card::from_str("AC").unwrap()
         );
+        assert_eq!(
+            Card {
+                suit: Suit::Diamonds,
+                value: Value::Two
+            },
+            Card::from_str("2D").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Hearts,
+                value: Value::Three
+            },
+            Card::from_str("3H").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Spades,
+                value: Value::Four
+            },
+            Card::from_str("4S").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Clubs,
+                value: Value::Five
+            },
+            Card::from_str("5C").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Diamonds,
+                value: Value::Six
+            },
+            Card::from_str("6D").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Hearts,
+                value: Value::Seven
+            },
+            Card::from_str("7H").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Spades,
+                value: Value::Eight
+            },
+            Card::from_str("8S").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Clubs,
+                value: Value::Nine
+            },
+            Card::from_str("9C").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Diamonds,
+                value: Value::Ten
+            },
+            Card::from_str("TD").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Hearts,
+                value: Value::Jack
+            },
+            Card::from_str("JH").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Spades,
+                value: Value::Queen
+            },
+            Card::from_str("QS").unwrap()
+        );
+        assert_eq!(
+            Card {
+                suit: Suit::Clubs,
+                value: Value::King
+            },
+            Card::from_str("KC").unwrap()
+        );
+        assert!(Card::from_str("BQ").is_err());
+        assert!(Card::from_str("Q").is_err());
     }
 }
