@@ -47,5 +47,8 @@ mod tests {
         let mut input = [1, 2, 3, 4, 5];
         bogo_sort(&mut input, &mut rand::thread_rng());
         assert!(is_sorted(&input));
+        input = [5, 4, 3, 2, 1];
+        bogo_sort(&mut input, &mut rand::thread_rng());
+        assert!(is_sorted(&input));
     }
 }
