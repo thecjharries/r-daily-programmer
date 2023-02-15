@@ -37,4 +37,11 @@ mod tests {
         assert!(is_sorted(&[1, 2, 3, 4, 5]));
         assert!(!is_sorted(&[1, 2, 3, 5, 4]));
     }
+
+    #[test]
+    fn test_bogo_sort() {
+        let mut input = [1, 2, 3, 4, 5];
+        bogo_sort(&mut input, &mut rand::thread_rng());
+        assert!(is_sorted(&input));
+    }
 }
