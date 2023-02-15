@@ -24,7 +24,11 @@ fn is_sorted<T: PartialOrd>(input: &[T]) -> bool {
 }
 
 fn bogo_sort<T: PartialOrd, R: Rng>(input: &mut [T], rng: &mut R) {
-    todo!()
+    while !is_sorted(input) {
+        for index in 0..input.len() {
+            input.swap(index, rng.gen_range(0..input.len()));
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
