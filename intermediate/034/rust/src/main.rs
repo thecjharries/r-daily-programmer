@@ -19,6 +19,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_sorted<T: PartialOrd>(input: &[T]) -> bool {
+    input.windows(2).all(|window| window[0] <= window[1])
+}
+
 fn bogo_sort<T: PartialOrd, R: Rng>(input: &mut [T], rng: &mut R) {
     todo!()
 }
@@ -29,7 +33,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_sorted() {
+        assert!(is_sorted(&[1, 2, 3, 4, 5]));
+        assert!(!is_sorted(&[1, 2, 3, 5, 4]));
     }
 }
