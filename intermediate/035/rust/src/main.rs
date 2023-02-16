@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn flip<R: Rng>(rng: &mut R) -> bool {
+    rng.gen_range(0..2) == 1
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
