@@ -41,4 +41,14 @@ mod tests {
         assert_eq!(false, flip(&mut rng));
         assert_eq!(true, flip(&mut rng));
     }
+
+    #[test]
+    fn test_generate_random() {
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(0, generate_random(1, &mut rng));
+        assert_eq!(0, generate_random(2, &mut rng));
+        assert_eq!(0, generate_random(2, &mut rng));
+        assert_eq!(1, generate_random(2, &mut rng));
+        assert_eq!(17, generate_random(50, &mut rng));
+    }
 }
