@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::Rng;
+use rand::SeedableRng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -27,7 +31,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_flip() {
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(false, flip(&mut rng));
+        assert_eq!(false, flip(&mut rng));
+        assert_eq!(true, flip(&mut rng));
     }
 }
