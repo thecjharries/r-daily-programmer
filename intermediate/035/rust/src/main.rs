@@ -25,6 +25,10 @@ fn flip<R: Rng>(rng: &mut R) -> bool {
     rng.gen_range(0..2) == 1
 }
 
+fn generate_random<R: Rng>(max: u32, rng: &mut R) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
