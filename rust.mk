@@ -44,6 +44,9 @@ add-exercise:
 	$(GIT) add ../README.md
 	$(GIT) commit -m 'Define $(DIFFICULTY) #$(NUMBER)'
 
+.PHONY: boot
+boot: add-exercise bootstrap-feature-branch
+
 # Set up the daily exercise
 .PHONY: bootstrap-feature-branch
 bootstrap-feature-branch:
