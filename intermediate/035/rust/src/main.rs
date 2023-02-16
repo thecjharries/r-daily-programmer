@@ -26,7 +26,15 @@ fn flip<R: Rng>(rng: &mut R) -> bool {
 }
 
 fn generate_random<R: Rng>(max: u32, rng: &mut R) -> u32 {
-    todo!()
+    if 2 > max {
+        return 0;
+    }
+    let mut result_bits = String::new();
+    for _ in 0..(max as f64).log2().ceil() as usize {
+        result_bits.push(if flip(rng) { '1' } else { '0' });
+    }
+    println!("{} {}", max, result_bits);
+    u32::from_str_radix(&result_bits, 2).unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
