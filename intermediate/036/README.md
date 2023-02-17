@@ -1,5 +1,9 @@
 # [4/5/2012] Challenge #36 [intermediate]
 
+## Notes
+
+I'm only going to do one character.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/ruixl/452012_challenge_36_intermediate/)
