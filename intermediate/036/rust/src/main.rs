@@ -16,7 +16,7 @@ use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 lazy_static! {
-    static ref LETTERS: HashMap<char, String> = HashMap::from(vec![('a', "4".to_string()),]);
+    static ref LETTERS: HashMap<char, String> = HashMap::from_iter(vec![('a', "4".to_string()),]);
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -25,7 +25,15 @@ fn main() {
 }
 
 fn translate(input: &str) -> String {
-    todo!()
+    input
+        .chars()
+        .map(|character| {
+            LETTERS
+                .get(&character.to_ascii_lowercase())
+                .unwrap_or(&character.to_string())
+                .to_string()
+        })
+        .collect()
 }
 
 #[cfg(not(tarpaulin_include))]
