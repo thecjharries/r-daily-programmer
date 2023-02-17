@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref LETTERS: HashMap<char, String> = HashMap::from(vec![('a', "4".to_string()),]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
