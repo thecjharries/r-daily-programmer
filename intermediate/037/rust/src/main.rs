@@ -18,7 +18,24 @@ fn main() {
 }
 
 fn generate_sierpinski_triangle(iterations: u32) -> String {
-    todo!()
+    if 0 == iterations {
+        return "*".to_string();
+    }
+    let binding = generate_sierpinski_triangle(iterations - 1);
+    let mut output = String::new();
+    let lines = binding.split("\n").collect::<Vec<&str>>();
+    for line in lines.iter() {
+        output.push_str(&format!(
+            "{}{}{}\n",
+            " ".repeat((line.len() as f32 / 2.0).ceil() as usize),
+            line,
+            " ".repeat((line.len() as f32 / 2.0).ceil() as usize),
+        ));
+    }
+    for line in lines.iter() {
+        output.push_str(&format!("{} {}\n", line, line));
+    }
+    output.trim_end().to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
