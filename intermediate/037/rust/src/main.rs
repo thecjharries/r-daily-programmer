@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_sierpinski_triangle(iterations: u32) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
