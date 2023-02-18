@@ -29,10 +29,11 @@ mod tests {
     #[test]
     fn test_generate_sierpinski_triangle() {
         assert_eq!("*", generate_sierpinski_triangle(0));
-        assert_eq!(" *\n* *", generate_sierpinski_triangle(1));
+        assert_eq!(" * \n* *", generate_sierpinski_triangle(1));
         assert_eq!(
-            "   *\n  * *\n *   *\n* * * * *",
+            "   *   \n  * *  \n *   * \n* * * *",
             generate_sierpinski_triangle(2)
         );
+        assert_eq!("       *       \n      * *      \n     *   *     \n    * * * *    \n   *       *   \n  * *     * *  \n *   *   *   * \n* * * * * * * *", generate_sierpinski_triangle(3));
     }
 }
