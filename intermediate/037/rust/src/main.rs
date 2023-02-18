@@ -27,7 +27,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_sierpinski_triangle() {
+        assert_eq!("*", generate_sierpinski_triangle(0));
+        assert_eq!(" *\n* *", generate_sierpinski_triangle(1));
+        assert_eq!(
+            "   *\n  * *\n *   *\n* * * * *",
+            generate_sierpinski_triangle(2)
+        );
     }
 }
