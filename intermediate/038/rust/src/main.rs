@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const OPERATORS: [char; 5] = ['+', '-', '*', '/', '^'];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
