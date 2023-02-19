@@ -20,7 +20,22 @@ fn main() {
 }
 
 fn reverse_polish_notation(input: &str) -> String {
-    todo!()
+    let mut operators: Vec<char> = Vec::new();
+    let mut chunks: Vec<String> = Vec::new();
+    let input = input.replace(" ", "");
+    for character in input.chars() {
+        if OPERATORS.contains(&character) {
+            operators.push(character);
+        } else if ')' == character {
+            let chunk = chunks.pop().unwrap();
+            let operator = operators.pop().unwrap();
+            let previous_chunk = chunks.pop().unwrap();
+            chunks.push(format!("{}{}{}", previous_chunk, chunk, operator));
+        } else if '(' != character {
+            chunks.push(character.to_string());
+        }
+    }
+    chunks[0].clone()
 }
 
 #[cfg(not(tarpaulin_include))]
