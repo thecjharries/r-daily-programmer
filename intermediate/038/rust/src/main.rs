@@ -29,7 +29,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_reverse_polish_notation() {
+        assert_eq!("abc*+".to_string(), reverse_polish_notation("(a+(b*c))"));
+        assert_eq!(
+            "ab+zx+*".to_string(),
+            reverse_polish_notation("((a+b)*(z+x))")
+        );
+        assert_eq!(
+            "at+bac++cd+^*".to_string(),
+            reverse_polish_notation("((a+t)*((b+(a+c)) ^ (c+d)))")
+        );
     }
 }
