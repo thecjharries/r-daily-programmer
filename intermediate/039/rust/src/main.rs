@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn is_kaprekar_number(input: u32) -> bool {
-    todo!()
+    if 9 > input {
+        return false;
+    }
+    let square = input * input;
+    let square_string = square.to_string();
+    let square_string_length = square_string.len();
+    let first_half = square_string[..square_string_length / 2]
+        .parse::<u32>()
+        .unwrap();
+    let second_half = square_string[square_string_length / 2..]
+        .parse::<u32>()
+        .unwrap();
+    input == first_half + second_half
 }
 
 #[cfg(not(tarpaulin_include))]
