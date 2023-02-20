@@ -27,7 +27,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_kaprekar_number() {
+        assert!(is_kaprekar_number(9));
+        assert!(is_kaprekar_number(45));
+        assert!(is_kaprekar_number(55));
+        assert!(is_kaprekar_number(99));
+        assert!(is_kaprekar_number(297));
+        assert!(!is_kaprekar_number(1));
+        assert!(!is_kaprekar_number(2));
+        assert!(!is_kaprekar_number(3));
+        assert!(!is_kaprekar_number(296));
     }
 }
