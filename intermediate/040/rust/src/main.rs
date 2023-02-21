@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compute_kaprekar_chain(input: u32) -> Vec<u32> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
