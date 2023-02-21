@@ -18,7 +18,25 @@ fn main() {
 }
 
 fn compute_kaprekar_chain(input: u32) -> Vec<u32> {
-    todo!()
+    let mut chain = vec![input];
+    loop {
+        let mut digits = chain
+            .last()
+            .unwrap()
+            .to_string()
+            .chars()
+            .collect::<Vec<char>>();
+        digits.sort();
+        let ascending = digits.iter().collect::<String>().parse::<u32>().unwrap();
+        digits.reverse();
+        let descending = digits.iter().collect::<String>().parse::<u32>().unwrap();
+        let next = descending - ascending;
+        if chain.contains(&next) {
+            break;
+        }
+        chain.push(next);
+    }
+    chain
 }
 
 #[cfg(not(tarpaulin_include))]
