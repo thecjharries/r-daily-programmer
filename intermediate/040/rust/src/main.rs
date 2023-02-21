@@ -27,7 +27,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_compute_kaprekar_chain() {
+        assert_eq!(vec![3524, 3087, 8352, 6174], compute_kaprekar_chain(3524));
     }
 }
