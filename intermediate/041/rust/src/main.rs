@@ -29,7 +29,7 @@ fn foil_binomial(input: &str) -> String {
     for first in terms[0].split("+") {
         let first_binding = first.replace("^", "");
         let first_terms: Vec<&str> = first_binding.split("x").collect();
-        let coefficient = first_terms[0].parse::<u32>().unwrap();
+        let coefficient = first_terms[0].parse::<u32>().unwrap_or(1);
         let exponent = if first.contains("x") {
             first_terms[1].parse::<u32>().unwrap_or(1)
         } else {
@@ -38,7 +38,7 @@ fn foil_binomial(input: &str) -> String {
         for second in terms[1].split("+") {
             let second_binding = second.replace("^", "");
             let second_terms: Vec<&str> = second_binding.split("x").collect();
-            let second_coefficient = second_terms[0].parse::<u32>().unwrap();
+            let second_coefficient = second_terms[0].parse::<u32>().unwrap_or(1);
             let second_exponent = if second.contains("x") {
                 second_terms[1].parse::<u32>().unwrap_or(1)
             } else {
@@ -52,24 +52,24 @@ fn foil_binomial(input: &str) -> String {
     let mut sorted_exponents: Vec<u32> = coefficients.keys().copied().collect();
     sorted_exponents.sort();
     sorted_exponents.reverse();
-    for exponent in sorted_exponents {
+    for (index, exponent) in sorted_exponents.iter().enumerate() {
         let mut coefficient = coefficients.get(&exponent).unwrap().to_string();
-        if String::from("1") == coefficient {
+        if String::from("1") == coefficient && 0 != *exponent {
             coefficient = String::from("");
         }
-        let x_term = if 0 == exponent {
+        let x_term = if 0 == *exponent {
             String::from("")
-        } else if 1 == exponent {
+        } else if 1 == *exponent {
             String::from("x")
         } else {
-            format!("x^{}", exponent)
+            format!("x^{}", *exponent)
         };
         output.push_str(&format!("{}{}", coefficient, x_term));
-        if exponent > 0 {
+        if index < sorted_exponents.len() - 1 {
             output.push_str(" + ");
         }
     }
-    output.trim_end_matches(" + ").to_string()
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -87,5 +87,6 @@ mod tests {
             "10x^4 + 33x^3 + 27x^2".to_string(),
             foil_binomial("(2x^2 + 3x)(5x^2 + 9x)")
         );
+        assert_eq!("x^2 + 2x + 1".to_string(), foil_binomial("(x + 1)(x + 1)"));
     }
 }
