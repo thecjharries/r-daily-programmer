@@ -87,7 +87,13 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!("14x^2 + 48x + 18".to_string(), foil_binomial("(2x + 6)(7x + 3)"));
-        assert_eq!("10x^4 + 33x^3 + 27x^2".to_string(), foil_binomial("(2x^2 + 3x)(5x^2 + 9x)"));
+        assert_eq!(
+            "14x^2 + 48x + 18".to_string(),
+            foil_binomial("(2x + 6)(7x + 3)")
+        );
+        assert_eq!(
+            "10x^4 + 33x^3 + 27x^2".to_string(),
+            foil_binomial("(2x^2 + 3x)(5x^2 + 9x)")
+        );
     }
 }
