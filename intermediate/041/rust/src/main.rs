@@ -31,11 +31,7 @@ fn foil_binomial(input: &str) -> String {
         let first_terms: Vec<&str> = first_binding.split("x").collect();
         let coefficient = first_terms[0].parse::<u32>().unwrap();
         let exponent = if first.contains("x") {
-            if first_terms.len() > 1 {
-                first_terms[1].parse::<u32>().unwrap_or(1)
-            } else {
-                1
-            }
+            first_terms[1].parse::<u32>().unwrap_or(1)
         } else {
             0
         };
@@ -44,11 +40,7 @@ fn foil_binomial(input: &str) -> String {
             let second_terms: Vec<&str> = second_binding.split("x").collect();
             let second_coefficient = second_terms[0].parse::<u32>().unwrap();
             let second_exponent = if second.contains("x") {
-                if second_terms.len() > 1 {
-                    second_terms[1].parse::<u32>().unwrap_or(1)
-                } else {
-                    1
-                }
+                second_terms[1].parse::<u32>().unwrap_or(1)
             } else {
                 0
             };
