@@ -12,13 +12,72 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn foil_binomial(input: &str) -> String {
-    todo!()
+    let binding = input.replace(" ", "");
+    let mut terms: Vec<&str> = binding.split(")(").collect();
+    terms[0] = terms[0].trim_start_matches('(');
+    terms[1] = terms[1].trim_end_matches(')');
+    let mut output = String::new();
+    let mut coefficients: HashMap<u32, u32> = HashMap::new();
+    for first in terms[0].split("+") {
+        let first_binding = first.replace("^", "");
+        let first_terms: Vec<&str> = first_binding.split("x").collect();
+        let coefficient = first_terms[0].parse::<u32>().unwrap();
+        let exponent = if first.contains("x") {
+            if first_terms.len() > 1 {
+                first_terms[1].parse::<u32>().unwrap_or(1)
+            } else {
+                1
+            }
+        } else {
+            0
+        };
+        for second in terms[1].split("+") {
+            let second_binding = second.replace("^", "");
+            let second_terms: Vec<&str> = second_binding.split("x").collect();
+            let second_coefficient = second_terms[0].parse::<u32>().unwrap();
+            let second_exponent = if second.contains("x") {
+                if second_terms.len() > 1 {
+                    second_terms[1].parse::<u32>().unwrap_or(1)
+                } else {
+                    1
+                }
+            } else {
+                0
+            };
+            let product = coefficient * second_coefficient;
+            let sum = exponent + second_exponent;
+            coefficients.insert(sum, coefficients.get(&sum).unwrap_or(&0) + product);
+        }
+    }
+    let mut sorted_exponents: Vec<u32> = coefficients.keys().copied().collect();
+    sorted_exponents.sort();
+    sorted_exponents.reverse();
+    for exponent in sorted_exponents {
+        let mut coefficient = coefficients.get(&exponent).unwrap().to_string();
+        if String::from("1") == coefficient {
+            coefficient = String::from("");
+        }
+        let x_term = if 0 == exponent {
+            String::from("")
+        } else if 1 == exponent {
+            String::from("x")
+        } else {
+            format!("x^{}", exponent)
+        };
+        output.push_str(&format!("{}{}", coefficient, x_term));
+        if exponent > 0 {
+            output.push_str(" + ");
+        }
+    }
+    output.trim_end_matches(" + ").to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
