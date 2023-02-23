@@ -40,8 +40,26 @@ fn main() {
     println!("rad");
 }
 
-fn naive_roman_add(first: &str, second: &str) {
-    todo!()
+fn naive_roman_add(first: &str, second: &str) -> String {
+    let mut combined_characters: Vec<char> = first.chars().collect();
+    combined_characters.extend(second.chars());
+    combined_characters.sort_by(|a, b| {
+        NUMERALS
+            .iter()
+            .position(|&x| x == *b)
+            .cmp(&NUMERALS.iter().position(|&x| x == *a))
+    });
+    let mut output = String::new();
+    for character in combined_characters {
+        output.push(character);
+    }
+    for key in REPLACEMENT_ORDER.iter() {
+        let value = REPLACEMENT_NUMERALS.get(key).unwrap();
+        while output.contains(key) {
+            output = output.replace(key, value);
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
