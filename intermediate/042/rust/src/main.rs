@@ -16,6 +16,7 @@ use lazy_static::lazy_static;
 use std::collections::HashMap;
 
 lazy_static! {
+    static ref NUMERALS: [char; 7] = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
     static ref REPLACEMENT_NUMERALS: HashMap<String, String> = HashMap::from(vec![
         ("IIIII".to_string(), "V".to_string()),
         ("VV".to_string(), "X".to_string()),
