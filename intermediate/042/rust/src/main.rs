@@ -12,6 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+
+lazy_static! {
+    static ref REPLACEMENT_NUMERALS: HashMap<String, String> = HashMap::from(vec![
+        ("IIIII".to_string(), "V".to_string()),
+        ("VV".to_string(), "X".to_string()),
+        ("XXXXX".to_string(), "L".to_string()),
+        ("LL".to_string(), "C".to_string()),
+        ("CCCCC".to_string(), "D".to_string()),
+        ("DD".to_string(), "M".to_string()),
+    ]);
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
