@@ -32,6 +32,10 @@ fn main() {
     println!("rad");
 }
 
+fn naive_roman_add(first: &str, second: &str) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
