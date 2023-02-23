@@ -43,6 +43,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("CX".to_string(), naive_roman_add("XXVIII", "LXXXII"));
     }
 }
