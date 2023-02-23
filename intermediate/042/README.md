@@ -1,5 +1,9 @@
 # [4/23/2012] Challenge #42 [intermediate]
 
+# Notes
+
+The algorithm for this challenge is very naive and doesn't handle something basic like `X + IX` correctly.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/sobuc/4232012_challenge_42_intermediate/)
