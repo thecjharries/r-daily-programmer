@@ -17,7 +17,15 @@ use std::collections::HashMap;
 
 lazy_static! {
     static ref NUMERALS: [char; 7] = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
-    static ref REPLACEMENT_NUMERALS: HashMap<String, String> = HashMap::from(vec![
+    static ref REPLACEMENT_ORDER: [String; 6] = [
+        "IIIII".to_string(),
+        "VV".to_string(),
+        "XXXXX".to_string(),
+        "LL".to_string(),
+        "CCCCC".to_string(),
+        "DD".to_string(),
+    ];
+    static ref REPLACEMENT_NUMERALS: HashMap<String, String> = HashMap::from_iter(vec![
         ("IIIII".to_string(), "V".to_string()),
         ("VV".to_string(), "X".to_string()),
         ("XXXXX".to_string(), "L".to_string()),
