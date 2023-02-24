@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #[derive(Debug, PartialEq)]
-enum Days {
+enum Day {
     Sunday,
     Monday,
     Tuesday,
@@ -26,6 +26,10 @@ enum Days {
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn doomsday_day_of_week(year: u32, month: u32, day: u32) -> Day {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
