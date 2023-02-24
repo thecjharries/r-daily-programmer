@@ -38,7 +38,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_doomsday_day_of_week() {
+        assert_eq!(Day::Tuesday, doomsday_day_of_week(2012, 4, 24));
+        assert_eq!(Day::Saturday, doomsday_day_of_week(2012, 4, 21));
+        assert_eq!(Day::Saturday, doomsday_day_of_week(2000, 4, 1));
+        assert_eq!(Day::Sunday, doomsday_day_of_week(2001, 4, 1));
+        assert_eq!(Day::Friday, doomsday_day_of_week(2023, 2, 24));
     }
 }
