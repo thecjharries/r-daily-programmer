@@ -14,13 +14,13 @@
 
 #[derive(Debug, PartialEq)]
 enum Day {
-    Sunday,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
+    Sunday = 0,
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6,
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -29,7 +29,53 @@ fn main() {
 }
 
 fn doomsday_day_of_week(year: u32, month: u32, day: u32) -> Day {
-    todo!()
+    let century = year / 100;
+    let anchor = match century % 4 {
+        0 => 2,
+        1 => 0,
+        2 => 5,
+        _ => 3,
+    };
+    let year_digits = year % 100;
+    let a = year_digits / 12;
+    let b = year_digits % 12;
+    let c = b / 4;
+    let doomsday = (anchor + a + b + c) % 7;
+    let is_leap_year = 0 == year % 4 && 0 != year % 100 || 0 == year % 400;
+    let offset = if is_leap_year {
+        match month {
+            1 => 4,
+            2 => 1,
+            5 => 9,
+            7 => 11,
+            9 => 5,
+            11 => 7,
+            _ => 0,
+        }
+    } else {
+        match month {
+            1 => 3,
+            5 => 9,
+            7 => 11,
+            9 => 5,
+            11 => 7,
+            _ => 0,
+        }
+    };
+    let day_of_week = if month % 2 == 0 && month != 2 {
+        (14 + doomsday + day - month) % 7
+    } else {
+        (14 + doomsday + day - offset) % 7
+    };
+    match day_of_week {
+        0 => Day::Sunday,
+        1 => Day::Monday,
+        2 => Day::Tuesday,
+        3 => Day::Wednesday,
+        4 => Day::Thursday,
+        5 => Day::Friday,
+        _ => Day::Saturday,
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
