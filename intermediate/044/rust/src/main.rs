@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_hapaxes(input: &str) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
