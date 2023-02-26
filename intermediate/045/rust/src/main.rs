@@ -12,11 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Clone, Copy)]
 enum GameState {
-    Playing
+    Playing,
     Win,
     Lose,
     Draw,
+}
+
+#[derive(Debug, PartialEq, Clone, Copy)]
+#[repr(u8)]
+enum Move {
+    First = b'X',
+    Second = b'O',
+}
+
+impl Into<char> for Move {
+    fn into(self) -> char {
+        self as u8 as char
+    }
+}
+
+impl From<char> for Move {
+    fn from(character: char) -> Self {
+        match character {
+            'X' => Move::First,
+            'O' => Move::Second,
+            _ => panic!("Invalid move"),
+        }
+    }
 }
 
 struct TicTacToe {
@@ -51,5 +75,19 @@ mod tests {
         assert_eq!(vec![' '; 9], game.grid);
         assert_eq!(GameState::Playing, game.state);
         assert_eq!(true, game.player_move_next);
+    }
+
+    #[test]
+    fn test_move_as_char() {
+        assert_eq!('X', Move::First.into());
+        assert_eq!('O', Move::Second.into());
+    }
+
+    #[test]
+    #[should_panic(expected = "Invalid move")]
+    fn test_char_as_move() {
+        assert_eq!(Move::First, Move::from('X'));
+        assert_eq!(Move::Second, Move::from('O'));
+        assert!(Move::from('Z') == Move::First);
     }
 }
