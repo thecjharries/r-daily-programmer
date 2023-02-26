@@ -60,9 +60,9 @@ impl Default for TicTacToe {
 }
 
 impl TicTacToe {
-    fn move(&mut self, x: usize, y: usize, character: char) {
+    fn turn(&mut self, x: usize, y: usize, character: char) {
         let move_type = Move::from(character);
-        self.grid[x + y * 3] = character;
+        self.grid[x + y * 3] = move_type.into();
         self.player_move_next = !self.player_move_next;
         self.check_state();
     }
@@ -151,5 +151,20 @@ mod tests {
         game.grid = vec!['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'];
         game.check_state();
         assert_eq!(GameState::Draw, game.state);
+    }
+
+    #[test]
+    fn test_game_playing() {
+        let mut game = TicTacToe::default();
+        game.grid = vec!['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', ' '];
+        game.check_state();
+        assert_eq!(GameState::Playing, game.state);
+    }
+
+    #[test]
+    fn test_game_turn() {
+        let mut game = TicTacToe::default();
+        game.turn(0, 0, 'X');
+        assert_eq!(vec!['X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '], game.grid);
     }
 }
