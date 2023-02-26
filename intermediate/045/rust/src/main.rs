@@ -128,4 +128,29 @@ mod tests {
         assert_eq!(Move::Second, Move::from('O'));
         assert!(Move::from('Z') == Move::First);
     }
+
+    #[test]
+    fn test_player_win() {
+        let mut game = TicTacToe::default();
+        game.player_move_next = false;
+        game.grid = vec!['X', 'X', 'X', ' ', ' ', ' ', ' ', ' ', ' '];
+        game.check_state();
+        assert_eq!(GameState::Win, game.state);
+    }
+
+    #[test]
+    fn test_player_lose() {
+        let mut game = TicTacToe::default();
+        game.grid = vec!['O', 'O', 'O', ' ', ' ', ' ', ' ', ' ', ' '];
+        game.check_state();
+        assert_eq!(GameState::Lose, game.state);
+    }
+
+    #[test]
+    fn test_game_draw() {
+        let mut game = TicTacToe::default();
+        game.grid = vec!['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'];
+        game.check_state();
+        assert_eq!(GameState::Draw, game.state);
+    }
 }
