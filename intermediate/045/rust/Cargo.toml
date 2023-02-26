@@ -1,9 +1,11 @@
 [package]
-name = "intermediate_045"
+name = "intermediate_044"
 version = "0.0.0"
 edition = "2021"
 
 [dependencies]
+lazy_static = "1.4.0"
+regex = "1.7.1"
 #itertools = "0.10.3"
 #lazy_static = "1.4.0"
 #rand = "0.8.4"
