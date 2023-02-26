@@ -25,6 +25,16 @@ struct TicTacToe {
     player_move_next: bool,
 }
 
+impl Default for TicTacToe {
+    fn default() -> Self {
+        TicTacToe {
+            grid: vec![' '; 9],
+            state: GameState::Playing,
+            player_move_next: true,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -36,7 +46,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_game_default() {
+        let game = TicTacToe::default();
+        assert_eq!(vec![' '; 9], game.grid);
+        assert_eq!(GameState::Playing, game.state);
+        assert_eq!(true, game.player_move_next);
     }
 }
