@@ -60,6 +60,13 @@ impl Default for TicTacToe {
 }
 
 impl TicTacToe {
+    fn move(&mut self, x: usize, y: usize, character: char) {
+        let move_type = Move::from(character);
+        self.grid[x + y * 3] = character;
+        self.player_move_next = !self.player_move_next;
+        self.check_state();
+    }
+
     fn check_state(&mut self) {
         let winning_combinations = vec![
             vec![0, 1, 2],
