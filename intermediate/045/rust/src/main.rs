@@ -19,6 +19,12 @@ enum GameState {
     Draw,
 }
 
+struct TicTacToe {
+    grid: Vec<char>,
+    state: GameState,
+    player_move_next: bool,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
