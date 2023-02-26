@@ -61,7 +61,7 @@ impl Default for TicTacToe {
 
 impl TicTacToe {
     fn check_state(&mut self) {
-        let mut winning_combinations = vec![
+        let winning_combinations = vec![
             vec![0, 1, 2],
             vec![3, 4, 5],
             vec![6, 7, 8],
@@ -71,27 +71,19 @@ impl TicTacToe {
             vec![0, 4, 8],
             vec![2, 4, 6],
         ];
-        let mut winning_move = Move::First;
         for combination in winning_combinations.iter() {
-            let mut first_move = true;
-            for index in combination.iter() {
-                if first_move {
-                    winning_move = Move::from(self.grid[*index]);
-                    first_move = false;
-                } else if winning_move != Move::from(self.grid[*index]) {
-                    winning_move = Move::Second;
-                    break;
-                }
-            }
-            if winning_move != Move::Second {
-                break;
+            if self.grid[combination[0]] == self.grid[combination[1]]
+                && self.grid[combination[1]] == self.grid[combination[2]]
+                && self.grid[combination[0]] != ' '
+            {
+                self.state = if self.player_move_next {
+                    GameState::Lose
+                } else {
+                    GameState::Win
+                };
             }
         }
-        if winning_move == Move::First {
-            self.state = GameState::Win;
-        } else if winning_move == Move::Second {
-            self.state = GameState::Lose;
-        } else if self.grid.iter().all(|&character| character != ' ') {
+        if self.grid.iter().all(|&character| character != ' ') {
             self.state = GameState::Draw;
         }
     }
