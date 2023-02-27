@@ -21,8 +21,18 @@ fn main() {
     println!("rad");
 }
 
-fn play_game(rng: &mut Rng) -> bool {
-    todo!()
+fn play_game<R: Rng>(rng: &mut R) -> bool {
+    let mut indices: Vec<usize> = (0..8).collect::<Vec<usize>>();
+    let mut results: Vec<u8> = vec![0; 8];
+    for _ in 0..8 {
+        let digit = rng.gen_range(0..10);
+        let index = indices[((digit as f32 * indices.len() as f32) / 10.0) as usize];
+        results[index] = digit;
+        indices.remove(indices.iter().position(|&x| x == index).unwrap());
+    }
+    let mut sorted = results.clone();
+    sorted.sort();
+    results == sorted
 }
 
 #[cfg(not(tarpaulin_include))]
