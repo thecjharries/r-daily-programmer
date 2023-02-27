@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::Rng;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn play_game() -> bool {
+fn play_game(rng: &mut Rng) -> bool {
     todo!()
 }
 
