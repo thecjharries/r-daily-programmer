@@ -18,7 +18,16 @@ use rand_pcg::Pcg64;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
-    println!("rad");
+    let max = 1000000;
+    let mut wins = 0;
+    for _ in 0..max {
+        let mut rng = Pcg64::seed_from_u64(rand::random());
+        if play_game(&mut rng) {
+            wins += 1;
+        }
+    }
+    println!("{} wins out of {} games", wins, max);
+    println!("{}% win rate", wins as f32 / max as f32 * 100.0);
 }
 
 fn play_game<R: Rng>(rng: &mut R) -> bool {
