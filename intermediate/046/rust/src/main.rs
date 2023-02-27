@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
 use rand::Rng;
+use rand_pcg::Pcg64;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -30,6 +32,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(true, play_game(&mut rng));
     }
 }
