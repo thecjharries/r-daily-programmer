@@ -41,8 +41,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_play_game() {
         let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!(false, play_game(&mut rng));
+        rng = Pcg64::seed_from_u64(2);
         assert_eq!(true, play_game(&mut rng));
     }
 }
