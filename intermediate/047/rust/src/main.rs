@@ -18,7 +18,25 @@ fn main() {
 }
 
 fn eng_to_dec(eng: &str) -> u8 {
-    todo!()
+    let characters = eng.chars().collect::<Vec<char>>();
+    match characters[0] {
+        'o' => 1,
+        't' => match characters[1] {
+            'w' => 2,
+            _ => 3,
+        },
+        'f' => match characters[1] {
+            'o' => 4,
+            _ => 5,
+        },
+        's' => match characters[1] {
+            'i' => 6,
+            _ => 7,
+        },
+        'e' => 8,
+        'n' => 9,
+        _ => 0,
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
