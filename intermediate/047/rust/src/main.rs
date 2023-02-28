@@ -27,7 +27,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_eng_to_dec() {
+        assert_eq!(0, eng_to_dec("zero"));
+        assert_eq!(1, eng_to_dec("one"));
+        assert_eq!(2, eng_to_dec("two"));
+        assert_eq!(3, eng_to_dec("three"));
+        assert_eq!(4, eng_to_dec("four"));
+        assert_eq!(5, eng_to_dec("five"));
+        assert_eq!(6, eng_to_dec("six"));
+        assert_eq!(7, eng_to_dec("seven"));
+        assert_eq!(8, eng_to_dec("eight"));
+        assert_eq!(9, eng_to_dec("nine"));
     }
 }
