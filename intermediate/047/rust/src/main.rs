@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn eng_to_dec(eng: &str) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
