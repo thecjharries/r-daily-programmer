@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn tpk_algorithm(input: Vec<f32>) -> Vec<f32> {
-    todo!()
+    input
+        .iter()
+        .map(|&value| {
+            if 400.0 < value {
+                f32::MAX
+            } else {
+                value.abs().sqrt() + 5.0 * value.powi(3)
+            }
+        })
+        .collect()
 }
 
 #[cfg(not(tarpaulin_include))]
