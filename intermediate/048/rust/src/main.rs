@@ -17,13 +17,20 @@ fn main() {
     println!("rad");
 }
 
+fn tpk_algorithm(input: Vec<f32>) -> Vec<f32> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_tpk_algorithm() {
+        assert_eq!(
+            vec![6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0, 6.0],
+            tpk_algorithm(vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
+        );
     }
 }
