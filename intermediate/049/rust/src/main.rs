@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn plot_y_equals_x(width: usize) -> Vec<String> {
-    todo!()
+    let mut output = Vec::new();
+    for row in 0..width {
+        let mut row_string = String::new();
+        for column in 0..width {
+            if row == column {
+                row_string.push_str("X");
+            } else {
+                row_string.push_str(" ");
+            }
+        }
+        output.push(row_string.chars().rev().collect());
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
