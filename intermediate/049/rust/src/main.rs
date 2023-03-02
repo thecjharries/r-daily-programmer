@@ -27,7 +27,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_plot_y_equals_x() {
+        assert_eq!(vec!["  X", " X ", "X  "], plot_y_equals_x(3));
     }
 }
