@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn plot_y_equals_x(width: usize) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
