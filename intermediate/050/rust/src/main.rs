@@ -12,13 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::path::Path;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn tree_from_path(path: &str) -> Vec<String> {
-    todo!()
+    let mut tree = Vec::new();
+    let current_path = Path::new(path);
+    let components = current_path.components().collect::<Vec<_>>();
+    for (index, component) in components.iter().enumerate() {
+        tree.push(format!(
+            "{}{}",
+            "  ".repeat(index),
+            component.as_os_str().to_str().unwrap()
+        ));
+    }
+    tree
 }
 
 #[cfg(not(tarpaulin_include))]
