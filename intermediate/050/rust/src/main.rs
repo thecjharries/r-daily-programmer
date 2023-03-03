@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn tree_from_path(path: &str) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
