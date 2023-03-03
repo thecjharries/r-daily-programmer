@@ -43,12 +43,12 @@ mod tests {
         assert_eq!(
             vec![
                 "/",
-                "  /home",
-                "    /user",
-                "      /bin",
-                "        /rust",
-                "          /src",
-                "            /main.rs",
+                "  home",
+                "    user",
+                "      bin",
+                "        rust",
+                "          src",
+                "            main.rs",
             ],
             tree_from_path("/home/user/bin/rust/src/main.rs")
         );
