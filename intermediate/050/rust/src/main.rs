@@ -27,7 +27,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_tree_from_path() {
+        assert_eq!(
+            vec![
+                "/",
+                "  /home",
+                "    /user",
+                "      /bin",
+                "        /rust",
+                "          /src",
+                "            /main.rs",
+            ],
+            tree_from_path("/home/user/bin/rust/src/main.rs")
+        );
     }
 }
