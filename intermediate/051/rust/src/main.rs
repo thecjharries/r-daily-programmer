@@ -12,13 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use brainfuck::program::Program;
+use brainfuck::tape::ArrayTape;
+use brainfuck::Interpreter;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn parse_prompt(input: &str) -> String {
-    todo!()
+    let mut program_input = "".as_bytes();
+    let mut program_output = Vec::new();
+    let program = Program::parse(input).unwrap();
+    let mut interpreter =
+        Interpreter::<ArrayTape>::new(program, &mut program_input, &mut program_output);
+    interpreter.run().unwrap();
+    String::from_utf8(program_output).unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
