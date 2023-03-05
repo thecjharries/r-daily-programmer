@@ -64,6 +64,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
+        assert_eq!(vec![] as Vec<String>, determine_possible_words(""));
         assert_eq!(vec!["rad"], determine_possible_words("rad"));
         assert_eq!(vec!["rad", "bad"], determine_possible_words("(rb)ad"));
         assert_eq!(vec!["rad", "bad"], determine_possible_words("(rbb)ad"));
