@@ -28,6 +28,8 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(vec!["rad"], determine_possible_words("rad"));
+        assert_eq!(vec!["rad", "bad"], determine_possible_words("(rb)ad"));
+        assert_eq!(vec!["rad", "bad"], determine_possible_words("(rbb)ad"));
     }
 }
