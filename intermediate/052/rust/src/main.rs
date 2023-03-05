@@ -12,13 +12,49 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn determine_possible_words(input: &str) -> Vec<String> {
-    todo!()
+    let mut results = Vec::new();
+    let mut index = 0;
+    match input.chars().nth(index) {
+        Some('(') => {
+            let mut characters = Vec::new();
+            while input.len() > index {
+                index += 1;
+                match input.chars().nth(index) {
+                    Some(')') => {
+                        break;
+                    }
+                    Some(character) => {
+                        characters.push(character);
+                    }
+                    None => break,
+                }
+            }
+            for character in characters {
+                let new_input = format!("{}{}", character, &input[index + 1..]);
+                results.append(&mut determine_possible_words(&new_input));
+            }
+        }
+        Some(character) => {
+            let sub_results = determine_possible_words(&input[index + 1..]);
+            if sub_results.is_empty() {
+                results.push(character.to_string());
+            } else {
+                for sub_result in sub_results {
+                    results.push(format!("{}{}", character, sub_result));
+                }
+            }
+        }
+        None => (),
+    }
+    results.into_iter().unique().collect()
 }
 
 #[cfg(not(tarpaulin_include))]
