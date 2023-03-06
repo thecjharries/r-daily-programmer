@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn prng(input: u32) -> u32 {
-    todo!()
+    if 0 == input {
+        return 123456789;
+    }
+    let previous: u64 = prng(input - 1) as u64;
+    ((22695477 * previous + 12345) % 1073741824) as u32
 }
 
 #[cfg(not(tarpaulin_include))]
