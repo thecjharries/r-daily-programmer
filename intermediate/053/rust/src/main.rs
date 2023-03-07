@@ -24,6 +24,10 @@ fn prng(input: u64) -> u64 {
     (22695477 * prng(input - 1) + 12345) % 1073741824
 }
 
+fn sum_largest(iterations: u32, samples: usize) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
