@@ -17,12 +17,11 @@ fn main() {
     println!("rad");
 }
 
-fn prng(input: u32) -> u32 {
+fn prng(input: u64) -> u64 {
     if 0 == input {
         return 123456789;
     }
-    let previous: u64 = prng(input - 1) as u64;
-    ((22695477 * previous + 12345) % 1073741824) as u32
+    (22695477 * prng(input - 1) + 12345) % 1073741824
 }
 
 #[cfg(not(tarpaulin_include))]
