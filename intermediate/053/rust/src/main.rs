@@ -39,4 +39,9 @@ mod tests {
         assert_eq!(752880530, prng(1));
         assert_eq!(1048156299, prng(10));
     }
+
+    #[test]
+    fn test_sum_largest() {
+        assert_eq!(1073683936567, sum_largest(10000000, 1000));
+    }
 }
