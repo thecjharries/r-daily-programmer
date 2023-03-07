@@ -27,8 +27,13 @@ fn prng(input: u64) -> u64 {
     (22695477 * prng(input - 1) + 12345) % 1073741824
 }
 
-fn sum_largest(iterations: u32, samples: usize) -> u64 {
-    todo!()
+fn sum_largest(iterations: u64, largest_count: usize) -> u64 {
+    let mut results = Vec::new();
+    for index in 0..iterations {
+        results.push(prng(index));
+    }
+    results.sort();
+    results[iterations as usize - largest_count..].iter().sum()
 }
 
 #[cfg(not(tarpaulin_include))]
