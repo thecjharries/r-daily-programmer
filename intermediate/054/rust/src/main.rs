@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::io::Write;
-use std::os::unix::net::UnixStream;
+use std::io::{BufRead, BufReader};
+use std::io::{Read, Write};
+use std::os::unix::net::{UnixListener, UnixStream};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -28,13 +29,14 @@ fn handle_client(mut stream: UnixStream, output: &mut impl Write) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use mockstream::MockStream;
 
     #[test]
     fn test_handle_client() {
-        let mut stream = UnixStream::connect("/tmp/054.sock").unwrap();
-        stream.write_all(b"hello").unwrap();
+        let mut stream = MockStream::new();
+        stream.push_bytes_to_read(b"hello");
         let mut output = Vec::new();
         handle_client(stream, &mut output);
-        assert_eq!(b"olleh", output.as_slice());
+        assert_eq!(b"hello", output.as_slice());
     }
 }
