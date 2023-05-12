@@ -1,5 +1,6 @@
 # Aliases for executables
 CARGO ?= cargo
+GH ?= gh
 GIT ?= git
 SED ?= sed
 XDG_OPEN ?= xdg-open
@@ -72,10 +73,12 @@ git-prompt-runner:
 	$(GIT) add src/main.rs
 	$(GIT) commit -m 'Add prompt runner to main'
 
-# Convenience target to push the feature branch
-.PHONY: push
-push: coverage clean
+# Convenience target to finish the feature branch
+.PHONY: finish
+finish: coverage clean
 	$(GIT) push -u origin feat/$(DIFFICULTY)-$(NUMBER)
+	$(GH) pr create --fill
+	$(GH) pr merge --merge --delete-branch
 
 # Convenience target for making a patch commit on main.rs
 .PHONY: patch
