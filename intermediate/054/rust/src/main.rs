@@ -21,8 +21,12 @@ fn main() {
     println!("rad");
 }
 
-fn handle_client(mut stream: UnixStream, output: &mut impl Write) {
-    todo!()
+fn handle_client(stream: impl Read + Write, output: &mut impl Write) {
+    let stream = BufReader::new(stream);
+    for line in stream.lines() {
+        let line = line.unwrap();
+        output.write_all(line.as_bytes()).unwrap();
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
