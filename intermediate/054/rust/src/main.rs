@@ -30,7 +30,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_handle_client() {
+        let mut stream = UnixStream::connect("/tmp/054.sock").unwrap();
+        stream.write_all(b"hello").unwrap();
+        let mut output = Vec::new();
+        handle_client(stream, &mut output);
+        assert_eq!(b"olleh", output.as_slice());
     }
 }
