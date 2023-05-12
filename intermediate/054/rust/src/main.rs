@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::io::Write;
+use std::os::unix::net::UnixStream;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn handle_client(mut stream: UnixStream, output: &mut impl Write) {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
