@@ -29,7 +29,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_parse_and_sum() {
+        assert_eq!(Ok(9), parse_and_sum('3', '6'));
+        assert_eq!(Ok(13), parse_and_sum('4', '9'));
+        assert_eq!(Ok(9), parse_and_sum('0', '9'));
+        assert!(parse_and_sum('g', '6').is_err());
+        assert!(parse_and_sum('7', 'h').is_err());
     }
 }
