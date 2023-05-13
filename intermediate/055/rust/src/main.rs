@@ -55,6 +55,7 @@ mod tests {
         assert!(parse_and_sum('g', '6').is_err());
         let error = parse_and_sum('7', 'h').unwrap_err();
         assert_eq!(2, error.position);
+        assert_eq!("Invalid number in position 2", error.to_string());
         assert!(parse_and_sum('7', 'h').is_err());
     }
 }
