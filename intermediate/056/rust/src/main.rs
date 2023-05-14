@@ -27,7 +27,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_has_vowels_zero_mod_three() {
+        assert!(has_vowels_zero_mod_three(
+            "Friends, Romans, countrymen, lend me your ears!"
+        ));
+        assert!(has_vowels_zero_mod_three(
+            "Double, double, toil and trouble; Fire burn and cauldron bubble."
+        ));
+        assert!(!has_vowels_zero_mod_three("Alas, poor Yorick! I knew him, Horatio. A fellow of infinite jest, of most excellent fancy."));
+        assert!(!has_vowels_zero_mod_three("To be, or not to be- that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them."));
+        assert!(!has_vowels_zero_mod_three(
+            "Everybody stand back! I know regular expressions."
+        ));
     }
 }
