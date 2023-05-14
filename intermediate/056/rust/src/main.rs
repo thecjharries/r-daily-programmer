@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn has_vowels_zero_mod_three(input: &str) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
