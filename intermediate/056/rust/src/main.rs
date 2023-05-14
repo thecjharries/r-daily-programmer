@@ -12,13 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use regex::Regex;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn has_vowels_zero_mod_three(input: &str) -> bool {
-    todo!()
+    let vowels = Regex::new(r"[aeiouy]").unwrap();
+    vowels.find_iter(input).count() % 3 == 0
 }
 
 #[cfg(not(tarpaulin_include))]
