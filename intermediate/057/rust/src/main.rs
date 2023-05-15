@@ -13,10 +13,25 @@
 // limitations under the License.
 
 use std::collections::HashMap;
+use std::str::FromStr;
 
 struct InvertedMatchTable {
     rows: HashMap<char, u8>,
     columns: HashMap<char, u8>,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+struct ParseInvertedMatchTableError;
+
+impl FromStr for InvertedMatchTable {
+    type Err = ParseInvertedMatchTableError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        // let mut rows = HashMap::new();
+        // let mut columns = HashMap::new();
+        // Ok(InvertedMatchTable { rows, columns })
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
