@@ -56,7 +56,19 @@ impl FromStr for InvertedMatchTable {
 
 impl InvertedMatchTable {
     fn find_inverted_matches(&self) -> Vec<((char, char), (char, char))> {
-        todo!()
+        let mut matches = Vec::new();
+        let characters = self.rows.keys().collect::<Vec<&char>>();
+        for (row_char, index) in characters.iter().enumerate() {
+            for column_char in characters.iter().skip(row_char + 1) {
+                let row_val = self.rows.get(*index).unwrap().get(*column_char).unwrap();
+                let column_val = self.columns.get(*column_char).unwrap().get(*index).unwrap();
+                if 1 == *row_val && 1 == *column_val {
+                    matches.push(((**index, **column_char), (**column_char, **index)));
+                }
+            }
+        }
+        matches.sort();
+        matches
     }
 }
 
