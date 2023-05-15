@@ -57,7 +57,8 @@ impl FromStr for InvertedMatchTable {
 impl InvertedMatchTable {
     fn find_inverted_matches(&self) -> Vec<((char, char), (char, char))> {
         let mut matches = Vec::new();
-        let characters = self.rows.keys().collect::<Vec<&char>>();
+        let mut characters = self.rows.keys().collect::<Vec<&char>>();
+        characters.sort();
         for (row_char, index) in characters.iter().enumerate() {
             for column_char in characters.iter().skip(row_char + 1) {
                 let row_val = self.rows.get(*index).unwrap().get(*column_char).unwrap();
@@ -144,5 +145,7 @@ mod tests {
             vec![(('A', 'B'), ('B', 'A')), (('B', 'C'), ('C', 'B'))],
             table.find_inverted_matches()
         );
+        let big_table = InvertedMatchTable::from_str(" ABCDEFGHIJKLMNOPQRST\nA11110101111011100010\nB10010010000010001100\nC01101110010001000000\nD10110011001011101100\nE10100100011110110100\nF01111011000111010010\nG00011110001011001110\nH01111000010001001000\nI01101110010110010011\nJ00101000100010011110\nK10101001100001100000\nL01011010011101100110\nM10110110010101000100\nN10001111101111110010\nO11011010010111100110\nP01000110111101101000\nQ10011001100010100000\nR11101011100110110110\nS00001100000110010101\nT01000110011100101011").unwrap();
+        assert_eq!(47, big_table.find_inverted_matches().len());
     }
 }
