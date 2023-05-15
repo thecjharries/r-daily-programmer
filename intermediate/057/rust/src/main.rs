@@ -124,4 +124,13 @@ mod tests {
         assert_eq!(0, *a_row.get(&'G').unwrap());
         assert_eq!(1, *a_row.get(&'H').unwrap());
     }
+
+    #[test]
+    fn test_invertedmatchtable_find_inverted_matches() {
+        let table = InvertedMatchTable::from_str(" ABC\nA010\nB111\nC011").unwrap();
+        assert_eq!(
+            vec![(('A', 'B'), ('B', 'A')), (('B', 'C'), ('C', 'B'))],
+            table.find_inverted_matches()
+        );
+    }
 }
