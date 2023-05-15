@@ -28,10 +28,29 @@ impl FromStr for InvertedMatchTable {
     type Err = ParseInvertedMatchTableError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        // let mut rows = HashMap::new();
-        // let mut columns = HashMap::new();
-        // Ok(InvertedMatchTable { rows, columns })
-        todo!()
+        let mut rows = HashMap::new();
+        let mut columns = HashMap::new();
+        let mut lines = s.lines();
+        let header = lines.next().unwrap();
+        let header_chars: Vec<char> = header.chars().collect();
+        for line in lines {
+            let line_chars: Vec<char> = line.chars().collect();
+            let row_char = line_chars[0];
+            let mut row = HashMap::new();
+            for (index, column_char) in line_chars.iter().enumerate().skip(1) {
+                let header_char = header_chars[index];
+                row.insert(header_char, *column_char as u8 - 48);
+                if !columns.contains_key(&header_char) {
+                    columns.insert(header_char, HashMap::new());
+                }
+                columns
+                    .get_mut(&header_char)
+                    .unwrap()
+                    .insert(row_char, *column_char as u8 - 48);
+            }
+            rows.insert(row_char, row);
+        }
+        Ok(InvertedMatchTable { rows, columns })
     }
 }
 
