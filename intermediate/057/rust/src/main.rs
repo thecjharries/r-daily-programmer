@@ -54,6 +54,12 @@ impl FromStr for InvertedMatchTable {
     }
 }
 
+impl InvertedMatchTable {
+    fn find_inverted_matches(&self) -> Vec<((char, char), (char, char))> {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
