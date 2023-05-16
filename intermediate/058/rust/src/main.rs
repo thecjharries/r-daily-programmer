@@ -27,34 +27,37 @@ fn find_next_palindrome(input: BigUint) -> BigUint {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    use num_bigint::ToBigUint;
+    use std::str::FromStr;
 
     #[test]
     fn test_find_next_palindrome() {
-        assert_eq!(BigUint::from(101), find_next_palindrome(BigUint::from(99)));
-        assert_eq!(BigUint::from(818), find_next_palindrome(BigUint::from(808)));
         assert_eq!(
-            BigUint::from(1001),
-            find_next_palindrome(BigUint::from(999))
+            BigUint::from(101u32),
+            find_next_palindrome(BigUint::from(99u32))
         );
         assert_eq!(
-            BigUint::from(2222),
-            find_next_palindrome(BigUint::from(2133))
+            BigUint::from(818u32),
+            find_next_palindrome(BigUint::from(808u32))
         );
         assert_eq!(
-            BigUint::from(8998),
-            find_next_palindrome(BigUint::from(8888))
+            BigUint::from(1001u32),
+            find_next_palindrome(BigUint::from(999u32))
         );
         assert_eq!(
-            "4052555153515552504".to_biguint().unwrap(),
-            find_next_palindrome(BigUint::from(3).pow(39))
+            BigUint::from(2222u32),
+            find_next_palindrome(BigUint::from(2133u32))
         );
         assert_eq!(
-            "3234476509624757991344647769100216810857204027580186120019677464431997574269056744323"
-                .to_biguint()
-                .unwrap(),
-            find_next_palindrome(BigUint::from(7).pow(100))
+            BigUint::from(8998u32),
+            find_next_palindrome(BigUint::from(8888u32))
+        );
+        assert_eq!(
+            BigUint::from_str("4052555153515552504").unwrap(),
+            find_next_palindrome(BigUint::from(3u8).pow(39))
+        );
+        assert_eq!(
+            BigUint::from_str("3234476509624757991344647769100216810857204027580186120019677464431997574269056744323").unwrap(),
+            find_next_palindrome(BigUint::from(7u8).pow(100))
         );
     }
 }
