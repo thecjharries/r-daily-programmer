@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use num_bigint::BigUint;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn find_next_palindrome(input: BigUint) -> BigUint {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
