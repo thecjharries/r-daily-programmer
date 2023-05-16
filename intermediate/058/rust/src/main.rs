@@ -28,8 +28,33 @@ fn find_next_palindrome(input: BigUint) -> BigUint {
 mod tests {
     use super::*;
 
+    use num_bigint::ToBigUint;
+
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_next_palindrome() {
+        assert_eq!(BigUint::from(101), find_next_palindrome(BigUint::from(99)));
+        assert_eq!(BigUint::from(818), find_next_palindrome(BigUint::from(808)));
+        assert_eq!(
+            BigUint::from(1001),
+            find_next_palindrome(BigUint::from(999))
+        );
+        assert_eq!(
+            BigUint::from(2222),
+            find_next_palindrome(BigUint::from(2133))
+        );
+        assert_eq!(
+            BigUint::from(8998),
+            find_next_palindrome(BigUint::from(8888))
+        );
+        assert_eq!(
+            "4052555153515552504".to_biguint().unwrap(),
+            find_next_palindrome(BigUint::from(3).pow(39))
+        );
+        assert_eq!(
+            "3234476509624757991344647769100216810857204027580186120019677464431997574269056744323"
+                .to_biguint()
+                .unwrap(),
+            find_next_palindrome(BigUint::from(7).pow(100))
+        );
     }
 }
