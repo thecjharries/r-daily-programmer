@@ -20,7 +20,20 @@ fn main() {
 }
 
 fn find_next_palindrome(input: BigUint) -> BigUint {
-    todo!()
+    let mut current = input.clone();
+    current = current + BigUint::from(1u8);
+    for index in 0..current.to_string().len() / 2 {
+        while current.to_string().chars().nth(index).unwrap()
+            != current
+                .to_string()
+                .chars()
+                .nth(current.to_string().len() - index - 1)
+                .unwrap()
+        {
+            current = current + BigUint::from(10u8).pow(index as u32);
+        }
+    }
+    current
 }
 
 #[cfg(not(tarpaulin_include))]
