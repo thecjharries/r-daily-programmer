@@ -20,7 +20,71 @@ fn main() {
 fn generate_nonogram_clues(
     input: Vec<Vec<char>>,
 ) -> (Vec<Vec<(char, usize)>>, Vec<Vec<(char, usize)>>) {
-    todo!()
+    let mut column_clues = Vec::new();
+    for column in 0..input[0].len() {
+        let mut current_clue = Vec::new();
+        let mut current_count = 0;
+        let mut current_item = '0';
+        for row in 0..input.len() {
+            let cell = input[row][column];
+            match cell {
+                '0' => {
+                    if 0 != current_count {
+                        current_clue.push((current_item, current_count));
+                    }
+                    current_count = 0;
+                }
+                _ => {
+                    if current_item != cell {
+                        if 0 != current_count {
+                            current_clue.push((current_item, current_count));
+                        }
+                        current_count = 1;
+                        current_item = cell;
+                    } else {
+                        current_count += 1;
+                    }
+                }
+            }
+        }
+        if 0 != current_count {
+            current_clue.push((current_item, current_count));
+        }
+        column_clues.push(current_clue);
+    }
+    let mut row_clues = Vec::new();
+    for row in input.iter() {
+        let mut current_clue = Vec::new();
+        let mut current_count = 0;
+        let mut current_item = '0';
+        for cell in row.iter() {
+            match cell {
+                '0' => {
+                    if 0 != current_count {
+                        current_clue.push((current_item, current_count));
+                    }
+                    current_count = 0;
+                }
+                _ => {
+                    if current_item != *cell {
+                        if 0 != current_count {
+                            current_clue.push((current_item, current_count));
+                        }
+                        current_count = 1;
+                        current_item = *cell;
+                    } else {
+                        current_count += 1;
+                    }
+                }
+            }
+        }
+        if 0 != current_count {
+            current_clue.push((current_item, current_count));
+        }
+        row_clues.push(current_clue);
+    }
+    (column_clues, row_clues)
+
 }
 
 #[cfg(not(tarpaulin_include))]
