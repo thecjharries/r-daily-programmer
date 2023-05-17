@@ -84,7 +84,6 @@ fn generate_nonogram_clues(
         row_clues.push(current_clue);
     }
     (column_clues, row_clues)
-
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -132,6 +131,10 @@ mod tests {
             vec![('1', 6)],
             vec![('1', 4)],
         ];
+        assert_eq!((column_clues, row_clues), generate_nonogram_clues(input));
+        let input = vec![vec!['1', '2'], vec!['2', '1']];
+        let column_clues = vec![vec![('1', 1), ('2', 1)], vec![('2', 1), ('1', 1)]];
+        let row_clues = vec![vec![('1', 1), ('2', 1)], vec![('2', 1), ('1', 1)]];
         assert_eq!((column_clues, row_clues), generate_nonogram_clues(input));
     }
 }
