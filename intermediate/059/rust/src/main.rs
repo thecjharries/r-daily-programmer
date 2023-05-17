@@ -29,7 +29,45 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_nonogram_clues() {
+        // 0 1 1 1 1 0
+        // 1 0 0 1 1 1
+        // 1 0 1 1 1 1
+        // 1 1 1 1 1 1
+        // 0 1 1 1 1 0
+        let input = vec![
+            vec![0, 1, 1, 1, 1, 0],
+            vec![1, 0, 0, 1, 1, 1],
+            vec![1, 0, 1, 1, 1, 1],
+            vec![1, 1, 1, 1, 1, 1],
+            vec![0, 1, 1, 1, 1, 0],
+        ];
+        // 3
+        // 1 2
+        // 1 3
+        // 5
+        // 5
+        // 3
+        let column_clues = vec![
+            vec![('1', 3)],
+            vec![('1', 1), ('1', 2)],
+            vec![('1', 1), ('1', 3)],
+            vec![('1', 5)],
+            vec![('1', 5)],
+            vec![('1', 3)],
+        ];
+        // 4
+        // 1 3
+        // 1 4
+        // 6
+        // 4
+        let row_clues = vec![
+            vec![('1', 4)],
+            vec![('1', 1), ('1', 3)],
+            vec![('1', 1), ('1', 4)],
+            vec![('1', 6)],
+            vec![('1', 4)],
+        ];
+        assert_eq!((column_clues, row_clues), generate_nonogram_clues(input));
     }
 }
