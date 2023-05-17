@@ -17,6 +17,12 @@ fn main() {
     println!("rad");
 }
 
+fn generate_nonogram_clues(
+    input: Vec<Vec<char>>,
+) -> (Vec<Vec<(char, usize)>>, Vec<Vec<(char, usize)>>) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
