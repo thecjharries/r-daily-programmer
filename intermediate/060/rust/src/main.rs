@@ -17,8 +17,46 @@ fn main() {
     println!("rad");
 }
 
-fn print_square_smiley(columns: usize) -> String {
-    todo!()
+fn build_smiley(columns: usize) -> String {
+    let columns = match columns {
+        usize::MIN..=15 => 16,
+        1001..=usize::MAX => 1000,
+        _ => columns,
+    };
+    let mut output = String::new();
+    for _ in 0..columns / 8 {
+        output.push('\n');
+    }
+    for _ in 0..columns / 8 {
+        output.push_str(
+            format!(
+                "{}{}{}{}{}",
+                " ".repeat(columns / 10),
+                "#".repeat(columns / 10),
+                " ".repeat(6 * columns / 10),
+                "#".repeat(columns / 10),
+                "\n"
+            )
+            .as_str(),
+        );
+    }
+    for _ in 0..columns / 4 {
+        output.push('\n');
+    }
+    for _ in 0..columns / 8 {
+        output.push_str(
+            format!(
+                "{}{}\n",
+                " ".repeat(columns / 10),
+                "#".repeat(8 * columns / 10),
+            )
+            .as_str(),
+        )
+    }
+    for _ in 0..columns / 8 {
+        output.push('\n');
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
