@@ -14,7 +14,7 @@
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
-    println!("rad");
+    println!("{}", build_smiley(16));
 }
 
 fn build_smiley(columns: usize) -> String {
