@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_build_smiley() {
+        assert_eq!(
+            "\n\n #         #\n #         #\n\n\n\n\n ############\n ############\n\n\n",
+            build_smiley(16)
+        );
     }
 }
