@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const DIGITS_PRECISION: u32 = 6;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
