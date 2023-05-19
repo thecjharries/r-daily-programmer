@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const DIGITS_PRECISION: u32 = 6;
+const DIGITS_PRECISION: i32 = 6;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -20,7 +20,18 @@ fn main() {
 }
 
 fn sqrt(number: f32) -> f32 {
-    todo!()
+    let mut low = 0.0;
+    let mut high = number;
+    let mut guess = (low + high) / 2.0;
+    while (guess * guess - number).abs() > 10.0_f32.powi(-DIGITS_PRECISION) {
+        if guess * guess > number {
+            high = guess;
+        } else {
+            low = guess;
+        }
+        guess = (low + high) / 2.0;
+    }
+    (guess * 10.0_f32.powi(DIGITS_PRECISION)).round() / 10.0_f32.powi(DIGITS_PRECISION)
 }
 
 #[cfg(not(tarpaulin_include))]
