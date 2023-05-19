@@ -19,6 +19,10 @@ fn main() {
     println!("rad");
 }
 
+fn sqrt(number: f32) -> f32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
