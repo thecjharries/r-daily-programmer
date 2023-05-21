@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use memoize::memoize;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+#[memoize]
+fn prng(n: u128) -> u128 {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
