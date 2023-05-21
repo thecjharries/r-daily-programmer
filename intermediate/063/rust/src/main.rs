@@ -66,4 +66,10 @@ mod tests {
         assert_eq!(reverse(4, vec![1, 2, 3, 4, 5]), vec![4, 3, 2, 1, 5]);
         assert_eq!(reverse(5, vec![1, 2, 3, 4, 5]), vec![5, 4, 3, 2, 1]);
     }
+
+    #[test]
+    fn test_reverse_sort() {
+        assert_eq!(vec![1, 2, 3, 4, 5], reverse_sort(vec![1, 2, 3, 4, 5]));
+        assert_eq!(vec![1, 2, 3, 4, 5], reverse_sort(vec![5, 4, 3, 2, 1]));
+    }
 }
