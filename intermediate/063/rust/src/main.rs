@@ -30,7 +30,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_prng() {
+        assert_eq!(123456789, prng(0));
+        assert_eq!(752880530, prng(1));
+        assert_eq!(826085747, prng(2));
+        assert_eq!(576968456, prng(3));
+        assert_eq!(721429729, prng(4));
+        assert_eq!(151520653, prng(1000));
     }
 }
