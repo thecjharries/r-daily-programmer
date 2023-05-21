@@ -103,5 +103,10 @@ mod tests {
     fn test_reverse_sort() {
         assert_eq!(vec![1, 2, 3, 4, 5], reverse_sort(vec![1, 2, 3, 4, 5]));
         assert_eq!(vec![1, 2, 3, 4, 5], reverse_sort(vec![5, 4, 3, 2, 1]));
+        let mut sequence = Vec::new();
+        for i in 0..10000 {
+            sequence.push(prng(i));
+        }
+        assert!(is_sorted(reverse_sort(sequence)));
     }
 }
