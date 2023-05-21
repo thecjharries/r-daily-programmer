@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn count_exercise_sets(input: Vec<u32>) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
