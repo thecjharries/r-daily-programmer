@@ -12,13 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use itertools::Itertools;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn count_exercise_sets(input: Vec<u32>) -> u32 {
-    todo!()
+    let mut count = 0;
+    for mut set in input.iter().powerset().collect::<Vec<_>>() {
+        if set.len() < 3 {
+            continue;
+        }
+        set.sort();
+        let last = set.pop().unwrap();
+        if set.into_iter().sum::<u32>() == *last {
+            count += 1;
+        }
+    }
+    count
 }
 
 #[cfg(not(tarpaulin_include))]
