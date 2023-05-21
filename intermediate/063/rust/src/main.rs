@@ -49,6 +49,9 @@ mod tests {
         assert_eq!(576968456, prng(3));
         assert_eq!(721429729, prng(4));
         assert_eq!(151520653, prng(1000));
+        assert_eq!(65237510, prng(9997));
+        assert_eq!(921739127, prng(9998));
+        assert_eq!(926774748, prng(9999));
     }
 
     #[test]
