@@ -28,6 +28,14 @@ fn prng(n: u64) -> u64 {
     }
 }
 
+fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {
+    let mut output = input.clone();
+    for i in 0..count {
+        output[i] = input[count - i - 1];
+    }
+    output
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
@@ -41,5 +49,14 @@ mod tests {
         assert_eq!(576968456, prng(3));
         assert_eq!(721429729, prng(4));
         assert_eq!(151520653, prng(1000));
+    }
+
+    #[test]
+    fn test_reverse() {
+        assert_eq!(reverse(1, vec![1, 2, 3, 4, 5]), vec![1, 2, 3, 4, 5]);
+        assert_eq!(reverse(2, vec![1, 2, 3, 4, 5]), vec![2, 1, 3, 4, 5]);
+        assert_eq!(reverse(3, vec![1, 2, 3, 4, 5]), vec![3, 2, 1, 4, 5]);
+        assert_eq!(reverse(4, vec![1, 2, 3, 4, 5]), vec![4, 3, 2, 1, 5]);
+        assert_eq!(reverse(5, vec![1, 2, 3, 4, 5]), vec![5, 4, 3, 2, 1]);
     }
 }
