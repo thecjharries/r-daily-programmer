@@ -36,6 +36,17 @@ fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {
     output
 }
 
+fn is_sorted(input: Vec<u64>) -> bool {
+    let mut previous = input[0];
+    for number in input {
+        if number < previous {
+            return false;
+        }
+        previous = number;
+    }
+    true
+}
+
 fn reverse_sort(input: Vec<u64>) -> Vec<u64> {
     todo!()
 }
@@ -65,6 +76,12 @@ mod tests {
         assert_eq!(reverse(3, vec![1, 2, 3, 4, 5]), vec![3, 2, 1, 4, 5]);
         assert_eq!(reverse(4, vec![1, 2, 3, 4, 5]), vec![4, 3, 2, 1, 5]);
         assert_eq!(reverse(5, vec![1, 2, 3, 4, 5]), vec![5, 4, 3, 2, 1]);
+    }
+
+    #[test]
+    fn test_is_sorted() {
+        assert!(is_sorted(vec![1, 2, 3, 4, 5]));
+        assert!(!is_sorted(vec![5, 4, 3, 2, 1]));
     }
 
     #[test]
