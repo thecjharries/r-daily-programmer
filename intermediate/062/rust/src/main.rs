@@ -27,7 +27,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_count_exercise_sets() {
+        assert_eq!(
+            179,
+            count_exercise_sets(vec![
+                3, 4, 9, 14, 15, 19, 28, 37, 47, 50, 54, 56, 59, 61, 70, 73, 78, 81, 92, 95, 97, 99
+            ])
+        );
     }
 }
