@@ -36,6 +36,10 @@ fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {
     output
 }
 
+fn reverse_sort(input: Vec<u64>) -> Vec<u64> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
