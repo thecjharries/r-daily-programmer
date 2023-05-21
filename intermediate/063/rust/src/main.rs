@@ -28,7 +28,7 @@ fn prng(n: u64) -> u64 {
     }
 }
 
-fn reverse(count: usize, input: Vec<i64>) -> Vec<i64> {
+fn reverse(count: usize, input: Vec<u64>) -> Vec<u64> {
     let mut output = input.clone();
     for i in 0..count {
         output[i] = input[count - i - 1];
@@ -48,7 +48,22 @@ fn is_sorted(input: Vec<u64>) -> bool {
 }
 
 fn reverse_sort(input: Vec<u64>) -> Vec<u64> {
-    todo!()
+    let mut output = input.clone();
+    let mut index = output.len();
+    while !is_sorted(output.clone()) {
+        let max_index = output[0..index]
+            .iter()
+            .enumerate()
+            .max_by_key(|(_, value)| *value)
+            .unwrap()
+            .0;
+        output = reverse(max_index + 1, output);
+        output = reverse(index, output);
+        while index > 0 && output[0..index].iter().max().unwrap() == &output[index - 1] {
+            index -= 1;
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
