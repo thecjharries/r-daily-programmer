@@ -20,8 +20,12 @@ fn main() {
 }
 
 #[memoize]
-fn prng(n: u128) -> u128 {
-    todo!()
+fn prng(n: u64) -> u64 {
+    if 0 == n {
+        123456789
+    } else {
+        (prng(n - 1) * 22695477 + 12345) % 1073741824
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
