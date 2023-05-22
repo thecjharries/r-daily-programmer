@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn is_palindrome(input: &str) -> bool {
-    todo!()
+    for index in 0..input.len() / 2 {
+        if input.chars().nth(index).unwrap() != input.chars().nth(input.len() - index - 1).unwrap()
+        {
+            return false;
+        }
+    }
+    true
 }
 
 #[cfg(not(tarpaulin_include))]
