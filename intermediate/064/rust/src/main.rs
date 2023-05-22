@@ -28,7 +28,26 @@ fn is_palindrome(input: &str) -> bool {
 }
 
 fn find_longest_palindrome(text: &str) -> String {
-    todo!()
+    let text = text.to_lowercase();
+    let sanitized = text
+        .chars()
+        .filter(|character| character.is_alphanumeric())
+        .collect::<String>();
+    let mut longest_palindrome = String::new();
+    for middle in 0..sanitized.len() {
+        for offset in 0..=middle {
+            let start = middle - offset;
+            let end = middle + offset;
+            if end >= sanitized.len() {
+                break;
+            }
+            let substring = &sanitized[start..=end];
+            if is_palindrome(substring) && substring.len() > longest_palindrome.len() {
+                longest_palindrome = substring.to_string();
+            }
+        }
+    }
+    longest_palindrome
 }
 
 #[cfg(not(tarpaulin_include))]
