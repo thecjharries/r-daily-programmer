@@ -42,4 +42,21 @@ mod tests {
         assert!(is_palindrome("racecar"));
         assert!(!is_palindrome("palindrome"));
     }
+
+    #[test]
+    fn test_find_longest_palindrome() {
+        assert_eq!(
+            "racecar",
+            find_longest_palindrome("I like racecars that go fast")
+        );
+        assert_eq!("aibohphobia", find_longest_palindrome("aibohphobia"));
+        assert_eq!(
+            "racer",
+            find_longest_palindrome("My dad is a racecar athlete")
+        );
+        assert_eq!(
+            "ranynar",
+            find_longest_palindrome("Fourscoreandsevenyearsagoourfaathersbroughtforthonthisconta inentanewnationconceivedinzLibertyanddedicatedtotheproposit ionthatallmenarecreatedequalNowweareengagedinagreahtcivilwa rtestingwhetherthatnaptionoranynartionsoconceivedandsodedic atedcanlongendureWeareqmetonagreatbattlefiemldoftzhatwarWeh avecometodedicpateaportionofthatfieldasafinalrestingplacefo rthosewhoheregavetheirlivesthatthatnationmightliveItisaltog etherfangandproperthatweshoulddothisButinalargersensewecann otdedicatewecannotconsecratewecannothallowthisgroundThebrav elmenlivinganddeadwhostruggledherehaveconsecrateditfarabove ourpoorponwertoaddordetractTgheworldadswfilllittlenotlenorl ongrememberwhatwesayherebutitcanneverforgetwhattheydidhereI tisforusthelivingrathertobededicatedheretotheulnfinishedwor kwhichtheywhofoughtherehavethusfarsonoblyadvancedItisrather forustobeherededicatedtothegreattdafskremainingbeforeusthat fromthesehonoreddeadwetakeincreaseddevotiontothatcauseforwh ichtheygavethelastpfullmeasureofdevotionthatweherehighlyres olvethatthesedeadshallnothavediedinvainthatthisnationunsder Godshallhaveanewbirthoffreedomandthatgovernmentofthepeopleb ythepeopleforthepeopleshallnotperishfromtheearth");
+        )
+    }
 }
