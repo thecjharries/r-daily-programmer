@@ -27,6 +27,10 @@ fn is_palindrome(input: &str) -> bool {
     true
 }
 
+fn find_longest_palindrome(text: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
