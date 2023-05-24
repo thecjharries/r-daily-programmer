@@ -16,6 +16,24 @@ use std::collections::BTreeMap;
 
 struct MaxiphobicMap<T>(BTreeMap<String, T>);
 
+impl MaxiphobicMap<T> {
+    fn new() -> Self {
+        Self(BTreeMap::new())
+    }
+
+    fn insert(&mut self, key: String, value: T) -> Option<T> {
+        self.0.insert(key, value)
+    }
+
+    fn get(&self, key: &str) -> Option<&T> {
+        self.0.get(key)
+    }
+
+    fn remove(&mut self, key: &str) -> Option<T> {
+        self.0.remove(key)
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
