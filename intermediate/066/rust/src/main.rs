@@ -16,7 +16,7 @@ use std::collections::BTreeMap;
 
 struct MaxiphobicMap<T>(BTreeMap<String, T>);
 
-impl MaxiphobicMap<T> {
+impl<T> MaxiphobicMap<T> {
     fn new() -> Self {
         Self(BTreeMap::new())
     }
@@ -45,7 +45,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_maxiphobicmap_basics() {
+        let mut map: MaxiphobicMap<u32> = MaxiphobicMap::new();
+        assert_eq!(None, map.get("foo"));
+        assert_eq!(None, map.remove("foo"));
+        assert_eq!(None, map.insert("foo".to_string(), 1));
+        assert_eq!(Some(&1), map.get("foo"));
+        assert_eq!(Some(1u32), map.remove("foo"));
+        assert_eq!(None, map.get("foo"));
     }
 }
