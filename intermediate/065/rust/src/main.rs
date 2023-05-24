@@ -12,6 +12,36 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
+#[derive(Debug, PartialEq, Eq)]
+enum Gender {
+    Male,
+    Female,
+    Other,
+}
+
+impl FromStr for Gender {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Gender, ()> {
+        let character_string = s
+            .chars()
+            .filter(|character| character.is_alphabetic())
+            .map(|character| character.to_lowercase().next().unwrap())
+            .collect::<String>();
+        if let Some(character) = character_string.chars().next() {
+            match character {
+                'm' => Ok(Gender::Male),
+                'f' => Ok(Gender::Female),
+                _ => Ok(Gender::Other),
+            }
+        } else {
+            Err(())
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -23,7 +53,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_gender_from_str() {
+        assert_eq!(Gender::Male, "Male".parse::<Gender>().unwrap());
+        assert_eq!(Gender::Female, Gender::from_str("(F)").unwrap());
+        assert_eq!(Gender::Other, "qqq".parse::<Gender>().unwrap());
+        assert!("!!!".parse::<Gender>().is_err());
     }
 }
