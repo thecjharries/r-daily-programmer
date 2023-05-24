@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::HashMap;
 use std::str::FromStr;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -76,6 +77,9 @@ impl FromStr for Person {
         })
     }
 }
+
+#[derive(Debug, PartialEq, Eq)]
+struct FamilyTree(HashMap<String, Person>);
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
