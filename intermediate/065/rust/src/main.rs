@@ -90,6 +90,24 @@ impl FamilyTree {
                 self.0.insert(person.key.clone(), person);
             });
     }
+
+    fn add_relationships(&mut self, input: &str) {
+        lazy_static! {
+            static ref RELATIONSHIP_PATTERN: Regex =
+                Regex::new(r"(?P<parent>[A-Z]{2})\s*->\s*(?P<child>[A-Z]{2})").unwrap();
+        }
+        input.lines().for_each(|line| {
+            let matches = RELATIONSHIP_PATTERN.captures(line).unwrap();
+            let parent_key = matches.name("parent").unwrap().as_str().to_string();
+            let child_key = matches.name("child").unwrap().as_str().to_string();
+            self.0
+                .get_mut(&parent_key)
+                .unwrap()
+                .children
+                .push(child_key.clone());
+            self.0.get_mut(&child_key).unwrap().parents.push(parent_key);
+        });
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -173,6 +191,60 @@ mod tests {
         ]);
         let mut family_tree = FamilyTree(HashMap::new());
         family_tree.add_raw_people("AA = Rickard Stark (M)\nAB = Eddard Stark (M)\nAC = Catelyn Tully (F)\nAD = Brandon Stark (M)");
+        assert_eq!(tree, family_tree.0);
+    }
+
+    #[test]
+    fn test_family_tree_add_relationships() {
+        // AA = Rickard Stark (M)
+        // AB = Eddard Stark (M)
+        // AC = Catelyn Tully (F)
+        // AD = Brandon Stark (M)
+        let tree = HashMap::from_iter([
+            (
+                "AA".to_string(),
+                Person {
+                    key: "AA".to_string(),
+                    name: "Rickard Stark".to_string(),
+                    gender: Gender::Male,
+                    parents: vec!["AB".to_string(), "AC".to_string()],
+                    children: Vec::new(),
+                },
+            ),
+            (
+                "AB".to_string(),
+                Person {
+                    key: "AB".to_string(),
+                    name: "Eddard Stark".to_string(),
+                    gender: Gender::Male,
+                    parents: Vec::new(),
+                    children: vec!["AA".to_string()],
+                },
+            ),
+            (
+                "AC".to_string(),
+                Person {
+                    key: "AC".to_string(),
+                    name: "Catelyn Tully".to_string(),
+                    gender: Gender::Female,
+                    parents: Vec::new(),
+                    children: vec!["AA".to_string()],
+                },
+            ),
+            (
+                "AD".to_string(),
+                Person {
+                    key: "AD".to_string(),
+                    name: "Brandon Stark".to_string(),
+                    gender: Gender::Male,
+                    parents: Vec::new(),
+                    children: Vec::new(),
+                },
+            ),
+        ]);
+        let mut family_tree = FamilyTree(HashMap::new());
+        family_tree.add_raw_people("AA = Rickard Stark (M)\nAB = Eddard Stark (M)\nAC = Catelyn Tully (F)\nAD = Brandon Stark (M)");
+        family_tree.add_relationships("AB -> AA\nAC->AA");
         assert_eq!(tree, family_tree.0);
     }
 }
