@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
 use std::str::FromStr;
 
 #[derive(Debug, PartialEq, Eq)]
@@ -42,10 +44,37 @@ impl FromStr for Gender {
     }
 }
 
+#[derive(Debug, PartialEq, Eq)]
 struct Person {
+    key: String,
     name: String,
+    gender: Gender,
     parents: Vec<String>,
     children: Vec<String>,
+}
+
+impl FromStr for Person {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Person, ()> {
+        lazy_static! {
+            static ref PERSON_PATTERN: Regex =
+                Regex::new(r"(?P<key>[A-Z]{2})\s*=\s*(?P<name>.*)\s+?\((?P<gender>.)\)").unwrap();
+        }
+        let matches = PERSON_PATTERN.captures(s).unwrap();
+        Ok(Person {
+            key: matches.name("key").unwrap().as_str().to_string(),
+            name: matches.name("name").unwrap().as_str().to_string(),
+            gender: matches
+                .name("gender")
+                .unwrap()
+                .as_str()
+                .parse::<Gender>()
+                .unwrap(),
+            parents: Vec::new(),
+            children: Vec::new(),
+        })
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -64,5 +93,18 @@ mod tests {
         assert_eq!(Gender::Female, Gender::from_str("(F)").unwrap());
         assert_eq!(Gender::Other, "qqq".parse::<Gender>().unwrap());
         assert!("!!!".parse::<Gender>().is_err());
+    }
+
+    #[test]
+    fn test_person_from_str() {
+        // AA = Rickard Stark (M)
+        let person = Person {
+            key: "AA".to_string(),
+            name: "Rickard Stark".to_string(),
+            gender: Gender::Male,
+            parents: Vec::new(),
+            children: Vec::new(),
+        };
+        assert_eq!(person, "AA = Rickard Stark (M)".parse::<Person>().unwrap());
     }
 }
