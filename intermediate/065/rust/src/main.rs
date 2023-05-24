@@ -42,6 +42,12 @@ impl FromStr for Gender {
     }
 }
 
+struct Person {
+    name: String,
+    parents: Vec<String>,
+    children: Vec<String>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
