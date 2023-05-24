@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
+struct MaxiphobicMap<T>(BTreeMap<String, T>);
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
