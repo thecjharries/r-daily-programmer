@@ -32,6 +32,14 @@ impl<T> MaxiphobicMap<T> {
     fn remove(&mut self, key: &str) -> Option<T> {
         self.0.remove(key)
     }
+
+    fn merge(self, other: Self) -> Self {
+        let mut new_map = self.0;
+        for (key, value) in other.0 {
+            new_map.insert(key, value);
+        }
+        Self(new_map)
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -53,5 +61,16 @@ mod tests {
         assert_eq!(Some(&1), map.get("foo"));
         assert_eq!(Some(1u32), map.remove("foo"));
         assert_eq!(None, map.get("foo"));
+    }
+
+    #[test]
+    fn test_maxiphobicmap_merge() {
+        let mut map: MaxiphobicMap<u32> = MaxiphobicMap::new();
+        map.insert("foo".to_string(), 1);
+        let mut other_map: MaxiphobicMap<u32> = MaxiphobicMap::new();
+        other_map.insert("bar".to_string(), 2);
+        let merged_map = map.merge(other_map);
+        assert_eq!(Some(&1), merged_map.get("foo"));
+        assert_eq!(Some(&2), merged_map.get("bar"));
     }
 }
