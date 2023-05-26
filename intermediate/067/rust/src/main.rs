@@ -25,6 +25,10 @@ fn calculate_sum_of_squares(min: u64, max: u64) -> u64 {
     max * (max + 1) * (2 * max + 1) / 6 - (min - 1) * min * (2 * min - 1) / 6
 }
 
+fn find_missing_two_integers(min: u64, max: u64, given: Vec<u64>) -> (u64, u64) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
