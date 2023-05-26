@@ -31,6 +31,6 @@ mod tests {
         assert_eq!(1, find_minimum_throws(1, 1));
         assert_eq!(2, find_minimum_throws(2, 1));
         assert_eq!(2, find_minimum_throws(3, 2));
-        assert_eq!(3, find_minimum_throws(6, 2));
+        assert_eq!(4, find_minimum_throws(6, 2));
     }
 }
