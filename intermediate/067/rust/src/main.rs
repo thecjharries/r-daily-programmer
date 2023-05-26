@@ -26,7 +26,15 @@ fn calculate_sum_of_squares(min: u64, max: u64) -> u64 {
 }
 
 fn find_missing_two_integers(min: u64, max: u64, given: Vec<u64>) -> (u64, u64) {
-    todo!()
+    let mut sum = calculate_sum(min, max);
+    let mut sum_of_squares = calculate_sum_of_squares(min, max);
+    for item in given {
+        sum -= item;
+        sum_of_squares -= item * item;
+    }
+    let a = (sum - ((2 * sum_of_squares - sum * sum) as f64).sqrt() as u64) / 2;
+    let b = (sum + ((2 * sum_of_squares - sum * sum) as f64).sqrt() as u64) / 2;
+    (a, b)
 }
 
 #[cfg(not(tarpaulin_include))]
