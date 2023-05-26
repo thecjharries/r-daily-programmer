@@ -21,6 +21,10 @@ fn calculate_sum(min: u64, max: u64) -> u64 {
     max * (max + 1) / 2 - (min - 1) * min / 2
 }
 
+fn calculate_sum_of_squares(min: u64, max: u64) -> u64 {
+    max * (max + 1) * (2 * max + 1) / 6 - (min - 1) * min * (2 * min - 1) / 6
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
@@ -29,5 +33,10 @@ mod tests {
     #[test]
     fn test_calculate_sum() {
         assert_eq!(5050, calculate_sum(1, 100));
+    }
+
+    #[test]
+    fn test_calculate_sum_of_squares() {
+        assert_eq!(338350, calculate_sum_of_squares(1, 100));
     }
 }
