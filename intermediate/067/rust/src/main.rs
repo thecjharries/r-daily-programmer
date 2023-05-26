@@ -27,7 +27,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_sum() {
+        assert_eq!(5050, calculate_sum(1, 100));
     }
 }
