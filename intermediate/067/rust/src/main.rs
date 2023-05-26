@@ -43,4 +43,9 @@ mod tests {
     fn test_calculate_sum_of_squares() {
         assert_eq!(338350, calculate_sum_of_squares(1, 100));
     }
+
+    #[test]
+    fn test_find_missing_two_integers() {
+        assert_eq!((3, 4), find_missing_two_integers(1, 5, vec![1, 2, 5]));
+    }
 }
