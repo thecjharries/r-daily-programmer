@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn find_minimum_throws(floors: u32, telephones: u32) -> u32 {
-    todo!()
+    let mut throws = 0;
+    let mut current_floors = floors;
+    let mut remaining_telephones = telephones;
+    while current_floors > 1 && remaining_telephones > 1 {
+        current_floors /= 2;
+        remaining_telephones -= 1;
+        throws += 1;
+    }
+    if 0 < remaining_telephones {
+        throws += current_floors;
+    }
+    throws
 }
 
 #[cfg(not(tarpaulin_include))]
