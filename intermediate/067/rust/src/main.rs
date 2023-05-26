@@ -18,7 +18,7 @@ fn main() {
 }
 
 fn calculate_sum(min: u64, max: u64) -> u64 {
-    todo!()
+    max * (max + 1) / 2 - (min - 1) * min / 2
 }
 
 #[cfg(not(tarpaulin_include))]
