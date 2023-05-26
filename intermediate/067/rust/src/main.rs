@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_sum(min: u64, max: u64) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
