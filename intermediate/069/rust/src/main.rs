@@ -15,11 +15,15 @@
 #[derive(Debug, PartialEq, Eq)]
 struct AdfgvxCipher {
     alphabet: Vec<char>,
+    substitution: Vec<char>,
 }
 
 impl AdfgvxCipher {
-    pub fn new(alphabet: Vec<char>) -> AdfgvxCipher {
-        AdfgvxCipher { alphabet }
+    pub fn new(alphabet: Vec<char>, substitution: Vec<char>) -> AdfgvxCipher {
+        AdfgvxCipher {
+            alphabet,
+            substitution,
+        }
     }
 
     pub fn sanitize(&self, input: &str) -> String {
@@ -47,10 +51,14 @@ mod tests {
 
     #[test]
     fn test_adfgvxcipher_new() {
-        let cipher = AdfgvxCipher::new("ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect());
+        let cipher = AdfgvxCipher::new(
+            "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
+            "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+        );
         assert_eq!(
             AdfgvxCipher {
-                alphabet: "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect()
+                alphabet: "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
+                substitution: "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
             },
             cipher
         );
@@ -59,7 +67,10 @@ mod tests {
     #[test]
     fn test_adfgvxcipher_sanitize() {
         let input = "Brake me out of jail on the 21st.";
-        let cipher = AdfgvxCipher::new("ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect());
+        let cipher = AdfgvxCipher::new(
+            "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
+            "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+        );
         assert_eq!("BRAKE ME OUT OF IAIL ON THE 21ST", cipher.sanitize(input));
     }
 }
