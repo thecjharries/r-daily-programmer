@@ -21,6 +21,18 @@ impl AdfgvxCipher {
     pub fn new(alphabet: Vec<char>) -> AdfgvxCipher {
         AdfgvxCipher { alphabet }
     }
+
+    pub fn sanitize(&self, input: &str) -> String {
+        input
+            .to_uppercase()
+            .chars()
+            .map(|character| match character {
+                'J' => 'I',
+                _ => character,
+            })
+            .filter(|character| self.alphabet.contains(character))
+            .collect()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -42,5 +54,12 @@ mod tests {
             },
             cipher
         );
+    }
+
+    #[test]
+    fn test_adfgvxcipher_sanitize() {
+        let input = "Brake me out of jail on the 21st.";
+        let cipher = AdfgvxCipher::new("ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect());
+        assert_eq!("BRAKE ME OUT OF IAIL ON THE 21ST", cipher.sanitize(input));
     }
 }
