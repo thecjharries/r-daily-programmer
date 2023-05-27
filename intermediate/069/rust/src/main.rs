@@ -18,11 +18,16 @@ use std::collections::HashMap;
 struct AdfgvxCipher {
     alphabet: Vec<char>,
     substitution: Vec<char>,
+    transposition: Vec<char>,
     fraction: HashMap<char, String>,
 }
 
 impl AdfgvxCipher {
-    pub fn new(alphabet: Vec<char>, substitution: Vec<char>) -> AdfgvxCipher {
+    pub fn new(
+        alphabet: Vec<char>,
+        substitution: Vec<char>,
+        transposition: Vec<char>,
+    ) -> AdfgvxCipher {
         let mut fraction = HashMap::new();
         for (row, row_char) in vec!['A', 'D', 'F', 'G', 'V', 'X'].iter().enumerate() {
             for (column, column_char) in vec!['A', 'D', 'F', 'G', 'V', 'X'].iter().enumerate() {
@@ -36,6 +41,7 @@ impl AdfgvxCipher {
         AdfgvxCipher {
             alphabet,
             substitution,
+            transposition,
             fraction,
         }
     }
@@ -77,9 +83,14 @@ mod tests {
         let cipher = AdfgvxCipher::new(
             "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
             "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+            "PROGRAMMER".chars().collect(),
         );
         assert_eq!(36, cipher.alphabet.len());
         assert_eq!(36, cipher.substitution.len());
+        assert_eq!(
+            "PROGRAMMER".to_string(),
+            cipher.transposition.iter().collect::<String>()
+        );
         assert_eq!(36, cipher.fraction.len());
         assert_eq!("XX".to_string(), *cipher.fraction.get(&'0').unwrap());
     }
@@ -90,6 +101,7 @@ mod tests {
         let cipher = AdfgvxCipher::new(
             "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
             "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+            "PROGRAMMER".chars().collect(),
         );
         assert_eq!("BRAKE ME OUT OF IAIL ON THE 21ST", cipher.sanitize(input));
     }
@@ -100,6 +112,7 @@ mod tests {
         let cipher = AdfgvxCipher::new(
             "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
             "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+            "PROGRAMMER".chars().collect(),
         );
         assert_eq!("XFAAVGDDVAGD".to_string(), cipher.fraction_text(input));
     }
