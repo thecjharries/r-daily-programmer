@@ -66,6 +66,33 @@ impl AdfgvxCipher {
         }
         output
     }
+
+    pub fn encrypt(&self, input: &str) -> String {
+        let mut output = String::new();
+        let fraction_chars = self.fraction_text(input).chars().collect::<Vec<char>>();
+        let mut matrix = Vec::new();
+        let mut row = 0;
+        while row < fraction_chars.len() / self.transposition.len() {
+            matrix.push(Vec::new());
+            for column in 0..self.transposition.len() {
+                let index = (row * self.transposition.len() + column + row) % fraction_chars.len();
+                matrix[row].push(fraction_chars[index]);
+            }
+            row += 1;
+        }
+        let mut sorted_transposition = self
+            .transposition
+            .iter()
+            .zip(0..self.transposition.len())
+            .collect::<Vec<(&char, usize)>>();
+        sorted_transposition.sort_by(|a, b| a.0.cmp(&b.0));
+        for (_, index) in sorted_transposition {
+            for row in 0..matrix.len() {
+                output.push(matrix[row][index]);
+            }
+        }
+        output
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -115,5 +142,16 @@ mod tests {
             "PROGRAMMER".chars().collect(),
         );
         assert_eq!("XFAAVGDDVAGD".to_string(), cipher.fraction_text(input));
+    }
+
+    #[test]
+    fn test_adfgvxcipher_encrypt() {
+        let input = "Brake";
+        let cipher = AdfgvxCipher::new(
+            "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
+            "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+            "PROGRAMMER".chars().collect(),
+        );
+        assert_eq!("GVADDAXFVA".to_string(), cipher.encrypt(input));
     }
 }
