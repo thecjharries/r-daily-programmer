@@ -51,6 +51,15 @@ impl AdfgvxCipher {
             .filter(|character| self.alphabet.contains(character))
             .collect()
     }
+
+    pub fn fraction_text(&self, input: &str) -> String {
+        let sanitized_input = self.sanitize(input);
+        let mut output = String::new();
+        for character in sanitized_input.chars() {
+            output.push_str(self.fraction.get(&character).unwrap());
+        }
+        output
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -83,5 +92,15 @@ mod tests {
             "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
         );
         assert_eq!("BRAKE ME OUT OF IAIL ON THE 21ST", cipher.sanitize(input));
+    }
+
+    #[test]
+    fn test_adfgvxcipher_fraction_text() {
+        let input = "Brake ";
+        let cipher = AdfgvxCipher::new(
+            "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
+            "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
+        );
+        assert_eq!("XFAAVGDDVAGD".to_string(), cipher.fraction_text(input));
     }
 }
