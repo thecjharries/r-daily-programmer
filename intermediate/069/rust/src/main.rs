@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq)]
+struct AdfgvxCipher {
+    alphabet: Vec<char>,
+}
+
+impl AdfgvxCipher {
+    pub fn new(alphabet: Vec<char>) -> AdfgvxCipher {
+        AdfgvxCipher { alphabet }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -23,7 +34,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_adfgvxcipher_new() {
+        let cipher = AdfgvxCipher::new("ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect());
+        assert_eq!(
+            AdfgvxCipher {
+                alphabet: "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect()
+            },
+            cipher
+        );
     }
 }
