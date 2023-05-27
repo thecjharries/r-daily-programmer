@@ -12,17 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashMap;
+
 #[derive(Debug, PartialEq, Eq)]
 struct AdfgvxCipher {
     alphabet: Vec<char>,
     substitution: Vec<char>,
+    fraction: HashMap<char, String>,
 }
 
 impl AdfgvxCipher {
     pub fn new(alphabet: Vec<char>, substitution: Vec<char>) -> AdfgvxCipher {
+        let mut fraction = HashMap::new();
+        for (row, row_char) in vec!['A', 'D', 'F', 'G', 'V', 'X'].iter().enumerate() {
+            for (column, column_char) in vec!['A', 'D', 'F', 'G', 'V', 'X'].iter().enumerate() {
+                let index = row * 5 + column + row;
+                let mut fraction_string = String::new();
+                fraction_string.push(*row_char);
+                fraction_string.push(*column_char);
+                fraction.insert(substitution[index], fraction_string);
+            }
+        }
         AdfgvxCipher {
             alphabet,
             substitution,
+            fraction,
         }
     }
 
@@ -55,13 +69,10 @@ mod tests {
             "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
             "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
         );
-        assert_eq!(
-            AdfgvxCipher {
-                alphabet: "ABCDEFGHIKLMNOPQRSTUVWXYZ0123456789 ".chars().collect(),
-                substitution: "R3FLMX7KWQ69D4Y5NOZ STV2EH8AP1ICBGU0".chars().collect(),
-            },
-            cipher
-        );
+        assert_eq!(36, cipher.alphabet.len());
+        assert_eq!(36, cipher.substitution.len());
+        assert_eq!(36, cipher.fraction.len());
+        assert_eq!("XX".to_string(), *cipher.fraction.get(&'0').unwrap());
     }
 
     #[test]
