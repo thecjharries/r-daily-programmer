@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use memoize::memoize
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn hyper(n: u128, a: u128, b: u128) -> u128 {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
