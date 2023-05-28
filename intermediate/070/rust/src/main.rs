@@ -12,15 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use memoize::memoize
+use memoize::memoize;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
+#[memoize]
 fn hyper(n: u128, a: u128, b: u128) -> u128 {
-    todo!()
+    if 0 == n {
+        return b + 1;
+    } else if 0 == b {
+        if 1 == n {
+            return a;
+        } else if 2 == n {
+            return 0;
+        } else {
+            return 1;
+        }
+    } else {
+        return hyper(n - 1, a, hyper(n, a, b - 1));
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
