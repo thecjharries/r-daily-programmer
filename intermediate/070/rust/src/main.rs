@@ -29,7 +29,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_hyper() {
+        assert_eq!(2, hyper(0, 10, 1));
+        assert_eq!(10, hyper(1, 10, 0));
+        assert_eq!(0, hyper(2, 10, 0));
+        assert_eq!(1, hyper(4, 10, 0));
+        assert_eq!(10, hyper(2, 10, 1));
     }
 }
