@@ -18,7 +18,18 @@ fn main() {
 }
 
 fn nth_fibonacci(order: usize, element: usize) -> usize {
-    todo!()
+
+    if element < order - 1 {
+        return 0;
+    } else if element == order - 1 {
+        return 1;
+    }
+    let mut fibonacci = vec![0; order - 1];
+    fibonacci.push(1);
+    for _ in order..=element {
+        fibonacci.push(fibonacci[fibonacci.len() - order..fibonacci.len()].iter().sum());
+    }
+    *fibonacci.last().unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
