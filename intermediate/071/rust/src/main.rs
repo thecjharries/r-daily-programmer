@@ -27,7 +27,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_nth_fibonacci() {
+        assert_eq!(0, nth_fibonacci(3, 0));
+        assert_eq!(0, nth_fibonacci(3, 1));
+        assert_eq!(1, nth_fibonacci(3, 2));
+        assert_eq!(1, nth_fibonacci(3, 3));
+        assert_eq!(2, nth_fibonacci(3, 4));
+        assert_eq!(4, nth_fibonacci(3, 5));
+        assert_eq!(7, nth_fibonacci(3, 6));
+        assert_eq!(13, nth_fibonacci(3, 7));
     }
 }
