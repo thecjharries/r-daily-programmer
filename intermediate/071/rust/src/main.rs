@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn nth_fibonacci(order: usize, element: usize) -> usize {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
