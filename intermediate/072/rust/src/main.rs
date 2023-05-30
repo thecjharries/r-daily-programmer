@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq)]
+struct Coordinate {
+    x: usize,
+    y: usize,
+}
+
+#[derive(Debug, PartialEq, Eq)]
 struct Xray(Vec<Vec<char>>);
 
 impl Xray {
