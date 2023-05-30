@@ -51,27 +51,33 @@ impl Xray {
         Xray(Vec::new())
     }
 
-    fn add_sheet(&self, top_left: Coordinate, bottom_right: Coordinate, color: Color) {
+    fn add_sheet(&mut self, top_left: Coordinate, bottom_right: Coordinate, color: Color) {
         if Color::Empty == color || Color::Purple == color {
             return;
         }
-        let mut new_sheet = self.0.clone();
-        for y in top_left.y..=bottom_right.y {
-            for x in top_left.x..=bottom_right.x {
-                match new_sheet[y][x] {
+        if bottom_right.y > self.0.len() {
+            self.0.resize(bottom_right.y, Vec::new());
+        }
+        for row in 0..=bottom_right.y {
+            if bottom_right.x > self.0[row].len() {
+                self.0[row].resize(bottom_right.x, Color::Empty);
+            }
+        }
+        for row in top_left.y..=bottom_right.y {
+            for column in top_left.x..=bottom_right.x {
+                match self.0[row][column] {
+                    Color::Empty => self.0[row][column] = color.clone(),
                     Color::Red => {
                         if Color::Blue == color {
-                            new_sheet[y][x] = Color::Purple;
+                            self.0[row][column] = Color::Purple;
                         }
                     }
                     Color::Blue => {
                         if Color::Red == color {
-                            new_sheet[y][x] = Color::Purple;
+                            self.0[row][column] = Color::Purple;
                         }
                     }
-                    _ => {
-                        unreachable!()
-                    }
+                    Color::Purple => {}
                 }
             }
         }
