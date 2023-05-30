@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 enum Color {
     Empty,
     Red,
@@ -37,18 +37,44 @@ impl Color {
     }
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 struct Coordinate {
     x: usize,
     y: usize,
 }
 
-#[derive(Debug, PartialEq, Eq)]
-struct Xray(Vec<Vec<char>>);
+#[derive(Debug, PartialEq, Eq, Clone)]
+struct Xray(Vec<Vec<Color>>);
 
 impl Xray {
     fn new() -> Self {
         Xray(Vec::new())
+    }
+
+    fn add_sheet(&self, top_left: Coordinate, bottom_right: Coordinate, color: Color) {
+        if Color::Empty == color || Color::Purple == color {
+            return;
+        }
+        let mut new_sheet = self.0.clone();
+        for y in top_left.y..=bottom_right.y {
+            for x in top_left.x..=bottom_right.x {
+                match new_sheet[y][x] {
+                    Color::Red => {
+                        if Color::Blue == color {
+                            new_sheet[y][x] = Color::Purple;
+                        }
+                    }
+                    Color::Blue => {
+                        if Color::Red == color {
+                            new_sheet[y][x] = Color::Purple;
+                        }
+                    }
+                    _ => {
+                        unreachable!()
+                    }
+                }
+            }
+        }
     }
 }
 
