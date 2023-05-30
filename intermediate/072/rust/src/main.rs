@@ -56,11 +56,11 @@ impl Xray {
             return;
         }
         if bottom_right.y > self.0.len() {
-            self.0.resize(bottom_right.y, Vec::new());
+            self.0.resize(bottom_right.y + 1, Vec::new());
         }
         for row in 0..=bottom_right.y {
             if bottom_right.x > self.0[row].len() {
-                self.0[row].resize(bottom_right.x, Color::Empty);
+                self.0[row].resize(bottom_right.x + 1, Color::default());
             }
         }
         for row in top_left.y..=bottom_right.y {
@@ -100,5 +100,76 @@ mod tests {
         assert_eq!('R', Color::Red.to_char());
         assert_eq!('B', Color::Blue.to_char());
         assert_eq!('P', Color::Purple.to_char());
+    }
+
+    #[test]
+    fn test_add_sheet() {
+        let mut xray = Xray::new();
+        assert_eq!(Vec::<Vec<Color>>::new(), xray.0);
+        xray.add_sheet(
+            Coordinate { x: 1, y: 1 },
+            Coordinate { x: 2, y: 2 },
+            Color::Red,
+        );
+        assert_eq!(
+            vec![
+                vec![Color::Empty, Color::Empty, Color::Empty],
+                vec![Color::Empty, Color::Red, Color::Red],
+                vec![Color::Empty, Color::Red, Color::Red]
+            ],
+            xray.0
+        );
+        xray.add_sheet(
+            Coordinate { x: 0, y: 0 },
+            Coordinate { x: 1, y: 1 },
+            Color::Blue,
+        );
+        assert_eq!(
+            vec![
+                vec![Color::Blue, Color::Blue, Color::Empty],
+                vec![Color::Blue, Color::Purple, Color::Red],
+                vec![Color::Empty, Color::Red, Color::Red]
+            ],
+            xray.0
+        );
+        xray.add_sheet(
+            Coordinate { x: 1, y: 1 },
+            Coordinate { x: 1, y: 1 },
+            Color::Red,
+        );
+        assert_eq!(
+            vec![
+                vec![Color::Blue, Color::Blue, Color::Empty],
+                vec![Color::Blue, Color::Purple, Color::Red],
+                vec![Color::Empty, Color::Red, Color::Red]
+            ],
+            xray.0
+        );
+        xray.add_sheet(
+            Coordinate { x: 1, y: 1 },
+            Coordinate { x: 1, y: 1 },
+            Color::Empty,
+        );
+        assert_eq!(
+            vec![
+                vec![Color::Blue, Color::Blue, Color::Empty],
+                vec![Color::Blue, Color::Purple, Color::Red],
+                vec![Color::Empty, Color::Red, Color::Red]
+            ],
+            xray.0
+        );
+        xray.add_sheet(
+            Coordinate { x: 0, y: 0 },
+            Coordinate { x: 0, y: 0 },
+            Color::Red,
+        );
+        assert_eq!(
+            vec![
+                vec![Color::Purple, Color::Blue, Color::Empty],
+                vec![Color::Blue, Color::Purple, Color::Red],
+                vec![Color::Empty, Color::Red, Color::Red]
+            ],
+            xray.0
+        );
     }
 }
