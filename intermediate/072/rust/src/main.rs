@@ -13,6 +13,31 @@
 // limitations under the License.
 
 #[derive(Debug, PartialEq, Eq)]
+enum Color {
+    Empty,
+    Red,
+    Blue,
+    Purple,
+}
+
+impl Default for Color {
+    fn default() -> Self {
+        Color::Empty
+    }
+}
+
+impl Color {
+    fn to_char(&self) -> char {
+        match self {
+            Color::Empty => ' ',
+            Color::Red => 'R',
+            Color::Blue => 'B',
+            Color::Purple => 'P',
+        }
+    }
+}
+
+#[derive(Debug, PartialEq, Eq)]
 struct Coordinate {
     x: usize,
     y: usize,
@@ -38,7 +63,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_color_to_char() {
+        assert_eq!(' ', Color::Empty.to_char());
+        assert_eq!('R', Color::Red.to_char());
+        assert_eq!('B', Color::Blue.to_char());
+        assert_eq!('P', Color::Purple.to_char());
     }
 }
