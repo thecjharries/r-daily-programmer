@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+struct Xray(Vec<Vec<char>>);
+
+impl Xray {
+    fn new() -> Self {
+        Xray(Vec::new())
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
