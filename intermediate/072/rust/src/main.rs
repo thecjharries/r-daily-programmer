@@ -83,6 +83,14 @@ impl Xray {
             }
         }
     }
+
+    fn purple_count(&self) -> usize {
+        self.0
+            .iter()
+            .flatten()
+            .filter(|color| Color::Purple == **color)
+            .count()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -152,5 +160,15 @@ mod tests {
             ],
             xray.0
         );
+    }
+
+    #[test]
+    fn test_xray_purple_count() {
+        let mut xray = Xray::new();
+        assert_eq!(0, xray.purple_count());
+        xray.add_sheet(0, 0, 5, 5, Color::Red);
+        xray.add_sheet(10, 0, 5, 5, Color::Red);
+        xray.add_sheet(3, 2, 9, 2, Color::Blue);
+        assert_eq!(8, xray.purple_count());
     }
 }
