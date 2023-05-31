@@ -18,7 +18,34 @@ fn main() {
 }
 
 fn tidy_matrix(input: &str) -> String {
-    todo!()
+    let mut transition = Vec::new();
+    for line in input.split('\n') {
+        transition.push(
+            line.chars()
+                .filter(|character| character.is_digit(2))
+                .collect::<Vec<char>>(),
+        );
+    }
+    let mut kept_row_indices = Vec::new();
+    for row in 0..transition.len() {
+        if !transition[row].iter().all(|character| *character == '0') {
+            kept_row_indices.push(row);
+        }
+    }
+    let mut kept_column_indices = Vec::new();
+    for column in 0..transition[0].len() {
+        if !transition.iter().all(|row| row[column] == '0') {
+            kept_column_indices.push(column);
+        }
+    }
+    let mut output = String::new();
+    for row in kept_row_indices {
+        for column in kept_column_indices.iter() {
+            output.push(transition[row][*column]);
+        }
+        output.push('\n');
+    }
+    output.trim().to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
