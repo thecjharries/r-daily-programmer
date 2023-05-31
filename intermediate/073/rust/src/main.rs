@@ -27,14 +27,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
+    fn test_tidy_matrix() {
         assert_eq!(
             "01100111
-        00111101
-        01100111
-        01101110
-        00000011
-        10100001"
+00111101
+01100111
+01101110
+00000011
+10100001"
                 .to_string(),
             tidy_matrix(
                 "0000000000000000
