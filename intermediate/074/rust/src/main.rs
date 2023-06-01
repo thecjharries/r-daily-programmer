@@ -140,5 +140,47 @@ mod tests {
         let dancing_links = DancingLinks::new(matrix.clone());
         assert_eq!(matrix, dancing_links.matrix);
         assert_eq!(vec![Cell::new(Coordinate::new(1, 1))], dancing_links.cells);
+        let matrix = vec![
+            vec![false, false, false],
+            vec![false, true, false],
+            vec![false, false, true],
+        ];
+        let dancing_links = DancingLinks::new(matrix.clone());
+        assert_eq!(matrix, dancing_links.matrix);
+        assert_eq!(
+            vec![
+                Cell::new(Coordinate::new(1, 1)),
+                Cell::new(Coordinate::new(2, 2))
+            ],
+            dancing_links.cells
+        );
+        let matrix = vec![
+            vec![false, true, false],
+            vec![false, true, false],
+            vec![false, false, false],
+        ];
+        let dancing_links = DancingLinks::new(matrix.clone());
+        assert_eq!(matrix, dancing_links.matrix);
+        let mut top_cell = Cell::new(Coordinate::new(1, 0));
+        top_cell.up = Coordinate::new(1, 1);
+        top_cell.down = Coordinate::new(1, 1);
+        let mut bottom_cell = Cell::new(Coordinate::new(1, 1));
+        bottom_cell.up = Coordinate::new(1, 0);
+        bottom_cell.down = Coordinate::new(1, 0);
+        assert_eq!(vec![top_cell, bottom_cell,], dancing_links.cells);
+        let matrix = vec![
+            vec![false, false, false],
+            vec![true, true, false],
+            vec![false, false, false],
+        ];
+        let dancing_links = DancingLinks::new(matrix.clone());
+        assert_eq!(matrix, dancing_links.matrix);
+        let mut left_cell = Cell::new(Coordinate::new(0, 1));
+        left_cell.left = Coordinate::new(1, 1);
+        left_cell.right = Coordinate::new(1, 1);
+        let mut right_cell = Cell::new(Coordinate::new(1, 1));
+        right_cell.left = Coordinate::new(0, 1);
+        right_cell.right = Coordinate::new(0, 1);
+        assert_eq!(vec![left_cell, right_cell,], dancing_links.cells);
     }
 }
