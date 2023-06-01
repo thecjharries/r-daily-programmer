@@ -12,6 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug,PartialEq,Eq,Copy,Clone)]
+struct Coordinate {
+    x: usize,
+    y: usize,
+}
+
+#[derive(Debug,PartialEq,Eq,Copy,Clone)]
+struct Cell {
+    up: Coordinate,
+    down: Coordinate,
+    left: Coordinate,
+    right: Coordinate,
+}
+
+#[derive(Debug,PartialEq,Eq,Copy,Clone)]
+struct DancingLinks {
+    matrix: Vec<Vec<bool>>,
+    cells: Vec<Cell>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
