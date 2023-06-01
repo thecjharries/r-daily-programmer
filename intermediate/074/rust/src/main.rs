@@ -33,17 +33,17 @@ struct Cell {
     right: Coordinate,
 }
 
-// impl Cell {
-//     fn new(coordinates: Coordinate) -> Self {
-//         Cell {
-//             coordinates,
-//             up: coordinates,
-//             down: coordinates,
-//             left: coordinates,
-//             right: coordinates,
-//         }
-//     }
-// }
+impl Cell {
+    fn new(coordinates: Coordinate) -> Self {
+        Cell {
+            coordinates,
+            up: coordinates,
+            down: coordinates,
+            left: coordinates,
+            right: coordinates,
+        }
+    }
+}
 
 #[derive(Debug, PartialEq, Eq, Copy, Clone)]
 struct DancingLinks {
@@ -66,5 +66,16 @@ mod tests {
         let coordinate = Coordinate::new(1, 2);
         assert_eq!(1, coordinate.x);
         assert_eq!(2, coordinate.y);
+    }
+
+    #[test]
+    fn test_cell_new() {
+        let coordinate = Coordinate::new(1, 2);
+        let cell = Cell::new(coordinate);
+        assert_eq!(coordinate, cell.coordinates);
+        assert_eq!(coordinate, cell.up);
+        assert_eq!(coordinate, cell.down);
+        assert_eq!(coordinate, cell.left);
+        assert_eq!(coordinate, cell.right);
     }
 }
