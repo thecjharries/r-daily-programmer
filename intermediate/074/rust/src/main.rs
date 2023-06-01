@@ -12,21 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug,PartialEq,Eq,Copy,Clone)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 struct Coordinate {
     x: usize,
     y: usize,
 }
 
-#[derive(Debug,PartialEq,Eq,Copy,Clone)]
+impl Coordinate {
+    fn new(x: usize, y: usize) -> Self {
+        Coordinate { x, y }
+    }
+}
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 struct Cell {
+    coordinates: Coordinate,
     up: Coordinate,
     down: Coordinate,
     left: Coordinate,
     right: Coordinate,
 }
 
-#[derive(Debug,PartialEq,Eq,Copy,Clone)]
+// impl Cell {
+//     fn new(coordinates: Coordinate) -> Self {
+//         Cell {
+//             coordinates,
+//             up: coordinates,
+//             down: coordinates,
+//             left: coordinates,
+//             right: coordinates,
+//         }
+//     }
+// }
+
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 struct DancingLinks {
     matrix: Vec<Vec<bool>>,
     cells: Vec<Cell>,
@@ -43,7 +62,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_coordinate_new() {
+        let coordinate = Coordinate::new(1, 2);
+        assert_eq!(1, coordinate.x);
+        assert_eq!(2, coordinate.y);
     }
 }
