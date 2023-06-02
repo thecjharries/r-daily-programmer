@@ -42,10 +42,65 @@ impl FromStr for InlineGroup {
     type Err = ();
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
+        let input = input.trim();
         let mut split = input.split_whitespace();
         let keyword = split.next().unwrap().to_string();
         let values = split.map(|value| value.to_string()).collect();
         Ok(InlineGroup { keyword, values })
+    }
+}
+
+#[derive(Debug, PartialEq)]
+struct Project {
+    build_type: BuildType,
+    output: String,
+    cflags: InlineGroup,
+    ldflags: InlineGroup,
+    links: InlineGroup,
+    files: Vec<String>,
+}
+
+impl FromStr for Project {
+    type Err = ();
+
+    fn from_str(input: &str) -> Result<Self, Self::Err> {
+        let mut lines = input.lines();
+        let type_line = lines.next().unwrap();
+        let mut type_split = type_line.split_whitespace();
+        let type_keyword = type_split.next().unwrap();
+        let output = type_split.next().unwrap().to_string();
+        let build_type = BuildType::from_str(type_keyword)?;
+        let mut cflags = InlineGroup {
+            keyword: "cflags".to_string(),
+            values: vec![],
+        };
+        let mut ldflags = InlineGroup {
+            keyword: "ldflags".to_string(),
+            values: vec![],
+        };
+        let mut links = InlineGroup {
+            keyword: "links".to_string(),
+            values: vec![],
+        };
+        let mut files = vec![];
+        for line in lines {
+            let line = line.trim();
+            let group = InlineGroup::from_str(line)?;
+            match group.keyword.as_str() {
+                "cflags" => cflags = group,
+                "ldflags" => ldflags = group,
+                "links" => links = group,
+                _ => files.push(line.to_string()),
+            }
+        }
+        Ok(Project {
+            build_type,
+            output,
+            cflags,
+            ldflags,
+            links,
+            files,
+        })
     }
 }
 
@@ -73,5 +128,36 @@ mod tests {
             values: vec!["-Wall".to_string(), "-Wextra".to_string()],
         };
         assert_eq!(Ok(expected), InlineGroup::from_str("cflags -Wall -Wextra"));
+    }
+
+    #[test]
+    fn test_project_fromstr() {
+        let input = "lib libhello.a
+        cflags -O3 -DHELLO_POSIX
+        hello.c
+        hello_win32.c
+        hello_posix.c";
+        let expected = Project {
+            build_type: BuildType::Lib,
+            output: "libhello.a".to_string(),
+            cflags: InlineGroup {
+                keyword: "cflags".to_string(),
+                values: vec!["-O3".to_string(), "-DHELLO_POSIX".to_string()],
+            },
+            ldflags: InlineGroup {
+                keyword: "ldflags".to_string(),
+                values: vec![],
+            },
+            links: InlineGroup {
+                keyword: "links".to_string(),
+                values: vec![],
+            },
+            files: vec![
+                "hello.c".to_string(),
+                "hello_win32.c".to_string(),
+                "hello_posix.c".to_string(),
+            ],
+        };
+        assert_eq!(Ok(expected), Project::from_str(input));
     }
 }
