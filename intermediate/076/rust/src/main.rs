@@ -12,9 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn graph(f: &dyn FnMut(u32) -> u32, count: u32) -> Vec<String> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
