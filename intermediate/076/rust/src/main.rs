@@ -15,14 +15,24 @@
 use rand::prelude::*;
 use rand::Rng;
 use rand_pcg::Pcg64;
+use std::collections::HashMap;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn graph(f: &dyn FnMut(u32) -> u32, count: u32) -> Vec<String> {
-    todo!()
+fn graph(f: &mut dyn FnMut() -> u32, count: u32) -> Vec<String> {
+    let mut results: HashMap<u32, u32> = HashMap::new();
+    for _ in 0..count {
+        let result = f();
+        *results.entry(result).or_insert(0) += 1;
+    }
+    let mut output: Vec<String> = Vec::new();
+    for (key, value) in results {
+        output.push(format!("{}: {}", key, "*".repeat(value as usize)));
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -31,7 +41,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_graph() {
+        let mut rng = Pcg64::seed_from_u64(0);
+        let f: &mut dyn FnMut() -> u32 = &mut || rng.gen_range(1..=6) + rng.gen_range(1..=6);
+        let count = 10000;
+        let result = graph(f, count);
+        assert_eq!(11, result.len());
     }
 }
