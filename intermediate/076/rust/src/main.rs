@@ -28,9 +28,20 @@ fn graph(f: &mut dyn FnMut() -> u32, count: u32) -> Vec<String> {
         let result = f();
         *results.entry(result).or_insert(0) += 1;
     }
+    let mut max = 0;
+    for (_, value) in results.iter() {
+        if *value > max {
+            max = *value;
+        }
+    }
     let mut output: Vec<String> = Vec::new();
     for (key, value) in results {
-        output.push(format!("{}: {}", key, "*".repeat(value as usize)));
+        let mut line = String::new();
+        line.push_str(&format!("{:5} = ", key));
+        for _ in 0..(value * 20 / max) {
+            line.push_str("#");
+        }
+        output.push(line);
     }
     output
 }
