@@ -54,6 +54,12 @@ impl FromStr for TaskList {
     }
 }
 
+impl TaskList {
+    fn order(&self) -> Vec<String> {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
