@@ -18,7 +18,21 @@ fn main() {
 }
 
 fn find_last_nonzero_digit_of_factorial(factorial: u128) -> u8 {
-    todo!()
+    let mut digit = 1;
+    let mut number_of_fives = 0;
+    for number in (2..=factorial).rev() {
+        let mut current = number;
+        while 0 == current % 5 {
+            current /= 5;
+            number_of_fives += 1;
+        }
+        while 0 < number_of_fives && 0 == current % 2 {
+            current /= 2;
+            number_of_fives -= 1;
+        }
+        digit = (digit * (current % 10)) % 10;
+    }
+    digit as u8
 }
 
 #[cfg(not(tarpaulin_include))]
