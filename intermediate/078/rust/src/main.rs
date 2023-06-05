@@ -12,10 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
 #[derive(Debug, PartialEq)]
 struct Task {
     name: String,
     dependencies: Vec<String>,
+}
+
+impl FromStr for Task {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let s = s.trim();
+        let mut split = s.split(": ");
+        let name = split.next().unwrap().to_string();
+        let dependencies = split
+            .next()
+            .unwrap()
+            .split(" ")
+            .map(|dependency| dependency.to_string())
+            .collect();
+        Ok(Self { name, dependencies })
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -29,7 +48,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_task_from_str() {
+        // eat_dinner: make_dinner set_table
+        let task = Task {
+            name: "eat_dinner".to_string(),
+            dependencies: vec!["make_dinner".to_string(), "set_table".to_string()],
+        };
+        assert_eq!(
+            task,
+            Task::from_str("eat_dinner: make_dinner set_table").unwrap()
+        );
     }
 }
