@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_last_nonzero_digit_of_factorial(factorial: u128) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
