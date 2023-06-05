@@ -37,6 +37,11 @@ impl FromStr for Task {
     }
 }
 
+#[derive(Debug, PartialEq)]
+struct TaskList {
+    tasks: Vec<Task>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
