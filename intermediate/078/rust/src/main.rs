@@ -12,9 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
 use std::str::FromStr;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct Task {
     name: String,
     dependencies: Vec<String>,
@@ -56,7 +57,39 @@ impl FromStr for TaskList {
 
 impl TaskList {
     fn order(&self) -> Vec<String> {
-        todo!()
+        let mut output = Vec::new();
+        let tasks = self.tasks.clone();
+        let mut prereqs: BTreeMap<String, Vec<String>> = BTreeMap::new();
+        for task in tasks.iter() {
+            prereqs.entry(task.name.clone()).or_insert(Vec::new());
+            for dependency in task.dependencies.iter() {
+                prereqs
+                    .entry(dependency.clone())
+                    .or_insert(Vec::new())
+                    .push(task.name.clone());
+            }
+        }
+        while !prereqs.is_empty() {
+            let mut next_task = String::new();
+            for (task, dependencies) in prereqs.iter() {
+                if dependencies.is_empty() {
+                    next_task = task.clone();
+                    break;
+                }
+            }
+            output.push(next_task.clone());
+            prereqs.remove(&next_task);
+            for (_, dependencies) in prereqs.iter_mut() {
+                if let Some(index) = dependencies
+                    .iter()
+                    .position(|dependency| dependency == &next_task)
+                {
+                    dependencies.remove(index);
+                }
+            }
+        }
+        output.reverse();
+        output
     }
 }
 
@@ -135,5 +168,30 @@ mod tests {
             )
             .unwrap()
         );
+    }
+
+    #[test]
+    fn test_tasklist_order() {
+        let task_list = TaskList::from_str(
+            "eat_dinner: make_dinner set_table\n\
+             make_dinner: get_milk get_meat get_veggies\n\
+             get_meat: buy_food\n\
+             buy_food: get_money\n\
+             get_veggies: buy_food\n\
+             get_money: deposit_paycheck",
+        )
+        .unwrap();
+        let output = vec![
+            "set_table",
+            "deposit_paycheck",
+            "get_money",
+            "buy_food",
+            "get_veggies",
+            "get_milk",
+            "get_meat",
+            "make_dinner",
+            "eat_dinner",
+        ];
+        assert_eq!(output, task_list.order());
     }
 }
