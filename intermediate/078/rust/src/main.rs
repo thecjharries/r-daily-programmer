@@ -42,6 +42,18 @@ struct TaskList {
     tasks: Vec<Task>,
 }
 
+impl FromStr for TaskList {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let tasks = s
+            .split("\n")
+            .map(|task| Task::from_str(task).unwrap())
+            .collect();
+        Ok(Self { tasks })
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -62,6 +74,60 @@ mod tests {
         assert_eq!(
             task,
             Task::from_str("eat_dinner: make_dinner set_table").unwrap()
+        );
+    }
+
+    #[test]
+    fn test_tasklist_from_str() {
+        // eat_dinner: make_dinner set_table
+        // make_dinner: get_milk get_meat get_veggies
+        // get_meat: buy_food
+        // buy_food: get_money
+        // get_veggies: buy_food
+        // get_money: deposit_paycheck
+        let task_list = TaskList {
+            tasks: vec![
+                Task {
+                    name: "eat_dinner".to_string(),
+                    dependencies: vec!["make_dinner".to_string(), "set_table".to_string()],
+                },
+                Task {
+                    name: "make_dinner".to_string(),
+                    dependencies: vec![
+                        "get_milk".to_string(),
+                        "get_meat".to_string(),
+                        "get_veggies".to_string(),
+                    ],
+                },
+                Task {
+                    name: "get_meat".to_string(),
+                    dependencies: vec!["buy_food".to_string()],
+                },
+                Task {
+                    name: "buy_food".to_string(),
+                    dependencies: vec!["get_money".to_string()],
+                },
+                Task {
+                    name: "get_veggies".to_string(),
+                    dependencies: vec!["buy_food".to_string()],
+                },
+                Task {
+                    name: "get_money".to_string(),
+                    dependencies: vec!["deposit_paycheck".to_string()],
+                },
+            ],
+        };
+        assert_eq!(
+            task_list,
+            TaskList::from_str(
+                "eat_dinner: make_dinner set_table\n\
+                 make_dinner: get_milk get_meat get_veggies\n\
+                 get_meat: buy_food\n\
+                 buy_food: get_money\n\
+                 get_veggies: buy_food\n\
+                 get_money: deposit_paycheck"
+            )
+            .unwrap()
         );
     }
 }
