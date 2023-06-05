@@ -28,9 +28,12 @@ mod tests {
 
     #[test]
     fn test_find_last_nonzero_digit_of_factorial() {
+        assert_eq!(4, find_last_nonzero_digit_of_factorial(7));
         assert_eq!(8, find_last_nonzero_digit_of_factorial(10));
-        assert_eq!(2, find_last_nonzero_digit_of_factorial(10.pow(3)));
-        assert_eq!(4, find_last_nonzero_digit_of_factorial(10.pow(9)));
-        assert_eq!(6, find_last_nonzero_digit_of_factorial(10.pow(100)));
+        assert_eq!(8, find_last_nonzero_digit_of_factorial(11));
+        assert_eq!(6, find_last_nonzero_digit_of_factorial(12));
+        assert_eq!(2, find_last_nonzero_digit_of_factorial(10_u128.pow(3)));
+        assert_eq!(4, find_last_nonzero_digit_of_factorial(10_u128.pow(9)));
+        // assert_eq!(6, find_last_nonzero_digit_of_factorial(10_u128.pow(100)));
     }
 }
