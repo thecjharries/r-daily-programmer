@@ -64,7 +64,17 @@ impl FromStr for PgmFile {
 
 impl PgmFile {
     fn print_ascii(&self, gradient: Vec<char>) -> String {
-        todo!()
+        let mut output = String::new();
+        for row in self.pixels.iter() {
+            for pixel in row.iter() {
+                output.push(
+                    gradient[((*pixel as f32 / self.max_value as f32)
+                        * (gradient.len() as f32 - 1.0)) as usize],
+                );
+            }
+            output.push('\n');
+        }
+        output
     }
 }
 
@@ -127,7 +137,7 @@ mod tests {
 
     #[test]
     fn test_pgmfile_print_ascii() {
-        let output = "                        \n....  ;;;;  ====  #### \n .     ;     =     #  # \n ...   ;;;   ===   #### \n .     ;     =     #    \n .     ;;;;  ====  #    \n                        \n";
+        let output = "                        \n ....  ;;;;  ====  #### \n .     ;     =     #  # \n ...   ;;;   ===   #### \n .     ;     =     #    \n .     ;;;;  ====  #    \n                        \n";
         let pgm_file = PgmFile::from_str(std::include_str!("../../feep.pgm")).unwrap();
         assert_eq!(output, pgm_file.print_ascii(" .:;+=%$#".chars().collect()));
     }
