@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
+struct PgmFile {
+    width: usize,
+    height: usize,
+    max_value: usize,
+    pixels: Vec<Vec<usize>>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
