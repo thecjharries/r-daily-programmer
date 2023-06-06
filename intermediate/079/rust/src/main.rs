@@ -12,12 +12,54 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
 #[derive(Debug, PartialEq)]
 struct PgmFile {
     width: usize,
     height: usize,
     max_value: usize,
     pixels: Vec<Vec<usize>>,
+}
+
+impl FromStr for PgmFile {
+    type Err = ();
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let mut lines: Vec<String> = s
+            .lines()
+            .map(String::from)
+            .filter(|line| !line.starts_with("#"))
+            .collect();
+        // File spec
+        lines.remove(0);
+        // Dimensions
+        let dimensions: Vec<usize> = lines
+            .remove(0)
+            .split_whitespace()
+            .map(|dimension| dimension.parse().unwrap())
+            .collect();
+        let width = dimensions[0];
+        let height = dimensions[1];
+        // Max value
+        let max_value = lines.remove(0).parse().unwrap();
+        // Pixels
+        let mut pixels: Vec<Vec<usize>> = Vec::with_capacity(height);
+        for _ in 0..height {
+            let row: Vec<usize> = lines
+                .remove(0)
+                .split_whitespace()
+                .map(|pixel| pixel.parse().unwrap())
+                .collect();
+            pixels.push(row);
+        }
+        Ok(PgmFile {
+            width,
+            height,
+            max_value,
+            pixels,
+        })
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
