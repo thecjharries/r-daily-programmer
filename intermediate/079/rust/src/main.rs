@@ -124,4 +124,11 @@ mod tests {
             PgmFile::from_str(std::include_str!("../../feep.pgm")).unwrap()
         );
     }
+
+    #[test]
+    fn test_pgmfile_print_ascii() {
+        let output = "                        \n....  ;;;;  ====  #### \n .     ;     =     #  # \n ...   ;;;   ===   #### \n .     ;     =     #    \n .     ;;;;  ====  #    \n                        \n";
+        let pgm_file = PgmFile::from_str(std::include_str!("../../feep.pgm")).unwrap();
+        assert_eq!(output, pgm_file.print_ascii(" .:;+=%$#".chars().collect()));
+    }
 }
