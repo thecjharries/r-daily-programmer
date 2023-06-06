@@ -62,6 +62,12 @@ impl FromStr for PgmFile {
     }
 }
 
+impl PgmFile {
+    fn print_ascii(&self, gradient: Vec<char>) -> String {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
