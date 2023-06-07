@@ -22,21 +22,22 @@ enum Suit {
     Spades,
 }
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone, Copy)]
+#[repr(u8)]
 enum Rank {
-    Ace,
-    Two,
-    Three,
-    Four,
-    Five,
-    Six,
-    Seven,
-    Eight,
-    Nine,
-    Ten,
-    Knight,
-    Queen,
-    King,
+    Ace = 14,
+    Two = 2,
+    Three = 3,
+    Four = 4,
+    Five = 5,
+    Six = 6,
+    Seven = 7,
+    Eight = 8,
+    Nine = 9,
+    Ten = 10,
+    Knight = 11,
+    Queen = 12,
+    King = 13,
 }
 
 #[derive(Debug, PartialEq, Clone)]
@@ -86,6 +87,12 @@ impl FromStr for Card {
 }
 
 #[derive(Debug, PartialEq, Clone)]
+enum HandType {
+    RoyalFlush,
+    Flush,
+}
+
+#[derive(Debug, PartialEq, Clone)]
 struct PokerHand([Card; 5]);
 
 impl FromStr for PokerHand {
@@ -106,6 +113,34 @@ impl FromStr for PokerHand {
             cards[3].clone(),
             cards[4].clone(),
         ]))
+    }
+}
+
+impl PokerHand {
+    fn determine_hand_type(&self) -> Result<HandType, String> {
+        let mut cards = self.0.clone();
+        cards.sort_by(|a, b| (a.rank as u8).cmp(&(b.rank as u8)));
+        let mut is_flush = true;
+        let mut is_straight = true;
+        let mut is_royal = false;
+        for index in 1..cards.len() {
+            if cards[index].suit != cards[index - 1].suit {
+                is_flush = false;
+            }
+            if cards[index].rank as u8 != cards[index - 1].rank as u8 + 1_u8 {
+                is_straight = false;
+            }
+            if Rank::Ace == cards[index].rank && Rank::King == cards[index - 1].rank {
+                is_royal = true;
+            }
+        }
+        if is_flush && is_royal && is_straight {
+            return Ok(HandType::RoyalFlush);
+        }
+        if is_flush {
+            return Ok(HandType::Flush);
+        }
+        Err("Unknown hand type".to_string())
     }
 }
 
@@ -155,5 +190,18 @@ mod tests {
             },
         ]);
         assert_eq!(hand, PokerHand::from_str("10H AH QH KH JH").unwrap());
+    }
+
+    #[test]
+    fn test_pokerhand_determine_hand_type() {
+        let hand = PokerHand::from_str("10H AH QH KH JH").unwrap();
+        assert_eq!(HandType::RoyalFlush, hand.determine_hand_type().unwrap());
+        let hand = PokerHand::from_str("10H 9H QH KH JH").unwrap();
+        assert_eq!(HandType::Flush, hand.determine_hand_type().unwrap());
+        let hand = PokerHand::from_str("10H 9H QH KH JS").unwrap();
+        assert_eq!(
+            Err("Unknown hand type".to_string()),
+            hand.determine_hand_type()
+        );
     }
 }
