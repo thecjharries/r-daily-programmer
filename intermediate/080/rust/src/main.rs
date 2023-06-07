@@ -14,7 +14,7 @@
 
 use std::str::FromStr;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 enum Suit {
     Clubs,
     Diamonds,
@@ -22,7 +22,7 @@ enum Suit {
     Spades,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 enum Rank {
     Ace,
     Two,
@@ -39,7 +39,7 @@ enum Rank {
     King,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct Card {
     suit: Suit,
     rank: Rank,
@@ -85,12 +85,29 @@ impl FromStr for Card {
     }
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct PokerHand([Card; 5]);
 
-// impl FromStr for PokerHand {
-//     type
-// }
+impl FromStr for PokerHand {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let cards = s
+            .split_whitespace()
+            .map(|card| Card::from_str(card))
+            .collect::<Result<Vec<Card>, String>>()?;
+        if 5 != cards.len() {
+            return Err("Invalid number of cards".to_string());
+        }
+        Ok(PokerHand([
+            cards[0].clone(),
+            cards[1].clone(),
+            cards[2].clone(),
+            cards[3].clone(),
+            cards[4].clone(),
+        ]))
+    }
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -111,5 +128,32 @@ mod tests {
             },
             Card::from_str("10H").unwrap()
         );
+    }
+
+    #[test]
+    fn test_pokerhand_from_str() {
+        let hand = PokerHand([
+            Card {
+                suit: Suit::Hearts,
+                rank: Rank::Ten,
+            },
+            Card {
+                suit: Suit::Hearts,
+                rank: Rank::Ace,
+            },
+            Card {
+                suit: Suit::Hearts,
+                rank: Rank::Queen,
+            },
+            Card {
+                suit: Suit::Hearts,
+                rank: Rank::King,
+            },
+            Card {
+                suit: Suit::Hearts,
+                rank: Rank::Knight,
+            },
+        ]);
+        assert_eq!(hand, PokerHand::from_str("10H AH QH KH JH").unwrap());
     }
 }
