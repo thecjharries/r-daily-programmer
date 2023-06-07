@@ -12,6 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
+enum Suit {
+    Clubs,
+    Diamonds,
+    Hearts,
+    Spades,
+}
+
+#[derive(Debug, PartialEq)]
+enum Rank {
+    Ace,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six,
+    Seven,
+    Eight,
+    Nine,
+    Ten,
+    Knight,
+    Queen,
+    King,
+}
+
+#[derive(Debug, PartialEq)]
+struct Card {
+    suit: Suit,
+    rank: Rank,
+}
+
+#[derive(Debug, PartialEq)]
+struct PokerHand([Card; 5])
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
