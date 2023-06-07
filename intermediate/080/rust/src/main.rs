@@ -46,6 +46,7 @@ struct Card {
     rank: Rank,
 }
 
+#[cfg(not(tarpaulin_include))]
 impl FromStr for Card {
     type Err = String;
 
@@ -95,6 +96,7 @@ enum HandType {
 #[derive(Debug, PartialEq, Clone)]
 struct PokerHand([Card; 5]);
 
+#[cfg(not(tarpaulin_include))]
 impl FromStr for PokerHand {
     type Err = String;
 
@@ -116,6 +118,7 @@ impl FromStr for PokerHand {
     }
 }
 
+#[cfg(not(tarpaulin_include))]
 impl PokerHand {
     fn determine_hand_type(&self) -> Result<HandType, String> {
         let mut cards = self.0.clone();
