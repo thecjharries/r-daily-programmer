@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
 #[derive(Debug, PartialEq)]
 enum Suit {
     Clubs,
@@ -43,8 +45,52 @@ struct Card {
     rank: Rank,
 }
 
+impl FromStr for Card {
+    type Err = String;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let characters = s.to_uppercase().chars().collect::<Vec<char>>();
+        if 3 != characters.len() && 2 != characters.len() {
+            return Err("Invalid length".to_string());
+        }
+        let suit = match characters[characters.len() - 1] {
+            'H' => Suit::Hearts,
+            'S' => Suit::Spades,
+            'C' => Suit::Clubs,
+            'D' => Suit::Diamonds,
+            _ => return Err("Unknown suit".to_string()),
+        };
+        let rank = match characters[0] {
+            'A' => Rank::Ace,
+            '2' => Rank::Two,
+            '3' => Rank::Three,
+            '4' => Rank::Four,
+            '5' => Rank::Five,
+            '6' => Rank::Six,
+            '7' => Rank::Seven,
+            '8' => Rank::Eight,
+            '9' => Rank::Nine,
+            '1' => {
+                if '0' != characters[1] {
+                    return Err("Invalid rank".to_string());
+                }
+                Rank::Ten
+            }
+            'J' => Rank::Knight,
+            'Q' => Rank::Queen,
+            'K' => Rank::King,
+            _ => return Err("Unknown rank".to_string()),
+        };
+        Ok(Card { suit, rank })
+    }
+}
+
 #[derive(Debug, PartialEq)]
-struct PokerHand([Card; 5])
+struct PokerHand([Card; 5]);
+
+// impl FromStr for PokerHand {
+//     type
+// }
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -57,7 +103,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_card_from_str() {
+        assert_eq!(
+            Card {
+                suit: Suit::Hearts,
+                rank: Rank::Ten
+            },
+            Card::from_str("10H").unwrap()
+        );
     }
 }
