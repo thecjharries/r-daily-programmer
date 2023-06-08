@@ -25,6 +25,7 @@ fn main() {
 }
 
 // https://old.reddit.com/r/dailyprogrammer/comments/x539t/7252012_challenge_81_intermediate_local/c5ja7xb/
+#[cfg(not(tarpaulin_include))]
 fn find_minimum<R: Rng>(f: &dyn Fn(Vec<f32>) -> f32, origin: Vec<f32>, rng: &mut R) -> Vec<f32> {
     let f_0 = f(origin.clone());
     let mut minimum = origin.clone();
