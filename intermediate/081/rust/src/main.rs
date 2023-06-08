@@ -59,5 +59,15 @@ mod tests {
         );
         assert_eq!(0.0, result[0]);
         assert_eq!(0.0, result[1]);
+        let mut rng = Pcg64::seed_from_u64(0);
+        let origin = vec![0.0, 0.0, 0.0];
+        let result = find_minimum(
+            &|x: Vec<f32>| x[0] * x[0] + x[1] * x[1] + x[2] * x[2],
+            origin.clone(),
+            &mut rng,
+        );
+        assert_eq!(0.0, result[0]);
+        assert_eq!(0.0, result[1]);
+        assert_eq!(0.0, result[2]);
     }
 }
