@@ -12,9 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::distributions::Uniform;
+use rand::pcg::Pcg64;
+use rand::prelude::*;
+use rand::Rng;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn find_minimum<R: Rng>(f: Fn(Vec<i32>) -> i32, origin: Vec<i32>) -> Vec<i32> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
