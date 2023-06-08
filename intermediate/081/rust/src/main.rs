@@ -13,17 +13,34 @@
 // limitations under the License.
 
 use rand::distributions::Uniform;
-use rand::pcg::Pcg64;
 use rand::prelude::*;
 use rand::Rng;
+use rand_pcg::Pcg64;
+
+const MAXIMUM_ITERATIONS: usize = 100000;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn find_minimum<R: Rng>(f: Fn(Vec<i32>) -> i32, origin: Vec<i32>) -> Vec<i32> {
-    todo!()
+// https://old.reddit.com/r/dailyprogrammer/comments/x539t/7252012_challenge_81_intermediate_local/c5ja7xb/
+fn find_minimum<R: Rng>(f: &dyn Fn(Vec<f32>) -> f32, origin: Vec<f32>, rng: &mut R) -> Vec<f32> {
+    let f_0 = f(origin.clone());
+    let mut minimum = origin.clone();
+    let uniform = Uniform::new(-1.0, 1.0);
+    for index in 0..MAXIMUM_ITERATIONS {
+        let radius = (-1.0 * index as f32).exp();
+        let new_origin = origin
+            .iter()
+            .map(|x| x + radius * uniform.sample(rng))
+            .collect::<Vec<f32>>();
+        let f_new = f(new_origin.clone());
+        if f_new < f_0 {
+            minimum = new_origin;
+        }
+    }
+    minimum
 }
 
 #[cfg(not(tarpaulin_include))]
