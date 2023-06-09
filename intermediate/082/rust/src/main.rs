@@ -12,13 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn is_valid_roman(input: &str) -> bool {
-    todo!()
+    lazy_static! {
+        static ref ROMAN_PATTERN: Regex = Regex::new(r"^(?P<thousands>M*)(?P<hundreds>C{0,3}|CD|DC{0,3}|CM)(?P<tens>X{0,3}|XL|LX{0,3}|XC)(?P<ones>I{0,3}|IV|VI{0,3}|IX)$").unwrap();
+    }
+    ROMAN_PATTERN.is_match(input)
 }
 
 #[cfg(not(tarpaulin_include))]
