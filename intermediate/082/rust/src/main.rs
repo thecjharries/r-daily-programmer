@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_is_valid_roman() {
+        assert!(is_valid_roman("MMXIX"));
+        assert!(is_valid_roman("MCMXC"));
+        assert!(is_valid_roman("MDCLXVI"));
+        assert!(is_valid_roman("MMMDCCCLXXXVIII"));
+        assert!(!is_valid_roman("IC"));
     }
 }
