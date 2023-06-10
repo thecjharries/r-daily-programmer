@@ -18,7 +18,19 @@ fn main() {
 }
 
 fn index(filename: &str) -> Vec<String> {
-    todo!()
+    let mut result = Vec::new();
+    let contents = std::fs::read_to_string(filename).unwrap();
+    for line in contents.lines() {
+        let words = line.split_whitespace();
+        for word in words {
+            if !result.contains(&word.to_string()) {
+                result.push(word.to_string());
+            }
+        }
+    }
+    result.sort();
+    result.dedup();
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
