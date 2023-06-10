@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn index(filename: &str) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
