@@ -17,8 +17,38 @@ fn main() {
     println!("rad");
 }
 
+// https://old.reddit.com/r/dailyprogrammer/comments/xilgw/812012_challenge_84_intermediate_recursive_song/c5ptnz5/
 fn print_song() -> String {
-    todo!()
+    let objects = vec![
+        "moor", "tree", "branch", "nest", "bird", "egg", "chick", "heart", "love",
+    ];
+    let prepositions = vec!["in", "on", "on", "in", "under", "in", "in", "in", "in"];
+    let verse = "Hi ho, the barren moor,\nThe moor down in the valley-o,\nHi ho, the barren moor,\nThe moor down in the valley-o.\n";
+    let mut output = String::new();
+    for index in 0..objects.len() - 1 {
+        output.push_str(verse);
+        output.push_str(&format!(
+            "Now {} that {} there was a {},\nA bare {}, a barren {};\nThe {} {} the {}",
+            prepositions[index],
+            objects[index],
+            objects[index + 1],
+            objects[index + 1],
+            objects[index + 1],
+            objects[index + 1],
+            prepositions[index],
+            objects[index]
+        ));
+        for j in 0..index {
+            output.push_str(&format!(
+                "And the {} {} the {}",
+                objects[index - j],
+                prepositions[index - j - 1],
+                objects[index - j - 1]
+            ));
+        }
+        output.push_str("And the moor down in the valley-o\n");
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
