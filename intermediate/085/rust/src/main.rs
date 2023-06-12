@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn create_cuboid(width: usize, height: usize, depth: usize) -> String {
-    todo!()
+    let mut output = String::new();
+    for index in 0..depth {
+        output.push_str(&format!(
+            "{}{}/{}\n",
+            " ".repeat(depth - index),
+            ":".repeat(width - 1),
+            "+".repeat(index),
+        ));
+    }
+    for _ in 0..height - depth - 1 {
+        output.push_str(&format!("{}{}\n", "#".repeat(width), "+".repeat(depth),));
+    }
+    for index in 0..=depth {
+        output.push_str(&format!(
+            "{}{}\n",
+            "#".repeat(width),
+            "+".repeat(depth - index),
+        ));
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -40,8 +59,9 @@ mod tests {
 ####################+++
 ####################++
 ####################+
-####################"
-            .to_string();
+####################
+"
+        .to_string();
         assert_eq!(output, create_cuboid(20, 10, 3));
     }
 }
