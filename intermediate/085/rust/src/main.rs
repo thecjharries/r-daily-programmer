@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn create_cuboid(width: usize, height: usize, depth: usize) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
