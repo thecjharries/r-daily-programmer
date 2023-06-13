@@ -29,6 +29,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn calculate_day_of_week(year: u16, month: u16, day: u16) -> DayOfWeek {
     let century = year / 100;
     let year_of_century = year % 100;
