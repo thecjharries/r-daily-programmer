@@ -29,6 +29,10 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_day_of_week(year: u16, month: u16, day: u16) -> DayOfWeek {
+    todo!();
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
