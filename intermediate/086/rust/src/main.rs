@@ -39,7 +39,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_day_of_week() {
+        assert_eq!(DayOfWeek::Tuesday, calculate_day_of_week(2023, 6, 13));
+        assert_eq!(DayOfWeek::Wednesday, calculate_day_of_week(2020, 1, 1));
     }
 }
