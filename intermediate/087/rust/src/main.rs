@@ -27,7 +27,13 @@ enum Chord {
 
 impl Chord {
     fn get_tones(&self) -> Vec<usize> {
-        todo!()
+        match self {
+            Chord::Major => vec![0, 4, 7],
+            Chord::Minor => vec![0, 3, 7],
+            Chord::DominantSeventh => vec![0, 4, 7, 10],
+            Chord::MajorSeventh => vec![0, 4, 7, 11],
+            Chord::MinorSeventh => vec![0, 3, 7, 10],
+        }
     }
 }
 
