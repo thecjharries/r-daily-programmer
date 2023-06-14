@@ -12,6 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const CHROMATIC_SCALE: [&str; 12] = [
+    "C",
+    "C#",
+    "D",
+    "D#",
+    "E",
+    "F",
+    "F#",
+    "G",
+    "G#",
+    "A",
+    "A#",
+    "B",
+];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
