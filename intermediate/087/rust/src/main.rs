@@ -59,6 +59,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_chord(input: &str) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
