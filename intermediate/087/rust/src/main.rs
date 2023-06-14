@@ -13,19 +13,17 @@
 // limitations under the License.
 
 const CHROMATIC_SCALE: [&str; 12] = [
-    "C",
-    "C#",
-    "D",
-    "D#",
-    "E",
-    "F",
-    "F#",
-    "G",
-    "G#",
-    "A",
-    "A#",
-    "B",
+    "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",
 ];
+
+#[derive(Debug, PartialEq)]
+enum Chord {
+    Major,
+    Minor,
+    DominantSeventh,
+    MajorSeventh,
+    MinorSeventh,
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
