@@ -25,6 +25,12 @@ enum Chord {
     MinorSeventh,
 }
 
+impl Chord {
+    fn get_tones(&self) -> Vec<usize> {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
