@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::str::FromStr;
+
 const CHROMATIC_SCALE: [&str; 12] = [
     "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",
 ];
@@ -23,6 +25,21 @@ enum Chord {
     DominantSeventh,
     MajorSeventh,
     MinorSeventh,
+}
+
+impl FromStr for Chord {
+    type Err = ();
+
+    fn from_str(input: &str) -> Result<Self, Self::Err> {
+        match input {
+            "" => Ok(Chord::Major),
+            "m" => Ok(Chord::Minor),
+            "7" => Ok(Chord::DominantSeventh),
+            "maj7" => Ok(Chord::MajorSeventh),
+            "m7" => Ok(Chord::MinorSeventh),
+            _ => Err(()),
+        }
+    }
 }
 
 impl Chord {
@@ -54,5 +71,15 @@ mod tests {
         assert_eq!(vec![0, 4, 7, 10], Chord::DominantSeventh.get_tones());
         assert_eq!(vec![0, 4, 7, 11], Chord::MajorSeventh.get_tones());
         assert_eq!(vec![0, 3, 7, 10], Chord::MinorSeventh.get_tones());
+    }
+
+    #[test]
+    fn test_chord_fromstr() {
+        assert_eq!(Ok(Chord::Major), Chord::from_str(""));
+        assert_eq!(Ok(Chord::Minor), Chord::from_str("m"));
+        assert_eq!(Ok(Chord::DominantSeventh), Chord::from_str("7"));
+        assert_eq!(Ok(Chord::MajorSeventh), Chord::from_str("maj7"));
+        assert_eq!(Ok(Chord::MinorSeventh), Chord::from_str("m7"));
+        assert_eq!(Err(()), Chord::from_str("asdf"));
     }
 }
