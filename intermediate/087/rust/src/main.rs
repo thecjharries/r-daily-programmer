@@ -60,7 +60,26 @@ fn main() {
 }
 
 fn generate_chord(input: &str) -> Vec<String> {
-    todo!()
+    let mut exploded = input.chars().collect::<Vec<char>>();
+    let mut start = exploded[0].to_string();
+    exploded.remove(0);
+    if 1 <= exploded.len() && '#' == exploded[0] {
+        start.push(exploded[0]);
+        exploded.remove(0);
+    }
+    let chord = Chord::from_str(exploded[0..].iter().collect::<String>().as_str()).unwrap();
+    let mut tones = chord.get_tones();
+    let start_index = CHROMATIC_SCALE
+        .iter()
+        .position(|&x| x == start.as_str())
+        .unwrap();
+    let mut output = Vec::new();
+    for tone in tones.iter_mut() {
+        *tone += start_index;
+        *tone %= 12;
+        output.push(CHROMATIC_SCALE[*tone].to_string());
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
