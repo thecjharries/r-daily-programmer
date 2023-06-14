@@ -86,4 +86,10 @@ mod tests {
         assert_eq!(Ok(Chord::MinorSeventh), Chord::from_str("m7"));
         assert_eq!(Err(()), Chord::from_str("asdf"));
     }
+
+    #[test]
+    fn test_generate_chord() {
+        assert_eq!(vec!["F", "A", "C"], generate_chord("F"));
+        assert_eq!(vec!["F", "A", "C", "D#"], generate_chord("F7"));
+    }
 }
