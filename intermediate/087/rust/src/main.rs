@@ -42,7 +42,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_chord_get_tones() {
+        assert_eq!(vec![0, 4, 7], Chord::Major.get_tones());
+        assert_eq!(vec![0, 3, 7], Chord::Minor.get_tones());
+        assert_eq!(vec![0, 4, 7, 10], Chord::DominantSeventh.get_tones());
+        assert_eq!(vec![0, 4, 7, 11], Chord::MajorSeventh.get_tones());
+        assert_eq!(vec![0, 3, 7, 10], Chord::MinorSeventh.get_tones());
     }
 }
