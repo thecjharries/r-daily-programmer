@@ -110,5 +110,6 @@ mod tests {
     fn test_generate_chord() {
         assert_eq!(vec!["F", "A", "C"], generate_chord("F"));
         assert_eq!(vec!["F", "A", "C", "D#"], generate_chord("F7"));
+        assert_eq!(vec!["C#", "F", "G#"], generate_chord("C#"));
     }
 }
