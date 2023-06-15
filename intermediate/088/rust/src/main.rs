@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chrono::{Datelike, NaiveDate};
+
 const DIVIDER_LINE: &str = "+--------------------+";
 const DAYS_LINE: &str = "|M |T |W |T |F |S |S |";
 
@@ -20,8 +22,32 @@ fn main() {
     println!("rad");
 }
 
-fn print_calendar(year: usize, month: usize) -> String {
-    todo!()
+fn print_calendar(year: i32, month: u32) -> String {
+    let date = NaiveDate::from_ymd_opt(year, month, 1).unwrap();
+    let mut output = DIVIDER_LINE.to_string();
+    output.push_str(&format!("\n|{: ^20}|", date.format("%B").to_string()));
+    output.push_str(&format!("\n{}", DIVIDER_LINE));
+    output.push_str(&format!("\n{}", DAYS_LINE));
+    output.push_str(&format!("\n{}", DIVIDER_LINE));
+    let mut current_date = date;
+    let mut current_line = String::from("|");
+    for _ in 0..current_date.weekday().num_days_from_monday() {
+        current_line.push_str("  |");
+    }
+    while current_date.month() == month {
+        current_line.push_str(&format!("{:>2}|", current_date.day()));
+        if 6 == current_date.weekday().num_days_from_monday() {
+            output.push_str(&format!("\n{}", current_line));
+            current_line = String::from("|");
+        }
+        current_date = current_date.succ_opt().unwrap();
+    }
+    for _ in current_date.weekday().num_days_from_monday()..7 {
+        current_line.push_str("  |");
+    }
+    output.push_str(&format!("\n{}", current_line));
+    output.push_str(&format!("\n{}", DIVIDER_LINE));
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
