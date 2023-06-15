@@ -43,7 +43,13 @@ mod tests {
 |23|24|25|26|27|28|29|
 |30|31|  |  |  |  |  |
 +--------------------+"
-            .to_string;
+            .to_string();
+        let result = print_calendar(2012, 1);
+        let output_lines = output.lines().collect::<Vec<&str>>();
+        let result_lines = result.lines().collect::<Vec<&str>>();
+        for index in 0..output_lines.len() {
+            assert_eq!(output_lines[index], result_lines[index]);
+        }
         assert_eq!(output, print_calendar(2012, 1));
     }
 }
