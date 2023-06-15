@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const DIVIDER_LINE: &str = "+--------------------+";
+const DAYS_LINE: &str = "|M |T |W |T |F |S |S |";
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
