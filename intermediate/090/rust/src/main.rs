@@ -12,13 +12,50 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn simplify_units(input: &str) -> String {
-    todo!()
+    let exploded = input.split('*').collect::<Vec<&str>>();
+    let mut denominator = BTreeMap::new();
+    let mut numerator = BTreeMap::new();
+    for unit in exploded {
+        let exploded_unit = unit.split('/').collect::<Vec<&str>>();
+        if 1 == exploded_unit.len() {
+            for unit in exploded_unit[0].chars() {
+                let count = numerator.entry(unit).or_insert(0);
+                *count += 1;
+            }
+        } else {
+            for unit in exploded_unit[0].chars() {
+                let count = numerator.entry(unit).or_insert(0);
+                *count += 1;
+            }
+            for unit in exploded_unit[1].chars() {
+                let count = denominator.entry(unit).or_insert(0);
+                *count += 1;
+            }
+        }
+    }
+    for (unit, count) in denominator {
+        let numerator_count = numerator.entry(unit).or_insert(0);
+        *numerator_count -= count;
+    }
+    let mut result = String::new();
+    for (unit, count) in numerator {
+        if 0 != count {
+            result.push(unit);
+            if 1 != count {
+                result.push_str(&format!("^{}", count));
+            }
+            result.push(' ');
+        }
+    }
+    result.trim().to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
