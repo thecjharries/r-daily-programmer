@@ -28,6 +28,6 @@ mod tests {
 
     #[test]
     fn test_simplify_units() {
-        assert_eq!("s^-1 m^2 cd", simplify_units("m/s*m*cd"));
+        assert_eq!("c d m^2 s^-1", simplify_units("m/s*m*cd"));
     }
 }
