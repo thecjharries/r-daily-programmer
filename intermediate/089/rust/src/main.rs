@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn generate_brainfuck_to_print(input: &str) -> String {
-    todo!()
+    let mut output = String::new();
+    for character in input.chars() {
+        output.push_str(&format!("{}.[-]", "+".repeat(character as u8 as usize)));
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
