@@ -27,7 +27,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_simplify_units() {
+        assert_eq!("s^-1 m^2 cd", simplify_units("m/s*m*cd"));
     }
 }
