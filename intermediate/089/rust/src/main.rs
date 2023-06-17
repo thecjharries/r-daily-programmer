@@ -25,9 +25,20 @@ fn generate_brainfuck_to_print(input: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use brainfuck::program::Program;
+    use brainfuck::tape::ArrayTape;
+    use brainfuck::Interpreter;
+    use std::io;
+    use std::str;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_generate_brainfuck_to_print() {
+        let input = "Hello World!";
+        let mut stdin = io::stdin();
+        let mut result = Vec::new();
+        let program = Program::parse(&generate_brainfuck_to_print(input)).unwrap();
+        let mut interp = Interpreter::<ArrayTape>::new(program, &mut stdin, &mut result);
+        interp.run().unwrap();
+        assert_eq!(str::from_utf8(result.as_slice()).unwrap(), input);
     }
 }
