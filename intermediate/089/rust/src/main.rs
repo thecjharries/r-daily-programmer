@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_brainfuck_to_print(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
