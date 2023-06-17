@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn simplify_units(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
