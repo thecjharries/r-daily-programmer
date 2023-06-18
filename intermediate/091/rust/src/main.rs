@@ -28,9 +28,10 @@ impl Fraction {
     }
 
     pub fn new(numerator: u64, denominator: u64) -> Self {
+        let gcd = Fraction::gcd(numerator, denominator);
         Fraction {
-            numerator,
-            denominator,
+            numerator: numerator / gcd,
+            denominator: denominator / gcd,
         }
     }
 }
@@ -58,10 +59,10 @@ mod tests {
     fn test_fraction_new() {
         assert_eq!(
             Fraction {
-                numerator: 1,
+                numerator: 3,
                 denominator: 2,
             },
-            Fraction::new(1, 2)
+            Fraction::new(6, 4)
         );
     }
 }
