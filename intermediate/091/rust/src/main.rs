@@ -46,7 +46,7 @@ fn main() {
 fn get_distinct_fractions(count: usize) -> BTreeSet<Fraction> {
     let mut result: BTreeSet<Fraction> = BTreeSet::new();
     let mut current = 1;
-    let up = true;
+    let mut up = true;
     loop {
         let numerator_range = if up {
             (1..=current).collect::<Vec<u64>>()
@@ -65,6 +65,7 @@ fn get_distinct_fractions(count: usize) -> BTreeSet<Fraction> {
             }
         }
         current += 1;
+        up = !up;
     }
 }
 
