@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use std::collections::HashSet;
+use std::collections::BTreeSet;
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash, Ord, PartialOrd)]
 struct Fraction {
     numerator: u64,
     denominator: u64,
@@ -43,8 +43,29 @@ fn main() {
     println!("rad");
 }
 
-fn get_distinct_fractions(count: usize) -> HashSet<Fraction> {
-    todo!()
+fn get_distinct_fractions(count: usize) -> BTreeSet<Fraction> {
+    let mut result: BTreeSet<Fraction> = BTreeSet::new();
+    let mut current = 1;
+    let up = true;
+    loop {
+        let numerator_range = if up {
+            (1..=current).collect::<Vec<u64>>()
+        } else {
+            (1..=current).rev().collect::<Vec<u64>>()
+        };
+        let denominator_range = if up {
+            ((1..=current).rev()).collect::<Vec<u64>>()
+        } else {
+            (1..=current).collect::<Vec<u64>>()
+        };
+        for tuple in numerator_range.iter().zip(denominator_range.iter()) {
+            result.insert(Fraction::new(*tuple.0, *tuple.1));
+            if count <= result.len() {
+                return result;
+            }
+        }
+        current += 1;
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -74,7 +95,7 @@ mod tests {
 
     #[test]
     fn test_get_distinct_fractions() {
-        let output = HashSet::from_iter(vec![
+        let output = BTreeSet::from_iter(vec![
             Fraction::new(1, 1),
             Fraction::new(1, 2),
             Fraction::new(2, 1),
