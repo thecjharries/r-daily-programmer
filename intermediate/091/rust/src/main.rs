@@ -19,6 +19,14 @@ struct Fraction {
 }
 
 impl Fraction {
+    pub fn gcd(a: u64, b: u64) -> u64 {
+        if 0 == b {
+            a
+        } else {
+            Fraction::gcd(b, a % b)
+        }
+    }
+
     pub fn new(numerator: u64, denominator: u64) -> Self {
         Fraction {
             numerator,
@@ -36,6 +44,15 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_fraction_gcd() {
+        assert_eq!(1, Fraction::gcd(1, 1));
+        assert_eq!(1, Fraction::gcd(1, 2));
+        assert_eq!(2, Fraction::gcd(2, 2));
+        assert_eq!(1, Fraction::gcd(3, 2));
+        assert_eq!(2, Fraction::gcd(4, 2));
+    }
 
     #[test]
     fn test_fraction_new() {
