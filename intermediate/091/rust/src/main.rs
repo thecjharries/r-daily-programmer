@@ -12,6 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
+struct Fraction {
+    numerator: u64,
+    denominator: u64,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
