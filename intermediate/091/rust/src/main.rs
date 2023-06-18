@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashSet;
+
 #[derive(Debug, PartialEq, Eq, Clone, Copy, Hash)]
 struct Fraction {
     numerator: u64,
@@ -39,6 +41,10 @@ impl Fraction {
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn get_distinct_fractions(count: usize) -> HashSet<Fraction> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
