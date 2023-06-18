@@ -18,6 +18,15 @@ struct Fraction {
     denominator: u64,
 }
 
+impl Fraction {
+    pub fn new(numerator: u64, denominator: u64) -> Self {
+        Fraction {
+            numerator,
+            denominator,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -29,7 +38,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_fraction_new() {
+        assert_eq!(
+            Fraction {
+                numerator: 1,
+                denominator: 2,
+            },
+            Fraction::new(1, 2)
+        );
     }
 }
