@@ -71,4 +71,16 @@ mod tests {
             Fraction::new(6, 4)
         );
     }
+
+    #[test]
+    fn test_get_distinct_fractions() {
+        let output = HashSet::from_iter(vec![
+            Fraction::new(1, 1),
+            Fraction::new(1, 2),
+            Fraction::new(2, 1),
+            Fraction::new(1, 3),
+            Fraction::new(3, 1),
+        ]);
+        assert_eq!(output, get_distinct_fractions(5));
+    }
 }
