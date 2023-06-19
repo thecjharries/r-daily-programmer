@@ -32,6 +32,28 @@ enum Face {
     Right,
 }
 
+#[derive(Debug, PartialEq)]
+enum SingmasterMove {
+    Up,
+    UpPrime,
+    UpDouble,
+    Down,
+    DownPrime,
+    DownDouble,
+    Front,
+    FrontPrime,
+    FrontDouble,
+    Back,
+    BackPrime,
+    BackDouble,
+    Left,
+    LeftPrime,
+    LeftDouble,
+    Right,
+    RightPrime,
+    RightDouble,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
