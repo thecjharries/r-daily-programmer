@@ -1,5 +1,9 @@
 # [8/27/2012] Challenge #92 [intermediate] (Rubik's cube simulator)
 
+## Notes
+
+This is a bit more complicated than intermediate. Alternatively, it requires much more work than I feel like doing today.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/ywm08/8272012_challenge_92_intermediate_rubiks_cube/)
