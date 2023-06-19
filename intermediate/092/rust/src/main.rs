@@ -22,6 +22,16 @@ enum Color {
     Red,
 }
 
+#[derive(Debug, PartialEq)]
+enum Face {
+    Up,
+    Down,
+    Front,
+    Back,
+    Left,
+    Right,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
