@@ -34,6 +34,10 @@ fn coordinate_to_z_order(x: usize, y: usize, length: usize) -> usize {
     usize::from_str_radix(&z_order, 2).unwrap()
 }
 
+fn encode_z_order(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
