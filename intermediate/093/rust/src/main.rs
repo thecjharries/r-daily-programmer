@@ -35,7 +35,26 @@ fn coordinate_to_z_order(x: usize, y: usize, length: usize) -> usize {
 }
 
 fn encode_z_order(input: &str) -> String {
-    todo!()
+    let input_square = (input.len() as f32).sqrt().ceil();
+    let size: usize = 2_i32.pow((input_square).log2().ceil() as u32) as usize;
+    let cleartext = format!("{}{}", input, " ".repeat(size * size - input.len()))
+        .chars()
+        .collect::<Vec<char>>();
+    let mut ciphertext = vec![' '; size * size];
+    for y in 0..size {
+        for x in 0..size {
+            let index = coordinate_to_z_order(x, y, (size as f32).log2().ceil() as usize);
+            ciphertext[index] = cleartext[y * size + x];
+        }
+    }
+    let mut output = String::new();
+    for index in 0..size * size {
+        output.push(ciphertext[index]);
+        if 0 == (index + 1) % size {
+            output.push('\n');
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
