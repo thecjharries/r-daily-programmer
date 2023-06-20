@@ -51,5 +51,20 @@ mod tests {
         assert_eq!(2, coordinate_to_z_order(0, 1, 10));
         assert_eq!(3, coordinate_to_z_order(1, 1, 10));
         assert_eq!(4, coordinate_to_z_order(2, 0, 10));
+        assert_eq!(47, coordinate_to_z_order(3, 7, 10));
+        assert_eq!(63, coordinate_to_z_order(7, 7, 10));
+    }
+
+    #[test]
+    fn test_encode_z_order() {
+        assert_eq!("My\n c\n", encode_z_order("My c"));
+        assert_eq!(
+            "Myou\n cnt\nryti\n, s \n",
+            encode_z_order("My country, tis ")
+        );
+        assert_eq!(
+            "Myry c, \nof   t  \noutints \nhe  e   \n        \n        \n        \n        \n",
+            encode_z_order("My country, tis of thee")
+        );
     }
 }
