@@ -17,13 +17,22 @@ fn main() {
     println!("rad");
 }
 
+fn coordinate_to_z_order(x: usize, y: usize, length: usize) -> usize {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_coordinate_to_z_order() {
+        assert_eq!(2479, coordinate_to_z_order(47, 19, 5));
+        assert_eq!(0, coordinate_to_z_order(0, 0, 10));
+        assert_eq!(1, coordinate_to_z_order(1, 0, 10));
+        assert_eq!(2, coordinate_to_z_order(0, 1, 10));
+        assert_eq!(3, coordinate_to_z_order(1, 1, 10));
+        assert_eq!(4, coordinate_to_z_order(2, 0, 10));
     }
 }
