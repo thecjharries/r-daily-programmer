@@ -18,7 +18,20 @@ fn main() {
 }
 
 fn coordinate_to_z_order(x: usize, y: usize, length: usize) -> usize {
-    todo!()
+    let mut x_binary = format!("{:b}", x);
+    if x_binary.len() < length {
+        x_binary = format!("{}{}", "0".repeat(length - x_binary.len()), x_binary);
+    }
+    let mut y_binary = format!("{:b}", y);
+    if y_binary.len() < length {
+        y_binary = format!("{}{}", "0".repeat(length - y_binary.len()), y_binary);
+    }
+    let mut z_order = String::new();
+    for index in 0..length {
+        z_order.push(y_binary.chars().nth(index).unwrap());
+        z_order.push(x_binary.chars().nth(index).unwrap());
+    }
+    usize::from_str_radix(&z_order, 2).unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -28,7 +41,7 @@ mod tests {
 
     #[test]
     fn test_coordinate_to_z_order() {
-        assert_eq!(2479, coordinate_to_z_order(47, 19, 5));
+        assert_eq!(2479, coordinate_to_z_order(19, 47, 6));
         assert_eq!(0, coordinate_to_z_order(0, 0, 10));
         assert_eq!(1, coordinate_to_z_order(1, 0, 10));
         assert_eq!(2, coordinate_to_z_order(0, 1, 10));
