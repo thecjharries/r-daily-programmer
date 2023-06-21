@@ -81,6 +81,7 @@ lazy_static! {
         ('9', 61),
         ('+', 62),
         ('/', 63),
+        ('=', 0),
     ]);
 }
 
@@ -94,7 +95,21 @@ fn base64_encode(input: Vec<u8>) -> String {
 }
 
 fn base64_decode(input: String) -> Vec<u8> {
-    todo!()
+    let mut byte_string = String::new();
+    for character in input.chars() {
+        byte_string.push_str(&format!(
+            "{:06b}",
+            BASE64_INDEX_MAP.get(&character).unwrap()
+        ));
+    }
+    let mut output = Vec::new();
+    for index in (0..byte_string.len()).step_by(8) {
+        if index + 8 > byte_string.len() {
+            break;
+        }
+        output.push(u8::from_str_radix(&byte_string[index..index + 8], 2).unwrap());
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
