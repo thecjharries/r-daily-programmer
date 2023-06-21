@@ -17,6 +17,14 @@ fn main() {
     println!("rad");
 }
 
+fn base64_encode(input: Vec<u8>) -> String {
+    todo!()
+}
+
+fn base64_decode(input: String) -> Vec<u8> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
