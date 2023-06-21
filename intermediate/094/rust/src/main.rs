@@ -13,10 +13,10 @@
 // limitations under the License.
 
 use lazy_static::lazy_static;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 lazy_static! {
-    static ref BASE64_INDEX_MAP: HashMap<char, u8> = HashMap::from_iter(vec![
+    static ref BASE64_INDEX_MAP: BTreeMap<char, u8> = BTreeMap::from_iter(vec![
         ('A', 0),
         ('B', 1),
         ('C', 2),
@@ -91,7 +91,43 @@ fn main() {
 }
 
 fn base64_encode(input: Vec<u8>) -> String {
-    todo!()
+    let pad_count = input.len() % 3;
+    let mut input = input;
+    if 0 != pad_count {
+        for _ in 0..(3 - pad_count) {
+            input.push(0);
+        }
+    }
+    let mut output = String::new();
+    for index in (0..input.len()).step_by(3) {
+        let mut byte_string = String::new();
+        for byte in input[index..index + 3].iter() {
+            byte_string.push_str(&format!("{:08b}", byte));
+        }
+        for index in (0..byte_string.len()).step_by(6) {
+            if index + 6 > byte_string.len() {
+                break;
+            }
+            output.push(
+                *BASE64_INDEX_MAP
+                    .iter()
+                    .find(|(_, value)| {
+                        u8::from_str_radix(&byte_string[index..index + 6], 2).unwrap() == **value
+                    })
+                    .unwrap()
+                    .0,
+            );
+        }
+    }
+    while output.ends_with('A') {
+        output.pop();
+    }
+    if 0 != pad_count {
+        for _ in 0..(3 - pad_count) {
+            output.push('=');
+        }
+    }
+    output
 }
 
 fn base64_decode(input: String) -> Vec<u8> {
@@ -109,6 +145,9 @@ fn base64_decode(input: String) -> Vec<u8> {
         }
         output.push(u8::from_str_radix(&byte_string[index..index + 8], 2).unwrap());
     }
+    while output.ends_with(&[0]) {
+        output.pop();
+    }
     output
 }
 
@@ -119,11 +158,11 @@ mod tests {
 
     #[test]
     fn test_base64_encode() {
-        assert_eq!("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4", base64_encode("Man is distinguished, not only by his reason, but by this singular passion from other animals, which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation of knowledge, exceeds the short vehemence of any carnal pleasure.".as_bytes().to_vec()));
+        assert_eq!("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4==", base64_encode("Man is distinguished, not only by his reason, but by this singular passion from other animals, which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation of knowledge, exceeds the short vehemence of any carnal pleasure.".as_bytes().to_vec()));
     }
 
     #[test]
     fn test_base64_decode() {
-        assert_eq!("Man is distinguished, not only by his reason, but by this singular passion from other animals, which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation of knowledge, exceeds the short vehemence of any carnal pleasure.".as_bytes().to_vec(), base64_decode("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4".to_string()))
+        assert_eq!("Man is distinguished, not only by his reason, but by this singular passion from other animals, which is a lust of the mind, that by a perseverance of delight in the continued and indefatigable generation of knowledge, exceeds the short vehemence of any carnal pleasure.".as_bytes().to_vec(), base64_decode("TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlzIHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2YgdGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGludWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRoZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=".to_string()))
     }
 }
