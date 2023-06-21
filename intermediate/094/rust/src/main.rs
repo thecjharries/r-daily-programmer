@@ -119,9 +119,6 @@ fn base64_encode(input: Vec<u8>) -> String {
             );
         }
     }
-    while output.ends_with('A') {
-        output.pop();
-    }
     if 0 != pad_count {
         for _ in 0..(3 - pad_count) {
             output.push('=');
