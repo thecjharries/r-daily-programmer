@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use rand::Rng;
+use rand::SeedableRng;
 use rand_pcg::Pcg64;
 use std::collections::BTreeMap;
 
@@ -67,5 +68,12 @@ mod tests {
         let mut rng = Pcg64::seed_from_u64(0);
         let output = make_filler_text(5, &mut rng);
         assert_eq!(5, output.split_whitespace().count());
+    }
+
+    #[test]
+    fn test_get_letter() {
+        let mut rng = Pcg64::seed_from_u64(0);
+        let output = get_letter(&mut rng);
+        assert!(('a'..='z').contains(&output));
     }
 }
