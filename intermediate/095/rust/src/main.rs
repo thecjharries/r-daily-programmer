@@ -13,6 +13,7 @@
 // limitations under the License.
 
 use rand::Rng;
+use rand_pcg::Pcg64;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -29,7 +30,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_make_filler_text() {
+        let mut rng = Pcg64::seed_from_u64(0);
+        let output = make_filler_text(5, &mut rng);
+        assert_eq!(5, output.split_whitespace().count());
     }
 }
