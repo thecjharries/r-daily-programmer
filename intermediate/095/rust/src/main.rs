@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::Rng;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn make_filler_text<R: Rng>(number_of_words: usize, rng: &mut R) -> String {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
