@@ -22,6 +22,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn get_letter<R: Rng>(rng: &mut R) -> char {
     let letter_frequencies: BTreeMap<char, f32> = BTreeMap::from_iter(vec![
         ('a', 8.167),
@@ -61,6 +62,7 @@ fn get_letter<R: Rng>(rng: &mut R) -> char {
     unreachable!()
 }
 
+#[cfg(not(tarpaulin_include))]
 fn make_filler_text<R: Rng>(number_of_words: usize, rng: &mut R) -> String {
     let mut output = String::new();
     for _ in 0..number_of_words {
