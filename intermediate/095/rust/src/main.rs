@@ -62,7 +62,15 @@ fn get_letter<R: Rng>(rng: &mut R) -> char {
 }
 
 fn make_filler_text<R: Rng>(number_of_words: usize, rng: &mut R) -> String {
-    todo!()
+    let mut output = String::new();
+    for _ in 0..number_of_words {
+        let mut word = String::new();
+        for _ in 0..rng.gen_range(1..12) {
+            word.push(get_letter(rng));
+        }
+        output.push_str(&format!("{} ", word));
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
