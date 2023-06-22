@@ -51,7 +51,14 @@ fn get_letter<R: Rng>(rng: &mut R) -> char {
         ('y', 1.974),
         ('z', 0.074),
     ]);
-    todo!()
+    let mut guess = rng.gen_range(0.0..100.0);
+    for (letter, frequency) in letter_frequencies {
+        if guess < frequency {
+            return letter;
+        }
+        guess -= frequency;
+    }
+    unreachable!()
 }
 
 fn make_filler_text<R: Rng>(number_of_words: usize, rng: &mut R) -> String {
