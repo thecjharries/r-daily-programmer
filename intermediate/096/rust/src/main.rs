@@ -18,8 +18,19 @@ fn main() {
 }
 
 // I do not enjoy problems that are just a bunch of regex only
-fn parse_english_int(input: &str) -> u32 {
-    todo!()
+fn parse_english_int(input: &str) -> Result<u32, String> {
+    match input {
+        "one" => Ok(1),
+        "two" => Ok(2),
+        "three" => Ok(3),
+        "four" => Ok(4),
+        "five" => Ok(5),
+        "six" => Ok(6),
+        "seven" => Ok(7),
+        "eight" => Ok(8),
+        "nine" => Ok(9),
+        _ => Err("Invalid input".to_string()),
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
