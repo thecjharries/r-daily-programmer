@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_english_int(input: &str) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
