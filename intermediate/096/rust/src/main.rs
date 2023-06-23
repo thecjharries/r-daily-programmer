@@ -17,6 +17,7 @@ fn main() {
     println!("rad");
 }
 
+// I do not enjoy problems that are just a bunch of regex only
 fn parse_english_int(input: &str) -> u32 {
     todo!()
 }
@@ -28,6 +29,15 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(1, parse_english_int("one").unwrap());
+        assert_eq!(2, parse_english_int("two").unwrap());
+        assert_eq!(3, parse_english_int("three").unwrap());
+        assert_eq!(4, parse_english_int("four").unwrap());
+        assert_eq!(5, parse_english_int("five").unwrap());
+        assert_eq!(6, parse_english_int("six").unwrap());
+        assert_eq!(7, parse_english_int("seven").unwrap());
+        assert_eq!(8, parse_english_int("eight").unwrap());
+        assert_eq!(9, parse_english_int("nine").unwrap());
+        assert!(parse_english_int("ten").is_err());
     }
 }
