@@ -156,5 +156,12 @@ mod tests {
             ],
             carpet(3)
         );
+        let result = carpet(7);
+        let bit_count = result
+            .iter()
+            .map(|row| row.iter().map(|&x| x as u32).sum::<u32>())
+            .sum::<u32>();
+        let expected = 8_i32.pow(7) as u32;
+        assert_eq!(bit_count, expected);
     }
 }
