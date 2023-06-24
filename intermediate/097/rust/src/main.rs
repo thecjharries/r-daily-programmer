@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn carpet(size: usize) -> Vec<Vec<bool>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
