@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn carpet(size: usize) -> Vec<Vec<bool>> {
+fn carpet(size: usize) -> Vec<Vec<u8>> {
     todo!()
 }
 
