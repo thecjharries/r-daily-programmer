@@ -18,7 +18,33 @@ fn main() {
 }
 
 fn carpet(size: usize) -> Vec<Vec<u8>> {
-    todo!()
+    if 0 == size {
+        return vec![vec![1]];
+    }
+    let smaller = carpet(size - 1);
+    let mut result = Vec::new();
+    for row in smaller.iter() {
+        let mut new_row = Vec::new();
+        new_row.append(&mut row.clone());
+        new_row.append(&mut row.clone());
+        new_row.append(&mut row.clone());
+        result.push(new_row);
+    }
+    for row in smaller.iter() {
+        let mut new_row = Vec::new();
+        new_row.append(&mut row.clone());
+        new_row.append(&mut vec![0; row.len()]);
+        new_row.append(&mut row.clone());
+        result.push(new_row);
+    }
+    for row in smaller.iter() {
+        let mut new_row = Vec::new();
+        new_row.append(&mut row.clone());
+        new_row.append(&mut row.clone());
+        new_row.append(&mut row.clone());
+        result.push(new_row);
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
