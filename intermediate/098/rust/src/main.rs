@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn multiple_cycle(final: usize, numbers: Vec<u32>) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
