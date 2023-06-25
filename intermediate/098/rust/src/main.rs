@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn multiple_cycle(final: usize, numbers: Vec<u32>) -> u32 {
+fn multiple_cycle(limit: u32, numbers: Vec<u32>) -> u32 {
     todo!()
 }
 
@@ -27,7 +27,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_multiple_cycle() {
+        assert_eq!(1, multiple_cycle(5, vec![5, 7, 3]));
+        assert_eq!(1, multiple_cycle(7, vec![5, 7, 3]));
+        assert_eq!(1, multiple_cycle(3, vec![5, 7, 3]));
+        assert_eq!(4, multiple_cycle(10, vec![5, 7, 3]));
+        assert_eq!(6, multiple_cycle(15, vec![5, 7, 3]));
+        assert_eq!(8, multiple_cycle(20, vec![5, 7, 3]));
+        assert_eq!(
+            408040,
+            multiple_count(1000000000, [5395, 7168, 2367, 9999, 3])
+        );
     }
 }
