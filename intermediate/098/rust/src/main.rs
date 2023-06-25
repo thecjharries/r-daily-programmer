@@ -17,8 +17,16 @@ fn main() {
     println!("rad");
 }
 
-fn multiple_cycle(limit: u32, numbers: Vec<u32>) -> u32 {
-    todo!()
+fn multiple_count(limit: u32, numbers: Vec<u32>) -> u32 {
+    let mut count = 0;
+    let mut index = 0;
+    let mut current = 0;
+    while current < limit {
+        current += numbers[index] - current % numbers[index];
+        index = (index + 1) % numbers.len();
+        count += 1;
+    }
+    count
 }
 
 #[cfg(not(tarpaulin_include))]
