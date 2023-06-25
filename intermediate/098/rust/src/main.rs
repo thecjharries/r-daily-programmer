@@ -27,16 +27,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_multiple_cycle() {
-        assert_eq!(1, multiple_cycle(5, vec![5, 7, 3]));
-        assert_eq!(1, multiple_cycle(7, vec![5, 7, 3]));
-        assert_eq!(1, multiple_cycle(3, vec![5, 7, 3]));
-        assert_eq!(4, multiple_cycle(10, vec![5, 7, 3]));
-        assert_eq!(6, multiple_cycle(15, vec![5, 7, 3]));
-        assert_eq!(8, multiple_cycle(20, vec![5, 7, 3]));
+    fn test_multiple_count() {
+        assert_eq!(1, multiple_count(5, vec![5, 7, 3]));
+        assert_eq!(2, multiple_count(7, vec![5, 7, 3]));
+        assert_eq!(3, multiple_count(9, vec![5, 7, 3]));
+        assert_eq!(4, multiple_count(10, vec![5, 7, 3]));
+        assert_eq!(5, multiple_count(14, vec![5, 7, 3]));
+        assert_eq!(6, multiple_count(15, vec![5, 7, 3]));
         assert_eq!(
-            408040,
-            multiple_count(1000000000, [5395, 7168, 2367, 9999, 3])
+            408041,
+            multiple_count(1000000000, vec![5395, 7168, 2367, 9999, 3])
         );
     }
 }
