@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use bevy_reflect::Reflect;
 use chrono::NaiveDate;
 use serde::Deserialize;
+use std::ops::Index;
 
 const UNEMPLOYMENT_PATH: &str = "../unemployment.csv";
 
-#[derive(Debug, Deserialize, Reflect)]
+#[derive(Debug, Deserialize)]
 struct Record {
     #[serde(rename = "Date")]
     date: NaiveDate,
@@ -124,6 +124,66 @@ struct Record {
     wyoming: Option<f32>,
 }
 
+impl Index<usize> for Record {
+    type Output = f32;
+
+    fn index(&self, index: usize) -> &f32 {
+        match index {
+            0 => self.alaska.as_ref().unwrap_or(&0.0),
+            1 => self.alabama.as_ref().unwrap_or(&0.0),
+            2 => self.arizona.as_ref().unwrap_or(&0.0),
+            3 => self.arkansas.as_ref().unwrap_or(&0.0),
+            4 => self.california.as_ref().unwrap_or(&0.0),
+            5 => self.colorado.as_ref().unwrap_or(&0.0),
+            6 => self.connecticut.as_ref().unwrap_or(&0.0),
+            7 => self.delaware.as_ref().unwrap_or(&0.0),
+            8 => self.florida.as_ref().unwrap_or(&0.0),
+            9 => self.georgia.as_ref().unwrap_or(&0.0),
+            10 => self.hawaii.as_ref().unwrap_or(&0.0),
+            11 => self.iowa.as_ref().unwrap_or(&0.0),
+            12 => self.idaho.as_ref().unwrap_or(&0.0),
+            13 => self.illinois.as_ref().unwrap_or(&0.0),
+            14 => self.indiana.as_ref().unwrap_or(&0.0),
+            15 => self.kansas.as_ref().unwrap_or(&0.0),
+            16 => self.kentucky.as_ref().unwrap_or(&0.0),
+            17 => self.louisiana.as_ref().unwrap_or(&0.0),
+            18 => self.massachusetts.as_ref().unwrap_or(&0.0),
+            19 => self.maryland.as_ref().unwrap_or(&0.0),
+            20 => self.maine.as_ref().unwrap_or(&0.0),
+            21 => self.michigan.as_ref().unwrap_or(&0.0),
+            22 => self.minnesota.as_ref().unwrap_or(&0.0),
+            23 => self.missouri.as_ref().unwrap_or(&0.0),
+            24 => self.mississippi.as_ref().unwrap_or(&0.0),
+            25 => self.montana.as_ref().unwrap_or(&0.0),
+            26 => self.north_carolina.as_ref().unwrap_or(&0.0),
+            27 => self.north_dakota.as_ref().unwrap_or(&0.0),
+            28 => self.nebraska.as_ref().unwrap_or(&0.0),
+            29 => self.new_hampshire.as_ref().unwrap_or(&0.0),
+            30 => self.new_jersey.as_ref().unwrap_or(&0.0),
+            31 => self.new_mexico.as_ref().unwrap_or(&0.0),
+            32 => self.nevada.as_ref().unwrap_or(&0.0),
+            33 => self.new_york.as_ref().unwrap_or(&0.0),
+            34 => self.ohio.as_ref().unwrap_or(&0.0),
+            35 => self.oklahoma.as_ref().unwrap_or(&0.0),
+            36 => self.oregon.as_ref().unwrap_or(&0.0),
+            37 => self.pennsylvania.as_ref().unwrap_or(&0.0),
+            38 => self.rhode_island.as_ref().unwrap_or(&0.0),
+            39 => self.south_carolina.as_ref().unwrap_or(&0.0),
+            40 => self.south_dakota.as_ref().unwrap_or(&0.0),
+            41 => self.tennessee.as_ref().unwrap_or(&0.0),
+            42 => self.texas.as_ref().unwrap_or(&0.0),
+            43 => self.utah.as_ref().unwrap_or(&0.0),
+            44 => self.virginia.as_ref().unwrap_or(&0.0),
+            45 => self.vermont.as_ref().unwrap_or(&0.0),
+            46 => self.washington.as_ref().unwrap_or(&0.0),
+            47 => self.wisconsin.as_ref().unwrap_or(&0.0),
+            48 => self.west_virginia.as_ref().unwrap_or(&0.0),
+            49 => self.wyoming.as_ref().unwrap_or(&0.0),
+            _ => panic!("Invalid index"),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -140,13 +200,36 @@ fn read_csv(path: &str) -> Vec<Record> {
 }
 
 fn get_date_min_max(date: NaiveDate) -> Result<(f32, f32), String> {
-    todo!()
+    let records = read_csv(UNEMPLOYMENT_PATH);
+    let record = records
+        .iter()
+        .find(|record| record.date == date)
+        .ok_or_else(|| format!("No record found for date: {}", date))?;
+    let mut min = f32::MAX;
+    let mut max = f32::MIN;
+    for index in 0..50 {
+        let value = record[index];
+        if value < min {
+            min = value;
+        }
+        if value > max {
+            max = value;
+        }
+    }
+    Ok((min, max))
 }
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    #[should_panic]
+    fn test_record_index() {
+        let records = read_csv(UNEMPLOYMENT_PATH);
+        let _number = records[0][51];
+    }
 
     #[test]
     fn test_read_csv() {
@@ -204,5 +287,14 @@ mod tests {
         assert!(records[0].wisconsin.is_some());
         assert!(records[0].west_virginia.is_some());
         assert!(records[0].wyoming.is_some());
+    }
+
+    #[test]
+    fn test_get_date_min_max() {
+        let some_date = NaiveDate::from_ymd_opt(1980, 1, 1).unwrap();
+        let (min, max) = get_date_min_max(some_date).unwrap();
+        assert_eq!(min, 2.9);
+        assert_eq!(max, 9.6);
+        assert!(get_date_min_max(NaiveDate::from_ymd_opt(1979, 1, 1).unwrap()).is_err());
     }
 }
