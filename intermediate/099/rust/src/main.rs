@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use bevy_reflect::Reflect;
 use chrono::NaiveDate;
 use serde::Deserialize;
 
 const UNEMPLOYMENT_PATH: &str = "../unemployment.csv";
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Reflect)]
 struct Record {
     #[serde(rename = "Date")]
     date: NaiveDate,
@@ -136,6 +137,10 @@ fn read_csv(path: &str) -> Vec<Record> {
         results.push(record);
     }
     results
+}
+
+fn get_date_min_max(date: NaiveDate) -> Result<(f32, f32), String> {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
