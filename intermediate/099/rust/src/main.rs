@@ -125,6 +125,10 @@ fn main() {
     println!("rad");
 }
 
+fn read_csv(path: &str) -> Vec<Record> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
