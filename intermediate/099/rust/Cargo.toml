@@ -4,6 +4,8 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
+csv = "1.2.2"
+serde = { version = "1.0.164", features = ["derive"] }
 #itertools = "0.10.3"
 #lazy_static = "1.4.0"
 #rand = "0.8.4"
