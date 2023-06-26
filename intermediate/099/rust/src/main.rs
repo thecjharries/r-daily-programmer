@@ -14,6 +14,9 @@
 
 use chrono::NaiveDate;
 use serde::Deserialize;
+use std::path::{Path, PathBuf};
+
+const UNEMPLOYMENT_PATH: &str = "../../unemployment.csv";
 
 #[derive(Debug, Deserialize)]
 struct Record {
@@ -135,7 +138,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_read_csv() {
+        let records = read_csv(UNEMPLOYMENT_PATH);
+        assert_eq!(12, records.len());
     }
 }
