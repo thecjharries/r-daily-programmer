@@ -14,12 +14,12 @@
 
 use chrono::NaiveDate;
 use serde::Deserialize;
-use std::path::{Path, PathBuf};
 
-const UNEMPLOYMENT_PATH: &str = "../../unemployment.csv";
+const UNEMPLOYMENT_PATH: &str = "../unemployment.csv";
 
 #[derive(Debug, Deserialize)]
 struct Record {
+    #[serde(rename = "Date")]
     date: NaiveDate,
     #[serde(rename = "AK")]
     alaska: Option<f32>,
@@ -146,6 +146,58 @@ mod tests {
     #[test]
     fn test_read_csv() {
         let records = read_csv(UNEMPLOYMENT_PATH);
-        assert_eq!(12, records.len());
+        assert_eq!(391, records.len());
+        let some_date = NaiveDate::from_ymd_opt(1980, 1, 1).unwrap();
+        assert_eq!(some_date, records[0].date);
+        assert!(records[0].alaska.is_some());
+        assert!(records[0].alabama.is_some());
+        assert!(records[0].arizona.is_some());
+        assert!(records[0].arkansas.is_some());
+        assert!(records[0].california.is_some());
+        assert!(records[0].colorado.is_some());
+        assert!(records[0].connecticut.is_some());
+        assert!(records[0].delaware.is_some());
+        assert!(records[0].florida.is_some());
+        assert!(records[0].georgia.is_some());
+        assert!(records[0].hawaii.is_some());
+        assert!(records[0].iowa.is_some());
+        assert!(records[0].idaho.is_some());
+        assert!(records[0].illinois.is_some());
+        assert!(records[0].indiana.is_some());
+        assert!(records[0].kansas.is_some());
+        assert!(records[0].kentucky.is_some());
+        assert!(records[0].louisiana.is_some());
+        assert!(records[0].massachusetts.is_some());
+        assert!(records[0].maryland.is_some());
+        assert!(records[0].maine.is_some());
+        assert!(records[0].michigan.is_some());
+        assert!(records[0].minnesota.is_some());
+        assert!(records[0].missouri.is_some());
+        assert!(records[0].mississippi.is_some());
+        assert!(records[0].montana.is_some());
+        assert!(records[0].north_carolina.is_some());
+        assert!(records[0].north_dakota.is_some());
+        assert!(records[0].nebraska.is_some());
+        assert!(records[0].new_hampshire.is_some());
+        assert!(records[0].new_jersey.is_some());
+        assert!(records[0].new_mexico.is_some());
+        assert!(records[0].nevada.is_some());
+        assert!(records[0].new_york.is_some());
+        assert!(records[0].ohio.is_some());
+        assert!(records[0].oklahoma.is_some());
+        assert!(records[0].oregon.is_some());
+        assert!(records[0].pennsylvania.is_some());
+        assert!(records[0].rhode_island.is_some());
+        assert!(records[0].south_carolina.is_some());
+        assert!(records[0].south_dakota.is_some());
+        assert!(records[0].tennessee.is_some());
+        assert!(records[0].texas.is_some());
+        assert!(records[0].utah.is_some());
+        assert!(records[0].virginia.is_some());
+        assert!(records[0].vermont.is_some());
+        assert!(records[0].washington.is_some());
+        assert!(records[0].wisconsin.is_some());
+        assert!(records[0].west_virginia.is_some());
+        assert!(records[0].wyoming.is_some());
     }
 }
