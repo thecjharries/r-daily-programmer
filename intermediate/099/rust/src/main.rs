@@ -129,7 +129,13 @@ fn main() {
 }
 
 fn read_csv(path: &str) -> Vec<Record> {
-    todo!()
+    let mut results = Vec::new();
+    let mut reader = csv::Reader::from_path(path).expect("Unable to read CSV");
+    for result in reader.deserialize() {
+        let record: Record = result.expect("Unable to deserialize record");
+        results.push(record);
+    }
+    results
 }
 
 #[cfg(not(tarpaulin_include))]
