@@ -4,6 +4,7 @@ version = "0.0.0"
 edition = "2021"
 
 [dependencies]
+chrono = "0.4.26"
 csv = "1.2.2"
 serde = { version = "1.0.164", features = ["derive"] }
 #itertools = "0.10.3"
