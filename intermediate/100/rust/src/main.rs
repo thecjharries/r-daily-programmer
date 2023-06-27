@@ -27,7 +27,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_censor_text() {
+        assert_eq!(
+            "You j***face!",
+            censor_text(
+                "You jerkface!",
+                vec!["jerk".to_string(), "test".to_string()]
+            )
+        );
+        assert_eq!(
+            "You j***!",
+            censor_text("You jerk!", vec!["jerk".to_string(), "test".to_string()])
+        );
     }
 }
