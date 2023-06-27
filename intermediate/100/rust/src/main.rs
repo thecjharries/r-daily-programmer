@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn censor_text(input: &str, words: Vec<String>) -> String {
-    todo!()
+    let mut result = input.to_string();
+    for word in words {
+        let replacement = format!(
+            "{}{}",
+            word.chars().nth(0).unwrap(),
+            "*".repeat(word.len() - 1)
+        );
+        result = result.replace(&word, &replacement);
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
