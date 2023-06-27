@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn censor_text(input: &str, words: Vec<String>) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
