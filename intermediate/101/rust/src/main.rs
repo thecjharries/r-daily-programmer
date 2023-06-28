@@ -12,10 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq)]
 struct Rgb {
     red: u8,
     green: u8,
     blue: u8,
+}
+
+impl Default for Rgb {
+    fn default() -> Self {
+        Rgb {
+            red: 0,
+            green: 0,
+            blue: 0,
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -29,7 +40,14 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_rgb_default() {
+        assert_eq!(
+            Rgb::default(),
+            Rgb {
+                red: 0,
+                green: 0,
+                blue: 0
+            }
+        );
     }
 }
