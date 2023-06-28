@@ -42,6 +42,10 @@ fn main() {
     println!("rad");
 }
 
+fn text_to_pbm(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
