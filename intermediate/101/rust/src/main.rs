@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::fmt;
+
 #[derive(Debug, PartialEq, Eq)]
 struct Rgb {
     red: u8,
@@ -26,6 +28,12 @@ impl Default for Rgb {
             green: 0,
             blue: 0,
         }
+    }
+}
+
+impl fmt::Display for Rgb {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, " {: >3} {: >3} {: >3}", self.red, self.green, self.blue)
     }
 }
 
@@ -48,6 +56,22 @@ mod tests {
                 green: 0,
                 blue: 0
             }
+        );
+    }
+
+    #[test]
+    fn test_rgb_display() {
+        assert_eq!("   0   0   0".to_string(), format!("{}", Rgb::default()));
+        assert_eq!(
+            " 255 255 255".to_string(),
+            format!(
+                "{}",
+                Rgb {
+                    red: 255,
+                    green: 255,
+                    blue: 255
+                }
+            )
         );
     }
 }
