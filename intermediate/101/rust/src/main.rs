@@ -14,7 +14,7 @@
 
 use std::fmt;
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 struct Rgb {
     red: u8,
     green: u8,
@@ -43,7 +43,27 @@ fn main() {
 }
 
 fn text_to_pbm(input: &str) -> String {
-    todo!()
+    let mut output = "P3\n".to_string();
+    let mut input_bytes = input.as_bytes().to_vec();
+    while 0 != input_bytes.len() % 3 {
+        input_bytes.push(b' ');
+    }
+    let size = (input_bytes.len() as f32 / 3.0).sqrt().ceil() as usize;
+    output.push_str(&format!("{} {}\n", size, size));
+    let mut pixels = vec![Rgb::default(); size * size];
+    for (index, byte) in input_bytes.iter().enumerate() {
+        let pixel_index = index / 3;
+        match index % 3 {
+            0 => pixels[pixel_index].red = *byte,
+            1 => pixels[pixel_index].green = *byte,
+            2 => pixels[pixel_index].blue = *byte,
+            _ => unreachable!(),
+        }
+    }
+    for pixel in pixels {
+        output.push_str(&format!("{}\n", pixel));
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
