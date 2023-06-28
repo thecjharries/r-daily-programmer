@@ -78,4 +78,12 @@ mod tests {
             )
         );
     }
+
+    #[test]
+    fn test_text_to_pbm() {
+        assert_eq!(
+            "P3\n2 2\n  97  98  99\n 100  32  32\n   0   0   0\n   0   0   0\n".to_string(),
+            text_to_pbm("abcd")
+        );
+    }
 }
