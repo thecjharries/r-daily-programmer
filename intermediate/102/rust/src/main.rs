@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn ncset(input: &str, max: usize) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
