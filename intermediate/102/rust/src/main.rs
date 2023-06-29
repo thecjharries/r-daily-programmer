@@ -27,7 +27,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_ncset() {
+        assert!(ncset("aacaabbabccc", 4));
+        assert!(ncset("aacaabbabccc", 3));
+        assert!(!ncset("aacaabbabccc", 2));
     }
 }
