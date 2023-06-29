@@ -12,13 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashSet;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn ncset(input: &str, max: usize) -> bool {
-    todo!()
+    let mut seen = HashSet::new();
+    for character in input.chars() {
+        seen.insert(character);
+        if seen.len() > max {
+            return false;
+        }
+    }
+    true
 }
 
 #[cfg(not(tarpaulin_include))]
