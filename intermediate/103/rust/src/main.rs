@@ -27,7 +27,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_text_to_hex() {
+        assert_eq!("4441494C59".to_string(), text_to_hex("DAILY"));
     }
 }
