@@ -18,7 +18,11 @@ fn main() {
 }
 
 fn text_to_hex(input: &str) -> String {
-    todo!()
+    let mut output = String::new();
+    for character in input.chars() {
+        output.push_str(&format!("{:X}", character as u8));
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
