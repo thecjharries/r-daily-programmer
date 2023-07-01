@@ -60,5 +60,7 @@ mod tests {
         assert!(brackets_are_closed("((3^2 + 8)*(5/2))/(2+6)"));
         assert!(!brackets_are_closed("(abc[123)abc]"));
         assert!(!brackets_are_closed("(abc)abc]"));
+        assert!(!brackets_are_closed("(abc}"));
+        assert!(!brackets_are_closed("(abc>"));
     }
 }
