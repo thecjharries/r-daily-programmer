@@ -18,7 +18,34 @@ fn main() {
 }
 
 fn brackets_are_closed(input: &str) -> bool {
-    todo!()
+    let mut open_brackets: Vec<char> = Vec::new();
+    for character in input.chars() {
+        match character {
+            '(' | '[' | '{' | '<' => open_brackets.push(character),
+            ')' => {
+                if '(' != open_brackets.pop().unwrap_or(' ') {
+                    return false;
+                }
+            }
+            ']' => {
+                if '[' != open_brackets.pop().unwrap_or(' ') {
+                    return false;
+                }
+            }
+            '}' => {
+                if '{' != open_brackets.pop().unwrap_or(' ') {
+                    return false;
+                }
+            }
+            '>' => {
+                if '<' != open_brackets.pop().unwrap_or(' ') {
+                    return false;
+                }
+            }
+            _ => {}
+        }
+    }
+    open_brackets.is_empty()
 }
 
 #[cfg(not(tarpaulin_include))]
