@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn check_brackets(input: &str) -> bool {
+fn brackets_are_closed(input: &str) -> bool {
     todo!()
 }
 
@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_brackets_are_closed() {
+        assert!(brackets_are_closed("()"));
+        assert!(brackets_are_closed("123"));
+        assert!(brackets_are_closed("((3^2 + 8)*(5/2))/(2+6)"));
+        assert!(!brackets_are_closed("(abc[123)abc]"));
+        assert!(!brackets_are_closed("(abc)abc]"));
     }
 }
