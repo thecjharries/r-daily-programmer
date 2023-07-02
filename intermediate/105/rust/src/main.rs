@@ -17,13 +17,32 @@ fn main() {
     println!("rad");
 }
 
+fn basic_bool_eval(input: &str) -> u8 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_basic_bool_eval() {
+        assert_eq!(1, basic_bool_eval("1"));
+        assert_eq!(0, basic_bool_eval("0"));
+        assert_eq!(1, basic_bool_eval("1 * 1"));
+        assert_eq!(0, basic_bool_eval("1 * 0"));
+        assert_eq!(0, basic_bool_eval("0 * 1"));
+        assert_eq!(0, basic_bool_eval("0 * 0"));
+        assert_eq!(1, basic_bool_eval("1 | 1"));
+        assert_eq!(1, basic_bool_eval("1 | 0"));
+        assert_eq!(1, basic_bool_eval("0 | 1"));
+        assert_eq!(0, basic_bool_eval("0 | 0"));
+        assert_eq!(1, basic_bool_eval("1 ^ 0"));
+        assert_eq!(1, basic_bool_eval("0 ^ 1"));
+        assert_eq!(0, basic_bool_eval("1 ^ 1"));
+        assert_eq!(0, basic_bool_eval("0 ^ 0"));
+        assert_eq!(1, basic_bool_eval("!0"));
+        assert_eq!(0, basic_bool_eval("!1"));
     }
 }
