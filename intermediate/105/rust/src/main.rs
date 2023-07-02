@@ -18,7 +18,43 @@ fn main() {
 }
 
 fn basic_bool_eval(input: &str) -> u8 {
-    todo!()
+    let mut digit_stack = Vec::new();
+    let mut operator_stack = Vec::new();
+    for character in input.chars() {
+        match character {
+            '0' => digit_stack.push(0),
+            '1' => digit_stack.push(1),
+            ' ' => continue,
+            _ => {
+                operator_stack.push(character);
+            }
+        }
+        if 2 == digit_stack.len() {
+            let operator = operator_stack.pop().unwrap();
+            let right = digit_stack.pop().unwrap();
+            let left = digit_stack.pop().unwrap();
+            digit_stack.push(match operator {
+                '*' => left & right,
+                '|' => left | right,
+                '^' => left ^ right,
+                _ => unreachable!(),
+            });
+        }
+    }
+    if let Some(operator) = operator_stack.pop() {
+        let right = digit_stack.pop().unwrap();
+        digit_stack.push(match operator {
+            '!' => {
+                if 0 == right {
+                    1
+                } else {
+                    0
+                }
+            }
+            _ => unreachable!(),
+        });
+    }
+    digit_stack.pop().unwrap()
 }
 
 #[cfg(not(tarpaulin_include))]
