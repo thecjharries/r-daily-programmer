@@ -17,6 +17,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn basic_bool_eval(input: &str) -> u8 {
     let mut digit_stack = Vec::new();
     let mut operator_stack = Vec::new();
