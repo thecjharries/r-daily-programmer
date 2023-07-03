@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug, PartialEq, Eq, Clone)]
+use std::collections::{HashMap, HashSet};
+
+#[derive(Debug, PartialEq, Eq, Clone, Hash)]
 struct JugState {
     first: u32,
     second: u32,
@@ -24,7 +26,100 @@ fn main() {
 }
 
 fn jug_solver(first: u32, second: u32, desired: u32) -> Vec<JugState> {
-    todo!()
+    let mut steps: usize = 0;
+    let mut visited: HashSet<JugState> = HashSet::new();
+    let mut costs: HashMap<JugState, usize> = HashMap::new();
+    let mut previous: HashMap<JugState, JugState> = HashMap::new();
+    let _val = costs
+        .entry(JugState {
+            first: 0,
+            second: 0,
+        })
+        .or_insert(0);
+    let mut queue = vec![JugState {
+        first: 0,
+        second: 0,
+    }];
+    let mut tail = JugState {
+        first: u32::MAX,
+        second: u32::MAX,
+    };
+    let mut best_cost = usize::MAX;
+    loop {
+        if queue.is_empty() {
+            break;
+        }
+        let mut current = queue.pop().unwrap();
+        if visited.contains(&current) {
+            continue;
+        }
+        visited.insert(current.clone());
+        if (current.first == desired || current.second == desired) && costs[&current] < best_cost {
+            tail = current.clone();
+            best_cost = costs[&current];
+        }
+        let (m, n) = (current.first, current.second);
+        let mut neighbors = vec![
+            JugState {
+                first: first,
+                second: n,
+            },
+            JugState {
+                first: m,
+                second: second,
+            },
+            JugState {
+                first: 0,
+                second: n,
+            },
+            JugState {
+                first: m,
+                second: 0,
+            },
+        ];
+        if m + n < first {
+            neighbors.push(JugState {
+                first: m + n,
+                second: 0,
+            });
+        } else {
+            neighbors.push(JugState {
+                first: first,
+                second: m + n - first,
+            });
+        }
+        if m + n < second {
+            neighbors.push(JugState {
+                first: 0,
+                second: m + n,
+            });
+        } else {
+            neighbors.push(JugState {
+                first: m + n - second,
+                second: second,
+            });
+        }
+        let cost = costs[&current] + 1;
+        for neighbor in neighbors {
+            if !visited.contains(&neighbor) {
+                if !costs.contains_key(&neighbor) || cost < costs[&neighbor] {
+                    costs.insert(neighbor.clone(), cost);
+                    previous.insert(neighbor.clone(), current.clone());
+                }
+                queue.push(neighbor);
+            }
+        }
+    }
+    if tail.first == u32::MAX {
+        return vec![];
+    }
+    let mut path = vec![tail.clone()];
+    while let Some(previous_state) = previous.get(&tail) {
+        path.push(previous_state.clone());
+        tail = previous_state.clone();
+    }
+    path.reverse();
+    path
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -34,6 +129,6 @@ mod tests {
 
     #[test]
     fn test_jug_solver() {
-        assert_eq!(7, jug_solver(3, 5, 4).len());
+        assert_eq!(9, jug_solver(3, 5, 4).len());
     }
 }
