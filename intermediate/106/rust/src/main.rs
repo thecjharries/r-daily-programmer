@@ -12,10 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq, Eq, Clone)]
+struct JugState {
+    first: u32,
+    second: u32,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
+
+// fn jug_solver(first: u32, second: u32, desired: u32) ->
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
