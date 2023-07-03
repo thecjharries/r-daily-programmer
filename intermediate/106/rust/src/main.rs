@@ -23,7 +23,9 @@ fn main() {
     println!("rad");
 }
 
-// fn jug_solver(first: u32, second: u32, desired: u32) ->
+fn jug_solver(first: u32, second: u32, desired: u32) -> Vec<JugState> {
+    todo!()
+}
 
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
