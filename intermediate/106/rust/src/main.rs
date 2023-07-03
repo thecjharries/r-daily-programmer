@@ -26,7 +26,6 @@ fn main() {
 }
 
 fn jug_solver(first: u32, second: u32, desired: u32) -> Vec<JugState> {
-    let mut steps: usize = 0;
     let mut visited: HashSet<JugState> = HashSet::new();
     let mut costs: HashMap<JugState, usize> = HashMap::new();
     let mut previous: HashMap<JugState, JugState> = HashMap::new();
@@ -49,7 +48,7 @@ fn jug_solver(first: u32, second: u32, desired: u32) -> Vec<JugState> {
         if queue.is_empty() {
             break;
         }
-        let mut current = queue.pop().unwrap();
+        let current = queue.pop().unwrap();
         if visited.contains(&current) {
             continue;
         }
@@ -130,5 +129,6 @@ mod tests {
     #[test]
     fn test_jug_solver() {
         assert_eq!(9, jug_solver(3, 5, 4).len());
+        assert_eq!(vec![] as Vec<JugState>, jug_solver(3, 5, 100));
     }
 }
