@@ -33,7 +33,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_jug_solver() {
+        assert_eq!(7, jug_solver(3, 5, 4).len());
     }
 }
