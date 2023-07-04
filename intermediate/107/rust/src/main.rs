@@ -23,6 +23,7 @@ fn main() {
     println!("rad");
 }
 
+#[cfg(not(tarpaulin_include))]
 fn generate_random_string<R: Rng>(length: usize, rng: &mut R) -> String {
     let mut output = String::with_capacity(length);
     for _ in 0..length {
