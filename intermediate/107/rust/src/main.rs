@@ -16,6 +16,8 @@ use rand::prelude::*;
 use rand::Rng;
 use rand_pcg::Pcg64;
 
+const ALPHABET: &[u8] = b"abcdefghijklmnopqrstuvwxyz ";
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
