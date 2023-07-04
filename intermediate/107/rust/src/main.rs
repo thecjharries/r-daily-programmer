@@ -34,6 +34,9 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let mut rng = Pcg64::seed_from_u64(0);
+        assert_eq!("".to_string(), generate_random_string(0, &mut rng));
+        assert_eq!("djtbxefnwylarfpalullcxaqglnzrcustwcotvpn sanyjljiqwfqdfinvxlpgj sqhqpelmbjsozvciegofbrinepedrnztqdrf".to_string(), generate_random_string(100, &mut rng));
+        assert_eq!("veqvbewhaulynlqhibgc wwqvpbj renzowaqzkhgfqri rpsjbhpcjiovpogpswgnyinbgvx lrwduqgrkpkzg ihovfyrietrvaeqc febeyibhrizjznfiotfdflurihegvzzgxvxrzzsriwi embztmazgojv i vtxosagqdzjbofdfvfwzoehaajejc jcewat".to_string(), generate_random_string(200, &mut rng));
     }
 }
