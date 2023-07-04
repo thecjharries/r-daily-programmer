@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::prelude::*;
+use rand::Rng;
+use rand_pcg::Pcg64;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn generate_random_string(length: usize) -> String {
+fn generate_random_string<R: Rng>(length: usize, rng: &mut Rng) -> String {
     todo!()
 }
 
