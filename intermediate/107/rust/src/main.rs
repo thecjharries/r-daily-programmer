@@ -23,8 +23,12 @@ fn main() {
     println!("rad");
 }
 
-fn generate_random_string<R: Rng>(length: usize, rng: &mut Rng) -> String {
-    todo!()
+fn generate_random_string<R: Rng>(length: usize, rng: &mut R) -> String {
+    let mut output = String::with_capacity(length);
+    for _ in 0..length {
+        output.push(ALPHABET[rng.gen_range(0..ALPHABET.len())] as char);
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
