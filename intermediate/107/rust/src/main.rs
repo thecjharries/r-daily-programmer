@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_random_string(length: usize) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
