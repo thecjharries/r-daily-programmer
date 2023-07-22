@@ -43,7 +43,32 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn board_new_should_create_board_with_correct_dimensions() {
+        let board = Board::new(0, 3, 4, 5);
+        assert_eq!(3, board.width);
+        assert_eq!(4, board.height);
+        assert_eq!(5, board.mine_count);
+    }
+
+    #[test]
+    fn board_new_should_populate_board_correctly() {
+        let board = Board::new(0, 3, 4, 5);
+        assert_eq!(
+            vec![
+                Tile::Mine,
+                Tile::Neighbor(3),
+                Tile::Mine,
+                Tile::Mine,
+                Tile::Neighbor(5),
+                Tile::Neighbor(2),
+                Tile::Mine,
+                Tile::Neighbor(3),
+                Tile::Mine,
+                Tile::Neighbor(1),
+                Tile::Neighbor(2),
+                Tile::Neighbor(1)
+            ],
+            board.tiles
+        );
     }
 }
