@@ -26,6 +26,12 @@ struct Board {
     mine_count: usize,
 }
 
+impl Board {
+    fn new(width: usize, height: usize, mine_count: usize) -> Self {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
