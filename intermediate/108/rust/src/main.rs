@@ -18,6 +18,14 @@ enum Tile {
     Mine,
 }
 
+#[derive(Debug, PartialEq)]
+struct Board {
+    tiles: Vec<Tile>,
+    width: usize,
+    height: usize,
+    mine_count: usize,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
