@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::{Rng, SeedableRng};
+use rand_pcg::Pcg64;
+use std::collections::HashSet;
+
 #[derive(Debug, PartialEq)]
 enum Tile {
     Neighbor(u8),
@@ -27,8 +31,36 @@ struct Board {
 }
 
 impl Board {
-    fn new(width: usize, height: usize, mine_count: usize) -> Self {
-        todo!()
+    fn new(seed: u64, width: usize, height: usize, mine_count: usize) -> Self {
+        let mut rng = Pcg64::seed_from_u64(seed);
+        let mut tiles = Vec::with_capacity(width * height);
+        let mut mine_locations = HashSet::with_capacity(mine_count);
+        while mine_locations.len() < mine_count {
+            mine_locations.insert((rng.gen_range(0..width), rng.gen_range(0..height)));
+        }
+        for y in 0..height {
+            for x in 0..width {
+                if mine_locations.contains(&(x, y)) {
+                    tiles.push(Tile::Mine);
+                } else {
+                    let mut neighbor_count = 0;
+                    for neighbor_y in y.saturating_sub(1)..=y + 1 {
+                        for neighbor_x in x.saturating_sub(1)..=x + 1 {
+                            if mine_locations.contains(&(neighbor_x, neighbor_y)) {
+                                neighbor_count += 1;
+                            }
+                        }
+                    }
+                    tiles.push(Tile::Neighbor(neighbor_count));
+                }
+            }
+        }
+        Self {
+            tiles,
+            width,
+            height,
+            mine_count,
+        }
     }
 }
 
