@@ -42,4 +42,12 @@ mod tests {
         assert!(is_product_a_palindrome(99, 91));
         assert!(!is_product_a_palindrome(99, 95));
     }
+
+    #[test]
+    fn find_palindrome_products_returns_expected() {
+        assert_eq!(
+            vec![(99, 91), (91, 99)],
+            find_palindrome_products(90, 99, 90, 99)
+        );
+    }
 }
