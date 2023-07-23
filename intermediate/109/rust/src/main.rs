@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn is_product_a_palindrome(first: u32, second: u32) -> bool {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
