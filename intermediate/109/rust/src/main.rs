@@ -23,6 +23,15 @@ fn is_product_a_palindrome(first: u32, second: u32) -> bool {
     product_string == product_string.chars().rev().collect::<String>()
 }
 
+fn find_palindrome_products(
+    first_min: u32,
+    first_max: u32,
+    second_min: u32,
+    second_max: u32,
+) -> Vec<(u32, u32)> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
