@@ -27,7 +27,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn is_product_a_palindrome_returns_expected() {
+        assert!(is_product_a_palindrome(99, 91));
+        assert!(!is_product_a_palindrome(99, 95));
     }
 }
