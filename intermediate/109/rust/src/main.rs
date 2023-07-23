@@ -18,7 +18,9 @@ fn main() {
 }
 
 fn is_product_a_palindrome(first: u32, second: u32) -> bool {
-    todo!()
+    let product = (first as u64) * (second as u64);
+    let product_string = product.to_string();
+    product_string == product_string.chars().rev().collect::<String>()
 }
 
 #[cfg(not(tarpaulin_include))]
