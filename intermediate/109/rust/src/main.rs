@@ -29,7 +29,15 @@ fn find_palindrome_products(
     second_min: u32,
     second_max: u32,
 ) -> Vec<(u32, u32)> {
-    todo!()
+    let mut products = Vec::new();
+    for first in first_min..=first_max {
+        for second in second_min..=second_max {
+            if is_product_a_palindrome(first, second) {
+                products.push((first, second));
+            }
+        }
+    }
+    products
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -46,7 +54,7 @@ mod tests {
     #[test]
     fn find_palindrome_products_returns_expected() {
         assert_eq!(
-            vec![(99, 91), (91, 99)],
+            vec![(91, 99), (99, 91)],
             find_palindrome_products(90, 99, 90, 99)
         );
     }
