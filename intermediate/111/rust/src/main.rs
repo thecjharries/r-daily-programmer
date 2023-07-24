@@ -69,7 +69,14 @@ impl Sudoku {
 
 impl std::cmp::PartialOrd for Sudoku {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        todo!()
+        for index in 0..81 {
+            if self.0[index] < other.0[index] {
+                return Some(std::cmp::Ordering::Less);
+            } else if self.0[index] > other.0[index] {
+                return Some(std::cmp::Ordering::Greater);
+            }
+        }
+        Some(std::cmp::Ordering::Equal)
     }
 }
 
