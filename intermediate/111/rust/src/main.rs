@@ -15,6 +15,12 @@
 #[derive(Debug, PartialEq)]
 struct Sudoku([u8; 81]);
 
+impl Sudoku {
+    pub fn is_valid(&self) -> bool {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
