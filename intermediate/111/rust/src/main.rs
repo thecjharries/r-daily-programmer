@@ -12,12 +12,58 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::HashSet;
+
 #[derive(Debug, PartialEq)]
 struct Sudoku([u8; 81]);
 
 impl Sudoku {
+    pub fn new(data: [u8; 81]) -> Self {
+        Self(data)
+    }
+
     pub fn is_valid(&self) -> bool {
-        todo!()
+        // Check rows
+        for row in 0..9 {
+            let mut row_set = HashSet::new();
+            for column in 0..9 {
+                let index = row * 9 + column;
+                let value = self.0[index];
+                if 0 != value && row_set.contains(&value) {
+                    return false;
+                }
+                row_set.insert(value);
+            }
+        }
+        // Check columns
+        for column in 0..9 {
+            let mut column_set = HashSet::new();
+            for row in 0..9 {
+                let index = row * 9 + column;
+                let value = self.0[index];
+                if 0 != value && column_set.contains(&value) {
+                    return false;
+                }
+                column_set.insert(value);
+            }
+        }
+        // Check squares
+        for square_row in 0..3 {
+            for square_column in 0..3 {
+                let mut square_set = HashSet::new();
+                for row in 0..3 {
+                    for column in 0..3 {
+                        let index = (square_row * 3 + row) * 9 + square_column * 3 + column;
+                        let value = self.0[index];
+                        if 0 != value && square_set.contains(&value) {
+                            return false;
+                        }
+                        square_set.insert(value);
+                    }
+                }
+            }
+        }
+        true
     }
 }
 
