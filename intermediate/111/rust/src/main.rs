@@ -67,6 +67,12 @@ impl Sudoku {
     }
 }
 
+impl std::cmp::PartialOrd for Sudoku {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
