@@ -20,7 +20,15 @@ fn main() {
 }
 
 fn sort_dates(input: Vec<String>) -> Vec<String> {
-    todo!()
+    let mut dates: Vec<NaiveDateTime> = input
+        .iter()
+        .map(|date| NaiveDateTime::parse_from_str(date, "%Y %m %d %H:%M:%S").unwrap())
+        .collect();
+    dates.sort();
+    dates
+        .iter()
+        .map(|date| date.format("%Y %m %d %H:%M:%S").to_string())
+        .collect()
 }
 
 #[cfg(not(tarpaulin_include))]
