@@ -29,7 +29,23 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn sort_dates_should_properly_sort_prompt_input() {
+        // let input = "2012 12 02 23:02:12
+        // 1899 03 02 14:04:42
+        // 1969 07 20 02:25:30
+        // 2019 11 02 00:13:01";
+        let input = vec![
+            "2012 12 02 23:02:12".to_string(),
+            "1899 03 02 14:04:42".to_string(),
+            "1969 07 20 02:25:30".to_string(),
+            "2019 11 02 00:13:01".to_string(),
+        ];
+        let output = vec![
+            "1899 03 02 14:04:42".to_string(),
+            "1969 07 20 02:25:30".to_string(),
+            "2012 12 02 23:02:12".to_string(),
+            "2019 11 02 00:13:01".to_string(),
+        ];
+        assert_eq!(output, sort_dates(input));
     }
 }
