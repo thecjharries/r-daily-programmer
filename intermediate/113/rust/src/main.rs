@@ -28,6 +28,6 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!("The string literal `<b>Test</b>` should print <b>Test</b> or <div style=\"font-weight:bold;\">Test</div>", markup_bold("The string literal `*Test*` should print <b>Test</b> or <div style=\"font-weight:bold;\">Test</div>".to_string()));
     }
 }
