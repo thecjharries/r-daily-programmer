@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn markup_bold(input: String) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
