@@ -12,13 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn markup_bold(input: String) -> String {
-    todo!()
+    lazy_static! {
+        static ref BOLD_REGEX: Regex = Regex::new(r"\*([^*]+)\*").unwrap();
+    }
+    BOLD_REGEX.replace_all(&input, "<b>$1</b>").to_string()
 }
 
 #[cfg(not(tarpaulin_include))]
