@@ -28,6 +28,12 @@ fn load_word_list() -> Vec<String> {
 }
 
 fn find_shortest_word_ladder(start: String, end: String) -> Vec<String> {
+    if 4 != start.len() || 4 != end.len() {
+        return Vec::<String>::new();
+    }
+    if start == end {
+        return vec![start];
+    }
     todo!()
 }
 
@@ -44,8 +50,8 @@ mod tests {
     #[test]
     fn find_shortest_word_ladder_should_return_immediately_if_start_and_end_are_the_same() {
         assert_eq!(
-            vec!["start"],
-            find_shortest_word_ladder("start".to_string(), "start".to_string())
+            vec!["star"],
+            find_shortest_word_ladder("star".to_string(), "star".to_string())
         );
     }
 
