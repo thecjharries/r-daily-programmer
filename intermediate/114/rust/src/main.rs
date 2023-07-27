@@ -34,7 +34,42 @@ fn find_shortest_word_ladder(start: String, end: String) -> Vec<String> {
     if start == end {
         return vec![start];
     }
-    todo!()
+    let mut possible_words = load_word_list();
+    let mut current_ladders = vec![vec![start]];
+    let mut next_ladders = Vec::<Vec<String>>::new();
+    loop {
+        for ladder in current_ladders.iter() {
+            let last_word = ladder.last().unwrap();
+            let mut possible_words = possible_words
+                .iter()
+                .filter(|word| {
+                    let mut matching_letters = 0;
+                    for (index, letter) in word.chars().enumerate() {
+                        if letter == last_word.chars().nth(index).unwrap() {
+                            matching_letters += 1;
+                        }
+                    }
+                    3 == matching_letters
+                })
+                .map(|word| word.to_string())
+                .collect::<Vec<String>>();
+            for word in possible_words.drain(..) {
+                if ladder.contains(&word) {
+                    continue;
+                }
+                let mut new_ladder = ladder.clone();
+                new_ladder.push(word.clone());
+                if word == end {
+                    return new_ladder;
+                }
+                next_ladders.push(new_ladder);
+            }
+        }
+        if next_ladders.is_empty() {
+            return Vec::<String>::new();
+        }
+        current_ladders = next_ladders.clone();
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
