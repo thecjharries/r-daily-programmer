@@ -40,4 +40,28 @@ mod tests {
     fn test_load_word_list() {
         assert_eq!(3807, load_word_list().len());
     }
+
+    #[test]
+    fn find_shortest_word_ladder_should_return_immediately_if_start_and_end_are_the_same() {
+        assert_eq!(
+            vec!["start"],
+            find_shortest_word_ladder("start".to_string(), "start".to_string())
+        );
+    }
+
+    #[test]
+    fn find_shortest_word_ladder_should_return_empty_vector_if_no_ladder_exists() {
+        assert_eq!(
+            Vec::<String>::new(),
+            find_shortest_word_ladder("start".to_string(), "end".to_string())
+        );
+    }
+
+    #[test]
+    fn find_shortest_word_ladder_should_have_five_steps_for_look_to_leap() {
+        assert_eq!(
+            5,
+            find_shortest_word_ladder("look".to_string(), "leap".to_string()).len()
+        );
+    }
 }
