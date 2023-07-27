@@ -96,6 +96,10 @@ mod tests {
             Vec::<String>::new(),
             find_shortest_word_ladder("start".to_string(), "end".to_string())
         );
+        assert_eq!(
+            Vec::<String>::new(),
+            find_shortest_word_ladder("qqqq".to_string(), "zzzz".to_string())
+        )
     }
 
     #[test]
