@@ -17,13 +17,23 @@ fn main() {
     println!("rad");
 }
 
+fn load_word_list() -> Vec<String> {
+    let path = std::path::Path::new("../words.txt");
+    let words = std::fs::read_to_string(path).unwrap();
+    words
+        .split("\n")
+        .filter(|word| "" != word.trim())
+        .map(|word| word.trim().to_string())
+        .collect()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_load_word_list() {
+        assert_eq!(3807, load_word_list().len());
     }
 }
