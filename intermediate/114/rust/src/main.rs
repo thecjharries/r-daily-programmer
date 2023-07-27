@@ -27,6 +27,10 @@ fn load_word_list() -> Vec<String> {
         .collect()
 }
 
+fn find_shortest_word_ladder(start: String, end: String) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
