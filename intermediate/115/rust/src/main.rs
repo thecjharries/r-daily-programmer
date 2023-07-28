@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_sum_pairs() {
+        assert_eq!(vec![(1, 4), (4, 1)], find_sum_pairs(5, vec![1, -3, 4, 10]));
+        assert_eq!(
+            vec![(1, 6), (3, 4), (4, 3), (6, 1)],
+            find_sum_pairs(7, vec![10, -8, 2, 1, 4, -9, 6, 1, 9, -10, -5, 2, 3, 7])
+        );
     }
 }
