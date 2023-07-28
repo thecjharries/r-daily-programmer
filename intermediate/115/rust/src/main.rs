@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_sum_pairs(target: i32, numbers: Vec<i32>) -> Vec<(i32, i32)> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
