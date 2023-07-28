@@ -12,13 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn find_sum_pairs(target: i32, numbers: Vec<i32>) -> Vec<(i32, i32)> {
-    todo!()
+    let mut pairs = Vec::<(i32, i32)>::new();
+    let mut numbers = BTreeMap::from_iter(numbers.into_iter().map(|number| (number, true)));
+    for number in numbers.keys() {
+        let difference = target - number;
+        if numbers.contains_key(&difference) {
+            pairs.push((*number, difference));
+        }
+    }
+    pairs
 }
 
 #[cfg(not(tarpaulin_include))]
