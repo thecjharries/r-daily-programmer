@@ -20,7 +20,21 @@ fn main() {
 }
 
 fn get_mayan_long_count(year: i32, month: u32, day: u32) -> String {
-    todo!()
+    let date = NaiveDate::from_ymd(year, month, day);
+    let days_since_epoch = date
+        .signed_duration_since(NaiveDate::from_ymd(1970, 1, 1))
+        .num_days()
+        + 12 * 144000
+        + 17 * 7200
+        + 16 * 360
+        + 7 * 20
+        + 5;
+    let baktun = days_since_epoch / 144000;
+    let katun = (days_since_epoch % 144000) / 7200;
+    let tun = ((days_since_epoch % 144000) % 7200) / 360;
+    let uinal = (((days_since_epoch % 144000) % 7200) % 360) / 20;
+    let kin = (((days_since_epoch % 144000) % 7200) % 360) % 20;
+    format!("{}.{}.{}.{}.{}", baktun, katun, tun, uinal, kin)
 }
 
 #[cfg(not(tarpaulin_include))]
