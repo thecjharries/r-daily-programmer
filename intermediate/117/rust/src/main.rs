@@ -29,7 +29,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_get_mayan_long_count() {
+        assert_eq!("12.17.16.7.5", get_mayan_long_count(1970, 1, 1));
+        assert_eq!("12.18.15.4.0", get_mayan_long_count(1988, 7, 20));
+        assert_eq!("12.19.19.17.11", get_mayan_long_count(2012, 12, 12));
     }
 }
