@@ -32,7 +32,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_calculate_cannon_timing() {
+        assert_eq!(2, calculate_cannon_timing(5.0, 2.00, 2.00, 1.00));
+        assert_eq!(20, calculate_cannon_timing(99.99, 1.23, 3.21, 5.01));
     }
 }
