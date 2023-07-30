@@ -17,6 +17,15 @@ fn main() {
     println!("rad");
 }
 
+fn calculate_cannon_timing(
+    sim_time: f32,
+    shell_time: f32,
+    propellant_time: f32,
+    fire_time: f32,
+) -> u32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
