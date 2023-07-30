@@ -23,7 +23,9 @@ fn calculate_cannon_timing(
     propellant_time: f32,
     fire_time: f32,
 ) -> u32 {
-    todo!()
+    (1.0 + (sim_time - shell_time.max(propellant_time))
+        / (shell_time.max(propellant_time).max(fire_time)))
+    .floor() as u32
 }
 
 #[cfg(not(tarpaulin_include))]
