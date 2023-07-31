@@ -38,6 +38,11 @@ impl Board {
         }
         Self { board, start, end }
     }
+
+    fn manhattan_distance(first: (usize, usize), second: (usize, usize)) -> usize {
+        (first.0 as isize - second.0 as isize).abs() as usize
+            + (first.1 as isize - second.1 as isize).abs() as usize
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -72,5 +77,11 @@ mod tests {
         );
         assert_eq!((0, 0), board.start);
         assert_eq!((4, 4), board.end);
+    }
+
+    #[test]
+    fn manhattan_distance_calculates() {
+        assert_eq!(0, Board::manhattan_distance((0, 0), (0, 0)));
+        assert_eq!(1, Board::manhattan_distance((0, 0), (0, 1)));
     }
 }
