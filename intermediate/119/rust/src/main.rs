@@ -43,6 +43,10 @@ impl Board {
         (first.0 as isize - second.0 as isize).abs() as usize
             + (first.1 as isize - second.1 as isize).abs() as usize
     }
+
+    fn a_star(&self) -> Option<usize> {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
