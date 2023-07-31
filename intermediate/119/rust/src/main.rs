@@ -88,4 +88,41 @@ mod tests {
         assert_eq!(0, Board::manhattan_distance((0, 0), (0, 0)));
         assert_eq!(1, Board::manhattan_distance((0, 0), (0, 1)));
     }
+
+    #[test]
+    fn a_star_works() {
+        let board = Board::new(
+            "S....
+        WWWW.
+        .....
+        .WWWW
+        ....E"
+                .to_string(),
+        );
+        assert_eq!(Some(16), board.a_star());
+        let board = Board::new(
+            "S...W...
+            .WW.W.W.
+            .W..W.W.
+            ......W.
+            WWWWWWW.
+            E...W...
+            WW..WWW.
+            ........"
+                .to_string(),
+        );
+        assert_eq!(Some(29), board.a_star());
+        let board = Board::new(
+            "S...W.W.
+            .WW.W.W.
+            .W..W.W.
+            ......W.
+            WWWWWWW.
+            E...W...
+            WW..WWW.
+            ........"
+                .to_string(),
+        );
+        assert_eq!(None, board.a_star());
+    }
 }
