@@ -17,6 +17,17 @@ struct Board {
     board: Vec<Vec<char>>,
 }
 
+impl Board {
+    fn new(board: String) -> Self {
+        Self {
+            board: board
+                .split('\n')
+                .map(|row| row.trim().chars().collect())
+                .collect(),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -28,7 +39,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn board_new_generates_a_board() {
+        let board = Board::new(
+            "S....
+        WWWW.
+        .....
+        .WWWW
+        ....E"
+                .to_string(),
+        );
+        assert_eq!(
+            vec![
+                vec!['S', '.', '.', '.', '.'],
+                vec!['W', 'W', 'W', 'W', '.'],
+                vec!['.', '.', '.', '.', '.'],
+                vec!['.', 'W', 'W', 'W', 'W'],
+                vec!['.', '.', '.', '.', 'E'],
+            ],
+            board.board
+        );
     }
 }
