@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::{BinaryHeap, HashMap};
+
 #[derive(Debug)]
 struct Board {
     board: Vec<Vec<char>>,
@@ -44,8 +46,53 @@ impl Board {
             + (first.1 as isize - second.1 as isize).abs() as usize
     }
 
+    fn get_neighbors(&self, current: (usize, usize)) -> Vec<(usize, usize)> {
+        let mut neighbors = Vec::new();
+        if current.0 > 0 && self.board[current.0 - 1][current.1] != 'W' {
+            neighbors.push((current.0 - 1, current.1));
+        }
+        if current.0 < self.board.len() - 1 && self.board[current.0 + 1][current.1] != 'W' {
+            neighbors.push((current.0 + 1, current.1));
+        }
+        if current.1 > 0 && self.board[current.0][current.1 - 1] != 'W' {
+            neighbors.push((current.0, current.1 - 1));
+        }
+        if current.1 < self.board[current.0].len() - 1
+            && self.board[current.0][current.1 + 1] != 'W'
+        {
+            neighbors.push((current.0, current.1 + 1));
+        }
+        neighbors
+    }
+
     fn a_star(&self) -> Option<usize> {
-        todo!()
+        let mut open_set = BinaryHeap::new();
+        let mut came_from = HashMap::new();
+        let mut g_score = HashMap::new();
+        let mut f_score = HashMap::new();
+        let mut current = self.start;
+        open_set.push((Self::manhattan_distance(current, self.end), current));
+        g_score.insert(current, 0);
+        f_score.insert(current, Self::manhattan_distance(current, self.end));
+        while !open_set.is_empty() {
+            current = open_set.pop().unwrap().1;
+            if current == self.end {
+                return Some(g_score[&current]);
+            }
+            for neighbor in self.get_neighbors(current) {
+                let tentative_g_score = g_score[&current] + 1;
+                if !g_score.contains_key(&neighbor) || tentative_g_score < g_score[&neighbor] {
+                    came_from.insert(neighbor, current);
+                    g_score.insert(neighbor, tentative_g_score);
+                    f_score.insert(
+                        neighbor,
+                        tentative_g_score + Self::manhattan_distance(neighbor, self.end),
+                    );
+                    open_set.push((f_score[&neighbor], neighbor));
+                }
+            }
+        }
+        None
     }
 }
 
