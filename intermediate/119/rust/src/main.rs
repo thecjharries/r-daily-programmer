@@ -15,16 +15,28 @@
 #[derive(Debug)]
 struct Board {
     board: Vec<Vec<char>>,
+    start: (usize, usize),
+    end: (usize, usize),
 }
 
 impl Board {
-    fn new(board: String) -> Self {
-        Self {
-            board: board
-                .split('\n')
-                .map(|row| row.trim().chars().collect())
-                .collect(),
+    fn new(input: String) -> Self {
+        let mut start: (usize, usize) = (0, 0);
+        let mut end: (usize, usize) = (0, 0);
+        let mut board = Vec::new();
+        for (row_index, line) in input.split("\n").enumerate() {
+            let mut row = Vec::new();
+            for (column_index, character) in line.trim().chars().enumerate() {
+                match character {
+                    'S' => start = (row_index, column_index),
+                    'E' => end = (row_index, column_index),
+                    _ => (),
+                }
+                row.push(character);
+            }
+            board.push(row);
         }
+        Self { board, start, end }
     }
 }
 
@@ -58,5 +70,7 @@ mod tests {
             ],
             board.board
         );
+        assert_eq!((0, 0), board.start);
+        assert_eq!((4, 4), board.end);
     }
 }
