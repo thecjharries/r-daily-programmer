@@ -24,6 +24,14 @@ struct Base {
     digits: Vec<char>,
 }
 
+impl Base {
+    fn new(size: u8) -> Self {
+        Self {
+            digits: DIGITS[..size as usize].to_vec(),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -35,7 +43,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn base_new_generates_proper_base() {
+        assert_eq!(Base::new(2).digits, vec!['0', '1'],);
     }
 }
