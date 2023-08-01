@@ -19,6 +19,11 @@ const DIGITS: [char; 64] = [
     'V', 'W', 'X', 'Y', 'Z', '+', '/',
 ];
 
+#[derive(Debug)]
+struct Base {
+    digits: Vec<char>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
