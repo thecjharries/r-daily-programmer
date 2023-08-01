@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+const DIGITS: [char; 64] = [
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+    'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
+    'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+    'V', 'W', 'X', 'Y', 'Z', '+', '/',
+];
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
