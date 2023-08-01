@@ -30,6 +30,15 @@ impl Base {
             digits: DIGITS[..size as usize].to_vec(),
         }
     }
+
+    fn to_base_ten(&self, number: &str) -> String {
+        let mut result = 0;
+        for (index, character) in number.chars().rev().enumerate() {
+            result += self.digits.iter().position(|&x| x == character).unwrap()
+                * self.digits.len().pow(index as u32);
+        }
+        result.to_string()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -45,5 +54,13 @@ mod tests {
     #[test]
     fn base_new_generates_proper_base() {
         assert_eq!(Base::new(2).digits, vec!['0', '1'],);
+    }
+
+    #[test]
+    fn each_base_can_convert_to_base_ten() {
+        assert_eq!(Base::new(2).to_base_ten("10"), "2");
+        assert_eq!(Base::new(2).to_base_ten("11"), "3");
+        assert_eq!(Base::new(2).to_base_ten("100"), "4");
+        assert_eq!(Base::new(64).to_base_ten("10"), "64");
     }
 }
