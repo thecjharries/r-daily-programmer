@@ -39,6 +39,16 @@ impl Base {
         }
         result.to_string()
     }
+
+    fn from_base_ten(&self, number: &str) -> String {
+        let mut result = String::new();
+        let mut number = number.parse::<u32>().unwrap();
+        while number > 0 {
+            result.push(self.digits[(number % self.digits.len() as u32) as usize]);
+            number /= self.digits.len() as u32;
+        }
+        result.chars().rev().collect()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -62,5 +72,13 @@ mod tests {
         assert_eq!(Base::new(2).to_base_ten("11"), "3");
         assert_eq!(Base::new(2).to_base_ten("100"), "4");
         assert_eq!(Base::new(64).to_base_ten("10"), "64");
+    }
+
+    #[test]
+    fn each_base_can_convert_from_base_ten() {
+        assert_eq!(Base::new(2).from_base_ten("2"), "10");
+        assert_eq!(Base::new(2).from_base_ten("3"), "11");
+        assert_eq!(Base::new(2).from_base_ten("4"), "100");
+        assert_eq!(Base::new(64).from_base_ten("64"), "10");
     }
 }
