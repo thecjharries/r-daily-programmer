@@ -49,6 +49,10 @@ impl Base {
         }
         result.chars().rev().collect()
     }
+
+    fn from_base(&self, number: &str, base: &Base) -> String {
+        self.from_base_ten(&base.to_base_ten(number))
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -80,5 +84,14 @@ mod tests {
         assert_eq!(Base::new(2).from_base_ten("3"), "11");
         assert_eq!(Base::new(2).from_base_ten("4"), "100");
         assert_eq!(Base::new(64).from_base_ten("64"), "10");
+    }
+
+    #[test]
+    fn each_base_can_convert_from_other_bases() {
+        assert_eq!(Base::new(2).from_base("10", &Base::new(2)), "10");
+        assert_eq!(Base::new(2).from_base("11", &Base::new(2)), "11");
+        assert_eq!(Base::new(2).from_base("100", &Base::new(2)), "100");
+        assert_eq!(Base::new(64).from_base("10", &Base::new(64)), "10");
+        assert_eq!(Base::new(22).from_base("e1f1", &Base::new(25)), "ke0f");
     }
 }
