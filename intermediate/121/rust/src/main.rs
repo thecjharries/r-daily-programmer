@@ -29,20 +29,12 @@ fn get_max_coin_value(coin: u64) -> u64 {
     if 5 > coin {
         return coin;
     }
-    let mut possible_coins_to_break = vec![coin];
-    let mut max_value = 0;
-    while 0 < possible_coins_to_break.len() {
-        let current_coin = possible_coins_to_break.pop().unwrap();
-        let (half, third, fourth) = break_coin(current_coin);
-        if current_coin < half + third + fourth {
-            possible_coins_to_break.push(half);
-            possible_coins_to_break.push(third);
-            possible_coins_to_break.push(fourth);
-        } else {
-            max_value += current_coin;
-        }
+    let (half, third, fourth) = break_coin(coin);
+    if half + third + fourth > coin {
+        get_max_coin_value(half) + get_max_coin_value(third) + get_max_coin_value(fourth)
+    } else {
+        coin
     }
-    max_value
 }
 
 #[cfg(not(tarpaulin_include))]
