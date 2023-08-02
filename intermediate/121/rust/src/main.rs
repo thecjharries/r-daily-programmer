@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use memoize::memoize;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+#[memoize]
+fn break_coin(input: u64) -> (u64, u64, u64) {
+    (input / 2, input / 3, input / 4)
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -23,7 +30,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn coins_should_break_down_properly() {
+        assert_eq!((10, 6, 5), break_coin(20));
     }
 }
