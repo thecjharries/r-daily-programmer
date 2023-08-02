@@ -58,5 +58,7 @@ mod tests {
     #[test]
     fn coin_value_should_return_appropriate_value() {
         assert_eq!(21, get_max_coin_value(20));
+        assert_eq!(1370, get_max_coin_value(1000));
+        assert_eq!(51544065905, get_max_coin_value(10000000000));
     }
 }
