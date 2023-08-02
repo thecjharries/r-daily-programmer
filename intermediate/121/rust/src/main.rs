@@ -24,6 +24,11 @@ fn break_coin(input: u64) -> (u64, u64, u64) {
     (input / 2, input / 3, input / 4)
 }
 
+#[memoize]
+fn get_coin_value(coin: u64) -> u64 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
