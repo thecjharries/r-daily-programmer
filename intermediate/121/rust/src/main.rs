@@ -25,8 +25,24 @@ fn break_coin(input: u64) -> (u64, u64, u64) {
 }
 
 #[memoize]
-fn get_coin_value(coin: u64) -> u64 {
-    todo!()
+fn get_max_coin_value(coin: u64) -> u64 {
+    if 5 > coin {
+        return coin;
+    }
+    let mut possible_coins_to_break = vec![coin];
+    let mut max_value = 0;
+    while 0 < possible_coins_to_break.len() {
+        let current_coin = possible_coins_to_break.pop().unwrap();
+        let (half, third, fourth) = break_coin(current_coin);
+        if current_coin < half + third + fourth {
+            possible_coins_to_break.push(half);
+            possible_coins_to_break.push(third);
+            possible_coins_to_break.push(fourth);
+        } else {
+            max_value += current_coin;
+        }
+    }
+    max_value
 }
 
 #[cfg(not(tarpaulin_include))]
