@@ -38,4 +38,9 @@ mod tests {
     fn coins_should_break_down_properly() {
         assert_eq!((10, 6, 5), break_coin(20));
     }
+
+    #[test]
+    fn coin_value_should_return_appropriate_value() {
+        assert_eq!(21, get_max_coin_value(20));
+    }
 }
