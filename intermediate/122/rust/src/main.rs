@@ -20,7 +20,11 @@ fn main() {
     let thread_handle = thread::spawn(|| {
         println!("thread rad");
     });
-    thread_handle.join().unwrap();
+    if let Err(error) = thread_handle.join() {
+        println!("Error: {:?}", error);
+    } else {
+        println!("thread joined");
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
