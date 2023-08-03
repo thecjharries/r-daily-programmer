@@ -12,9 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::thread;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
-    println!("rad");
+    println!("main rad");
+    thread::spawn(|| {
+        println!("thread rad");
+    });
 }
 
 #[cfg(not(tarpaulin_include))]
