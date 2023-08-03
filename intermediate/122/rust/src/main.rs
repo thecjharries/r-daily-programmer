@@ -17,9 +17,10 @@ use std::thread;
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("main rad");
-    thread::spawn(|| {
+    let thread_handle = thread::spawn(|| {
         println!("thread rad");
     });
+    thread_handle.join().unwrap();
 }
 
 #[cfg(not(tarpaulin_include))]
