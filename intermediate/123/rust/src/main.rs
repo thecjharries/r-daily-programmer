@@ -17,6 +17,13 @@ fn main() {
     println!("rad");
 }
 
+fn do_julian_years_and_lunar_months_give_same_days(
+    julian_years: u32,
+    lunar_months: u32,
+) -> Option<u64> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
