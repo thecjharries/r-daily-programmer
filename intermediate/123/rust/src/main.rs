@@ -30,7 +30,18 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn do_julian_years_and_lunar_months_give_same_days() {
+        assert_eq!(
+            Some(13879),
+            do_julian_years_and_lunar_months_give_same_days(38, 470)
+        );
+        assert_eq!(
+            Some(41638),
+            do_julian_years_and_lunar_months_give_same_days(114, 2664)
+        );
+        assert_eq!(
+            Some(0),
+            do_julian_years_and_lunar_months_give_same_days(30, 82)
+        );
     }
 }
