@@ -21,7 +21,13 @@ fn do_julian_years_and_lunar_months_give_same_days(
     julian_years: u32,
     lunar_months: u32,
 ) -> Option<u64> {
-    todo!()
+    let lunar_days = (29.53059 * lunar_months as f32) as u64;
+    let julian_days = 365 * julian_years as u64 + julian_years as u64 / 4;
+    if lunar_days == julian_days {
+        Some(lunar_days)
+    } else {
+        None
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
