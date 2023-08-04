@@ -36,17 +36,17 @@ mod tests {
     use super::*;
 
     #[test]
-    fn do_julian_years_and_lunar_months_give_same_days() {
+    fn test_do_julian_years_and_lunar_months_give_same_days() {
         assert_eq!(
             Some(13879),
             do_julian_years_and_lunar_months_give_same_days(38, 470)
         );
         assert_eq!(
             Some(41638),
-            do_julian_years_and_lunar_months_give_same_days(114, 2664)
+            do_julian_years_and_lunar_months_give_same_days(114, 1410)
         );
         assert_eq!(
-            Some(0),
+            None,
             do_julian_years_and_lunar_months_give_same_days(30, 82)
         );
     }
