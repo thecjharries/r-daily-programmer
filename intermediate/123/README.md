@@ -1,5 +1,9 @@
 # [05/08/13] Challenge #123 [Intermediate] Synchronizing Calendars
 
+## Notes
+
+The challenge input is wrong. The author did something weird. 114*365 ~ 40k; 2664*29 ~ 77k. These are very different. A correct input is `114, 1410`
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/1dx3wj/050813_challenge_123_intermediate_synchronizing/)
