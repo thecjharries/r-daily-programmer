@@ -51,4 +51,12 @@ mod tests {
         assert_eq!(vec![2], graph.edges[&1]);
         assert_eq!(vec![1, 4], graph.edges[&3]);
     }
+
+    #[test]
+    fn directedgraph_find_a_cycle_finds_cycle() {
+        let graph = DirectedGraph::new(vec![(1, 2), (2, 3), (3, 1), (3, 4)]);
+        assert_eq!(vec![1, 2, 3], graph.find_a_cycle(vec![]).unwrap());
+        let graph = DirectedGraph::new(vec![(1, 2), (2, 3), (3, 4)]);
+        assert_eq!(None, graph.find_a_cycle(vec![]));
+    }
 }
