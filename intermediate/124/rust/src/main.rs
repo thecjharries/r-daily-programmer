@@ -29,6 +29,10 @@ impl DirectedGraph {
             });
         Self { edges }
     }
+
+    fn find_a_cycle(&self, current_cycle: Vec<u32>) -> Option<Vec<u32>> {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
