@@ -19,6 +19,12 @@ struct DirectedGraph {
     edges: BTreeMap<u32, Vec<u32>>,
 }
 
+impl DirectedGraph {
+    fn new(edges: Vec<(u32, u32)) -> Self {
+        todo!()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
