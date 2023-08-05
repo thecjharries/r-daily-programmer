@@ -20,7 +20,7 @@ struct DirectedGraph {
 }
 
 impl DirectedGraph {
-    fn new(edges: Vec<(u32, u32)) -> Self {
+    fn new(edges: Vec<(u32, u32)>) -> Self {
         todo!()
     }
 }
@@ -36,7 +36,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn directedgraph_new_builds_edge_map() {
+        let graph = DirectedGraph::new(vec![(1, 2), (2, 3), (3, 1), (3, 4)]);
+        assert_eq!(vec![2], graph.edges[&1]);
+        assert_eq!(vec![1, 4], graph.edges[&3]);
     }
 }
