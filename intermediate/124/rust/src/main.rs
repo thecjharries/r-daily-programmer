@@ -31,7 +31,20 @@ impl DirectedGraph {
     }
 
     fn find_a_cycle(&self, current_cycle: Vec<u32>) -> Option<Vec<u32>> {
-        todo!()
+        let last_node = *current_cycle.last().unwrap();
+        if let Some(next_nodes) = self.edges.get(&last_node) {
+            for next_node in next_nodes {
+                if current_cycle.contains(next_node) {
+                    return Some(current_cycle);
+                }
+                let mut new_cycle = current_cycle.clone();
+                new_cycle.push(*next_node);
+                if let Some(cycle) = self.find_a_cycle(new_cycle) {
+                    return Some(cycle);
+                }
+            }
+        }
+        None
     }
 }
 
@@ -55,8 +68,8 @@ mod tests {
     #[test]
     fn directedgraph_find_a_cycle_finds_cycle() {
         let graph = DirectedGraph::new(vec![(1, 2), (2, 3), (3, 1), (3, 4)]);
-        assert_eq!(vec![1, 2, 3], graph.find_a_cycle(vec![]).unwrap());
+        assert_eq!(vec![1, 2, 3], graph.find_a_cycle(vec![1]).unwrap());
         let graph = DirectedGraph::new(vec![(1, 2), (2, 3), (3, 4)]);
-        assert_eq!(None, graph.find_a_cycle(vec![]));
+        assert_eq!(None, graph.find_a_cycle(vec![1]));
     }
 }
