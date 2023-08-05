@@ -20,8 +20,14 @@ struct DirectedGraph {
 }
 
 impl DirectedGraph {
-    fn new(edges: Vec<(u32, u32)>) -> Self {
-        todo!()
+    fn new(graph_edges: Vec<(u32, u32)>) -> Self {
+        let edges = graph_edges
+            .iter()
+            .fold(BTreeMap::new(), |mut acc, (from, to)| {
+                acc.entry(*from).or_insert_with(Vec::new).push(*to);
+                acc
+            });
+        Self { edges }
     }
 }
 
