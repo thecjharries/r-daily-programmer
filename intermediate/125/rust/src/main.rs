@@ -16,7 +16,7 @@ use std::collections::BTreeMap;
 
 #[derive(Debug, PartialEq)]
 struct Simulation {
-    registers: BTreeMap<u8, u8>,
+    registers: BTreeMap<u8, bool>,
     program_counter: usize,
 }
 
