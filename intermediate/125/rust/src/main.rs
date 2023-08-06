@@ -24,12 +24,31 @@ impl Simulation {
     fn new() -> Self {
         let mut registers = BTreeMap::new();
         for index in 0..32 {
-            registers.insert(index, 0);
+            registers.insert(index, false);
         }
         Self {
             registers,
             program_counter: 0,
         }
+    }
+
+    fn and(&mut self, a: u8, b: u8) {
+        self.registers
+            .insert(a, self.registers[&a] & self.registers[&b]);
+    }
+
+    fn or(&mut self, a: u8, b: u8) {
+        self.registers
+            .insert(a, self.registers[&a] | self.registers[&b]);
+    }
+
+    fn xor(&mut self, a: u8, b: u8) {
+        self.registers
+            .insert(a, self.registers[&a] ^ self.registers[&b]);
+    }
+
+    fn not(&mut self, a: u8) {
+        self.registers.insert(a, !self.registers[&a]);
     }
 }
 
@@ -48,6 +67,21 @@ mod tests {
         let simulation = Simulation::new();
         assert_eq!(32, simulation.registers.len());
         assert_eq!(0, simulation.program_counter);
-        assert_eq!(0, simulation.registers[&31]);
+        assert_eq!(false, simulation.registers[&31]);
+    }
+
+    #[test]
+    fn simulation_can_perform_binary_operations() {
+        let mut simulation = Simulation::new();
+        simulation.registers.insert(0, true);
+        simulation.registers.insert(1, false);
+        simulation.and(2, 0);
+        assert_eq!(false, simulation.registers[&2]);
+        simulation.or(2, 0);
+        assert_eq!(true, simulation.registers[&2]);
+        simulation.xor(2, 0);
+        assert_eq!(false, simulation.registers[&2]);
+        simulation.not(1);
+        assert_eq!(true, simulation.registers[&1]);
     }
 }
