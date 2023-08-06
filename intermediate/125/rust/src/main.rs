@@ -17,11 +17,20 @@ use rand_pcg::Pcg64;
 use std::collections::BTreeMap;
 
 #[derive(Debug, PartialEq)]
+enum SimulationState {
+    Created,
+    Running,
+    Halted,
+    Ended,
+}
+
+#[derive(Debug, PartialEq)]
 struct Simulation {
     registers: BTreeMap<u8, bool>,
     program_counter: usize,
     steps: usize,
     rng: Pcg64,
+    state: SimulationState,
 }
 
 impl Simulation {
@@ -35,10 +44,12 @@ impl Simulation {
             program_counter: 0,
             steps: 0,
             rng: Pcg64::seed_from_u64(0),
+            state: SimulationState::Created,
         }
     }
 
     fn and(&mut self, a: u8, b: u8) {
+        self.state = SimulationState::Running;
         self.registers
             .insert(a, self.registers[&a] & self.registers[&b]);
         self.program_counter += 1;
@@ -46,6 +57,7 @@ impl Simulation {
     }
 
     fn or(&mut self, a: u8, b: u8) {
+        self.state = SimulationState::Running;
         self.registers
             .insert(a, self.registers[&a] | self.registers[&b]);
         self.program_counter += 1;
@@ -53,6 +65,7 @@ impl Simulation {
     }
 
     fn xor(&mut self, a: u8, b: u8) {
+        self.state = SimulationState::Running;
         self.registers
             .insert(a, self.registers[&a] ^ self.registers[&b]);
         self.program_counter += 1;
@@ -60,35 +73,44 @@ impl Simulation {
     }
 
     fn not(&mut self, a: u8) {
+        self.state = SimulationState::Running;
         self.registers.insert(a, !self.registers[&a]);
         self.program_counter += 1;
         self.steps += 1;
     }
 
     fn set(&mut self, a: u8, value: u8) {
+        self.state = SimulationState::Running;
         self.registers.insert(a, 0 != value);
         self.program_counter += 1;
         self.steps += 1;
     }
 
     fn random(&mut self, a: u8) {
+        self.state = SimulationState::Running;
         self.registers.insert(a, self.rng.gen());
         self.program_counter += 1;
         self.steps += 1;
     }
 
     fn jump(&mut self, a: usize) {
+        self.state = SimulationState::Running;
         self.steps += 1;
         self.program_counter = a;
     }
 
     fn jz(&mut self, a: usize, b: u8) {
+        self.state = SimulationState::Running;
         self.steps += 1;
         if self.registers[&b] {
             self.program_counter += 1;
         } else {
             self.program_counter = a;
         }
+    }
+
+    fn halt(&mut self) {
+        self.state = SimulationState::Halted;
     }
 }
 
@@ -157,5 +179,12 @@ mod tests {
         simulation.registers.insert(0, false);
         simulation.jz(10, 0);
         assert_eq!(10, simulation.program_counter);
+    }
+
+    #[test]
+    fn simulation_halt() {
+        let mut simulation = Simulation::new();
+        simulation.halt();
+        assert_eq!(SimulationState::Halted, simulation.state);
     }
 }
