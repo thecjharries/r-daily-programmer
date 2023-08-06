@@ -20,6 +20,19 @@ struct Simulation {
     program_counter: usize,
 }
 
+impl Simulation {
+    fn new() -> Self {
+        let mut registers = BTreeMap::new();
+        for index in 0..32 {
+            registers.insert(index, 0);
+        }
+        Self {
+            registers,
+            program_counter: 0,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -31,7 +44,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn simulation_new() {
+        let simulation = Simulation::new();
+        assert_eq!(32, simulation.registers.len());
+        assert_eq!(0, simulation.program_counter);
+        assert_eq!(0, simulation.registers[&31]);
     }
 }
