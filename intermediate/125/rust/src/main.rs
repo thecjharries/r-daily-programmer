@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::SeedableRng;
+use rand_pcg::Pcg64;
 use std::collections::BTreeMap;
 
 #[derive(Debug, PartialEq)]
@@ -19,6 +21,7 @@ struct Simulation {
     registers: BTreeMap<u8, bool>,
     program_counter: usize,
     steps: usize,
+    rng: Pcg64,
 }
 
 impl Simulation {
@@ -31,40 +34,41 @@ impl Simulation {
             registers,
             program_counter: 0,
             steps: 0,
+            rng: Pcg64::seed_from_u64(0),
         }
     }
 
     fn and(&mut self, a: u8, b: u8) {
         self.registers
             .insert(a, self.registers[&a] & self.registers[&b]);
-        program_counter += 1;
-        steps += 1;
+        self.program_counter += 1;
+        self.steps += 1;
     }
 
     fn or(&mut self, a: u8, b: u8) {
         self.registers
             .insert(a, self.registers[&a] | self.registers[&b]);
-        program_counter += 1;
-        steps += 1;
+        self.program_counter += 1;
+        self.steps += 1;
     }
 
     fn xor(&mut self, a: u8, b: u8) {
         self.registers
             .insert(a, self.registers[&a] ^ self.registers[&b]);
-        program_counter += 1;
-        steps += 1;
+        self.program_counter += 1;
+        self.steps += 1;
     }
 
     fn not(&mut self, a: u8) {
         self.registers.insert(a, !self.registers[&a]);
-        program_counter += 1;
-        steps += 1;
+        self.program_counter += 1;
+        self.steps += 1;
     }
 
     fn set(&mut self, a: u8, value: u8) {
         self.registers.insert(a, 0 != value);
-        program_counter += 1;
-        steps += 1;
+        self.program_counter += 1;
+        self.steps += 1;
     }
 }
 
