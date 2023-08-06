@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use rand::SeedableRng;
+use rand::{Rng, SeedableRng};
 use rand_pcg::Pcg64;
 use std::collections::BTreeMap;
 
@@ -70,6 +70,12 @@ impl Simulation {
         self.program_counter += 1;
         self.steps += 1;
     }
+
+    fn random(&mut self, a: u8) {
+        self.registers.insert(a, self.rng.gen());
+        self.program_counter += 1;
+        self.steps += 1;
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -112,5 +118,12 @@ mod tests {
         assert_eq!(true, simulation.registers[&0]);
         simulation.set(0, 0);
         assert_eq!(false, simulation.registers[&0]);
+    }
+
+    #[test]
+    fn simulation_random() {
+        let mut simulation = Simulation::new();
+        simulation.random(0);
+        assert_eq!(true, simulation.registers[&0]);
     }
 }
