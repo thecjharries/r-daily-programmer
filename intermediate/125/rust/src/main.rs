@@ -76,6 +76,20 @@ impl Simulation {
         self.program_counter += 1;
         self.steps += 1;
     }
+
+    fn jump(&mut self, a: usize) {
+        self.steps += 1;
+        self.program_counter = a;
+    }
+
+    fn jz(&mut self, a: usize, b: u8) {
+        self.steps += 1;
+        if self.registers[&b] {
+            self.program_counter += 1;
+        } else {
+            self.program_counter = a;
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -125,5 +139,23 @@ mod tests {
         let mut simulation = Simulation::new();
         simulation.random(0);
         assert_eq!(true, simulation.registers[&0]);
+    }
+
+    #[test]
+    fn simulation_jump() {
+        let mut simulation = Simulation::new();
+        simulation.jump(10);
+        assert_eq!(10, simulation.program_counter);
+    }
+
+    #[test]
+    fn simulation_jz() {
+        let mut simulation = Simulation::new();
+        simulation.registers.insert(0, true);
+        simulation.jz(10, 0);
+        assert_eq!(1, simulation.program_counter);
+        simulation.registers.insert(0, false);
+        simulation.jz(10, 0);
+        assert_eq!(10, simulation.program_counter);
     }
 }
