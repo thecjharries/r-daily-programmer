@@ -25,12 +25,26 @@ enum SimulationState {
 }
 
 #[derive(Debug, PartialEq)]
+enum Instruction {
+    And(u8, u8),
+    Or(u8, u8),
+    Xor(u8, u8),
+    Not(u8),
+    Set(u8, u8),
+    Random(u8),
+    Jump(usize),
+    Jz(usize, u8),
+    Halt,
+}
+
+#[derive(Debug, PartialEq)]
 struct Simulation {
     registers: BTreeMap<u8, bool>,
     program_counter: usize,
     steps: usize,
     rng: Pcg64,
     state: SimulationState,
+    instructions: Vec<Instruction>,
 }
 
 impl Simulation {
@@ -45,6 +59,13 @@ impl Simulation {
             steps: 0,
             rng: Pcg64::seed_from_u64(0),
             state: SimulationState::Created,
+            instructions: Vec::new(),
+        }
+    }
+
+    fn check_program_end(&mut self) {
+        if self.program_counter >= self.instructions.len() {
+            self.state = SimulationState::Ended;
         }
     }
 
@@ -54,6 +75,7 @@ impl Simulation {
             .insert(a, self.registers[&a] & self.registers[&b]);
         self.program_counter += 1;
         self.steps += 1;
+        self.check_program_end();
     }
 
     fn or(&mut self, a: u8, b: u8) {
@@ -62,6 +84,7 @@ impl Simulation {
             .insert(a, self.registers[&a] | self.registers[&b]);
         self.program_counter += 1;
         self.steps += 1;
+        self.check_program_end();
     }
 
     fn xor(&mut self, a: u8, b: u8) {
@@ -70,6 +93,7 @@ impl Simulation {
             .insert(a, self.registers[&a] ^ self.registers[&b]);
         self.program_counter += 1;
         self.steps += 1;
+        self.check_program_end();
     }
 
     fn not(&mut self, a: u8) {
@@ -77,6 +101,7 @@ impl Simulation {
         self.registers.insert(a, !self.registers[&a]);
         self.program_counter += 1;
         self.steps += 1;
+        self.check_program_end();
     }
 
     fn set(&mut self, a: u8, value: u8) {
@@ -84,6 +109,7 @@ impl Simulation {
         self.registers.insert(a, 0 != value);
         self.program_counter += 1;
         self.steps += 1;
+        self.check_program_end();
     }
 
     fn random(&mut self, a: u8) {
@@ -91,12 +117,14 @@ impl Simulation {
         self.registers.insert(a, self.rng.gen());
         self.program_counter += 1;
         self.steps += 1;
+        self.check_program_end();
     }
 
     fn jump(&mut self, a: usize) {
         self.state = SimulationState::Running;
         self.steps += 1;
         self.program_counter = a;
+        self.check_program_end();
     }
 
     fn jz(&mut self, a: usize, b: u8) {
@@ -107,6 +135,7 @@ impl Simulation {
         } else {
             self.program_counter = a;
         }
+        self.check_program_end();
     }
 
     fn halt(&mut self) {
