@@ -50,6 +50,10 @@ impl Simulation {
     fn not(&mut self, a: u8) {
         self.registers.insert(a, !self.registers[&a]);
     }
+
+    fn set(&mut self, a: u8, value: u8) {
+        self.registers.insert(a, 0 != value);
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -83,5 +87,14 @@ mod tests {
         assert_eq!(false, simulation.registers[&2]);
         simulation.not(1);
         assert_eq!(true, simulation.registers[&1]);
+    }
+
+    #[test]
+    fn simulation_set() {
+        let mut simulation = Simulation::new();
+        simulation.set(0, 1);
+        assert_eq!(true, simulation.registers[&0]);
+        simulation.set(0, 0);
+        assert_eq!(false, simulation.registers[&0]);
     }
 }
