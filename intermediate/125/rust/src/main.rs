@@ -18,6 +18,7 @@ use std::collections::BTreeMap;
 struct Simulation {
     registers: BTreeMap<u8, bool>,
     program_counter: usize,
+    steps: usize,
 }
 
 impl Simulation {
@@ -29,30 +30,41 @@ impl Simulation {
         Self {
             registers,
             program_counter: 0,
+            steps: 0,
         }
     }
 
     fn and(&mut self, a: u8, b: u8) {
         self.registers
             .insert(a, self.registers[&a] & self.registers[&b]);
+        program_counter += 1;
+        steps += 1;
     }
 
     fn or(&mut self, a: u8, b: u8) {
         self.registers
             .insert(a, self.registers[&a] | self.registers[&b]);
+        program_counter += 1;
+        steps += 1;
     }
 
     fn xor(&mut self, a: u8, b: u8) {
         self.registers
             .insert(a, self.registers[&a] ^ self.registers[&b]);
+        program_counter += 1;
+        steps += 1;
     }
 
     fn not(&mut self, a: u8) {
         self.registers.insert(a, !self.registers[&a]);
+        program_counter += 1;
+        steps += 1;
     }
 
     fn set(&mut self, a: u8, value: u8) {
         self.registers.insert(a, 0 != value);
+        program_counter += 1;
+        steps += 1;
     }
 }
 
