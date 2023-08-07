@@ -27,7 +27,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_perfect_power() {
+        assert_eq!((17,1), find_perfect_power(17));
+        assert_eq!((2, 30), find_perfect_power(1073741824));
+        assert_eq!((5,2), find_perfect_power(25));
     }
 }
