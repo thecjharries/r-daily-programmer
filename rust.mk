@@ -1,5 +1,6 @@
 # Aliases for executables
 CARGO ?= cargo
+CODE ?= code
 GH ?= gh
 GIT ?= git
 SED ?= sed
@@ -59,6 +60,7 @@ bootstrap-feature-branch:
 	$(SED) -i 's/&REPLACE_ME&/$(DIFFICULTY)_$(NUMBER)/g' ./Cargo.toml
 	$(GIT) add ./Cargo.toml
 	$(GIT) commit -m 'Define Rust package'
+	$(CODE) --reuse-window ./src/main.rs
 
 # Convenience target for common commit
 # Commits a primary stub for testing
