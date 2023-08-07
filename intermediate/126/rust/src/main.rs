@@ -18,7 +18,17 @@ fn main() {
 }
 
 fn find_perfect_power(number: u32) -> (u32, u32) {
-    todo!()
+    let mut base = 2;
+    let mut result = u32::MAX;
+    while 2 < result {
+        let mut result_float = (number as f64).log(base as f64);
+        result = result_float.ceil() as u32;
+        if result_float.floor() == result_float {
+            return (base, result);
+        }
+        base += 1;
+    }
+    (number, 1)
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -28,8 +38,8 @@ mod tests {
 
     #[test]
     fn test_find_perfect_power() {
-        assert_eq!((17,1), find_perfect_power(17));
+        assert_eq!((17, 1), find_perfect_power(17));
         assert_eq!((2, 30), find_perfect_power(1073741824));
-        assert_eq!((5,2), find_perfect_power(25));
+        assert_eq!((5, 2), find_perfect_power(25));
     }
 }
