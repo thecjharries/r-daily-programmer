@@ -46,7 +46,24 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn parse_data_on_day_parses_count_of_forwards() {
+        let forwards = vec![
+            CallForwarding::new("0000", "0001", 1, 3),
+            CallForwarding::new("0001", "4964", 2, 1),
+            CallForwarding::new("4964", "0005", 2, 3),
+        ];
+        let (count, _) = parse_data_on_day(2, forwards);
+        assert_eq!(3, count);
+    }
+
+    #[test]
+    fn parse_data_on_day_parses_length_of_longest_chain() {
+        let forwards = vec![
+            CallForwarding::new("0000", "0001", 1, 3),
+            CallForwarding::new("0001", "4964", 2, 1),
+            CallForwarding::new("4964", "0005", 2, 3),
+        ];
+        let (_, length) = parse_data_on_day(2, forwards);
+        assert_eq!(3, length);
     }
 }
