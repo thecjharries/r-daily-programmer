@@ -25,6 +25,10 @@ fn main() {
     println!("rad");
 }
 
+fn parse_data_on_day(day: u32, forwards: Vec<CallForwarding>) -> (usize, usize) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
