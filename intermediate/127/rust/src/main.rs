@@ -46,7 +46,19 @@ fn parse_data_on_day(day: u32, forwards: Vec<CallForwarding>) -> (usize, usize) 
         })
         .map(|forward| (forward.number.as_str(), forward.forward_to.as_str()))
         .collect();
-    (forward_map.len(), 0)
+    let mut longest_length = 0;
+    for key in forward_map.keys() {
+        let mut current_length = 0;
+        let mut current_key = key;
+        while forward_map.contains_key(current_key) {
+            current_length += 1;
+            current_key = forward_map.get(current_key).unwrap();
+        }
+        if current_length > longest_length {
+            longest_length = current_length;
+        }
+    }
+    (forward_map.len(), longest_length)
 }
 
 #[cfg(not(tarpaulin_include))]
