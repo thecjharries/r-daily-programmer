@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
+struct CallForwarding {
+    number: String,
+    forward_to: String,
+    start_day: u32,
+    length: usize,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
