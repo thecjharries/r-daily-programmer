@@ -20,6 +20,17 @@ struct CallForwarding {
     length: usize,
 }
 
+impl CallForwarding {
+    fn new(number: &str, forward_to: &str, start_day: u32, length: usize) -> Self {
+        Self {
+            number: number.to_string(),
+            forward_to: forward_to.to_string(),
+            start_day,
+            length,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
