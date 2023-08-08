@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
 #[derive(Debug, PartialEq)]
 struct CallForwarding {
     number: String,
@@ -37,7 +39,14 @@ fn main() {
 }
 
 fn parse_data_on_day(day: u32, forwards: Vec<CallForwarding>) -> (usize, usize) {
-    todo!()
+    let forward_map: BTreeMap<&str, &str> = forwards
+        .iter()
+        .filter(|forward| {
+            forward.start_day <= day && forward.start_day + forward.length as u32 > day
+        })
+        .map(|forward| (forward.number.as_str(), forward.forward_to.as_str()))
+        .collect();
+    (forward_map.len(), 0)
 }
 
 #[cfg(not(tarpaulin_include))]
