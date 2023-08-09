@@ -48,6 +48,25 @@ impl Roads {
         }
         result
     }
+
+    fn fix_potholes(&mut self, direction: Direction, index: usize) {
+        match direction {
+            Direction::Row => {
+                for element in self.0[index].iter_mut() {
+                    if 0 == *element {
+                        *element = 1;
+                    }
+                }
+            }
+            Direction::Column => {
+                for column in 0..self.0.len() {
+                    if 0 == self.0[column][index] {
+                        self.0[column][index] = 1;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -95,5 +114,16 @@ mod tests {
         assert!(roads.find_most_potholes().is_none());
         let roads = Roads::new(vec![vec![0, 0], vec![0, 0]]);
         assert_eq!(Some((Direction::Row, 0)), roads.find_most_potholes());
+    }
+
+    #[test]
+    fn road_can_fix_potholes() {
+        let mut roads = Roads::new(vec![vec![0, 0], vec![0, 0]]);
+        roads.fix_potholes(Direction::Row, 0);
+        assert_eq!(vec![vec![1, 1], vec![0, 0]], roads.0);
+        roads.fix_potholes(Direction::Column, 1);
+        assert_eq!(vec![vec![1, 1], vec![0, 1]], roads.0);
+        roads.fix_potholes(Direction::Row, 0);
+        assert_eq!(vec![vec![1, 1], vec![0, 1]], roads.0);
     }
 }
