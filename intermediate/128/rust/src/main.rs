@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 enum Direction {
     Row,
     Column,
@@ -68,8 +68,13 @@ impl Roads {
         }
     }
 
-    fn minimal_pothole_fixing(&mut self) -> Vec<(Direction, usize)> {
-        todo!()
+    fn fix_all_potholes(&mut self) -> Vec<(Direction, usize)> {
+        let mut result = Vec::new();
+        while let Some((direction, index)) = self.find_most_potholes() {
+            self.fix_potholes(direction.clone(), index.clone());
+            result.push((direction, index));
+        }
+        result
     }
 }
 
@@ -129,5 +134,27 @@ mod tests {
         assert_eq!(vec![vec![1, 1], vec![0, 1]], roads.0);
         roads.fix_potholes(Direction::Row, 0);
         assert_eq!(vec![vec![1, 1], vec![0, 1]], roads.0);
+    }
+
+    #[test]
+    fn road_can_fix_all_potholes() {
+        let mut roads = Roads::new(vec![
+            vec![0, 1, 0, 1, 0],
+            vec![1, 0, 0, 0, 1],
+            vec![1, 1, 1, 1, 1],
+            vec![1, 0, 0, 0, 1],
+            vec![0, 1, 0, 1, 0],
+        ]);
+        assert_eq!(
+            //
+            vec![
+                (Direction::Column, 2),
+                (Direction::Row, 0),
+                (Direction::Row, 1),
+                (Direction::Row, 3),
+                (Direction::Row, 4)
+            ],
+            roads.fix_all_potholes()
+        )
     }
 }
