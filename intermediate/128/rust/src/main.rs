@@ -68,6 +68,10 @@ impl Roads {
         }
     }
 
+    // This greedy solution is not optimal. Finding the optimal solution
+    // requires walking, essentially, all possible paths. That's more than I want
+    // to do right now.
+    // There's also some graph theory that would probably help us.
     fn fix_all_potholes(&mut self) -> Vec<(Direction, usize)> {
         let mut result = Vec::new();
         while let Some((direction, index)) = self.find_most_potholes() {
