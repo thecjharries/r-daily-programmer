@@ -67,6 +67,10 @@ impl Roads {
             }
         }
     }
+
+    fn minimal_pothole_fixing(&mut self) -> Vec<(Direction, usize)> {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
