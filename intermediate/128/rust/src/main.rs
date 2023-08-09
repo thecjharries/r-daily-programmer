@@ -12,8 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 struct Roads(Vec<Vec<u8>>);
+
+impl Roads {
+    fn new(roads: Vec<Vec<u8>>) -> Self {
+        Self(roads)
+    }
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -26,7 +32,23 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn road_new_builds_a_new_struct() {
+        let roads = Roads::new(vec![
+            vec![0, 1, 0, 1, 0],
+            vec![1, 0, 0, 0, 1],
+            vec![1, 1, 1, 1, 1],
+            vec![1, 0, 0, 0, 1],
+            vec![0, 1, 0, 1, 0],
+        ]);
+        assert_eq!(
+            roads,
+            Roads(vec![
+                vec![0, 1, 0, 1, 0],
+                vec![1, 0, 0, 0, 1],
+                vec![1, 1, 1, 1, 1],
+                vec![1, 0, 0, 0, 1],
+                vec![0, 1, 0, 1, 0],
+            ])
+        );
     }
 }
