@@ -15,6 +15,12 @@
 #[derive(Debug, PartialEq, Clone)]
 struct NRealNumber(Vec<f64>);
 
+impl NRealNumber {
+    fn new(number: Vec<f64>) -> Self {
+        Self(number)
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -26,7 +32,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn nrealnumber_new_creates_a_new_vec() {
+        assert_eq!(
+            NRealNumber(vec![1.0, 2.0, 3.0]),
+            NRealNumber::new(vec![1.0, 2.0, 3.0])
+        );
     }
 }
