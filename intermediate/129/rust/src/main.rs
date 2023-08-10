@@ -28,6 +28,17 @@ impl NRealNumber {
             .sum::<f64>()
             .sqrt()
     }
+
+    fn normalize(&self) -> Self {
+        let length = self.length();
+        Self::new(
+            self.0
+                .clone()
+                .iter()
+                .map(|number| number / length)
+                .collect(),
+        )
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -51,5 +62,13 @@ mod tests {
     #[test]
     fn nrealnumber_length_gives_euclidean_length() {
         assert_eq!(5.0, NRealNumber::new(vec![3.0, 4.0]).length());
+    }
+
+    #[test]
+    fn nrealnumber_normalize_gives_unit_vector() {
+        assert_eq!(
+            NRealNumber::new(vec![0.6, 0.8]),
+            NRealNumber::new(vec![3.0, 4.0]).normalize()
+        );
     }
 }
