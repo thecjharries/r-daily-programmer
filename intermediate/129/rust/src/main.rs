@@ -39,6 +39,15 @@ impl NRealNumber {
                 .collect(),
         )
     }
+
+    fn dot(&self, other: &Self) -> f64 {
+        self.0
+            .clone()
+            .iter()
+            .zip(other.0.clone().iter())
+            .map(|(a, b)| a * b)
+            .sum()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -69,6 +78,14 @@ mod tests {
         assert_eq!(
             NRealNumber::new(vec![0.6, 0.8]),
             NRealNumber::new(vec![3.0, 4.0]).normalize()
+        );
+    }
+
+    #[test]
+    fn nrealnumber_dot_gives_dot_product() {
+        assert_eq!(
+            32.0,
+            NRealNumber::new(vec![1.0, 2.0, 3.0]).dot(&NRealNumber::new(vec![4.0, 5.0, 6.0]))
         );
     }
 }
