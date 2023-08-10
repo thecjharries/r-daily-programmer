@@ -19,6 +19,15 @@ impl NRealNumber {
     fn new(number: Vec<f64>) -> Self {
         Self(number)
     }
+
+    fn length(&self) -> f64 {
+        self.0
+            .clone()
+            .iter_mut()
+            .map(|number| number.powi(2))
+            .sum::<f64>()
+            .sqrt()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -37,5 +46,10 @@ mod tests {
             NRealNumber(vec![1.0, 2.0, 3.0]),
             NRealNumber::new(vec![1.0, 2.0, 3.0])
         );
+    }
+
+    #[test]
+    fn nrealnumber_length_gives_euclidean_length() {
+        assert_eq!(5.0, NRealNumber::new(vec![3.0, 4.0]).length());
     }
 }
