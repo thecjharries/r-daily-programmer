@@ -26,6 +26,17 @@ struct FootTraffic {
     room: usize,
 }
 
+impl FootTraffic {
+    fn new(direction: Direction, timestamp: usize, person: usize, room: usize) -> Self {
+        Self {
+            direction,
+            timestamp,
+            person,
+            room,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -37,7 +48,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn foottraffic_can_create_new_instance() {
+        assert_eq!(
+            FootTraffic::new(Direction::In, 1, 2, 3),
+            FootTraffic {
+                direction: Direction::In,
+                timestamp: 1,
+                person: 2,
+                room: 3
+            }
+        )
     }
 }
