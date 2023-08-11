@@ -55,6 +55,24 @@ impl FootTraffic {
             Self::new(Direction::Out, timestamp_out, person, room),
         )
     }
+
+    fn random_traffic(
+        events: usize,
+        max_visitor: usize,
+        max_room: usize,
+        earliest: usize,
+        latest: usize,
+        rng: &mut Pcg64,
+    ) -> Vec<Self> {
+        let mut traffic = Vec::with_capacity(events);
+        for _ in 0..events {
+            let (visitor_in, visitor_out) =
+                Self::random_visitor(max_visitor, max_room, earliest, latest, rng);
+            traffic.push(visitor_in);
+            traffic.push(visitor_out);
+        }
+        traffic
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -89,5 +107,11 @@ mod tests {
         assert_eq!(visitor_in.room, visitor_out.room,);
         assert_eq!(visitor_in.person, visitor_out.person,);
         assert!(visitor_in.timestamp < visitor_out.timestamp);
+    }
+
+    #[test]
+    fn foottraffic_random_traffic_builds_full_list() {
+        let traffic = FootTraffic::random_traffic(10, 10, 10, 0, 100, &mut Pcg64::seed_from_u64(0));
+        assert_eq!(20, traffic.len());
     }
 }
