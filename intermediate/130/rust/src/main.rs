@@ -18,6 +18,14 @@ enum Direction {
     Out,
 }
 
+#[derive(Debug, PartialEq, Clone)]
+struct FootTraffic {
+    direction: Direction,
+    timestamp: usize,
+    person: usize,
+    room: usize,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
