@@ -72,4 +72,15 @@ mod tests {
             }
         )
     }
+
+    #[test]
+    fn foottraffic_random_visitor_creates_a_random_instance() {
+        let (visitor_in, visitor_out) =
+            FootTraffic::random_visitor(10, 10, 0, 100, Pcg64::seed_from_u64(0));
+        assert_eq!(Direction::In, visitor_in.direction,);
+        assert_eq!(Direction::Out, visitor_out.direction,);
+        assert_eq!(visitor_in.room, visitor_out.room,);
+        assert_eq!(visitor_in.person, visitor_out.person,);
+        assert!(visitor_in.timestamp < visitor_out.timestamp);
+    }
 }
