@@ -15,7 +15,7 @@
 use rand::{Rng, SeedableRng};
 use rand_pcg::Pcg64;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 enum Direction {
     In,
     Out,
@@ -44,9 +44,16 @@ impl FootTraffic {
         max_room: usize,
         earliest: usize,
         latest: usize,
-        rng: Pcg64,
+        rng: &mut Pcg64,
     ) -> (Self, Self) {
-        todo!()
+        let person = rng.gen_range(0..=max_visitor);
+        let room = rng.gen_range(0..=max_room);
+        let timestamp_in = rng.gen_range(earliest..latest);
+        let timestamp_out = rng.gen_range(timestamp_in..=latest);
+        (
+            Self::new(Direction::In, timestamp_in, person, room),
+            Self::new(Direction::Out, timestamp_out, person, room),
+        )
     }
 }
 
@@ -76,7 +83,7 @@ mod tests {
     #[test]
     fn foottraffic_random_visitor_creates_a_random_instance() {
         let (visitor_in, visitor_out) =
-            FootTraffic::random_visitor(10, 10, 0, 100, Pcg64::seed_from_u64(0));
+            FootTraffic::random_visitor(10, 10, 0, 100, &mut Pcg64::seed_from_u64(0));
         assert_eq!(Direction::In, visitor_in.direction,);
         assert_eq!(Direction::Out, visitor_out.direction,);
         assert_eq!(visitor_in.room, visitor_out.room,);
