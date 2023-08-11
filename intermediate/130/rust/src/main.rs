@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use rand::{Rng, SeedableRng};
+use rand_pcg::Pcg64;
+
 #[derive(Debug, PartialEq)]
 enum Direction {
     In,
@@ -34,6 +37,16 @@ impl FootTraffic {
             person,
             room,
         }
+    }
+
+    fn random_visitor(
+        max_visitor: usize,
+        max_room: usize,
+        earliest: usize,
+        latest: usize,
+        rng: Pcg64,
+    ) -> (Self, Self) {
+        todo!()
     }
 }
 
