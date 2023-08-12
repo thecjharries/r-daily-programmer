@@ -38,6 +38,22 @@ impl Grid {
             cells,
         }
     }
+
+    fn collide(&self, start_x: f64, start_y: f64, radians: f64) -> (f64, f64) {
+        let mut x = start_x;
+        let mut y = start_y;
+        loop {
+            x += radians.cos() * 0.01;
+            y -= radians.sin() * 0.01;
+            if x < 0.0 || x > self.width as f64 || y < 0.0 || y > self.height as f64 {
+                break;
+            }
+            if !self.cells[y as usize][x as usize] {
+                break;
+            }
+        }
+        (x, y)
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -81,5 +97,24 @@ xxxxxxxxxx",
             ],
             grid.cells
         );
+    }
+
+    #[test]
+    fn collide_hits_walls() {
+        let grid = Grid::new(
+            "xxxxxxxxxx
+x  x x   x
+x  x x   x
+x    x xxx
+xxxx     x
+x  x     x
+x        x
+x  x     x
+x  x    xx
+xxxxxxxxxx",
+        );
+        let (x, y) = grid.collide(6.5, 6.5, std::f64::consts::PI / 2.0);
+        assert_eq!(6.5, x);
+        assert_eq!(0.99, (y * 100.0).round() / 100.0);
     }
 }
