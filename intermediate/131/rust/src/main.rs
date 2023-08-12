@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug,PartialEq)]
+struct Grid {
+    width: usize,
+    height: usize,
+    cells: Vec<Vec<bool>>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
