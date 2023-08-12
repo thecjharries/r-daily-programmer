@@ -20,8 +20,23 @@ struct Grid {
 }
 
 impl Grid {
-    fn new(cells: &str) -> Self {
-        todo!()
+    fn new(raw_cells: &str) -> Self {
+        let mut cells: Vec<Vec<bool>> = Vec::new();
+        for line in raw_cells.lines() {
+            cells.push(
+                line.chars()
+                    .map(|character| match character {
+                        ' ' => true,
+                        _ => false,
+                    })
+                    .collect(),
+            );
+        }
+        Self {
+            width: cells[0].len(),
+            height: cells.len(),
+            cells,
+        }
     }
 }
 
