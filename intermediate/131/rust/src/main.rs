@@ -12,11 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug,PartialEq)]
+#[derive(Debug, PartialEq)]
 struct Grid {
     width: usize,
     height: usize,
     cells: Vec<Vec<bool>>,
+}
+
+impl Grid {
+    fn new(cells: &str) -> Self {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
