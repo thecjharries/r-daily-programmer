@@ -37,6 +37,34 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        let grid = Grid::new(
+            "xxxxxxxxxx
+x  x x   x
+x  x x   x
+x    x xxx
+xxxx     x
+x  x     x
+x        x
+x  x     x
+x  x    xx
+xxxxxxxxxx",
+        );
+        assert_eq!(10, grid.width);
+        assert_eq!(10, grid.height);
+        assert_eq!(
+            vec![
+                vec![false, false, false, false, false, false, false, false, false, false],
+                vec![false, true, true, false, true, false, true, true, true, false],
+                vec![false, true, true, false, true, false, true, true, true, false],
+                vec![false, true, true, true, true, false, true, false, false, false],
+                vec![false, false, false, false, true, true, true, true, true, false],
+                vec![false, true, true, false, true, true, true, true, true, false],
+                vec![false, true, true, true, true, true, true, true, true, false],
+                vec![false, true, true, false, true, true, true, true, true, false],
+                vec![false, true, true, false, true, true, true, true, false, false],
+                vec![false, false, false, false, false, false, false, false, false, false]
+            ],
+            grid.cells
+        );
     }
 }
