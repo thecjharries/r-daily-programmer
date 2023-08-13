@@ -19,23 +19,24 @@ enum TinyInput {
 }
 
 #[derive(Debug, PartialEq)]
+#[repr(u8)]
 enum TinyInstructions {
-    And = 0x00,
-    Or = 0x02,
-    Xor = 0x04,
-    Not = 0x06,
-    Mov = 0x07,
-    Random = 0x09,
-    Add = 0x0a,
-    Sub = 0x0c,
-    Jump = 0x0e,
-    Jz = 0x10,
-    Jeq = 0x14,
-    Jls = 0x18,
-    Jgt = 0x1c,
+    And(TinyInput, TinyInput) = 0x00,
+    Or(TinyInput, TinyInput) = 0x02,
+    Xor(TinyInput, TinyInput) = 0x04,
+    Not(TinyInput) = 0x06,
+    Mov(TinyInput, TinyInput) = 0x07,
+    Random(TinyInput) = 0x09,
+    Add(TinyInput, TinyInput) = 0x0a,
+    Sub(TinyInput, TinyInput) = 0x0c,
+    Jump(TinyInput) = 0x0e,
+    Jz(TinyInput, TinyInput) = 0x10,
+    Jeq(TinyInput, TinyInput, TinyInput) = 0x14,
+    Jls(TinyInput, TinyInput, TinyInput) = 0x18,
+    Jgt(TinyInput, TinyInput, TinyInput) = 0x1c,
     Halt = 0xff,
     Aprint = 0x20,
-    Dprint = 0x21,
+    Dprint(TinyInput) = 0x21,
 }
 
 #[cfg(not(tarpaulin_include))]
