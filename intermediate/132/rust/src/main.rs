@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #[derive(Debug, PartialEq)]
+#[repr(u8)]
 enum TinyInput {
     Register(u8),
     Value(u8),
@@ -23,6 +24,15 @@ impl TinyInput {
         match input.chars().next().unwrap() {
             '[' => Self::Register(input[1..input.len() - 1].parse::<u8>().unwrap()),
             _ => Self::Value(input.parse::<u8>().unwrap()),
+        }
+    }
+}
+
+impl std::fmt::Display for TinyInput {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::Register(value) => write!(f, "{:#04x}", value),
+            Self::Value(value) => write!(f, "{:#04x}", value),
         }
     }
 }
@@ -139,6 +149,12 @@ mod tests {
         assert_eq!(TinyInput::Value(5), TinyInput::new("5"));
         assert_eq!(TinyInput::Value(6), TinyInput::new("6"));
         assert_eq!(TinyInput::Value(70), TinyInput::new("70"));
+    }
+
+    #[test]
+    fn tinyinput_prints_as_hex() {
+        assert_eq!(format!("{}", TinyInput::Register(0)), "0x00");
+        assert_eq!(format!("{}", TinyInput::Value(0)), "0x00");
     }
 
     #[test]
