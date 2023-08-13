@@ -118,6 +118,8 @@ impl TinyInstructions {
 }
 
 impl std::fmt::Display for TinyInstructions {
+    // Note I don't take into account any of the different instruction values
+    // For a complete solution I'd need to check the value types
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Self::And(left, right) => write!(f, "0x00 {} {}", left, right),
