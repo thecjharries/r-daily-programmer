@@ -18,6 +18,15 @@ enum TinyInput {
     Value(u8),
 }
 
+impl TinyInput {
+    fn new(input: &str) -> Self {
+        match input.chars().next().unwrap() {
+            '[' => Self::Register(input[1..input.len() - 1].parse::<u8>().unwrap()),
+            _ => Self::Value(input.parse::<u8>().unwrap()),
+        }
+    }
+}
+
 #[derive(Debug, PartialEq)]
 #[repr(u8)]
 enum TinyInstructions {
@@ -50,7 +59,26 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn tinyinput_creates_registers() {
+        assert_eq!(TinyInput::Register(0), TinyInput::new("[0]"));
+        assert_eq!(TinyInput::Register(1), TinyInput::new("[1]"));
+        assert_eq!(TinyInput::Register(2), TinyInput::new("[2]"));
+        assert_eq!(TinyInput::Register(3), TinyInput::new("[3]"));
+        assert_eq!(TinyInput::Register(4), TinyInput::new("[4]"));
+        assert_eq!(TinyInput::Register(5), TinyInput::new("[5]"));
+        assert_eq!(TinyInput::Register(6), TinyInput::new("[6]"));
+        assert_eq!(TinyInput::Register(70), TinyInput::new("[70]"));
+    }
+
+    #[test]
+    fn tinyinput_creates_values() {
+        assert_eq!(TinyInput::Value(0), TinyInput::new("0"));
+        assert_eq!(TinyInput::Value(1), TinyInput::new("1"));
+        assert_eq!(TinyInput::Value(2), TinyInput::new("2"));
+        assert_eq!(TinyInput::Value(3), TinyInput::new("3"));
+        assert_eq!(TinyInput::Value(4), TinyInput::new("4"));
+        assert_eq!(TinyInput::Value(5), TinyInput::new("5"));
+        assert_eq!(TinyInput::Value(6), TinyInput::new("6"));
+        assert_eq!(TinyInput::Value(70), TinyInput::new("70"));
     }
 }
