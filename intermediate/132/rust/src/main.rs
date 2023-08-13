@@ -14,22 +14,22 @@
 
 #[derive(Debug, PartialEq)]
 enum TinyInstructions {
-    And,
-    Or,
-    Xor,
-    Not,
-    Mov,
-    Random,
-    Add,
-    Sub,
-    Jump,
-    Jz,
-    Jeq,
-    Jls,
-    Jgt,
-    Halt,
-    Aprint,
-    Dprint,
+    And = 0x00,
+    Or = 0x02,
+    Xor = 0x04,
+    Not = 0x06,
+    Mov = 0x07,
+    Random = 0x09,
+    Add = 0x0a,
+    Sub = 0x0c,
+    Jump = 0x0e,
+    Jz = 0x10,
+    Jeq = 0x14,
+    Jls = 0x18,
+    Jgt = 0x1c,
+    Halt = 0xff,
+    Aprint = 0x20,
+    Dprint = 0x21,
 }
 
 #[cfg(not(tarpaulin_include))]
