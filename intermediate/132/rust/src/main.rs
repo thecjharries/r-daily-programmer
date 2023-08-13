@@ -13,6 +13,12 @@
 // limitations under the License.
 
 #[derive(Debug, PartialEq)]
+enum TinyInput {
+    Register(u8),
+    Value(u8),
+}
+
+#[derive(Debug, PartialEq)]
 enum TinyInstructions {
     And = 0x00,
     Or = 0x02,
