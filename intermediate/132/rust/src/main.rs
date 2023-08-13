@@ -12,6 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
+enum TinyInstructions {
+    And,
+    Or,
+    Xor,
+    Not,
+    Mov,
+    Random,
+    Add,
+    Sub,
+    Jump,
+    Jz,
+    Jeq,
+    Jls,
+    Jgt,
+    Halt,
+    Aprint,
+    Dprint,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
