@@ -48,6 +48,65 @@ enum TinyInstructions {
     Dprint(TinyInput) = 0x21,
 }
 
+impl TinyInstructions {
+    fn new(input: &str) -> Self {
+        let binding = input.to_lowercase();
+        let mut split = binding.split_whitespace();
+        match split.next().unwrap() {
+            "and" => Self::And(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "or" => Self::Or(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "xor" => Self::Xor(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "not" => Self::Not(TinyInput::new(split.next().unwrap())),
+            "mov" => Self::Mov(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "random" => Self::Random(TinyInput::new(split.next().unwrap())),
+            "add" => Self::Add(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "sub" => Self::Sub(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "jump" => Self::Jump(TinyInput::new(split.next().unwrap())),
+            "jz" => Self::Jz(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "jeq" => Self::Jeq(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "jls" => Self::Jls(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "jgt" => Self::Jgt(
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+                TinyInput::new(split.next().unwrap()),
+            ),
+            "halt" => Self::Halt,
+            "aprint" => Self::Aprint,
+            "dprint" => Self::Dprint(TinyInput::new(split.next().unwrap())),
+            _ => panic!("Invalid instruction"),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -80,5 +139,85 @@ mod tests {
         assert_eq!(TinyInput::Value(5), TinyInput::new("5"));
         assert_eq!(TinyInput::Value(6), TinyInput::new("6"));
         assert_eq!(TinyInput::Value(70), TinyInput::new("70"));
+    }
+
+    #[test]
+    fn tinyinstructions_parses_all_instructions() {
+        assert_eq!(
+            TinyInstructions::And(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("and [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Or(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("or [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Xor(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("xor [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Not(TinyInput::Register(0)),
+            TinyInstructions::new("not [0]")
+        );
+        assert_eq!(
+            TinyInstructions::Mov(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("mov [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Random(TinyInput::Register(0)),
+            TinyInstructions::new("random [0]")
+        );
+        assert_eq!(
+            TinyInstructions::Add(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("add [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Sub(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("sub [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Jump(TinyInput::Register(0)),
+            TinyInstructions::new("jump [0]")
+        );
+        assert_eq!(
+            TinyInstructions::Jz(TinyInput::Register(0), TinyInput::Value(1)),
+            TinyInstructions::new("jz [0] 1")
+        );
+        assert_eq!(
+            TinyInstructions::Jeq(
+                TinyInput::Register(0),
+                TinyInput::Value(1),
+                TinyInput::Value(2)
+            ),
+            TinyInstructions::new("jeq [0] 1 2")
+        );
+        assert_eq!(
+            TinyInstructions::Jls(
+                TinyInput::Register(0),
+                TinyInput::Value(1),
+                TinyInput::Value(2)
+            ),
+            TinyInstructions::new("jls [0] 1 2")
+        );
+        assert_eq!(
+            TinyInstructions::Jgt(
+                TinyInput::Register(0),
+                TinyInput::Value(1),
+                TinyInput::Value(2)
+            ),
+            TinyInstructions::new("jgt [0] 1 2")
+        );
+        assert_eq!(TinyInstructions::Halt, TinyInstructions::new("halt"));
+        assert_eq!(TinyInstructions::Aprint, TinyInstructions::new("aprint"));
+        assert_eq!(
+            TinyInstructions::Dprint(TinyInput::Register(0)),
+            TinyInstructions::new("dprint [0]")
+        );
+    }
+
+    #[test]
+    #[should_panic]
+    fn tinyinstructions_errors_with_unknown_instruction() {
+        TinyInstructions::new("unknown");
     }
 }
