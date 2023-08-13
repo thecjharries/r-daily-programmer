@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 #[repr(u8)]
 enum TinyInput {
     Register(u8),
@@ -37,7 +37,7 @@ impl std::fmt::Display for TinyInput {
     }
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Copy, Clone)]
 #[repr(u8)]
 enum TinyInstructions {
     And(TinyInput, TinyInput) = 0x00,
@@ -113,6 +113,29 @@ impl TinyInstructions {
             "aprint" => Self::Aprint,
             "dprint" => Self::Dprint(TinyInput::new(split.next().unwrap())),
             _ => panic!("Invalid instruction"),
+        }
+    }
+}
+
+impl std::fmt::Display for TinyInstructions {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Self::And(left, right) => write!(f, "0x00 {} {}", left, right),
+            Self::Or(left, right) => write!(f, "0x02 {} {}", left, right),
+            Self::Xor(left, right) => write!(f, "0x04 {} {}", left, right),
+            Self::Not(value) => write!(f, "0x06 {}", value),
+            Self::Mov(left, right) => write!(f, "0x07 {} {}", left, right),
+            Self::Random(value) => write!(f, "0x09 {}", value),
+            Self::Add(left, right) => write!(f, "0x0a {} {}", left, right),
+            Self::Sub(left, right) => write!(f, "0x0c {} {}", left, right),
+            Self::Jump(value) => write!(f, "0x0e {}", value),
+            Self::Jz(left, right) => write!(f, "0x10 {} {}", left, right),
+            Self::Jeq(left, middle, right) => write!(f, "0x14 {} {} {}", left, middle, right),
+            Self::Jls(left, middle, right) => write!(f, "0x18 {} {} {}", left, middle, right),
+            Self::Jgt(left, middle, right) => write!(f, "0x1c {} {} {}", left, middle, right),
+            Self::Halt => write!(f, "0xff"),
+            Self::Aprint => write!(f, "0x20"),
+            Self::Dprint(value) => write!(f, "0x21 {}", value),
         }
     }
 }
@@ -235,5 +258,109 @@ mod tests {
     #[should_panic]
     fn tinyinstructions_errors_with_unknown_instruction() {
         TinyInstructions::new("unknown");
+    }
+
+    #[test]
+    fn tinyinstructions_can_print_all_instructions() {
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::And(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x00 0x00 0x01"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Or(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x02 0x00 0x01"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Xor(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x04 0x00 0x01"
+        );
+        assert_eq!(
+            format!("{}", TinyInstructions::Not(TinyInput::Register(0))),
+            "0x06 0x00"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Mov(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x07 0x00 0x01"
+        );
+        assert_eq!(
+            format!("{}", TinyInstructions::Random(TinyInput::Register(0))),
+            "0x09 0x00"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Add(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x0a 0x00 0x01"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Sub(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x0c 0x00 0x01"
+        );
+        assert_eq!(
+            format!("{}", TinyInstructions::Jump(TinyInput::Register(0))),
+            "0x0e 0x00"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Jz(TinyInput::Register(0), TinyInput::Value(1))
+            ),
+            "0x10 0x00 0x01"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Jeq(
+                    TinyInput::Register(0),
+                    TinyInput::Value(1),
+                    TinyInput::Value(2)
+                )
+            ),
+            "0x14 0x00 0x01 0x02"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Jls(
+                    TinyInput::Register(0),
+                    TinyInput::Value(1),
+                    TinyInput::Value(2)
+                )
+            ),
+            "0x18 0x00 0x01 0x02"
+        );
+        assert_eq!(
+            format!(
+                "{}",
+                TinyInstructions::Jgt(
+                    TinyInput::Register(0),
+                    TinyInput::Value(1),
+                    TinyInput::Value(2)
+                )
+            ),
+            "0x1c 0x00 0x01 0x02"
+        );
+        assert_eq!(format!("{}", TinyInstructions::Halt), "0xff");
+        assert_eq!(format!("{}", TinyInstructions::Aprint), "0x20");
+        assert_eq!(
+            format!("{}", TinyInstructions::Dprint(TinyInput::Register(0))),
+            "0x21 0x00"
+        );
     }
 }
