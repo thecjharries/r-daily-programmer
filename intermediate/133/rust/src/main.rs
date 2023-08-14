@@ -20,6 +20,18 @@ enum Direction {
     Right,
 }
 
+impl Direction {
+    fn new(input: char) -> Option<Self> {
+        match input.to_ascii_uppercase() {
+            'U' => Some(Direction::Up),
+            'D' => Some(Direction::Down),
+            'L' => Some(Direction::Left),
+            'R' => Some(Direction::Right),
+            _ => None,
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -31,7 +43,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn direction_new_creates_all_possibilities() {
+        assert_eq!(Direction::new('U'), Some(Direction::Up));
+        assert_eq!(Direction::new('D'), Some(Direction::Down));
+        assert_eq!(Direction::new('L'), Some(Direction::Left));
+        assert_eq!(Direction::new('R'), Some(Direction::Right));
+        assert_eq!(Direction::new('u'), Some(Direction::Up));
+        assert_eq!(Direction::new('d'), Some(Direction::Down));
+        assert_eq!(Direction::new('l'), Some(Direction::Left));
+        assert_eq!(Direction::new('r'), Some(Direction::Right));
+        assert_eq!(Direction::new('a'), None);
+        assert_eq!(Direction::new('A'), None);
     }
 }
