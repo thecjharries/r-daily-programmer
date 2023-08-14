@@ -84,6 +84,23 @@ impl ElementGrid {
     }
 }
 
+impl std::fmt::Display for ElementGrid {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        let mut output = String::new();
+        for row in self.elements.iter() {
+            for element in row.iter() {
+                if let Some(element) = element {
+                    output.push_str(&format!("{}", element));
+                } else {
+                    output.push_str(" ");
+                }
+            }
+            output.push_str("\n");
+        }
+        write!(f, "{}", output)
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -169,6 +186,23 @@ mod tests {
                     vec![None, None, None, None, None],
                 ],
             }
+        );
+    }
+
+    #[test]
+    fn elementgrids_can_be_printed() {
+        let grid = ElementGrid::new(
+            5,
+            vec![
+                (0, 0, Element::new('A', 5, "udlr")),
+                (4, 0, Element::new('B', 5, "ud")),
+                (4, 2, Element::new('C', 2, "lr")),
+                (2, 3, Element::new('D', 3, "udlr")),
+            ],
+        );
+        assert_eq!(
+            "a   b\n     \n    c\n  d  \n     \n".to_string(),
+            format!("{}", grid)
         );
     }
 }
