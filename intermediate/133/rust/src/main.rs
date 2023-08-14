@@ -40,6 +40,21 @@ struct Element {
     reacted: bool,
 }
 
+impl Element {
+    fn new(letter: char, radius: usize, directions: &str) -> Self {
+        let directions = directions
+            .chars()
+            .filter_map(Direction::new)
+            .collect::<Vec<Direction>>();
+        Self {
+            letter,
+            radius,
+            directions,
+            reacted: false,
+        }
+    }
+}
+
 impl std::fmt::Display for Element {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         if self.reacted {
@@ -55,6 +70,19 @@ struct ElementGrid {
     starting_point: (usize, usize),
     elements: Vec<Vec<Option<Element>>>,
 }
+
+// impl ElementGrid {
+//     fn new(width: usize, height: usize, input: Vec<(usize, usize, Element)>) -> Self {
+//         let mut elements = vec![vec![None; width]; height];
+//         for (x, y, element) in input {
+//             elements[y][x] = Some(element);
+//         }
+//         Self {
+//             starting_point: (input[0].0, input[0].1),
+//             elements,
+//         }
+//     }
+// }
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -78,6 +106,20 @@ mod tests {
         assert_eq!(Direction::new('r'), Some(Direction::Right));
         assert_eq!(Direction::new('a'), None);
         assert_eq!(Direction::new('A'), None);
+    }
+
+    #[test]
+    fn elements_can_be_created() {
+        let element = Element::new('a', 1, "Ud");
+        assert_eq!(
+            element,
+            Element {
+                letter: 'a',
+                radius: 1,
+                directions: vec![Direction::Up, Direction::Down],
+                reacted: false,
+            }
+        );
     }
 
     #[test]
