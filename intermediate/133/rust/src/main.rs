@@ -82,6 +82,45 @@ impl ElementGrid {
             elements,
         }
     }
+
+    fn react(&mut self) -> Vec<String> {
+        let mut reactions = vec![format!("{}", self)];
+        let mut available_elements = vec![(self.starting_point.0, self.starting_point.1)];
+        let length = self.elements.len();
+        while 0 < available_elements.len() {
+            let (x, y) = available_elements.pop().unwrap();
+            if let Some(element) = self.elements[y][x].as_mut() {
+                if !element.reacted {
+                    println!("Element: {}", element);
+                    element.reacted = true;
+                    for direction in element.directions.iter() {
+                        let x_range = match direction {
+                            Direction::Left => x.saturating_sub(element.radius)..x,
+                            Direction::Right => {
+                                x + 1..x.saturating_add(element.radius + 1).min(length)
+                            }
+                            Direction::Up | Direction::Down => x..x + 1,
+                        };
+                        for x in x_range {
+                            available_elements.push((x, y));
+                        }
+                        let y_range = match direction {
+                            Direction::Up => y.saturating_sub(element.radius)..y,
+                            Direction::Down => {
+                                y + 1..y.saturating_add(element.radius + 1).min(length)
+                            }
+                            Direction::Left | Direction::Right => y..y + 1,
+                        };
+                        for y in y_range {
+                            available_elements.push((x, y));
+                        }
+                    }
+                    reactions.push(format!("{}", self));
+                }
+            }
+        }
+        reactions
+    }
 }
 
 impl std::fmt::Display for ElementGrid {
@@ -204,5 +243,27 @@ mod tests {
             "a   b\n     \n    c\n  d  \n     \n".to_string(),
             format!("{}", grid)
         );
+    }
+
+    #[test]
+    fn elementgrid_reactions_are_traced() {
+        let mut grid = ElementGrid::new(
+            5,
+            vec![
+                (0, 0, Element::new('A', 5, "udlr")),
+                (4, 0, Element::new('B', 5, "ud")),
+                (4, 2, Element::new('C', 2, "lr")),
+                (2, 3, Element::new('D', 3, "udlr")),
+            ],
+        );
+        assert_eq!(
+            vec![
+                "a   b\n     \n    c\n  d  \n     \n",
+                "X   b\n     \n    c\n  d  \n     \n",
+                "X   X\n     \n    c\n  d  \n     \n",
+                "X   X\n     \n    X\n  d  \n     \n"
+            ],
+            grid.react()
+        )
     }
 }
