@@ -50,6 +50,12 @@ impl std::fmt::Display for Element {
     }
 }
 
+#[derive(Debug, PartialEq, Clone)]
+struct ElementGrid {
+    starting_point: (usize, usize),
+    elements: Vec<Vec<Option<Element>>>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
