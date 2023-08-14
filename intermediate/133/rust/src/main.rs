@@ -32,12 +32,22 @@ impl Direction {
     }
 }
 
-#[derive(Debug, PartialEq, Copy, Clone)]
+#[derive(Debug, PartialEq, Clone)]
 struct Element {
     letter: char,
     radius: usize,
     directions: Vec<Direction>,
     reacted: bool,
+}
+
+impl std::fmt::Display for Element {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        if self.reacted {
+            write!(f, "X")
+        } else {
+            write!(f, "{}", self.letter.to_ascii_lowercase())
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -62,5 +72,23 @@ mod tests {
         assert_eq!(Direction::new('r'), Some(Direction::Right));
         assert_eq!(Direction::new('a'), None);
         assert_eq!(Direction::new('A'), None);
+    }
+
+    #[test]
+    fn elements_change_display_when_reacted() {
+        let element = Element {
+            letter: 'a',
+            radius: 1,
+            directions: vec![Direction::Up],
+            reacted: false,
+        };
+        assert_eq!(format!("{}", element), "a");
+        let element = Element {
+            letter: 'a',
+            radius: 1,
+            directions: vec![Direction::Up],
+            reacted: true,
+        };
+        assert_eq!(format!("{}", element), "X");
     }
 }
