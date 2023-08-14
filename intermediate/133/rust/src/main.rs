@@ -32,6 +32,14 @@ impl Direction {
     }
 }
 
+#[derive(Debug, PartialEq, Copy, Clone)]
+struct Element {
+    letter: char,
+    radius: usize,
+    directions: Vec<Direction>,
+    reacted: bool,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
