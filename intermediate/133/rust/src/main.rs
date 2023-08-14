@@ -71,18 +71,18 @@ struct ElementGrid {
     elements: Vec<Vec<Option<Element>>>,
 }
 
-// impl ElementGrid {
-//     fn new(width: usize, height: usize, input: Vec<(usize, usize, Element)>) -> Self {
-//         let mut elements = vec![vec![None; width]; height];
-//         for (x, y, element) in input {
-//             elements[y][x] = Some(element);
-//         }
-//         Self {
-//             starting_point: (input[0].0, input[0].1),
-//             elements,
-//         }
-//     }
-// }
+impl ElementGrid {
+    fn new(square_size: usize, input: Vec<(usize, usize, Element)>) -> Self {
+        let mut elements = vec![vec![None; square_size]; square_size];
+        for (x, y, element) in input.iter() {
+            elements[*y][*x] = Some(element.clone());
+        }
+        Self {
+            starting_point: (input[0].0, input[0].1),
+            elements,
+        }
+    }
+}
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -138,5 +138,37 @@ mod tests {
             reacted: true,
         };
         assert_eq!(format!("{}", element), "X");
+    }
+
+    #[test]
+    fn elementgrids_can_be_created() {
+        let grid = ElementGrid::new(
+            5,
+            vec![
+                (0, 0, Element::new('A', 5, "udlr")),
+                (4, 0, Element::new('B', 5, "ud")),
+                (4, 2, Element::new('C', 2, "lr")),
+                (2, 3, Element::new('D', 3, "udlr")),
+            ],
+        );
+        assert_eq!(
+            grid,
+            ElementGrid {
+                starting_point: (0, 0),
+                elements: vec![
+                    vec![
+                        Some(Element::new('A', 5, "udlr")),
+                        None,
+                        None,
+                        None,
+                        Some(Element::new('B', 5, "ud")),
+                    ],
+                    vec![None, None, None, None, None],
+                    vec![None, None, None, None, Some(Element::new('C', 2, "lr"))],
+                    vec![None, None, Some(Element::new('D', 3, "udlr")), None, None],
+                    vec![None, None, None, None, None],
+                ],
+            }
+        );
     }
 }
