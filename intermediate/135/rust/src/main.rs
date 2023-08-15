@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn limited_demorgan_processor(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
