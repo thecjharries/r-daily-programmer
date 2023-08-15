@@ -27,7 +27,13 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn limited_demorgan_processor_handles_limited_examples() {
+        assert_eq!("", limited_demorgan_processor(""));
+        assert_eq!("NOT a", limited_demorgan_processor("a"));
+        assert_eq!("NOT a", limited_demorgan_processor("NOT NOT a"));
+        assert_eq!("a", limited_demorgan_processor("NOT a"));
+        assert_eq!("NOT a OR NOT b", limited_demorgan_processor("a AND b"));
+        assert_eq!("NOT a AND NOT b", limited_demorgan_processor("a OR b"));
+        // assert_eq!("a AND b", limited_demorgan_processor("NOT (a OR b)"));
     }
 }
