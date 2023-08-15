@@ -18,7 +18,24 @@ fn main() {
 }
 
 fn limited_demorgan_processor(input: &str) -> String {
-    todo!()
+    let exploded = input.split_whitespace().collect::<Vec<&str>>();
+    let mut output = Vec::new();
+    let mut not_count = 0;
+    for word in exploded {
+        if "NOT" == word {
+            not_count += 1;
+        } else if "AND" == word {
+            output.push("OR");
+        } else if "OR" == word {
+            output.push("AND");
+        } else {
+            if 0 == not_count % 2 {
+                output.push("NOT");
+            }
+            output.push(word);
+        }
+    }
+    output.join(" ")
 }
 
 #[cfg(not(tarpaulin_include))]
