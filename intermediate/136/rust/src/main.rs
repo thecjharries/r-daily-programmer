@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn ranked_choice_vote(candidates: Vec<&str>, votes: Vec<Vec<usize>>) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
