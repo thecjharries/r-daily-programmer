@@ -18,7 +18,42 @@ fn main() {
 }
 
 fn ranked_choice_vote(candidates: Vec<&str>, votes: Vec<Vec<usize>>) -> String {
-    todo!()
+    let required_votes = (votes.len() as f32 / 2.0).ceil() as usize;
+    let mut candidate_votes = vec![0; candidates.len()];
+    for vote in votes.iter() {
+        candidate_votes[vote[0]] += 1;
+        if candidate_votes[vote[0]] >= required_votes {
+            return candidates[vote[0]].to_string();
+        }
+    }
+    let lowest_candidate = candidate_votes
+        .iter()
+        .enumerate()
+        .min_by_key(|(_, &votes)| votes)
+        .unwrap()
+        .0;
+    let mut lowest_candidates = vec![lowest_candidate];
+    while lowest_candidates.len() < candidates.len() - 1 {
+        candidate_votes = vec![0; candidates.len()];
+        for vote in votes.iter() {
+            let mut vote_index = 0;
+            while lowest_candidates.contains(&vote[vote_index]) {
+                vote_index += 1;
+            }
+            candidate_votes[vote[vote_index]] += 1;
+            if candidate_votes[vote[vote_index]] >= required_votes {
+                return candidates[vote[vote_index]].to_string();
+            }
+        }
+        let lowest_candidate = candidate_votes
+            .iter()
+            .enumerate()
+            .min_by_key(|(_, &votes)| votes)
+            .unwrap()
+            .0;
+        lowest_candidates.push(lowest_candidate);
+    }
+    unreachable!()
 }
 
 #[cfg(not(tarpaulin_include))]
