@@ -27,7 +27,28 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn ranked_choice_vote_determines_a_clear_winner() {
+        let candidates = vec!["A", "B", "C"];
+        let votes = vec![
+            vec![0, 1, 2],
+            vec![0, 1, 2],
+            vec![0, 1, 2],
+            vec![0, 1, 2],
+            vec![0, 1, 2],
+        ];
+        assert_eq!("A", ranked_choice_vote(candidates, votes));
+    }
+
+    #[test]
+    fn ranked_choice_vote_determines_round_two_winner() {
+        let candidates = vec!["Knuth", "Turing", "Church"];
+        let votes = vec![
+            vec![1, 0, 2],
+            vec![0, 1, 2],
+            vec![2, 1, 0],
+            vec![2, 1, 0],
+            vec![1, 2, 0],
+        ];
+        assert_eq!("Turing", ranked_choice_vote(candidates, votes));
     }
 }
