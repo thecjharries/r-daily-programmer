@@ -19,6 +19,16 @@ struct FoodItem {
     after: Vec<String>,
 }
 
+impl FoodItem {
+    fn new(name: &str) -> Self {
+        Self {
+            name: name.to_string(),
+            potential_index: 0,
+            after: Vec::new(),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -30,7 +40,15 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn fooditems_are_created_correctly() {
+        let food_item = FoodItem::new("foo");
+        assert_eq!(
+            FoodItem {
+                name: "foo".to_string(),
+                potential_index: 0,
+                after: Vec::new(),
+            },
+            food_item
+        );
     }
 }
