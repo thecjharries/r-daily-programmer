@@ -34,6 +34,10 @@ impl FoodItem {
     }
 }
 
+fn build_banquet(items: Vec<&str>, relationships: Vec<(&str, &str)>) -> Vec<String> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
