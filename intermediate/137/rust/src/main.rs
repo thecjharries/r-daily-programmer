@@ -27,6 +27,11 @@ impl FoodItem {
             after: Vec::new(),
         }
     }
+
+    fn add_after(&mut self, after: &str) {
+        self.potential_index += 1;
+        self.after.push(after.to_string());
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -47,6 +52,20 @@ mod tests {
                 name: "foo".to_string(),
                 potential_index: 0,
                 after: Vec::new(),
+            },
+            food_item
+        );
+    }
+
+    #[test]
+    fn fooditems_follow_others() {
+        let mut food_item = FoodItem::new("foo");
+        food_item.add_after("bar");
+        assert_eq!(
+            FoodItem {
+                name: "foo".to_string(),
+                potential_index: 1,
+                after: vec!["bar".to_string()],
             },
             food_item
         );
