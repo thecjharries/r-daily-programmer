@@ -74,4 +74,16 @@ mod tests {
             food_item
         );
     }
+
+    #[test]
+    fn builds_banquet_correctly() {
+        let items = vec!["salad", "turkey", "dessert"];
+        let relationships = vec![
+            ("salad", "dessert"),
+            ("turkey", "dessert"),
+            ("salad", "turkey"),
+        ];
+        let expected = vec!["salad", "turkey", "dessert"];
+        assert_eq!(expected, build_banquet(items, relationships));
+    }
 }
