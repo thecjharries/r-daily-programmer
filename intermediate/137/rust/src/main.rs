@@ -35,7 +35,48 @@ impl FoodItem {
 }
 
 fn build_banquet(items: Vec<&str>, relationships: Vec<(&str, &str)>) -> Vec<String> {
-    todo!()
+    let mut food_items: Vec<FoodItem> = items.iter().map(|item| FoodItem::new(item)).collect();
+    for (before, after) in relationships {
+        let before_index = food_items
+            .iter()
+            .position(|item| item.name == before)
+            .unwrap();
+        let after_index = food_items
+            .iter()
+            .position(|item| item.name == after)
+            .unwrap();
+        food_items[before_index].add_after(after);
+    }
+    let mut banquet = Vec::new();
+    while !food_items.is_empty() {
+        let minimum_possible_index = food_items
+            .iter()
+            .map(|item| item.potential_index)
+            .min()
+            .unwrap();
+        let possible_item_indices = food_items
+            .iter()
+            .enumerate()
+            .filter(|(_, item)| item.potential_index == minimum_possible_index)
+            .map(|(index, _)| index)
+            .collect::<Vec<usize>>();
+        for index in possible_item_indices {
+            let required_after = food_items[index].after.clone();
+            let mut allowed = true;
+            for after in required_after {
+                if banquet.iter().position(|item| item == &after).is_none() {
+                    allowed = false;
+                    break;
+                }
+            }
+            if allowed {
+                banquet.push(food_items.remove(index).name);
+                break;
+            }
+        }
+    }
+    banquet.reverse();
+    banquet
 }
 
 #[cfg(not(tarpaulin_include))]
