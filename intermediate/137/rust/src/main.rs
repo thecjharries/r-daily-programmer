@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#[derive(Debug, PartialEq)]
+struct FoodItem {
+    name: String,
+    potential_index: usize,
+    after: Vec<String>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
