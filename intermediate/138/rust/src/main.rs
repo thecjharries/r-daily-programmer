@@ -27,7 +27,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_find_total_circle_area() {
+        assert_eq!(5.0548, find_total_circle_area((-0.5, 0.0), (0.5, 0)));
+        assert_eq!(
+            2.0 * f32::consts::PI,
+            find_total_circle_area((0.0, 0.0), (5.0, 5.0))
+        );
     }
 }
