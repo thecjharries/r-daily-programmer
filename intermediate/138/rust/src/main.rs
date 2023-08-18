@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn find_total_circle_area(center1: (f32, f32), center2: (f32, f32)) -> f32 {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
