@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn find_total_circle_area(center1: (f32, f32), center2: (f32, f32)) -> f32 {
-    todo!()
+    let distance = ((center1.0 - center2.0).powi(2) + (center1.1 - center2.1).powi(2)).sqrt();
+    if 2.0 <= distance {
+        2.0 * std::f32::consts::PI
+    } else {
+        2.0 * std::f32::consts::PI - 2.0 * (distance / 2.0).acos()
+            + (distance / 2.0) * (4.0 - distance.powi(2)).sqrt()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
