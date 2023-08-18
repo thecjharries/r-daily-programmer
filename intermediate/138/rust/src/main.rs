@@ -28,9 +28,9 @@ mod tests {
 
     #[test]
     fn test_find_total_circle_area() {
-        assert_eq!(5.0548, find_total_circle_area((-0.5, 0.0), (0.5, 0)));
+        assert_eq!(5.054816, find_total_circle_area((-0.5, 0.0), (0.5, 0.0)));
         assert_eq!(
-            2.0 * f32::consts::PI,
+            2.0 * std::f32::consts::PI,
             find_total_circle_area((0.0, 0.0), (5.0, 5.0))
         );
     }
