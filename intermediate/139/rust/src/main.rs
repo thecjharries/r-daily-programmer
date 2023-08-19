@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn t9_to_letter(input: &str) -> Option<char> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
