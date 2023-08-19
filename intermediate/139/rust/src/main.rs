@@ -50,7 +50,14 @@ fn t9_to_letter(input: &str) -> Option<char> {
 }
 
 fn t9_to_word(input: &str) -> String {
-    todo!()
+    let mut result = String::new();
+    for chunk in input.split_whitespace() {
+        match t9_to_letter(chunk) {
+            Some(letter) => result.push(letter),
+            None => (),
+        }
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -114,7 +121,7 @@ mod tests {
 
     #[test]
     fn t9_to_word_converts_words() {
-        assert_eq!("cat", t9_to_word("222 2 88 1"));
+        assert_eq!("cat", t9_to_word("222 2 8 1"));
         assert_eq!("sold", t9_to_word("7777 666 555 3"));
     }
 }
