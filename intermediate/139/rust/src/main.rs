@@ -49,6 +49,10 @@ fn t9_to_letter(input: &str) -> Option<char> {
     }
 }
 
+fn t9_to_word(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
