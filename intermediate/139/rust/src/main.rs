@@ -18,7 +18,35 @@ fn main() {
 }
 
 fn t9_to_letter(input: &str) -> Option<char> {
-    todo!()
+    match input {
+        "2" => Some('a'),
+        "22" => Some('b'),
+        "222" => Some('c'),
+        "3" => Some('d'),
+        "33" => Some('e'),
+        "333" => Some('f'),
+        "4" => Some('g'),
+        "44" => Some('h'),
+        "444" => Some('i'),
+        "5" => Some('j'),
+        "55" => Some('k'),
+        "555" => Some('l'),
+        "6" => Some('m'),
+        "66" => Some('n'),
+        "666" => Some('o'),
+        "7" => Some('p'),
+        "77" => Some('q'),
+        "777" => Some('r'),
+        "7777" => Some('s'),
+        "8" => Some('t'),
+        "88" => Some('u'),
+        "888" => Some('v'),
+        "9" => Some('w'),
+        "99" => Some('x'),
+        "999" => Some('y'),
+        "9999" => Some('z'),
+        _ => None,
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
