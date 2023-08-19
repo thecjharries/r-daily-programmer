@@ -111,4 +111,10 @@ mod tests {
         assert_eq!(None, t9_to_letter("ccc"));
         assert_eq!(None, t9_to_letter("cccc"));
     }
+
+    #[test]
+    fn t9_to_word_converts_words() {
+        assert_eq!("cat", t9_to_word("222 2 88 1"));
+        assert_eq!("sold", t9_to_word("7777 666 555 3"));
+    }
 }
