@@ -40,6 +40,10 @@ fn floyd_marshall(adjacency: Vec<Vec<bool>>) -> Vec<Vec<usize>> {
     result
 }
 
+fn find_graph_radius(adjacency: Vec<Vec<bool>>) -> usize {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
