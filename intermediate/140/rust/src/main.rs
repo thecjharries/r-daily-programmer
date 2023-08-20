@@ -18,7 +18,26 @@ fn main() {
 }
 
 fn floyd_marshall(adjacency: Vec<Vec<bool>>) -> Vec<Vec<usize>> {
-    todo!()
+    let mut result = vec![vec![usize::MAX; adjacency.len()]; adjacency.len()];
+    for (index, row) in adjacency.iter().enumerate() {
+        for (inner_index, value) in row.iter().enumerate() {
+            if index == inner_index {
+                result[index][inner_index] = 0;
+            } else if *value {
+                result[index][inner_index] = 1;
+            }
+        }
+    }
+    for k in 0..adjacency.len() {
+        for i in 0..adjacency.len() {
+            for j in 0..adjacency.len() {
+                if result[i][k] != usize::MAX && result[k][j] != usize::MAX {
+                    result[i][j] = result[i][j].min(result[i][k] + result[k][j]);
+                }
+            }
+        }
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
