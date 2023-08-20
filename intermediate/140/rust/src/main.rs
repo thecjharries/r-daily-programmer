@@ -22,7 +22,9 @@ fn parse_adjacency_matrix(input: &str) -> Vec<Vec<bool>> {
     binding
         .split('\n')
         .map(|line| {
-            line.split_whitespace()
+            let binding = line.trim();
+            binding
+                .split_whitespace()
                 .map(|character| character == "1")
                 .collect()
         })
@@ -100,39 +102,46 @@ mod tests {
         ];
         assert_eq!(1, find_graph_radius(input));
         // prompt graph
-        let input = vec![
-            vec![
-                false, true, false, false, true, true, false, false, false, false,
-            ],
-            vec![
-                true, false, true, false, false, false, true, false, false, false,
-            ],
-            vec![
-                false, true, false, true, false, false, false, true, false, false,
-            ],
-            vec![
-                false, false, true, false, true, false, false, false, true, false,
-            ],
-            vec![
-                true, false, false, true, false, false, false, false, false, true,
-            ],
-            vec![
-                true, false, false, false, false, false, false, true, true, false,
-            ],
-            vec![
-                false, true, false, false, false, false, false, false, true, true,
-            ],
-            vec![
-                false, false, true, false, false, true, false, false, false, true,
-            ],
-            vec![
-                false, false, false, true, false, true, true, false, false, false,
-            ],
-            vec![
-                false, false, false, false, true, false, true, true, false, false,
-            ],
-        ];
+        let input = parse_adjacency_matrix(
+            "0 1 0 0 1 1 0 0 0 0
+        1 0 1 0 0 0 1 0 0 0
+        0 1 0 1 0 0 0 1 0 0
+        0 0 1 0 1 0 0 0 1 0
+        1 0 0 1 0 0 0 0 0 1
+        1 0 0 0 0 0 0 1 1 0
+        0 1 0 0 0 0 0 0 1 1
+        0 0 1 0 0 1 0 0 0 1
+        0 0 0 1 0 1 1 0 0 0
+        0 0 0 0 1 0 1 1 0 0",
+        );
         assert_eq!(2, find_graph_radius(input));
         // Nauru graph
+        let input = parse_adjacency_matrix(
+            "0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
+        1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
+        0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+        0 1 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
+        1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0
+        0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0
+        0 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0
+        0 0 0 0 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 0 0 0 0 0
+        0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 0 0
+        0 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0
+        0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1
+        0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0
+        1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
+        0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1
+        0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0",
+        );
+        assert_eq!(4, find_graph_radius(input));
     }
 }
