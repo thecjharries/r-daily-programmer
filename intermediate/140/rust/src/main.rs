@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn floyd_marshall(adjacency: Vec<Vec<bool>>) -> Vec<Vec<usize>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
