@@ -17,6 +17,18 @@ fn main() {
     println!("rad");
 }
 
+fn parse_adjacency_matrix(input: &str) -> Vec<Vec<bool>> {
+    let binding = input.trim();
+    binding
+        .split('\n')
+        .map(|line| {
+            line.split_whitespace()
+                .map(|character| character == "1")
+                .collect()
+        })
+        .collect()
+}
+
 fn floyd_marshall(adjacency: Vec<Vec<bool>>) -> Vec<Vec<usize>> {
     let mut result = vec![vec![usize::MAX; adjacency.len()]; adjacency.len()];
     for (index, row) in adjacency.iter().enumerate() {
@@ -50,6 +62,18 @@ mod tests {
     use super::*;
 
     #[test]
+    fn can_parse_adjacency_matrix() {
+        let input = "0 1 0 1\n1 0 1 0\n0 1 0 1\n1 0 1 0\n";
+        let output = vec![
+            vec![false, true, false, true],
+            vec![true, false, true, false],
+            vec![false, true, false, true],
+            vec![true, false, true, false],
+        ];
+        assert_eq!(output, parse_adjacency_matrix(input));
+    }
+
+    #[test]
     fn floyd_marshall_computes_distance() {
         let input = vec![
             vec![false, true, false, true],
@@ -64,5 +88,51 @@ mod tests {
             vec![1, 2, 1, 0],
         ];
         assert_eq!(output, floyd_marshall(input));
+    }
+
+    #[test]
+    fn find_graph_radius_finds_radius() {
+        let input = vec![
+            vec![false, true, false, true],
+            vec![true, false, true, false],
+            vec![false, true, false, true],
+            vec![true, false, true, false],
+        ];
+        assert_eq!(1, find_graph_radius(input));
+        // prompt graph
+        let input = vec![
+            vec![
+                false, true, false, false, true, true, false, false, false, false,
+            ],
+            vec![
+                true, false, true, false, false, false, true, false, false, false,
+            ],
+            vec![
+                false, true, false, true, false, false, false, true, false, false,
+            ],
+            vec![
+                false, false, true, false, true, false, false, false, true, false,
+            ],
+            vec![
+                true, false, false, true, false, false, false, false, false, true,
+            ],
+            vec![
+                true, false, false, false, false, false, false, true, true, false,
+            ],
+            vec![
+                false, true, false, false, false, false, false, false, true, true,
+            ],
+            vec![
+                false, false, true, false, false, true, false, false, false, true,
+            ],
+            vec![
+                false, false, false, true, false, true, true, false, false, false,
+            ],
+            vec![
+                false, false, false, false, true, false, true, true, false, false,
+            ],
+        ];
+        assert_eq!(2, find_graph_radius(input));
+        // Nauru graph
     }
 }
