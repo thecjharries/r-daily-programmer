@@ -27,7 +27,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn floyd_marshall_computes_distance() {
+        let input = vec![
+            vec![false, true, false, true],
+            vec![true, false, true, false],
+            vec![false, true, false, true],
+            vec![true, false, true, false],
+        ];
+        let output = vec![
+            vec![0, 1, 2, 1],
+            vec![1, 0, 1, 2],
+            vec![2, 1, 0, 1],
+            vec![1, 2, 1, 0],
+        ];
+        assert_eq!(output, floyd_marshall(input));
     }
 }
