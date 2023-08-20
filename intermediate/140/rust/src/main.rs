@@ -55,7 +55,12 @@ fn floyd_marshall(adjacency: Vec<Vec<bool>>) -> Vec<Vec<usize>> {
 }
 
 fn find_graph_radius(adjacency: Vec<Vec<bool>>) -> usize {
-    todo!()
+    floyd_marshall(adjacency)
+        .iter()
+        .map(|row| row.iter().max().unwrap())
+        .min()
+        .unwrap()
+        .clone()
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -100,7 +105,7 @@ mod tests {
             vec![false, true, false, true],
             vec![true, false, true, false],
         ];
-        assert_eq!(1, find_graph_radius(input));
+        assert_eq!(2, find_graph_radius(input));
         // prompt graph
         let input = parse_adjacency_matrix(
             "0 1 0 0 1 1 0 0 0 0
