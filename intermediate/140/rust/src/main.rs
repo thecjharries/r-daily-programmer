@@ -27,7 +27,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn build_directed_adjacency_matrix_creates_proper_matrix() {
+        let input = "0 -> 1
+        1 -> 2
+        2 -> 4
+        3 -> 4
+        0 -> 3";
+        let result = vec![
+            vec![0, 1, 0, 1, 0],
+            vec![0, 0, 1, 0, 0],
+            vec![0, 0, 0, 0, 1],
+            vec![0, 0, 0, 0, 1],
+            vec![0, 0, 0, 0, 0],
+        ];
+        assert_eq!(result, build_directed_adjacency_matrix(input));
     }
 }
