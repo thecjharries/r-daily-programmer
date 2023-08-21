@@ -17,7 +17,7 @@ fn main() {
     println!("rad");
 }
 
-fn build_directed_adjacency_matrix(input: &str) -> Vec<Vec<usize>> {
+fn build_directed_adjacency_matrix(vertex_count: usize, input: &str) -> Vec<Vec<usize>> {
     todo!()
 }
 
@@ -40,6 +40,6 @@ mod tests {
             vec![0, 0, 0, 0, 1],
             vec![0, 0, 0, 0, 0],
         ];
-        assert_eq!(result, build_directed_adjacency_matrix(input));
+        assert_eq!(result, build_directed_adjacency_matrix(5, input));
     }
 }
