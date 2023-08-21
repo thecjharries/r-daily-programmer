@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_directed_adjacency_matrix(input: &str) -> Vec<Vec<usize>> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
