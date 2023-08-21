@@ -17,50 +17,17 @@ fn main() {
     println!("rad");
 }
 
-fn parse_adjacency_matrix(input: &str) -> Vec<Vec<bool>> {
-    let binding = input.trim();
-    binding
-        .split('\n')
-        .map(|line| {
-            let binding = line.trim();
-            binding
-                .split_whitespace()
-                .map(|character| character == "1")
-                .collect()
-        })
-        .collect()
-}
-
-fn floyd_marshall(adjacency: Vec<Vec<bool>>) -> Vec<Vec<usize>> {
-    let mut result = vec![vec![usize::MAX; adjacency.len()]; adjacency.len()];
-    for (index, row) in adjacency.iter().enumerate() {
-        for (inner_index, value) in row.iter().enumerate() {
-            if index == inner_index {
-                result[index][inner_index] = 0;
-            } else if *value {
-                result[index][inner_index] = 1;
-            }
+fn build_directed_adjacency_matrix(vertex_count: usize, input: &str) -> Vec<Vec<usize>> {
+    let mut matrix = vec![vec![0; vertex_count]; vertex_count];
+    for line in input.split('\n') {
+        let line = line.trim();
+        let mut line_iter = line.split(" -> ");
+        let source = line_iter.next().unwrap().parse::<usize>().unwrap();
+        for destination in line_iter.next().unwrap().split(" ") {
+            matrix[source][destination.parse::<usize>().unwrap()] += 1;
         }
     }
-    for k in 0..adjacency.len() {
-        for i in 0..adjacency.len() {
-            for j in 0..adjacency.len() {
-                if result[i][k] != usize::MAX && result[k][j] != usize::MAX {
-                    result[i][j] = result[i][j].min(result[i][k] + result[k][j]);
-                }
-            }
-        }
-    }
-    result
-}
-
-fn find_graph_radius(adjacency: Vec<Vec<bool>>) -> usize {
-    floyd_marshall(adjacency)
-        .iter()
-        .map(|row| row.iter().max().unwrap())
-        .min()
-        .unwrap()
-        .clone()
+    matrix
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -69,84 +36,19 @@ mod tests {
     use super::*;
 
     #[test]
-    fn can_parse_adjacency_matrix() {
-        let input = "0 1 0 1\n1 0 1 0\n0 1 0 1\n1 0 1 0\n";
-        let output = vec![
-            vec![false, true, false, true],
-            vec![true, false, true, false],
-            vec![false, true, false, true],
-            vec![true, false, true, false],
+    fn build_directed_adjacency_matrix_creates_proper_matrix() {
+        let input = "0 -> 1
+        1 -> 2
+        2 -> 4
+        3 -> 4
+        0 -> 3";
+        let result = vec![
+            vec![0, 1, 0, 1, 0],
+            vec![0, 0, 1, 0, 0],
+            vec![0, 0, 0, 0, 1],
+            vec![0, 0, 0, 0, 1],
+            vec![0, 0, 0, 0, 0],
         ];
-        assert_eq!(output, parse_adjacency_matrix(input));
-    }
-
-    #[test]
-    fn floyd_marshall_computes_distance() {
-        let input = vec![
-            vec![false, true, false, true],
-            vec![true, false, true, false],
-            vec![false, true, false, true],
-            vec![true, false, true, false],
-        ];
-        let output = vec![
-            vec![0, 1, 2, 1],
-            vec![1, 0, 1, 2],
-            vec![2, 1, 0, 1],
-            vec![1, 2, 1, 0],
-        ];
-        assert_eq!(output, floyd_marshall(input));
-    }
-
-    #[test]
-    fn find_graph_radius_finds_radius() {
-        let input = vec![
-            vec![false, true, false, true],
-            vec![true, false, true, false],
-            vec![false, true, false, true],
-            vec![true, false, true, false],
-        ];
-        assert_eq!(2, find_graph_radius(input));
-        // prompt graph
-        let input = parse_adjacency_matrix(
-            "0 1 0 0 1 1 0 0 0 0
-        1 0 1 0 0 0 1 0 0 0
-        0 1 0 1 0 0 0 1 0 0
-        0 0 1 0 1 0 0 0 1 0
-        1 0 0 1 0 0 0 0 0 1
-        1 0 0 0 0 0 0 1 1 0
-        0 1 0 0 0 0 0 0 1 1
-        0 0 1 0 0 1 0 0 0 1
-        0 0 0 1 0 1 1 0 0 0
-        0 0 0 0 1 0 1 1 0 0",
-        );
-        assert_eq!(2, find_graph_radius(input));
-        // Nauru graph
-        let input = parse_adjacency_matrix(
-            "0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0
-        1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
-        0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
-        0 1 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0
-        1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0
-        0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0
-        0 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0
-        0 0 0 0 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 1 0 0 0 0 0
-        0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 0 0
-        0 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0
-        0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1
-        0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0
-        0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0
-        1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0
-        0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1
-        0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0",
-        );
-        assert_eq!(4, find_graph_radius(input));
+        assert_eq!(result, build_directed_adjacency_matrix(5, input));
     }
 }
