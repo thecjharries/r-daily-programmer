@@ -18,7 +18,16 @@ fn main() {
 }
 
 fn build_directed_adjacency_matrix(vertex_count: usize, input: &str) -> Vec<Vec<usize>> {
-    todo!()
+    let mut matrix = vec![vec![0; vertex_count]; vertex_count];
+    for line in input.split('\n') {
+        let line = line.trim();
+        let mut line_iter = line.split(" -> ");
+        let source = line_iter.next().unwrap().parse::<usize>().unwrap();
+        for destination in line_iter.next().unwrap().split(" ") {
+            matrix[source][destination.parse::<usize>().unwrap()] += 1;
+        }
+    }
+    matrix
 }
 
 #[cfg(not(tarpaulin_include))]
