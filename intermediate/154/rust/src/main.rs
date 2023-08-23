@@ -23,6 +23,10 @@ impl Alphabet {
             letters: alphabet.to_lowercase().chars().collect(),
         }
     }
+
+    fn sort_words(words: Vec<&str>) -> Vec<String> {
+        todo!()
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
