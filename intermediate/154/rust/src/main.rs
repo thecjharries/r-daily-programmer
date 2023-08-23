@@ -24,8 +24,38 @@ impl Alphabet {
         }
     }
 
-    fn sort_words(words: Vec<&str>) -> Vec<String> {
-        todo!()
+    fn sort_words(&self, words: Vec<&str>) -> Vec<String> {
+        let mut sorted_words = words.to_vec();
+        sorted_words.sort_by(|a, b| {
+            let a_chars: Vec<char> = a.to_lowercase().chars().collect();
+            let b_chars: Vec<char> = b.to_lowercase().chars().collect();
+            let mut a_index = 0;
+            let mut b_index = 0;
+            while a_index < a_chars.len() && b_index < b_chars.len() {
+                let a_letter = a_chars[a_index];
+                let b_letter = b_chars[b_index];
+                if a_letter == b_letter {
+                    a_index += 1;
+                    b_index += 1;
+                } else {
+                    let a_letter_index = self.letters.iter().position(|&x| x == a_letter).unwrap();
+                    let b_letter_index = self.letters.iter().position(|&x| x == b_letter).unwrap();
+                    if a_letter_index < b_letter_index {
+                        return std::cmp::Ordering::Less;
+                    } else {
+                        return std::cmp::Ordering::Greater;
+                    }
+                }
+            }
+            if a_index == a_chars.len() && b_index == b_chars.len() {
+                std::cmp::Ordering::Equal
+            } else if a_index == a_chars.len() {
+                std::cmp::Ordering::Less
+            } else {
+                std::cmp::Ordering::Greater
+            }
+        });
+        sorted_words.iter().map(|word| word.to_string()).collect()
     }
 }
 
