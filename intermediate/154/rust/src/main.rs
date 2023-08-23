@@ -17,6 +17,14 @@ struct Alphabet {
     letters: Vec<char>,
 }
 
+impl Alphabet {
+    fn new(alphabet: &str) -> Self {
+        Self {
+            letters: alphabet.to_lowercase().chars().collect(),
+        }
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -28,7 +36,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn alphabet_can_create_new() {
+        let alphabet = Alphabet::new("UVWXYZNOPQRSTHIJKLMABCDEFG");
+        assert_eq!(
+            Alphabet {
+                letters: vec![
+                    'u', 'v', 'w', 'x', 'y', 'z', 'n', 'o', 'p', 'q', 'r', 's', 't', 'h', 'i', 'j',
+                    'k', 'l', 'm', 'a', 'b', 'c', 'd', 'e', 'f', 'g'
+                ]
+            },
+            alphabet
+        );
     }
 }
