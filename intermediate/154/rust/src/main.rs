@@ -52,4 +52,16 @@ mod tests {
             alphabet
         );
     }
+
+    #[test]
+    fn alphabet_can_sort_based_on_itself() {
+        let alphabet = Alphabet::new("UVWXYZNOPQRSTHIJKLMABCDEFG");
+        let words = vec![
+            "ANTLER", "ANY", "COW", "HILL", "HOW", "HOWEVER", "WHATEVER", "ZONE",
+        ];
+        let sorted = vec![
+            "WHATEVER", "ZONE", "HOW", "HOWEVER", "HILL", "ANY", "ANTLER", "COW",
+        ];
+        assert_eq!(sorted, alphabet.sort_words(words));
+    }
 }
