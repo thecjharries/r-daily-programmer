@@ -24,6 +24,7 @@ impl Alphabet {
         }
     }
 
+    #[cfg(not(tarpaulin_include))]
     fn sort_words(&self, words: Vec<&str>) -> Vec<String> {
         let mut sorted_words = words.to_vec();
         sorted_words.sort_by(|a, b| {
