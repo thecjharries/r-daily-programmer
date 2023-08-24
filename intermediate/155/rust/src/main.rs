@@ -12,13 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use chess_notation_parser::{Flag, Turn};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
 fn compute_score(moves: Vec<&str>) -> (u32, u32) {
-    todo!()
+    let mut white_score: u32 = 0;
+    let mut black_score: u32 = 0;
+    for row in moves {
+        let turn_moves = row.split_whitespace().collect::<Vec<&str>>();
+        let mut white = true;
+        for turn_move in turn_moves {
+            let turn = Turn::try_from(turn_move).unwrap();
+            println!("{:?}", turn);
+            if turn.is_capture() {
+                if white {
+                    white_score += 1;
+                } else {
+                    black_score += 1;
+                }
+            }
+            white = !white;
+        }
+    }
+    (white_score, black_score)
 }
 
 #[cfg(not(tarpaulin_include))]
