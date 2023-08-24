@@ -27,7 +27,40 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn compute_score_can_score_games() {
+        let input = vec![
+            "e4 e5",
+            "Nf3 Nc6",
+            "Bb5 Nf6",
+            "d3 Bc5",
+            "Bxc6 dxc6",
+            "h3 Nd7",
+            "Be3 Bd6",
+            "Nbd2 O-O",
+            "O-O Re8",
+            "Nc4 Nf8",
+            "d4 exd4",
+            "Qxd4 c5",
+            "Qd3 b6",
+            "Nxd6 Qxd6",
+            "Qxd6 cxd6",
+            "Rfd1 Bb7",
+            "Rxd6 Bxe4",
+            "Ne1 Rad8",
+            "Rad1 Ne6",
+            "Rxd8 Rxd8",
+            "Rxd8+ Nxd8",
+            "f3 Bd5",
+            "a3 Nc6",
+            "Kf2 f6",
+            "Nd3 Kf8",
+            "Ke2 Ke7",
+            "Kd2 Kd7",
+            "Nf4 Bf7",
+            "b3 Ne7",
+            "h4 Nd5",
+        ];
+        let output = (12, 12);
+        assert_eq!(output, compute_score(input));
     }
 }
