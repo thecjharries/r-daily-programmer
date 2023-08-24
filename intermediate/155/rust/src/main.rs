@@ -19,7 +19,7 @@ fn main() {
     println!("rad");
 }
 
-fn compute_score(moves: Vec<&str>) -> (u32, u32) {
+fn count_captured_pieces(moves: Vec<&str>) -> (u32, u32) {
     let mut white_score: u32 = 0;
     let mut black_score: u32 = 0;
     for row in moves {
@@ -47,7 +47,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn compute_score_can_score_games() {
+    fn count_captured_pieces_can_score_games() {
         let input = vec![
             "e4 e5",
             "Nf3 Nc6",
@@ -80,7 +80,7 @@ mod tests {
             "b3 Ne7",
             "h4 Nd5",
         ];
-        let output = (12, 12);
-        assert_eq!(output, compute_score(input));
+        let output = (7, 7);
+        assert_eq!(output, count_captured_pieces(input));
     }
 }
