@@ -17,6 +17,12 @@ fn main() {
     println!("rad");
 }
 
+fn build_work_list(
+    work_items: Vec<(&str, usize, Option<&str>)>,
+) -> (Vec<(usize, String, usize)>, usize) {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
