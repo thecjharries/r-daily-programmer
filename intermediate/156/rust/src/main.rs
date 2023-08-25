@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -20,7 +22,45 @@ fn main() {
 fn build_work_list(
     work_items: Vec<(&str, usize, Option<&str>)>,
 ) -> (Vec<(usize, String, usize)>, usize) {
-    todo!()
+    let mut work_items = work_items.clone();
+    let mut workers: BTreeMap<String, Vec<(String, usize)>> = BTreeMap::new();
+    let mut count = 0;
+    while 0 < work_items.len() {
+        count += 1;
+        if 100 < count {
+            break;
+        }
+        let worker = work_items.remove(0);
+        if let Some(dependency) = worker.2 {
+            if let Some(dependent) = workers.get_mut(dependency) {
+                let mut entry = dependent.clone();
+                entry.push((worker.0.to_string(), worker.1));
+                workers.insert(worker.0.to_string(), entry);
+                workers.remove(dependency);
+            } else {
+                println!("{:?} depends on {:?}", worker.0, dependency);
+                work_items.push(worker);
+                continue;
+            }
+        } else {
+            workers.insert(worker.0.to_string(), vec![(worker.0.to_string(), worker.1)]);
+        }
+    }
+    let mut work_days = Vec::new();
+    let mut work_list = Vec::new();
+    let mut index = 1;
+    for (_, work) in workers {
+        let mut work_day = 0;
+        for (name, days) in work {
+            work_day += days;
+            work_list.push((index, name, days));
+        }
+        work_days.push(work_day);
+        index += 1;
+    }
+    let max_days = work_days.iter().max().unwrap();
+    let idle = work_days.iter().map(|day| max_days - day).sum();
+    (work_list, idle)
 }
 
 #[cfg(not(tarpaulin_include))]
