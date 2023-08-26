@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use cubesim::{Move, MoveVariant};
+use cubesim::{Cube, FaceletCube, Move, MoveVariant};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -43,6 +43,10 @@ fn parse_move(input: &str) -> Option<Move> {
         "B'" => Some(Move::B(MoveVariant::Inverse)),
         _ => None,
     }
+}
+
+fn get_final_front_face(moves: &str) -> String {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
