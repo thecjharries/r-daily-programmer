@@ -20,7 +20,29 @@ fn main() {
 }
 
 fn parse_move(input: &str) -> Option<Move> {
-    todo!()
+    let binding = input.to_uppercase();
+    let binding = binding.trim();
+    match binding {
+        "U" => Some(Move::U(MoveVariant::Standard)),
+        "U2" => Some(Move::U(MoveVariant::Double)),
+        "U'" => Some(Move::U(MoveVariant::Inverse)),
+        "D" => Some(Move::D(MoveVariant::Standard)),
+        "D2" => Some(Move::D(MoveVariant::Double)),
+        "D'" => Some(Move::D(MoveVariant::Inverse)),
+        "L" => Some(Move::L(MoveVariant::Standard)),
+        "L2" => Some(Move::L(MoveVariant::Double)),
+        "L'" => Some(Move::L(MoveVariant::Inverse)),
+        "R" => Some(Move::R(MoveVariant::Standard)),
+        "R2" => Some(Move::R(MoveVariant::Double)),
+        "R'" => Some(Move::R(MoveVariant::Inverse)),
+        "F" => Some(Move::F(MoveVariant::Standard)),
+        "F2" => Some(Move::F(MoveVariant::Double)),
+        "F'" => Some(Move::F(MoveVariant::Inverse)),
+        "B" => Some(Move::B(MoveVariant::Standard)),
+        "B2" => Some(Move::B(MoveVariant::Double)),
+        "B'" => Some(Move::B(MoveVariant::Inverse)),
+        _ => None,
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
