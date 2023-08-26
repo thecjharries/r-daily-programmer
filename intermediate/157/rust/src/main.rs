@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use cubesim::{Cube, FaceletCube, Move, MoveVariant};
+use cubesim::{Cube, Face, FaceletCube, Move, MoveVariant};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -46,7 +46,31 @@ fn parse_move(input: &str) -> Option<Move> {
 }
 
 fn get_final_front_face(moves: &str) -> String {
-    todo!()
+    let moves = moves.split_whitespace();
+    let mut cube = FaceletCube::new(3);
+    for mv in moves {
+        if let Some(parsed_move) = parse_move(mv) {
+            cube = cube.apply_move(parsed_move);
+        }
+    }
+    let mut output = String::new();
+    let mut count = 0;
+    for face in cube.state()[18..27].iter() {
+        count += 1;
+        match face {
+            Face::F => output.push('r'),
+            Face::R => output.push('g'),
+            Face::B => output.push('o'),
+            Face::L => output.push('b'),
+            Face::U => output.push('y'),
+            Face::D => output.push('w'),
+            _ => output.push(' '),
+        }
+        if 0 == count % 3 {
+            output.push('\n');
+        }
+    }
+    output
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -81,7 +105,7 @@ mod tests {
 
     #[test]
     fn get_final_front_face_parse_properly() {
-        let output = "rrb\nrrw\noww";
+        let output = "rrb\nrrw\noww\n";
         assert_eq!(
             output,
             get_final_front_face("U2 R' D2 R F L' U2 R").as_str()
