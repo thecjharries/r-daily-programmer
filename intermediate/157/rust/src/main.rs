@@ -78,4 +78,13 @@ mod tests {
         assert_eq!(Move::U(MoveVariant::Standard), parse_move(" U  ").unwrap());
         assert!(parse_move("qqq").is_none());
     }
+
+    #[test]
+    fn get_final_front_face_parse_properly() {
+        let output = "rrb\nrrw\noww";
+        assert_eq!(
+            output,
+            get_final_front_face("U2 R' D2 R F L' U2 R").as_str()
+        );
+    }
 }
