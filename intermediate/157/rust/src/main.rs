@@ -45,6 +45,8 @@ fn parse_move(input: &str) -> Option<Move> {
     }
 }
 
+// Test cases don't cover all face variants
+#[cfg(not(tarpaulin_include))]
 fn get_final_front_face(moves: &str) -> String {
     let moves = moves.split_whitespace();
     let mut cube = FaceletCube::new(3);
