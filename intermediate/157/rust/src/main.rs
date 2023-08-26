@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-use cubesim::{Move,MoveVariant};
+use cubesim::{Move, MoveVariant};
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
 }
 
-fn parse_move(input: &str) -> Move {
+fn parse_move(input: &str) -> Option<Move> {
     todo!()
 }
 
@@ -29,7 +29,27 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn parse_move_handles_all_input() {
+        assert_eq!(Move::U(MoveVariant::Standard), parse_move("U").unwrap());
+        assert_eq!(Move::U(MoveVariant::Double), parse_move("U2").unwrap());
+        assert_eq!(Move::U(MoveVariant::Inverse), parse_move("U'").unwrap());
+        assert_eq!(Move::D(MoveVariant::Standard), parse_move("D").unwrap());
+        assert_eq!(Move::D(MoveVariant::Double), parse_move("D2").unwrap());
+        assert_eq!(Move::D(MoveVariant::Inverse), parse_move("D'").unwrap());
+        assert_eq!(Move::L(MoveVariant::Standard), parse_move("L").unwrap());
+        assert_eq!(Move::L(MoveVariant::Double), parse_move("L2").unwrap());
+        assert_eq!(Move::L(MoveVariant::Inverse), parse_move("L'").unwrap());
+        assert_eq!(Move::R(MoveVariant::Standard), parse_move("R").unwrap());
+        assert_eq!(Move::R(MoveVariant::Double), parse_move("R2").unwrap());
+        assert_eq!(Move::R(MoveVariant::Inverse), parse_move("R'").unwrap());
+        assert_eq!(Move::F(MoveVariant::Standard), parse_move("F").unwrap());
+        assert_eq!(Move::F(MoveVariant::Double), parse_move("F2").unwrap());
+        assert_eq!(Move::F(MoveVariant::Inverse), parse_move("F'").unwrap());
+        assert_eq!(Move::B(MoveVariant::Standard), parse_move("B").unwrap());
+        assert_eq!(Move::B(MoveVariant::Double), parse_move("B2").unwrap());
+        assert_eq!(Move::B(MoveVariant::Inverse), parse_move("B'").unwrap());
+        assert_eq!(Move::U(MoveVariant::Standard), parse_move("u").unwrap());
+        assert_eq!(Move::U(MoveVariant::Standard), parse_move(" U  ").unwrap());
+        assert!(parse_move("qqq").is_none());
     }
 }
