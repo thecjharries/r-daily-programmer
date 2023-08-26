@@ -12,9 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use cubesim::{Move,MoveVariant};
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn parse_move(input: &str) -> Move {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
