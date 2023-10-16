@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn generate_construction(input: &str) -> String {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
