@@ -18,7 +18,27 @@ fn main() {
 }
 
 fn generate_construction(input: &str) -> String {
-    todo!()
+    let mut results = Vec::new();
+    for _ in 0..10 {
+        results.push(String::new());
+    }
+    let mut height = 0;
+    for character in input.chars() {
+        if character.is_alphabetic() {
+            results[height].push(character);
+            for index in height + 1..10 {
+                results[index].push(' ');
+            }
+            height = 0;
+        } else if character.is_numeric() {
+            height = character.to_digit(10).unwrap() as usize;
+            for index in 0..height {
+                results[index].push(' ');
+            }
+        }
+    }
+    results.reverse();
+    results.join("\n")
 }
 
 #[cfg(not(tarpaulin_include))]
