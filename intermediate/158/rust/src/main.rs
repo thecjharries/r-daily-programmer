@@ -28,6 +28,7 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        assert_eq!(" \n \n \n \n \n \n \n \n \na", generate_construction("a"));
+        assert_eq!("           \n           \n           \n           \n  a        \n          h\n g         \n           \n           \nj  jbcdefg ", generate_construction("j3g5ajbcdefg4h"))
     }
 }
