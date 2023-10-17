@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use std::collections::BTreeMap;
+
 #[derive(Debug, PartialEq)]
 enum Winner {
     Human,
@@ -19,7 +21,7 @@ enum Winner {
     Neither,
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Hash)]
 enum Moves {
     Rock,
     Paper,
@@ -63,6 +65,12 @@ impl Moves {
             },
         }
     }
+}
+
+struct Games {
+    human_score: u32,
+    computer_score: u32,
+    human_plays: BTreeMap<Moves, u32>,
 }
 
 #[cfg(not(tarpaulin_include))]
