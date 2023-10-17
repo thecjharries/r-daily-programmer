@@ -21,7 +21,7 @@ enum Winner {
     Neither,
 }
 
-#[derive(Debug, PartialEq, Hash)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 enum Moves {
     Rock,
     Paper,
@@ -71,6 +71,22 @@ struct Games {
     human_score: u32,
     computer_score: u32,
     human_plays: BTreeMap<Moves, u32>,
+}
+
+impl Default for Games {
+    fn default() -> Self {
+        let mut human_plays = BTreeMap::new();
+        human_plays.insert(Moves::Rock, 0);
+        human_plays.insert(Moves::Paper, 0);
+        human_plays.insert(Moves::Scissors, 0);
+        human_plays.insert(Moves::Lizard, 0);
+        human_plays.insert(Moves::Spock, 0);
+        Self {
+            human_score: 0,
+            computer_score: 0,
+            human_plays,
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
