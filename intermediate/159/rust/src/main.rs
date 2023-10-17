@@ -70,6 +70,7 @@ impl Moves {
 struct Games {
     human_score: u32,
     computer_score: u32,
+    ties: u32,
     human_plays: BTreeMap<Moves, u32>,
 }
 
@@ -84,6 +85,7 @@ impl Default for Games {
         Self {
             human_score: 0,
             computer_score: 0,
+            ties: 0,
             human_plays,
         }
     }
@@ -92,6 +94,16 @@ impl Default for Games {
 impl Games {
     fn new() -> Self {
         Self::default()
+    }
+
+    fn play_round(&mut self, human_move: &Moves, computer_move: &Moves) {
+        let winner = human_move.get_winner_as_human(computer_move);
+        *self.human_plays.get_mut(human_move).unwrap() += 1;
+        match winner {
+            Winner::Human => self.human_score += 1,
+            Winner::Computer => self.computer_score += 1,
+            Winner::Neither => self.ties += 1,
+        }
     }
 }
 
@@ -214,9 +226,42 @@ mod tests {
         let games = Games::new();
         assert_eq!(0, games.human_score);
         assert_eq!(0, games.computer_score);
+        assert_eq!(0, games.ties);
         assert_eq!(0, *games.human_plays.get(&Moves::Rock).unwrap());
         assert_eq!(0, *games.human_plays.get(&Moves::Paper).unwrap());
         assert_eq!(0, *games.human_plays.get(&Moves::Scissors).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Lizard).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Spock).unwrap());
+    }
+
+    #[test]
+    fn games_tracks_rounds_played() {
+        let mut games = Games::new();
+        games.play_round(&Moves::Rock, &Moves::Scissors);
+        assert_eq!(1, games.human_score);
+        assert_eq!(0, games.computer_score);
+        assert_eq!(0, games.ties);
+        assert_eq!(1, *games.human_plays.get(&Moves::Rock).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Paper).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Scissors).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Lizard).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Spock).unwrap());
+        games.play_round(&Moves::Scissors, &Moves::Rock);
+        assert_eq!(1, games.human_score);
+        assert_eq!(1, games.computer_score);
+        assert_eq!(0, games.ties);
+        assert_eq!(1, *games.human_plays.get(&Moves::Rock).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Paper).unwrap());
+        assert_eq!(1, *games.human_plays.get(&Moves::Scissors).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Lizard).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Spock).unwrap());
+        games.play_round(&Moves::Rock, &Moves::Rock);
+        assert_eq!(1, games.human_score);
+        assert_eq!(1, games.computer_score);
+        assert_eq!(1, games.ties);
+        assert_eq!(2, *games.human_plays.get(&Moves::Rock).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Paper).unwrap());
+        assert_eq!(1, *games.human_plays.get(&Moves::Scissors).unwrap());
         assert_eq!(0, *games.human_plays.get(&Moves::Lizard).unwrap());
         assert_eq!(0, *games.human_plays.get(&Moves::Spock).unwrap());
     }
