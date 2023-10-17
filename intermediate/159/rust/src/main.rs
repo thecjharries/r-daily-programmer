@@ -89,6 +89,12 @@ impl Default for Games {
     }
 }
 
+impl Games {
+    fn new() -> Self {
+        Self::default()
+    }
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
@@ -201,5 +207,17 @@ mod tests {
             Winner::Neither,
             Moves::Spock.get_winner_as_human(&Moves::Spock)
         );
+    }
+
+    #[test]
+    fn test_games_new() {
+        let games = Games::new();
+        assert_eq!(0, games.human_score);
+        assert_eq!(0, games.computer_score);
+        assert_eq!(0, *games.human_plays.get(&Moves::Rock).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Paper).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Scissors).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Lizard).unwrap());
+        assert_eq!(0, *games.human_plays.get(&Moves::Spock).unwrap());
     }
 }
