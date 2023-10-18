@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct Building {
     has_kit: bool,
     has_termites: bool,
@@ -21,6 +21,20 @@ struct Building {
 #[derive(Debug, PartialEq)]
 struct City {
     buildings: Vec<Building>,
+}
+
+impl City {
+    fn new(number_of_buildings: usize) -> Self {
+        Self {
+            buildings: vec![
+                Building {
+                    has_kit: false,
+                    has_termites: false,
+                };
+                number_of_buildings
+            ],
+        }
+    }
 }
 
 #[cfg(not(tarpaulin_include))]
@@ -34,7 +48,8 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn test_city_new() {
+        let city = City::new(5);
+        assert_eq!(5, city.buildings.len());
     }
 }
