@@ -18,6 +18,11 @@ struct Building {
     has_termites: bool,
 }
 
+#[derive(Debug, PartialEq)]
+struct City {
+    buildings: Vec<Building>,
+}
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
