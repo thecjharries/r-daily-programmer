@@ -1,5 +1,9 @@
 # [4/30/2014] Challenge #160 Intermediate Part 2 - Damage Control
 
+## Notes
+
+The prompt isn't very well written. Looking at the solutions, it's possible to understand what the consensus is. However, there's not enough detail in the prompt itself to grok what's going on.
+
 ## Source
 
 [Original post](https://old.reddit.com/r/dailyprogrammer/comments/24da3f/4302014_challenge_160_intermediate_part_2_damage/)
