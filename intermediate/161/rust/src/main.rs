@@ -23,6 +23,10 @@ fn main() {
     println!("rad");
 }
 
+fn build_job_list(workers: &[Worker], jobs: &[String]) -> Vec<(String, String)> {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
