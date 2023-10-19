@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 struct Worker {
     name: String,
     skills: Vec<String>,
@@ -24,7 +24,19 @@ fn main() {
 }
 
 fn build_job_list(workers: &[Worker], jobs: &[String]) -> Vec<(String, String)> {
-    todo!()
+    let mut workers = workers.to_vec();
+    let mut result = Vec::new();
+    for job in jobs {
+        let mut worker_index = 0;
+        let mut worker = &workers[worker_index];
+        while !worker.skills.contains(job) && worker_index < workers.len() - 1 {
+            worker_index += 1;
+            worker = &workers[worker_index];
+        }
+        result.push((worker.name.clone(), job.clone()));
+        workers.remove(worker_index);
+    }
+    result
 }
 
 #[cfg(not(tarpaulin_include))]
