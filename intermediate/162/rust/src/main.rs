@@ -14,6 +14,7 @@
 
 use lazy_static::lazy_static;
 use regex::Regex;
+use std::collections::BTreeMap;
 
 #[cfg(not(tarpaulin_include))]
 fn main() {
@@ -21,7 +22,36 @@ fn main() {
 }
 
 fn compress(input: &str) -> (Vec<String>, String) {
-    todo!()
+    let mut dictionary: Vec<String> = Vec::new();
+    let mut dictionary_map: BTreeMap<String, usize> = BTreeMap::new();
+    let mut compressed: Vec<String> = Vec::new();
+    lazy_static! {
+        static ref ALLOWED_SYMBOLS_PATTERN: Regex = Regex::new(r"([\n\-.,?!;:])").unwrap();
+    }
+    let input = ALLOWED_SYMBOLS_PATTERN.replace_all(input, " $1 ");
+    for token in input.split(" ") {
+        println!("token is '{}'", token);
+        if "" == token {
+            continue;
+        } else if 1 == token.len() && '\n' == token.chars().next().unwrap() {
+            compressed.push("R".to_string());
+        } else if ALLOWED_SYMBOLS_PATTERN.is_match(token) {
+            compressed.push(token.to_string());
+        } else {
+            let lower = token.to_lowercase();
+            if !dictionary_map.contains_key(&lower) {
+                dictionary_map.insert(lower.clone(), dictionary.len());
+                dictionary.push(lower.clone());
+            }
+            if lower == token {
+                compressed.push(dictionary_map[&lower].to_string());
+            } else {
+                compressed.push(format!("{}^", dictionary_map[&lower]));
+            }
+        }
+    }
+    compressed.push("E".to_string());
+    (dictionary, compressed.join(" "))
 }
 
 #[cfg(not(tarpaulin_include))]
