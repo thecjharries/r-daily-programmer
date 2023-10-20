@@ -31,6 +31,35 @@ mod tests {
 
     #[test]
     fn test_stub() {
-        assert_eq!(2 + 2, 4);
+        // the
+        // quick
+        // brown
+        // fox
+        // jumps
+        // over
+        // lazy
+        // dog
+        // or
+        // did
+        // it
+        // 0^ 1 2 3 4 5 0 6 7 . R 8^ , 9 10 ? E
+        let dictionary = vec![
+            "the".to_string(),
+            "quick".to_string(),
+            "brown".to_string(),
+            "fox".to_string(),
+            "jumps".to_string(),
+            "over".to_string(),
+            "lazy".to_string(),
+            "dog".to_string(),
+            "or".to_string(),
+            "did".to_string(),
+            "it".to_string(),
+        ];
+        let compressed = "0^ 1 2 3 4 5 0 6 7 . R 8^ , 9 10 ? E".to_string();
+        assert_eq!(
+            (dictionary, compressed),
+            compress("The quick brown fox jumps over the lazy dog.\nOr, did it?")
+        );
     }
 }
