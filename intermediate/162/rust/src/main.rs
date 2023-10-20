@@ -91,5 +91,79 @@ mod tests {
             (dictionary, compressed),
             compress("The quick brown fox jumps over the lazy dog.\nOr, did it?")
         );
+        let input = r"I would not, could not, in the rain.
+Not in the dark. Not on a train.
+Not in a car. Not in a tree.
+I do not like them, Sam, you see.
+Not in a house. Not in a box.
+Not with a mouse. Not with a fox.
+I will not eat them here or there.
+I do not like them anywhere!
+";
+        // i
+        // would
+        // not
+        // could
+        // in
+        // the
+        // rain
+        // dark
+        // on
+        // a
+        // train
+        // car
+        // tree
+        // do
+        // like
+        // them
+        // sam
+        // you
+        // see
+        // house
+        // box
+        // with
+        // mouse
+        // fox
+        // will
+        // eat
+        // here
+        // or
+        // there
+        // anywhere
+        let dictionary = vec![
+            "i".to_string(),
+            "would".to_string(),
+            "not".to_string(),
+            "could".to_string(),
+            "in".to_string(),
+            "the".to_string(),
+            "rain".to_string(),
+            "dark".to_string(),
+            "on".to_string(),
+            "a".to_string(),
+            "train".to_string(),
+            "car".to_string(),
+            "tree".to_string(),
+            "do".to_string(),
+            "like".to_string(),
+            "them".to_string(),
+            "sam".to_string(),
+            "you".to_string(),
+            "see".to_string(),
+            "house".to_string(),
+            "box".to_string(),
+            "with".to_string(),
+            "mouse".to_string(),
+            "fox".to_string(),
+            "will".to_string(),
+            "eat".to_string(),
+            "here".to_string(),
+            "or".to_string(),
+            "there".to_string(),
+            "anywhere".to_string(),
+        ];
+        let compressed = "0^ 1 2 , 3 2 , 4 5 6 . R 2^ 4 5 7 . 2^ 8 9 10 . R 2^ 4 9 11 . 2^ 4 9 12 . R 0^ 13 2 14 15 , 16^ , 17 18 . R 2^ 4 9 19 . 2^ 4 9 20 . R 2^ 21 9 22 . 2^ 21 9 23 . R 0^ 24 2 25 15 26 27 28 . R 0^ 13 2 14 15 29 ! R E"
+            .to_string();
+        assert_eq!((dictionary, compressed), compress(input));
     }
 }
