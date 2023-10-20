@@ -12,9 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+use lazy_static::lazy_static;
+use regex::Regex;
+
 #[cfg(not(tarpaulin_include))]
 fn main() {
     println!("rad");
+}
+
+fn compress(input: &str) -> (Vec<String>, String) {
+    todo!()
 }
 
 #[cfg(not(tarpaulin_include))]
