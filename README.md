@@ -7,3 +7,7 @@
 ## Overview
 
 This contains a bunch of junk related to [r/DailyProgrammer](https://old.reddit.com/r/dailyprogrammer). Lots of it will change on the reg, most likely.
+
+## Notes
+
+- [The `enable1.txt` word list](./enable1.txt) comes from [this repository](https://code.google.com/archive/p/dotnetperls-controls/downloads) and appears to be public domain.
