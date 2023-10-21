@@ -17,6 +17,10 @@ fn main() {
     println!("rad");
 }
 
+fn compare_words(first: &str, second: &str) -> usize {
+    todo!()
+}
+
 #[cfg(not(tarpaulin_include))]
 #[cfg(test)]
 mod tests {
