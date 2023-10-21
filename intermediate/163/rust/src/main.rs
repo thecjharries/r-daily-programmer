@@ -18,7 +18,13 @@ fn main() {
 }
 
 fn compare_words(first: &str, second: &str) -> usize {
-    todo!()
+    let mut count = 0;
+    for (first_character, second_character) in first.chars().zip(second.chars()) {
+        if first_character == second_character {
+            count += 1;
+        }
+    }
+    count
 }
 
 #[cfg(not(tarpaulin_include))]
