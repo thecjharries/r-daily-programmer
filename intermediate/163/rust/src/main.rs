@@ -27,7 +27,10 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_stub() {
-        assert_eq!(2 + 2, 4);
+    fn compare_words_generates_similarity_score() {
+        assert_eq!(0, compare_words("a", "b"));
+        assert_eq!(1, compare_words("a", "a"));
+        assert_eq!(2, compare_words("rad", "bad"));
+        assert_eq!(0, compare_words("abc", "cab"));
     }
 }
